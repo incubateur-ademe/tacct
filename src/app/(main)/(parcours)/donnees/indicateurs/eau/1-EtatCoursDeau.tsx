@@ -100,7 +100,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l'eau, 2024.
+          Source : Agences de l’eau, 2024 (consultée en février 2025)
         </Body>
         <ExportButtonNouveauParcours
           data={exportData}

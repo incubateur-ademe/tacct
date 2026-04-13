@@ -273,7 +273,7 @@ export type Databases_v2_arretes_catnatGroupByOutputType = {
   _max: Databases_v2_arretes_catnatMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_arretes_catnatGroupByPayload<T extends databases_v2_arretes_catnatGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_arretes_catnatGroupByPayload<T extends databases_v2_arretes_catnatGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_arretes_catnatGroupByOutputType, T['by']> &
       {
@@ -1312,11 +1312,6 @@ export type databases_v2_arretes_catnatFindManyArgs<ExtArgs extends runtime.Type
    * Skip the first `n` databases_v2_arretes_catnats.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_arretes_catnats.
-   */
   distinct?: Prisma.Databases_v2_arretes_catnatScalarFieldEnum | Prisma.Databases_v2_arretes_catnatScalarFieldEnum[]
 }
 

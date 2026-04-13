@@ -520,7 +520,7 @@ export type Databases_v2_rgaGroupByOutputType = {
   _max: Databases_v2_rgaMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_rgaGroupByPayload<T extends databases_v2_rgaGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_rgaGroupByPayload<T extends databases_v2_rgaGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_rgaGroupByOutputType, T['by']> &
       {
@@ -2050,11 +2050,6 @@ export type databases_v2_rgaFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Skip the first `n` databases_v2_rgas.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_rgas.
-   */
   distinct?: Prisma.Databases_v2_rgaScalarFieldEnum | Prisma.Databases_v2_rgaScalarFieldEnum[]
 }
 

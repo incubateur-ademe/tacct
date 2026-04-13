@@ -1,5 +1,5 @@
 /**
- * Système de couleurs de l'application Facili-TACCT
+ * Système de couleurs de l'application TACCT
  *
  * Ce fichier centralise toutes les couleurs utilisées dans l'application.
  * Les couleurs sont organisées par gammes et peuvent être utilisées :

@@ -2,7 +2,7 @@ import { toutesLesRessources } from '@/lib/ressources/toutesRessources';
 import type { MetadataRoute } from 'next';
 
 const sitemap = (): MetadataRoute.Sitemap => {
-  const baseUrl = 'https://facili-tacct.beta.gouv.fr';
+  const baseUrl = 'https://tacct.ademe.fr';
   const articles = toutesLesRessources.map((article) => ({
     url: `${baseUrl}/ressources/articles/${article.slug}`,
     lastModified: new Date(),

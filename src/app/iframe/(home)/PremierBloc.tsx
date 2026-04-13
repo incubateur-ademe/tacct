@@ -3,7 +3,7 @@ import { BoutonSecondaireClassic } from "@/design-system/base/Boutons";
 import { Body, H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import Image from "next/image";
-import styles from '../main.module.scss';
+import styles from './home.module.scss';
 
 export const PremierBloc = () => {
   return (

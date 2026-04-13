@@ -1,0 +1,7 @@
+# Refuse d'installer des packages publiés il y a moins de 7 jours (10080 minutes)
+# pour laisser le temps à la communauté de détecter d'éventuels packages compromis
+minimumReleaseAge: 10080
+
+# Fait échouer l'installation si un package perd en niveau de confiance
+# par rapport à ses versions précédentes (ex: package signé qui ne l'est plus)
+trustPolicy: no-downgrade

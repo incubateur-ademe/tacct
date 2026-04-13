@@ -1,13 +1,14 @@
 import { NewContainer } from "@/design-system/layout";
-import { collectionsCartes } from "@/lib/ressources/cartes";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { sharedMetadata } from "../../shared-metadata";
 import { BlocCollections, BlocCollectionsResponsive } from "../blocs/blocCollections";
+import { ModaleToutesCollections } from "../blocs/ModaleToutesCollections";
 import styles from "../ressources.module.scss";
 import { CollectionComponent } from "./collectionComponent";
 import { CollectionsData } from "./collectionsData";
+import { collectionsIframeCartes } from "../cartes";
 
 export async function generateMetadata({ params }: { params: Promise<{ collectionId: string }> }): Promise<Metadata> {
   const { collectionId } = await params;
@@ -16,11 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ collectio
   if (!collection) {
     return {
       ...sharedMetadata,
-      title: "Boîte à outils - Facili-TACCT",
+      title: "Boîte à outils - TACCT",
       description: "Découvrez notre boîte à outils pour l'adaptation au changement climatique"
     };
   }
-  const url = `https://www.facili-tacct.fr/ressources/${collection.slug}`;
+  const url = `https://www.tacct.ademe.fr/iframe/ressources/${collection.slug}`;
 
   return {
     ...sharedMetadata,
@@ -51,7 +52,7 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
   const collection = CollectionsData.find(c => c.slug === collectionId);
 
   if (!collection) {
-    redirect('/ressources');
+    redirect('/iframe/ressources');
   }
 
   return (
@@ -60,18 +61,19 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
             currentPageLabel={collection?.titre}
-            homeLinkProps={{ href: '/' }}
-            segments={[{ label: 'Boîte à outils', linkProps: { href: '/ressources' } }]}
+            homeLinkProps={{ href: '/iframe' }}
+            segments={[{ label: 'Boîte à outils', linkProps: { href: '/iframe/ressources' } }]}
           />
         </div>
       </NewContainer>
       <CollectionComponent collectionId={collectionId} />
       <div className={styles.desktopOnly}>
-        <BlocCollections collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
+        <BlocCollections collectionsCartes={collectionsIframeCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
       <div className={styles.mobileOnly}>
-        <BlocCollectionsResponsive collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
+        <BlocCollectionsResponsive collectionsCartes={collectionsIframeCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
+      <ModaleToutesCollections collectionsCartes={collectionsIframeCartes} />
     </>
   )
 };

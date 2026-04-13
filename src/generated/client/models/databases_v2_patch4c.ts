@@ -279,7 +279,7 @@ export type Databases_v2_patch4cGroupByOutputType = {
   index: number
   code_geographique: string
   niveaux_marins: number | null
-  feux_foret: number
+  feux_foret: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
@@ -300,7 +300,7 @@ export type Databases_v2_patch4cGroupByOutputType = {
   _max: Databases_v2_patch4cMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_patch4cGroupByPayload<T extends databases_v2_patch4cGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_patch4cGroupByPayload<T extends databases_v2_patch4cGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_patch4cGroupByOutputType, T['by']> &
       {
@@ -322,7 +322,7 @@ export type databases_v2_patch4cWhereInput = {
   index?: Prisma.IntFilter<"databases_v2_patch4c"> | number
   code_geographique?: Prisma.StringFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
@@ -342,7 +342,7 @@ export type databases_v2_patch4cOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   niveaux_marins?: Prisma.SortOrderInput | Prisma.SortOrder
-  feux_foret?: Prisma.SortOrder
+  feux_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
@@ -365,7 +365,7 @@ export type databases_v2_patch4cWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.databases_v2_patch4cWhereInput | Prisma.databases_v2_patch4cWhereInput[]
   code_geographique?: Prisma.StringFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
@@ -385,7 +385,7 @@ export type databases_v2_patch4cOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   niveaux_marins?: Prisma.SortOrderInput | Prisma.SortOrder
-  feux_foret?: Prisma.SortOrder
+  feux_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
@@ -413,7 +413,7 @@ export type databases_v2_patch4cScalarWhereWithAggregatesInput = {
   index?: Prisma.IntWithAggregatesFilter<"databases_v2_patch4c"> | number
   code_geographique?: Prisma.StringWithAggregatesFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
@@ -433,7 +433,7 @@ export type databases_v2_patch4cCreateInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
@@ -453,7 +453,7 @@ export type databases_v2_patch4cUncheckedCreateInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
@@ -473,7 +473,7 @@ export type databases_v2_patch4cUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -493,7 +493,7 @@ export type databases_v2_patch4cUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -513,7 +513,7 @@ export type databases_v2_patch4cCreateManyInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
@@ -533,7 +533,7 @@ export type databases_v2_patch4cUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -553,7 +553,7 @@ export type databases_v2_patch4cUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -740,7 +740,7 @@ export type $databases_v2_patch4cPayload<ExtArgs extends runtime.Types.Extension
     index: number
     code_geographique: string
     niveaux_marins: number | null
-    feux_foret: number
+    feux_foret: number | null
     secheresse_sols: number
     fortes_precipitations: number
     fortes_chaleurs: number
@@ -1370,11 +1370,6 @@ export type databases_v2_patch4cFindManyArgs<ExtArgs extends runtime.Types.Exten
    * Skip the first `n` databases_v2_patch4cs.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_patch4cs.
-   */
   distinct?: Prisma.Databases_v2_patch4cScalarFieldEnum | Prisma.Databases_v2_patch4cScalarFieldEnum[]
 }
 

@@ -15,10 +15,10 @@ import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
 import { lazy, useRef } from 'react';
-
-const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
+
+const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 
 export const TypesDeSols = ({
   confortThermique,
@@ -111,7 +111,7 @@ export const TypesDeSols = ({
                 )}
                 <div className={styles.text}>
                   <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-                    {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de
+                    {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de
                     votre territoire est recouvert par de la forêt ou des
                     espaces semi-naturels.
                   </Body>
@@ -260,7 +260,7 @@ export const TypesDeSols = ({
       {confortThermique && confortThermique.length && (
         <div className={styles.sourcesExportMapWrapper}>
           <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-            Source : CORINE Land Cover, 2018.
+            Source : CORINE Land Cover, 2018 (consultée en décembre 2024)
           </Body>
           <ZipExportButtonNouveauParcours
             anchor="Types de sols"

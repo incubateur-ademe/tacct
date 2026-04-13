@@ -17,9 +17,9 @@ import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
 import { lazy } from 'react';
+import styles from '../../explorerDonnees.module.scss';
 
 const MapEspacesNaf = lazy(() => import('@/components/maps/mapEspacesNAF').then(m => ({ default: m.MapEspacesNaf })));
-import styles from '../../explorerDonnees.module.scss';
 
 export const SolsImpermeabilises = (props: {
   consommationNAF: ConsommationNAF[];
@@ -100,7 +100,7 @@ export const SolsImpermeabilises = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CEREMA, avril 2024.
+          Source : CEREMA, 2024 (consultée en décembre 2024)
         </Body>
         {
           consommationNAF && coordonneesCommunes && (

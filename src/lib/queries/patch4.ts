@@ -36,13 +36,11 @@ export const GetPatch4 = async (
             }
           }
         });
-      // Exclusion des DROM puisque le patch4 ne les inclut pas
       if (
         departement &&
-        departement.departement &&
-        !dromRegex.test(departement.departement)
+        departement.departement
       ) {
-        if (type === 'epci') {
+        if (type === 'epci' && !dromRegex.test(departement.departement)) {
           const value = await prisma.databases_v2_patch4c.findMany({
             where: {
               code_geographique: code
@@ -70,7 +68,6 @@ export const GetPatch4 = async (
           const codesGeographiques = listeCommunes
             .map((commune) => commune.code_geographique)
             .filter((code) => code != null && code !== '');
-
           if (codesGeographiques.length === 0) {
             return [];
           }

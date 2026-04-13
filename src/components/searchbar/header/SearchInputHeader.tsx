@@ -32,6 +32,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
   const [value, setValue] = useState<SearchInputOptions | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const isEnterPressedRef = useRef(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (searchLibelle) {
@@ -57,6 +58,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
 
   useEffect(() => {
     void (async () => {
+      setIsLoading(true);
       const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
       setOptions(
         getCollectivite.map((el) => ({
@@ -70,6 +72,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           codePnr: el.code_pnr ?? ''
         }))
       );
+      setIsLoading(false);
     })();
     setSearchCode(searchCode);
   }, [inputValue, typeTerritoire]);
@@ -95,7 +98,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       filterOptions={(x) => x}
       options={collectivites}
       value={value}
-      loadingText="Chargement..."
+      loading={isLoading} loadingText="Chargement..."
       noOptionsText="Aucun territoire trouvé"
       open={isOpen}
       onOpen={() => {
@@ -117,7 +120,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
-        
+
         // Si Enter a été pressé et qu'une valeur a été sélectionnée
         if (isEnterPressedRef.current && newValue !== null) {
           isEnterPressedRef.current = false;
@@ -136,7 +139,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           })
           return;
         }
-        
+
         if (newValue !== null) {
           const input = document.getElementById(id);
           if (input) (input as HTMLInputElement).blur();

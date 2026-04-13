@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import styles from '../patch4c.module.scss';
 import { AleaExplications } from "./aleaExplications";
 import { AnalyseSensibilite } from "./analyseSensibilite";
+import { ConseilsAggravation } from "./blocConseils";
 import { patch4Indices } from "./fonctions";
 import { Patch4Maps } from "./Patch4Maps";
 
@@ -80,6 +81,7 @@ export const BlocAleas = ({
     };
   });
 
+
   return (
     <>
       {
@@ -136,11 +138,16 @@ export const BlocAleas = ({
         <div className={styles.aleasTabContent}>
           {activeItems[safeSelectedIndex] && (() => {
             const { key, ...itemProps } = activeItems[safeSelectedIndex];
+
             return (
               <>
                 <AleaExplications key={`alea-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
                 {patch4.length > 1 ? <Patch4Maps coordonneesCommunes={coordonneesCommunes} patch4={filteredPatch4} selectedAnchor={key} /> : null}
                 <AnalyseSensibilite key={`sensibilite-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
+                {
+                  (patch4.length > 1 || itemProps.value === "Aggravation forte" || itemProps.value === "Aggravation très forte") &&
+                  <ConseilsAggravation />
+                }
               </>
             );
           })()}

@@ -3,7 +3,7 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { SourcesSection } from "@/components/interactions/scrollToSource";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { AgricultureBio, AOT40, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignade, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, ConfortThermique, ConsommationNAF, EtatCoursDeau, QualiteSitesBaignadeModel, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
 import { GetAgricultureBio, GetAOT40, GetConsommationNAF } from "@/lib/queries/databases/biodiversite";
 import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
@@ -28,7 +28,7 @@ interface Props {
   consommationNAF: ConsommationNAF[];
   aot40: AOT40[];
   etatCoursDeau: EtatCoursDeau[];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
   confortThermique: Partial<ConfortThermique>[];
   surfacesAgricoles: SurfacesAgricolesModel[];
   tableCommune: TableCommuneModel[];

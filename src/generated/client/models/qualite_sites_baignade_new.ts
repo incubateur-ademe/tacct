@@ -28,12 +28,14 @@ export type AggregateQualite_sites_baignade_new = {
 
 export type Qualite_sites_baignade_newAvgAggregateOutputType = {
   index: number | null
+  region: number | null
   latitude: number | null
   longitude: number | null
 }
 
 export type Qualite_sites_baignade_newSumAggregateOutputType = {
   index: number | null
+  region: number | null
   latitude: number | null
   longitude: number | null
 }
@@ -41,8 +43,17 @@ export type Qualite_sites_baignade_newSumAggregateOutputType = {
 export type Qualite_sites_baignade_newMinAggregateOutputType = {
   index: number | null
   code_geographique: string | null
-  nom_site: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
   departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nom_site: string | null
   latitude: number | null
   longitude: number | null
   type_eau_norm: string | null
@@ -53,8 +64,17 @@ export type Qualite_sites_baignade_newMinAggregateOutputType = {
 export type Qualite_sites_baignade_newMaxAggregateOutputType = {
   index: number | null
   code_geographique: string | null
-  nom_site: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
   departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nom_site: string | null
   latitude: number | null
   longitude: number | null
   type_eau_norm: string | null
@@ -65,8 +85,17 @@ export type Qualite_sites_baignade_newMaxAggregateOutputType = {
 export type Qualite_sites_baignade_newCountAggregateOutputType = {
   index: number
   code_geographique: number
-  nom_site: number
+  libelle_geographique: number
+  epci: number
+  libelle_epci: number
   departement: number
+  libelle_departement: number
+  region: number
+  ept: number
+  libelle_petr: number
+  code_pnr: number
+  libelle_pnr: number
+  nom_site: number
   latitude: number
   longitude: number
   type_eau_norm: number
@@ -78,12 +107,14 @@ export type Qualite_sites_baignade_newCountAggregateOutputType = {
 
 export type Qualite_sites_baignade_newAvgAggregateInputType = {
   index?: true
+  region?: true
   latitude?: true
   longitude?: true
 }
 
 export type Qualite_sites_baignade_newSumAggregateInputType = {
   index?: true
+  region?: true
   latitude?: true
   longitude?: true
 }
@@ -91,8 +122,17 @@ export type Qualite_sites_baignade_newSumAggregateInputType = {
 export type Qualite_sites_baignade_newMinAggregateInputType = {
   index?: true
   code_geographique?: true
-  nom_site?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
   departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nom_site?: true
   latitude?: true
   longitude?: true
   type_eau_norm?: true
@@ -103,8 +143,17 @@ export type Qualite_sites_baignade_newMinAggregateInputType = {
 export type Qualite_sites_baignade_newMaxAggregateInputType = {
   index?: true
   code_geographique?: true
-  nom_site?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
   departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nom_site?: true
   latitude?: true
   longitude?: true
   type_eau_norm?: true
@@ -115,8 +164,17 @@ export type Qualite_sites_baignade_newMaxAggregateInputType = {
 export type Qualite_sites_baignade_newCountAggregateInputType = {
   index?: true
   code_geographique?: true
-  nom_site?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
   departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  nom_site?: true
   latitude?: true
   longitude?: true
   type_eau_norm?: true
@@ -214,8 +272,17 @@ export type qualite_sites_baignade_newGroupByArgs<ExtArgs extends runtime.Types.
 export type Qualite_sites_baignade_newGroupByOutputType = {
   index: number
   code_geographique: string
-  nom_site: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
   departement: string
+  libelle_departement: string
+  region: number
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  nom_site: string
   latitude: number
   longitude: number
   type_eau_norm: string
@@ -228,7 +295,7 @@ export type Qualite_sites_baignade_newGroupByOutputType = {
   _max: Qualite_sites_baignade_newMaxAggregateOutputType | null
 }
 
-export type GetQualite_sites_baignade_newGroupByPayload<T extends qualite_sites_baignade_newGroupByArgs> = Prisma.PrismaPromise<
+type GetQualite_sites_baignade_newGroupByPayload<T extends qualite_sites_baignade_newGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Qualite_sites_baignade_newGroupByOutputType, T['by']> &
       {
@@ -249,8 +316,17 @@ export type qualite_sites_baignade_newWhereInput = {
   NOT?: Prisma.qualite_sites_baignade_newWhereInput | Prisma.qualite_sites_baignade_newWhereInput[]
   index?: Prisma.IntFilter<"qualite_sites_baignade_new"> | number
   code_geographique?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
-  nom_site?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_geographique?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  epci?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_epci?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
   departement?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_departement?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  region?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
+  ept?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  nom_site?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
   latitude?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
   longitude?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
   type_eau_norm?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
@@ -261,8 +337,17 @@ export type qualite_sites_baignade_newWhereInput = {
 export type qualite_sites_baignade_newOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
-  nom_site?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nom_site?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   type_eau_norm?: Prisma.SortOrder
@@ -276,8 +361,17 @@ export type qualite_sites_baignade_newWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.qualite_sites_baignade_newWhereInput[]
   NOT?: Prisma.qualite_sites_baignade_newWhereInput | Prisma.qualite_sites_baignade_newWhereInput[]
   code_geographique?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
-  nom_site?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_geographique?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  epci?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_epci?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
   departement?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  libelle_departement?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
+  region?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
+  ept?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"qualite_sites_baignade_new"> | string | null
+  nom_site?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
   latitude?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
   longitude?: Prisma.FloatFilter<"qualite_sites_baignade_new"> | number
   type_eau_norm?: Prisma.StringFilter<"qualite_sites_baignade_new"> | string
@@ -288,8 +382,17 @@ export type qualite_sites_baignade_newWhereUniqueInput = Prisma.AtLeast<{
 export type qualite_sites_baignade_newOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
-  nom_site?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nom_site?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   type_eau_norm?: Prisma.SortOrder
@@ -308,8 +411,17 @@ export type qualite_sites_baignade_newScalarWhereWithAggregatesInput = {
   NOT?: Prisma.qualite_sites_baignade_newScalarWhereWithAggregatesInput | Prisma.qualite_sites_baignade_newScalarWhereWithAggregatesInput[]
   index?: Prisma.IntWithAggregatesFilter<"qualite_sites_baignade_new"> | number
   code_geographique?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
-  nom_site?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
+  libelle_geographique?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
+  epci?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
+  libelle_epci?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
   departement?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
+  libelle_departement?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
+  region?: Prisma.FloatWithAggregatesFilter<"qualite_sites_baignade_new"> | number
+  ept?: Prisma.StringNullableWithAggregatesFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"qualite_sites_baignade_new"> | string | null
+  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"qualite_sites_baignade_new"> | string | null
+  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"qualite_sites_baignade_new"> | string | null
+  nom_site?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
   latitude?: Prisma.FloatWithAggregatesFilter<"qualite_sites_baignade_new"> | number
   longitude?: Prisma.FloatWithAggregatesFilter<"qualite_sites_baignade_new"> | number
   type_eau_norm?: Prisma.StringWithAggregatesFilter<"qualite_sites_baignade_new"> | string
@@ -320,8 +432,17 @@ export type qualite_sites_baignade_newScalarWhereWithAggregatesInput = {
 export type qualite_sites_baignade_newCreateInput = {
   index: number
   code_geographique: string
-  nom_site: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
   departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nom_site: string
   latitude: number
   longitude: number
   type_eau_norm: string
@@ -332,8 +453,17 @@ export type qualite_sites_baignade_newCreateInput = {
 export type qualite_sites_baignade_newUncheckedCreateInput = {
   index: number
   code_geographique: string
-  nom_site: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
   departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nom_site: string
   latitude: number
   longitude: number
   type_eau_norm: string
@@ -344,8 +474,17 @@ export type qualite_sites_baignade_newUncheckedCreateInput = {
 export type qualite_sites_baignade_newUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
-  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   type_eau_norm?: Prisma.StringFieldUpdateOperationsInput | string
@@ -356,8 +495,17 @@ export type qualite_sites_baignade_newUpdateInput = {
 export type qualite_sites_baignade_newUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
-  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   type_eau_norm?: Prisma.StringFieldUpdateOperationsInput | string
@@ -368,8 +516,17 @@ export type qualite_sites_baignade_newUncheckedUpdateInput = {
 export type qualite_sites_baignade_newCreateManyInput = {
   index: number
   code_geographique: string
-  nom_site: string
+  libelle_geographique: string
+  epci: string
+  libelle_epci: string
   departement: string
+  libelle_departement: string
+  region: number
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
+  nom_site: string
   latitude: number
   longitude: number
   type_eau_norm: string
@@ -380,8 +537,17 @@ export type qualite_sites_baignade_newCreateManyInput = {
 export type qualite_sites_baignade_newUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
-  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   type_eau_norm?: Prisma.StringFieldUpdateOperationsInput | string
@@ -392,8 +558,17 @@ export type qualite_sites_baignade_newUpdateManyMutationInput = {
 export type qualite_sites_baignade_newUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
-  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
+  epci?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  region?: Prisma.FloatFieldUpdateOperationsInput | number
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nom_site?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   type_eau_norm?: Prisma.StringFieldUpdateOperationsInput | string
@@ -404,8 +579,17 @@ export type qualite_sites_baignade_newUncheckedUpdateManyInput = {
 export type qualite_sites_baignade_newCountOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
-  nom_site?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nom_site?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   type_eau_norm?: Prisma.SortOrder
@@ -415,6 +599,7 @@ export type qualite_sites_baignade_newCountOrderByAggregateInput = {
 
 export type qualite_sites_baignade_newAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
 }
@@ -422,8 +607,17 @@ export type qualite_sites_baignade_newAvgOrderByAggregateInput = {
 export type qualite_sites_baignade_newMaxOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
-  nom_site?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nom_site?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   type_eau_norm?: Prisma.SortOrder
@@ -434,8 +628,17 @@ export type qualite_sites_baignade_newMaxOrderByAggregateInput = {
 export type qualite_sites_baignade_newMinOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
-  nom_site?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  nom_site?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
   type_eau_norm?: Prisma.SortOrder
@@ -445,6 +648,7 @@ export type qualite_sites_baignade_newMinOrderByAggregateInput = {
 
 export type qualite_sites_baignade_newSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
 }
@@ -454,8 +658,17 @@ export type qualite_sites_baignade_newSumOrderByAggregateInput = {
 export type qualite_sites_baignade_newSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
-  nom_site?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
   departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nom_site?: boolean
   latitude?: boolean
   longitude?: boolean
   type_eau_norm?: boolean
@@ -466,8 +679,17 @@ export type qualite_sites_baignade_newSelect<ExtArgs extends runtime.Types.Exten
 export type qualite_sites_baignade_newSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
-  nom_site?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
   departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nom_site?: boolean
   latitude?: boolean
   longitude?: boolean
   type_eau_norm?: boolean
@@ -478,8 +700,17 @@ export type qualite_sites_baignade_newSelectCreateManyAndReturn<ExtArgs extends 
 export type qualite_sites_baignade_newSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
-  nom_site?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
   departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nom_site?: boolean
   latitude?: boolean
   longitude?: boolean
   type_eau_norm?: boolean
@@ -490,8 +721,17 @@ export type qualite_sites_baignade_newSelectUpdateManyAndReturn<ExtArgs extends 
 export type qualite_sites_baignade_newSelectScalar = {
   index?: boolean
   code_geographique?: boolean
-  nom_site?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
   departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
+  nom_site?: boolean
   latitude?: boolean
   longitude?: boolean
   type_eau_norm?: boolean
@@ -499,7 +739,7 @@ export type qualite_sites_baignade_newSelectScalar = {
   qualite?: boolean
 }
 
-export type qualite_sites_baignade_newOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "nom_site" | "departement" | "latitude" | "longitude" | "type_eau_norm" | "statut_donnees" | "qualite", ExtArgs["result"]["qualite_sites_baignade_new"]>
+export type qualite_sites_baignade_newOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nom_site" | "latitude" | "longitude" | "type_eau_norm" | "statut_donnees" | "qualite", ExtArgs["result"]["qualite_sites_baignade_new"]>
 
 export type $qualite_sites_baignade_newPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "qualite_sites_baignade_new"
@@ -507,8 +747,17 @@ export type $qualite_sites_baignade_newPayload<ExtArgs extends runtime.Types.Ext
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     index: number
     code_geographique: string
-    nom_site: string
+    libelle_geographique: string
+    epci: string
+    libelle_epci: string
     departement: string
+    libelle_departement: string
+    region: number
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
+    nom_site: string
     latitude: number
     longitude: number
     type_eau_norm: string
@@ -939,8 +1188,17 @@ export interface Prisma__qualite_sites_baignade_newClient<T, Null = never, ExtAr
 export interface qualite_sites_baignade_newFieldRefs {
   readonly index: Prisma.FieldRef<"qualite_sites_baignade_new", 'Int'>
   readonly code_geographique: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
-  readonly nom_site: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly libelle_geographique: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly epci: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly libelle_epci: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
   readonly departement: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly libelle_departement: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly region: Prisma.FieldRef<"qualite_sites_baignade_new", 'Float'>
+  readonly ept: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly libelle_petr: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly code_pnr: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly libelle_pnr: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
+  readonly nom_site: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
   readonly latitude: Prisma.FieldRef<"qualite_sites_baignade_new", 'Float'>
   readonly longitude: Prisma.FieldRef<"qualite_sites_baignade_new", 'Float'>
   readonly type_eau_norm: Prisma.FieldRef<"qualite_sites_baignade_new", 'String'>
@@ -1122,11 +1380,6 @@ export type qualite_sites_baignade_newFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` qualite_sites_baignade_news.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of qualite_sites_baignade_news.
-   */
   distinct?: Prisma.Qualite_sites_baignade_newScalarFieldEnum | Prisma.Qualite_sites_baignade_newScalarFieldEnum[]
 }
 

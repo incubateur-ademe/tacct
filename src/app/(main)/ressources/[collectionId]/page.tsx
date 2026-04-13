@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: { params: Promise<{ collectio
   if (!collection) {
     return {
       ...sharedMetadata,
-      title: "Boîte à outils - Facili-TACCT",
+      title: "Boîte à outils - TACCT",
       description: "Découvrez notre boîte à outils pour l'adaptation au changement climatique"
     };
   }
-  const url = `https://www.facili-tacct.fr/ressources/${collection.slug}`;
+  const url = `https://www.tacct.ademe.fr/ressources/${collection.slug}`;
 
   return {
     ...sharedMetadata,

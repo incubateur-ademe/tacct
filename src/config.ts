@@ -1,6 +1,6 @@
 export const config = {
   host: process.env.NEXT_PUBLIC_SITE_URL!,
-  name: "Facili-TACCT - adaptez votre territoire au changement climatique",
+  name: "TACCT - adaptez votre territoire au changement climatique",
   tagline: '',
   env: (process.env.TACCT_ENV || 'dev') as 'dev' | 'prod' | 'staging',
   // appVersion: process.env.NEXT_PUBLIC_APP_VERSION!,
@@ -8,5 +8,5 @@ export const config = {
   repositoryUrl: process.env.NEXT_PUBLIC_REPOSITORY_URL!,
   formUrl: '',
   description:
-    'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec Facili-TACCT et favoriser le dialogue sur des problématiques clairement identifiées.'
+    'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec TACCT et favoriser le dialogue sur des problématiques clairement identifiées.'
 };

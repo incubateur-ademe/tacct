@@ -60,7 +60,7 @@ export const Patch4Maps = (props: {
           containerRefCallback={handleContainerRef}
         />
         <div className={styles.CursorVisualizationBarColorWrapper}>
-        <CursorVisualization />
+          <CursorVisualization isMap={true} />
         </div>
       </div>
       <div className={styles.exportShareContainer}>

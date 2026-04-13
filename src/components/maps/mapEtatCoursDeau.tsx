@@ -1,12 +1,11 @@
 "use client";
 import { RetardScroll } from '@/hooks/RetardScroll';
 import { EtatCoursDeauDto } from '@/lib/dto';
-import { QualiteSitesBaignade } from '@/lib/postgres/models';
+import { QualiteSitesBaignadeModel } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
@@ -15,43 +14,41 @@ export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
-  qualiteEauxBaignade?: QualiteSitesBaignade[];
+  qualiteEauxBaignade?: QualiteSitesBaignadeModel[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
-  const searchParams = useSearchParams();
-  const code = searchParams.get('code')!;
-  const type = searchParams.get('type')!;
-  const libelle = searchParams.get('libelle')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
+  const hoveredBaignadeRef = useRef<string | null>(null);
+  const hoveredClusterRef = useRef<number | null>(null);
 
   // Helper functions for sites de baignade
   const qualiteIcon = (qualite: string | undefined) => {
-    return qualite === 'E'
+    return qualite === 'Excellent'
       ? '/qualite_baignade_excellent.svg'
-      : qualite === 'B'
+      : qualite === 'Bon'
         ? '/qualite_baignade_bon.svg'
-        : qualite === 'S'
+        : qualite === 'Suffisant'
           ? '/qualite_baignade_suffisant.svg'
-          : qualite === 'I'
+          : qualite === 'Insuffisant'
             ? '/qualite_baignade_insuffisant.svg'
-            : qualite === 'P'
+            : qualite === 'Insuffisamment de prélèvement'
               ? '/qualite_baignade_manque_prelevement.svg'
               : '/qualite_baignade_non_classe.svg';
   };
 
   const qualiteLabel = (qualite: string | undefined) => {
-    return qualite === 'E'
+    return qualite === 'Excellent'
       ? 'Excellent'
-      : qualite === 'B'
+      : qualite === 'Bon'
         ? 'Bon'
-        : qualite === 'S'
+        : qualite === 'Suffisant'
           ? 'Suffisant'
-          : qualite === 'I'
+          : qualite === 'Insuffisant'
             ? 'Insuffisant'
-            : qualite === 'P'
+            : qualite === 'Insuffisamment de prélèvement'
               ? 'Insuffisamment de prélèvement'
               : 'Site non classé';
   };
@@ -94,12 +91,12 @@ export const MapEtatCoursDeau = (props: {
         type: "Feature" as const,
         geometry: {
           type: "Point" as const,
-          coordinates: [site.LONG, site.LAT]
+          coordinates: [site.longitude, site.latitude]
         },
         properties: {
-          nomSite: site.POINT,
-          qualite2020: site.QEB_2020?.slice(-1),
-          icon: qualiteIcon(site.QEB_2020?.slice(-1))
+          nomSite: site.nom_site,
+          qualite: site.qualite,
+          icon: qualiteIcon(site.qualite)
         },
         id: idx
       }))
@@ -284,11 +281,11 @@ export const MapEtatCoursDeau = (props: {
       // Ajouter les sites de baignade si disponibles
       if (sitesBaignadeGeoJson) {
         const iconsToLoad = [
-          { name: 'excellent', url: qualiteIcon('E') },
-          { name: 'bon', url: qualiteIcon('B') },
-          { name: 'suffisant', url: qualiteIcon('S') },
-          { name: 'insuffisant', url: qualiteIcon('I') },
-          { name: 'manque', url: qualiteIcon('P') },
+          { name: 'excellent', url: qualiteIcon('Excellent') },
+          { name: 'bon', url: qualiteIcon('Bon') },
+          { name: 'suffisant', url: qualiteIcon('Suffisant') },
+          { name: 'insuffisant', url: qualiteIcon('Insuffisant') },
+          { name: 'manque', url: qualiteIcon('Insuffisamment de prélèvement') },
           { name: 'non-classe', url: qualiteIcon(undefined) }
         ];
 
@@ -393,12 +390,12 @@ export const MapEtatCoursDeau = (props: {
             layout: {
               'icon-image': [
                 'match',
-                ['get', 'qualite2020'],
-                'E', 'excellent',
-                'B', 'bon',
-                'S', 'suffisant',
-                'I', 'insuffisant',
-                'P', 'manque',
+                ['get', 'qualite'],
+                'Excellent', 'excellent',
+                'Bon', 'bon',
+                'Suffisant', 'suffisant',
+                'Insuffisant', 'insuffisant',
+                'Insuffisamment de prélèvement', 'manque',
                 'non-classe'
               ],
               'icon-size': 1,
@@ -410,15 +407,15 @@ export const MapEtatCoursDeau = (props: {
           const baignadeClusterLayers = ['baignade-clusters', 'baignade-clusters-border', 'baignade-clusters-outline'];
 
           baignadeClusterLayers.forEach(layerId => {
-            map.on('mouseenter', layerId, async (e) => {
+            map.on('mouseenter', layerId, (e) => {
               map.getCanvas().style.cursor = 'pointer';
-              if (e.features && e.features.length > 0) {
-                const clusterId = e.features[0].properties?.cluster_id;
+              if (e.features && e.features.length > 0 && e.features[0].properties?.cluster_id !== undefined) {
+                const clusterId = e.features[0].properties.cluster_id;
+                hoveredClusterRef.current = clusterId;
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
-                try {
-                  const features = await source.getClusterLeaves(clusterId, 100, 0);
+                source.getClusterLeaves(clusterId, 100, 0).then((features) => {
                   if (!features) return;
-                  const sitesInCluster = features.map((f: any) => f.properties?.nomSite).filter(Boolean).slice(0, 10);
+                  const sitesInCluster = features.map(f => f.properties?.nomSite).filter(Boolean).slice(0, 10);
                   const hasMore = features.length > 10;
 
                   const tooltipContent = `<div style="padding: 0.25rem;">
@@ -445,14 +442,15 @@ export const MapEtatCoursDeau = (props: {
                     .setLngLat(e.lngLat)
                     .setHTML(tooltipContent)
                     .addTo(map);
-                } catch (err) {
+                }).catch((err) => {
                   console.error('Error getting cluster leaves:', err);
-                }
+                });
               }
             });
 
             map.on('mouseleave', layerId, () => {
               map.getCanvas().style.cursor = '';
+              hoveredClusterRef.current = null;
               if (popupRef.current) {
                 popupRef.current.remove();
                 popupRef.current = null;
@@ -460,28 +458,63 @@ export const MapEtatCoursDeau = (props: {
             });
 
             map.on('mousemove', layerId, (e) => {
-              if (popupRef.current && e.features && e.features.length > 0) {
-                popupRef.current.setLngLat(e.lngLat);
+              if (e.features && e.features.length > 0) {
+                const clusterId = e.features[0].properties?.cluster_id;
+                if (clusterId === undefined) return;
+                if (hoveredClusterRef.current !== clusterId) {
+                  hoveredClusterRef.current = clusterId;
+                  const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
+                  source.getClusterLeaves(clusterId, 100, 0).then((features) => {
+                    if (!features) return;
+                    const sitesInCluster = features.map(f => f.properties?.nomSite).filter(Boolean).slice(0, 10);
+                    const hasMore = features.length > 10;
+                    const tooltipContent = `<div style="padding: 0.25rem;">
+                      <div style="font-size: 0.75rem; font-family: Marianne; font-weight: 400; border-bottom: 1px solid #B8B8B8; margin-bottom: 0.5rem;">
+                        Dans ce regroupement :
+                      </div>
+                      <div style="display: flex; flex-direction: column; font-size: 10px; font-family: Marianne; font-weight: 700;">
+                        ${sitesInCluster.map((site: string) => `<div>${site}</div>`).join('')}
+                        ${hasMore ? '<div>...</div>' : ''}
+                      </div>
+                    </div>`;
+                    if (popupRef.current) popupRef.current.remove();
+                    popupRef.current = new maplibregl.Popup({
+                      closeButton: false,
+                      closeOnClick: false,
+                      className: 'baignade-cluster-tooltip',
+                      anchor: 'top',
+                      maxWidth: 'none'
+                    })
+                      .setLngLat(e.lngLat)
+                      .setHTML(tooltipContent)
+                      .addTo(map);
+                  }).catch((err) => {
+                    console.error('Error getting cluster leaves:', err);
+                  });
+                } else if (popupRef.current) {
+                  popupRef.current.setLngLat(e.lngLat);
+                }
               }
             });
 
-            map.on('click', layerId, async (e) => {
+            map.on('click', layerId, (e) => {
               const features = map.queryRenderedFeatures(e.point, {
                 layers: [layerId]
               });
-              if (features.length > 0) {
-                const clusterId = features[0].properties?.cluster_id;
+              if (features.length > 0 && features[0].properties?.cluster_id !== undefined) {
+                const clusterId = features[0].properties.cluster_id;
+                const feature = features[0];
                 const source = map.getSource('sitesBaignade') as maplibregl.GeoJSONSource;
-                try {
-                  const zoom = await source.getClusterExpansionZoom(clusterId);
-                  if (features[0].geometry.type === 'Point') {
+                if (source && feature.geometry.type === 'Point') {
+                  const geometry = feature.geometry as { type: 'Point'; coordinates: number[] };
+                  source.getClusterExpansionZoom(clusterId).then((zoom) => {
                     map.easeTo({
-                      center: features[0].geometry.coordinates as [number, number],
+                      center: [geometry.coordinates[0], geometry.coordinates[1]],
                       zoom: zoom
                     });
-                  }
-                } catch (err) {
-                  console.error('Error getting cluster expansion zoom:', err);
+                  }).catch((err) => {
+                    console.error('Error getting cluster expansion zoom:', err);
+                  });
                 }
               }
             });
@@ -493,7 +526,8 @@ export const MapEtatCoursDeau = (props: {
             if (e.features && e.features.length > 0) {
               const properties = e.features[0].properties;
               const nomSite = properties?.nomSite;
-              const qualite = properties?.qualite2020;
+              hoveredBaignadeRef.current = nomSite;
+              const qualite = properties?.qualite;
               const label = qualiteLabel(qualite);
               const icon = qualiteIcon(qualite);
 
@@ -527,6 +561,7 @@ export const MapEtatCoursDeau = (props: {
 
           map.on('mouseleave', 'baignade-points', () => {
             map.getCanvas().style.cursor = '';
+            hoveredBaignadeRef.current = null;
             if (popupRef.current) {
               popupRef.current.remove();
               popupRef.current = null;
@@ -534,8 +569,38 @@ export const MapEtatCoursDeau = (props: {
           });
 
           map.on('mousemove', 'baignade-points', (e) => {
-            if (popupRef.current && e.features && e.features.length > 0) {
-              popupRef.current.setLngLat(e.lngLat);
+            if (e.features && e.features.length > 0) {
+              const properties = e.features[0].properties;
+              const nomSite = properties?.nomSite;
+              if (hoveredBaignadeRef.current !== nomSite) {
+                hoveredBaignadeRef.current = nomSite;
+                const qualite = properties?.qualite;
+                const label = qualiteLabel(qualite);
+                const icon = qualiteIcon(qualite);
+                const tooltipContent = `
+                  <div class="${styles.qualiteSitesBaignadePopupWrapper}" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <img src="${icon}" alt="" style="width: 18px; height: 18px;" />
+                    <div>
+                      <p style="margin: 0; font-weight: 400; font-size: 0.875rem;">${nomSite}</p>
+                      <p style="margin: 0; font-weight: 700; font-size: 0.875rem;">${label}</p>
+                    </div>
+                  </div>
+                `;
+                if (popupRef.current) popupRef.current.remove();
+                popupRef.current = new maplibregl.Popup({
+                  closeButton: false,
+                  closeOnClick: false,
+                  className: 'baignade-point-popup',
+                  anchor: 'bottom',
+                  offset: [0, -10],
+                  maxWidth: 'none'
+                })
+                  .setLngLat(e.lngLat)
+                  .setHTML(tooltipContent)
+                  .addTo(map);
+              } else if (popupRef.current) {
+                popupRef.current.setLngLat(e.lngLat);
+              }
             }
           });
         });

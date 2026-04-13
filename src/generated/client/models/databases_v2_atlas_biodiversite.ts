@@ -284,7 +284,7 @@ export type Databases_v2_atlas_biodiversiteGroupByOutputType = {
   _max: Databases_v2_atlas_biodiversiteMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_atlas_biodiversiteGroupByPayload<T extends databases_v2_atlas_biodiversiteGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_atlas_biodiversiteGroupByPayload<T extends databases_v2_atlas_biodiversiteGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_atlas_biodiversiteGroupByOutputType, T['by']> &
       {
@@ -1346,11 +1346,6 @@ export type databases_v2_atlas_biodiversiteFindManyArgs<ExtArgs extends runtime.
    * Skip the first `n` databases_v2_atlas_biodiversites.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_atlas_biodiversites.
-   */
   distinct?: Prisma.Databases_v2_atlas_biodiversiteScalarFieldEnum | Prisma.Databases_v2_atlas_biodiversiteScalarFieldEnum[]
 }
 

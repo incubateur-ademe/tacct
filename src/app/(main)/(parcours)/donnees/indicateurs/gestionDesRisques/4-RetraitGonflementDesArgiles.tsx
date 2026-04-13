@@ -5,7 +5,6 @@ import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
 import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
 import { RGAdb } from "@/lib/postgres/models";
@@ -76,20 +75,26 @@ export const RetraitGonflementDesArgiles = ({
             }
             {
               rgaFilteredByTerritory.length > 0 ? (
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  {Round(partMoyenFort, 1)} % de votre territoire est situé dans une zone où le niveau
-                  d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
-                  concerne potentiellement {numberWithSpacesRegex(nbLogementsMoyenFort)} logement(s), parmi
-                  lesquels <b>{nbLogementsMoyenFort === 0 ? 0 : partMoyenFortApres1975} %</b> sont considérés comme plus à
-                  risque car construits après 1975.
-                </Body>
+                <>
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                    {Round(partMoyenFort, 1)} % de votre territoire est situé dans une zone où le niveau
+                    d’exposition au retrait gonflement des argiles est moyen ou fort. Cela
+                    concerne potentiellement {numberWithSpacesRegex(nbLogementsMoyenFort)} logement(s), parmi
+                    lesquels <b>{nbLogementsMoyenFort === 0 ? 0 : partMoyenFortApres1975} %</b> sont considérés comme plus à
+                    risque car construits après 1975.
+                  </Body>
+                  <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+                    ⚠️ Ces chiffres reposent sur l'ancien zonage RGA. La cartographie actualisée du BRGM
+                    (début 2026) reflète une aggravation généralisée du phénomène.
+                  </Body>
+                </>
               ) : ""
             }
-            <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
+            <CustomTooltipNouveauParcours title={rgaTooltipText} texte="D’où vient ce chiffre ?" />
           </div>
-          <ReadMoreFade maxHeight={470}>
-            <RGAText />
-          </ReadMoreFade>
+          {/* <ReadMoreFade maxHeight={470}> */}
+          <RGAText />
+          {/* </ReadMoreFade> */}
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           {
@@ -116,7 +121,8 @@ export const RetraitGonflementDesArgiles = ({
               borderRadius: "0 0 0 1rem"
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021.
+              Source des graphiques : BRGM, 2019 ; Fideli, 2017. Traitements : SDES, 2021. (consultée en juin 2025)<br></br>
+              Source de la carte : BRGM, 2026 (consultée en mars 2026)
             </Body>
             <ZipExportButtonNouveauParcours
               anchor='Retrait-gonflement des argiles'

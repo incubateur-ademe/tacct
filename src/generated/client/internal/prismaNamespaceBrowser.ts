@@ -77,7 +77,8 @@ export const ModelName = {
   qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
   secheresses: 'secheresses',
-  inondations_par_debordement: 'inondations_par_debordement'
+  inondations_par_debordement: 'inondations_par_debordement',
+  arbovirose: 'arbovirose'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -269,15 +270,6 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   under_4_sum_1999: 'under_4_sum_1999',
   to_75_sum_1999: 'to_75_sum_1999',
   over_75_sum_1999: 'over_75_sum_1999',
-  under_4_sum_2009: 'under_4_sum_2009',
-  to_75_sum_2009: 'to_75_sum_2009',
-  over_75_sum_2009: 'over_75_sum_2009',
-  under_4_sum_2014: 'under_4_sum_2014',
-  to_75_sum_2014: 'to_75_sum_2014',
-  over_75_sum_2014: 'over_75_sum_2014',
-  under_4_sum_2020: 'under_4_sum_2020',
-  to_75_sum_2020: 'to_75_sum_2020',
-  over_75_sum_2020: 'over_75_sum_2020',
   tee_log: 'tee_log',
   tee_mob: 'tee_mob',
   precarite_logement: 'precarite_logement',
@@ -561,21 +553,23 @@ export type Databases_v2_prelevements_eauScalarFieldEnum = (typeof Databases_v2_
 
 export const Databases_v2_qualite_sites_baignadeScalarFieldEnum = {
   index: 'index',
-  DEP_NOM: 'DEP_NOM',
-  DEP_NUM: 'DEP_NUM',
-  TYPE: 'TYPE',
-  COMMUNE: 'COMMUNE',
-  POINT: 'POINT',
-  LONG: 'LONG',
-  LAT: 'LAT',
-  QEB_2013: 'QEB_2013',
-  QEB_2014: 'QEB_2014',
-  QEB_2015: 'QEB_2015',
-  QEB_2016: 'QEB_2016',
-  QEB_2017: 'QEB_2017',
-  QEB_2018: 'QEB_2018',
-  QEB_2019: 'QEB_2019',
-  QEB_2020: 'QEB_2020'
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  type_eau_norm: 'type_eau_norm',
+  statut_donnees: 'statut_donnees',
+  qualite: 'qualite'
 } as const
 
 export type Databases_v2_qualite_sites_baignadeScalarFieldEnum = (typeof Databases_v2_qualite_sites_baignadeScalarFieldEnum)[keyof typeof Databases_v2_qualite_sites_baignadeScalarFieldEnum]
@@ -895,8 +889,17 @@ export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newSc
 export const Qualite_sites_baignade_newScalarFieldEnum = {
   index: 'index',
   code_geographique: 'code_geographique',
-  nom_site: 'nom_site',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
   departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nom_site: 'nom_site',
   latitude: 'latitude',
   longitude: 'longitude',
   type_eau_norm: 'type_eau_norm',
@@ -946,6 +949,17 @@ export const Inondations_par_debordementScalarFieldEnum = {
 } as const
 
 export type Inondations_par_debordementScalarFieldEnum = (typeof Inondations_par_debordementScalarFieldEnum)[keyof typeof Inondations_par_debordementScalarFieldEnum]
+
+
+export const ArboviroseScalarFieldEnum = {
+  index: 'index',
+  annee: 'annee',
+  departement: 'departement',
+  nb_cas_importes: 'nb_cas_importes',
+  nb_cas_autochtones: 'nb_cas_autochtones'
+} as const
+
+export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
 
 
 export const SortOrder = {

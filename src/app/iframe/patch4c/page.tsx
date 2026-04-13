@@ -2,9 +2,8 @@ import { SearchParams } from "@/app/(main)/types";
 import { GetPatch4 } from "@/lib/queries/patch4";
 import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
-import { ConseilsAggravation } from './components/blocConseils';
 import { BlocTitre } from './components/blocTitre';
-import { Patch4Analyse } from "./Patch4Analyse";
+import { Patch4Analyse } from './Patch4Analyse';
 
 export const metadata: Metadata = {
   title: 'Patch4°C',
@@ -23,7 +22,6 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
         patch4={patch4}
         coordonneesCommunes={coordonneesCommunes}
       />
-      <ConseilsAggravation />
     </>
   );
 }

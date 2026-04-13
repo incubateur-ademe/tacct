@@ -3,10 +3,12 @@ import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import {
   AgricultureBiologique,
+  arbovirose,
   debroussaillement,
   directiveCadreSurLeau,
   eutrophisation,
   irriguee,
+  maladieVectorielle,
   OMS,
   ozone,
   valeursGuidesO3
@@ -778,9 +780,9 @@ export const O3Text = () => (
     l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
     recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
     plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
-    agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
-    en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
-      appliquées </ScrollToSourceTag>.</b>
+      agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
+      en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
+        appliquées </ScrollToSourceTag>.</b>
   </Body>
 );
 
@@ -800,6 +802,26 @@ export const SecheressesText = () => (
       disponible est régulièrement insuffisante pour satisfaire l'ensemble des usages,
       traduisant un déséquilibre chronique entre offre et demande en eau, indépendamment
       de toute aggravation future.
+    </Body>
+  </>
+);
+
+export const MoustiqueTigreText = () => (
+  <>
+    <Body size="sm">
+      Le moustique tigre transmet des maladies infectieuses graves comme la dengue, 
+      le chikungunya et le zika (<DefinitionTooltip title={arbovirose}>arboviroses</DefinitionTooltip>) dont 
+      les cas doivent obligatoirement être déclarés aux agences régionales de santé. S’il est difficile de prévenir 
+      les cas importés, la multiplication de cas autochtones est notamment liée à 
+      une sous-déclaration ou à une déclaration tardive des cas. La précision du 
+      diagnostic et la rapidité de la déclaration sont donc essentielles pour 
+      limiter la transmission de ces maladies.
+    </Body>
+    <Body size="sm">
+      L’élévation des températures favorise la propagation du moustique tigre : il 
+      reste actif plus longtemps dans l’année, se reproduit plus vite et étend 
+      son implantation toujours plus au nord. Cette progression augmente 
+      le risque de transmission de ces <DefinitionTooltip title={maladieVectorielle}>maladies vectorielles</DefinitionTooltip>.
     </Body>
   </>
 );

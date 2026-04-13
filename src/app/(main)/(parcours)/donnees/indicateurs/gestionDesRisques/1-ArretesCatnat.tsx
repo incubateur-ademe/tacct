@@ -176,7 +176,7 @@ export const ArretesCatnat = (props: {
           <SourceExport
             anchor="Arrêtés CatNat"
             source="Base nationale de Gestion ASsistée des Procédures
-              Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
+              Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
               septembre 2025"
             condition={gestionRisques.length !== 0}
             exportComponent={

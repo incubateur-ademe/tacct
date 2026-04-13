@@ -209,15 +209,6 @@ model databases_v2_confort_thermique {
   under_4_sum_1999        Float?
   to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
   over_75_sum_1999        Float?
-  under_4_sum_2009        Float?
-  to_75_sum_2009          Float?  @map("4_to_75_sum_2009")
-  over_75_sum_2009        Float?
-  under_4_sum_2014        Float?
-  to_75_sum_2014          Float?  @map("4_to_75_sum_2014")
-  over_75_sum_2014        Float?
-  under_4_sum_2020        Float?
-  to_75_sum_2020          Float?  @map("4_to_75_sum_2020")
-  over_75_sum_2020        Float?
   tee_log                 Float?
   tee_mob                 Float?
   precarite_logement      Float?
@@ -473,7 +464,7 @@ model databases_v2_patch4c {
   index                 Int     @id
   code_geographique     String
   niveaux_marins        Float?
-  feux_foret            Float
+  feux_foret            Float?
   secheresse_sols       Float
   fortes_precipitations Float
   fortes_chaleurs       Float
@@ -535,24 +526,25 @@ model databases_v2_prelevements_eau {
 }
 
 model databases_v2_qualite_sites_baignade {
-  index    Int     @id
-  DEP_NOM  String
-  DEP_NUM  String
-  TYPE     String
-  COMMUNE  String
-  POINT    String
-  LONG     Float
-  LAT      Float
-  QEB_2013 String?
-  QEB_2014 String?
-  QEB_2015 String?
-  QEB_2016 String?
-  QEB_2017 String?
-  QEB_2018 String?
-  QEB_2019 String?
-  QEB_2020 String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  nom_site             String
+  latitude             Float
+  longitude            Float
+  type_eau_norm        String
+  statut_donnees       String
+  qualite              String
 
-  @@index([index], map: "ix_qualite_sites_baignade_index")
   @@map("qualite_sites_baignade")
   @@schema("databases_v2")
 }
@@ -906,22 +898,6 @@ model prelevements_eau_new {
   @@schema("databases_v2")
 }
 
-model qualite_sites_baignade_new {
-  index             Int    @id
-  code_geographique String
-  nom_site          String
-  departement       String
-  latitude          Float
-  longitude         Float
-  type_eau_norm     String
-  statut_donnees    String
-  qualite           String
-
-  @@index([index], map: "ix_qualite_sites_baignade_new_index")
-  @@index([code_geographique], map: "qualite_sites_baignade_new_communes_index")
-  @@schema("databases_v2")
-}
-
 model o3_seuils {
   index     Int    @id
   nom_site  String
@@ -961,5 +937,17 @@ model inondations_par_debordement {
 
   @@index([epci], map: "inondations_par_debordement_epci_index")
   @@index([index], map: "ix_inondations_par_debordement_index")
+  @@schema("databases_v2")
+}
+
+model arbovirose {
+  index              Int    @id
+  annee              String
+  departement        String
+  nb_cas_importes    Int
+  nb_cas_autochtones Int
+
+  @@index([departement], map: "arbovirose_departement_index")
+  @@index([index], map: "ix_arbovirose_index")
   @@schema("databases_v2")
 }

@@ -245,7 +245,7 @@ export type Databases_v2_table_territoiresGroupByOutputType = {
   _max: Databases_v2_table_territoiresMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_table_territoiresGroupByPayload<T extends databases_v2_table_territoiresGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_table_territoiresGroupByPayload<T extends databases_v2_table_territoiresGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_table_territoiresGroupByOutputType, T['by']> &
       {
@@ -1200,11 +1200,6 @@ export type databases_v2_table_territoiresFindManyArgs<ExtArgs extends runtime.T
    * Skip the first `n` databases_v2_table_territoires.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_table_territoires.
-   */
   distinct?: Prisma.Databases_v2_table_territoiresScalarFieldEnum | Prisma.Databases_v2_table_territoiresScalarFieldEnum[]
 }
 

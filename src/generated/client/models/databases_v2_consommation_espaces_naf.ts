@@ -1411,7 +1411,7 @@ export type Databases_v2_consommation_espaces_nafGroupByOutputType = {
   _max: Databases_v2_consommation_espaces_nafMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_consommation_espaces_nafGroupByPayload<T extends databases_v2_consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_consommation_espaces_nafGroupByPayload<T extends databases_v2_consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_consommation_espaces_nafGroupByOutputType, T['by']> &
       {
@@ -4804,11 +4804,6 @@ export type databases_v2_consommation_espaces_nafFindManyArgs<ExtArgs extends ru
    * Skip the first `n` databases_v2_consommation_espaces_nafs.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_consommation_espaces_nafs.
-   */
   distinct?: Prisma.Databases_v2_consommation_espaces_nafScalarFieldEnum | Prisma.Databases_v2_consommation_espaces_nafScalarFieldEnum[]
 }
 

@@ -429,3 +429,26 @@ export const secheressesPasseesTooltipText = (
     </Body>
   </>
 );
+
+export const moustiqueTigreTooltipText = (
+  <Body weight="bold" size="sm">
+    Les cartes de présence du moustique tigre sont fournies chaque année par le{" "}
+    <a
+      href="https://sante.gouv.fr/sante-et-environnement/risques-microbiologiques-physiques-et-chimiques/especes-nuisibles-et-parasites/article/cartes-de-presence-du-moustique-tigre-aedes-albopictus-en-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer">ministère de la Santé
+    </a>. Les données débutent en 2004 et sont mises à jour annuellement.
+    Les indicateurs de la surveillance de la dengue, du chikungunya et du zika (cas 
+    importés et autochtones) sont construits à partir des informations de la déclaration 
+    obligatoire, transmises aux agences régionales de santé, puis centralisées par Santé 
+    publique France. Ils sont fournis depuis 2012 et mis à jour annuellement.
+  </Body>
+);
+
+export const HauteurCanopeeTooltipText = (
+  <>
+    <Body weight="bold" size="sm">
+      TOOLTIP
+    </Body>
+  </>
+);

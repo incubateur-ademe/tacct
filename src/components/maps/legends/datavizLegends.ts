@@ -838,3 +838,41 @@ export const arboviroseBarChartLegend = [
     color: couleurs.graphiques.bleu[1]
   },
 ];
+
+export const arboviroseMapMoustiqueTigreLegend = [
+  {
+    value: "Absence",
+    color: '#ffffff'
+  },
+  {
+    value: "Présence",
+    color: '#FF8094'
+  },
+];
+
+export const arboviroseMapAutochtonesLegend = [
+  {
+    value: "0",
+    color: '#ffffff'
+  },
+  {
+    value: "1",
+    color: '#FFCD72'
+  },
+  {
+    value: "2 à 9",
+    color: '#F8B334'
+  },
+  {
+    value: "10 à 19",
+    color: '#CF911E'
+  },
+  {
+    value: "20 à 39",
+    color: '#A6710E'
+  },
+  {
+    value: "40 ou plus",
+    color: '#7E5202'
+  }
+];

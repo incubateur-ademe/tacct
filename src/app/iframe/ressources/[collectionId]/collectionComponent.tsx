@@ -12,7 +12,6 @@ import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
-import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -77,7 +76,9 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
                   <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
                     {
-                      tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
+                      collection?.titre === "Démarrer le diagnostic de vulnérabilité"
+                        ? <span>47 min</span>
+                        : <span>{tempsLecture} min</span>
                     }
                   </Body>
                 </div>
@@ -128,7 +129,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                   const isExternalLink = article.lien.startsWith('https://');
                   const lien = isExternalLink
                     ? article.lien
-                    : `/ressources/${collectionId}/${article.slug}`;
+                    : `/iframe/ressources/${collectionId}/${article.slug}`;
 
                   return (
                     <div key={article.id} style={{ width: isMobile ? "auto" : "100%" }}>
@@ -197,7 +198,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                 <Body style={{ color: "#7E5202", padding: "1rem 0 1rem 2rem" }}>
                   Si ces ressources vous ont été utiles, vous pouvez dès maintenant commencer votre diagnostic de vulnérabilité !
                 </Body>
-                <Link href="/recherche-territoire" className={styles.bouton}>
+                <Link href="/iframe/recherche-territoire" className={styles.bouton}>
                   Explorer les données
                   <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
                 </Link>

@@ -105,3 +105,23 @@ export const valeursGuidesO3 = (
     100 µg/m³ en moyenne journalière.
   </span>
 );
+
+export const moustiqueTigre = (
+  <span>
+    Aedes albopictus, originaire d’Asie.
+  </span>
+);
+
+export const arbovirose = (
+  <span>
+    Les arboviroses sont des maladies virales dues à des arbovirus (de l'anglais ARthropod-BOrne VIRUSes),
+    c’est-à-dire des virus ayant pour vecteur des moustiques, des tiques ou d’autres arthropodes hématophages.
+  </span>
+);
+
+export const maladieVectorielle = (
+  <span>
+    Maladie véhiculée et inoculée par un vecteur (moustique, tique, punaise...),
+    ce vecteur s'étant lui-même infecté sur un hôte virémique.
+  </span>
+);

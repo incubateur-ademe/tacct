@@ -23,7 +23,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             "Marianne-Bold"
           ]}
         />
-        <link rel="preconnect" href="https://metabase.facili-tacct.beta.gouv.fr" />
+        <link rel="preconnect" href="https://metabase.tacct.ademe.fr" />
       </head>
       <PHProvider>
         <body>

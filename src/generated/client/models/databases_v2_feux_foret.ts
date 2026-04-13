@@ -373,7 +373,7 @@ export type Databases_v2_feux_foretGroupByOutputType = {
   _max: Databases_v2_feux_foretMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_feux_foretGroupByPayload<T extends databases_v2_feux_foretGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_feux_foretGroupByPayload<T extends databases_v2_feux_foretGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_feux_foretGroupByOutputType, T['by']> &
       {
@@ -1602,11 +1602,6 @@ export type databases_v2_feux_foretFindManyArgs<ExtArgs extends runtime.Types.Ex
    * Skip the first `n` databases_v2_feux_forets.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_feux_forets.
-   */
   distinct?: Prisma.Databases_v2_feux_foretScalarFieldEnum | Prisma.Databases_v2_feux_foretScalarFieldEnum[]
 }
 

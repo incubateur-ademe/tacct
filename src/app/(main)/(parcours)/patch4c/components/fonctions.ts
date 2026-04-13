@@ -90,7 +90,7 @@ export const patch4Indices = (patch4: Patch4) => [
       {
         title:
           'CRACC : retrait gonflement des argiles, à quoi s’attendre et comment s’adapter ?',
-        link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir',
+        link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles-quoi-sattendre-et-sadapter#toc-agir',
         image: RGA
       }
     ]

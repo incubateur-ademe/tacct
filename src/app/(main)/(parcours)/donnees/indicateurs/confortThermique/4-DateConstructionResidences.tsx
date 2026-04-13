@@ -74,7 +74,7 @@ export const DateConstructionResidences = ({
         <div className={styles.datavizWrapper}>
           {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}
           <SourceExport
-            source="INSEE, RP 2015-2021"
+            source="INSEE, RP 2015-2021 (consultée en décembre 2024)"
             condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0 && !isNaN(Sum(chartData.map(el => Number(el["Votre territoire"]))))}
             anchor='Âge du bâtiment'
             exportComponent={

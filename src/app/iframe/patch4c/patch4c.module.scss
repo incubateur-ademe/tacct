@@ -16,12 +16,12 @@
     width: 500px;
     height: 1rem;
     align-self: center;
-    margin: 0 auto;
+    margin: 0 12.5rem 0 auto;
     position: relative;
     overflow: visible;
     border: 1px solid #f7f7f7;
     background-color: white;
-    
+
     &::before {
         content: '';
         position: absolute;
@@ -30,9 +30,9 @@
             to right,
             white 0%,
             white 5%,
-            #FFEBB6 33%,
-            #FFB181 67%,
-            #FF1C64 100%
+            #ffebb6 33%,
+            #ffb181 67%,
+            #ff1c64 100%
         );
     }
     .barColorText {
@@ -233,6 +233,12 @@
     &:hover {
         background-color: white;
     }
+
+    &:focus {
+        background-color: #f6f6f6;
+        border-radius: 0.5rem 0.5rem 0 0;
+        outline: 6px solid #038278;
+    }
 }
 
 .aleasTabButtonActive {
@@ -356,9 +362,11 @@
     .themesListeMap {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         gap: 2.5rem;
     }
     .themesListe {
+        max-width: 50%;
         .titre {
             display: flex;
             flex-direction: row;

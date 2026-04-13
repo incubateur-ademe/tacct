@@ -87,7 +87,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
           )}
           <SourceExport
             anchor="Feux de forêt"
-            source="Base de Données sur les Incendies de Forêts en France, consultée en 2024 (derniers chiffres disponibles : 2023)"
+            source="Base de Données sur les Incendies de Forêts en France, 2024 (consultée en mars 2025)"
             condition={incendiesForet.length !== 0}
             exportComponent={
               <ExportButtonNouveauParcours

@@ -39,9 +39,9 @@ export const GrandAge75 = ({
   );
   const territoireSup = type === 'epci' ? grandAgeMapped.filter((e) => e.departement === departement) : grandAgeMapped;
   const percentTerritoireSup = Round((
-    (100 * sumProperty(territoireSup, 'over_75_sum_2020')) /
-    (sumProperty(territoireSup, 'to_75_sum_2020') +
-      sumProperty(territoireSup, 'under_4_sum_2020'))
+    (100 * sumProperty(territoireSup, 'over_75_sum_2022')) /
+    (sumProperty(territoireSup, 'to_75_sum_2022') +
+      sumProperty(territoireSup, 'under_4_sum_2022'))
   ), 2);
   const grandAgeTerritoire =
     type === 'commune'
@@ -53,7 +53,7 @@ export const GrandAge75 = ({
           : grandAgeMapped;
 
   const yData = GrandAge75LineChartYData(grandAgeTerritoire);
-  const xData = ['1968', '1975', '1982', '1990', '1999', '2009', '2014', '2020'];
+  const xData = ['1968', '1975', '1982', '1990', '1999', '2006','2011', '2016', '2022'];
   const yGraphData = Object.values(yData)
     .map(Number)
     .map((value) => (isNaN(value) ? null : value));
@@ -74,18 +74,18 @@ export const GrandAge75 = ({
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroCircleGrid pourcentage={Number(yData.over_75_2020_percent)} arrondi={2} ariaLabel="Pourcentage des personnes âgées de plus de 80 ans" />
+            <MicroCircleGrid pourcentage={Number(yData.over_75_2022_percent)} arrondi={2} ariaLabel="Pourcentage des personnes âgées de plus de 80 ans" />
             {
               !Object.values(yData).slice(0, -2).includes('NaN') && (
                 <>
                   <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                    En 2020, <b>{numberWithSpacesRegex(yData.over_75_2020_percent)} %</b> de la
+                    En 2022, <b>{numberWithSpacesRegex(yData.over_75_2022_percent)} %</b> de la
                     population de votre territoire est constitué de personnes
                     âgées de plus de 75 ans (soit{' '}
                     <b>
                       {numberWithSpacesRegex(sumProperty(
                         grandAgeTerritoire,
-                        'over_75_sum_2020'
+                        'over_75_sum_2022'
                       ))}
                     </b>{' '}
                     personnes).
@@ -109,7 +109,7 @@ export const GrandAge75 = ({
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          {yData.over_75_2020_percent ? (
+          {yData.over_75_2022_percent ? (
             <div
               style={{
                 backgroundColor: 'white',
@@ -163,7 +163,7 @@ export const GrandAge75 = ({
                 sheetName="Grand âge"
               />
             }
-            source='INSEE, décembre 2024'
+            source='INSEE, 2024 (consultée en février 2026)'
             condition={!Object.values(yData).slice(0, -2).includes('NaN')}
           />
         </div>

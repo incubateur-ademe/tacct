@@ -1,0 +1,329 @@
+//Hero bloc
+
+.heroBlocOuter {
+    background-color: var(--principales-vert);
+}
+
+.heroBlocInner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    @media screen and (max-width: 1280px) {
+        padding: 0 2rem;
+    }
+}
+
+.heroBlocText {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.heroBlocImageWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    flex-shrink: 0;
+}
+
+.heroBlocImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.heroBlocDesktopOnly {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.heroBlocMobileOnly {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+}
+
+.heroBlocMobileInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+
+    .heroBlocImg {
+        max-width: 300px;
+        align-self: center;
+    }
+}
+
+// Tacct bloc
+.tacctContainer {
+    background-color: var(--boutons-primaire-1);
+}
+
+.tacctWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    span {
+        font-weight: 800;
+    }
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+    margin-top: 3.5rem;
+}
+
+.homeCard {
+    background-color: #ffffff;
+    border-radius: 1.25em;
+    box-shadow: 0px 4px 12px 0px #0063cb29;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 267px;
+    min-width: 267px;
+    .homeCardIcon {
+        padding: 0.25rem;
+        border-radius: 0.5rem;
+        background-color: var(--boutons-primaire-2);
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .tacctWrapper {
+        padding: 0rem 2rem;
+    }
+    .cardWrapper {
+        justify-content: center;
+        column-gap: 3rem;
+        row-gap: 1rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .homeCard {
+        width: 80%;
+        min-width: unset;
+    }
+}
+
+// Démarche Bloc
+.demarcheHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 10rem;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: #a2c6c340;
+    }
+}
+
+.demarcheBlocWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: 'stretch';
+    height: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .demarcheHeader {
+        padding: 2rem 1rem;
+    }
+}
+@media screen and (max-width: 768px) {
+    .demarcheBlocWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+// Patch 4 bloc
+
+.patch4Container {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+}
+
+.deuxBlocsWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    min-height: 640px;
+}
+.patch4Wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem 0;
+    gap: 6rem;
+}
+
+.patch4img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    max-width: 200px;
+    max-height: 400px;
+    position: relative;
+    img {
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: contain;
+    }
+}
+.patch4Text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 720px;
+    padding: 1.25em;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    height: fit-content;
+    align-self: center;
+}
+
+@media screen and (max-width: 1280px) {
+    .patch4Wrapper {
+        margin: 0;
+        padding: 0rem;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .patch4Wrapper {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .patch4Text {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .deuxBlocsWrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    .patch4Wrapper {
+        margin-top: 4rem;
+    }
+}
+
+// Ressources bloc
+.ressourcesContainer {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+    padding: 1.5rem 2rem;
+}
+
+.ressourcesWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    .ressourcesText {
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        padding: 1.25rem;
+        gap: 0.5rem;
+    }
+    .ressourcesImage {
+        width: 50%;
+        height: auto;
+        max-width: 210px;
+        position: relative;
+        object-fit: contain;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .ressourcesWrapper {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .ressourcesContainer {
+        padding: 1.5rem;
+    }
+}
+
+// Verbatim
+
+.verbatimContainer {
+    background-color: var(--principales-vert);
+    padding: 1.5rem 2rem;
+    .verbatimCardsWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        .verbatimCard {
+            border: 1px solid #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.5rem;
+            width: 384px;
+            .quote {
+                color: #ffffff;
+            }
+            .guillemetIcon {
+                width: 3rem;
+                height: auto;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .verbatimContainer {
+        .verbatimCardsWrapper {
+            justify-content: center;
+            column-gap: 3rem;
+            row-gap: 1rem;
+        }
+    }
+}

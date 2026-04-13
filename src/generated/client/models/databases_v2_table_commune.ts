@@ -307,7 +307,7 @@ export type Databases_v2_table_communeGroupByOutputType = {
   _max: Databases_v2_table_communeMaxAggregateOutputType | null
 }
 
-export type GetDatabases_v2_table_communeGroupByPayload<T extends databases_v2_table_communeGroupByArgs> = Prisma.PrismaPromise<
+type GetDatabases_v2_table_communeGroupByPayload<T extends databases_v2_table_communeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_table_communeGroupByOutputType, T['by']> &
       {
@@ -1494,11 +1494,6 @@ export type databases_v2_table_communeFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` databases_v2_table_communes.
    */
   skip?: number
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-   * 
-   * Filter by unique combinations of databases_v2_table_communes.
-   */
   distinct?: Prisma.Databases_v2_table_communeScalarFieldEnum | Prisma.Databases_v2_table_communeScalarFieldEnum[]
 }
 

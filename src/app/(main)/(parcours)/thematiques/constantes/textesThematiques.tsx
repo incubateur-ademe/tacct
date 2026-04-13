@@ -132,10 +132,26 @@ export const sommaireThematiques = {
   Santé: {
     thematiquesLiees: [
       {
-        id: 'section2',
+        id: 'section1',
         thematique: 'Air',
         icone: '💨',
         sousCategories: ['Pollution à l’ozone']
+      },
+      {
+        id: 'section2',
+        thematique: 'Biodiversité',
+        icone: '🌼',
+        sousCategories: ['Moustique tigre et arboviroses']
+      }      
+    ]
+  },
+  Forêts: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Forêts',
+        icone: '🌲',
+        sousCategories: ['Hauteur de la canopée']
       }
     ]
   }
@@ -271,7 +287,7 @@ export const thematiquesInfo: {
   Forêts: {
     title: 'Forêts',
     description: <div></div>,
-    link: ''
+    link: 'Forêts'
   },
   Eau: {
     title: 'Eau',

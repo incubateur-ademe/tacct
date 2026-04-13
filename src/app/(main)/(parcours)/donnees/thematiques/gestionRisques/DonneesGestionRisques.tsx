@@ -162,11 +162,11 @@ export const DonneesGestionRisques = ({
             title={'Différence avec le nombre d’arrêtés GASPAR :'}
             description={
               <>
-                l’équipe Facili-TACCT a identifié plusieurs doublons dans la
+                l’équipe TACCT a identifié plusieurs doublons dans la
                 base de données GASPAR, initialement supprimés. Suite à
                 plusieurs retours concernant cet écart, les doublons ont été
                 réintégrés : notre base de données est désormais identique à
-                celle de GASPAR. Veuillez noter également que Facili-TACCT
+                celle de GASPAR. Veuillez noter également que TACCT
                 affiche à présent la date de début de l’évènement et non celle
                 de publication de l’arrêté.
               </>

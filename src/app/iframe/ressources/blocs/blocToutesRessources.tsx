@@ -100,6 +100,41 @@ export const BlocToutesRessources = () => {
     });
   };
 
+  const handleSelectFormatRessource = (format: string) => {
+    setSelectedFilters(prev => {
+      const currentFormat = prev['Format de ressource']?.[0];
+      let updatedFilters;
+      
+      if (currentFormat === format) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { ['Format de ressource']: _, ...rest } = prev;
+        updatedFilters = rest;
+      } else {
+        updatedFilters = {
+          ...prev,
+          'Format de ressource': [format]
+        };
+      }
+
+      const hasActiveFilters = Object.values(updatedFilters).some(values => values.length > 0);
+      
+      if (!hasActiveFilters) {
+        setArticlesFiltres(toutesLesRessources);
+      } else {
+        setArticlesFiltres(
+          toutesLesRessources.filter(article => {
+            return Object.entries(updatedFilters).every(([, selectedValues]) => {
+              if (selectedValues.length === 0) return true;
+              return selectedValues.some(value => article.filtres?.includes(value));
+            });
+          })
+        );
+      }
+
+      return updatedFilters;
+    });
+  };
+
   return (
     <div className={styles.toutesRessourcesContainer}>
       <NewContainer size="xl" style={{ padding: "40px 0" }}>
@@ -112,6 +147,7 @@ export const BlocToutesRessources = () => {
           onSelectOptions={handleSelectOptions}
           onReset={handleReset}
           onRemoveFilter={handleRemoveFilter}
+          onSelectFormatRessource={handleSelectFormatRessource}
         />
         <div className={styles.boutonFiltre}>
           <BoutonPrimaireClassic
@@ -130,6 +166,7 @@ export const BlocToutesRessources = () => {
           onClose={() => setIsModalOpen(false)}
           articles={ArticlesSorted}
           onRemoveFilter={handleRemoveFilter}
+          onSelectFormatRessource={handleSelectFormatRessource}
         />
         <div className={styles.resultatsWrapper}>
           <p className={styles.resultats}>

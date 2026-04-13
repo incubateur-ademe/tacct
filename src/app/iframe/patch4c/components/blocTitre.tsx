@@ -8,7 +8,7 @@ export const BlocTitre = () => {
       <NewContainer size="xl" style={{ padding: "0 1rem", position: "relative", zIndex: 1 }}>
         <H1
           style={{
-            fontSize: "22px",
+            fontSize: "28px",
             color: "var(--boutons-primaire-1)",
             marginBottom: "0.5rem",
           }}
@@ -16,8 +16,8 @@ export const BlocTitre = () => {
           Patch 4°C : le tendanciel d’aggravation des aléas majeurs de votre territoire
         </H1>
         <Body color="#3D3D3D">
-          Calculé par Météo France, ce nouveau jeu de données (patch 4°C) est basé sur la 
-          trajectoire de réchauffement de référence pour l’adaptation au changement climatique (TRACC).
+          Calculé par Météo France, ce nouveau jeu de données (patch 4°C) est basé sur<br />
+          la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC).
         </Body>
       </NewContainer>
     </div>

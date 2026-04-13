@@ -84,25 +84,28 @@ export type ConfortThermique = {
   under_4_sum_1982: number | null;
   under_4_sum_1990: number | null;
   under_4_sum_1999: number | null;
-  under_4_sum_2009: number | null;
-  under_4_sum_2014: number | null;
-  under_4_sum_2020: number | null;
+  under_4_sum_2006: number | null;
+  under_4_sum_2011: number | null;
+  under_4_sum_2016: number | null;
+  under_4_sum_2022: number | null;
   '4_to_75_sum_1968': number | null;
   '4_to_75_sum_1975': number | null;
   '4_to_75_sum_1982': number | null;
   '4_to_75_sum_1990': number | null;
   '4_to_75_sum_1999': number | null;
-  '4_to_75_sum_2009': number | null;
-  '4_to_75_sum_2014': number | null;
-  '4_to_75_sum_2020': number | null;
+  '4_to_75_sum_2006': number | null;
+  '4_to_75_sum_2011': number | null;
+  '4_to_75_sum_2016': number | null;
+  '4_to_75_sum_2022': number | null;
   over_75_sum_1968: number | null;
   over_75_sum_1975: number | null;
   over_75_sum_1982: number | null;
   over_75_sum_1990: number | null;
   over_75_sum_1999: number | null;
-  over_75_sum_2009: number | null;
-  over_75_sum_2014: number | null;
-  over_75_sum_2020: number | null;
+  over_75_sum_2006: number | null;
+  over_75_sum_2011: number | null;
+  over_75_sum_2016: number | null;
+  over_75_sum_2022: number | null;
   tee_log: number | null;
   tee_mob: number | null;
   precarite_logement: number | null;
@@ -280,6 +283,69 @@ export type PrelevementsEau = {
   A2018: string | null;
   A2019: string | null;
   A2020: string | null;
+};
+
+export type PrelevementsEauModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  annee_2017_aep: number;
+  annee_2017_bar: number;
+  annee_2017_can: number;
+  annee_2017_ene: number;
+  annee_2017_exo: number;
+  annee_2017_ind: number;
+  annee_2017_irr: number;
+  annee_2018_aep: number;
+  annee_2018_bar: number;
+  annee_2018_can: number;
+  annee_2018_ene: number;
+  annee_2018_exo: number;
+  annee_2018_ind: number;
+  annee_2018_irr: number;
+  annee_2019_aep: number;
+  annee_2019_bar: number;
+  annee_2019_can: number;
+  annee_2019_ene: number;
+  annee_2019_exo: number;
+  annee_2019_ind: number;
+  annee_2019_irr: number;
+  annee_2020_aep: number;
+  annee_2020_bar: number;
+  annee_2020_can: number;
+  annee_2020_ene: number;
+  annee_2020_exo: number;
+  annee_2020_ind: number;
+  annee_2020_irr: number;
+  annee_2021_aep: number;
+  annee_2021_bar: number;
+  annee_2021_can: number;
+  annee_2021_ene: number;
+  annee_2021_exo: number;
+  annee_2021_ind: number;
+  annee_2021_irr: number;
+  annee_2022_aep: number;
+  annee_2022_bar: number;
+  annee_2022_can: number;
+  annee_2022_ene: number;
+  annee_2022_ind: number;
+  annee_2022_irr: number;
+  annee_2023_aep: number;
+  annee_2023_bar: number;
+  annee_2023_can: number;
+  annee_2023_ene: number;
+  annee_2023_exo: number;
+  annee_2023_ind: number;
+  annee_2023_irr: number;
 };
 
 export type PrelevementsEauParsed = {
@@ -661,25 +727,6 @@ export type O3 = {
   longitude: number;
 };
 
-export type QualiteSitesBaignade = {
-  index: number;
-  DEP_NOM: string;
-  DEP_NUM: string;
-  TYPE: string;
-  COMMUNE: string;
-  POINT: string;
-  LONG: number;
-  LAT: number;
-  QEB_2013: string | null;
-  QEB_2014: string | null;
-  QEB_2015: string | null;
-  QEB_2016: string | null;
-  QEB_2017: string | null;
-  QEB_2018: string | null;
-  QEB_2019: string | null;
-  QEB_2020: string | null;
-};
-
 export type Agriculture = {
   index: number;
   code_geographique: string;
@@ -942,4 +989,29 @@ export type SecheressesPasseesModel = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   restrictions: string | null;
+};
+
+export type QualiteSitesBaignadeModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  nom_site: string;
+  latitude: number;
+  longitude: number;
+  type_eau_norm: string;
+  statut_donnees: string;
+  qualite: string;
+};
+
+export type ArboviroseModel = {
+  index: number;
+  annee: string;
+  departement: string;
+  nb_cas_importes: number;
+  nb_cas_autochtones: number;
 };

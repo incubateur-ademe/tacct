@@ -9,7 +9,7 @@ import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignade } from "@/lib/postgres/models";
+import { EtatCoursDeau, ExportCoursDeau, QualiteSitesBaignadeModel } from "@/lib/postgres/models";
 import { EtatsCoursEauBiodiversiteTextNouveauParcours } from '@/lib/staticTexts';
 import { EtatCoursDeauDynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { etatCoursDeauTooltipTextBiodiv } from '@/lib/tooltipTexts';
@@ -40,7 +40,7 @@ export const EtatEcoCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeau[];
   communesCodes: string[];
   boundingBox?: [[number, number], [number, number]];
-  qualiteEauxBaignade: QualiteSitesBaignade[];
+  qualiteEauxBaignade: QualiteSitesBaignadeModel[];
 }) => {
   const { etatCoursDeau, communesCodes, boundingBox, qualiteEauxBaignade } = props;
   const searchParams = useSearchParams();
@@ -126,7 +126,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l’eau et Ministère de la Santé, 2020 (plans d'eau) et 2024 (état des cours d'eau).
+          Source : Agences de l’eau, 2024 (consultée en février 2026) et Ministère des Solidarités et de la Santé, 2024 (consultée en mars 2026)
         </Body>
         {
           etatCoursDeau.length > 0 && (

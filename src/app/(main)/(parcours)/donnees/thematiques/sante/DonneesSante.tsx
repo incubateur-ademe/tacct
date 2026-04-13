@@ -3,21 +3,25 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
+import { ArboviroseModel } from '@/lib/postgres/models';
+import { GetArbovirose } from '@/lib/queries/databases/sante';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { SeuilsReglementairesO3 } from '../../indicateurs/sante/1-o3';
+import { Arbovirose } from '../../indicateurs/sante/2-Arbovirose';
 
 interface Props {
   coordonneesCommunes: {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
+  arbovirose: ArboviroseModel[];
 }
 
-export const DonneesSante = ({ coordonneesCommunes }: Props) => {
+export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Gestion des risques';
   const code = searchParams.get('code')!;
@@ -25,6 +29,7 @@ export const DonneesSante = ({ coordonneesCommunes }: Props) => {
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
+    arbovirose
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -37,11 +42,13 @@ export const DonneesSante = ({ coordonneesCommunes }: Props) => {
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes] = await Promise.all([
+      const [newCoordonneesCommunes, newArbovirose] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
+        GetArbovirose(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
+        arbovirose: newArbovirose
       });
       setIsLoading(false);
     })();
@@ -62,6 +69,9 @@ export const DonneesSante = ({ coordonneesCommunes }: Props) => {
         <Body size="lg">
           Ces données vous aideront à poser les bonnes questions,
           le terrain vous donnera les vraies réponses.
+        </Body>
+        <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+          À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
         </Body>
       </section>
 
@@ -98,6 +108,39 @@ export const DonneesSante = ({ coordonneesCommunes }: Props) => {
           />
         </div>
       </section>
+
+      {/* Section Biodiversité */}
+      <section className={styles.sectionType}>
+        <H2
+          style={{
+            color: 'var(--principales-rouge)',
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: '0 0 -1rem 0',
+            padding: '2rem 2rem 0',
+            fontWeight: 400
+          }}
+        >
+          {ongletsMenu.thematiquesLiees[1].icone}{' '}
+          {ongletsMenu.thematiquesLiees[1].thematique}
+        </H2>
+
+        {/* Moustique tigre et arboviroses */}
+        <div
+          id="Moustique tigre et arboviroses"
+          className={styles.indicateurMultipleMapsWrapper}
+        >
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
+            >
+              Moustique tigre et arboviroses
+            </H3>
+          </div>
+          <Arbovirose arbovirose={arbovirose} />
+        </div>
+      </section>
+
       {/* Sources */}
       <SourcesSection tag="h2" thematique="sante" />
     </div>

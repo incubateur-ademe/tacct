@@ -82,7 +82,7 @@ export const EmploisEnExterieur = ({
             /> : <Loader />
           }
           <SourceExport
-            source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021"
+            source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021 (consultée en décembre 2024)"
             anchor='Emplois en extérieur'
             exportComponent={
               <ExportButtonNouveauParcours

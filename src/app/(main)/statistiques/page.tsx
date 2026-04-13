@@ -24,7 +24,7 @@ const Page = async () => {
   return (
     <NewContainer size="xl">
       <H1>Statistiques</H1>
-      <Body>Cette page présente les statistiques d’utilisation du service Facili-TACCT.</Body>
+      <Body>Cette page présente les statistiques d’utilisation du service TACCT.</Body>
       <div className={styles.iframeContainer}>
         <iframe
           src={embedUrl}

@@ -15,6 +15,7 @@ type Item = {
   definition: string;
   linkedThemes: string[];
   themesSansAggravation: string[] | null;
+  themesSansAggravationEpciCommunes: string[] | null;
   actions: ({
     title: string;
     link: string;

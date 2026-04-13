@@ -1,6 +1,8 @@
 'use client';
 
+import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngSimple } from "@/components/exports/ExportPng";
+import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { NewContainer } from "@/design-system/layout";
 import { Patch4 } from "@/lib/postgres/models";
 import { useSearchParams } from "next/navigation";
@@ -46,34 +48,44 @@ export const Patch4Analyse = ({
   return (
     <>
       <NewContainer size="xl" style={{ padding: "40px 1rem 0" }}>
-        {patch4.length && patch4.length === 1 ?
-          // Pour les territoires EPCI ou communes
-          <div ref={circleExportRef}>
-            <CircleVisualization
-              patch4={patch4[0]}
-              selectedAleaKey={selectedAleaKey}
-              onSelectAlea={handleSelectAlea}
-            />
-            <div className={styles.CursorVisualizationContainer}>
-              <CursorVisualization />
-              <ExportPngSimple
-                containerRef={circleExportRef}
-                fileName={`patch4c-cercle-${libelle}.png`}
-                style={{
-                  height: "fit-content",
-                  width: "153px"
-                }}
+        {
+          patch4 && patch4.length ? (
+            <>
+              {patch4.length === 1 ?
+                // Pour les territoires EPCI ou communes
+                <div ref={circleExportRef}>
+                  <CircleVisualization
+                    patch4={patch4[0]}
+                    selectedAleaKey={selectedAleaKey}
+                    onSelectAlea={handleSelectAlea}
+                  />
+                  <div className={styles.CursorVisualizationContainer}>
+                    <CursorVisualization isMap={patch4.length > 1 ? true : false} />
+                    <ExportPngSimple
+                      containerRef={circleExportRef}
+                      fileName={`patch4c-cercle-${libelle}.png`}
+                      style={{
+                        height: "fit-content",
+                        width: "153px"
+                      }}
+                    />
+                  </div>
+                </div>
+                : null
+              }
+              <BlocAleas
+                coordonneesCommunes={coordonneesCommunes}
+                patch4={patch4}
+                selectedAleaKey={selectedAleaKey}
+                onSelectAlea={handleSelectAlea}
               />
+            </>
+          ) : (
+            <div className="p-10 flex flex-row justify-center">
+              <DataNotFoundForGraph image={DataNotFound} />
             </div>
-          </div>
-          : null
+          )
         }
-        <BlocAleas
-          coordonneesCommunes={coordonneesCommunes}
-          patch4={patch4}
-          selectedAleaKey={selectedAleaKey}
-          onSelectAlea={handleSelectAlea}
-        />
       </NewContainer>
     </>
   );

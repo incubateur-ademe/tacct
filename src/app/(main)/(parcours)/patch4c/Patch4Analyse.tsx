@@ -49,9 +49,9 @@ export const Patch4Analyse = ({
     <>
       <NewContainer size="xl" style={{ padding: "40px 1rem 0" }}>
         {
-          patch4 ? (
+          patch4 && patch4.length ? (
             <>
-              {patch4.length && patch4.length === 1 ?
+              {patch4.length === 1 ?
                 // Pour les territoires EPCI ou communes
                 <div ref={circleExportRef}>
                   <CircleVisualization
