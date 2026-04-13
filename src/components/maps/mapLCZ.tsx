@@ -352,7 +352,7 @@ export const MapLCZ = ({
       {isLoading ? (<div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>) : (
         <>
           <div ref={mapContainer} className='map-container' style={{ width: '100%', height: '500px' }}>
-            {!useLczGenerator && (
+            {!useLczGenerator && !serviceStatus.fallbackToGlobal && (
               <Image
                 id="cerema-logo"
                 src={CeremaLogo}
