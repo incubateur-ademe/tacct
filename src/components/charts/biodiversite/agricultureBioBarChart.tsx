@@ -28,7 +28,8 @@ type Years = "surface_2008" |
   "surface_2020" |
   "surface_2021" |
   "surface_2022" |
-  "surface_2023";
+  "surface_2023" |
+  "surface_2024";
 
 const agricultureBioYears = [
   "surface_2008",
@@ -46,7 +47,8 @@ const agricultureBioYears = [
   "surface_2020",
   "surface_2021",
   "surface_2022",
-  "surface_2023"
+  "surface_2023",
+  "surface_2024"
 ];
 
 const graphDataFunct = (filteredYears: string[], data: AgricultureBio[]) => {

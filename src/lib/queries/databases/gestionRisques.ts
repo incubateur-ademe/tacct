@@ -65,20 +65,20 @@ export const GetIncendiesForet = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.databases_v2_feux_foret.findFirst({
+      const exists = await prisma.feux_foret.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return [];
       else {
         if (type === 'petr' || type === 'ept') {
-          const value = await prisma.databases_v2_feux_foret.findMany({
+          const value = await prisma.feux_foret.findMany({
             where: {
               [column]: libelle
             }
           });
           return value;
         } else {
-          const value = await prisma.databases_v2_feux_foret.findMany({
+          const value = await prisma.feux_foret.findMany({
             where: {
               [column]: {
                 contains: code,

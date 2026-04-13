@@ -10,10 +10,10 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../ui/loader';
-import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { CeremaFallbackError, handleCeremaFallback } from './subcomponents/ceremaLCZFallback';
 
 export const MapLCZ = ({
   coordonneesCommunes,

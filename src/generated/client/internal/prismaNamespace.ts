@@ -393,7 +393,6 @@ export const ModelName = {
   databases_v2_confort_thermique: 'databases_v2_confort_thermique',
   databases_v2_consommation_espaces_naf: 'databases_v2_consommation_espaces_naf',
   databases_v2_export_cours_d_eau: 'databases_v2_export_cours_d_eau',
-  databases_v2_feux_foret: 'databases_v2_feux_foret',
   databases_v2_lcz_couverture: 'databases_v2_lcz_couverture',
   databases_v2_patch4c: 'databases_v2_patch4c',
   databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
@@ -407,11 +406,11 @@ export const ModelName = {
   postgis_v2_etat_cours_d_eau: 'postgis_v2_etat_cours_d_eau',
   spatial_ref_sys: 'spatial_ref_sys',
   prelevements_eau_new: 'prelevements_eau_new',
-  qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
   secheresses: 'secheresses',
   inondations_par_debordement: 'inondations_par_debordement',
-  arbovirose: 'arbovirose'
+  arbovirose: 'arbovirose',
+  feux_foret: 'feux_foret'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -427,7 +426,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "qualite_sites_baignade_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1094,80 +1093,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.databases_v2_export_cours_d_eauCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.Databases_v2_export_cours_d_eauCountAggregateOutputType> | number
-        }
-      }
-    }
-    databases_v2_feux_foret: {
-      payload: Prisma.$databases_v2_feux_foretPayload<ExtArgs>
-      fields: Prisma.databases_v2_feux_foretFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.databases_v2_feux_foretFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.databases_v2_feux_foretFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        findFirst: {
-          args: Prisma.databases_v2_feux_foretFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.databases_v2_feux_foretFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        findMany: {
-          args: Prisma.databases_v2_feux_foretFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>[]
-        }
-        create: {
-          args: Prisma.databases_v2_feux_foretCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        createMany: {
-          args: Prisma.databases_v2_feux_foretCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.databases_v2_feux_foretCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>[]
-        }
-        delete: {
-          args: Prisma.databases_v2_feux_foretDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        update: {
-          args: Prisma.databases_v2_feux_foretUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        deleteMany: {
-          args: Prisma.databases_v2_feux_foretDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.databases_v2_feux_foretUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.databases_v2_feux_foretUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>[]
-        }
-        upsert: {
-          args: Prisma.databases_v2_feux_foretUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_feux_foretPayload>
-        }
-        aggregate: {
-          args: Prisma.Databases_v2_feux_foretAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDatabases_v2_feux_foret>
-        }
-        groupBy: {
-          args: Prisma.databases_v2_feux_foretGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Databases_v2_feux_foretGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.databases_v2_feux_foretCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Databases_v2_feux_foretCountAggregateOutputType> | number
         }
       }
     }
@@ -2101,80 +2026,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    qualite_sites_baignade_new: {
-      payload: Prisma.$qualite_sites_baignade_newPayload<ExtArgs>
-      fields: Prisma.qualite_sites_baignade_newFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.qualite_sites_baignade_newFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.qualite_sites_baignade_newFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        findFirst: {
-          args: Prisma.qualite_sites_baignade_newFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.qualite_sites_baignade_newFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        findMany: {
-          args: Prisma.qualite_sites_baignade_newFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
-        }
-        create: {
-          args: Prisma.qualite_sites_baignade_newCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        createMany: {
-          args: Prisma.qualite_sites_baignade_newCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.qualite_sites_baignade_newCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
-        }
-        delete: {
-          args: Prisma.qualite_sites_baignade_newDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        update: {
-          args: Prisma.qualite_sites_baignade_newUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        deleteMany: {
-          args: Prisma.qualite_sites_baignade_newDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.qualite_sites_baignade_newUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.qualite_sites_baignade_newUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>[]
-        }
-        upsert: {
-          args: Prisma.qualite_sites_baignade_newUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$qualite_sites_baignade_newPayload>
-        }
-        aggregate: {
-          args: Prisma.Qualite_sites_baignade_newAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateQualite_sites_baignade_new>
-        }
-        groupBy: {
-          args: Prisma.qualite_sites_baignade_newGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Qualite_sites_baignade_newGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.qualite_sites_baignade_newCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Qualite_sites_baignade_newCountAggregateOutputType> | number
-        }
-      }
-    }
     o3_seuils: {
       payload: Prisma.$o3_seuilsPayload<ExtArgs>
       fields: Prisma.o3_seuilsFieldRefs
@@ -2468,6 +2319,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.arboviroseCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ArboviroseCountAggregateOutputType> | number
+        }
+      }
+    }
+    feux_foret: {
+      payload: Prisma.$feux_foretPayload<ExtArgs>
+      fields: Prisma.feux_foretFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.feux_foretFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.feux_foretFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        findFirst: {
+          args: Prisma.feux_foretFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.feux_foretFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        findMany: {
+          args: Prisma.feux_foretFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+        }
+        create: {
+          args: Prisma.feux_foretCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        createMany: {
+          args: Prisma.feux_foretCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.feux_foretCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+        }
+        delete: {
+          args: Prisma.feux_foretDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        update: {
+          args: Prisma.feux_foretUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        deleteMany: {
+          args: Prisma.feux_foretDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.feux_foretUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.feux_foretUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>[]
+        }
+        upsert: {
+          args: Prisma.feux_foretUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$feux_foretPayload>
+        }
+        aggregate: {
+          args: Prisma.Feux_foretAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFeux_foret>
+        }
+        groupBy: {
+          args: Prisma.feux_foretGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Feux_foretGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.feux_foretCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Feux_foretCountAggregateOutputType> | number
         }
       }
     }
@@ -2857,36 +2782,6 @@ export const Databases_v2_export_cours_d_eauScalarFieldEnum = {
 } as const
 
 export type Databases_v2_export_cours_d_eauScalarFieldEnum = (typeof Databases_v2_export_cours_d_eauScalarFieldEnum)[keyof typeof Databases_v2_export_cours_d_eauScalarFieldEnum]
-
-
-export const Databases_v2_feux_foretScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  annee: 'annee',
-  nature: 'nature',
-  surface_parcourue: 'surface_parcourue',
-  surface_foret: 'surface_foret',
-  surface_maquis_garrigues: 'surface_maquis_garrigues',
-  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
-  surfaces_agricoles: 'surfaces_agricoles',
-  surfaces_non_boisees: 'surfaces_non_boisees',
-  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
-  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
-  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
-  autres_surfaces: 'autres_surfaces'
-} as const
-
-export type Databases_v2_feux_foretScalarFieldEnum = (typeof Databases_v2_feux_foretScalarFieldEnum)[keyof typeof Databases_v2_feux_foretScalarFieldEnum]
 
 
 export const Databases_v2_lcz_couvertureScalarFieldEnum = {
@@ -3299,30 +3194,6 @@ export const Prelevements_eau_newScalarFieldEnum = {
 export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
 
 
-export const Qualite_sites_baignade_newScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  nom_site: 'nom_site',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  type_eau_norm: 'type_eau_norm',
-  statut_donnees: 'statut_donnees',
-  qualite: 'qualite'
-} as const
-
-export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
-
-
 export const O3_seuilsScalarFieldEnum = {
   index: 'index',
   nom_site: 'nom_site',
@@ -3373,6 +3244,36 @@ export const ArboviroseScalarFieldEnum = {
 } as const
 
 export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
+
+
+export const Feux_foretScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nature: 'nature',
+  annee: 'annee',
+  surface_parcourue: 'surface_parcourue',
+  surface_foret: 'surface_foret',
+  surface_maquis_garrigues: 'surface_maquis_garrigues',
+  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+  surfaces_agricoles: 'surfaces_agricoles',
+  surfaces_non_boisees: 'surfaces_non_boisees',
+  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+  autres_surfaces: 'autres_surfaces'
+} as const
+
+export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -3550,7 +3451,6 @@ export type GlobalOmitConfig = {
   databases_v2_confort_thermique?: Prisma.databases_v2_confort_thermiqueOmit
   databases_v2_consommation_espaces_naf?: Prisma.databases_v2_consommation_espaces_nafOmit
   databases_v2_export_cours_d_eau?: Prisma.databases_v2_export_cours_d_eauOmit
-  databases_v2_feux_foret?: Prisma.databases_v2_feux_foretOmit
   databases_v2_lcz_couverture?: Prisma.databases_v2_lcz_couvertureOmit
   databases_v2_patch4c?: Prisma.databases_v2_patch4cOmit
   databases_v2_prelevements_eau?: Prisma.databases_v2_prelevements_eauOmit
@@ -3564,11 +3464,11 @@ export type GlobalOmitConfig = {
   postgis_v2_etat_cours_d_eau?: Prisma.postgis_v2_etat_cours_d_eauOmit
   spatial_ref_sys?: Prisma.spatial_ref_sysOmit
   prelevements_eau_new?: Prisma.prelevements_eau_newOmit
-  qualite_sites_baignade_new?: Prisma.qualite_sites_baignade_newOmit
   o3_seuils?: Prisma.o3_seuilsOmit
   secheresses?: Prisma.secheressesOmit
   inondations_par_debordement?: Prisma.inondations_par_debordementOmit
   arbovirose?: Prisma.arboviroseOmit
+  feux_foret?: Prisma.feux_foretOmit
 }
 
 /* Types for Logging */

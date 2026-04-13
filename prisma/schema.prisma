@@ -397,43 +397,6 @@ model databases_v2_export_cours_d_eau {
   @@schema("databases_v2")
 }
 
-model databases_v2_feux_foret {
-  index                                 Int     @id
-  code_geographique                     String
-  libelle_geographique                  String
-  epci                                  String
-  libelle_epci                          String
-  departement                           String
-  libelle_departement                   String
-  region                                Float
-  ept                                   String?
-  libelle_petr                          String?
-  code_pnr                              String?
-  libelle_pnr                           String?
-  annee                                 Float
-  nature                                String?
-  surface_parcourue                     Float
-  surface_foret                         Float?
-  surface_maquis_garrigues              Float?
-  autres_surfaces_naturelles_hors_foret Float?
-  surfaces_agricoles                    Float?
-  surfaces_non_boisees                  Float?
-  surfaces_non_boisees_artificialisees  Float?
-  surfaces_non_boisees_naturelles       Float?
-  surface_autres_terres_boisees         Float?
-  autres_surfaces                       Float?
-
-  @@index([code_geographique], map: "feux_foret_communes_index")
-  @@index([departement], map: "feux_foret_departement_index")
-  @@index([epci], map: "feux_foret_epci_index")
-  @@index([ept], map: "feux_foret_ept_index")
-  @@index([libelle_petr], map: "feux_foret_petr_index")
-  @@index([code_pnr], map: "feux_foret_pnr_index")
-  @@index([index], map: "ix_feux_foret_index")
-  @@map("feux_foret")
-  @@schema("databases_v2")
-}
-
 model databases_v2_lcz_couverture {
   index                Int     @id
   code_geographique    String
@@ -949,5 +912,41 @@ model arbovirose {
 
   @@index([departement], map: "arbovirose_departement_index")
   @@index([index], map: "ix_arbovirose_index")
+  @@schema("databases_v2")
+}
+
+model feux_foret {
+  index                                 Int     @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  libelle_departement                   String
+  region                                Float
+  ept                                   String?
+  libelle_petr                          String?
+  code_pnr                              String?
+  libelle_pnr                           String?
+  nature                                String
+  annee                                 Float
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([code_geographique], map: "feux_foret_communes_index")
+  @@index([departement], map: "feux_foret_departement_index")
+  @@index([epci], map: "feux_foret_epci_index")
+  @@index([ept], map: "feux_foret_ept_index")
+  @@index([libelle_petr], map: "feux_foret_petr_index")
+  @@index([code_pnr], map: "feux_foret_pnr_index")
+  @@index([index], map: "ix_feux_foret_index")
   @@schema("databases_v2")
 }

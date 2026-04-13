@@ -1,7 +1,7 @@
 "use client";
 import SurfacesEnBioCharts from "@/components/charts/biodiversite/surfacesEnBioCharts";
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
-import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
+import { ExportButton } from "@/components/exports/ExportButton";
 import { ReadMoreFade } from "@/components/utils/ReadMoreFade";
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
@@ -35,31 +35,31 @@ export const SurfacesEnBio = (props: {
 
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.nombre_2023!;
+      return acc + obj.nombre_2024!;
     }
     return acc;
   }, 0);
   const surfaceAgriBio = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface totale') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceCertifiee = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceEnConversion = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceTotale = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
@@ -132,7 +132,7 @@ export const SurfacesEnBio = (props: {
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
               Source : Donnée produite par l’AGRESTE, 2020 et extraite du catalogue DiDo (consultée en juillet 2025)
             </Body>
-            <ExportButtonNouveauParcours
+            <ExportButton
               data={exportData}
               baseName="agriculture_biologique"
               type={type}
