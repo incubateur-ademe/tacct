@@ -34,7 +34,7 @@ export const AgricultureBioPieCharts = ({
 }) => {
   const surfaceCertifiee = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
@@ -46,7 +46,7 @@ export const AgricultureBioPieCharts = ({
   }, 0);
   const surfaceEnConversion = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
@@ -58,13 +58,13 @@ export const AgricultureBioPieCharts = ({
   }, 0);
   const surfaceTotale = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.nombre_2023!;
+      return acc + obj.nombre_2024!;
     }
     return acc;
   }, 0);
@@ -100,7 +100,7 @@ export const AgricultureBioPieCharts = ({
               title={
                 <>
                   <H4 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>
-                    Surface déjà certifiée (2023)
+                    Surface déjà certifiée (2024)
                   </H4>
                   <Body size="sm">
                     <b>{Round(surfaceCertifiee, 0)}</b> ha
@@ -146,7 +146,7 @@ export const AgricultureBioPieCharts = ({
               title={
                 <>
                   <H4 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>
-                    Surface en conversion (2023)
+                    Surface en conversion (2024)
                   </H4>
                   <Body size="sm">
                     <b>{Round(surfaceEnConversion, 0)}</b> ha

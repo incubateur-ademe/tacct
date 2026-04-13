@@ -35,31 +35,31 @@ export const SurfacesEnBio = (props: {
 
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.nombre_2023!;
+      return acc + obj.nombre_2024!;
     }
     return acc;
   }, 0);
   const surfaceAgriBio = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface totale') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceCertifiee = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface certifiée') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceEnConversion = agricultureBio.reduce((acc, obj) => {
     if (obj.LIBELLE_SOUS_CHAMP === 'Surface en conversion') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);
   const surfaceTotale = agricultureBio.reduce((acc, obj) => {
     if (obj.VARIABLE === 'saue') {
-      return acc + obj.surface_2023!;
+      return acc + obj.surface_2024!;
     }
     return acc;
   }, 0);

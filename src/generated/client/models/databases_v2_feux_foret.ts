@@ -71,8 +71,8 @@ export type Databases_v2_feux_foretMinAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  annee: number | null
   nature: string | null
+  annee: number | null
   surface_parcourue: number | null
   surface_foret: number | null
   surface_maquis_garrigues: number | null
@@ -98,8 +98,8 @@ export type Databases_v2_feux_foretMaxAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  annee: number | null
   nature: string | null
+  annee: number | null
   surface_parcourue: number | null
   surface_foret: number | null
   surface_maquis_garrigues: number | null
@@ -125,8 +125,8 @@ export type Databases_v2_feux_foretCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
-  annee: number
   nature: number
+  annee: number
   surface_parcourue: number
   surface_foret: number
   surface_maquis_garrigues: number
@@ -186,8 +186,8 @@ export type Databases_v2_feux_foretMinAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee?: true
   nature?: true
+  annee?: true
   surface_parcourue?: true
   surface_foret?: true
   surface_maquis_garrigues?: true
@@ -213,8 +213,8 @@ export type Databases_v2_feux_foretMaxAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee?: true
   nature?: true
+  annee?: true
   surface_parcourue?: true
   surface_foret?: true
   surface_maquis_garrigues?: true
@@ -240,8 +240,8 @@ export type Databases_v2_feux_foretCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  annee?: true
   nature?: true
+  annee?: true
   surface_parcourue?: true
   surface_foret?: true
   surface_maquis_garrigues?: true
@@ -354,8 +354,8 @@ export type Databases_v2_feux_foretGroupByOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
+  nature: string
   annee: number
-  nature: string | null
   surface_parcourue: number
   surface_foret: number | null
   surface_maquis_garrigues: number | null
@@ -404,8 +404,8 @@ export type databases_v2_feux_foretWhereInput = {
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
+  nature?: Prisma.StringFilter<"databases_v2_feux_foret"> | string
   annee?: Prisma.FloatFilter<"databases_v2_feux_foret"> | number
-  nature?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   surface_parcourue?: Prisma.FloatFilter<"databases_v2_feux_foret"> | number
   surface_foret?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   surface_maquis_garrigues?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
@@ -431,8 +431,8 @@ export type databases_v2_feux_foretOrderByWithRelationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nature?: Prisma.SortOrder
   annee?: Prisma.SortOrder
-  nature?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_parcourue?: Prisma.SortOrder
   surface_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_maquis_garrigues?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -461,8 +461,8 @@ export type databases_v2_feux_foretWhereUniqueInput = Prisma.AtLeast<{
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
+  nature?: Prisma.StringFilter<"databases_v2_feux_foret"> | string
   annee?: Prisma.FloatFilter<"databases_v2_feux_foret"> | number
-  nature?: Prisma.StringNullableFilter<"databases_v2_feux_foret"> | string | null
   surface_parcourue?: Prisma.FloatFilter<"databases_v2_feux_foret"> | number
   surface_foret?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   surface_maquis_garrigues?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
@@ -488,8 +488,8 @@ export type databases_v2_feux_foretOrderByWithAggregationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  nature?: Prisma.SortOrder
   annee?: Prisma.SortOrder
-  nature?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_parcourue?: Prisma.SortOrder
   surface_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_maquis_garrigues?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -523,8 +523,8 @@ export type databases_v2_feux_foretScalarWhereWithAggregatesInput = {
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_feux_foret"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_feux_foret"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_feux_foret"> | string | null
+  nature?: Prisma.StringWithAggregatesFilter<"databases_v2_feux_foret"> | string
   annee?: Prisma.FloatWithAggregatesFilter<"databases_v2_feux_foret"> | number
-  nature?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_feux_foret"> | string | null
   surface_parcourue?: Prisma.FloatWithAggregatesFilter<"databases_v2_feux_foret"> | number
   surface_foret?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_feux_foret"> | number | null
   surface_maquis_garrigues?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_feux_foret"> | number | null
@@ -550,8 +550,8 @@ export type databases_v2_feux_foretCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  nature: string
   annee: number
-  nature?: string | null
   surface_parcourue: number
   surface_foret?: number | null
   surface_maquis_garrigues?: number | null
@@ -577,8 +577,8 @@ export type databases_v2_feux_foretUncheckedCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  nature: string
   annee: number
-  nature?: string | null
   surface_parcourue: number
   surface_foret?: number | null
   surface_maquis_garrigues?: number | null
@@ -604,8 +604,8 @@ export type databases_v2_feux_foretUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nature?: Prisma.StringFieldUpdateOperationsInput | string
   annee?: Prisma.FloatFieldUpdateOperationsInput | number
-  nature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surface_parcourue?: Prisma.FloatFieldUpdateOperationsInput | number
   surface_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_maquis_garrigues?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -631,8 +631,8 @@ export type databases_v2_feux_foretUncheckedUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nature?: Prisma.StringFieldUpdateOperationsInput | string
   annee?: Prisma.FloatFieldUpdateOperationsInput | number
-  nature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surface_parcourue?: Prisma.FloatFieldUpdateOperationsInput | number
   surface_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_maquis_garrigues?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -658,8 +658,8 @@ export type databases_v2_feux_foretCreateManyInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  nature: string
   annee: number
-  nature?: string | null
   surface_parcourue: number
   surface_foret?: number | null
   surface_maquis_garrigues?: number | null
@@ -685,8 +685,8 @@ export type databases_v2_feux_foretUpdateManyMutationInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nature?: Prisma.StringFieldUpdateOperationsInput | string
   annee?: Prisma.FloatFieldUpdateOperationsInput | number
-  nature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surface_parcourue?: Prisma.FloatFieldUpdateOperationsInput | number
   surface_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_maquis_garrigues?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -712,8 +712,8 @@ export type databases_v2_feux_foretUncheckedUpdateManyInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nature?: Prisma.StringFieldUpdateOperationsInput | string
   annee?: Prisma.FloatFieldUpdateOperationsInput | number
-  nature?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   surface_parcourue?: Prisma.FloatFieldUpdateOperationsInput | number
   surface_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_maquis_garrigues?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -739,8 +739,8 @@ export type databases_v2_feux_foretCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee?: Prisma.SortOrder
   nature?: Prisma.SortOrder
+  annee?: Prisma.SortOrder
   surface_parcourue?: Prisma.SortOrder
   surface_foret?: Prisma.SortOrder
   surface_maquis_garrigues?: Prisma.SortOrder
@@ -782,8 +782,8 @@ export type databases_v2_feux_foretMaxOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee?: Prisma.SortOrder
   nature?: Prisma.SortOrder
+  annee?: Prisma.SortOrder
   surface_parcourue?: Prisma.SortOrder
   surface_foret?: Prisma.SortOrder
   surface_maquis_garrigues?: Prisma.SortOrder
@@ -809,8 +809,8 @@ export type databases_v2_feux_foretMinOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  annee?: Prisma.SortOrder
   nature?: Prisma.SortOrder
+  annee?: Prisma.SortOrder
   surface_parcourue?: Prisma.SortOrder
   surface_foret?: Prisma.SortOrder
   surface_maquis_garrigues?: Prisma.SortOrder
@@ -854,8 +854,8 @@ export type databases_v2_feux_foretSelect<ExtArgs extends runtime.Types.Extensio
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee?: boolean
   nature?: boolean
+  annee?: boolean
   surface_parcourue?: boolean
   surface_foret?: boolean
   surface_maquis_garrigues?: boolean
@@ -881,8 +881,8 @@ export type databases_v2_feux_foretSelectCreateManyAndReturn<ExtArgs extends run
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee?: boolean
   nature?: boolean
+  annee?: boolean
   surface_parcourue?: boolean
   surface_foret?: boolean
   surface_maquis_garrigues?: boolean
@@ -908,8 +908,8 @@ export type databases_v2_feux_foretSelectUpdateManyAndReturn<ExtArgs extends run
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee?: boolean
   nature?: boolean
+  annee?: boolean
   surface_parcourue?: boolean
   surface_foret?: boolean
   surface_maquis_garrigues?: boolean
@@ -935,8 +935,8 @@ export type databases_v2_feux_foretSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  annee?: boolean
   nature?: boolean
+  annee?: boolean
   surface_parcourue?: boolean
   surface_foret?: boolean
   surface_maquis_garrigues?: boolean
@@ -949,7 +949,7 @@ export type databases_v2_feux_foretSelectScalar = {
   autres_surfaces?: boolean
 }
 
-export type databases_v2_feux_foretOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee" | "nature" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["databases_v2_feux_foret"]>
+export type databases_v2_feux_foretOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nature" | "annee" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["databases_v2_feux_foret"]>
 
 export type $databases_v2_feux_foretPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_feux_foret"
@@ -967,8 +967,8 @@ export type $databases_v2_feux_foretPayload<ExtArgs extends runtime.Types.Extens
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
+    nature: string
     annee: number
-    nature: string | null
     surface_parcourue: number
     surface_foret: number | null
     surface_maquis_garrigues: number | null
@@ -1414,8 +1414,8 @@ export interface databases_v2_feux_foretFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"databases_v2_feux_foret", 'String'>
   readonly code_pnr: Prisma.FieldRef<"databases_v2_feux_foret", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_feux_foret", 'String'>
-  readonly annee: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly nature: Prisma.FieldRef<"databases_v2_feux_foret", 'String'>
+  readonly annee: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly surface_parcourue: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly surface_foret: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly surface_maquis_garrigues: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>

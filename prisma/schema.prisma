@@ -53,6 +53,7 @@ model databases_v2_agriculture_bio {
   libelle_epci       String
   VARIABLE           String
   LIBELLE_SOUS_CHAMP String?
+  surface_2024       Float?
   surface_2023       Float?
   surface_2022       Float?
   surface_2021       Float?
@@ -69,6 +70,7 @@ model databases_v2_agriculture_bio {
   surface_2010       Float?
   surface_2009       Float?
   surface_2008       Float?
+  nombre_2024        Float?
   nombre_2023        Float?
   nombre_2022        Float?
   nombre_2021        Float?
@@ -421,8 +423,8 @@ model databases_v2_feux_foret {
   libelle_petr                          String?
   code_pnr                              String?
   libelle_pnr                           String?
+  nature                                String
   annee                                 Float
-  nature                                String?
   surface_parcourue                     Float
   surface_foret                         Float?
   surface_maquis_garrigues              Float?
@@ -441,6 +443,7 @@ model databases_v2_feux_foret {
   @@index([libelle_petr], map: "feux_foret_petr_index")
   @@index([code_pnr], map: "feux_foret_pnr_index")
   @@index([index], map: "ix_feux_foret_index")
+  @@index([epci], map: "agriculture_bio_epci_index")
   @@map("feux_foret")
   @@schema("databases_v2")
 }

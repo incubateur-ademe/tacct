@@ -28,6 +28,7 @@ export type AggregateDatabases_v2_agriculture_bio = {
 
 export type Databases_v2_agriculture_bioAvgAggregateOutputType = {
   index: number | null
+  surface_2024: number | null
   surface_2023: number | null
   surface_2022: number | null
   surface_2021: number | null
@@ -44,6 +45,7 @@ export type Databases_v2_agriculture_bioAvgAggregateOutputType = {
   surface_2010: number | null
   surface_2009: number | null
   surface_2008: number | null
+  nombre_2024: number | null
   nombre_2023: number | null
   nombre_2022: number | null
   nombre_2021: number | null
@@ -64,6 +66,7 @@ export type Databases_v2_agriculture_bioAvgAggregateOutputType = {
 
 export type Databases_v2_agriculture_bioSumAggregateOutputType = {
   index: number | null
+  surface_2024: number | null
   surface_2023: number | null
   surface_2022: number | null
   surface_2021: number | null
@@ -80,6 +83,7 @@ export type Databases_v2_agriculture_bioSumAggregateOutputType = {
   surface_2010: number | null
   surface_2009: number | null
   surface_2008: number | null
+  nombre_2024: number | null
   nombre_2023: number | null
   nombre_2022: number | null
   nombre_2021: number | null
@@ -104,6 +108,7 @@ export type Databases_v2_agriculture_bioMinAggregateOutputType = {
   libelle_epci: string | null
   VARIABLE: string | null
   LIBELLE_SOUS_CHAMP: string | null
+  surface_2024: number | null
   surface_2023: number | null
   surface_2022: number | null
   surface_2021: number | null
@@ -120,6 +125,7 @@ export type Databases_v2_agriculture_bioMinAggregateOutputType = {
   surface_2010: number | null
   surface_2009: number | null
   surface_2008: number | null
+  nombre_2024: number | null
   nombre_2023: number | null
   nombre_2022: number | null
   nombre_2021: number | null
@@ -144,6 +150,7 @@ export type Databases_v2_agriculture_bioMaxAggregateOutputType = {
   libelle_epci: string | null
   VARIABLE: string | null
   LIBELLE_SOUS_CHAMP: string | null
+  surface_2024: number | null
   surface_2023: number | null
   surface_2022: number | null
   surface_2021: number | null
@@ -160,6 +167,7 @@ export type Databases_v2_agriculture_bioMaxAggregateOutputType = {
   surface_2010: number | null
   surface_2009: number | null
   surface_2008: number | null
+  nombre_2024: number | null
   nombre_2023: number | null
   nombre_2022: number | null
   nombre_2021: number | null
@@ -184,6 +192,7 @@ export type Databases_v2_agriculture_bioCountAggregateOutputType = {
   libelle_epci: number
   VARIABLE: number
   LIBELLE_SOUS_CHAMP: number
+  surface_2024: number
   surface_2023: number
   surface_2022: number
   surface_2021: number
@@ -200,6 +209,7 @@ export type Databases_v2_agriculture_bioCountAggregateOutputType = {
   surface_2010: number
   surface_2009: number
   surface_2008: number
+  nombre_2024: number
   nombre_2023: number
   nombre_2022: number
   nombre_2021: number
@@ -222,6 +232,7 @@ export type Databases_v2_agriculture_bioCountAggregateOutputType = {
 
 export type Databases_v2_agriculture_bioAvgAggregateInputType = {
   index?: true
+  surface_2024?: true
   surface_2023?: true
   surface_2022?: true
   surface_2021?: true
@@ -238,6 +249,7 @@ export type Databases_v2_agriculture_bioAvgAggregateInputType = {
   surface_2010?: true
   surface_2009?: true
   surface_2008?: true
+  nombre_2024?: true
   nombre_2023?: true
   nombre_2022?: true
   nombre_2021?: true
@@ -258,6 +270,7 @@ export type Databases_v2_agriculture_bioAvgAggregateInputType = {
 
 export type Databases_v2_agriculture_bioSumAggregateInputType = {
   index?: true
+  surface_2024?: true
   surface_2023?: true
   surface_2022?: true
   surface_2021?: true
@@ -274,6 +287,7 @@ export type Databases_v2_agriculture_bioSumAggregateInputType = {
   surface_2010?: true
   surface_2009?: true
   surface_2008?: true
+  nombre_2024?: true
   nombre_2023?: true
   nombre_2022?: true
   nombre_2021?: true
@@ -298,6 +312,7 @@ export type Databases_v2_agriculture_bioMinAggregateInputType = {
   libelle_epci?: true
   VARIABLE?: true
   LIBELLE_SOUS_CHAMP?: true
+  surface_2024?: true
   surface_2023?: true
   surface_2022?: true
   surface_2021?: true
@@ -314,6 +329,7 @@ export type Databases_v2_agriculture_bioMinAggregateInputType = {
   surface_2010?: true
   surface_2009?: true
   surface_2008?: true
+  nombre_2024?: true
   nombre_2023?: true
   nombre_2022?: true
   nombre_2021?: true
@@ -338,6 +354,7 @@ export type Databases_v2_agriculture_bioMaxAggregateInputType = {
   libelle_epci?: true
   VARIABLE?: true
   LIBELLE_SOUS_CHAMP?: true
+  surface_2024?: true
   surface_2023?: true
   surface_2022?: true
   surface_2021?: true
@@ -354,6 +371,7 @@ export type Databases_v2_agriculture_bioMaxAggregateInputType = {
   surface_2010?: true
   surface_2009?: true
   surface_2008?: true
+  nombre_2024?: true
   nombre_2023?: true
   nombre_2022?: true
   nombre_2021?: true
@@ -378,6 +396,7 @@ export type Databases_v2_agriculture_bioCountAggregateInputType = {
   libelle_epci?: true
   VARIABLE?: true
   LIBELLE_SOUS_CHAMP?: true
+  surface_2024?: true
   surface_2023?: true
   surface_2022?: true
   surface_2021?: true
@@ -394,6 +413,7 @@ export type Databases_v2_agriculture_bioCountAggregateInputType = {
   surface_2010?: true
   surface_2009?: true
   surface_2008?: true
+  nombre_2024?: true
   nombre_2023?: true
   nombre_2022?: true
   nombre_2021?: true
@@ -505,6 +525,7 @@ export type Databases_v2_agriculture_bioGroupByOutputType = {
   libelle_epci: string
   VARIABLE: string
   LIBELLE_SOUS_CHAMP: string | null
+  surface_2024: number | null
   surface_2023: number | null
   surface_2022: number | null
   surface_2021: number | null
@@ -521,6 +542,7 @@ export type Databases_v2_agriculture_bioGroupByOutputType = {
   surface_2010: number | null
   surface_2009: number | null
   surface_2008: number | null
+  nombre_2024: number | null
   nombre_2023: number | null
   nombre_2022: number | null
   nombre_2021: number | null
@@ -568,6 +590,7 @@ export type databases_v2_agriculture_bioWhereInput = {
   libelle_epci?: Prisma.StringFilter<"databases_v2_agriculture_bio"> | string
   VARIABLE?: Prisma.StringFilter<"databases_v2_agriculture_bio"> | string
   LIBELLE_SOUS_CHAMP?: Prisma.StringNullableFilter<"databases_v2_agriculture_bio"> | string | null
+  surface_2024?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2023?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2022?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2021?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
@@ -584,6 +607,7 @@ export type databases_v2_agriculture_bioWhereInput = {
   surface_2010?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2009?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2008?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
+  nombre_2024?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2023?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2022?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2021?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
@@ -608,6 +632,7 @@ export type databases_v2_agriculture_bioOrderByWithRelationInput = {
   libelle_epci?: Prisma.SortOrder
   VARIABLE?: Prisma.SortOrder
   LIBELLE_SOUS_CHAMP?: Prisma.SortOrderInput | Prisma.SortOrder
+  surface_2024?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2023?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2022?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2021?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -624,6 +649,7 @@ export type databases_v2_agriculture_bioOrderByWithRelationInput = {
   surface_2010?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2009?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2008?: Prisma.SortOrderInput | Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2023?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2022?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2021?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -651,6 +677,7 @@ export type databases_v2_agriculture_bioWhereUniqueInput = Prisma.AtLeast<{
   libelle_epci?: Prisma.StringFilter<"databases_v2_agriculture_bio"> | string
   VARIABLE?: Prisma.StringFilter<"databases_v2_agriculture_bio"> | string
   LIBELLE_SOUS_CHAMP?: Prisma.StringNullableFilter<"databases_v2_agriculture_bio"> | string | null
+  surface_2024?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2023?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2022?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2021?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
@@ -667,6 +694,7 @@ export type databases_v2_agriculture_bioWhereUniqueInput = Prisma.AtLeast<{
   surface_2010?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2009?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2008?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
+  nombre_2024?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2023?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2022?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2021?: Prisma.FloatNullableFilter<"databases_v2_agriculture_bio"> | number | null
@@ -691,6 +719,7 @@ export type databases_v2_agriculture_bioOrderByWithAggregationInput = {
   libelle_epci?: Prisma.SortOrder
   VARIABLE?: Prisma.SortOrder
   LIBELLE_SOUS_CHAMP?: Prisma.SortOrderInput | Prisma.SortOrder
+  surface_2024?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2023?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2022?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2021?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -707,6 +736,7 @@ export type databases_v2_agriculture_bioOrderByWithAggregationInput = {
   surface_2010?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2009?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_2008?: Prisma.SortOrderInput | Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2023?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2022?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_2021?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -739,6 +769,7 @@ export type databases_v2_agriculture_bioScalarWhereWithAggregatesInput = {
   libelle_epci?: Prisma.StringWithAggregatesFilter<"databases_v2_agriculture_bio"> | string
   VARIABLE?: Prisma.StringWithAggregatesFilter<"databases_v2_agriculture_bio"> | string
   LIBELLE_SOUS_CHAMP?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | string | null
+  surface_2024?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2023?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2022?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2021?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
@@ -755,6 +786,7 @@ export type databases_v2_agriculture_bioScalarWhereWithAggregatesInput = {
   surface_2010?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2009?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   surface_2008?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
+  nombre_2024?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2023?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2022?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
   nombre_2021?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_agriculture_bio"> | number | null
@@ -779,6 +811,7 @@ export type databases_v2_agriculture_bioCreateInput = {
   libelle_epci: string
   VARIABLE: string
   LIBELLE_SOUS_CHAMP?: string | null
+  surface_2024?: number | null
   surface_2023?: number | null
   surface_2022?: number | null
   surface_2021?: number | null
@@ -795,6 +828,7 @@ export type databases_v2_agriculture_bioCreateInput = {
   surface_2010?: number | null
   surface_2009?: number | null
   surface_2008?: number | null
+  nombre_2024?: number | null
   nombre_2023?: number | null
   nombre_2022?: number | null
   nombre_2021?: number | null
@@ -819,6 +853,7 @@ export type databases_v2_agriculture_bioUncheckedCreateInput = {
   libelle_epci: string
   VARIABLE: string
   LIBELLE_SOUS_CHAMP?: string | null
+  surface_2024?: number | null
   surface_2023?: number | null
   surface_2022?: number | null
   surface_2021?: number | null
@@ -835,6 +870,7 @@ export type databases_v2_agriculture_bioUncheckedCreateInput = {
   surface_2010?: number | null
   surface_2009?: number | null
   surface_2008?: number | null
+  nombre_2024?: number | null
   nombre_2023?: number | null
   nombre_2022?: number | null
   nombre_2021?: number | null
@@ -859,6 +895,7 @@ export type databases_v2_agriculture_bioUpdateInput = {
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   VARIABLE?: Prisma.StringFieldUpdateOperationsInput | string
   LIBELLE_SOUS_CHAMP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surface_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -875,6 +912,7 @@ export type databases_v2_agriculture_bioUpdateInput = {
   surface_2010?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2008?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nombre_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -899,6 +937,7 @@ export type databases_v2_agriculture_bioUncheckedUpdateInput = {
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   VARIABLE?: Prisma.StringFieldUpdateOperationsInput | string
   LIBELLE_SOUS_CHAMP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surface_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -915,6 +954,7 @@ export type databases_v2_agriculture_bioUncheckedUpdateInput = {
   surface_2010?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2008?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nombre_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -939,6 +979,7 @@ export type databases_v2_agriculture_bioCreateManyInput = {
   libelle_epci: string
   VARIABLE: string
   LIBELLE_SOUS_CHAMP?: string | null
+  surface_2024?: number | null
   surface_2023?: number | null
   surface_2022?: number | null
   surface_2021?: number | null
@@ -955,6 +996,7 @@ export type databases_v2_agriculture_bioCreateManyInput = {
   surface_2010?: number | null
   surface_2009?: number | null
   surface_2008?: number | null
+  nombre_2024?: number | null
   nombre_2023?: number | null
   nombre_2022?: number | null
   nombre_2021?: number | null
@@ -979,6 +1021,7 @@ export type databases_v2_agriculture_bioUpdateManyMutationInput = {
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   VARIABLE?: Prisma.StringFieldUpdateOperationsInput | string
   LIBELLE_SOUS_CHAMP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surface_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -995,6 +1038,7 @@ export type databases_v2_agriculture_bioUpdateManyMutationInput = {
   surface_2010?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2008?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nombre_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1019,6 +1063,7 @@ export type databases_v2_agriculture_bioUncheckedUpdateManyInput = {
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   VARIABLE?: Prisma.StringFieldUpdateOperationsInput | string
   LIBELLE_SOUS_CHAMP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  surface_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1035,6 +1080,7 @@ export type databases_v2_agriculture_bioUncheckedUpdateManyInput = {
   surface_2010?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_2008?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nombre_2024?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2023?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nombre_2021?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1059,6 +1105,7 @@ export type databases_v2_agriculture_bioCountOrderByAggregateInput = {
   libelle_epci?: Prisma.SortOrder
   VARIABLE?: Prisma.SortOrder
   LIBELLE_SOUS_CHAMP?: Prisma.SortOrder
+  surface_2024?: Prisma.SortOrder
   surface_2023?: Prisma.SortOrder
   surface_2022?: Prisma.SortOrder
   surface_2021?: Prisma.SortOrder
@@ -1075,6 +1122,7 @@ export type databases_v2_agriculture_bioCountOrderByAggregateInput = {
   surface_2010?: Prisma.SortOrder
   surface_2009?: Prisma.SortOrder
   surface_2008?: Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrder
   nombre_2023?: Prisma.SortOrder
   nombre_2022?: Prisma.SortOrder
   nombre_2021?: Prisma.SortOrder
@@ -1095,6 +1143,7 @@ export type databases_v2_agriculture_bioCountOrderByAggregateInput = {
 
 export type databases_v2_agriculture_bioAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
+  surface_2024?: Prisma.SortOrder
   surface_2023?: Prisma.SortOrder
   surface_2022?: Prisma.SortOrder
   surface_2021?: Prisma.SortOrder
@@ -1111,6 +1160,7 @@ export type databases_v2_agriculture_bioAvgOrderByAggregateInput = {
   surface_2010?: Prisma.SortOrder
   surface_2009?: Prisma.SortOrder
   surface_2008?: Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrder
   nombre_2023?: Prisma.SortOrder
   nombre_2022?: Prisma.SortOrder
   nombre_2021?: Prisma.SortOrder
@@ -1135,6 +1185,7 @@ export type databases_v2_agriculture_bioMaxOrderByAggregateInput = {
   libelle_epci?: Prisma.SortOrder
   VARIABLE?: Prisma.SortOrder
   LIBELLE_SOUS_CHAMP?: Prisma.SortOrder
+  surface_2024?: Prisma.SortOrder
   surface_2023?: Prisma.SortOrder
   surface_2022?: Prisma.SortOrder
   surface_2021?: Prisma.SortOrder
@@ -1151,6 +1202,7 @@ export type databases_v2_agriculture_bioMaxOrderByAggregateInput = {
   surface_2010?: Prisma.SortOrder
   surface_2009?: Prisma.SortOrder
   surface_2008?: Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrder
   nombre_2023?: Prisma.SortOrder
   nombre_2022?: Prisma.SortOrder
   nombre_2021?: Prisma.SortOrder
@@ -1175,6 +1227,7 @@ export type databases_v2_agriculture_bioMinOrderByAggregateInput = {
   libelle_epci?: Prisma.SortOrder
   VARIABLE?: Prisma.SortOrder
   LIBELLE_SOUS_CHAMP?: Prisma.SortOrder
+  surface_2024?: Prisma.SortOrder
   surface_2023?: Prisma.SortOrder
   surface_2022?: Prisma.SortOrder
   surface_2021?: Prisma.SortOrder
@@ -1191,6 +1244,7 @@ export type databases_v2_agriculture_bioMinOrderByAggregateInput = {
   surface_2010?: Prisma.SortOrder
   surface_2009?: Prisma.SortOrder
   surface_2008?: Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrder
   nombre_2023?: Prisma.SortOrder
   nombre_2022?: Prisma.SortOrder
   nombre_2021?: Prisma.SortOrder
@@ -1211,6 +1265,7 @@ export type databases_v2_agriculture_bioMinOrderByAggregateInput = {
 
 export type databases_v2_agriculture_bioSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
+  surface_2024?: Prisma.SortOrder
   surface_2023?: Prisma.SortOrder
   surface_2022?: Prisma.SortOrder
   surface_2021?: Prisma.SortOrder
@@ -1227,6 +1282,7 @@ export type databases_v2_agriculture_bioSumOrderByAggregateInput = {
   surface_2010?: Prisma.SortOrder
   surface_2009?: Prisma.SortOrder
   surface_2008?: Prisma.SortOrder
+  nombre_2024?: Prisma.SortOrder
   nombre_2023?: Prisma.SortOrder
   nombre_2022?: Prisma.SortOrder
   nombre_2021?: Prisma.SortOrder
@@ -1253,6 +1309,7 @@ export type databases_v2_agriculture_bioSelect<ExtArgs extends runtime.Types.Ext
   libelle_epci?: boolean
   VARIABLE?: boolean
   LIBELLE_SOUS_CHAMP?: boolean
+  surface_2024?: boolean
   surface_2023?: boolean
   surface_2022?: boolean
   surface_2021?: boolean
@@ -1269,6 +1326,7 @@ export type databases_v2_agriculture_bioSelect<ExtArgs extends runtime.Types.Ext
   surface_2010?: boolean
   surface_2009?: boolean
   surface_2008?: boolean
+  nombre_2024?: boolean
   nombre_2023?: boolean
   nombre_2022?: boolean
   nombre_2021?: boolean
@@ -1293,6 +1351,7 @@ export type databases_v2_agriculture_bioSelectCreateManyAndReturn<ExtArgs extend
   libelle_epci?: boolean
   VARIABLE?: boolean
   LIBELLE_SOUS_CHAMP?: boolean
+  surface_2024?: boolean
   surface_2023?: boolean
   surface_2022?: boolean
   surface_2021?: boolean
@@ -1309,6 +1368,7 @@ export type databases_v2_agriculture_bioSelectCreateManyAndReturn<ExtArgs extend
   surface_2010?: boolean
   surface_2009?: boolean
   surface_2008?: boolean
+  nombre_2024?: boolean
   nombre_2023?: boolean
   nombre_2022?: boolean
   nombre_2021?: boolean
@@ -1333,6 +1393,7 @@ export type databases_v2_agriculture_bioSelectUpdateManyAndReturn<ExtArgs extend
   libelle_epci?: boolean
   VARIABLE?: boolean
   LIBELLE_SOUS_CHAMP?: boolean
+  surface_2024?: boolean
   surface_2023?: boolean
   surface_2022?: boolean
   surface_2021?: boolean
@@ -1349,6 +1410,7 @@ export type databases_v2_agriculture_bioSelectUpdateManyAndReturn<ExtArgs extend
   surface_2010?: boolean
   surface_2009?: boolean
   surface_2008?: boolean
+  nombre_2024?: boolean
   nombre_2023?: boolean
   nombre_2022?: boolean
   nombre_2021?: boolean
@@ -1373,6 +1435,7 @@ export type databases_v2_agriculture_bioSelectScalar = {
   libelle_epci?: boolean
   VARIABLE?: boolean
   LIBELLE_SOUS_CHAMP?: boolean
+  surface_2024?: boolean
   surface_2023?: boolean
   surface_2022?: boolean
   surface_2021?: boolean
@@ -1389,6 +1452,7 @@ export type databases_v2_agriculture_bioSelectScalar = {
   surface_2010?: boolean
   surface_2009?: boolean
   surface_2008?: boolean
+  nombre_2024?: boolean
   nombre_2023?: boolean
   nombre_2022?: boolean
   nombre_2021?: boolean
@@ -1407,7 +1471,7 @@ export type databases_v2_agriculture_bioSelectScalar = {
   nombre_2008?: boolean
 }
 
-export type databases_v2_agriculture_bioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "epci" | "libelle_epci" | "VARIABLE" | "LIBELLE_SOUS_CHAMP" | "surface_2023" | "surface_2022" | "surface_2021" | "surface_2020" | "surface_2019" | "surface_2018" | "surface_2017" | "surface_2016" | "surface_2015" | "surface_2014" | "surface_2013" | "surface_2012" | "surface_2011" | "surface_2010" | "surface_2009" | "surface_2008" | "nombre_2023" | "nombre_2022" | "nombre_2021" | "nombre_2020" | "nombre_2019" | "nombre_2018" | "nombre_2017" | "nombre_2016" | "nombre_2015" | "nombre_2014" | "nombre_2013" | "nombre_2012" | "nombre_2011" | "nombre_2010" | "nombre_2009" | "nombre_2008", ExtArgs["result"]["databases_v2_agriculture_bio"]>
+export type databases_v2_agriculture_bioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "epci" | "libelle_epci" | "VARIABLE" | "LIBELLE_SOUS_CHAMP" | "surface_2024" | "surface_2023" | "surface_2022" | "surface_2021" | "surface_2020" | "surface_2019" | "surface_2018" | "surface_2017" | "surface_2016" | "surface_2015" | "surface_2014" | "surface_2013" | "surface_2012" | "surface_2011" | "surface_2010" | "surface_2009" | "surface_2008" | "nombre_2024" | "nombre_2023" | "nombre_2022" | "nombre_2021" | "nombre_2020" | "nombre_2019" | "nombre_2018" | "nombre_2017" | "nombre_2016" | "nombre_2015" | "nombre_2014" | "nombre_2013" | "nombre_2012" | "nombre_2011" | "nombre_2010" | "nombre_2009" | "nombre_2008", ExtArgs["result"]["databases_v2_agriculture_bio"]>
 
 export type $databases_v2_agriculture_bioPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_agriculture_bio"
@@ -1418,6 +1482,7 @@ export type $databases_v2_agriculture_bioPayload<ExtArgs extends runtime.Types.E
     libelle_epci: string
     VARIABLE: string
     LIBELLE_SOUS_CHAMP: string | null
+    surface_2024: number | null
     surface_2023: number | null
     surface_2022: number | null
     surface_2021: number | null
@@ -1434,6 +1499,7 @@ export type $databases_v2_agriculture_bioPayload<ExtArgs extends runtime.Types.E
     surface_2010: number | null
     surface_2009: number | null
     surface_2008: number | null
+    nombre_2024: number | null
     nombre_2023: number | null
     nombre_2022: number | null
     nombre_2021: number | null
@@ -1878,6 +1944,7 @@ export interface databases_v2_agriculture_bioFieldRefs {
   readonly libelle_epci: Prisma.FieldRef<"databases_v2_agriculture_bio", 'String'>
   readonly VARIABLE: Prisma.FieldRef<"databases_v2_agriculture_bio", 'String'>
   readonly LIBELLE_SOUS_CHAMP: Prisma.FieldRef<"databases_v2_agriculture_bio", 'String'>
+  readonly surface_2024: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly surface_2023: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly surface_2022: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly surface_2021: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
@@ -1894,6 +1961,7 @@ export interface databases_v2_agriculture_bioFieldRefs {
   readonly surface_2010: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly surface_2009: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly surface_2008: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
+  readonly nombre_2024: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly nombre_2023: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly nombre_2022: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>
   readonly nombre_2021: Prisma.FieldRef<"databases_v2_agriculture_bio", 'Float'>

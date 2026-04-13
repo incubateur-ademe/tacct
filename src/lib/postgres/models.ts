@@ -323,6 +323,7 @@ export type AgricultureBio = {
   libelle_epci: string;
   VARIABLE: string;
   LIBELLE_SOUS_CHAMP: string | null;
+  surface_2024: number;
   surface_2023: number;
   surface_2022: number;
   surface_2021: number;
@@ -339,6 +340,7 @@ export type AgricultureBio = {
   surface_2010: number;
   surface_2009: number;
   surface_2008: number;
+  nombre_2024: number;
   nombre_2023: number;
   nombre_2022: number;
   nombre_2021: number;
