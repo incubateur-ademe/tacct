@@ -37,7 +37,7 @@ export const BarLineFeuxForet = (props: {
       return acc;
     },
     []
-  );
+  ).toSorted((a, b) => a.annee - b.annee);
 
   const lineGraphData = [
     {
@@ -52,10 +52,9 @@ export const BarLineFeuxForet = (props: {
         })
     }
   ];
-
-  const minValueXTicks = barGraphData.map(e => e.annee).at(0);
-  const maxValueXTicks = barGraphData.map(e => e.annee).at(-1);
-
+  const annees = barGraphData.map(e => e.annee);
+  const minValueXTicks = Math.min(...annees);
+  const maxValueXTicks = Math.max(...annees);
   return (
     <div className={styles.graphContainer}>
       <div className="absolute h-[95%] w-full">
@@ -68,8 +67,7 @@ export const BarLineFeuxForet = (props: {
           axisBottomLegend="Années"
           showLegend={false}
           isBarLine={true}
-          bottomTickValues={barGraphData.filter(e => e.annee === minValueXTicks || e.annee === maxValueXTicks).map(e => e.annee)
-          }
+          bottomTickValues={[minValueXTicks, maxValueXTicks]}
         />
       </div>
       <div className="absolute h-[95%] w-full">
