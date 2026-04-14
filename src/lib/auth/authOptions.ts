@@ -40,6 +40,8 @@ export const AuthOptions: NextAuthOptions = {
         if (!user) {
           return null;
         }
+            // deactivate rule 
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
             const bcrypt = require('bcryptjs');
 
         const passwordMatch = await bcrypt.compare(credentials.password, user.password);

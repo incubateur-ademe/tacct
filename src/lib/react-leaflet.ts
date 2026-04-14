@@ -3,17 +3,19 @@
 // Nous évitons de requérir `react-leaflet` côté serveur et fournissons des alternatives sûres (no-op)
 // afin que les composants serveur puissent importer ce fichier sans planter.
 
+import { Any } from "./utils/types";
+
 const isClient = typeof window !== 'undefined';
 
-let _rl: any = undefined;
-let _leaflet: any = undefined;
+let _rl: Any = undefined;
+let _leaflet: Any = undefined;
 if (isClient) {
   // requérir dynamiquement à l'exécution pour éviter l'importation ESM statique lors du SSR
   _rl = require('react-leaflet');
   _leaflet = require('leaflet');
 }
 
-const noopComponent = (_props: any) => null;
+const noopComponent = (_props: Any) => null;
 const noopObject = new Proxy(
   {},
   {

@@ -124,6 +124,8 @@ const HeaderComp = () => {
                 posthog.capture("click_bouton_mon_compte_header", { date: new Date() });
                 router.push('/mon-compte');
               }}
+              key="mon-compte-header"
+              aria-label="Mon compte"
             >
               <Image
                 src={MonCompteIcone}

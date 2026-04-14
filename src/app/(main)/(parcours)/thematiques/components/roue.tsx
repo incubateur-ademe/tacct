@@ -389,7 +389,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         // Si le label fait plus de 12 caractères, le diviser en lignes
         const charsPerLine = 12;
         const words = d.label.split(' ');
-        let lines: string[] = [];
+        const lines: string[] = [];
         let currentLine = '';
         words.forEach((word: string) => {
           if ((currentLine + ' ' + word).trim().length > charsPerLine) {
@@ -420,8 +420,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         let rectStroke = d.color;
         let textFill = d.textColor;
         let strokeDasharray = "5 0";
-        let paddingX = 16;
-        let paddingY = 8;
+        const paddingX = 16;
+        const paddingY = 8;
         const fontSize = 14;
 
         if (thematique?.disabled) {

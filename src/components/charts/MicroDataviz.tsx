@@ -365,7 +365,7 @@ export const MicroRemplissageTerritoire = (props: {
   ]);
   const geojsonObject = useMemo(() => {
     if (typeof window === 'undefined') return null;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const L = require('leaflet');
     return L.geoJSON(territoireContours as unknown as GeoJsonObject);
   }, [territoireContours]);
@@ -515,7 +515,7 @@ export const MicroChiffreTerritoire = (props: {
 
   const geojsonObject = useMemo(() => {
     if (typeof window === 'undefined') return null;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+     
     const L = require('leaflet');
     return L.geoJSON(territoireContours as unknown as GeoJsonObject);
   }, [territoireContours]);

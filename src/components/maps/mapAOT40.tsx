@@ -97,11 +97,11 @@ export const MapAOT40 = (props: {
 
   const aot40GeoJson = useMemo(() => {
     return {
-      type: "FeatureCollection" as "FeatureCollection",
+      type: "FeatureCollection" as const,
       features: aot40Data.map((aot, index) => ({
-        type: "Feature" as "Feature",
+        type: "Feature" as const,
         geometry: {
-          type: "Point" as "Point",
+          type: "Point" as const,
           coordinates: aot.coordinates
         },
         properties: {

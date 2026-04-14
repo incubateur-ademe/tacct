@@ -72,11 +72,11 @@ export const MapTilesO3 = (props: {
 
   const o3GeoJson = useMemo(() => {
     return {
-      type: 'FeatureCollection' as 'FeatureCollection',
+      type: 'FeatureCollection' as const,
       features: o3Data.map((o3, index) => ({
-        type: 'Feature' as 'Feature',
+        type: 'Feature' as const,
         geometry: {
-          type: 'Point' as 'Point',
+          type: 'Point' as const,
           coordinates: o3.coordinates
         },
         properties: {

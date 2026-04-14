@@ -5,7 +5,7 @@ import styles from './mapsComponents.module.scss';
 export const LegendBlockColor: React.FC<{ color: string; value: string }> = ({
   color,
   value
-}) => {
+}: { color: string; value: string }) => {
   return (
     <div className={styles.legendItem}>
       <div
@@ -20,7 +20,7 @@ export const LegendBlockColor: React.FC<{ color: string; value: string }> = ({
 export const LegendBlockIcons: React.FC<{
   icon: StaticImageData;
   value: string;
-}> = ({ icon, value }) => {
+}> = ({ icon, value }: { icon: StaticImageData; value: string }) => {
   return (
     <div className={styles.legendItem}>
       <div className={styles.legenIcon}>

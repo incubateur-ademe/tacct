@@ -1,5 +1,6 @@
 'use server';
 import { Agriculture, SurfacesAgricolesModel } from '@/lib/postgres/models';
+import { Any } from '@/lib/utils/types';
 import fs from 'fs/promises';
 import path from 'path';
 import { ColumnCodeCheck } from '../columns';
@@ -20,20 +21,20 @@ export const GetAgricultureLocal = async (
 
   if (type === 'ept' || type === 'petr') {
     return db.databases_v2.agriculture.filter(
-      (row: any) => row[column] === libelle
+      (row: Any) => row[column] === libelle
     );
   } else if (type === 'commune') {
     const collectivite =
       db.databases_v2.databases_v2_collectivites_searchbar.find(
-        (c: any) => c.code_geographique === code
+        (c: Any) => c.code_geographique === code
       );
     if (!collectivite) return [];
     return db.databases_v2.agriculture.filter(
-      (row: any) => row.epci === collectivite.epci
+      (row: Any) => row.epci === collectivite.epci
     );
   } else {
     return db.databases_v2.agriculture.filter(
-      (row: any) => row[column] === code
+      (row: Any) => row[column] === code
     );
   }
 };

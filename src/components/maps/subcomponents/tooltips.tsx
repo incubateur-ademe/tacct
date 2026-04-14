@@ -26,7 +26,7 @@ export const AOT40Tooltip = (sitesInCluster: string[]) => {
     </div>`;
 };
 
-export const CatnatTooltip = (restCatnat: Object, communeName: string) => {
+export const CatnatTooltip = (restCatnat: object, communeName: string) => {
   const keys = Object.keys(restCatnat);
   const values = Object.values(restCatnat);
   const sum = Sum(values);

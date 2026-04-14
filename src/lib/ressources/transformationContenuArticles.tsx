@@ -23,7 +23,7 @@ export const renderBlock = async (el: Block, i: number) => {
           <Body><Text text={richText} /></Body>
         </div>
       );
-    case "heading_2":
+    case "heading_2": {
       const heading2Text = normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
       return (
         <div key={i} id={heading2Text} style={{
@@ -34,7 +34,8 @@ export const renderBlock = async (el: Block, i: number) => {
           <H2 style={{ margin: 0 }}>{heading2Text}</H2>
         </div>
       );
-    case "heading_3":
+    }
+    case "heading_3": {
       const heading3Text = normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
       return (
         <div key={i} style={{
@@ -43,7 +44,8 @@ export const renderBlock = async (el: Block, i: number) => {
           <H3 style={{ margin: 0 }}>{heading3Text}</H3>
         </div>
       );
-    case "bulleted_list_item":
+    }
+    case "bulleted_list_item": {
       const bulletChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
       const bulletChildrenContent = bulletChildren.length > 0 ? await groupAndRenderBlocks(bulletChildren) : null;
       return (
@@ -52,7 +54,8 @@ export const renderBlock = async (el: Block, i: number) => {
           {bulletChildrenContent}
         </li>
       );
-    case "numbered_list_item":
+    }
+    case "numbered_list_item": {
       const numberedChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
       const numberedChildrenContent = numberedChildren.length > 0 ? await groupAndRenderBlocks(numberedChildren) : null;
       return (
@@ -61,7 +64,9 @@ export const renderBlock = async (el: Block, i: number) => {
           {numberedChildrenContent}
         </li>
       );
+    }
     case "image":
+      {
       const src = value?.type === "external" ? value?.external?.url : value?.file?.url;
       const caption = value?.caption?.[0]?.plain_text || "";
       if (!src) return null;
@@ -81,7 +86,8 @@ export const renderBlock = async (el: Block, i: number) => {
           {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}
         </figure>
       );
-    case "callout":
+    }
+    case "callout": {
       const calloutChildren = el.has_children ? await getBlocks(el.id) as Block[] : [];
       const childrenContent = await groupAndRenderBlocks(calloutChildren);
       const colorClass = value?.color?.includes('gray') ? 'bg-gray-100 border-gray-300' : 'bg-blue-50 border-blue-300';
@@ -97,7 +103,8 @@ export const renderBlock = async (el: Block, i: number) => {
           </div>
         </div>
       );
-    case "column_list":
+    }
+    case "column_list": {
       const columns = el.has_children ? await getBlocks(el.id) as Block[] : [];
       const columnsContent = await Promise.all(columns.map(async (column) => {
         if (column.type === 'column' && column.has_children) {
@@ -114,15 +121,18 @@ export const renderBlock = async (el: Block, i: number) => {
           ))}
         </div>
       );
-    case "column":
+    }
+    case "column": {
       return null;
-    case "quote":
+    }
+    case "quote": {
       return (
         <div key={i} style={{ borderLeft: '4px solid black', paddingLeft: '1.5rem', margin: '2rem 0', fontStyle: 'italic' }}>
           <Text text={richText} />
         </div>
       );
-    case "table":
+    }
+    case "table": {
       const tableRows = el.has_children ? await getBlocks(el.id) as Block[] : [];
       return (
         <div key={i} style={{ margin: '2rem 0', overflowX: 'auto' }}>
@@ -149,8 +159,10 @@ export const renderBlock = async (el: Block, i: number) => {
           </table>
         </div>
       );
-    case "table_row":
+    }
+    case "table_row": {
       return null;
+    }
     default:
       if (process.env.NODE_ENV === 'development') {
         console.warn(`Type de bloc non pris en compte: ${el.type}`, el);

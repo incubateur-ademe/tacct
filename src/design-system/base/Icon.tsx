@@ -6,6 +6,28 @@ import { type TextColorStyle } from "../utils/color-styles";
 import { IconStyleJsx } from "./client/IconStyleJsx";
 import styles from "./Icon.module.scss";
 
+export interface IconPropsWithText {
+  /**
+   * @default left
+   */
+  align?: "center" | "left" | "right" | "space-around" | "space-between" | "space-evenly";
+  /**
+   * @default left
+   */
+  iconPosition?: "left" | "right";
+  text: string;
+  textColor?: TextColorStyle;
+  valign?: "bottom" | "top";
+}
+
+export interface IconPropsWithoutText {
+  align?: never;
+  iconPosition?: never;
+  text?: never;
+  textColor?: never;
+  valign?: never;
+}
+
 export type IconProps = {
   className?: CxArg;
   color?: TextColorStyle;
@@ -16,31 +38,7 @@ export type IconProps = {
    */
   size?: "lg" | "sm" | "xs";
   title?: string;
-} & (IconProps.WithoutText | IconProps.WithText);
-
-export namespace IconProps {
-  export interface WithText {
-    /**
-     * @default left
-     */
-    align?: "center" | "left" | "right" | "space-around" | "space-between" | "space-evenly";
-    /**
-     * @default left
-     */
-    iconPosition?: "left" | "right";
-    text: string;
-    textColor?: TextColorStyle;
-    valign?: "bottom" | "top";
-  }
-
-  export interface WithoutText {
-    align?: never;
-    iconPosition?: never;
-    text?: never;
-    textColor?: never;
-    valign?: never;
-  }
-}
+} & (IconPropsWithoutText | IconPropsWithText);
 
 /**
  * Icon component, based on DSFR's Icon css component.

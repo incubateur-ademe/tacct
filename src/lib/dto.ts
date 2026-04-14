@@ -223,6 +223,6 @@ export type RGADto = {
 
 export type DebroussaillementDto = {
   geometry: GeoGeometryObjects;
-  properties: {};
+  properties: Record<string, never>;
   type: string;
 };

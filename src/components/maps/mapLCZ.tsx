@@ -245,6 +245,7 @@ export const MapLCZ = ({
               war: 'Taux de surface en eau (%)',
             };
             // const identifier = props.identifier || '';
+            // eslint-disable-next-line react/prop-types
             const lcz = props.lcz || '';
             let content = `
               <h4 style='font-size:16px; margin:0 0 0.5rem;'>

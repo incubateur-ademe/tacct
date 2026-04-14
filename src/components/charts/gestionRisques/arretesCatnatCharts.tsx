@@ -16,7 +16,21 @@ type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
 };
 type Props = {
-  catnatData: { code: string; name: string; catnat: any }[];
+  catnatData: {
+    code: string;
+    name: string;
+    catnat: {
+      sumCatnat: number;
+      indexName: string;
+      Inondations?: number | undefined;
+      'Gr\u00EAle / neige'?: number | undefined;
+      Sécheresse?: number | undefined;
+      'Cyclones / Temp\u00EAtes'?: number | undefined;
+      'Retrait-gonflement des argiles'?: number | undefined;
+      'Mouvements de terrain'?: number | undefined;
+      Avalanche?: number | undefined;
+    };
+  }[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   datavizTab: string;
   setDatavizTab: (value: string) => void;
