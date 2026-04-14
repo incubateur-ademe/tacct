@@ -8,6 +8,7 @@ import { BlocCollections, BlocCollectionsResponsive } from "../blocs/blocCollect
 import styles from "../ressources.module.scss";
 import { CollectionComponent } from "./collectionComponent";
 import { CollectionsData } from "./collectionsData";
+import { ModaleToutesCollections } from "../blocs/ModaleToutesCollections";
 
 export async function generateMetadata({ params }: { params: Promise<{ collectionId: string }> }): Promise<Metadata> {
   const { collectionId } = await params;
@@ -72,6 +73,7 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
       <div className={styles.mobileOnly}>
         <BlocCollectionsResponsive collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
+      <ModaleToutesCollections collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
     </>
   )
 };
