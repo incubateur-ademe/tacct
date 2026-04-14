@@ -12,13 +12,28 @@ import { TagsIcone } from "@/design-system/base/Tags";
 import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
-import { FaqItem } from "@/lib/queries/notion/notion";
+import { FaqItem, type NotionRichText } from "@/lib/queries/notion/notion";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import styles from "../ressources.module.scss";
 import { CollectionsData } from './collectionsData';
+
+const RichText = ({ richText }: { richText: NotionRichText[] }) => (
+  <span style={{ whiteSpace: 'pre-line' }}>
+    {richText.map((segment, i) => {
+      let node: React.ReactNode = segment.plain_text;
+      if (segment.annotations.bold) node = <strong key={i}>{node}</strong>;
+      if (segment.annotations.italic) node = <em key={i}>{node}</em>;
+      if (segment.annotations.strikethrough) node = <s key={i}>{node}</s>;
+      if (segment.annotations.underline) node = <u key={i}>{node}</u>;
+      if (segment.annotations.code) node = <code key={i}>{node}</code>;
+      if (segment.href) node = <a key={i} href={segment.href} target="_blank" rel="noopener noreferrer">{node}</a>;
+      return <span key={i}>{node}</span>;
+    })}
+  </span>
+);
 
 type CollectionComponentProps = {
   collectionId: string;
@@ -191,7 +206,7 @@ export const CollectionComponent = ({ collectionId, faqItems }: CollectionCompon
                         isOpen={openFaqId === item.id}
                         onToggle={() => setOpenFaqId(openFaqId === item.id ? null : item.id)}
                       >
-                        {item.reponse}
+                        <RichText richText={item.reponse} />
                       </CustomAccordion>
                     ))}
                   </ul>
