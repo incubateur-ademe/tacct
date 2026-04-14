@@ -1,5 +1,6 @@
 import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
 import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
+import ImageTuileMethodo from '@/assets/images/imageTuileMethodo.png';
 import ImageTuileQuiz from '@/assets/images/imageTuileQuiz.png';
 import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
@@ -841,7 +842,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Support méthodo", "Me former"],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 3600,
-    image: ImageTuileRex,
+    image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 170,
     ordreCollection: 7
@@ -856,7 +857,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Support méthodo", "Me former"],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 3600,
-    image: ImageTuileRex,
+    image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 110,
     ordreCollection: 5
@@ -871,7 +872,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ["Support méthodo", "Me former"],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 3600,
-    image: ImageTuileRex,
+    image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
     ordreCollection: 6

@@ -5,6 +5,7 @@ import formationIcon from "@/assets/icons/formation_icon_orange.svg";
 import inspirerIcon from "@/assets/icons/inspirer_icon_green.svg";
 import quizIcon from "@/assets/icons/quiz_icon_yellow.svg";
 import REXIcon from "@/assets/icons/retour_exp_icon_red.svg";
+import SupportIcon from "@/assets/icons/support_icon_blue.svg";
 import videoIcon from "@/assets/icons/video_icon_purple.svg";
 import Image from "next/image";
 import { Body } from "./Textes";
@@ -84,7 +85,7 @@ export const TagsIcone = ({
                 : filtre === "Vidéo"
                   ? "#F2E4FF"
                   : filtre === "Support méthodo"
-                    ? "#ff0000"
+                    ? "#D8EFFA"
                     : "#E3FAF9",
         borderRadius: '16px',
         padding: taille === 'small' ? '4px 8px' : '8px 16px',
@@ -101,7 +102,7 @@ export const TagsIcone = ({
                 : filtre === "Vidéo"
                   ? "#6E3F99"
                   : filtre === "Support méthodo"
-                    ? "#ffffff"
+                    ? "#055FA5"
                     : "var(--boutons-primaire-3)",
         gap: '4px',
       }}
@@ -122,7 +123,7 @@ export const TagsIcone = ({
                     : filtre === "Agir"
                       ? agirIcon
                       : filtre === "Support méthodo"
-                        ? meFormerIcon
+                        ? SupportIcon
                         : meFormerIcon
       } alt="" />}
       <Body
