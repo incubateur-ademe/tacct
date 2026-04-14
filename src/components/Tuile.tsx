@@ -39,12 +39,21 @@ export const TuileVerticale = ({
     });
 
     const hasRetourExperience = tagTexts.includes("Retour d'expérience");
+    const hasMethodo = tagTexts.includes("Support méthodo");
     // const hasArticle = tagTexts.includes("Article");
 
     if (hasRetourExperience) {
       return tags.map(tag => {
         if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Retour d'expérience") {
           return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "REX" });
+        }
+        return tag;
+      });
+    }
+    if (hasMethodo) {
+      return tags.map(tag => {
+        if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Support méthodo") {
+          return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "Méthodo" });
         }
         return tag;
       });
@@ -204,7 +213,8 @@ export const TuileHorizontaleCollection = ({
                   width={16}
                   height={16}
                   style={{ filter: 'brightness(0) invert(1)' }}
-                />                <span>
+                />
+                <span>
                   {nombreArticles}
                 </span>
               </div>
@@ -226,18 +236,18 @@ export const TuileHorizontaleCollection = ({
           </div>
         </div>
       </div>
-      <div 
+      <div
         className={styles.imageContainer}
         style={windowDimensions.width && windowDimensions.width <= 768 ? { maxWidth: 100 } : undefined}
       >
         <Image
-        src={image}
-        alt={titre}
-        fill
-        style={{ 
-          objectFit: windowDimensions.width && windowDimensions.width <= 768 ? 'contain' : 'cover', 
-          objectPosition: windowDimensions.width && windowDimensions.width <= 768 ? 'center' : 'top', 
-        }}
+          src={image}
+          alt={titre}
+          fill
+          style={{
+            objectFit: windowDimensions.width && windowDimensions.width <= 768 ? 'contain' : 'cover',
+            objectPosition: windowDimensions.width && windowDimensions.width <= 768 ? 'center' : 'top',
+          }}
         />
       </div>
     </div>

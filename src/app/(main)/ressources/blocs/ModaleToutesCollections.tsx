@@ -1,7 +1,6 @@
 "use client";
 
 import { TuileHorizontaleCollection } from "@/components/Tuile";
-import useWindowDimensions from "@/hooks/windowDimensions";
 import { createModal } from "@codegouvfr/react-dsfr/Modal";
 import { StaticImageData } from "next/image";
 import { useStyles } from 'tss-react/dsfr';
@@ -23,7 +22,6 @@ export const ModaleToutesCollections = ({
   }[]
 }) => {
   const { css } = useStyles();
-  const windowDimensions = useWindowDimensions();
   
   return (
     <modaleToutesCollections.Component

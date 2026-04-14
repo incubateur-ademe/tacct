@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { sharedMetadata } from "../../shared-metadata";
 import { BlocCollections, BlocCollectionsResponsive } from "../blocs/blocCollections";
+import { ModaleToutesCollections } from "../blocs/ModaleToutesCollections";
 import styles from "../ressources.module.scss";
 import { CollectionComponent } from "./collectionComponent";
 import { CollectionsData } from "./collectionsData";
@@ -76,6 +77,7 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
       <div className={styles.mobileOnly}>
         <BlocCollectionsResponsive collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
+      <ModaleToutesCollections collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
     </>
   )
 };
