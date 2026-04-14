@@ -40,7 +40,7 @@ const SurfacesEnBioCharts = ({
         ? multipleEpciByPnrLibelle.find((pnr) => pnr.libelle_pnr === libelle)
           ?.liste_epci_multi_pnr
         : undefined;
-  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2023]);
+  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2024]);
   return (
     <>
       {agricultureBio.length !== 0 ? (

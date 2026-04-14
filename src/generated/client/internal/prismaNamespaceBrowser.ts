@@ -60,7 +60,6 @@ export const ModelName = {
   databases_v2_confort_thermique: 'databases_v2_confort_thermique',
   databases_v2_consommation_espaces_naf: 'databases_v2_consommation_espaces_naf',
   databases_v2_export_cours_d_eau: 'databases_v2_export_cours_d_eau',
-  databases_v2_feux_foret: 'databases_v2_feux_foret',
   databases_v2_lcz_couverture: 'databases_v2_lcz_couverture',
   databases_v2_patch4c: 'databases_v2_patch4c',
   databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
@@ -74,11 +73,11 @@ export const ModelName = {
   postgis_v2_etat_cours_d_eau: 'postgis_v2_etat_cours_d_eau',
   spatial_ref_sys: 'spatial_ref_sys',
   prelevements_eau_new: 'prelevements_eau_new',
-  qualite_sites_baignade_new: 'qualite_sites_baignade_new',
   o3_seuils: 'o3_seuils',
   secheresses: 'secheresses',
   inondations_par_debordement: 'inondations_par_debordement',
-  arbovirose: 'arbovirose'
+  arbovirose: 'arbovirose',
+  feux_foret: 'feux_foret'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -123,6 +122,7 @@ export const Databases_v2_agriculture_bioScalarFieldEnum = {
   libelle_epci: 'libelle_epci',
   VARIABLE: 'VARIABLE',
   LIBELLE_SOUS_CHAMP: 'LIBELLE_SOUS_CHAMP',
+  surface_2024: 'surface_2024',
   surface_2023: 'surface_2023',
   surface_2022: 'surface_2022',
   surface_2021: 'surface_2021',
@@ -139,6 +139,7 @@ export const Databases_v2_agriculture_bioScalarFieldEnum = {
   surface_2010: 'surface_2010',
   surface_2009: 'surface_2009',
   surface_2008: 'surface_2008',
+  nombre_2024: 'nombre_2024',
   nombre_2023: 'nombre_2023',
   nombre_2022: 'nombre_2022',
   nombre_2021: 'nombre_2021',
@@ -444,36 +445,6 @@ export const Databases_v2_export_cours_d_eauScalarFieldEnum = {
 } as const
 
 export type Databases_v2_export_cours_d_eauScalarFieldEnum = (typeof Databases_v2_export_cours_d_eauScalarFieldEnum)[keyof typeof Databases_v2_export_cours_d_eauScalarFieldEnum]
-
-
-export const Databases_v2_feux_foretScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  annee: 'annee',
-  nature: 'nature',
-  surface_parcourue: 'surface_parcourue',
-  surface_foret: 'surface_foret',
-  surface_maquis_garrigues: 'surface_maquis_garrigues',
-  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
-  surfaces_agricoles: 'surfaces_agricoles',
-  surfaces_non_boisees: 'surfaces_non_boisees',
-  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
-  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
-  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
-  autres_surfaces: 'autres_surfaces'
-} as const
-
-export type Databases_v2_feux_foretScalarFieldEnum = (typeof Databases_v2_feux_foretScalarFieldEnum)[keyof typeof Databases_v2_feux_foretScalarFieldEnum]
 
 
 export const Databases_v2_lcz_couvertureScalarFieldEnum = {
@@ -886,30 +857,6 @@ export const Prelevements_eau_newScalarFieldEnum = {
 export type Prelevements_eau_newScalarFieldEnum = (typeof Prelevements_eau_newScalarFieldEnum)[keyof typeof Prelevements_eau_newScalarFieldEnum]
 
 
-export const Qualite_sites_baignade_newScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  nom_site: 'nom_site',
-  latitude: 'latitude',
-  longitude: 'longitude',
-  type_eau_norm: 'type_eau_norm',
-  statut_donnees: 'statut_donnees',
-  qualite: 'qualite'
-} as const
-
-export type Qualite_sites_baignade_newScalarFieldEnum = (typeof Qualite_sites_baignade_newScalarFieldEnum)[keyof typeof Qualite_sites_baignade_newScalarFieldEnum]
-
-
 export const O3_seuilsScalarFieldEnum = {
   index: 'index',
   nom_site: 'nom_site',
@@ -960,6 +907,36 @@ export const ArboviroseScalarFieldEnum = {
 } as const
 
 export type ArboviroseScalarFieldEnum = (typeof ArboviroseScalarFieldEnum)[keyof typeof ArboviroseScalarFieldEnum]
+
+
+export const Feux_foretScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  nature: 'nature',
+  annee: 'annee',
+  surface_parcourue: 'surface_parcourue',
+  surface_foret: 'surface_foret',
+  surface_maquis_garrigues: 'surface_maquis_garrigues',
+  autres_surfaces_naturelles_hors_foret: 'autres_surfaces_naturelles_hors_foret',
+  surfaces_agricoles: 'surfaces_agricoles',
+  surfaces_non_boisees: 'surfaces_non_boisees',
+  surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
+  surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
+  surface_autres_terres_boisees: 'surface_autres_terres_boisees',
+  autres_surfaces: 'autres_surfaces'
+} as const
+
+export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
 
 
 export const SortOrder = {

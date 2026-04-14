@@ -85,11 +85,6 @@ export type databases_v2_consommation_espaces_naf = Prisma.databases_v2_consomma
  */
 export type databases_v2_export_cours_d_eau = Prisma.databases_v2_export_cours_d_eauModel
 /**
- * Model databases_v2_feux_foret
- * 
- */
-export type databases_v2_feux_foret = Prisma.databases_v2_feux_foretModel
-/**
  * Model databases_v2_lcz_couverture
  * 
  */
@@ -155,11 +150,6 @@ export type spatial_ref_sys = Prisma.spatial_ref_sysModel
  */
 export type prelevements_eau_new = Prisma.prelevements_eau_newModel
 /**
- * Model qualite_sites_baignade_new
- * 
- */
-export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel
-/**
  * Model o3_seuils
  * 
  */
@@ -179,3 +169,8 @@ export type inondations_par_debordement = Prisma.inondations_par_debordementMode
  * 
  */
 export type arbovirose = Prisma.arboviroseModel
+/**
+ * Model feux_foret
+ * 
+ */
+export type feux_foret = Prisma.feux_foretModel
