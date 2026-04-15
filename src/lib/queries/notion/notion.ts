@@ -10,10 +10,23 @@ const pageId = process.env.NOTION_ID;
 const databaseId = process.env.NOTION_DATABASE_ID;
 const faqDatabaseId = process.env.NOTION_DATABASE_FAQ;
 
+export interface NotionRichText {
+  plain_text: string;
+  annotations: {
+    bold: boolean;
+    italic: boolean;
+    strikethrough: boolean;
+    underline: boolean;
+    code: boolean;
+    color: string;
+  };
+  href: string | null;
+}
+
 export interface FaqItem {
   id: string;
   question: string;
-  reponse: string;
+  reponse: NotionRichText[];
   categorie: string;
   collections: string[];
   dateDePublication: string | null;
@@ -24,7 +37,7 @@ interface NotionFaqPage {
   id: string;
   properties: {
     Question: { title: Array<{ plain_text: string }> };
-    Réponse: { rich_text: Array<{ plain_text: string }> };
+    Réponse: { rich_text: NotionRichText[] };
     Catégorie: { multi_select: Array<{ name: string }> };
     Collections: { multi_select: Array<{ name: string }> };
     'Date de publication': { date: { start: string } | null };
@@ -196,8 +209,7 @@ export const getFaqItems = async (): Promise<FaqItem[]> => {
       items.push({
         id: page.id,
         question: props['Question']?.title?.[0]?.plain_text ?? '',
-        reponse:
-          props['Réponse']?.rich_text?.map((t) => t.plain_text).join('') ?? '',
+        reponse: props['Réponse']?.rich_text ?? [],
         categorie: props['Catégorie']?.multi_select?.[0]?.name ?? '',
         collections:
           props['Collections']?.multi_select?.map((s) => s.name) ?? [],

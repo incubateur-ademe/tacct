@@ -132,7 +132,6 @@ export const BlocToutesRessources = () => {
       return updatedFilters;
     });
   };
-
   return (
     <div className={styles.toutesRessourcesContainer}>
       <NewContainer size="xl" style={{ padding: "40px 0" }}>
@@ -178,6 +177,7 @@ export const BlocToutesRessources = () => {
                 const lien = isExternalLink
                   ? el.lien
                   : `/ressources/${collectionSlug}/${el.slug}`;
+
                 return (
                   <TuileVerticale
                     key={i}
@@ -187,7 +187,7 @@ export const BlocToutesRessources = () => {
                       <TagsIcone
                         key={index}
                         texte={filtre}
-                        filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
+                        filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir" | "Quiz" | "Formation" | "Support méthodo" | "Vidéo"}
                         taille="small"
                       />
                     ))}

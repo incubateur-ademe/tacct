@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import DisconnectButton from '../stats/DisconnectButton';
 
-type SegmentParams<T extends Object = any> = T extends Record<string, any>
+type SegmentParams<T extends object = any> = T extends Record<string, any>
   ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }
   : T
 

@@ -9,7 +9,7 @@ import styles from '../stats.module.scss';
 const UniqueUsers = async () => {
   // const uniqueUsers = await GetInsightById(620831);
   // const data = Array.isArray(uniqueUsers) ? uniqueUsers : undefined;
-  let data = await GetUniqueUsersHogQL();
+  const data = await GetUniqueUsersHogQL();
   return (
     <div className='my-12'>
       {data ? (

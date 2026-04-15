@@ -52,7 +52,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener external noreferrer"
                   title="Agir pour la transition - nouvelle fenêtre"
                   href="https://agirpourlatransition.ademe.fr"
                 >
@@ -63,7 +63,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener external noreferrer"
                   title="Data Gouv - nouvelle fenêtre"
                   href="https://data.gouv.fr"
                 >
@@ -74,7 +74,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener external noreferrer"
                   title="ADEME - nouvelle fenêtre"
                   href="https://www.ademe.fr"
                 >
@@ -85,7 +85,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener external noreferrer"
                   title="Beta Gouv - nouvelle fenêtre"
                   href="https://beta.gouv.fr"
                 >
@@ -98,7 +98,7 @@ export default function AppFooter() {
         <div className="fr-footer__bottom">
           <ul className="fr-footer__bottom-list">
             <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="https://tally.so/r/mJGELz" rel="noopener external" target="_blank">
+              <a className="fr-footer__bottom-link" href="https://tally.so/r/mJGELz" rel="noopener external noreferrer" target="_blank">
                 Contactez-nous
               </a>
             </li>
@@ -154,7 +154,7 @@ export default function AppFooter() {
               proposés sous{" "}
               <a
                 href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
-                rel="noopener external"
+                rel="noopener external noreferrer"
                 title="Voir la licence Etalab 2.0 - nouvelle fenêtre"
                 target="_blank"
               >

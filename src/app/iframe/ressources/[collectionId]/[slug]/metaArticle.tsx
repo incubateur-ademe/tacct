@@ -46,7 +46,7 @@ export const MetaArticleResponsive = ({
               <TagsIcone
                 key={index}
                 texte={filtre}
-                filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
+                filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir" | "Quiz" | "Formation" | "Support méthodo" | "Vidéo"}
                 taille="small"
               />
             ))}

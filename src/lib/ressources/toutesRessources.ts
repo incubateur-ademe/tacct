@@ -1,5 +1,6 @@
 import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
 import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
+import ImageTuileMethodo from '@/assets/images/imageTuileMethodo.png';
 import ImageTuileQuiz from '@/assets/images/imageTuileQuiz.png';
 import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
@@ -12,7 +13,7 @@ export const FiltresOptions = [
   },
   {
     titre: 'Format de ressource',
-    options: ['Article', "Retour d'expérience", 'Formation', 'Quiz']
+    options: ['Article', "Retour d'expérience", 'Formation', 'Quiz', 'Support méthodo']
   },
   {
     titre: 'Territoire',
@@ -118,7 +119,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
-    ordreCollection: 8
+    ordreCollection: 9
   },
   {
     id: 4,
@@ -134,7 +135,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
-    ordreCollection: 7
+    ordreCollection: 8
   },
   {
     id: 5,
@@ -171,7 +172,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 80,
-    ordreCollection: 9
+    ordreCollection: 11
   },
   {
     id: 7,
@@ -378,7 +379,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
-    ordreCollection: 7
+    ordreCollection: 9
   },
   {
     id: 18,
@@ -393,7 +394,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 6
+    ordreCollection: 8
   },
   {
     id: 19,
@@ -409,7 +410,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
-    ordreCollection: 5
+    ordreCollection: 7
   },
   {
     id: 20,
@@ -830,5 +831,50 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2026-03-03',
     ordre: 170,
     ordreCollection: 4
+  },
+  {
+    id: 43,
+    type: "Support méthodo",
+    titre: "Diagnostiquer l'impact du changement climatique sur un territoire",
+    description:
+      "Ce guide méthodologique vous présente la démarche TACCT et vous aidera à réaliser sa première marche : le diagnostic de vulnérabilité.",
+    lien: 'https://librairie.ademe.fr/changement-climatique/920-diagnostiquer-l-impact-du-changement-climatique-sur-un-territoire-9791029712982.html',
+    filtres: ["Support méthodo", "Me former"],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 3600,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 170,
+    ordreCollection: 7
+  },
+  {
+    id: 44,
+    type: "Support méthodo",
+    titre: "Construire des trajectoires d'adaptation au changement climatique du territoire",
+    description:
+      "Ce guide présente le cheminement méthodologique pour intégrer les seuils d'impacts, les trajectoires d'adaptation et organiser une planification à long terme des actions d'adaptation.",
+    lien: 'https://librairie.ademe.fr/changement-climatique/1165-construire-des-trajectoires-d-adaptation-au-changement-climatique-du-territoire-9791029713750.html',
+    filtres: ["Support méthodo", "Me former"],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 3600,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 110,
+    ordreCollection: 5
+  },
+  {
+    id: 45,
+    type: "Support méthodo",
+    titre: "Evaluer les politiques d'adaptation au changement climatique",
+    description:
+      "Ce guide est la dernière brique de la méthodologie TACCT. Il propose une approche du suivi-évaluation des politiques d'adaptation au changement climatique.",
+    lien: 'https://librairie.ademe.fr/changement-climatique/756-evaluer-les-politiques-d-adaptation-au-changement-climatique-9791029713767.html',
+    filtres: ["Support méthodo", "Me former"],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 3600,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 120,
+    ordreCollection: 6
   }
 ];

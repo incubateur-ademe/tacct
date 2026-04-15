@@ -391,7 +391,7 @@ export type CarteCommunes = {
   code_pnr: string;
   libelle_pnr: string;
   precarite_logement?: number;
-  catnat?: Object;
+  catnat?: object;
   naf?: number | null;
   surface: number;
   surfacesIrriguees?: number;
@@ -413,7 +413,7 @@ export type CarteCommunesView = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   precarite_logement?: number | null;
-  catnat?: Object | null;
+  catnat?: object | null;
   naf?: number | null;
   surface: number | null;
   surfacesIrriguees?: number | null;

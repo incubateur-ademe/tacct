@@ -99,7 +99,7 @@ export const VegetalisationText = () => (
       La présence d’arbres peut rafraîchir l’air de 2 à 3 °C au maximum,
       notamment dans les rues ou lorsqu’ils sont alignés en bordure de route
       (source :{' '}
-      <a href="https://plusfraichemaville.fr/" target="_blank">
+      <a href="https://plusfraichemaville.fr/" target="_blank" rel="noreferrer">
         Plus fraiche ma ville
       </a>
       )

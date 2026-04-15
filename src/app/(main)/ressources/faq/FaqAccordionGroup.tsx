@@ -2,11 +2,26 @@
 
 import { CustomAccordion } from '@/design-system/base/Accordion';
 import { H2 } from '@/design-system/base/Textes';
-import { type FaqItem } from '@/lib/queries/notion/notion';
+import { type FaqItem, type NotionRichText } from '@/lib/queries/notion/notion';
 import { normalizeText } from '@/lib/utils/reusableFunctions/NormalizeTexts';
 import { useState } from 'react';
 
 type GroupedFaq = Record<string, FaqItem[]>;
+
+const RichText = ({ richText }: { richText: NotionRichText[] }) => (
+  <span style={{ whiteSpace: 'pre-line' }}>
+    {richText.map((segment, i) => {
+      let node: React.ReactNode = segment.plain_text;
+      if (segment.annotations.bold) node = <strong key={i}>{node}</strong>;
+      if (segment.annotations.italic) node = <em key={i}>{node}</em>;
+      if (segment.annotations.strikethrough) node = <s key={i}>{node}</s>;
+      if (segment.annotations.underline) node = <u key={i}>{node}</u>;
+      if (segment.annotations.code) node = <code key={i}>{node}</code>;
+      if (segment.href) node = <a key={i} href={segment.href} target="_blank" rel="noopener noreferrer">{node}</a>;
+      return <span key={i}>{node}</span>;
+    })}
+  </span>
+);
 
 export const FaqAllGroups = ({ grouped }: { grouped: GroupedFaq }) => {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -38,7 +53,7 @@ export const FaqAllGroups = ({ grouped }: { grouped: GroupedFaq }) => {
                   isOpen={openId === item.id}
                   onToggle={() => setOpenId(openId === item.id ? null : item.id)}
                 >
-                  {item.reponse}
+                  <RichText richText={item.reponse} />
                 </CustomAccordion>
               ))}
             </ul>

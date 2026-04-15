@@ -1,0 +1,8 @@
+fileignoreconfig:
+  - filename: etl/runPopulation.mjs
+    checksum: c2063c9975fbba1ce1aabd0282c7c06a32238437b13b4f8fbab580a8cce9716e
+  - filename: C:\BetaGouv\Code\facili-tacct\src\app\(main)\(parcours)\donnees\indicateurs\graphData.ts
+    checksum: 9776f789617a052b1d06f40c17dfe0e2f9d2698e8fbaa488672a28cdac27b735
+  - filename: C:\BetaGouv\Code\facili-tacct\src\app\(main)\(parcours)\thematiques\components\roue.tsx
+    checksum: d5e6081fa2360bb9f7b8330693d0527b341a04860dfd3a9f3868932454e6830c
+version: ""

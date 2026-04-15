@@ -10,6 +10,6 @@ interface Props {
   }>;
 }
 
-export const RadioButton: React.FC<Props> = ({ legend, options }) => {
+export const RadioButton: React.FC<Props> = ({ legend, options }: Props) => {
   return <RadioButtons legend={legend} name="radio" options={options} />;
 };

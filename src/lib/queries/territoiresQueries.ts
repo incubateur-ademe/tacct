@@ -151,6 +151,10 @@ export const EPCI = async (variableCollectivite: string) => {
 };
 
 export const Commune = async (variableCollectivite: string) => {
+  const exactPattern = variableCollectivite;
+  const startPattern = variableCollectivite + '%';
+  const startPatternDash = variableCollectivite.replace(/ /g, '-') + '%';
+  const startPatternComma = variableCollectivite.replace(/ /g, ', ') + '%';
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -168,11 +172,15 @@ export const Commune = async (variableCollectivite: string) => {
     code_pnr
     FROM databases_v2."collectivites_searchbar" WHERE (code_geographique IS NOT NULL) AND 
       (
-        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${variableCollectivite + '%'})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite + '%'}, ' ', '-')) 
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', replace(${variableCollectivite + '%'}, ' ', ', '))
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${variableCollectivite + '%'})
+        unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPattern})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPatternDash})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPatternComma})
+        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${startPattern})
       )
+      ORDER BY
+        CASE WHEN unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${exactPattern}) THEN 0 ELSE 1 END,
+        search_libelle ASC,
+        search_code ASC
       LIMIT 20;
     `;
   return value;

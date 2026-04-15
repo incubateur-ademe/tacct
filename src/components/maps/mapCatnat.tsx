@@ -11,6 +11,18 @@ import { GraphDataNotFound } from '../graph-data-not-found';
 import { colorsCatnat } from './legends/legendCatnat';
 import { CatnatTooltip } from './subcomponents/tooltips';
 
+interface CatNatData {
+        sumCatnat: number;
+        indexName: string;
+        Inondations?: number | undefined;
+        'Gr\u00EAle / neige'?: number | undefined;
+        Sécheresse?: number | undefined;
+        'Cyclones / Temp\u00EAtes'?: number | undefined;
+        'Retrait-gonflement des argiles'?: number | undefined;
+        'Mouvements de terrain'?: number | undefined;
+        Avalanche?: number | undefined;
+    };
+
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colorsCatnat[typeCatnat];
   return max > 5
@@ -47,7 +59,11 @@ const getColor = (d: number, max: number, typeCatnat: string) => {
 };
 
 export const MapCatnat = (props: {
-  catnatData: { code: string; name: string; catnat: any }[];
+  catnatData: {
+    code: string;
+    name: string;
+    catnat: CatNatData;
+  }[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   typeRisqueValue: CatnatTypes;
 }) => {
@@ -61,7 +77,7 @@ export const MapCatnat = (props: {
   const hoveredFeatureRef = useRef<string | null>(null);
 
   const catnatByCommune = useMemo(() => {
-    const map = new Map<string, any>();
+    const map = new Map<string, CatNatData>();
     catnatData.forEach(item => {
       map.set(item.code, item.catnat);
     });
