@@ -142,7 +142,7 @@ export const sommaireThematiques = {
         thematique: 'Biodiversité',
         icone: '🌼',
         sousCategories: ['Moustique tigre et arboviroses']
-      }      
+      }
     ]
   },
   Forêts: {
@@ -151,7 +151,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Forêts',
         icone: '🌲',
-        sousCategories: ['Hauteur de la canopée']
+        sousCategories: ['Hauteur de la canopée', 'Linéaire de haie']
       }
     ]
   }
