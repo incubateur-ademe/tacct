@@ -30,19 +30,9 @@ interface ExportButtonProps {
   anchor?: string;
 }
 
-export const ExportButton = ({
-  data,
-  baseName,
-  type,
-  libelle,
-  code,
-  sheetName,
-  documentation,
-  children = 'Exporter',
-  style,
-  disabled,
-  anchor
-}: ExportButtonProps) => {
+export function ExportButton({
+  data, baseName, type, libelle, code, sheetName, documentation, children = 'Exporter', style, disabled, anchor
+}: ExportButtonProps) {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -104,15 +94,14 @@ export const ExportButton = ({
             disabled={disabled || isExporting}
             icone={isExporting ? null : ExporterIcon}
             size="sm"
-            text={isExporting ? 'Export en cours...' : (children as string)}
+            text={isExporting ? 'En cours...' : (children as string)}
             style={{
               cursor: isExporting ? 'wait' : 'pointer',
               ...style
-            }}
-          />
+            }} />
           {isClicked && <ExportDataTrigger />}
         </div>
       )}
     </>
   );
-};
+}

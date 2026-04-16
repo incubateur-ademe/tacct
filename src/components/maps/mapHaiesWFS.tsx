@@ -1,23 +1,18 @@
 'use client';
 
+import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
+import { Feature, Geometry, LineString, Polygon } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
 import styles from './maps.module.scss';
 
+const HEDGE_WFS_BASE = 'https://data.geopf.fr/wfs/ows';
 const HEDGE_WMS_BASE = 'https://data.geopf.fr/wms-v/ows';
 
-const TARGET_RESOLUTION_M = 0.1;
-const MAX_CANVAS_SIZE = 4096;
-const MIN_CANVAS_SIZE = 512;
-
 type BBox = { minLng: number; minLat: number; maxLng: number; maxLat: number };
-
-type GeoJSONGeometry =
-  | { type: 'Polygon'; coordinates: number[][][] }
-  | { type: 'MultiPolygon'; coordinates: number[][][][] };
 
 type HaieProperties = {
   cleabs?: string;
@@ -57,143 +52,7 @@ const lngLatToMeters = (lng: number, lat: number) => {
   return { x, y };
 };
 
-const computeCanvasSize = (bbox: BBox) => {
-  const latMid = (bbox.minLat + bbox.maxLat) / 2;
-  const widthM = (bbox.maxLng - bbox.minLng) * 111000 * Math.cos((latMid * Math.PI) / 180);
-  const heightM = (bbox.maxLat - bbox.minLat) * 111000;
-  const clamp = (v: number) =>
-    Math.min(MAX_CANVAS_SIZE, Math.max(MIN_CANVAS_SIZE, Math.round(v)));
-  return {
-    width: clamp(widthM / TARGET_RESOLUTION_M),
-    height: clamp(heightM / TARGET_RESOLUTION_M)
-  };
-};
-
-const applyClipPath = (
-  ctx: CanvasRenderingContext2D,
-  geometry: GeoJSONGeometry,
-  bbox: BBox,
-  width: number,
-  height: number
-) => {
-  ctx.beginPath();
-  const rings: number[][][][] =
-    geometry.type === 'MultiPolygon' ? geometry.coordinates : [geometry.coordinates];
-
-  for (const polygon of rings) {
-    for (const ring of polygon) {
-      ring.forEach(([lng, lat], i) => {
-        const x = ((lng - bbox.minLng) / (bbox.maxLng - bbox.minLng)) * width;
-        const y = ((bbox.maxLat - lat) / (bbox.maxLat - bbox.minLat)) * height;
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      });
-      ctx.closePath();
-    }
-  }
-  ctx.clip('evenodd');
-};
-
-const fetchHaiesCanvas = async (
-  bbox: BBox,
-  geometry: GeoJSONGeometry | null,
-  signal: AbortSignal
-): Promise<HTMLCanvasElement | null> => {
-  const { width, height } = computeCanvasSize(bbox);
-  const sw = lngLatToMeters(bbox.minLng, bbox.minLat);
-  const ne = lngLatToMeters(bbox.maxLng, bbox.maxLat);
-
-  const params = new URLSearchParams({
-    service: 'WMS',
-    request: 'GetMap',
-    version: '1.3.0',
-    layers: 'hedge.hedge',
-    styles: '',
-    format: 'image/png',
-    transparent: 'true',
-    crs: 'EPSG:3857',
-    width: String(width),
-    height: String(height),
-    bbox: `${sw.x},${sw.y},${ne.x},${ne.y}`
-  });
-
-  const url = `${HEDGE_WMS_BASE}?${params.toString()}`;
-
-  const img = new Image();
-  img.crossOrigin = 'anonymous';
-  await new Promise<void>((resolve, reject) => {
-    const onAbort = () => {
-      img.src = '';
-      reject(new Error('aborted'));
-    };
-    if (signal.aborted) {
-      onAbort();
-      return;
-    }
-    signal.addEventListener('abort', onAbort, { once: true });
-    img.onload = () => {
-      signal.removeEventListener('abort', onAbort);
-      resolve();
-    };
-    img.onerror = () => {
-      signal.removeEventListener('abort', onAbort);
-      reject(new Error('WMS image load failed'));
-    };
-    img.src = url;
-  });
-
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return null;
-
-  if (geometry) applyClipPath(ctx, geometry, bbox, width, height);
-  ctx.drawImage(img, 0, 0, width, height);
-
-  const imageData = ctx.getImageData(0, 0, width, height);
-  const data = imageData.data;
-  for (let i = 0; i < data.length; i += 4) {
-    if (data[i + 3] > 0) {
-      data[i] = 0x2e;
-      data[i + 1] = 0x7d;
-      data[i + 2] = 0x32;
-    }
-  }
-  ctx.putImageData(imageData, 0, 0);
-
-  return canvas;
-};
-
-// const dilationRadiusForZoom = (zoom: number): number => {
-//   if (zoom >= 13) return 0;
-//   if (zoom >= 12) return 1;
-//   if (zoom >= 11) return 2;
-//   return 3;
-// };
-
-// const drawWithDilation = (
-//   source: HTMLCanvasElement,
-//   target: HTMLCanvasElement,
-//   radius: number
-// ): void => {
-//   const ctx = target.getContext('2d');
-//   if (!ctx) return;
-//   ctx.clearRect(0, 0, target.width, target.height);
-//   if (radius === 0) {
-//     ctx.drawImage(source, 0, 0);
-//     return;
-//   }
-//   for (let dy = -radius; dy <= radius; dy++) {
-//     for (let dx = -radius; dx <= radius; dx++) {
-//       if (Math.sqrt(dx * dx + dy * dy) <= radius) {
-//         ctx.drawImage(source, dx, dy);
-//       }
-//     }
-//   }
-// };
-
-export const MapHaies = ({
+export const MapHaiesWfs = ({
   coordonneesCommunes,
   contoursCommunes,
   mapRef,
@@ -201,7 +60,7 @@ export const MapHaies = ({
 }: {
   coordonneesCommunes: {
     codes: string[];
-    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+    bbox: BBox;
   } | null;
   contoursCommunes: { geometry: string } | null;
   mapRef: RefObject<maplibregl.Map | null>;
@@ -246,11 +105,7 @@ export const MapHaies = ({
           type: 'line',
           source: 'communes-tiles',
           'source-layer': 'contour_communes',
-          filter: [
-            'in',
-            ['get', 'code_geographique'],
-            ['literal', coordonneesCommunes.codes]
-          ],
+          filter: ['in', ['get', 'code_geographique'], ['literal', coordonneesCommunes.codes]],
           paint: { 'line-color': '#161616', 'line-width': 1 }
         });
       } catch (error) {
@@ -258,51 +113,99 @@ export const MapHaies = ({
       }
 
       try {
-        const geometry = contoursCommunes
-          ? (JSON.parse(contoursCommunes.geometry) as GeoJSONGeometry)
-          : null;
+        const { bbox } = coordonneesCommunes;
+        const PAGE_SIZE = 5000;
+        const allFeatures: GeoJSON.Feature[] = [];
+        let startIndex = 0;
 
-        const canvas = await fetchHaiesCanvas(
-          coordonneesCommunes.bbox,
-          geometry,
-          abortController.signal
-        );
+        while (true) {
+          const params = new URLSearchParams({
+            SERVICE: 'WFS',
+            VERSION: '2.0.0',
+            REQUEST: 'GetFeature',
+            TYPENAMES: 'HAIES.BOCAGES:haie',
+            OUTPUTFORMAT: 'application/json',
+            COUNT: String(PAGE_SIZE),
+            STARTINDEX: String(startIndex),
+            BBOX: `${bbox.minLng},${bbox.minLat},${bbox.maxLng},${bbox.maxLat},EPSG:4326`
+          });
 
-        if (!mapRef.current || abortController.signal.aborted || !canvas) return;
+          const response = await fetch(`${HEDGE_WFS_BASE}?${params.toString()}`, {
+            signal: abortController.signal
+          });
 
-        const displayCanvas = document.createElement('canvas');
-        displayCanvas.width = canvas.width;
-        displayCanvas.height = canvas.height;
-        displayCanvas.getContext('2d')?.drawImage(canvas, 0, 0);
+          if (!response.ok) throw new Error(`WFS error: ${response.status}`);
 
-        map.addSource('haies-canvas', {
-          type: 'canvas',
-          canvas: displayCanvas,
-          animate: true,
-          coordinates: [
-            [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.maxLat],
-            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat],
-            [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.minLat],
-            [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat]
-          ]
+          const page = await response.json() as GeoJSON.FeatureCollection;
+          allFeatures.push(...page.features);
+
+          if (page.features.length < PAGE_SIZE) break;
+          startIndex += PAGE_SIZE;
+
+          if (abortController.signal.aborted) return;
+        }
+
+        const geojson: GeoJSON.FeatureCollection = { type: 'FeatureCollection', features: allFeatures };
+
+        if (abortController.signal.aborted || !mapRef.current) return;
+
+        let clippedData: GeoJSON.FeatureCollection = geojson;
+
+        if (contoursCommunes) {
+          try {
+            const communeGeometry = JSON.parse(contoursCommunes.geometry) as Geometry;
+            const communePolygons: Feature<Polygon>[] =
+              communeGeometry.type === 'MultiPolygon'
+                ? (communeGeometry as GeoJSON.MultiPolygon).coordinates.map((coords) => turf.polygon(coords))
+                : [turf.polygon((communeGeometry as Polygon).coordinates)];
+
+            const clippedFeatures = geojson.features.flatMap((feature) => {
+              const line = feature as Feature<LineString>;
+              return communePolygons.flatMap((poly) => {
+                try {
+                  if (!turf.booleanIntersects(line, poly)) return [];
+                  if (turf.booleanWithin(line, poly)) return [line];
+                  const split = turf.lineSplit(line, poly);
+                  return split.features.filter((seg) => {
+                    const mid = turf.along(seg, turf.length(seg) / 2);
+                    return turf.booleanPointInPolygon(mid, poly);
+                  });
+                } catch {
+                  return [line];
+                }
+              });
+            });
+            clippedData = turf.featureCollection(clippedFeatures);
+          } catch {
+            console.warn('Clip turf échoué, affichage sans découpage');
+          }
+        }
+
+        map.addSource('haies-wfs', {
+          type: 'geojson',
+          data: clippedData
         });
-
-        // map.on('zoomend', () => {
-        //   drawWithDilation(canvas, displayCanvas, dilationRadiusForZoom(map.getZoom()));
-        // });
 
         map.addLayer(
           {
-            id: 'haies-canvas-layer',
-            type: 'raster',
-            source: 'haies-canvas',
-            paint: { 'raster-opacity': 1 }
+            id: 'haies-wfs-layer',
+            type: 'line',
+            source: 'haies-wfs',
+            paint: {
+              'line-color': '#2e7d32',
+              'line-width': [
+                'interpolate', ['linear'], ['zoom'],
+                8, 4,
+                10, 2,
+                13, 1.5
+              ]
+            }
           },
           'communes-outline-layer'
         );
       } catch (error) {
         if (!abortController.signal.aborted) {
-          console.error('Erreur chargement image haies WMS :', error);
+          console.error('Erreur chargement haies WFS :', error);
         }
       } finally {
         if (!abortController.signal.aborted) {
@@ -437,7 +340,7 @@ export const MapHaies = ({
               marginRight: '0.5rem'
             }}
           />
-          Chargement des haies (IGN BD HAIE)…
+          Chargement des données…
         </div>
       )}
       <div
@@ -463,4 +366,4 @@ export const MapHaies = ({
   );
 };
 
-export default MapHaies;
+export default MapHaiesWfs;

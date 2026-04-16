@@ -9,6 +9,7 @@ import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 const MapHaies = lazy(() => import('@/components/maps/mapHaies').then(m => ({ default: m.MapHaies })));
+const MapHaiesWFS = lazy(() => import('@/components/maps/mapHaiesWFS').then(m => ({ default: m.MapHaiesWfs })));
 
 export const LineaireDeHaie = ({
   coordonneesCommunes,
@@ -23,6 +24,8 @@ export const LineaireDeHaie = ({
   const type = searchParams.get('type')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
+    const mapContainer2 = useRef<HTMLDivElement>(null);
+  const mapRef2 = useRef<maplibregl.Map | null>(null);
 
 
 
@@ -35,11 +38,17 @@ export const LineaireDeHaie = ({
             coordonneesCommunes ? (
               <div>
                 <Suspense fallback={<Loader />}>
-                  <MapHaies
+                  {/* <MapHaiesWFS
                     coordonneesCommunes={coordonneesCommunes}
                     contoursCommunes={contoursCommunes}
                     mapRef={mapRef}
                     mapContainer={mapContainer}
+                  /> */}
+                  <MapHaies
+                    coordonneesCommunes={coordonneesCommunes}
+                    contoursCommunes={contoursCommunes}
+                    mapRef={mapRef2}
+                    mapContainer={mapContainer2}
                   />
                 </Suspense>
               </div>
