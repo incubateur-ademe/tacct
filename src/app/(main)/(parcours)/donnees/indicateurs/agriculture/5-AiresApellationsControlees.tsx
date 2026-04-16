@@ -163,8 +163,6 @@ export const AiresAppellationsControlees = (props: {
           </div>
         </div>
       </div>
-
-
     </>
   );
 };

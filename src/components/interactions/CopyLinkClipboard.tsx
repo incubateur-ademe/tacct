@@ -1,6 +1,6 @@
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export const CopyLinkClipboard = ({
   anchor
@@ -10,6 +10,14 @@ export const CopyLinkClipboard = ({
 
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
     const url = new URL(window.location.href);
@@ -31,13 +39,16 @@ export const CopyLinkClipboard = ({
 
   return (
     <>
-      <BoutonPrimaireClassic
-        onClick={handleCopy}
-        icone={copied ? null : ShareIcon}
-        size='sm'
-        text={copied ? 'Lien copié' : 'Partager'}
-        disabled={copied}
-      />
+      <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+        <BoutonPrimaireClassic
+          onClick={handleCopy}
+          icone={copied ? null : ShareIcon}
+          size='sm'
+          text={copied ? 'Lien copié' : 'Partager'}
+          disabled={copied}
+          style={{ minWidth: buttonMinWidth }}
+        />
+      </div>
       {/* {copied && typeof window !== 'undefined' && createPortal(
         <div
           style={{

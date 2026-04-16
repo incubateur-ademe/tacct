@@ -4,7 +4,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import { usePostHog } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
@@ -43,6 +43,14 @@ export const MultiSheetExportButton = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   useEffect(() => {
     if (isExporting) {
@@ -134,16 +142,19 @@ export const MultiSheetExportButton = ({
       {sheetsData.map((sheet) => sheet.data).flat(1).length === 0 ? null : (
         <div className={styles.exportShareWrapper}>
           {anchor && <CopyLinkClipboard anchor={anchor} />}
-          <BoutonPrimaireClassic
-            onClick={handleExport}
-            disabled={isExporting}
-            icone={isExporting ? null : ExporterIcon}
-            size="sm"
-            text={isExporting ? 'Export en cours...' : (children as string)}
-            style={{
-              cursor: isExporting ? 'wait' : 'pointer'
-            }}
-          />
+          <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+            <BoutonPrimaireClassic
+              onClick={handleExport}
+              disabled={isExporting}
+              icone={isExporting ? null : ExporterIcon}
+              size="sm"
+              text={isExporting ? 'En cours...' : (children as string)}
+              style={{
+                minWidth: buttonMinWidth,
+                cursor: isExporting ? 'wait' : 'pointer'
+              }}
+            />
+          </div>
           {isClicked && <ExportDataTrigger />}
         </div>
       )}
