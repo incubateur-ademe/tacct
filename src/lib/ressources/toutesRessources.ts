@@ -841,7 +841,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/920-diagnostiquer-l-impact-du-changement-climatique-sur-un-territoire-9791029712982.html',
     filtres: ["Support méthodo", "Me former"],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
-    tempsLecture: 3600,
+    tempsLecture: 120,
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 170,
@@ -856,7 +856,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/1165-construire-des-trajectoires-d-adaptation-au-changement-climatique-du-territoire-9791029713750.html',
     filtres: ["Support méthodo", "Me former"],
     collections: ['Bâtir la stratégie d’adaptation'],
-    tempsLecture: 3600,
+    tempsLecture: 90,
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 110,
@@ -871,7 +871,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     lien: 'https://librairie.ademe.fr/changement-climatique/756-evaluer-les-politiques-d-adaptation-au-changement-climatique-9791029713767.html',
     filtres: ["Support méthodo", "Me former"],
     collections: ['Bâtir la stratégie d’adaptation'],
-    tempsLecture: 3600,
+    tempsLecture: 90,
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
@@ -898,6 +898,29 @@ export const toutesLesRessources: ToutesRessources[] = [
         'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
       description:
         'Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.'
+    }
+  },
+  {
+    id: 47,
+    type: 'Article',
+    titre:
+      'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+    slug: 'patch4-integrer-tracc',
+    description:
+      "Grâce au patch 4°C, ajustez votre diagnostic de vulnérabilité en intégrant la trajectoire de réchauffement de référence pour l’adaptation.",
+    lien: '/ressources/articles/patch4-integrer-tracc',
+    filtres: ['Article', "Agir"],
+    collections: ["Évaluer les impacts du changement climatique"],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-05-06',
+    ordre: 1,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+      description:
+        'Découvrez comment le patch 4°C peut vous aider à intégrer la trajectoire de référence pour l’adaptation au changement climatique (TRACC).'
     }
   },
 ];
