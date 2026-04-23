@@ -50,10 +50,13 @@ const getDisabledTooltipContent = (label: string) => {
 
 const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
   const svgRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const { width, height, margin } = dimensions;
   const svgWidth = Number(width) + margin.left + margin.right + 15;
   const svgHeight = Number(height) + margin.top + margin.bottom;
   const [selectedThematique, setSelectedThematique] = useState<string | null>(selectedItem || null);
+  const [scale, setScale] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const radiusRoueSytemique = 180;
   const defaultLabelRadius = radiusRoueSytemique + 70;
   const NoeudsRoue: NoeudRoue[] = [];
@@ -89,6 +92,18 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       setSelectedThematique(selectedItem);
     }
   }, [selectedItem]);
+
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width: containerWidth } = entry.contentRect;
+      setScale(Math.min(1, containerWidth / svgWidth));
+      setIsMobile(containerWidth < 640);
+    });
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, [svgWidth]);
 
   const handleItemSelect = (item: string | null) => {
     setSelectedThematique(item);
@@ -474,199 +489,196 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
   }, [selectedThematique, svgWidth, svgHeight]);
 
   return (
-    <div style={{ position: 'relative', width: svgWidth, height: svgHeight, alignSelf: "baseline" }}>
-      <svg
-        ref={svgRef}
-        width={svgWidth}
-        height={svgHeight}
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-      />
+    <div ref={wrapperRef} style={{ width: '100%' }}>
+      <div style={{ height: svgHeight * scale, overflow: 'hidden' }}>
+        <div style={{ position: 'relative', width: svgWidth, height: svgHeight, transform: `scale(${scale})`, transformOrigin: 'top left', margin: '0 auto' }}>
+          <svg
+            ref={svgRef}
+            width={svgWidth}
+            height={svgHeight}
+            style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+          />
 
-      {/* Tooltip pour les thématiques indisponibles */}
-      {NoeudsRoue.map((node, index) => {
-        const thematique = nomThematiques.find(t => t.label === node.label);
-        if (!thematique?.disabled) return null;
-        const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
-        const xOffset = node.xOffset ? node.xOffset : 0;
-        const yOffset = node.yOffset ? node.yOffset : 0;
-        const nodeAngle = Math.atan2(node.y, node.x);
-        const x = (labelRadius * Math.cos(nodeAngle) + xOffset + svgWidth / 2);
-        const y = (labelRadius * Math.sin(nodeAngle) + yOffset + svgHeight / 2);
+          {/* Tooltip pour les thématiques indisponibles */}
+          {NoeudsRoue.map((node, index) => {
+            const thematique = nomThematiques.find(t => t.label === node.label);
+            if (!thematique?.disabled) return null;
+            const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
+            const xOffset = node.xOffset ? node.xOffset : 0;
+            const yOffset = node.yOffset ? node.yOffset : 0;
+            const nodeAngle = Math.atan2(node.y, node.x);
+            const x = (labelRadius * Math.cos(nodeAngle) + xOffset + svgWidth / 2);
+            const y = (labelRadius * Math.sin(nodeAngle) + yOffset + svgHeight / 2);
 
-        return (
-          <HtmlTooltip
-            key={`tooltip-${index}`}
-            title={getDisabledTooltipContent(node.label)}
-            placement="top"
-          >
+            return (
+              <HtmlTooltip
+                key={`tooltip-${index}`}
+                title={getDisabledTooltipContent(node.label)}
+                placement="top"
+              >
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: node.label.length > 10 ? x - 55 : x - 40,
+                    top: node.label.length > 10 ? y - 25 : y - 15,
+                    width: node.label.length > 10 ? 110 : 80,
+                    height: node.label.length > 10 ? 50 : 30,
+                    cursor: 'help',
+                    zIndex: 2,
+                    pointerEvents: thematique?.disabled ? 'auto' : 'none'
+                  }}
+                />
+              </HtmlTooltip>
+            );
+          })}
+
+          {/* Texte central qui disparaît lors de la sélection */}
+          {
+            svgRef && svgRef.current ? (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  textAlign: 'center',
+                  maxWidth: '300px',
+                  opacity: selectedThematique ? 0 : 1,
+                  transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
+                  zIndex: 3,
+                }}
+              >
+                <H1 style={{
+                  fontSize: '16px',
+                  color: '#23282B',
+                  fontWeight: 700,
+                  lineHeight: "normal",
+                  letterSpacing: "0.4px",
+                  margin: 0
+                }}>
+                  Votre territoire est un système où tout est lié.
+                </H1>
+                <br />
+                <Body>
+                  Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
+                </Body>
+              </div>
+            ) : <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>
+          }
+
+          {/* Textes des catégories avec CircleType - contrôle individuel */}
+          {/* Cadre de vie */}
+          {!isMobile && categoriePositions["Cadre de vie"] && (
             <div
+              ref={(el) => {
+                if (el) {
+                  const existingInstance = (el as Any).circleTypeInstance;
+                  if (existingInstance) {
+                    existingInstance.destroy();
+                  }
+                  const circleType = new (CircleType as Any)(el);
+                  circleType.radius(200); // Courbure pour Cadre de vie
+                  circleType.dir(-1); // Direction pour Cadre de vie
+                  (el as Any).circleTypeInstance = circleType;
+                }
+              }}
               style={{
                 position: 'absolute',
-                left: node.label.length > 10 ? x - 55 : x - 40,
-                top: node.label.length > 10 ? y - 25 : y - 15,
-                width: node.label.length > 10 ? 110 : 80,
-                height: node.label.length > 10 ? 50 : 30,
-                cursor: 'help',
+                left: `${categoriePositions["Cadre de vie"].x}px`,
+                top: `${categoriePositions["Cadre de vie"].y - 78}px`,
+                transform: `rotate(0deg)`, // Rotation pour Cadre de vie
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontFamily: 'Marianne',
+                letterSpacing: '0.3em',
+                color: categorySelectedBorderColors["Cadre de vie"],
+                pointerEvents: 'none',
+                transformOrigin: 'center center',
                 zIndex: 2,
-                pointerEvents: thematique?.disabled ? 'auto' : 'none'
+                whiteSpace: 'nowrap'
               }}
-            />
-          </HtmlTooltip>
-        );
-      })}
+            >
+              Cadre de vie
+            </div>
+          )}
 
-      {/* Texte central qui disparaît lors de la sélection */}
-      {
-        svgRef && svgRef.current ? (
-          <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              textAlign: 'center',
-              maxWidth: '300px',
-              opacity: selectedThematique ? 0 : 1,
-              transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
-              zIndex: 3,
-            }}
-          >
-            <H1 style={{
-              fontSize: '16px',
-              color: '#23282B',
-              fontWeight: 700,
-              lineHeight: "normal",
-              letterSpacing: "0.4px",
-              margin: 0
-            }}>
-              Votre territoire est un système où tout est lié.
-            </H1>
-            <br />
-            <Body>
-              Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
-            </Body>
-          </div>
-        ) : <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>
-      }
+          {/* Ressources naturelles */}
+          {!isMobile && categoriePositions["Ressources naturelles"] && (
+            <div
+              ref={(el) => {
+                if (el) {
+                  const existingInstance = (el as Any).circleTypeInstance;
+                  if (existingInstance) {
+                    existingInstance.destroy();
+                  }
+                  const circleType = new (CircleType as Any)(el);
+                  circleType.radius(200); // Courbure pour Ressources naturelles
+                  circleType.dir(0.5); // Direction pour Ressources naturelles
+                  (el as Any).circleTypeInstance = circleType;
+                }
+              }}
+              style={{
+                position: 'absolute',
+                left: `${categoriePositions["Ressources naturelles"].x + 39}px`,
+                top: `${categoriePositions["Ressources naturelles"].y - 42}px`,
+                transform: `rotate(-54deg)`, // Rotation pour Ressources naturelles
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontFamily: 'Marianne',
+                color: categorySelectedBorderColors["Ressources naturelles"],
+                pointerEvents: 'none',
+                transformOrigin: 'center center',
+                zIndex: 2,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Ressources naturelles
+            </div>
+          )}
 
-      {/* Textes des catégories avec CircleType - contrôle individuel */}
-      {/* Cadre de vie */}
-      {categoriePositions["Cadre de vie"] && (
-        <div
-          ref={(el) => {
-            if (el) {
-              const existingInstance = (el as Any).circleTypeInstance;
-              if (existingInstance) {
-                existingInstance.destroy();
-              }
-              const circleType = new (CircleType as Any)(el);
-              circleType.radius(200); // Courbure pour Cadre de vie
-              circleType.dir(-1); // Direction pour Cadre de vie
-              (el as Any).circleTypeInstance = circleType;
-            }
-          }}
-          style={{
-            position: 'absolute',
-            left: `${categoriePositions["Cadre de vie"].x}px`,
-            top: `${categoriePositions["Cadre de vie"].y - 78}px`,
-            transform: `rotate(0deg)`, // Rotation pour Cadre de vie
-            fontSize: '14px',
-            fontWeight: 'bold',
-            fontFamily: 'Marianne',
-            letterSpacing: '0.3em',
-            color: categorySelectedBorderColors["Cadre de vie"],
-            pointerEvents: 'none',
-            transformOrigin: 'center center',
-            zIndex: 2,
-            whiteSpace: 'nowrap'
-          }}
-        >
-          Cadre de vie
+          {/* Ressources économiques */}
+          {!isMobile && categoriePositions["Ressources économiques"] && (
+            <div
+              ref={(el) => {
+                if (el) {
+                  const existingInstance = (el as Any).circleTypeInstance;
+                  if (existingInstance) {
+                    existingInstance.destroy();
+                  }
+                  const circleType = new (CircleType as Any)(el);
+                  circleType.radius(200); // Courbure pour Ressources économiques
+                  circleType.dir(0.50); // Direction pour Ressources économiques
+                  (el as Any).circleTypeInstance = circleType;
+                }
+              }}
+              style={{
+                position: 'absolute',
+                left: `${categoriePositions["Ressources économiques"].x - 38}px`,
+                top: `${categoriePositions["Ressources économiques"].y - 37}px`,
+                transform: `rotate(52deg)`, // Rotation pour Ressources économiques
+                fontSize: '14px',
+                fontWeight: 'bold',
+                fontFamily: 'Marianne',
+                color: categorySelectedBorderColors["Ressources économiques"],
+                pointerEvents: 'none',
+                transformOrigin: 'center center',
+                zIndex: 2,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              Ressources économiques
+            </div>
+          )}
         </div>
-      )}
-
-      {/* Ressources naturelles */}
-      {categoriePositions["Ressources naturelles"] && (
-        <div
-          ref={(el) => {
-            if (el) {
-              const existingInstance = (el as Any).circleTypeInstance;
-              if (existingInstance) {
-                existingInstance.destroy();
-              }
-              const circleType = new (CircleType as Any)(el);
-              circleType.radius(200); // Courbure pour Ressources naturelles
-              circleType.dir(0.5); // Direction pour Ressources naturelles
-              (el as Any).circleTypeInstance = circleType;
-            }
-          }}
-          style={{
-            position: 'absolute',
-            left: `${categoriePositions["Ressources naturelles"].x + 39}px`,
-            top: `${categoriePositions["Ressources naturelles"].y - 42}px`,
-            transform: `rotate(-54deg)`, // Rotation pour Ressources naturelles
-            fontSize: '14px',
-            fontWeight: 'bold',
-            fontFamily: 'Marianne',
-            color: categorySelectedBorderColors["Ressources naturelles"],
-            pointerEvents: 'none',
-            transformOrigin: 'center center',
-            zIndex: 2,
-            whiteSpace: 'nowrap'
-          }}
-        >
-          Ressources naturelles
-        </div>
-      )}
-      {/* {categoriePositions["Ressources naturelles"] && (
-        <Image
-          src={RessourcesNaturellesTexte}
-          style={{
-            position: 'absolute',
-            left: `${categoriePositions["Ressources naturelles"].x - 116}px`,
-            top: `${categoriePositions["Ressources naturelles"].y - 36}px`,
-            transform: `rotate(-44deg) scale(0.9)`, // Rotation pour Ressources naturelles
-            color: categorySelectedBorderColors["Ressources naturelles"],
-            pointerEvents: 'none',
-            transformOrigin: 'center center',
-            zIndex: 2,
-            whiteSpace: 'nowrap'
-          }}
-          alt="Ressources naturelles"
-        />
-      )} */}
-
-      {/* Ressources économiques */}
-      {categoriePositions["Ressources économiques"] && (
-        <div
-          ref={(el) => {
-            if (el) {
-              const existingInstance = (el as Any).circleTypeInstance;
-              if (existingInstance) {
-                existingInstance.destroy();
-              }
-              const circleType = new (CircleType as Any)(el);
-              circleType.radius(200); // Courbure pour Ressources économiques
-              circleType.dir(0.50); // Direction pour Ressources économiques
-              (el as Any).circleTypeInstance = circleType;
-            }
-          }}
-          style={{
-            position: 'absolute',
-            left: `${categoriePositions["Ressources économiques"].x - 38}px`,
-            top: `${categoriePositions["Ressources économiques"].y - 37}px`,
-            transform: `rotate(52deg)`, // Rotation pour Ressources économiques
-            fontSize: '14px',
-            fontWeight: 'bold',
-            fontFamily: 'Marianne',
-            color: categorySelectedBorderColors["Ressources économiques"],
-            pointerEvents: 'none',
-            transformOrigin: 'center center',
-            zIndex: 2,
-            whiteSpace: 'nowrap'
-          }}
-        >
-          Ressources économiques
+      </div>
+      {isMobile && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', columnGap: '16px', justifyContent: 'center', padding: '12px 8px' }}>
+          {(Object.entries(categorySelectedBorderColors) as [keyof typeof categorySelectedBorderColors, string][]).map(([category, color]) => (
+            <div key={category} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ width: 14, height: 14, borderRadius: '3px', backgroundColor: categoryColors[category] }} />
+              <span style={{ fontSize: 13, fontFamily: 'Marianne', fontWeight: 700, color }}>{category}</span>
+            </div>
+          ))}
         </div>
       )}
     </div>

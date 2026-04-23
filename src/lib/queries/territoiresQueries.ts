@@ -181,7 +181,7 @@ export const Commune = async (variableCollectivite: string) => {
         CASE WHEN unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${exactPattern}) THEN 0 ELSE 1 END,
         search_libelle ASC,
         search_code ASC
-      LIMIT 20;
+      LIMIT 40;
     `;
   return value;
 };
