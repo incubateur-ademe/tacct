@@ -347,7 +347,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 16,
@@ -379,7 +379,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
-    ordreCollection: 9
+    ordreCollection: 10
   },
   {
     id: 18,
@@ -394,7 +394,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 8
+    ordreCollection: 9
   },
   {
     id: 19,
@@ -860,7 +860,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 110,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 45,
@@ -875,6 +875,29 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
-    ordreCollection: 6
-  }
+    ordreCollection: 7
+  },
+  {
+    id: 46,
+    type: 'Article',
+    titre:
+      'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
+    slug: 'financement-adaptation',
+    description:
+      "Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.",
+    lien: '/ressources/articles/financement-adaptation',
+    filtres: ['Article', "M'inspirer"],
+    collections: ["Bâtir la stratégie d’adaptation"],
+    tempsLecture: 7,
+    image: ImageTuileArticle,
+    date: '2026-05-06',
+    ordre: 4,
+    ordreCollection: 4,
+    metadata: {
+      title:
+        'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
+      description:
+        'Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.'
+    }
+  },
 ];
