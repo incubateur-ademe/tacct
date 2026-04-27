@@ -400,6 +400,46 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             .attr("stroke-dasharray", "5 0");
         }
       })
+      .attr("tabindex", (d: NoeudRoue) => {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        return thematique?.disabled ? "-1" : "0";
+      })
+      .attr("role", "button")
+      .attr("aria-label", (d: NoeudRoue) => d.label)
+      .attr("aria-pressed", (d: NoeudRoue) => selectedThematique === d.label ? "true" : "false")
+      .on("keydown", (event: Any, d: NoeudRoue) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          const thematique = nomThematiques.find(t => t.label === d.label);
+          if (!thematique?.disabled) {
+            handleItemSelect(selectedThematique === d.label ? null : d.label);
+          }
+        }
+      })
+      .on("focus", function (event: Any, d: NoeudRoue) {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        if (thematique?.disabled) return;
+        if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
+          const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
+          const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
+          d3.select(this).select("rect")
+            .transition()
+            .duration(200)
+            .attr("fill", hoverColor)
+            .attr("stroke-dasharray", "");
+        }
+      })
+      .on("blur", function (event: Any, d: NoeudRoue) {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        if (thematique?.disabled) return;
+        if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
+          d3.select(this).select("rect")
+            .transition()
+            .duration(200)
+            .attr("fill", "#fff")
+            .attr("stroke-dasharray", "5 0");
+        }
+      })
       .each(function (d: NoeudRoue) {
         // Si le label fait plus de 12 caractères, le diviser en lignes
         const charsPerLine = 12;
