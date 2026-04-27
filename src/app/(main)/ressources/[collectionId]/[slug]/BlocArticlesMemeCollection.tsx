@@ -2,6 +2,7 @@
 
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { SliderArticles } from "../../sliderArticles";
@@ -15,7 +16,7 @@ export const ArticlesMemeCollection = () => {
   const articleSlug = pathname.split('/')[3];
   const sliderRef = useRef<HTMLDivElement>(null);
   const articles = CollectionsData.find(c => c.slug === collectionSlug)?.articles;
-  const listeArticlesFiltres = articles?.filter(c => !c.lien.includes(articleSlug))
+  const listeArticlesFiltres = articles?.filter(c => !c.lien.includes(articleSlug)).sort((a, b) => a.ordreCollection - b.ordreCollection);
 
   return (
     <>
@@ -29,7 +30,7 @@ export const ArticlesMemeCollection = () => {
                   Dans la même collection
                 </H2>
                 <Body style={{ color: "#3D3D3D" }}>
-                  Les autres ressources de la collection "{collection}"
+                  Les autres ressources de la collection "<Link href={`/ressources/${collectionSlug}`}>{collection}</Link>"
                 </Body>
               </div>
               <SliderArticles listeArticles={listeArticlesFiltres} sliderRef={sliderRef} />
@@ -47,7 +48,7 @@ export const ArticlesMemeCollectionResponsive = () => {
   const articleSlug = pathname.split('/')[3];
   const sliderRef = useRef<HTMLDivElement>(null);
   const articles = CollectionsData.find(c => c.slug === collectionSlug)?.articles;
-  const listeArticlesFiltres = articles?.filter(c => !c.lien.includes(articleSlug))
+  const listeArticlesFiltres = articles?.filter(c => !c.lien.includes(articleSlug)).sort((a, b) => a.ordreCollection - b.ordreCollection);
 
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;

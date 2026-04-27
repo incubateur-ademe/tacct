@@ -12,6 +12,7 @@ import { Body, H1, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
+import { MinuteToHours } from "@/lib/utils/reusableFunctions/MinuteToHours";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -78,7 +79,7 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
                     {
                       collection?.titre === "Démarrer le diagnostic de vulnérabilité"
                         ? <span>47 min</span>
-                        : <span>{tempsLecture} min</span>
+                        : <span>{MinuteToHours(tempsLecture)} min</span>
                     }
                   </Body>
                 </div>

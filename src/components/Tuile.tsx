@@ -4,6 +4,7 @@ import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import DocIcon from "@/assets/icons/doc_icon_white.png";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
 import useWindowDimensions from "@/hooks/windowDimensions";
+import { MinuteToHours } from "@/lib/utils/reusableFunctions/MinuteToHours";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -19,16 +20,6 @@ interface Props {
   tempsLecture?: number;
   nombreArticles?: number;
 }
-
-const MinuteToHours = (minutes: number) => {
-  if (minutes < 60) {
-    return `${minutes} min`;
-  }
-  if (minutes % 60 === 0) {
-    return `${minutes / 60} h`;
-  }
-  return `${Math.floor(minutes / 60)} h ${minutes % 60} min`;
-};
 
 export const TuileVerticale = ({
   titre,

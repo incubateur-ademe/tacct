@@ -13,7 +13,13 @@ export const FiltresOptions = [
   },
   {
     titre: 'Format de ressource',
-    options: ['Article', "Retour d'expérience", 'Formation', 'Quiz', 'Support méthodo']
+    options: [
+      'Article',
+      "Retour d'expérience",
+      'Formation',
+      'Quiz',
+      'Support méthodo'
+    ]
   },
   {
     titre: 'Territoire',
@@ -98,7 +104,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
-    ordreCollection: 2,
+    ordreCollection: 3,
     metadata: {
       title: 'PNACC, TRACC, Comment suis-je concerné ?',
       description:
@@ -119,7 +125,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
-    ordreCollection: 9
+    ordreCollection: 10
   },
   {
     id: 4,
@@ -135,7 +141,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
-    ordreCollection: 8
+    ordreCollection: 9
   },
   {
     id: 5,
@@ -151,7 +157,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 110,
-    ordreCollection: 6
+    ordreCollection: 8
   },
   {
     id: 6,
@@ -347,7 +353,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
-    ordreCollection: 5
+    ordreCollection: 7
   },
   {
     id: 16,
@@ -363,7 +369,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
-    ordreCollection: 3
+    ordreCollection: 10
   },
   {
     id: 17,
@@ -379,7 +385,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
-    ordreCollection: 10
+    ordreCollection: 11
   },
   {
     id: 18,
@@ -394,7 +400,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 9
+    ordreCollection: 8
   },
   {
     id: 19,
@@ -410,7 +416,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
-    ordreCollection: 7
+    ordreCollection: 9
   },
   {
     id: 20,
@@ -642,7 +648,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-11-25',
     ordre: 10,
-    ordreCollection: 1,
+    ordreCollection: 3,
     metadata: {
       title:
         'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
@@ -709,7 +715,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileQuiz,
     date: '2025-12-10',
     ordre: 10,
-    ordreCollection: 3
+    ordreCollection: 4
   },
   {
     id: 36,
@@ -725,7 +731,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 20,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 37,
@@ -740,7 +746,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 30,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 38,
@@ -756,7 +762,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-02-04',
     ordre: 10,
-    ordreCollection: 1,
+    ordreCollection: 2,
     metadata: {
       title: 'Réaliser votre diagnostic de vulnérabilité',
       description:
@@ -778,7 +784,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-02-25',
     ordre: 9,
-    ordreCollection: 0.5,
+    ordreCollection: 1,
     metadata: {
       title:
         'Construire une stratégie d’adaptation : ce que nous avons appris en chemin',
@@ -834,12 +840,12 @@ export const toutesLesRessources: ToutesRessources[] = [
   },
   {
     id: 43,
-    type: "Support méthodo",
+    type: 'Support méthodo',
     titre: "Diagnostiquer l'impact du changement climatique sur un territoire",
     description:
-      "Ce guide méthodologique vous présente la démarche TACCT et vous aidera à réaliser sa première marche : le diagnostic de vulnérabilité.",
+      'Ce guide méthodologique vous présente la démarche TACCT et vous aidera à réaliser sa première marche : le diagnostic de vulnérabilité.',
     lien: 'https://librairie.ademe.fr/changement-climatique/920-diagnostiquer-l-impact-du-changement-climatique-sur-un-territoire-9791029712982.html',
-    filtres: ["Support méthodo", "Me former"],
+    filtres: ['Support méthodo', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 120,
     image: ImageTuileMethodo,
@@ -849,33 +855,34 @@ export const toutesLesRessources: ToutesRessources[] = [
   },
   {
     id: 44,
-    type: "Support méthodo",
-    titre: "Construire des trajectoires d'adaptation au changement climatique du territoire",
+    type: 'Support méthodo',
+    titre:
+      "Construire des trajectoires d'adaptation au changement climatique du territoire",
     description:
       "Ce guide présente le cheminement méthodologique pour intégrer les seuils d'impacts, les trajectoires d'adaptation et organiser une planification à long terme des actions d'adaptation.",
     lien: 'https://librairie.ademe.fr/changement-climatique/1165-construire-des-trajectoires-d-adaptation-au-changement-climatique-du-territoire-9791029713750.html',
-    filtres: ["Support méthodo", "Me former"],
+    filtres: ['Support méthodo', 'Me former'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 90,
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 110,
-    ordreCollection: 6
+    ordreCollection: 5
   },
   {
     id: 45,
-    type: "Support méthodo",
+    type: 'Support méthodo',
     titre: "Evaluer les politiques d'adaptation au changement climatique",
     description:
       "Ce guide est la dernière brique de la méthodologie TACCT. Il propose une approche du suivi-évaluation des politiques d'adaptation au changement climatique.",
     lien: 'https://librairie.ademe.fr/changement-climatique/756-evaluer-les-politiques-d-adaptation-au-changement-climatique-9791029713767.html',
-    filtres: ["Support méthodo", "Me former"],
+    filtres: ['Support méthodo', 'Me former'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 90,
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
-    ordreCollection: 7
+    ordreCollection: 6
   },
   {
     id: 46,
@@ -884,10 +891,10 @@ export const toutesLesRessources: ToutesRessources[] = [
       'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
     slug: 'financement-adaptation',
     description:
-      "Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.",
+      'Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.',
     lien: '/ressources/articles/financement-adaptation',
     filtres: ['Article', "M'inspirer"],
-    collections: ["Bâtir la stratégie d’adaptation"],
+    collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 7,
     image: ImageTuileArticle,
     date: '2026-05-06',
@@ -903,24 +910,22 @@ export const toutesLesRessources: ToutesRessources[] = [
   {
     id: 47,
     type: 'Article',
-    titre:
-      'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+    titre: 'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
     slug: 'patch4-integrer-tracc',
     description:
-      "Grâce au patch 4°C, ajustez votre diagnostic de vulnérabilité en intégrant la trajectoire de réchauffement de référence pour l’adaptation.",
+      'Grâce au patch 4°C, ajustez votre diagnostic de vulnérabilité en intégrant la trajectoire de réchauffement de référence pour l’adaptation.',
     lien: '/ressources/articles/patch4-integrer-tracc',
-    filtres: ['Article', "Agir"],
-    collections: ["Évaluer les impacts du changement climatique"],
+    filtres: ['Article', 'Agir'],
+    collections: ['Évaluer les impacts du changement climatique'],
     tempsLecture: 6,
     image: ImageTuileArticle,
     date: '2026-05-06',
     ordre: 1,
     ordreCollection: 1,
     metadata: {
-      title:
-        'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+      title: 'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
       description:
         'Découvrez comment le patch 4°C peut vous aider à intégrer la trajectoire de référence pour l’adaptation au changement climatique (TRACC).'
     }
-  },
+  }
 ];

@@ -14,6 +14,7 @@ import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { FaqItem, type NotionRichText } from "@/lib/queries/notion/notion";
 import { FiltresOptions } from "@/lib/ressources/toutesRessources";
+import { MinuteToHours } from "@/lib/utils/reusableFunctions/MinuteToHours";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -97,7 +98,7 @@ export const CollectionComponent = ({ collectionId, faqItems }: CollectionCompon
                     {
                       collection?.titre === "Démarrer le diagnostic de vulnérabilité"
                         ? <span>47 min</span>
-                        : <span>{tempsLecture} min</span>
+                        : <span>{MinuteToHours(tempsLecture)}</span>
                     }
                   </Body>
                 </div>
