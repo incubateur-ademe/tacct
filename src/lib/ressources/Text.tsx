@@ -14,7 +14,7 @@ const SOURCE_TEST_PATTERN = /voir\s+source\s+\d+/i;
 const renderContentWithSources = (content: string, spanClassName: string, spanStyle: CSSProperties) => {
   const parts = content.split(SOURCE_SPLIT_PATTERN);
   if (parts.length === 1) {
-    return <span className={spanClassName} style={spanStyle}>{content}</span>;
+    return <span className={spanClassName} style={{ ...spanStyle, whiteSpace: 'pre-line' }}>{content}</span>;
   }
   return (
     <>
@@ -22,7 +22,7 @@ const renderContentWithSources = (content: string, spanClassName: string, spanSt
         SOURCE_TEST_PATTERN.test(part) ? (
           <ScrollToSourceArticles key={i} text={part} />
         ) : (
-          <span key={i} className={spanClassName} style={spanStyle}>{part}</span>
+          <span key={i} className={spanClassName} style={{ ...spanStyle, whiteSpace: 'pre-line' }}>{part}</span>
         )
       )}
     </>

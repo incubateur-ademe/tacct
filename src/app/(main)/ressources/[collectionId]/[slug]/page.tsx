@@ -97,8 +97,8 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
           <div className={styles.sommaire}>
             <SommaireClient headings={headings} />
           </div>
-          <div 
-            className={styles.article} 
+          <div
+            className={styles.article}
             style={{ marginTop: contentWithoutH1[0]?.heading_2 && "-5rem" }}
           >
             {pageContent}

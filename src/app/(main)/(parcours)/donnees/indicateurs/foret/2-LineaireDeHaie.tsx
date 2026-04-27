@@ -24,7 +24,7 @@ export const LineaireDeHaie = ({
   const type = searchParams.get('type')!;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
-    const mapContainer2 = useRef<HTMLDivElement>(null);
+  const mapContainer2 = useRef<HTMLDivElement>(null);
   const mapRef2 = useRef<maplibregl.Map | null>(null);
 
 
@@ -38,12 +38,12 @@ export const LineaireDeHaie = ({
             coordonneesCommunes ? (
               <div>
                 <Suspense fallback={<Loader />}>
-                  {/* <MapHaiesWFS
+                  <MapHaiesWFS
                     coordonneesCommunes={coordonneesCommunes}
                     contoursCommunes={contoursCommunes}
                     mapRef={mapRef}
                     mapContainer={mapContainer}
-                  /> */}
+                  />
                   <MapHaies
                     coordonneesCommunes={coordonneesCommunes}
                     contoursCommunes={contoursCommunes}
