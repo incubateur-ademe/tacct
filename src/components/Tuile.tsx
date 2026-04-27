@@ -4,7 +4,6 @@ import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import DocIcon from "@/assets/icons/doc_icon_white.png";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
 import useWindowDimensions from "@/hooks/windowDimensions";
-import { Round } from "@/lib/utils/reusableFunctions/round";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -20,6 +19,16 @@ interface Props {
   tempsLecture?: number;
   nombreArticles?: number;
 }
+
+const MinuteToHours = (minutes: number) => {
+  if (minutes < 60) {
+    return `${minutes} min`;
+  }
+  if (minutes % 60 === 0) {
+    return `${minutes / 60} h`;
+  }
+  return `${Math.floor(minutes / 60)} h ${minutes % 60} min`;
+};
 
 export const TuileVerticale = ({
   titre,
@@ -86,9 +95,7 @@ export const TuileVerticale = ({
         {tempsLecture && (
           <div className={styles.tempsLecture}>
             <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-            {
-              tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{tempsLecture / 60} h</span>
-            }
+            <span>{MinuteToHours(tempsLecture)}</span>
           </div>
         )}
         {
@@ -154,9 +161,7 @@ export const TuileHorizontale = ({
             {tempsLecture && (
               <div className={styles.tempsLecture}>
                 <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-                {
-                  tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
-                }
+                <span>{MinuteToHours(tempsLecture)}</span>
               </div>
             )}
           </div>
@@ -228,9 +233,7 @@ export const TuileHorizontaleCollection = ({
                   height={16}
                   style={{ filter: 'brightness(0) invert(1)' }}
                 />
-                {
-                  tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
-                }
+                <span>{MinuteToHours(tempsLecture)}</span>
               </div>
             )}
           </div>
