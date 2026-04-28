@@ -1,6 +1,7 @@
 "use client";
 import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
 import { HtmlTooltip } from '@/components/utils/Tooltips';
+import tooltipStyles from '@/components/utils/Tooltips.module.scss';
 import { Body } from "@/design-system/base/Textes";
 import Image from "next/image";
 import { agravationItems } from './components/constantes';
@@ -25,13 +26,20 @@ const CursorVisualization = ({
                   title={item.hover}
                   placement="top"
                 >
-                  <Image
-                    src={InfoIcon}
-                    alt=""
-                    width={20}
-                    height={20}
-                    className={styles.infoIcon}
-                  />
+                  <button
+                    type="button"
+                    className={tooltipStyles.tooltipTrigger}
+                    aria-label={`Plus d'informations sur ${item.label}`}
+                    style={{ display: 'inline-flex', alignItems: 'center' }}
+                  >
+                    <Image
+                      src={InfoIcon}
+                      alt=""
+                      width={20}
+                      height={20}
+                      className={styles.infoIcon}
+                    />
+                  </button>
                 </HtmlTooltip>
               </div>
             </div>

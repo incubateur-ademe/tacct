@@ -49,7 +49,11 @@ export const TypesDeCulture = (props: {
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
             {(sau && sau !== 0 && maxCategory.count !== null) &&
-              <MicroPieChart pourcentage={(maxCategory.count / sau) * 100} arrondi={1} ariaLabel="" />
+              <MicroPieChart
+                pourcentage={(maxCategory.count / sau) * 100}
+                arrondi={1}
+                ariaLabel={`${Round((maxCategory.count / sau) * 100, 1)} % de la surface agricole utile est de type ${maxCategory.id.toLowerCase()}`}
+              />
             }
             {
               surfacesAgricoles.length ? (

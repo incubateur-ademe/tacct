@@ -129,7 +129,12 @@ export const AleaExplications = ({
             annuels. Lorsque plusieurs indicateurs sont disponibles pour un même aléa, le
             niveau d’évolution considéré est la valeur maximale de l’indicateur.
           </Body>
-          <Image src={patch4Formula} alt="" height={80} style={{ margin: "0.5rem 0" }} />
+          <Image
+            src={patch4Formula}
+            alt="Formule de calcul de l'indice d'aggravation : (valeur 2100 moins valeur 2050) divisée par la valeur 2050"
+            height={80}
+            style={{ margin: "0.5rem 0" }}
+          />
           <Body>
             Retrouvez vos indicateurs climatiques détaillés sur le portail{' '}
             <a
