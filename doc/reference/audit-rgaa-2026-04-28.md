@@ -300,57 +300,9 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 
 ---
 
-## Plan de correction priorisé
-
-### Lot 1 — Quick wins (1-2 jours)
-
-- [ ] ⏭️ Supprimer le contenu placeholder `TEST`/`COUCOU`/`Linéraire de haie texte` dans les indicateurs `foret/` *(reporté : indicateurs en cours de dev)*
-- [ ] Ajouter `ariaLabel` sur tous les composants `Micro*` (~12 fichiers)
-- [x] Corriger `ariaLabel=""` dans `2-TypesDeCultures.tsx:52`
-- [ ] Ajouter `<span className="sr-only"> (nouvelle fenêtre)</span>` sur les 5 liens `target="_blank"`
-- [ ] Ajouter `aria-label="Fermer le panneau"` sur le bouton `×` de `panneauLateral.tsx:63`
-- [x] Renseigner `alt` correct sur `patch4Formula` (formule informative)
-- [ ] Supprimer `title=""` invalide sur `<html>` dans `src/app/layout.tsx:16`
-- [ ] Ajouter `metadata.title` dédié sur chaque page parcours
-
-### Lot 2 — Refactor design system (3-5 jours)
-
-- [x] Modifier `<Body>` (`src/design-system/base/Textes.tsx`) pour accepter `htmlTag` (par défaut `'p'`)
-- [x] Remplacer `outline: none` JS par CSS `:focus-visible` natif dans `Boutons.tsx` et `BarreDeRecherche.tsx`
-- [ ] Convertir les `12px`/`14px`/`fontSize:22` en `rem`
-- [ ] Ajouter une feuille de style globale respectant `@media (prefers-reduced-motion: reduce)`
-- [ ] Conditionner les transitions D3 (`roue.tsx`) via `window.matchMedia('(prefers-reduced-motion: reduce)')`
-
-### Lot 3 — Composants interactifs critiques (5-7 jours)
-
-- [x] Refactorer l'accordéon `aleaExplications.tsx` en `<button aria-expanded>`
-- [x] Refactorer `circleVisualization.tsx` items en `<button>` avec `aria-pressed`
-- [x] Refactorer `blocAleas.tsx` en pattern ARIA tabs complet (tablist/tab/tabpanel/flèches/Home/End)
-- [x] Refactorer `Tooltips.tsx` pour ne wrapper que des éléments focusables (`<button>` par défaut)
-- [x] Ajouter `aria-expanded`/`aria-controls` sur les accordéons `MenuLateral.tsx`
-- [x] Ajouter `aria-current="page"` sur l'item actif du `MenuLateral.tsx`
-- [ ] Gérer le retour de focus après re-render SVG dans `roue.tsx`
-- [ ] Convertir `blocConseils.tsx` en `<table>` sémantique
-
-### Lot 4 — Navigation et structure (2-3 jours)
-
-- [ ] ⚠️ ~~Ajouter un `<Breadcrumb>` DSFR sur chaque page du parcours~~ *(hors design — substitué par `aria-current` sur MenuLateral, fait dans Lot 3)*
-- [ ] Réorganiser le DOM pour que le contenu principal précède le `MenuLateral` fixe (ou ajouter un second skip link `#contenu-thematique`)
-- [ ] Ajouter un `role="img"` + `<title>` sur le SVG racine de la roue D3
-- [ ] Ajouter une alternative textuelle aux cartes `Patch4Maps`
-- [ ] Indiquer le format dans les libellés des boutons d'export (`.xlsx`, `.png`)
-
-### Lot 5 — Audit professionnel final (5-10 j·h externe)
-
-- [ ] Faire valider par un cabinet certifié RGAA
-- [ ] Publier la déclaration d'accessibilité officielle
-- [ ] Mettre en place un suivi récurrent
-
----
-
 ## Tests manuels
 
-Représentent ~50 % de l'audit RGAA — non couverts par les outils automatiques.
+Non couverts par les outils automatiques.
 
 ### Validateurs
 
