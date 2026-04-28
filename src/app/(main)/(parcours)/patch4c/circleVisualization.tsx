@@ -60,7 +60,8 @@ const CircleVisualization = ({
             {activeItems.map((item, index) => {
               const position = getItemPosition(index, activeItems.length);
               return (
-                <div
+                <button
+                  type="button"
                   key={item.key}
                   className={styles.CircleItem}
                   style={{
@@ -68,6 +69,7 @@ const CircleVisualization = ({
                     top: position.y - 30,
                   }}
                   onClick={() => handleClick(item.key)}
+                  aria-pressed={selectedAleaKey === item.key}
                 >
                   {/* Circle with icon */}
                   <div
@@ -79,13 +81,14 @@ const CircleVisualization = ({
                   >
                     <Image
                       src={item.icon}
-                      alt={item.label}
+                      alt=""
                       width={34}
                       height={34}
                     />
                   </div>
                   {/* Label */}
                   <Body
+                    htmlTag="span"
                     size='xs'
                     style={{
                       maxWidth: '88px',
@@ -93,7 +96,7 @@ const CircleVisualization = ({
                     }}>
                     {item.label}
                   </Body>
-                </div>
+                </button>
               );
             })}
           </div>
