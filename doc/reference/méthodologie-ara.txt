@@ -1,0 +1,152 @@
+1.7
+Pour chaque image porteuse d’information(ouvre dans une nouvelle fenêtre) ayant une description détaillée(ouvre dans une nouvelle fenêtre), cette description est-elle pertinente ?
+
+Tests et références du critère 1.7
+1.7.1
+Chaque image (balise <img>) porteuse d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-elle ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) via l’adresse référencée dans l’attribut longdesc est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.1
+1.7.2
+Chaque bouton(ouvre dans une nouvelle fenêtre) de type image (balise <input> avec l’attribut type="image") porteur d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-il ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.2
+1.7.3
+Chaque image objet(ouvre dans une nouvelle fenêtre) (balise <object> avec l’attribut type="image/…") porteuse d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-elle ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) adjacente à l’image objet(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.3
+1.7.4
+Chaque image embarquée (balise <embed> avec l’attribut type="image/…") porteuse d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-elle ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) adjacente à l’image embarquée est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.4
+1.7.5
+Chaque image vectorielle (balise <svg>) porteuse d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-elle ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par le texte contenu dans la balise <desc> ou <title> est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) adjacente contenue dans la balise <desc> est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.5
+1.7.6
+Chaque image bitmap (balise <canvas>) porteuse d’information(ouvre dans une nouvelle fenêtre), ayant une description détaillée(ouvre dans une nouvelle fenêtre), vérifie-t-elle ces conditions ?
+
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par l’alternative textuelle(ouvre dans une nouvelle fenêtre) est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) dans la page et signalée par le texte contenu entre <canvas> et </canvas> est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) contenue entre <canvas> et </canvas> est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) adjacente à l’image bitmap est pertinente ;
+La description détaillée(ouvre dans une nouvelle fenêtre) via un lien ou un bouton adjacent(ouvre dans une nouvelle fenêtre) est pertinente ;
+Le passage de texte associé via l’attribut WAI-ARIA aria-describedby est pertinent.
+Méthodologie du test 1.7.6
+Retrouver dans le document les éléments <canvas> qui possèdent une description détaillée ;
+Pour chaque élément <canvas>, vérifier que la description détaillée est pertinente ;
+Si c’est le cas pour chaque image, le test est validé.
+
+
+
+
+1.8
+Chaque image texte(ouvre dans une nouvelle fenêtre) porteuse d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+
+Tests et références du critère 1.8
+1.8.1
+Chaque image texte(ouvre dans une nouvelle fenêtre) (balise <img> ou possédant un attribut WAI-ARIA role="img") porteuse d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.1
+1.8.2
+Chaque bouton « image texte(ouvre dans une nouvelle fenêtre) » (balise <input> avec l’attribut type="image") porteur d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacé par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.2
+1.8.3
+Chaque image texte(ouvre dans une nouvelle fenêtre) objet (balise <object> avec l’attribut type="image/…") porteuse d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.3
+1.8.4
+Chaque image texte(ouvre dans une nouvelle fenêtre) embarquée (balise <embed> avec l’attribut type="image/…") porteuse d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.4
+1.8.5
+Chaque image texte(ouvre dans une nouvelle fenêtre) bitmap (balise <canvas>) porteuse d’information(ouvre dans une nouvelle fenêtre), en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.5
+1.8.6
+Chaque image texte(ouvre dans une nouvelle fenêtre) SVG (balise <svg>) porteuse d’information(ouvre dans une nouvelle fenêtre) et dont le texte n’est pas complètement structuré au moyen d’éléments <text>, en l’absence d’un mécanisme de remplacement(ouvre dans une nouvelle fenêtre), doit si possible être remplacée par du texte stylé(ouvre dans une nouvelle fenêtre). Cette règle est-elle respectée (hors cas particuliers) ?
+
+Méthodologie du test 1.8.6
+Cas particulier
+Pour ce critère, il existe une gestion de cas particulier lorsque le texte fait partie du logo, d’une dénomination commerciale, d’un CAPTCHA(ouvre dans une nouvelle fenêtre), d’une image-test(ouvre dans une nouvelle fenêtre) ou d’une image dont l’exactitude graphique serait considérée comme essentielle à la bonne transmission de l’information véhiculée par l’image. Dans ces situations, le critère est non applicable pour ces éléments.
+
+Note technique
+Le texte dans les images vectorielles étant du texte réel, il n’est pas concerné par ce critère.
+
+
+
+
+
+
+1.9
+Chaque légende d’image(ouvre dans une nouvelle fenêtre) est-elle, si nécessaire, correctement reliée à l’image correspondante ?
+
+1.9.1
+Chaque image pourvue d’une légende(ouvre dans une nouvelle fenêtre) (balise <img>, <input> avec l’attribut type="image" ou possédant un attribut WAI-ARIA role="img" associée à une légende(ouvre dans une nouvelle fenêtre) adjacente), vérifie-t-elle, si nécessaire, ces conditions ?
+
+L’image (balise <img>, <input> avec l’attribut type="image" ou possédant un attribut WAI-ARIA role="img") et sa légende(ouvre dans une nouvelle fenêtre) adjacente sont contenues dans une balise <figure> ;
+La balise <figure> possède un attribut WAI-ARIA role="figure" ou role="group" ;
+La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende(ouvre dans une nouvelle fenêtre) ;
+La légende(ouvre dans une nouvelle fenêtre) est contenue dans une balise <figcaption>.
+Méthodologie du test 1.9.1
+1.9.2
+Chaque image objet(ouvre dans une nouvelle fenêtre) pourvue d’une légende(ouvre dans une nouvelle fenêtre) (balise <object> avec l’attribut type="image/…" associée à une légende(ouvre dans une nouvelle fenêtre) adjacente), vérifie-t-elle, si nécessaire, ces conditions ?
+
+L’image objet(ouvre dans une nouvelle fenêtre) et sa légende(ouvre dans une nouvelle fenêtre) adjacente sont contenues dans une balise <figure> ;
+La balise <figure> possède un attribut WAI-ARIA role="figure" ou role="group" ;
+La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende(ouvre dans une nouvelle fenêtre) ;
+La légende(ouvre dans une nouvelle fenêtre) est contenue dans une balise <figcaption>.
+Méthodologie du test 1.9.2
+1.9.3
+Chaque image embarquée pourvue d’une légende(ouvre dans une nouvelle fenêtre) (balise <embed> associée à une légende(ouvre dans une nouvelle fenêtre) adjacente), vérifie-t-elle, si nécessaire, ces conditions ?
+
+L’image embarquée (balise <embed>) et sa légende(ouvre dans une nouvelle fenêtre) adjacente sont contenues dans une balise <figure> ;
+La balise <figure> possède un attribut WAI-ARIA role="figure" ou role="group" ;
+La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende(ouvre dans une nouvelle fenêtre) ;
+La légende(ouvre dans une nouvelle fenêtre) est contenue dans une balise <figcaption>.
+Méthodologie du test 1.9.3
+1.9.4
+Chaque image vectorielle pourvue d’une légende(ouvre dans une nouvelle fenêtre) (balise <svg> associée à une légende(ouvre dans une nouvelle fenêtre) adjacente), vérifie-t-elle, si nécessaire, ces conditions ?
+
+L’image vectorielle (balise <svg>) et sa légende(ouvre dans une nouvelle fenêtre) adjacente sont contenues dans une balise <figure> ;
+La balise <figure> possède un attribut WAI-ARIA role="figure" ou role="group" ;
+La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende(ouvre dans une nouvelle fenêtre) ;
+La légende(ouvre dans une nouvelle fenêtre) est contenue dans une balise <figcaption>.
+Méthodologie du test 1.9.4
+1.9.5
+Chaque image bitmap pourvue d’une légende(ouvre dans une nouvelle fenêtre) (balise <canvas> associée à une légende(ouvre dans une nouvelle fenêtre) adjacente), vérifie-t-elle, si nécessaire, ces conditions ?
+
+L’image bitmap (balise <canvas>) et sa légende(ouvre dans une nouvelle fenêtre) adjacente sont contenues dans une balise <figure> ;
+La balise <figure> possède un attribut WAI-ARIA role="figure" ou role="group" ;
+La balise <figure> possède un attribut WAI-ARIA aria-label dont le contenu est identique au contenu de la légende(ouvre dans une nouvelle fenêtre) ;
+La légende(ouvre dans une nouvelle fenêtre) est contenue dans une balise <figcaption>.
+Méthodologie du test 1.9.5
+Notes techniques
+L’implémentation d’un attribut WAI-ARIA role="group" ou role="figure" sur l’élément parent <figure> est destiné à pallier le manque de support actuel des éléments <figure> par les technologies d’assistance. L’utilisation d’un élément <figcaption> pour associer une légende(ouvre dans une nouvelle fenêtre) à une image impose au minimum l’utilisation d’un attribut WAI-ARIA aria-label sur l’élément parent <figure> dont le contenu sera identique au contenu de l’élément <figcaption>. Pour s’assurer d’un support optimal, il peut également être fait une association explicite entre le contenu de l’alternative textuelle(ouvre dans une nouvelle fenêtre) de l’image et le contenu de l’élément <figcaption>, par exemple :
+
+<img src="image.png" alt="Photo : soleil couchant" /><figcaption>Photo : crédit xxx</figcaption>
+
+Les attributs WAI-ARIA aria-labelledby et aria-describedby ne peuvent pas être utilisés actuellement par manque de support par les technologies d’assistance.
+
+Note : les images légendées doivent par ailleurs respecter le critère 1.1 et le critère 1.3 relatifs aux images porteuses d’information.

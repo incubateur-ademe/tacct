@@ -5,8 +5,8 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { Patch4Tooltip } from './subcomponents/tooltips';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
   if (value === null) return '#FFF';
@@ -302,7 +302,7 @@ export const MapPatch4 = (props: {
           }
       `}</style>
       <AccessibleMapWrapper
-        ariaLabel="Carte choroplèthe représentant le niveau d'aggravation par aléa climatique (feux de forêt, fortes chaleurs, fortes précipitations, niveaux marins, sécheresse des sols) par commune sur votre territoire"
+        ariaLabel="Cartographie représentant le niveau d'aggravation par aléa climatique par commune sur votre territoire"
         style={{ position: 'relative' }}
       >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />

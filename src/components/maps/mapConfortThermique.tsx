@@ -8,8 +8,8 @@ import 'carte-facile/carte-facile.css';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef, useState } from 'react';
-import { FragiliteEconomiqueTooltip } from './subcomponents/tooltips';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { FragiliteEconomiqueTooltip } from './subcomponents/tooltips';
 
 export const MapConfortThermique = (props: {
   precariteData: { code: string; value: number; name: string }[];
@@ -262,7 +262,7 @@ export const MapConfortThermique = (props: {
           }
       `}</style>
       <AccessibleMapWrapper
-        ariaLabel="Carte choroplèthe de la précarité énergétique liée au logement par commune sur votre territoire"
+        ariaLabel="Cartographie de la précarité énergétique liée au logement par commune sur votre territoire"
         style={{ position: 'relative' }}
       >
         {!isMapLoaded && (

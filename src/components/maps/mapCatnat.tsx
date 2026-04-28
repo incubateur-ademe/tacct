@@ -8,9 +8,9 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { colorsCatnat } from './legends/legendCatnat';
 import { CatnatTooltip } from './subcomponents/tooltips';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 interface CatNatData {
         sumCatnat: number;
@@ -348,7 +348,7 @@ export const MapCatnat = (props: {
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <AccessibleMapWrapper
-          ariaLabel="Carte choroplèthe du nombre d'arrêtés de catastrophe naturelle par commune sur votre territoire"
+          ariaLabel="Cartographie du nombre d'arrêtés de catastrophe naturelle par commune sur votre territoire"
           style={{ position: 'relative' }}
         >
           <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />

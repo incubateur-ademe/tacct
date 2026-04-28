@@ -50,6 +50,62 @@ Dernière mise à jour : 2026-04-28.
 | 1.1.6 | ✅ N/A | — | Aucune balise `<object type="image/...">` |
 | 1.1.7 | ✅ N/A | — | Aucune balise `<embed type="image/...">` |
 | 1.1.8 | ✅ Corrigé | 2026-04-28 | Wrapper réutilisable `AccessibleMapWrapper` (`role="img"` + `aria-label`) appliqué aux 17 cartes MapLibre/Leaflet |
+| 1.2.1 | ✅ Conforme | 2026-04-28 | Aucune image `alt=""` n'a d'`aria-label`/`title`/`aria-labelledby` parasite |
+| 1.2.2 | ✅ N/A | — | Aucune `<area>` |
+| 1.2.3 | ✅ N/A | — | Aucun `<object type="image">` |
+| 1.2.4 | ✅ Conforme | 2026-04-28 | Tous les SVG décoratifs ont `aria-hidden="true"` sans `<title>`/`<desc>` parasite |
+| 1.2.5 | ✅ N/A | — | Aucun `<canvas>` JSX décoratif (canvas MapLibre traités en 1.1.8, html2canvas off-screen) |
+| 1.2.6 | ✅ N/A | — | Aucune `<embed>` |
+| 1.3.1 | ✅ Conforme | 2026-04-28 | Toutes les alternatives textuelles des `<img>`/`role="img"` informatives sont pertinentes |
+| 1.3.2 → 1.3.5 | ✅ N/A | — | Aucune `<area>`, `<input type="image">`, `<object>`, `<embed>` |
+| 1.3.6 | ✅ Conforme | 2026-04-28 | `aria-label` de la roue D3 pertinent et concis |
+| 1.3.7 → 1.3.8 | ✅ N/A | — | Aucun `<canvas>` JSX |
+| 1.3.9 | ✅ Conforme | 2026-04-28 | Alternatives concises (cartes : libellés un peu longs mais informatifs nécessaires) |
+| 1.6.1 | ❌ Non conforme | 2026-04-28 | Une partie des cartes ne dispose pas de description détaillée accessible (voir détail ci-dessous) |
+| 1.7.1 | 🟡 Partiel | 2026-04-28 | Pour les cartes ayant une description détaillée (export XLSX), celle-ci est pertinente ; les autres cas relèvent du 1.6 |
+| 1.7.2 → 1.7.4 | ✅ N/A | — | Aucun `<input type="image">`, `<object>`, `<embed>` |
+| 1.7.5 | 🟡 Partiel | 2026-04-28 | Roue SVG : description partielle via panneau latéral, pertinente pour ce qu'elle décrit |
+| 1.7.6 | ✅ N/A | — | Aucun `<canvas>` JSX |
+| 1.8.1 → 1.8.6 | ✅ Conforme | 2026-04-28 | Aucune image-texte informative (formule mathématique = cas particulier exclu, logos = cas particulier exclu, texte SVG = texte réel non concerné) |
+| 1.9.1 | ✅ Corrigé | 2026-04-28 | `<figure>` dans `transformationContenuArticles.tsx` : ajout `role="figure"` + `aria-label={caption}` |
+| 1.9.2 → 1.9.5 | ✅ N/A | — | Pas de `<object>`, `<embed>`, `<svg>`, `<canvas>` avec légende |
+| 2.1 | ✅ Conforme | 2026-04-28 | Les 3 `<iframe>` (statistiques Metabase) ont toutes un attribut `title="Tableau de bord stats"`. Aucune `<frame>` obsolète |
+| 1.6.2 → 1.6.4 | ✅ N/A | — | Aucun `<object>`, `<embed>`, `<input type="image">` |
+| 1.6.5 | 🟡 Partiel | 2026-04-28 | Roue SVG : l'interaction (panneau latéral) fournit des éléments descriptifs mais pas une description détaillée structurée |
+| 1.6.6 | 🟡 Test manuel | — | À valider avec NVDA/VoiceOver lors de la phase de tests AT |
+| 1.6.7 → 1.6.8 | ✅ N/A | — | Aucun `<canvas>` JSX |
+| 1.6.9 | ✅ N/A | — | Aucun usage d'`aria-describedby` sur images |
+| 1.6.10 | ❌ Non conforme | 2026-04-28 | Mêmes limitations que 1.6.1 sur les cartes wrappées avec `role="img"` |
+
+#### Note 1.6 — Non-conformité avec impact utilisateur **majeur**
+
+Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque image porteuse d'information riche (cartes choroplèthes, dataviz complexes). Sur Facili-TACCT, la situation est hétérogène :
+
+**Trois cas de figure pour les cartes** :
+
+1. **Cartes avec export XLSX des données sous-jacentes** (majorité — ~11 cartes) → ✅ Conforme.
+   Le bouton `ExportButton` adjacent permet de télécharger un tableau de données par commune. Cela constitue le « bouton adjacent permettant d'accéder à la description détaillée » (test 1.6.1, condition 3).
+
+2. **Cartes sans aucun export** (données privées, non redistribuables, ou agrégats non détaillables) → ❌ **Non conforme**.
+   Aucune description détaillée n'est disponible. L'utilisateur de technologies d'assistance n'a pas accès aux données.
+
+3. **Cartes alimentées par flux de tuiles vectorielles via API externes** (ex. WMS/WFS IGN, OCS GE, LCZ Cerema, BD HAIE) — 6 indicateurs concernés → ❌ **Non conforme**.
+   Aucune donnée brute exportable côté application : seul un export **PNG** de la carte est proposé, qui n'est **pas accessible aux lecteurs d'écran** (image bitmap sans alternative textuelle exploitable).
+
+   Indicateurs concernés :
+   - `donnees/indicateurs/amenagement/2-LCZ.tsx`
+   - `donnees/indicateurs/confortThermique/6-LCZ.tsx`
+   - `donnees/indicateurs/foret/2-LineaireDeHaie.tsx`
+   - `donnees/indicateurs/gestionDesRisques/3-ErosionCotiere.tsx`
+   - `donnees/indicateurs/gestionDesRisques/5-Debroussaillement.tsx`
+   - `donnees/indicateurs/sante/1-o3.tsx`
+
+**Impact utilisateur : majeur.** Les utilisateurs aveugles, malvoyants ou utilisant des technologies d'assistance n'ont pas accès à l'information détaillée portée par ces cartes — qui est pourtant le cœur de la valeur informative de l'application.
+
+**Pistes d'amélioration** (à intégrer au Lot 4 — Phase B) :
+
+- **Cas 2 (sans export)** : ajouter un texte descriptif synthétique adjacent à la carte, qui restitue les données clés (ex : « X communes de votre territoire sont en zone d'aléa fort, principalement Y et Z ») ;
+- **Cas 3 (flux API)** : étudier la possibilité de récupérer les données via les API WFS/GeoJSON pour produire un export tabulaire, ou à défaut fournir un texte descriptif synthétique.
 
 ---
 
