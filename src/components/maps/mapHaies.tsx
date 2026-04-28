@@ -6,6 +6,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
 import styles from './maps.module.scss';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const HEDGE_WMS_BASE = 'https://data.geopf.fr/wms-v/ows';
 
@@ -392,7 +393,10 @@ export const MapHaies = ({
   }, [coordonneesCommunes, contoursCommunes]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte raster représentant le linéaire de haies (BD HAIE — IGN, 2025) sur votre territoire"
+      style={{ position: 'relative' }}
+    >
       <style jsx global>{`
         .maplibregl-popup {
           z-index: 1002 !important;
@@ -459,7 +463,7 @@ export const MapHaies = ({
         />
         <span>Haies (BD HAIE — IGN, 2025)</span>
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };
 

@@ -51,7 +51,7 @@ export const SolsImpermeabilises = (props: {
             {
               sumNaf !== null &&
               <>
-                <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' />
+                <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite='ha' ariaLabel="Hectares de sols imperméabilisés sur votre territoire" />
                 <div className={styles.text}>
                   <SolsImpermeabilisesBiodiversiteDynamicText
                     sumNaf={sumNaf}

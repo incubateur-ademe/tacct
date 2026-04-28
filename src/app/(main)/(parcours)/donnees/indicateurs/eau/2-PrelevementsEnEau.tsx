@@ -179,6 +179,7 @@ export const PrelevementsEnEau = (props: {
                 valeur={volumePreleveTerritoire}
                 arrondi={2}
                 unite="Mm³"
+                ariaLabel="Volume d'eau prélevé sur votre territoire, en millions de mètres cubes"
               />
             )}
             {dataParMaille.length !== 0 ? (

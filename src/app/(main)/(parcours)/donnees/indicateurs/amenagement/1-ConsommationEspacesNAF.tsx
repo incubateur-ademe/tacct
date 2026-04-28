@@ -40,7 +40,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite="ha" />
+            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite="ha" ariaLabel="Hectares d'espaces naturels, agricoles et forestiers consommés depuis 2009" />
             <div className={styles.text}>
               {sumNaf !== null ? (
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>

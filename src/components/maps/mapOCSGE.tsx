@@ -7,6 +7,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
 import { Loader } from '../ui/loader';
 import styles from './maps.module.scss';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapOCSGE = ({
   coordonneesCommunes,
@@ -105,7 +106,10 @@ export const MapOCSGE = ({
   }, [coordonneesCommunes]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte de l'occupation et couverture des sols à grande échelle (OCS GE) représentant les usages des sols en 2021-2023 sur votre territoire"
+      style={{ position: 'relative' }}
+    >
       <style jsx global>{`
         .maplibregl-popup {
           z-index: 1002 !important;
@@ -237,7 +241,7 @@ export const MapOCSGE = ({
           </div>
         </>
       )}
-    </div>
+    </AccessibleMapWrapper>
   );
 };
 

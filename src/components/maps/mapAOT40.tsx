@@ -11,6 +11,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import './maps.css';
 import { AOT40Tooltip } from './subcomponents/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const color = (valeur: number) => {
   return valeur > 36000
@@ -449,10 +450,13 @@ export const MapAOT40 = (props: {
           overflow: visible !important;
         }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Carte de points représentant les concentrations en ozone (indice AOT40) mesurées par les stations de surveillance à proximité de votre territoire"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
         <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

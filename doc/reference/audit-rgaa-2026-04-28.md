@@ -38,6 +38,19 @@ Dernière mise à jour : 2026-04-28.
 | 11  | ✅ Corrigé      | 2026-04-28 | `<table>` sémantique : `<caption>` + `<thead>/<tbody>` + `<th scope>` (parcours + iframe)                         |
 | 12  | ✅ Corrigé      | 2026-04-28 | Override global dans `global.css` + transitions D3 conditionnées via `matchMedia` dans `roue.tsx`                 |
 
+### Corrections complémentaires (audit ARA — critère 1)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 1.1.1 | ✅ Corrigé | 2026-04-28 | `ariaLabel` ajouté sur 9 indicateurs `Micro*` + prop ajoutée à `MicroRemplissageTerritoire` |
+| 1.1.2 | ✅ N/A | — | Aucune balise `<area>` |
+| 1.1.3 | ✅ N/A | — | Aucun `<input type="image">` |
+| 1.1.4 | ✅ N/A | — | Aucune image map serveur |
+| 1.1.5 | ✅ Corrigé | 2026-04-28 | SVG décoratifs (`BaseIcons`, `home/*Line`) → `aria-hidden`. SVG informatif `roue.tsx` → `role="img"` + `aria-label` |
+| 1.1.6 | ✅ N/A | — | Aucune balise `<object type="image/...">` |
+| 1.1.7 | ✅ N/A | — | Aucune balise `<embed type="image/...">` |
+| 1.1.8 | ✅ Corrigé | 2026-04-28 | Wrapper réutilisable `AccessibleMapWrapper` (`role="img"` + `aria-label`) appliqué aux 17 cartes MapLibre/Leaflet |
+
 ---
 
 ## Synthèse — Top 12 des points bloquants

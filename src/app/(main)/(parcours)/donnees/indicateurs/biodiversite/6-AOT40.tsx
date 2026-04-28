@@ -73,7 +73,7 @@ export const OzoneEtVegetation = (props: {
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} >
-          {stationWithMaxValue && <MicroNumberCircle valeur={stationWithMaxValue[0].properties.value} arrondi={0} unite='µg/m³' />}
+          {stationWithMaxValue && <MicroNumberCircle valeur={stationWithMaxValue[0].properties.value} arrondi={0} unite='µg/m³' ariaLabel="Valeur maximale d'AOT40 mesurée sur votre territoire, en microgrammes par mètre cube" />}
           <div className={styles.text}>
             <AOT40DynamicText
               stationWithMaxValue={stationWithMaxValue}

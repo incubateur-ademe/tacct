@@ -8,6 +8,7 @@ import { RefObject, useEffect } from 'react';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapRGAExport = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -89,7 +90,10 @@ export const MapRGAExport = (props: {
   }, []);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte choroplèthe des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
+      style={{ position: 'relative', ...style }}
+    >
       <div ref={exportMapContainer} style={{ height: "500px", width: "100%" }} />
       <div className="exportPNGWrapper">
         <div
@@ -99,6 +103,6 @@ export const MapRGAExport = (props: {
           <LegendCompColor legends={RgaMapLegend} />
         </div>
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };

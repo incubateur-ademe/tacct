@@ -38,7 +38,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={incendiesForet.length} arrondi={0} />
+            <MicroNumberCircle valeur={incendiesForet.length} arrondi={0} ariaLabel="Nombre de départs de feux de forêt sur votre territoire depuis 2006" />
             {incendiesForet ? (
               <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                 Depuis 2006, votre territoire a connu {incendiesForet.length}{' '}

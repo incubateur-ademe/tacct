@@ -124,7 +124,7 @@ export const ArretesCatnat = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={gestionRisques.length} arrondi={0} />
+            <MicroNumberCircle valeur={gestionRisques.length} arrondi={0} ariaLabel="Nombre d'arrêtés de catastrophe naturelle sur votre territoire depuis 1982" />
             <>
               {dataByCodeGeographique[0]?.sumCatnat === 0 ||
                 gestionRisques.length === 0 ? (

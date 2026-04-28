@@ -7,6 +7,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
 import styles from './maps.module.scss';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapTiles = (props: {
   coordonneesCommunes: {
@@ -20,6 +21,7 @@ export const MapTiles = (props: {
   paint: { [key: string]: Any };
   legend?: React.ReactNode;
   style?: React.CSSProperties;
+  ariaLabel: string;
 }) => {
   const {
     coordonneesCommunes,
@@ -29,7 +31,8 @@ export const MapTiles = (props: {
     bucketUrl,
     layer,
     paint,
-    legend
+    legend,
+    ariaLabel
   } = props;
 
   useEffect(() => {
@@ -117,7 +120,10 @@ export const MapTiles = (props: {
   }, [coordonneesCommunes]);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel={ariaLabel}
+      style={{ position: 'relative', ...style }}
+    >
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
       <div
         className={
@@ -131,6 +137,6 @@ export const MapTiles = (props: {
           {legend && legend}
         </div>
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };

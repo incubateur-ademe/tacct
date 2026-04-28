@@ -10,6 +10,7 @@ import { RefObject, useEffect, useRef, useState } from 'react';
 import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
 import { CanopeeTooltip } from './subcomponents/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const COG_PATH = '/canopee/France_Forest_COG.tif';
 const TARGET_RESOLUTION_M = 10;
@@ -371,7 +372,10 @@ export const MapCanopee = (props: {
   }, [coordonneesCommunes, contoursCommunes]);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte raster représentant la hauteur de la canopée forestière (en mètres) sur votre territoire"
+      style={{ position: 'relative', ...style }}
+    >
       <style jsx global>{`
         @keyframes spin {
           0% {
@@ -411,6 +415,6 @@ export const MapCanopee = (props: {
       >
         <HauteurCanopeeLegend />
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };

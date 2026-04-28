@@ -538,6 +538,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             ref={svgRef}
             width={svgWidth}
             height={svgHeight}
+            role="img"
+            aria-label="Roue systémique des thématiques du territoire"
             style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
           />
 

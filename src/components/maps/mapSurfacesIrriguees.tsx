@@ -5,6 +5,7 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { SurfacesIrrigueesTooltip } from './subcomponents/tooltips';
 
 export const MapSurfacesIrriguees = (props: {
@@ -288,9 +289,12 @@ export const MapSurfacesIrriguees = (props: {
             overflow: visible !important;
           }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Carte représentant le pourcentage de surface agricole utile irriguée par commune sur votre territoire"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

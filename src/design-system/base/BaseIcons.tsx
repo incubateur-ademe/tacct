@@ -4,6 +4,8 @@ export const ChevronDownIcon = (style: React.CSSProperties) => (
     height="20"
     viewBox="0 0 20 20"
     fill="none"
+    aria-hidden="true"
+    focusable="false"
     style={{
       ...style,
     }}

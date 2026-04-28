@@ -10,6 +10,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
 import { colorsCatnat } from './legends/legendCatnat';
 import { CatnatTooltip } from './subcomponents/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 interface CatNatData {
         sumCatnat: number;
@@ -346,9 +347,12 @@ export const MapCatnat = (props: {
       {!coordonneesCommunes ? (
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
-        <div style={{ position: 'relative' }}>
+        <AccessibleMapWrapper
+          ariaLabel="Carte choroplèthe du nombre d'arrêtés de catastrophe naturelle par commune sur votre territoire"
+          style={{ position: 'relative' }}
+        >
           <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
-        </div>
+        </AccessibleMapWrapper>
       )}
     </>
   );
