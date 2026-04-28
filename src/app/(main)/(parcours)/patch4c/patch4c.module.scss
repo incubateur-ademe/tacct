@@ -436,12 +436,19 @@
 
 .tableau {
     margin-top: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+
+    tbody .tableauRow:last-child {
+        border-bottom: none;
+    }
 }
 
 .tableauRow {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
+    border-bottom: 1px solid #e7e5e5;
 }
 
 .tableauCell {
@@ -451,12 +458,8 @@
     align-items: center;
     justify-content: flex-start;
     gap: 0.5rem;
-}
-
-.tableauSeparator {
-    height: 1px;
-    background-color: #e7e5e5;
-    width: 100%;
+    font-weight: normal;
+    text-align: inherit;
 }
 
 // Export

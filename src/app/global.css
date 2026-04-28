@@ -124,6 +124,20 @@ html {
     scroll-behavior: smooth !important;
 }
 
+/* Respect de la préférence utilisateur pour réduire les animations
+   (RGAA 13.8 / WCAG 2.3.3). S'applique globalement à toutes les
+   animations CSS, transitions et au scroll smooth. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 /* Styles pour les listes imbriquées */
 ul {
     list-style-type: disc;

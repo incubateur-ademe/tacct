@@ -124,6 +124,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
   };
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const transitionDuration = prefersReducedMotion ? 0 : 200;
     const svgEl = d3.select(svgRef.current);
     svgEl.selectAll("*").remove();
     const svg = svgEl.append("g").attr("transform", `translate(${svgWidth / 2},${svgHeight / 2})`);
@@ -384,7 +386,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
           d3.select(this).select("rect")
             .transition()
-            .duration(200)
+            .duration(transitionDuration)
             .attr("fill", hoverColor)
             .attr("stroke-dasharray", "");
         }
@@ -395,7 +397,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           d3.select(this).select("rect")
             .transition()
-            .duration(200)
+            .duration(transitionDuration)
             .attr("fill", "#fff")
             .attr("stroke-dasharray", "5 0");
         }
@@ -424,7 +426,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
           d3.select(this).select("rect")
             .transition()
-            .duration(200)
+            .duration(transitionDuration)
             .attr("fill", hoverColor)
             .attr("stroke-dasharray", "");
         }
@@ -435,7 +437,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           d3.select(this).select("rect")
             .transition()
-            .duration(200)
+            .duration(transitionDuration)
             .attr("fill", "#fff")
             .attr("stroke-dasharray", "5 0");
         }
