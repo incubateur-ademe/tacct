@@ -416,7 +416,7 @@ export const PrelevementEauText = () => (
       ⇒ 20 % des prélèvements d’eau potable sont perdus à cause des fuites, soit
       l’équivalent de la consommation de 18,5 millions d’habitants.
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       - - - - <br></br>
       Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
       <li>
@@ -490,7 +490,7 @@ export const ErosionCotiereText = () => (
       disparaissent peu à peu. En 50 ans, la mer a englouti l'équivalent de la
       ville de La Rochelle : 30 km² de terres perdues.
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       Impacts locaux sur les milieux :
       <ul style={{ marginLeft: '1rem' }}>
         <li>Augmentation des intrusions salines des aquifères côtiers,</li>
@@ -498,7 +498,7 @@ export const ErosionCotiereText = () => (
         <li>Appauvrissement des sols dû à la salinisation.</li>
       </ul>
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       Impacts locaux sur les activités humaines :
       <ul style={{ marginLeft: '1rem' }}>
         <li>

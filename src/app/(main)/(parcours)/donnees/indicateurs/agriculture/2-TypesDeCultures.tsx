@@ -67,7 +67,7 @@ export const TypesDeCulture = (props: {
                         {
                           territoiresPartiellementCouverts && (
                             <>
-                              <Body style={{ color: "var(--gris-dark)" }}>
+                              <Body htmlTag="div" style={{ color: "var(--gris-dark)" }}>
                                 <br></br><b>À noter</b> : Ces données ne sont disponibles qu’à l’échelle
                                 intercommunale. Ces {territoiresPartiellementCouverts?.length} EPCI débordent de
                                 votre périmètre :
