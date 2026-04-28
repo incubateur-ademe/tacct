@@ -79,7 +79,7 @@ export const BoutonPrimaireClassic = ({
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (!disabled) {
+    if (!disabled && e.currentTarget.matches(':focus-visible')) {
       e.currentTarget.style.outline = 'none';
       e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[1]}`;
       e.currentTarget.style.boxShadow = `0 0 0 2px white, 0 0 0 4px ${couleursBoutons.primaire[1]}`;
@@ -195,7 +195,7 @@ export const BoutonSecondaireClassic = ({
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (!disabled) {
+    if (!disabled && e.currentTarget.matches(':focus-visible')) {
       e.currentTarget.style.outline = 'none';
       e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[2]}`;
       e.currentTarget.style.boxShadow = `0 0 0 2px ${couleursBoutons.primaire[1]}, 0 0 0 4px ${couleursBoutons.primaire[2]}`;
@@ -293,7 +293,7 @@ export const BoutonSecondaire = ({
         '&:hover': {
           backgroundColor: `${couleursBoutons.primaire[2]} !important`,
         },
-        '&:focus': {
+        '&:focus-visible': {
           outline: 'none',
           border: `1px solid ${couleursBoutons.primaire[2]}`,
           boxShadow: `
@@ -347,7 +347,7 @@ export const BoutonTertiaire = ({
         '&:hover': {
           backgroundColor: `${couleursBoutons.primaire[2]} !important`,
         },
-        '&:focus': {
+        '&:focus-visible': {
           outline: 'none',
           border: `1px solid ${couleursBoutons.primaire[3]}`,
           boxShadow: `
