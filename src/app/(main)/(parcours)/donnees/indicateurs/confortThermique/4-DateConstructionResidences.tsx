@@ -80,7 +80,7 @@ export const DateConstructionResidences = ({
           <SourceExport
             source="INSEE, RP2022 (consultée en avril 2026)"
             condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0 && !isNaN(Sum(chartData.map(el => Number(el["Votre territoire"]))))}
-            anchor='Âge du bâtiment'
+            anchor='Âge-du-bâtiment'
             exportComponent={
               <ExportButton
                 data={exportData}

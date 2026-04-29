@@ -53,7 +53,7 @@ export const GrandAge75 = ({
           : grandAgeMapped;
 
   const yData = GrandAge75LineChartYData(grandAgeTerritoire);
-  const xData = ['1968', '1975', '1982', '1990', '1999', '2006','2011', '2016', '2022'];
+  const xData = ['1968', '1975', '1982', '1990', '1999', '2006', '2011', '2016', '2022'];
   const yGraphData = Object.values(yData)
     .map(Number)
     .map((value) => (isNaN(value) ? null : value));
@@ -160,7 +160,7 @@ export const GrandAge75 = ({
                 type={type}
                 libelle={libelle}
                 code={code}
-                sheetName="Grand âge"
+                sheetName="Grand-âge"
               />
             }
             source='INSEE, 2024 (consultée en février 2026)'

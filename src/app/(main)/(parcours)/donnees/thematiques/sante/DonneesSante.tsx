@@ -93,7 +93,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
 
         {/* Pollution à l’ozone */}
         <div
-          id="Pollution à l’ozone"
+          id="Pollution-à-l’ozone"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
@@ -127,7 +127,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
 
         {/* Moustique tigre et arboviroses */}
         <div
-          id="Moustique tigre et arboviroses"
+          id="Moustique-tigre-et-arboviroses"
           className={styles.indicateurMultipleMapsWrapper}
         >
           <div className={styles.h3Titles}>

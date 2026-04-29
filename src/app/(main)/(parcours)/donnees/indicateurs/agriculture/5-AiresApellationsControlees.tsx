@@ -158,7 +158,7 @@ export const AiresAppellationsControlees = (props: {
               libelle={libelle}
               code={code}
               sheetName="Appellations contrôlées"
-              anchor="Appellations contrôlées"
+              anchor="Appellations-contrôlées"
             />
           </div>
         </div>

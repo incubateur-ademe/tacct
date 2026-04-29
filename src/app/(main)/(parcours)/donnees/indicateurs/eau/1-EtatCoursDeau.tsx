@@ -112,7 +112,7 @@ export const EtatEcoCoursDeau = (props: {
           code={code}
           sheetName="État des cours d'eau"
           disabled={exportData.length === 0}
-          anchor="État des cours d'eau"
+          anchor="État-des-cours-d'eau"
         >
           Exporter
         </ExportButton>

@@ -142,7 +142,7 @@ export const SuperficiesIrriguees = (props: {
               libelle={libelle}
               code={code}
               sheetName="Surfaces irriguées"
-              anchor='Superficies irriguées'
+              anchor='Superficies-irriguées'
             />
           </div>
         ) : (

@@ -79,8 +79,8 @@ export const SubAccordionGraph = ({
   return (
     <SubAccordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
       <AccordionSummary
-        aria-controls="panel1-content"
-        id="panel1-header"
+        aria-controls={`${accordionTitle}-content`}
+        id={`${accordionTitle}-header`}
         expandIcon={
           <>
             {!expanded ? (

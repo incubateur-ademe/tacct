@@ -89,7 +89,7 @@ export const DonneesEau = ({
           }}>            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Ressources en eau */}
-          <div id="Ressources en eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Ressources-en-eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Répartition des prélèvements d’eau par usage
@@ -99,7 +99,7 @@ export const DonneesEau = ({
           </div>
 
           {/* État écologique des cours d'eau */}
-          <div id="État des cours d'eau" className={styles.indicateurMapWrapper}>
+          <div id="État-des-cours-d'eau" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau

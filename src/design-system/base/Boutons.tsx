@@ -105,7 +105,7 @@ export const BoutonPrimaireClassic = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div className="flex items-center justify-center">
+      <span className="flex items-center justify-center">
         {
           icone && (
             <Image
@@ -118,7 +118,7 @@ export const BoutonPrimaireClassic = ({
           )
         }
         {text}
-      </div>
+      </span>
     </button>
   );
 }
@@ -221,7 +221,7 @@ export const BoutonSecondaireClassic = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div className="flex items-center justify-center">
+      <span className="flex items-center justify-center">
         {
           icone && (
             <Image
@@ -234,7 +234,7 @@ export const BoutonSecondaireClassic = ({
           )
         }
         {text}
-      </div>
+      </span>
     </button>
   );
 }

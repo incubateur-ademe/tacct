@@ -105,7 +105,7 @@ export const EmploisEnExterieur = ({
                 type={type}
                 libelle={libelle}
                 code={code}
-                sheetName="Activités économiques"
+                sheetName="Activités-économiques"
               />
             }
             condition={sumAllCount > 0}

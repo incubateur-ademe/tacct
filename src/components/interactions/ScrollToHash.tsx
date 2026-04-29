@@ -28,7 +28,7 @@ const ScrollToHash = ({
     };
     // Retarder légèrement pour laisser le DOM se stabiliser 
     // Les sécheresses passées dépendent du bloc débroussaillement pour le scroll, d'où un délai plus long
-    const timer = setTimeout(scrollToHash, window.location.hash === "#S%C3%A9cheresses%20pass%C3%A9es" ? 600 : 250);
+    const timer = setTimeout(scrollToHash, window.location.hash === "#S%C3%A9cheresses-pass%C3%A9es" ? 600 : 250);
     return () => clearTimeout(timer);
   }, []);
 

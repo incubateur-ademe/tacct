@@ -139,7 +139,7 @@ export const DonneesGestionRisques = ({
 
         {/* Arrêtés CatNat */}
         <div
-          id="Arrêtés CatNat"
+          id="Arrêtés-CatNat"
           className={styles.indicateurWrapper}
           style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
@@ -183,7 +183,7 @@ export const DonneesGestionRisques = ({
 
         {/* Feux de forêt */}
         <div
-          id="Feux de forêt"
+          id="Feux-de-forêt"
           className={styles.indicateurWrapper}
           style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
@@ -214,7 +214,7 @@ export const DonneesGestionRisques = ({
         </div>
 
         {/* Sécheresses passées */}
-        <div id="Sécheresses passées" className={styles.indicateurWrapper}>
+        <div id="Sécheresses-passées" className={styles.indicateurWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -244,7 +244,7 @@ export const DonneesGestionRisques = ({
 
         {/* Retrait-gonflement des argiles */}
         <div
-          id="Retrait-gonflement des argiles"
+          id="Retrait-gonflement-des-argiles"
           className={styles.indicateurWrapper}
         >
           <div className={styles.h3Titles}>
@@ -278,7 +278,7 @@ export const DonneesGestionRisques = ({
             </H2>
 
             {/* Érosion côtière */}
-            <div id="Érosion côtière" className={styles.indicateurMapWrapper}>
+            <div id="Érosion-côtière" className={styles.indicateurMapWrapper}>
               <div className={styles.h3Titles}>
                 <H3
                   style={{

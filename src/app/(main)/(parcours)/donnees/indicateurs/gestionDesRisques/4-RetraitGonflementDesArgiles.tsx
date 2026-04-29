@@ -125,7 +125,7 @@ export const RetraitGonflementDesArgiles = ({
               Source de la carte : BRGM, 2026 (consultée en mars 2026)
             </Body>
             <ZipExportButton
-              anchor='Retrait-gonflement des argiles'
+              anchor='Retrait-gonflement-des-argiles'
               handleExport={async () => {
                 const pngBlob = await generateMapPngBlob({
                   mapRef: exportMapRef,

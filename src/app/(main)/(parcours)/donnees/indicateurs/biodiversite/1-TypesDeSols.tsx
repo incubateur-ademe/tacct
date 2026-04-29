@@ -265,7 +265,7 @@ export const TypesDeSols = ({
             Source : CORINE Land Cover, 2018 (consultée en décembre 2024)
           </Body>
           <ZipExportButton
-            anchor="Types de sols"
+            anchor="Types-de-sols"
             handleExport={async () => {
               const pngBlob = await generateMapPngBlob({
                 mapRef,

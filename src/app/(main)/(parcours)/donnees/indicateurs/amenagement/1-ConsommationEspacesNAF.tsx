@@ -77,7 +77,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
                 code={code}
                 sheetName="Espaces NAF"
                 documentation={consommationEspacesNafDoc}
-                anchor="Sols imperméabilisés"
+                anchor="Sols-imperméabilisés"
               />
             }
           />

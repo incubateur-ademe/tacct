@@ -171,7 +171,7 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
                 code={code}
                 sheetName="Agriculture bio"
                 documentation={surfacesEnBioDoc}
-                anchor="Surfaces en bio"
+                anchor="Surfaces-en-bio"
               />
             )}
           </div>

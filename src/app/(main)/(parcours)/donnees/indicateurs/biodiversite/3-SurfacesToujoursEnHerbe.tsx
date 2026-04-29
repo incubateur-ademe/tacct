@@ -102,7 +102,7 @@ export const SurfacesToujoursEnHerbe = ({
           libelle={libelle}
           code={code}
           sheetName="Surfaces agricoles"
-          anchor="Surfaces toujours en herbe"
+          anchor="Surfaces-toujours-en-herbe"
         />
       </div>
     </>

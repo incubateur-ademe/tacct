@@ -86,7 +86,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
             </div>
           )}
           <SourceExport
-            anchor="Feux de forêt"
+            anchor="Feux-de-forêt"
             source="Base de Données sur les Incendies de Forêts en France, 2024 (consultée en avril 2026)"
             condition={incendiesForet.length !== 0}
             exportComponent={

@@ -98,7 +98,7 @@ const DonneesConfortThermique = ({
           </H2>
 
           {/* Grand âge */}
-          <div id="Grand âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Grand-âge" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Évolution de la part des 75 ans et plus dans la population
@@ -108,7 +108,7 @@ const DonneesConfortThermique = ({
           </div>
 
           {/* Précarité énergétique */}
-          <div id="Précarité énergétique" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Précarité-énergétique" className={styles.indicateurMapWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part des ménages en situation de précarité énergétique liée au logement
@@ -122,7 +122,7 @@ const DonneesConfortThermique = ({
           </div>
 
           {/* Emplois en extérieur */}
-          <div id="Emplois en extérieur" className={styles.indicateurWrapper}>
+          <div id="Emplois-en-extérieur" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part des emplois par grands secteurs d’activité
@@ -145,7 +145,7 @@ const DonneesConfortThermique = ({
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Âge du bâtiment */}
-          <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
+          <div id="Âge-du-bâtiment" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part des résidences principales par période de construction

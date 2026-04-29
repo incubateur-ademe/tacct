@@ -174,7 +174,7 @@ export const ArretesCatnat = (props: {
             </div>
           )}
           <SourceExport
-            anchor="Arrêtés CatNat"
+            anchor="Arrêtés-CatNat"
             source="Base nationale de Gestion ASsistée des Procédures
               Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
               septembre 2025"

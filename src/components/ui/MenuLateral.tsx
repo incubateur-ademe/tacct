@@ -93,12 +93,12 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
         const allAnchors = ongletsMenuEtape1.thematiquesLiees.flatMap(section => section.sousCategories);
         allAnchors.push("Érosion côtière");
         for (const item of allAnchors) {
-          const element = document.getElementById(item);
+          const element = document.getElementById(toAnchorId(item));
           if (element) {
             const elementTop = element.offsetTop;
             const elementBottom = elementTop + element.offsetHeight;
             if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-              setActiveAnchorEtape1(item);
+              setActiveAnchorEtape1(toAnchorId(item));
               break;
             }
           }
@@ -133,6 +133,8 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     }
   }, [isCollapsed]);
 
+  const toAnchorId = (s: string) => s.replace(/\s+/g, '-');
+
   const scrollToAnchor = (anchor: string) => {
     const decodedAnchor = decodeURIComponent(anchor);
     const element = document.getElementById(decodedAnchor);
@@ -152,13 +154,13 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
         type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
         page: 'donnees',
         thematique: thematique,
-        anchor: item ? item : ""
+        anchor: item ? toAnchorId(item) : ""
       });
       return;
     }
     setUrlAnchor(item);
     setActiveAnchorEtape2('');
-    scrollToAnchor(item);
+    scrollToAnchor(toAnchorId(item));
   };
   const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
     if (params !== "/impacts") {
@@ -284,8 +286,8 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                             key={item}
                             type="button"
                             onClick={() => handleItemClickEtape1(item)}
-                            aria-current={activeAnchorEtape1 === item ? "location" : undefined}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item
+                            aria-current={activeAnchorEtape1 === toAnchorId(item) ? "location" : undefined}
+                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === toAnchorId(item)
                               ? styles.itemSurligne
                               : styles.itemNonSurligne
                               }`}
@@ -312,8 +314,8 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                             key={"Érosion"}
                             type="button"
                             onClick={() => handleItemClickEtape1("Érosion côtière")}
-                            aria-current={activeAnchorEtape1 === "Érosion côtière" ? "location" : undefined}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
+                            aria-current={activeAnchorEtape1 === "Érosion-côtière" ? "location" : undefined}
+                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion-côtière"
                               ? styles.itemSurligne
                               : styles.itemNonSurligne
                               }`}

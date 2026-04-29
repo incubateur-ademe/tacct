@@ -190,7 +190,7 @@ export const Arbovirose = (props: {
             libelle={libelle}
             code={code}
             sheetName="Arbovirose"
-            anchor="Moustique tigre et arboviroses"
+            anchor="Moustique-tigre-et-arboviroses"
           />
         </div>
       </div>

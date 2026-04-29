@@ -140,7 +140,7 @@ export const SurfacesEnBio = (props: {
               code={code}
               sheetName="Agriculture bio"
               documentation={surfacesEnBioDoc}
-              anchor="Surfaces en bio"
+              anchor="Surfaces-en-bio"
             />
           </div>
         </div>

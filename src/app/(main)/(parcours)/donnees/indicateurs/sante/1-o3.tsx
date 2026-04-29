@@ -87,11 +87,11 @@ export const SeuilsReglementairesO3 = ({
                   'fill-antialias': false
                 }}
                 legend={
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-                <Body weight='bold'>- Nombre de jours avec dépassement du seuil (moyenne sur 3 ans) -</Body>
-                <LegendCompColor legends={o3Legend} />
-                </div>
-              }
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                    <Body weight='bold'>- Nombre de jours avec dépassement du seuil (moyenne sur 3 ans) -</Body>
+                    <LegendCompColor legends={o3Legend} />
+                  </div>
+                }
               />
             </Suspense>
           ) : (
@@ -110,7 +110,7 @@ export const SeuilsReglementairesO3 = ({
           mapContainer={mapContainer}
           documentDiv=".legendWrapper"
           fileName={`Seuils_reglementaires_o3_${type}_${libelle}`}
-          anchor="Pollution à l'ozone"
+          anchor="Pollution-à-l'ozone"
           type={type}
           libelle={libelle}
           code={code}

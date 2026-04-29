@@ -91,7 +91,7 @@ export const DonneesForet = (
         </H2>
         {/* Hauteur de la canopée */}
         <div
-          id="Hauteur de la canopée"
+          id="Hauteur-de-la-canopée"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
@@ -108,7 +108,7 @@ export const DonneesForet = (
         </div>
 
         {/* Linéaire de haie */}
-        <div id="Linéaire de haie" className={styles.indicateurMapWrapper}>
+        <div id="Linéaire-de-haie" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
               Cartographie du linéaire de haie
