@@ -77,6 +77,12 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
               key={annee}
               onMouseDown={(e) => { e.preventDefault(); isDragging.current = true; handleSelect(i); }}
               onTouchStart={(e) => { e.preventDefault(); isDragging.current = true; handleSelect(i); }}
+              role={isSelected ? "slider" : undefined}
+              tabIndex={isSelected ? 0 : undefined}
+              aria-valuemin={isSelected ? anneeDebut : undefined}
+              aria-valuemax={isSelected ? anneeFin : undefined}
+              aria-valuenow={isSelected ? annee : undefined}
+              aria-label={isSelected ? "Année sélectionnée" : undefined}
               style={{
                 position: 'absolute',
                 top: '50%',

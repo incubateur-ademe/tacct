@@ -178,7 +178,7 @@ export const ThematiquesLieesNavigation = ({
                 <BoutonPrimaireClassic
                   text={lieeLabel}
                   size="md"
-                  onClick={isDisabled ? undefined : () => window.location.href = handleRedirectionThematique({
+                  link={isDisabled ? undefined : handleRedirectionThematique({
                     code: code,
                     libelle: libelle,
                     type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',

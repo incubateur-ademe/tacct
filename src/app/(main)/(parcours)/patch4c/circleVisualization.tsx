@@ -70,6 +70,7 @@ const CircleVisualization = ({
                   }}
                   onClick={() => handleClick(item.key)}
                   aria-pressed={selectedAleaKey === item.key}
+                  aria-label={item.value ? `${item.label} — ${item.value}` : item.label}
                 >
                   {/* Circle with icon */}
                   <div

@@ -4,7 +4,7 @@ import styles from "../components.module.scss";
 
 export const Loader = ({ height }: { height?: string }) => {
   return (
-    <div className="flex flex-col justify-center" style={{ height: height || "80dvh", position: 'relative' }}>
+    <div role="status" aria-label="Chargement en cours" className="flex flex-col justify-center" style={{ height: height || "80dvh", position: 'relative' }}>
       <div className={styles.loader}></div>
     </div>
   );
@@ -63,6 +63,8 @@ export const LoaderText = ({ text, height }: { text: string; height?: string }) 
 
   return (
     <div
+      role="status"
+      aria-label={text}
       className="flex flex-col items-center justify-center"
       style={{ height: height || "80dvh", position: 'relative' }}>
       <div className={styles.loader}></div>
