@@ -213,6 +213,7 @@ export const MicroCircleGrid = ({
         isNaN(Number(pourcentage)) ? null : (
           <div
             className={styles.microCircleGridWrapper}
+            role="img"
             aria-label={ariaLabel}
           >
             <Body weight="bold">{Round(pourcentage, arrondi)} %</Body>
@@ -270,6 +271,7 @@ export const MicroCircleGridMois = ({
         isNaN(Number(nombreJours)) ? null : (
           <div
             className={styles.microCircleGridWrapper}
+            role="img"
             aria-label={ariaLabel}
             style={{ width: "120px" }}
           >

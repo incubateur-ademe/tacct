@@ -75,12 +75,13 @@ export const SubAccordionGraph = ({
 }) => {
   const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
+  const accordionId = accordionTitle.replace(/\s+/g, '-');
   const sortedData = Object.values(graphDataItem)[0].toSorted((a, b) => Number(b.value) - Number(a.value));
   return (
     <SubAccordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
       <AccordionSummary
-        aria-controls={`${accordionTitle}-content`}
-        id={`${accordionTitle}-header`}
+        aria-controls={`${accordionId}-content`}
+        id={`${accordionId}-header`}
         expandIcon={
           <>
             {!expanded ? (
@@ -92,9 +93,9 @@ export const SubAccordionGraph = ({
         }
         onClick={() => setExpanded(!expanded)}
       >
-        <p style={{ margin: '0', textTransform: "uppercase", fontSize: '14px' }}>
+        <span style={{ margin: '0', textTransform: "uppercase", fontSize: '14px', display: 'block' }}>
           <b style={{ color: "#666666" }}>{accordionTitle}</b>
-        </p>
+        </span>
       </AccordionSummary>
       <div style={{ padding: '0 0 1rem' }}>
         {sortedData.map((item, index) => (
