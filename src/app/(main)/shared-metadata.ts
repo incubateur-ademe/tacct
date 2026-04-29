@@ -2,7 +2,7 @@ import { config } from '@/config';
 import { type Metadata } from 'next';
 
 const description =
-  'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec Facili-TACCT et favoriser le dialogue sur des problématiques clairement identifiées.';
+  'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec TACCT et favoriser le dialogue sur des problématiques clairement identifiées.';
 
 const isProduction = process.env.NEXT_PUBLIC_ENV === 'production';
 

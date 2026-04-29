@@ -14,7 +14,7 @@ const CookiePolicyPage = () => {
             policyUrl: ''
           }}
           cookieConsentButton={<CookieConsentButton />}
-          siteName="Facili-TACCT"
+          siteName="TACCT"
         />
       </Suspense>
     </div>

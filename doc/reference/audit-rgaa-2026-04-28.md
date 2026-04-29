@@ -156,6 +156,23 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 | 7.4 | ✅ N/A | — | Redirection automatique vers dernier territoire — choix UX intentionnel |
 | 7.5 — `Loader` / `LoaderText` | ✅ Corrigé | 2026-04-29 | `role="status"` + `aria-label` ajoutés sur les deux composants |
 
+### Corrections complémentaires (audit ARA — critère 8)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 8.1.1 → 8.1.3 — DOCTYPE | ✅ Conforme | 2026-04-29 | Géré automatiquement par Next.js |
+| 8.2.1 — Code source valide | ✅ Corrigé | 2026-04-29 | `<div>` → `<span>` dans `BoutonPrimaireClassic` / `BoutonSecondaireClassic` / `MenuLateral` ; IDs avec espaces slugifiés (13 fichiers) ; `subAccordionGraph` : IDs dynamiques + `<p>` → `<span>` ; `encodeURIComponent` sur params URL dans `Redirections.ts` ; `role="img"` sur `MicroDataviz` wrapper. NC résiduelle : `<style>` injecté dans `<body>` par MUI/Emotion (tiers, non corrigeable) |
+| 8.3.1 — Langue par défaut | ✅ Conforme | 2026-04-29 | `<html lang="fr">` présent |
+| 8.4.1 — Code de langue pertinent | ✅ Conforme | 2026-04-29 | Code "fr" valide |
+| 8.5.1 — Titre présent | ✅ Conforme | 2026-04-29 | `sharedMetadata.default` = "Facili-TACCT" sur toutes les pages |
+| 8.6.1 — Titre pertinent | ✅ Corrigé | 2026-04-29 | `metadata.title` ajouté sur 5 pages : "Explorer les données", "Diagnostiquer les impacts", "Vue systémique", "Rechercher mon territoire" (×2) |
+| 8.7.1 — Changements de langue | ✅ Corrigé | 2026-04-29 | `alt="Toggle menu"` remplacé par texte français dans `MenuLateral.tsx` |
+| 8.8.1 | ✅ N/A | — | Aucun autre changement de langue |
+| 8.9.1 — Balises présentatives | ✅ Conforme | 2026-04-29 | `<b>` = emphase sémantique sur statistiques ; `<br>` dans corps de texte = acceptable |
+| 8.10.1 → 8.10.2 — Sens de lecture | ✅ N/A | — | Aucun contenu RTL |
+
+> **NC résiduelle non corrigeable :** `<style data-emotion>` injecté dans `<body>` par MUI/Emotion — comportement du moteur CSS-in-JS tiers.
+
 ---
 
 ## Synthèse — Top 12 des points bloquants

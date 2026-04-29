@@ -13,7 +13,7 @@ import { SommaireFAQ } from './Sommaire';
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Foire aux questions Facili-TACCT'
+  description: 'Foire aux questions TACCT'
 };
 
 const FaqPage = async () => {

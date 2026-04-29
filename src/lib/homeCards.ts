@@ -34,7 +34,7 @@ export const verbatimCards = [
   {
     personne: 'Chargée de mission (PNR)',
     description:
-      'Les données disponibles sur Facili-TACCT représentent un super levier pour les échanges avec nos élus.'
+      'Les données disponibles sur TACCT représentent un super levier pour les échanges avec nos élus.'
   },
   {
     personne: 'Membre anonyme de la communauté',
@@ -44,6 +44,6 @@ export const verbatimCards = [
   {
     personne: 'Chef de service adaptation (Métropole)',
     description:
-      'Grâce à Facili-TACCT, je me suis rendu compte que le RGA pouvait concerner 80% de mon territoire, c’était passé à la trappe lors de notre premier PCAET.'
+      'Grâce à TACCT, je me suis rendu compte que le RGA pouvait concerner 80% de mon territoire, c’était passé à la trappe lors de notre premier PCAET.'
   }
 ];

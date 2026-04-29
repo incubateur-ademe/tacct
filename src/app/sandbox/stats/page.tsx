@@ -13,7 +13,7 @@ const SandboxUserPage = async () => {
       <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem' }}>
         <DisconnectButton />
       </div>
-      <h1>Bienvenue dans l'espace privé Facili-TACCT</h1>
+      <h1>Bienvenue dans l'espace privé TACCT</h1>
       <MetabaseComponent />
     </div>
   );

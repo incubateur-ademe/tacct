@@ -16,7 +16,7 @@ import { Brand } from '../Brand';
 import HeaderRechercheTerritoire from '../searchbar/header/HeaderRechercheTerritoire';
 
 const HeaderComp = () => {
-    const posthog = usePostHog();
+  const posthog = usePostHog();
   const searchParams = useSearchParams();
   const router = useRouter();
   const params = usePathname();
@@ -108,7 +108,7 @@ const HeaderComp = () => {
       }
       homeLinkProps={{
         href: '/',
-        title: `Accueil - Facili-TACCT`
+        title: `Accueil - TACCT`
       }}
       operatorLogo={{
         alt: "Logo de l'ADEME",

@@ -213,7 +213,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
           >
             <Image
               src={DoubleChevronIcon}
-              alt="Toggle menu"
+              alt={isCollapsed ? "Ouvrir le menu" : "Réduire le menu"}
               className={`${isCollapsed ? styles.toggle_icon_collapsed : styles.toggle_icon_expanded}`}
               style={{
                 width: '16px',
