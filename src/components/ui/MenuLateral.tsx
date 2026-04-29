@@ -253,17 +253,17 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                   aria-current={params === "/donnees" ? "page" : undefined}
                 >
                   {openEtape1 ? (
-                    <div
+                    <span
                       className={styles['chevron-right-green']}
                       style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                     />
                   ) : (
-                    <div
+                    <span
                       className={styles['chevron-right-black']}
                       style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                     />
                   )}
-                  <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
+                  <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
                     {thematique === "Confort thermique" ? <>Étape 1. <br />Données de votre territoire</> : "Données de votre territoire"}
                   </Body>
                 </button>
@@ -290,7 +290,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                               : styles.itemNonSurligne
                               }`}
                           >
-                            <Body size='sm'>{item}</Body>
+                            <Body size='sm' htmlTag="span">{item}</Body>
                           </button>
                         ))}
                       </div>
@@ -318,7 +318,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                               : styles.itemNonSurligne
                               }`}
                           >
-                            <Body size='sm'>Érosion côtière</Body>
+                            <Body size='sm' htmlTag="span">Érosion côtière</Body>
                           </button>
                         </div>
                       </>
@@ -335,17 +335,17 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                       aria-current={params === "/impacts" ? "page" : undefined}
                     >
                       {openEtape2 ? (
-                        <div
+                        <span
                           className={styles['chevron-right-green']}
                           style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       ) : (
-                        <div
+                        <span
                           className={styles['chevron-right-black']}
                           style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       )}
-                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                      <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
                         Étape 2. <br />Diagnostiquez les impacts
                       </Body>
                     </button>
@@ -362,7 +362,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                               : styles.itemNonSurligne
                               }`}
                           >
-                            <Body size='sm'>{item.titre}</Body>
+                            <Body size='sm' htmlTag="span">{item.titre}</Body>
                           </button>
                         ))
                       }
@@ -377,17 +377,17 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                       className={styles.BoutonEtapes}
                     >
                       {openEtape2 ? (
-                        <div
+                        <span
                           className={styles['chevron-right-green']}
                           style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       ) : (
-                        <div
+                        <span
                           className={styles['chevron-right-black']}
                           style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       )}
-                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                      <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
                         Étape 2. <br />Diagnostiquez les impacts
                       </Body>
                     </button>
@@ -402,7 +402,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                               : styles.itemNonSurligne
                               }`}
                           >
-                            <Body size='sm'>{item.titre}</Body>
+                            <Body size='sm' htmlTag="span">{item.titre}</Body>
                           </button>
                         ))
                       }
