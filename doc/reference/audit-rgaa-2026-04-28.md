@@ -173,6 +173,23 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 
 > **NC résiduelle non corrigeable :** `<style data-emotion>` injecté dans `<body>` par MUI/Emotion — comportement du moteur CSS-in-JS tiers.
 
+### Corrections complémentaires (audit ARA — critère 9)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 9.1.1 — Hiérarchie pertinente | ✅ Corrigé | 2026-04-29 | `roue.tsx` : `<H1>` décoratif (opacity:0 à l'interaction) remplacé par `<p>` ; `<h1 className="fr-sr-only">Roue des thématiques</h1>` ajouté hors conteneur SVG — H1 stable, pertinent, toujours dans le DOM |
+| 9.1.2 — Contenu des titres pertinent | ✅ Conforme | 2026-04-29 | Tous les titres `<hx>` ont un contenu explicite et descriptif |
+| 9.1.3 — Passages de texte = titres structurés en hx | ✅ Arbitré | 2026-04-29 | `aleaExplications.tsx` et `blocAleas.tsx` : textes en `<Body>` à fort style visuel — arbitrés comme **labels contextuels** (nom du territoire, label de section secondaire), pas comme titres de section au sens RGAA. Pas d'action requise. |
+| 9.2.1 — Structure header/nav/main/footer | ✅ Conforme | 2026-04-29 | `<header>` (DSFR), `<main id="contenu">`, `<footer id="footer" role="contentinfo">`, `<nav aria-label="Navigation dans la page">` présents. `role="navigation"` redondant supprimé de `MenuLateral.tsx` |
+| 9.3.1 — Listes non ordonnées | ✅ Corrigé | 2026-04-29 | `MenuLateral.tsx` : menus `sousCategories` (étape 1) et items impacts (étape 2) convertis en `<ul>/<li>` avec `list-style: none` — visuel inchangé |
+| 9.3.1 — Listes non ordonnées (bonne pratique) | ✅ Corrigé | 2026-04-29 | `ThematiquesLieesNavigation.tsx` : layout radial converti en `<ul>/<li>` — non obligatoire au titre du 9.3 (pas une liste visuelle), appliqué comme bonne pratique AT (annonce "liste de N éléments" aux lecteurs d'écran) |
+| 9.3.2 — Listes ordonnées | ✅ N/A | — | Aucune liste ordonnée dans le périmètre |
+| 9.3.3 — Listes de description | ✅ N/A | — | Aucune liste de description dans le périmètre |
+| 9.4.1 — Citations courtes | ✅ N/A | — | Aucune citation de tiers dans le périmètre |
+| 9.4.2 — Blocs de citation | ✅ N/A | — | Aucun bloc de citation dans le périmètre |
+
+> **Arbitrage 9.1.1 — `SousTitre2` dans `MenuLateral`** : les `<SousTitre2>` (rendus en `<p>`) structurent des catégories de navigation dans un `<nav>`. Ils ne constituent pas des titres de page au sens RGAA : ils sont dans une zone de navigation secondaire, non dans le contenu principal. Pas d'action requise.
+
 ---
 
 ## Synthèse — Top 12 des points bloquants

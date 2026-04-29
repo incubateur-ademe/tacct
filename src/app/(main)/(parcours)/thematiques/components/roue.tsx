@@ -1,7 +1,7 @@
 "use client";
 import { Loader } from "@/components/ui/loader";
 import { HtmlTooltip } from "@/components/utils/Tooltips";
-import { Body, H1 } from "@/design-system/base/Textes";
+import { Body } from "@/design-system/base/Textes";
 import { Any } from "@/lib/utils/types";
 import * as d3 from "d3";
 import { useEffect, useRef, useState } from "react";
@@ -532,6 +532,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
 
   return (
     <div ref={wrapperRef} style={{ width: '100%' }}>
+      <h1 className="fr-sr-only">Roue des thématiques</h1>
       <div style={{ height: svgHeight * scale, overflow: 'hidden' }}>
         <div style={{ position: 'relative', width: svgWidth, height: svgHeight, transform: `scale(${scale})`, transformOrigin: 'top left', margin: '0 auto' }}>
           <svg
@@ -592,7 +593,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                   zIndex: 3,
                 }}
               >
-                <H1 style={{
+                <p style={{
                   fontSize: '16px',
                   color: '#23282B',
                   fontWeight: 700,
@@ -601,7 +602,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
                   margin: 0
                 }}>
                   Votre territoire est un système où tout est lié.
-                </H1>
+                </p>
                 <br />
                 <Body>
                   Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques

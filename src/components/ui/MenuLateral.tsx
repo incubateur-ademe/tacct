@@ -204,7 +204,6 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
             transition: 'width 0.5s ease-in-out, padding 0.5s ease-in-out'
           }}
           aria-label="Navigation dans la page"
-          role="navigation"
         >
           <button
             onClick={() => onToggleCollapse(!isCollapsed)}
@@ -280,22 +279,23 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                       >
                         {thematique.icone}{" "}{thematique.thematique}
                       </SousTitre2>
-                      <div className="">
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         {thematique.sousCategories.map((item) => (
-                          <button
-                            key={item}
-                            type="button"
-                            onClick={() => handleItemClickEtape1(item)}
-                            aria-current={activeAnchorEtape1 === toAnchorId(item) ? "location" : undefined}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === toAnchorId(item)
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm' htmlTag="span">{item}</Body>
-                          </button>
+                          <li key={item}>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape1(item)}
+                              aria-current={activeAnchorEtape1 === toAnchorId(item) ? "location" : undefined}
+                              className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === toAnchorId(item)
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">{item}</Body>
+                            </button>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   ))}
                   {
@@ -309,20 +309,21 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         >
                           🏗️ Aménagement
                         </SousTitre2>
-                        <div className="">
-                          <button
-                            key={"Érosion"}
-                            type="button"
-                            onClick={() => handleItemClickEtape1("Érosion côtière")}
-                            aria-current={activeAnchorEtape1 === "Érosion-côtière" ? "location" : undefined}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion-côtière"
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm' htmlTag="span">Érosion côtière</Body>
-                          </button>
-                        </div>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape1("Érosion côtière")}
+                              aria-current={activeAnchorEtape1 === "Érosion-côtière" ? "location" : undefined}
+                              className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion-côtière"
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">Érosion côtière</Body>
+                            </button>
+                          </li>
+                        </ul>
                       </>
                     )
                   }
@@ -351,24 +352,25 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         Étape 2. <br />Diagnostiquez les impacts
                       </Body>
                     </button>
-                    <div className={styles.menuEtapeImpacts}>
+                    <ul className={styles.menuEtapeImpacts} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {
                         openEtape2 && ongletsMenuEtape2.map((item) => (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => handleItemClickEtape2(item)}
-                            aria-current={activeAnchorEtape2 === item.id ? "location" : undefined}
-                            className={`block w-full text-left ${activeAnchorEtape2 === item.id
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm' htmlTag="span">{item.titre}</Body>
-                          </button>
+                          <li key={item.id}>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape2(item)}
+                              aria-current={activeAnchorEtape2 === item.id ? "location" : undefined}
+                              className={`block w-full text-left ${activeAnchorEtape2 === item.id
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">{item.titre}</Body>
+                            </button>
+                          </li>
                         ))
                       }
-                    </div>
+                    </ul>
                   </>
                 ) : ""
                 }
