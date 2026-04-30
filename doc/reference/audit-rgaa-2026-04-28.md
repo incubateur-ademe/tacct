@@ -190,9 +190,51 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 
 > **Arbitrage 9.1.1 — `SousTitre2` dans `MenuLateral`** : les `<SousTitre2>` (rendus en `<p>`) structurent des catégories de navigation dans un `<nav>`. Ils ne constituent pas des titres de page au sens RGAA : ils sont dans une zone de navigation secondaire, non dans le contenu principal. Pas d'action requise.
 
----
+### Corrections complémentaires (audit ARA — critère 10)
 
-## Synthèse — Top 12 des points bloquants
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 10.1.1 — Balises présentationnelles | ✅ Conforme | 2026-04-30 | Aucune balise `<font>`, `<center>`, `<marquee>`, `<strike>` etc. dans le périmètre |
+| 10.1.2 — Attributs présentationnels | ✅ Conforme | 2026-04-30 | Aucun attribut `bgcolor`, `align`, `border` sur tableaux, etc. |
+| 10.1.3 — Espaces de présentation | ✅ Conforme | 2026-04-30 | Aucun `&nbsp;` répétés, pas d'espaces simulant tableaux ou colonnes |
+| 10.2.1 — Information présente sans CSS | ❌ Non conforme | 2026-04-30 | Menu latéral masqué sans CSS (positionné en absolu, contenu non restitué). NC inhérente à l'architecture React/CSS de l'application — non corrigeable sans refonte structurelle |
+| 10.3.1 — Information compréhensible sans CSS | ❌ Non conforme | 2026-04-30 | Pages `/thematiques`, `/donnees`, `/impacts` : ordre de lecture et structure incohérents sans styles. Même cause que 10.2 — application fortement CSS-dépendante (D3, positionnements absolus, SVG) |
+| 10.4.1 → 10.4.2 — Zoom 200% sans perte | ✅ Conforme | 2026-04-30 | Testé au zoom graphique navigateur (200%) : aucune perte d'information, aucun texte tronqué ou chevauché. Condition RGAA satisfaite (zoom graphique = condition suffisante). Labels SVG des graphiques Nivo : scalés proportionnellement avec le conteneur SVG |
+| 10.4 — Tailles en `px` → `rem` (bonne pratique) | ✅ Corrigé | 2026-04-30 | `Textes.tsx` et `Boutons.tsx` : toutes les tailles `px` converties en `rem` (`12px`→`0.75rem`, `14px`→`0.875rem`, `16px`→`1rem`, `18px`→`1.125rem`, `20px`→`1.25rem`) — améliore la compatibilité avec le zoom texte seul (Firefox) |
+| 10.5.1 → 10.5.3 — Déclarations CSS couleurs | ✅ Conforme | 2026-04-30 | Déclarations `color`/`background-color` toujours couplées dans les styles inline ; composants DSFR et MUI gèrent leur propre association couleur texte/fond — aucun cas isolé détecté dans le périmètre |
+| 10.6.1 — Liens distinguibles | ✅ Conforme | 2026-04-30 | Aucun lien texte distingué uniquement par couleur : liens DSFR soulignés par défaut, éléments de navigation implémentés en `<button>` (hors critère 10.6) |
+| 10.7.1 — Prise de focus visible | 🟡 Partiel | 2026-04-30 | Boutons MUI (`BoutonPrimaireClassic`, `BoutonSecondaireClassic`) et boutons natifs : ✅ `:focus-visible` appliqué. **Header — barre de recherche** : ❌ NC — composant compound (DSFR `SearchBar` + MUI `Select` + MUI `Autocomplete`) empilant trois systèmes de styles ; la suppression du `box-shadow` DSFR injecté sur `:focus` provoque une régression visuelle au survol. Navigation clavier de `SelectTypeTerritoire` corrigée (délai `onOpen` supprimé pour les événements clavier) |
+| 10.8.1 — Contenus cachés | ✅ Corrigé | 2026-04-30 | `roue.tsx` : `aria-hidden={!!selectedThematique}` ajouté sur le texte central masqué par `opacity:0` — retiré de l'arbre AT quand invisible. `MenuLateral.tsx` : contenu collapsé géré par rendu conditionnel (`{isContentVisible && ...}`) — déjà hors du DOM, aucune action requise |
+| 10.9.1 → 10.9.4 — Information non donnée par forme/taille/position | ✅ Conforme | 2026-04-30 | Tous les éléments interactifs significatifs disposent d'un `aria-label` ou d'un texte adjacent : `circleVisualization` (aria-label par item), `cursorVisualization` (aria-label), roue D3 (aria-label sur SVG + boutons), icônes MenuLateral (alt dynamique sur image interne) |
+| 10.10.1 → 10.10.4 — Implémentation pertinente | ✅ Conforme | 2026-04-30 | Même périmètre que 10.9 — alternatives textuelles pertinentes et non redondantes |
+| 10.11.1 → 10.11.2 — Pas de scroll horizontal à 320px / vertical à 256px | ❌ Non conforme | 2026-04-30 | Application SPA orientée desktop. `HeaderRechercheTerritoire` : largeur calculée jusqu'à 640px. `MenuLateral` : 322px par défaut. Visualisations D3/cartes : **exemptées** (médias nécessitant deux dimensions). Refonte mobile prévue — voir plan ci-dessous |
+| 10.12.1 — Espacement texte redéfinissable | ✅ Corrigé | 2026-04-30 | `components.module.scss` : `height` → `min-height` sur `.headerSearchBarContainer` ; `.unselected`/`.selected` (`height: 90px`) et `.searchbarWrapper` conformes en l'état (hauteur largement suffisante pour une ligne de texte, input non clippé) ; `line-height` px → relatifs sur `.localisation` (1.5), `.selectedTabButton`/`.tabButton` (1.25), `.indiceLeft p` (1.2). `roue.tsx` SVG : `overflow: visible` ajouté — labels D3 non clippés si espacement forcé |
+| 10.13.1 → 10.13.3 — Contenus additionnels contrôlables | ✅ Conforme | 2026-04-30 | MUI Tooltip v5 interactif par défaut (`disableInteractive: false`) — le pointeur peut entrer dans le tooltip sans qu'il disparaisse (10.13.2). Tooltip reste visible tant que le pointeur/focus est sur le déclencheur ou le tooltip (10.13.3). 10.13.1 non applicable : les tooltips n'occultent pas de contenu porteur d'information |
+| 10.14.1 → 10.14.2 — Contenus CSS-only visibles au clavier | ✅ N/A | 2026-04-30 | Aucun contenu additionnel déclenché via CSS seul dans le périmètre — tous les affichages conditionnels sont pilotés par l'état React (JS). Les effets visuels `:hover { transform: scale() }` ne constituent pas des « contenus additionnels » au sens du critère |
+
+> **NC résiduelle 10.2 / 10.3 :** Non-conformités acceptées. L'application est une Single Page Application React dont la structure repose entièrement sur CSS pour le positionnement, la visibilité et l'ordre du contenu. Une mise en conformité complète nécessiterait une refonte de l'architecture de mise en page, hors périmètre du projet.
+
+> **NC résiduelle 10.7 — Header barre de recherche :** Voir justification ARA ci-dessous.
+
+> **NC résiduelle 10.11 — Plan de refonte mobile :** À traiter lors du sprint mobile prévu. Éléments à adapter : (1) `HeaderRechercheTerritoire` — réduire la largeur calculée à 100% sous 640px, empiler verticalement Select + input ou masquer le composant sur mobile ; (2) `MenuLateral` — collapse automatique par défaut sous 400px ou conversion en menu drawer overlay ; (3) tous les conteneurs non-exemptés avec `width` fixe > 320px dans `(parcours)`. Les visualisations D3, cartes MapLibre et tableaux de données restent exemptés par RGAA (médias nécessitant deux dimensions).
+
+### Corrections complémentaires (audit ARA — critère 11)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 11.1 → 11.4 — SearchBar, RadioButtons, SliderAnnees | ✅ Conforme | 2026-04-30 | DSFR SearchBar : `<label htmlFor>` chaîné au `<input>` MUI via l'`id` passé au `renderInput`. RadioButtons DSFR : labels et accolement gérés nativement. `SliderAnnees` : `aria-label="Année sélectionnée"`. Étiquettes pertinentes et cohérentes entre les deux pages de recherche |
+| 11.1.1 / 11.1.3 — `SelectTypeTerritoire` | ❌ Non conforme | 2026-04-30 | `inputProps['aria-label']` cible l'`<input>` caché, pas le `role="combobox"` visible — pas de nom accessible fiable sur l'élément interactif. NC résiduelle : correction via `<FormControl>` + `<InputLabel className="fr-sr-only">` testée, provoque une régression visuelle (largeur tronquée). Hors périmètre sans refonte du header |
+| 11.5.1 | ✅ Conforme | 2026-04-30 | `<fieldset>` rendu par DSFR RadioButtons |
+| 11.6.1 | ✅ Corrigé | 2026-04-30 | `legend="Type de territoire"` + `classes={{ legend: "fr-sr-only" }}` ajoutés sur `<RadioButtons>` dans `BarreDeRecherche.tsx` |
+| 11.7.1 | ✅ Conforme | 2026-04-30 | Légende "Type de territoire" pertinente |
+| 11.8.1 → 11.8.3 | ✅ N/A | 2026-04-30 | Aucun `<select>` natif ; MUI Select non-natif avec 5 options homogènes, pas de sous-groupement nécessaire |
+| 11.9.1 | ✅ Corrigé | 2026-04-30 | `BoutonRechercherHeader` : `<Image onClick>` remplacé par `<button aria-label="Rechercher ce territoire">` avec image décorative (`aria-hidden="true"`) dans `header/BoutonRechercher.tsx` |
+| 11.10.1 → 11.10.7 | ✅ N/A | 2026-04-30 | Formulaire à un seul champ de saisie libre — cas particulier applicable |
+| 11.11.1 → 11.11.2 | ✅ N/A | 2026-04-30 | Aucune validation de saisie avec messages d'erreur |
+| 11.12.1 → 11.12.2 | ✅ N/A | 2026-04-30 | Formulaire de recherche sans modification/suppression de données |
+| 11.13.1 | ✅ N/A | 2026-04-30 | Aucun champ collectant des données personnelles |
+
+> **NC résiduelle 11.1.1 / 11.1.3 — `SelectTypeTerritoire`** (`src/components/searchbar/header/SelectTypeTerritoire.tsx`) : La correction canonique (`<FormControl>` + `<InputLabel className="fr-sr-only">`) a été testée et produit une régression visuelle — le Select perd son sizing automatique basé sur le contenu, entraînant une troncature du texte. Correction sans régression impossible sans refonte du composant header. Mitigation en place : `inputProps['aria-label']` sur l'input caché, partiellement lu par certains AT. Impact utilisateur : modéré — le Select reste utilisable mais son rôle n'est pas annoncé explicitement.
 
 | #   | Critère  | Localisation                                                                                                | Problème                                                                                             |
 | --- | -------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |

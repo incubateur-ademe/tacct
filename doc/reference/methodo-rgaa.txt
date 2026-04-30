@@ -1,0 +1,271 @@
+11.1
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) a-t-il une étiquette(ouvre dans une nouvelle fenêtre) ?
+
+Tests et références du critère 11.1
+11.1.1
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) vérifie-t-il une de ces conditions ?
+
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut WAI-ARIA aria-labelledby référençant un passage de texte(ouvre dans une nouvelle fenêtre) identifié ;
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut WAI-ARIA aria-label ;
+Une balise <label> ayant un attribut for est associée au champ de formulaire(ouvre dans une nouvelle fenêtre) ;
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut title ;
+Un bouton adjacent au champ de formulaire(ouvre dans une nouvelle fenêtre) lui fournit une étiquette visible et un élément <label> visuellement caché ou un attribut WAI-ARIA aria-label, aria-labelledby ou title lui fournit un nom accessible.
+11.1.2
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) associé à une balise <label> ayant un attribut for, vérifie-t-il ces conditions ?
+
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut id ;
+La valeur de l’attribut for est égale à la valeur de l’attribut id du champ de formulaire(ouvre dans une nouvelle fenêtre) associé.
+11.1.3
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) ayant une étiquette(ouvre dans une nouvelle fenêtre) dont le contenu n’est pas visible ou à proximité (masqué, aria-label) ou qui n’est pas accolé(ouvre dans une nouvelle fenêtre) au champ (aria-labelledby), vérifie-t-il une de ses conditions ?
+
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut title dont le contenu permet de comprendre la nature de la saisie attendue ;
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) est accompagné d’un passage de texte(ouvre dans une nouvelle fenêtre) accolé au champ qui devient visible à la prise de focus permettant de comprendre la nature de la saisie attendue ;
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) est accompagné d’un passage de texte(ouvre dans une nouvelle fenêtre) visible accolé au champ permettant de comprendre la nature de la saisie attendue.
+
+
+
+11.2
+Chaque étiquette(ouvre dans une nouvelle fenêtre) associée à un champ de formulaire(ouvre dans une nouvelle fenêtre) est-elle pertinente (hors cas particuliers) ?
+
+Tests et références du critère 11.2
+11.2.1
+Chaque balise <label> permet-elle de connaître la fonction exacte du champ de formulaire(ouvre dans une nouvelle fenêtre) auquel elle est associée ?
+
+11.2.2
+Chaque attribut title permet-il de connaître la fonction exacte du champ de formulaire(ouvre dans une nouvelle fenêtre) auquel il est associé ?
+
+11.2.3
+Chaque étiquette implémentée via l’attribut WAI-ARIA aria-label permet-elle de connaître la fonction exacte du champ de formulaire(ouvre dans une nouvelle fenêtre) auquel elle est associée ?
+
+11.2.4
+Chaque passage de texte(ouvre dans une nouvelle fenêtre) associé via l’attribut WAI-ARIA aria-labelledby permet-il de connaître la fonction exacte du champ de formulaire(ouvre dans une nouvelle fenêtre) auquel il est associé ?
+
+11.2.5
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) ayant un intitulé visible(ouvre dans une nouvelle fenêtre) vérifie-t-il ces conditions (hors cas particuliers) ?
+
+S’il est présent, le contenu de l’attribut WAI-ARIA aria-label du champ de formulaire(ouvre dans une nouvelle fenêtre) contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le passage de texte(ouvre dans une nouvelle fenêtre) lié au champ de formulaire(ouvre dans une nouvelle fenêtre) via un attribut WAI-ARIA aria-labelledby contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le contenu de l’attribut title du champ de formulaire(ouvre dans une nouvelle fenêtre) contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent le contenu de la balise <label> associé au champ de formulaire(ouvre dans une nouvelle fenêtre) contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre).
+11.2.6
+Chaque bouton adjacent au champ de formulaire(ouvre dans une nouvelle fenêtre) qui fournit une étiquette visible permet-il de connaître la fonction exacte du champ de formulaire(ouvre dans une nouvelle fenêtre) auquel il est associé ?
+
+Cas particuliers
+Il existe une gestion de cas particuliers pour le test 11.2.5 lorsque :
+
+La ponctuation et les lettres majuscules sont présentes dans le texte de l’intitulé visible(ouvre dans une nouvelle fenêtre) : elles peuvent être ignorées dans le nom accessible sans porter à conséquence ;
+Le texte de l’intitulé visible(ouvre dans une nouvelle fenêtre) sert de symbole : le texte ne doit pas être interprété littéralement au niveau du nom accessible. Le nom doit exprimer la fonction véhiculée par le symbole (par exemple, “B” au niveau d’un éditeur de texte aura pour nom accessible “Mettre en gras”, le signe “>” en fonction du contexte signifiera “Suivant” ou “Lancer la vidéo”). Le cas des symboles mathématiques fait cependant exception (voir la note ci-dessous).
+Note : si l’étiquette visible représente une expression mathématique, les symboles mathématiques peuvent être repris littéralement pour servir d’étiquette au nom accessible (ex. : “A>B”). Il est laissé à l’utilisateur le soin d’opérer la correspondance entre l’expression et ce qu’il doit épeler compte tenu de la connaissance qu’il a du fonctionnement de son logiciel de saisie vocale (“A plus grand que B” ou “A supérieur à B”).
+
+Ce cas particulier s’applique également au test 11.9.2.
+
+11.3
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), chaque étiquette(ouvre dans une nouvelle fenêtre) associée à un champ de formulaire(ouvre dans une nouvelle fenêtre) ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages(ouvre dans une nouvelle fenêtre) est-elle cohérente(ouvre dans une nouvelle fenêtre) ?
+
+Tests et références du critère 11.3
+11.3.1
+Chaque étiquette(ouvre dans une nouvelle fenêtre) associée à un champ de formulaire(ouvre dans une nouvelle fenêtre) ayant la même fonction et répétée plusieurs fois dans une même page est-elle cohérente(ouvre dans une nouvelle fenêtre) ?
+
+11.3.2
+Chaque étiquette(ouvre dans une nouvelle fenêtre) associée à un champ de formulaire(ouvre dans une nouvelle fenêtre) ayant la même fonction et répétée dans un ensemble de pages est-elle cohérente(ouvre dans une nouvelle fenêtre) ?
+
+11.4
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), chaque étiquette de champ(ouvre dans une nouvelle fenêtre) et son champ associé sont-ils accolés(ouvre dans une nouvelle fenêtre) (hors cas particuliers) ?
+
+Tests et références du critère 11.4
+11.4.1
+Chaque étiquette de champ(ouvre dans une nouvelle fenêtre) et son champ(ouvre dans une nouvelle fenêtre) associé sont-ils accolés(ouvre dans une nouvelle fenêtre) ?
+
+11.4.2
+Chaque étiquette(ouvre dans une nouvelle fenêtre) accolée(ouvre dans une nouvelle fenêtre) à un champ(ouvre dans une nouvelle fenêtre) (à l’exception des cases à cocher, bouton radio ou balises ayant un attribut WAI-ARIA role="checkbox", role="radio" ou role="switch"), vérifie-t-elle ces conditions (hors cas particuliers) ?
+
+L’étiquette est visuellement accolée(ouvre dans une nouvelle fenêtre) immédiatement au-dessus ou à gauche du champ de formulaire(ouvre dans une nouvelle fenêtre) lorsque le sens de lecture de la langue de l’étiquette est de gauche à droite ;
+L’étiquette est visuellement accolée(ouvre dans une nouvelle fenêtre) immédiatement au-dessus ou à droite du champ de formulaire(ouvre dans une nouvelle fenêtre) lorsque le sens de lecture de la langue de l’étiquette est de droite à gauche.
+11.4.3
+Chaque étiquette(ouvre dans une nouvelle fenêtre) accolée(ouvre dans une nouvelle fenêtre) à un champ(ouvre dans une nouvelle fenêtre) de type checkbox ou radio ou à une balise ayant un attribut WAI-ARIA role="checkbox", role="radio" ou role="switch", vérifie-t-elle ces conditions (hors cas particuliers) ?
+
+L’étiquette est visuellement accolée(ouvre dans une nouvelle fenêtre) immédiatement au-dessous ou à droite du champ de formulaire(ouvre dans une nouvelle fenêtre) lorsque le sens de lecture de la langue de l’étiquette est de gauche à droite ;
+L’étiquette est visuellement accolée(ouvre dans une nouvelle fenêtre) immédiatement au-dessous ou à gauche du champ de formulaire(ouvre dans une nouvelle fenêtre) lorsque le sens de lecture de la langue de l’étiquette est de droite à gauche.
+Cas particuliers
+Les tests 11.4.2 et 11.4.3 seront considérés comme non applicables :
+
+Dans le cas où l’étiquette(ouvre dans une nouvelle fenêtre) mélange une portion de texte qui se lit de droite à gauche avec une portion de texte qui se lit de gauche à droite ;
+Dans le cas où un formulaire contient des labels de plusieurs langues qui se liraient de droite à gauche et inversement. Par exemple, un formulaire de commande en arabe qui propose une liste de cases à cocher de produit en langue française ou mixant des produits en langue arabe ou en langue française ;
+Dans le cas où les champs de type radio ou checkbox et les balises ayant un attribut WAI-ARIA role="checkbox", role="radio" ou role="switch" ne sont pas visuellement présentés sous forme de bouton radio ou de case à cocher ;
+Dans le cas où les champs seraient utilisés dans un contexte où il pourrait être légitime, du point de vue de l’expérience utilisateur, de placer les étiquettes de manière différente à celle requise dans les tests 11.4.2 et 11.4.3.
+
+
+
+11.5
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), les champs de même nature(ouvre dans une nouvelle fenêtre) sont-ils regroupés, si nécessaire ?
+
+Tests et références du critère 11.5
+11.5.1
+Les champs de même nature(ouvre dans une nouvelle fenêtre) vérifient-ils l’une de ces conditions, si nécessaire ?
+
+Les champs de même nature(ouvre dans une nouvelle fenêtre) sont regroupés dans une balise <fieldset> ;
+Les champs de même nature(ouvre dans une nouvelle fenêtre) sont regroupés dans une balise possédant un attribut WAI-ARIA role="group" ;
+Les champs de même nature(ouvre dans une nouvelle fenêtre) de type radio (<input type="radio">) ou balises possédant un attribut WAI-ARIA role="radio") sont regroupés dans une balise possédant un attribut WAI-ARIA role="radiogroup" ou role="group".
+
+
+
+11.6
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), chaque regroupement de champs de même nature(ouvre dans une nouvelle fenêtre) a-t-il une légende(ouvre dans une nouvelle fenêtre) ?
+
+Tests et références du critère 11.6
+11.6.1
+Chaque regroupement de champs de même nature(ouvre dans une nouvelle fenêtre) possède-t-il une légende(ouvre dans une nouvelle fenêtre) ?
+
+
+11.7
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), chaque légende(ouvre dans une nouvelle fenêtre) associée à un regroupement de champs de même nature(ouvre dans une nouvelle fenêtre) est-elle pertinente ?
+
+Tests et références du critère 11.7
+11.7.1
+Chaque légende(ouvre dans une nouvelle fenêtre) associée à un regroupement de champs de même nature(ouvre dans une nouvelle fenêtre) est-elle pertinente ?
+
+11.8
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), les items de même nature d’une liste de choix(ouvre dans une nouvelle fenêtre) sont-ils regroupés de manière pertinente ?
+
+Tests et références du critère 11.8
+11.8.1
+Pour chaque balise <select>, les items de même nature d’une liste de choix(ouvre dans une nouvelle fenêtre) sont-ils regroupés avec une balise <optgroup>, si nécessaire ?
+
+11.8.2
+Dans chaque balise <select>, chaque balise <optgroup> possède-t-elle un attribut label ?
+
+11.8.3
+Pour chaque balise <optgroup> ayant un attribut label, le contenu de l’attribut label est-il pertinent ?
+
+Note technique
+Il est possible d’utiliser une balise ayant un attribut WAI-ARIA role="listbox" en remplacement d’une balise <select>. En revanche, il est impossible de créer des groupes d’options via l’utilisation de WAI-ARIA. De ce fait, une liste nécessitant un regroupement d’options structurée à l’aide d’une balise ayant un attribut WAI-ARIA role="listbox" sera considérée comme non conforme au critère 11.8.
+
+
+11.9
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), l’intitulé de chaque bouton(ouvre dans une nouvelle fenêtre) est-il pertinent (hors cas particuliers) ?
+
+Tests et références du critère 11.9
+11.9.1
+L’intitulé de chaque bouton(ouvre dans une nouvelle fenêtre) vérifie-t-il ces conditions (hors cas particuliers) ?
+
+S’il est présent, le contenu de l’attribut WAI-ARIA aria-label est pertinent ;
+S’il est présent, le passage de texte(ouvre dans une nouvelle fenêtre) lié au bouton via un attribut WAI-ARIA aria-labelledby est pertinent ;
+S’il est présent, le contenu de l’attribut value d’une balise <input> de type submit, reset ou button est pertinent ;
+S’il est présent, le contenu de la balise <button> est pertinent ;
+S’il est présent, le contenu de l’attribut alt d’une balise <input> de type image est pertinent ;
+S’il est présent, le contenu de l’attribut title est pertinent.
+11.9.2
+Chaque bouton(ouvre dans une nouvelle fenêtre) affichant un intitulé visible(ouvre dans une nouvelle fenêtre) vérifie-t-il ces conditions (hors cas particuliers) ?
+
+S’il est présent, le contenu de l’attribut WAI-ARIA aria-label contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le passage de texte(ouvre dans une nouvelle fenêtre) lié au bouton via un attribut WAI-ARIA aria-labelledby contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le contenu de l’attribut value d’une balise <input> de type submit, reset ou button contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le contenu de la balise <button> contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le contenu de l’attribut alt d’une balise <input> de type image contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre) ;
+S’il est présent, le contenu de l’attribut title contient au moins l’intitulé visible(ouvre dans une nouvelle fenêtre).
+Cas particulier
+Pour le test 11.9.2, voir cas particuliers critère 11.2.
+
+
+11.10
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), le contrôle de saisie(ouvre dans une nouvelle fenêtre) est-il utilisé de manière pertinente (hors cas particuliers) ?
+
+Tests et références du critère 11.10
+11.10.1
+Les indications du caractère obligatoire(ouvre dans une nouvelle fenêtre) de la saisie des champs vérifient-elles une de ces conditions (hors cas particuliers) ?
+
+Une indication de champ obligatoire(ouvre dans une nouvelle fenêtre) est visible et permet d’identifier nommément le champ concerné préalablement à la validation du formulaire ;
+Le champ obligatoire dispose de l’attribut aria-required="true" ou required préalablement à la validation du formulaire.
+11.10.2
+Les champs obligatoires ayant l’attribut aria-required="true" ou required vérifient-ils une de ces conditions ?
+
+Une indication de champ obligatoire(ouvre dans une nouvelle fenêtre) est visible et située dans l’étiquette associée au champ préalablement à la validation du formulaire ;
+Une indication de champ obligatoire(ouvre dans une nouvelle fenêtre) est visible et située dans le passage de texte(ouvre dans une nouvelle fenêtre) associé au champ préalablement à la validation du formulaire.
+11.10.3
+Les messages d’erreur indiquant l’absence de saisie d’un champ obligatoire vérifient-ils une de ces conditions ?
+
+Le message d’erreur indiquant l’absence de saisie d’un champ obligatoire est visible et permet d’identifier nommément le champ concerné ;
+Le champ obligatoire dispose de l’attribut aria-invalid="true".
+11.10.4
+Les champs obligatoires ayant l’attribut aria-invalid="true" vérifient-ils une de ces conditions ?
+
+Le message d’erreur indiquant le caractère invalide de la saisie est visible et situé dans l’étiquette associée au champ ;
+Le message d’erreur indiquant le caractère invalide de la saisie est visible et situé dans le passage de texte(ouvre dans une nouvelle fenêtre) associé au champ.
+11.10.5
+Les instructions et indications du type de données et/ou de format obligatoires vérifient-elles une de ces conditions ?
+
+Une instruction ou une indication du type de données et/ou de format obligatoire est visible et permet d’identifier nommément le champ concerné préalablement à la validation du formulaire ;
+Une instruction ou une indication du type de données et/ou de format obligatoire est visible dans l’étiquette ou le passage de texte(ouvre dans une nouvelle fenêtre) associé au champ préalablement à la validation du formulaire.
+11.10.6
+Les messages d’erreurs fournissant une instruction ou une indication du type de données et/ou de format obligatoire des champs vérifient-ils une de ces conditions ?
+
+Le message d’erreur fournissant une instruction ou une indication du type de données et/ou de format obligatoires est visible et identifie le champ concerné ;
+Le champ dispose de l’attribut aria-invalid="true".
+11.10.7
+Les champs ayant l’attribut aria-invalid="true" dont la saisie requiert un type de données et/ou de format obligatoires vérifient-ils une de ces conditions ?
+
+Une instruction ou une indication du type de données et/ou de format obligatoire est visible et située dans la balise <label> associée au champ ;
+Une instruction ou une indication du type de données et/ou de format obligatoire est visible et située dans le passage de texte(ouvre dans une nouvelle fenêtre) associé au champ.
+Cas particuliers
+Le test 11.10.1 et le test 11.10.2 seront considérés comme non applicables lorsque le formulaire comporte un seul champ de formulaire(ouvre dans une nouvelle fenêtre) ou qu’il indique les champs optionnels de manière :
+
+Visible ;
+Dans la balise <label> ou dans la légende(ouvre dans une nouvelle fenêtre) associée au champ.
+Dans le cas où l’ensemble des champs d’un formulaire sont obligatoires, les tests 11.10.1 et 11.10.2 restent applicables.
+
+Notes techniques
+Dans un long formulaire dont la majorité des champs sont obligatoires, on pourrait constater que ce sont les quelques champs restés facultatifs qui sont explicitement signalés comme tels. Dans ce cas, il faudrait s’assurer que :
+
+Un message précise visuellement en haut de formulaire que “tous les champs sont obligatoires sauf ceux indiqués comme étant facultatifs” ;
+Une mention “facultatif” est présente visuellement dans le libellé des champs facultatifs ou dans la légende d’un groupe de champs facultatifs ;
+Un attribut required ou aria-required="true" reste associé à chaque champ qui n’est pas concerné par ce caractère facultatif.
+
+
+
+11.11
+Dans chaque formulaire(ouvre dans une nouvelle fenêtre), le contrôle de saisie(ouvre dans une nouvelle fenêtre) est-il accompagné, si nécessaire, de suggestions facilitant la correction des erreurs de saisie ?
+
+Tests et références du critère 11.11
+11.11.1
+Pour chaque erreur de saisie, les types et les formats de données sont-ils suggérés, si nécessaire ?
+
+11.11.2
+Pour chaque erreur de saisie, des exemples de valeurs attendues sont-ils suggérés, si nécessaire ?
+
+Note technique
+Certains types de contrôles en HTML5 proposent des messages d’aide à la saisie automatique : par exemple le type email affiche un message du type « veuillez saisir une adresse e-mail valide » dans le cas où l’adresse e-mail saisie ne correspond pas au format attendu. Ces messages sont personnalisables via l’API Constraint Validation, ce qui permet de personnaliser les messages d’erreur et de valider le critère. L’attribut pattern permet d’effectuer automatiquement des contrôles de format (via des expressions régulières) et affiche un message d’aide personnalisable via l’attribut title : ce dispositif valide également le critère.
+
+
+
+11.12
+Pour chaque formulaire(ouvre dans une nouvelle fenêtre) qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur ?
+
+Tests et références du critère 11.12
+11.12.1
+Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou un examen, ou dont la validation a des conséquences financières ou juridiques, la saisie des données vérifie-t-elle une de ces conditions ?
+
+L’utilisateur peut modifier ou annuler les données et les actions effectuées(ouvre dans une nouvelle fenêtre) sur ces données après la validation du formulaire ;
+L’utilisateur peut vérifier et corriger les données avant la validation d’un formulaire en plusieurs étapes ;
+Un mécanisme de confirmation explicite, via une case à cocher (balise <input> de type checkbox ou balise ayant un attribut WAI-ARIA role="checkbox") ou une étape supplémentaire, est présent.
+11.12.2
+Chaque formulaire dont la validation modifie ou supprime des données à caractère financier, juridique ou personnel vérifie-t-il une de ces conditions ?
+
+Un mécanisme permet de récupérer les données supprimées ou modifiées par l’utilisateur ;
+Un mécanisme de demande de confirmation explicite de la suppression ou de la modification, via un champ de formulaire(ouvre dans une nouvelle fenêtre) ou une étape supplémentaire, est proposé.
+
+
+
+11.13
+La finalité d’un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l’utilisateur ?
+
+Tests et références du critère 11.13
+11.13.1
+Chaque champ de formulaire(ouvre dans une nouvelle fenêtre) dont l’objet se rapporte à une information concernant l’utilisateur vérifie-t-il ces conditions ?
+
+Le champ de formulaire(ouvre dans une nouvelle fenêtre) possède un attribut autocomplete ;
+L’attribut autocomplete est pourvu d’une valeur présente dans la liste des valeurs possibles pour l’attribut autocomplete(ouvre dans une nouvelle fenêtre) associés à un champ de formulaire(ouvre dans une nouvelle fenêtre) ;
+La valeur indiquée pour l’attribut autocomplete est pertinente au regard du type d’information attendu.
+Notes techniques
+La liste des valeurs possibles pour l’attribut autocomplete(ouvre dans une nouvelle fenêtre) repose sur la liste des valeurs présentes dans la spécification WCAG2.1 qui reprend elle-même la liste des valeurs de type “field name” de la spécification HTML5.2. Le critère WCAG demande à ce que l’une de ces valeurs soit présente pour qualifier un champ de saisie concernant l’utilisateur.
+
+Ce que le critère WCAG laisse implicite, ce sont les différentes règles de construction possibles pour obtenir une valeur (simple ou composée) pour l’attribut autocomplete. C’est cependant l’affaire du développeur de fournir à l’attribut autocomplete une valeur ou un ensemble de valeurs valides au regard des exigences de l’algorithme fourni par la spécification HTML5.2. Ainsi, un attribut autocomplete ne peut contenir qu’une seule valeur de type “field name”, comme "name" ou "street-address". On peut avoir également un ensemble composé de différentes valeurs comme, par exemple, autocomplete="shipping name" ou autocomplete="section-software shipping street-address" : "section-software" renvoie à une valeur de type “scope” et "shipping" à une valeur de type “hint set”, mais toujours une seule valeur de type “field name”.

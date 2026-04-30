@@ -63,6 +63,8 @@ export const BarreDeRecherche = ({
           radioOptions.map((options, index) => (
             <RadioButtons
               key={index}
+              legend="Type de territoire"
+              classes={{ legend: "fr-sr-only" }}
               name={`radio-${index}`}
               disabled={options[0].nativeInputProps.onChange ? false : true}
               options={options}
