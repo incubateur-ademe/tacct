@@ -12,7 +12,14 @@ interface CustomAccordionProps {
   onToggle?: () => void;
 }
 
-export const CustomAccordion = ({ label, children, defaultExpanded = false, isOpen, onToggle }: CustomAccordionProps) => {
+export const CustomAccordion = (
+  {
+    label,
+    children,
+    defaultExpanded = false,
+    isOpen,
+    onToggle
+  }: CustomAccordionProps) => {
   const { css } = useStyles();
   const [expanded, setExpanded] = useState(defaultExpanded);
 

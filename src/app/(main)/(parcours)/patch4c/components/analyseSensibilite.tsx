@@ -2,7 +2,7 @@
 
 import ChatChercheur from '@/assets/images/chat_sherlock.png';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import { Body, H3 } from "@/design-system/base/Textes";
+import { Body, H2 } from "@/design-system/base/Textes";
 import { handleRedirection } from '@/hooks/Redirections';
 import Image, { StaticImageData } from "next/image";
 import Link from 'next/link';
@@ -58,9 +58,9 @@ export const AnalyseSensibilite = ({
         (isMap || aggravationLevel === "Aggravation forte" || aggravationLevel === "Aggravation très forte") && (
           <div className={styles.titreWrapper}>
             <div className={styles.left}>
-              <H3 style={{ fontSize: 22 }}>
+              <H2 style={{ fontSize: 22 }}>
                 Analyse de la sensibilité : les thématiques à traiter impérativement
-              </H3>
+              </H2>
               <div className={styles.separator} />
               <Body style={{ marginTop: '1rem' }}>
                 Voici quelques pistes de thématiques à aborder lors de l’analyse de la sensibilité,

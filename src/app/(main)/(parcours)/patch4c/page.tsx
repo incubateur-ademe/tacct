@@ -3,6 +3,7 @@ import { GetPatch4 } from "@/lib/queries/patch4";
 import { GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import { Metadata } from "next";
 import { BlocTitre } from './components/blocTitre';
+import { DromAccordion } from "./components/DromAccordion";
 import { Patch4Analyse } from './Patch4Analyse';
 
 export const metadata: Metadata = {
@@ -18,6 +19,9 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
   return (
     <>
       <BlocTitre />
+      <DromAccordion
+        patch4={patch4}
+      />
       <Patch4Analyse
         patch4={patch4}
         coordonneesCommunes={coordonneesCommunes}
