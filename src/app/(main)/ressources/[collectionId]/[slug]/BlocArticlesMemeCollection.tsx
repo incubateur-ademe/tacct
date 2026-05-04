@@ -2,6 +2,7 @@
 
 import { Body, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRef } from 'react';
 import { SliderArticles } from '../../sliderArticles';
