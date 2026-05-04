@@ -1,19 +1,19 @@
-"use client";
+'use client';
 import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
-import { MicroPieChart } from "@/components/charts/MicroDataviz";
-import { ExportButtonNouveauParcours } from "@/components/exports/ExportButton";
-import { Loader } from "@/components/ui/loader";
-import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
-import { Body } from "@/design-system/base/Textes";
-import { travailExtMapper } from "@/lib/mapper/inconfortThermique";
-import { ConfortThermique } from "@/lib/postgres/models";
+import { MicroPieChart } from '@/components/charts/MicroDataviz';
+import { ExportButton } from '@/components/exports/ExportButton';
+import { Loader } from '@/components/ui/loader';
+import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
+import { Body } from '@/design-system/base/Textes';
+import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
+import { ConfortThermique } from '@/lib/postgres/models';
 import { TravailExterieurText } from '@/lib/staticTexts';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
-import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
-import { eptRegex } from "@/lib/utils/regex";
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 import { EmploisEnExterieurPieChartData } from '../graphData';
@@ -51,41 +51,55 @@ export const EmploisEnExterieur = ({
       ((100 * sums.sumConstruction) / Sum(Object.values(sums))).toFixed(1)
     ) +
     Number(((100 * sums.sumAgriculture) / Sum(Object.values(sums))).toFixed(1));
-  const exportData = IndicatorExportTransformations.inconfort_thermique.travailExt(travailExterieurTerritoire);
-  const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
+  const exportData =
+    IndicatorExportTransformations.inconfort_thermique.travailExt(
+      travailExterieurTerritoire
+    );
+  const sumAllCount = graphData.reduce(
+    (sum, item) => sum + (item.count || 0),
+    0
+  );
 
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroPieChart pourcentage={travailExt} arrondi={1} ariaLabel="Pourcentage de l'emploi en extérieur" />
-            {
-              sums.sumConstruction || sums.sumAgriculture ?
-                <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                  Les métiers physiques en extérieur, comme ceux du BTP et de l’agriculture, sont
-                  les plus exposés à la chaleur. Sur votre territoire, ces deux secteurs à risque
-                  concentrent {" "}{Round(travailExt, 1)} % des emplois, soit{' '}
-                  {Round((sums.sumAgriculture + sums.sumConstruction), 0)} personnes.
-                </Body>
-                : ""
-            }
+            <MicroPieChart
+              pourcentage={travailExt}
+              arrondi={1}
+              ariaLabel="Pourcentage de l'emploi en extérieur"
+            />
+            {sums.sumConstruction || sums.sumAgriculture ? (
+              <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+                Les métiers physiques en extérieur, comme ceux du BTP et de
+                l’agriculture, sont les plus exposés à la chaleur. Sur votre
+                territoire, ces deux secteurs à risque concentrent{' '}
+                {Round(travailExt, 1)} % des emplois, soit{' '}
+                {Round(sums.sumAgriculture + sums.sumConstruction, 0)}{' '}
+                personnes.
+              </Body>
+            ) : (
+              ''
+            )}
             <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
             <TravailExterieurText />
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          {graphData ?
+          {graphData ? (
             <PieChartTravailExt
               graphData={graphData}
               travailExterieurTerritoire={travailExterieurTerritoire}
-            /> : <Loader />
-          }
+            />
+          ) : (
+            <Loader />
+          )}
           <SourceExport
             source="INSEE, Emplois au lieu de travail par sexe, secteur d'activité économique et catégorie socioprofessionnelle, 2021 (consultée en décembre 2024)"
-            anchor='Emplois en extérieur'
+            anchor="Emplois en extérieur"
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="travail_exterieur"
                 type={type}

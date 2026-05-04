@@ -3,7 +3,7 @@
 import WarningIcon from '@/assets/icons/exclamation_point_icon_black.png';
 import { MicroCube } from '@/components/charts/MicroDataviz';
 import EauCharts from '@/components/charts/ressourcesEau/EauCharts';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -13,12 +13,12 @@ import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import { Any } from '@/lib/utils/types';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
-import { Any } from '@/lib/utils/types';
 
 const parsePostgresArray = (str: string | null): string[] => {
   if (!str) return [];
@@ -174,7 +174,7 @@ export const PrelevementsEnEau = (props: {
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
             {volumePreleveTerritoire === null ||
-              volumePreleveTerritoire === undefined ? null : (
+            volumePreleveTerritoire === undefined ? null : (
               <MicroCube
                 valeur={volumePreleveTerritoire}
                 arrondi={2}
@@ -246,7 +246,7 @@ export const PrelevementsEnEau = (props: {
               ) !== 0
             }
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="prelevements_eau"
                 type={type}

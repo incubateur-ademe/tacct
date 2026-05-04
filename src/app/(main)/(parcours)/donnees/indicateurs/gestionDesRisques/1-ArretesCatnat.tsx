@@ -6,7 +6,7 @@ import {
 } from '@/app/(main)/types';
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
@@ -22,7 +22,11 @@ import { lazy, useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
 
-const ArretesCatnatCharts = lazy(() => import('@/components/charts/gestionRisques/arretesCatnatCharts').then(m => ({ default: m.default })));
+const ArretesCatnatCharts = lazy(() =>
+  import('@/components/charts/gestionRisques/arretesCatnatCharts').then(
+    (m) => ({ default: m.default })
+  )
+);
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
@@ -88,8 +92,8 @@ export const ArretesCatnat = (props: {
       typeRisqueValue === 'Tous types'
         ? gestionRisques
         : gestionRisques.filter(
-          (item) => item.lib_risque_jo === typeRisqueValue
-        );
+            (item) => item.lib_risque_jo === typeRisqueValue
+          );
     const gestionRisquesEnrichBarChart = catnatFilteredByType
       ?.map((item) => {
         return {
@@ -127,7 +131,7 @@ export const ArretesCatnat = (props: {
             <MicroNumberCircle valeur={gestionRisques.length} arrondi={0} />
             <>
               {dataByCodeGeographique[0]?.sumCatnat === 0 ||
-                gestionRisques.length === 0 ? (
+              gestionRisques.length === 0 ? (
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                   L’absence d’arrêté CatNat ne signifie pas que votre territoire
                   n’a jamais connu d’événements climatiques importants, ni subis
@@ -180,7 +184,7 @@ export const ArretesCatnat = (props: {
               septembre 2025"
             condition={gestionRisques.length !== 0}
             exportComponent={
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="arretes_catnat"
                 type={type}

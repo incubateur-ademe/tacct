@@ -1,18 +1,18 @@
-"use client";
+'use client';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
-import DataNotFoundForGraph from "@/components/graphDataNotFound";
+import { ExportButton } from '@/components/exports/ExportButton';
+import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
-import { Body } from "@/design-system/base/Textes";
+import { Body } from '@/design-system/base/Textes';
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
-import { EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
+import { EtatCoursDeau, ExportCoursDeau } from '@/lib/postgres/models';
 import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 type DataToExport = {
@@ -48,11 +48,17 @@ export const EtatEcoCoursDeau = (props: {
   useEffect(() => {
     const fetchExportData = async () => {
       try {
-        const response = await fetch(`/api/export/cours_d_eau?code=${code}&libelle=${libelle}&type=${type}`);
+        const response = await fetch(
+          `/api/export/cours_d_eau?code=${code}&libelle=${libelle}&type=${type}`
+        );
         if (response.ok) {
-          const { coursDeau }: { coursDeau: ExportCoursDeau[] } = await response.json();
+          const { coursDeau }: { coursDeau: ExportCoursDeau[] } =
+            await response.json();
           if (coursDeau && coursDeau.length > 0) {
-            const transformedData = IndicatorExportTransformations.ressourcesEau.EtatCoursEau(coursDeau)
+            const transformedData =
+              IndicatorExportTransformations.ressourcesEau.EtatCoursEau(
+                coursDeau
+              );
             setExportData(transformedData);
           }
         }
@@ -66,15 +72,15 @@ export const EtatEcoCoursDeau = (props: {
   return (
     <>
       <div className={styles.datavizMapContainer}>
-        <div className='pr-5'>
-          <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+        <div className="pr-5">
+          <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
             La carte ci-contre reflète l’état écologique des cours d’eau
             présents sur votre territoire. Le bon fonctionnement des milieux
             aquatiques est évalué à partir d’éléments physico-chimiques
-            (composition de l’eau, polluants…) mais aussi de la présence de
-            la faune et de la flore (poissons, invertébrés, plantes
-            aquatiques), ainsi que des propriétés hydromorphologiques (état
-            des berges, continuité de la rivière, etc.).
+            (composition de l’eau, polluants…) mais aussi de la présence de la
+            faune et de la flore (poissons, invertébrés, plantes aquatiques),
+            ainsi que des propriétés hydromorphologiques (état des berges,
+            continuité de la rivière, etc.).
           </Body>
           <ReadMoreFade maxHeight={100}>
             <EtatCoursEauRessourcesEauText />
@@ -92,17 +98,18 @@ export const EtatEcoCoursDeau = (props: {
                 <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
             </>
-          ) : <div className='p-10 flex flex-row justify-center'>
-            <DataNotFoundForGraph image={DataNotFound} />
-          </div>
-          }
+          ) : (
+            <div className="p-10 flex flex-row justify-center">
+              <DataNotFoundForGraph image={DataNotFound} />
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.sourcesExportMapWrapper}>
-        <Body size='sm' style={{ color: "var(--gris-dark)" }}>
+        <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
           Source : Agences de l’eau, 2024 (consultée en février 2025)
         </Body>
-        <ExportButtonNouveauParcours
+        <ExportButton
           data={exportData}
           baseName="etat_cours_deau"
           type={type}
@@ -113,7 +120,7 @@ export const EtatEcoCoursDeau = (props: {
           anchor="État des cours d'eau"
         >
           Exporter
-        </ExportButtonNouveauParcours>
+        </ExportButton>
       </div>
     </>
   );

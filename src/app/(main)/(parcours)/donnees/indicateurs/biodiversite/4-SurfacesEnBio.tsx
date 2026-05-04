@@ -1,7 +1,7 @@
 'use client';
 import SurfacesEnBioCharts from '@/components/charts/biodiversite/surfacesEnBioCharts';
 import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -164,7 +164,7 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
               catalogue DiDo (consultée en avril 2026)
             </Body>
             {agricultureBio.length !== 0 && (
-              <ExportButtonNouveauParcours
+              <ExportButton
                 data={exportData}
                 baseName="agriculture_biologique"
                 type={type}

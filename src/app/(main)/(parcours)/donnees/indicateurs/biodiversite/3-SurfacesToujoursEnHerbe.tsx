@@ -1,5 +1,5 @@
 import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
@@ -47,11 +47,11 @@ export const SurfacesToujoursEnHerbe = ({
   const territoiresPartiellementCouverts =
     type === 'departement'
       ? multipleEpciBydepartementLibelle.find(
-        (dept) => dept.departement === code
-      )?.liste_epci_multi_dept
+          (dept) => dept.departement === code
+        )?.liste_epci_multi_dept
       : type === 'pnr'
         ? multipleEpciByPnrLibelle.find((pnr) => pnr.libelle_pnr === libelle)
-          ?.liste_epci_multi_pnr
+            ?.liste_epci_multi_pnr
         : undefined;
   const exportData =
     IndicatorExportTransformations.agriculture.surfacesAgricoles(
@@ -95,7 +95,7 @@ export const SurfacesToujoursEnHerbe = ({
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
           Source : AGRESTE, 2020 (consultée en novembre 2025)
         </Body>
-        <ExportButtonNouveauParcours
+        <ExportButton
           data={exportData}
           baseName="surfaces_toujours_en_herbe"
           type={type}

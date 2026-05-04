@@ -2,7 +2,7 @@
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { MicroRemplissageTerritoire } from '@/components/charts/MicroDataviz';
 import { generateMapPngBlob } from '@/components/exports/ExportPng';
-import { ZipExportButtonNouveauParcours } from '@/components/exports/ZipExportButton';
+import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
@@ -18,7 +18,9 @@ import { lazy, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 
-const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
+const MapTiles = lazy(() =>
+  import('@/components/maps/mapTiles').then((m) => ({ default: m.MapTiles }))
+);
 
 export const TypesDeSols = ({
   confortThermique,
@@ -51,18 +53,18 @@ export const TypesDeSols = ({
   // Parse la géométrie GeoJSON du contour du territoire
   const territoireContours = contoursCommunes
     ? [
-      {
-        type: 'Feature',
-        properties: {
-          epci: '',
-          libelle_epci: '',
-          libelle_geographique: libelle,
-          code_geographique: code,
-          coordinates: ''
-        },
-        geometry: JSON.parse(contoursCommunes.geometry)
-      }
-    ]
+        {
+          type: 'Feature',
+          properties: {
+            epci: '',
+            libelle_epci: '',
+            libelle_geographique: libelle,
+            code_geographique: code,
+            coordinates: ''
+          },
+          geometry: JSON.parse(contoursCommunes.geometry)
+        }
+      ]
     : [];
 
   const vegetalisationMapped = confortThermique.map(vegetalisationMapper);
@@ -136,8 +138,8 @@ export const TypesDeSols = ({
         </Body>
         <div className={styles.mapWrapper}>
           {confortThermique &&
-            confortThermique.length &&
-            coordonneesCommunes ? (
+          confortThermique.length &&
+          coordonneesCommunes ? (
             <>
               <MapTiles
                 coordonneesCommunes={coordonneesCommunes}
@@ -262,7 +264,7 @@ export const TypesDeSols = ({
           <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
             Source : CORINE Land Cover, 2018 (consultée en décembre 2024)
           </Body>
-          <ZipExportButtonNouveauParcours
+          <ZipExportButton
             anchor="Types de sols"
             handleExport={async () => {
               const pngBlob = await generateMapPngBlob({
@@ -299,7 +301,7 @@ export const TypesDeSols = ({
             thematique="types_de_sols"
           >
             Exporter
-          </ZipExportButtonNouveauParcours>
+          </ZipExportButton>
         </div>
       )}
     </>

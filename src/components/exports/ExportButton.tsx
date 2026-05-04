@@ -6,7 +6,6 @@ import {
   exportMultipleSheetToXLSX,
   exportToXLSX
 } from '@/lib/utils/export/exportXlsx';
-import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
 import { useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
@@ -31,83 +30,7 @@ interface ExportButtonProps {
   anchor?: string;
 }
 
-export const ExportButton = ({
-  data,
-  baseName,
-  type,
-  libelle,
-  code,
-  sheetName,
-  documentation,
-  children = 'Exporter',
-  style
-}: ExportButtonProps) => {
-  const posthog = usePostHog();
-  const [isExporting, setIsExporting] = useState(false);
-  posthog.capture(
-    baseName === 'inconfort_thermique'
-      ? 'export_xlsx_thematique_bouton'
-      : 'export_xlsx_bouton',
-    {
-      thematique: baseName,
-      code: code,
-      libelle: libelle,
-      type: type,
-      date: new Date()
-    }
-  );
-  const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (!data || data.length === 0) {
-      console.log('Aucune donnée à exporter');
-      return;
-    }
-    setIsExporting(true);
-    e.currentTarget.blur();
-    try {
-      if (documentation) {
-        exportMultipleSheetToXLSX(
-          {
-            [sheetName]: data,
-            Documentation: Array.isArray(documentation)
-              ? documentation
-              : [{ Documentation: documentation }]
-          },
-          baseName,
-          type,
-          libelle
-        );
-      } else {
-        exportToXLSX(data, baseName, type, libelle, sheetName);
-      }
-    } catch (error) {
-      console.error('Export failed:', error);
-    } finally {
-      setIsExporting(false);
-    }
-  };
-
-  return (
-    <button
-      onClick={handleExport}
-      disabled={isExporting}
-      className={styles.exportIndicatorButton}
-      style={{
-        cursor: isExporting ? 'wait' : 'pointer',
-        ...style
-      }}
-    >
-      {isExporting ? 'Export en cours...' : children}
-      <Image
-        alt="Exporter les données"
-        src={ExporterIcon}
-        width={16}
-        height={16}
-      />
-    </button>
-  );
-};
-
-export const ExportButtonNouveauParcours = ({
+export function ExportButton({
   data,
   baseName,
   type,
@@ -119,12 +42,14 @@ export const ExportButtonNouveauParcours = ({
   style,
   disabled,
   anchor
-}: ExportButtonProps) => {
+}: ExportButtonProps) {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
-  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(
+    undefined
+  );
 
   useLayoutEffect(() => {
     if (buttonWrapperRef.current) {
@@ -184,19 +109,6 @@ export const ExportButtonNouveauParcours = ({
       {data.length === 0 ? null : (
         <div className={styles.exportShareWrapper}>
           {anchor && <CopyLinkClipboard anchor={anchor} />}
-<<<<<<< HEAD
-          <BoutonPrimaireClassic
-            onClick={handleExport}
-            disabled={disabled || isExporting}
-            icone={isExporting ? null : ExporterIcon}
-            size="sm"
-            text={isExporting ? 'Export en cours...' : (children as string)}
-            style={{
-              cursor: isExporting ? 'wait' : 'pointer',
-              ...style
-            }}
-          />
-=======
           <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
             <BoutonPrimaireClassic
               onClick={handleExport}
@@ -208,12 +120,12 @@ export const ExportButtonNouveauParcours = ({
                 minWidth: buttonMinWidth,
                 cursor: isExporting ? 'wait' : 'pointer',
                 ...style
-              }} />
+              }}
+            />
           </div>
->>>>>>> 2d50777f (chore: fixed width export buttons)
           {isClicked && <ExportDataTrigger />}
         </div>
       )}
     </>
   );
-};
+}
