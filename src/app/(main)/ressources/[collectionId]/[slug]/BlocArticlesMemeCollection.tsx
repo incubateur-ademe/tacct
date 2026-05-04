@@ -30,7 +30,12 @@ export const ArticlesMemeCollection = () => {
                   Dans la même collection
                 </H2>
                 <Body style={{ color: "#3D3D3D" }}>
-                  Les autres ressources de la collection "<Link href={`/ressources/${collectionSlug}`}>{collection}</Link>"
+                  Les autres ressources de la collection "
+                  <Link
+                    href={`/ressources/${collectionSlug}`}
+                    onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}>
+                    {collection}
+                  </Link>"
                 </Body>
               </div>
               <SliderArticles listeArticles={listeArticlesFiltres} sliderRef={sliderRef} />
