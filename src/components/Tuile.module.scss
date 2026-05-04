@@ -148,6 +148,12 @@
     }
 }
 
+@media (max-width: 640px) {
+    .tuile {
+        width: 345px;
+    }
+}
+
 // Tuile horizontale
 
 .tuileHorizontale {
@@ -287,7 +293,7 @@
         font-size: 20px;
         font-weight: bold;
         line-height: 28px;
-        color: #FAFAFA;
+        color: #fafafa;
         text-align: left;
         max-height: 55px;
         overflow: hidden;
@@ -304,7 +310,7 @@
         align-items: center;
         gap: 0.5rem;
         font-size: 0.875rem;
-        color: #FAFAFA;
+        color: #fafafa;
 
         img {
             width: 16px;

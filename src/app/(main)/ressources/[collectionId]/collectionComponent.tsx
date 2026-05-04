@@ -1,36 +1,75 @@
-"use client";
+'use client';
 
-import ClockIcon from "@/assets/icons/clock_icon_white.png";
+import ClockIcon from '@/assets/icons/clock_icon_white.png';
 import DocIcon from '@/assets/icons/doc_icon_white.png';
 import FlagIcon from '@/assets/icons/flag_icon_orange.png';
 import message3Icone from '@/assets/icons/message_3_icon_black.png';
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { TuileHorizontale, TuileVerticale } from '@/components/Tuile';
-import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
-import { TagsIcone } from "@/design-system/base/Tags";
+import { CustomAccordion } from '@/design-system/base/Accordion';
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { TagsIcone } from '@/design-system/base/Tags';
 import { Body, H1, H2 } from '@/design-system/base/Textes';
-import { NewContainer } from "@/design-system/layout";
-import useWindowDimensions from "@/hooks/windowDimensions";
-import { FiltresOptions } from "@/lib/ressources/toutesRessources";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import styles from "../ressources.module.scss";
+import { NewContainer } from '@/design-system/layout';
+import useWindowDimensions from '@/hooks/windowDimensions';
+import { FaqItem, type NotionRichText } from '@/lib/queries/notion/notion';
+import { FiltresOptions } from '@/lib/ressources/toutesRessources';
+import { MinuteToHours } from '@/lib/utils/reusableFunctions/MinuteToHours';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import styles from '../ressources.module.scss';
 import { CollectionsData } from './collectionsData';
+
+const RichText = ({ richText }: { richText: NotionRichText[] }) => (
+  <span style={{ whiteSpace: 'pre-line' }}>
+    {richText.map((segment, i) => {
+      let node: React.ReactNode = segment.plain_text;
+      if (segment.annotations.bold) node = <strong key={i}>{node}</strong>;
+      if (segment.annotations.italic) node = <em key={i}>{node}</em>;
+      if (segment.annotations.strikethrough) node = <s key={i}>{node}</s>;
+      if (segment.annotations.underline) node = <u key={i}>{node}</u>;
+      if (segment.annotations.code) node = <code key={i}>{node}</code>;
+      if (segment.href)
+        node = (
+          <a
+            key={i}
+            href={segment.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {node}
+          </a>
+        );
+      return <span key={i}>{node}</span>;
+    })}
+  </span>
+);
 
 type CollectionComponentProps = {
   collectionId: string;
+  faqItems: FaqItem[];
 };
 
-export const CollectionComponent = ({ collectionId }: CollectionComponentProps) => {
-  const collection = CollectionsData.find(c => c.slug === collectionId);
-  const articlesSorted = collection?.articles.toSorted((a, b) => a.ordreCollection - b.ordreCollection);
-  const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
+export const CollectionComponent = ({
+  collectionId,
+  faqItems
+}: CollectionComponentProps) => {
+  const collection = CollectionsData.find((c) => c.slug === collectionId);
+  const articlesSorted = collection?.articles.toSorted(
+    (a, b) => a.ordreCollection - b.ordreCollection
+  );
+  const territoireOptions =
+    FiltresOptions.find((f) => f.titre === 'Territoire')?.options || [];
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const windowDimensions = useWindowDimensions();
-  const tempsLecture = collection?.articles.reduce((total, article) => total + article.tempsLecture, 0) || 0;
+  const tempsLecture =
+    collection?.articles
+      .filter((article) => article.type !== 'Formation')
+      .reduce((total, article) => total + article.tempsLecture, 0) || 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,26 +99,34 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
   return (
     <>
       <div className={styles.collectionTopBlocContainer}>
-        <NewContainer size="xl" style={{ padding: "32px 0" }}>
+        <NewContainer size="xl" style={{ padding: '32px 0' }}>
           <div className={styles.collectionTopBlocWrapper}>
             <div className={styles.texteWrapper}>
-              <Body style={{ color: "#ffffff" }}>Collection</Body>
-              <H1 style={{ color: "#ffffff", margin: 0 }}>{collection?.titre}</H1>
+              <Body style={{ color: '#ffffff' }}>Collection</Body>
+              <H1 style={{ color: '#ffffff', margin: 0 }}>
+                {collection?.titre}
+              </H1>
               <div className={styles.collectionMeta}>
                 <div className={styles.tempsLecture}>
-                  <Image src={DocIcon} alt="Nombre de ressources" width={24} height={24} />
-                  <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
+                  <Image
+                    src={DocIcon}
+                    alt="Nombre de ressources"
+                    width={24}
+                    height={24}
+                  />
+                  <Body size="lg" weight="bold" style={{ color: '#FFFFFF' }}>
                     {collection?.articles.length} ressources
                   </Body>
                 </div>
                 <div className={styles.tempsLecture}>
-                  <Image src={ClockIcon} alt="Temps de lecture" width={24} height={24} />
-                  <Body size="lg" weight="bold" style={{ color: "#FFFFFF" }}>
-                    {
-                      collection?.titre === "Démarrer le diagnostic de vulnérabilité"
-                        ? <span>47 min</span>
-                        : <span>{tempsLecture} min</span>
-                    }
+                  <Image
+                    src={ClockIcon}
+                    alt="Temps de lecture"
+                    width={24}
+                    height={24}
+                  />
+                  <Body size="lg" weight="bold" style={{ color: '#FFFFFF' }}>
+                    <span>{MinuteToHours(tempsLecture)}</span>
                   </Body>
                 </div>
               </div>
@@ -87,9 +134,12 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
             </div>
             <div className={styles.imageCropped}>
               <Image
-                //eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
                 src={collection?.image!}
-                width={windowDimensions.width && windowDimensions.width <= 768 ? 300 : 550}
+                width={
+                  windowDimensions.width && windowDimensions.width <= 768
+                    ? 300
+                    : 550
+                }
                 alt=""
               />
             </div>
@@ -97,16 +147,16 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
         </NewContainer>
       </div>
       <div className={styles.collectionArticlesContainer}>
-        <NewContainer size="xl" style={{ padding: "32px 0" }}>
+        <NewContainer size="xl" style={{ padding: '32px 0' }}>
           <div className="flex flex-row justify-between items-center">
-            <H2 style={{ color: "#161616", fontSize: "22px", marginBottom: 8 }}>
+            <H2 style={{ color: '#161616', fontSize: '22px', marginBottom: 8 }}>
               Notre sélection
             </H2>
             <div className={styles.boutonPartage}>
               <BoutonPrimaireClassic
                 onClick={handleCopy}
                 icone={copied ? null : ShareIcon}
-                size='sm'
+                size="sm"
                 text={copied ? 'Lien copié' : 'Partager la collection'}
                 disabled={copied}
               />
@@ -117,73 +167,163 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
             <BoutonPrimaireClassic
               onClick={handleCopy}
               icone={copied ? null : ShareIcon}
-              size='sm'
+              size="sm"
               text={copied ? 'Lien copié' : 'Partager la collection'}
               disabled={copied}
             />
           </div>
           <div className={styles.selections}>
             <div className={styles.collectionArticlesWrapper}>
-              {
-                articlesSorted?.map((article) => {
-                  const isExternalLink = article.lien.startsWith('https://');
-                  const lien = isExternalLink
-                    ? article.lien
-                    : `/ressources/${collectionId}/${article.slug}`;
+              {articlesSorted?.map((article) => {
+                const isExternalLink = article.lien.startsWith('https://');
+                const lien = isExternalLink
+                  ? article.lien
+                  : `/ressources/${collectionId}/${article.slug}`;
 
-                  return (
-                    <div key={article.id} style={{ width: isMobile ? "auto" : "100%" }}>
-                      {isMobile ? (
-                        <TuileVerticale
-                          titre={article.titre}
-                          description={article.description}
-                          tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                return (
+                  <div
+                    key={article.id}
+                    style={{ width: isMobile ? 'auto' : '100%' }}
+                  >
+                    {isMobile ? (
+                      <TuileVerticale
+                        titre={article.titre}
+                        description={article.description}
+                        tags={article.filtres
+                          ?.filter(
+                            (filtre) => !territoireOptions.includes(filtre)
+                          )
+                          .map((filtre, index) => (
                             <TagsIcone
                               key={index}
                               texte={filtre}
-                              filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
+                              filtre={
+                                filtre as
+                                  | 'Article'
+                                  | "Retour d'expérience"
+                                  | "M'inspirer"
+                                  | 'Me former'
+                                  | 'Agir'
+                                  | 'Quiz'
+                                  | 'Formation'
+                                  | 'Support méthodo'
+                                  | 'Vidéo'
+                              }
                               taille="small"
                             />
                           ))}
-                          image={article.image}
-                          lien={lien}
-                          tempsLecture={article.tempsLecture}
-                          lienExterne={article.lien && article.lien.startsWith('/ressources') ? false : true}
-                        />
-                      ) : (
-                        <TuileHorizontale
-                          titre={article.titre}
-                          image={article.image}
-                          tags={article.filtres?.filter(filtre => !territoireOptions.includes(filtre)).map((filtre, index) => (
+                        image={article.image}
+                        lien={lien}
+                        tempsLecture={article.tempsLecture}
+                        lienExterne={
+                          article.lien && article.lien.startsWith('/ressources')
+                            ? false
+                            : true
+                        }
+                      />
+                    ) : (
+                      <TuileHorizontale
+                        titre={article.titre}
+                        image={article.image}
+                        tags={article.filtres
+                          ?.filter(
+                            (filtre) => !territoireOptions.includes(filtre)
+                          )
+                          .map((filtre, index) => (
                             <TagsIcone
                               key={index}
                               texte={filtre}
-                              filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
+                              filtre={
+                                filtre as
+                                  | 'Article'
+                                  | "Retour d'expérience"
+                                  | "M'inspirer"
+                                  | 'Me former'
+                                  | 'Agir'
+                                  | 'Quiz'
+                                  | 'Formation'
+                                  | 'Support méthodo'
+                                  | 'Vidéo'
+                              }
                               taille="small"
                             />
                           ))}
-                          lien={lien}
-                          tempsLecture={article.tempsLecture}
-                        />
-                      )}
-                    </div>
-                  );
-                })
-              }
+                        lien={lien}
+                        tempsLecture={article.tempsLecture}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+              {faqItems.length > 0 && (
+                <NewContainer size="xl" style={{ padding: '2rem 1rem 0rem' }}>
+                  <H2 style={{ fontSize: '28px', marginBottom: '1.5rem' }}>
+                    Questions sur ce thème
+                  </H2>
+                  <div
+                    style={{
+                      width: '3rem',
+                      borderBottom: '1px solid #DDDDDD',
+                      marginBottom: '2rem'
+                    }}
+                  />
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    {[...faqItems]
+                      .sort((a, b) => {
+                        if (a.ordre === null) return 1;
+                        if (b.ordre === null) return -1;
+                        return a.ordre - b.ordre;
+                      })
+                      .map((item) => (
+                        <CustomAccordion
+                          label={item.question}
+                          key={item.id}
+                          isOpen={openFaqId === item.id}
+                          onToggle={() =>
+                            setOpenFaqId(openFaqId === item.id ? null : item.id)
+                          }
+                        >
+                          <RichText richText={item.reponse} />
+                        </CustomAccordion>
+                      ))}
+                  </ul>
+                  <div className="flex">
+                    <Link
+                      href="/ressources/faq"
+                      className={styles.questionsThemes}
+                    >
+                      Voir toutes les questions
+                      <span
+                        className={`fr-icon-arrow-right-line ${styles.arrow}`}
+                        aria-hidden="true"
+                      ></span>
+                    </Link>
+                  </div>
+                </NewContainer>
+              )}
               <div className={styles.question}>
                 <div className={styles.titre}>
                   <Image src={message3Icone} alt="" width={24} />
-                  <H2 style={{ fontSize: "20px", lineHeight: "28px" }}>
+                  <H2 style={{ fontSize: '20px', lineHeight: '28px' }}>
                     Une question, une suggestion ?
                   </H2>
                 </div>
                 <Body>
-                  Notre produit est encore en construction : vos retours sont précieux !
-                  N'hésitez pas à nous écrire pour nous en faire part.
+                  Notre produit est encore en construction : vos retours sont
+                  précieux ! N'hésitez pas à nous écrire pour nous en faire
+                  part.
                 </Body>
-                <Link href="https://tally.so/r/mJGELz" target="_blank" rel="noopener noreferrer" className={styles.contact}>
+                <Link
+                  href="https://tally.so/r/mJGELz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.contact}
+                >
                   Nous contacter
-                  <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
+                  <span
+                    className={`fr-icon-arrow-right-line ${styles.arrow}`}
+                    aria-hidden="true"
+                  ></span>
                 </Link>
               </div>
             </div>
@@ -191,16 +331,28 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
               <div className={styles.seLancer}>
                 <div className={styles.titre}>
                   <Image src={FlagIcon} alt="" width={24} />
-                  <Body weight="bold" style={{ fontSize: "20px", lineHeight: "28px", margin: 0, color: "#7E5202" }}>
+                  <Body
+                    weight="bold"
+                    style={{
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      margin: 0,
+                      color: '#7E5202'
+                    }}
+                  >
                     Et si vous vous lanciez ?
                   </Body>
                 </div>
-                <Body style={{ color: "#7E5202", padding: "1rem 0 1rem 2rem" }}>
-                  Si ces ressources vous ont été utiles, vous pouvez dès maintenant commencer votre diagnostic de vulnérabilité !
+                <Body style={{ color: '#7E5202', padding: '1rem 0 1rem 2rem' }}>
+                  Si ces ressources vous ont été utiles, vous pouvez dès
+                  maintenant commencer votre diagnostic de vulnérabilité !
                 </Body>
                 <Link href="/recherche-territoire" className={styles.bouton}>
                   Explorer les données
-                  <span className={`fr-icon-arrow-right-line ${styles.arrow}`} aria-hidden="true"></span>
+                  <span
+                    className={`fr-icon-arrow-right-line ${styles.arrow}`}
+                    aria-hidden="true"
+                  ></span>
                 </Link>
               </div>
             </div>
@@ -209,4 +361,4 @@ export const CollectionComponent = ({ collectionId }: CollectionComponentProps) 
       </div>
     </>
   );
-}
+};

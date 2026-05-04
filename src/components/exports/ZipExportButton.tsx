@@ -4,7 +4,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
@@ -110,6 +110,14 @@ export const ZipExportButtonNouveauParcours = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   useEffect(() => {
     if (isExporting) {
@@ -179,17 +187,20 @@ export const ZipExportButtonNouveauParcours = ({
   return (
     <div className={styles.exportShareWrapper}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
-      <BoutonPrimaireClassic
-        onClick={handleClick}
-        disabled={isExporting}
-        icone={isExporting ? null : ExporterIcon}
-        size="sm"
-        text={isExporting ? 'Export en cours...' : (children as string)}
-        style={{
-          cursor: isExporting ? 'wait' : 'pointer',
-          ...style
-        }}
-      />
+      <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+        <BoutonPrimaireClassic
+          onClick={handleClick}
+          disabled={isExporting}
+          icone={isExporting ? null : ExporterIcon}
+          size="sm"
+          text={isExporting ? 'En cours...' : (children as string)}
+          style={{
+            minWidth: buttonMinWidth,
+            cursor: isExporting ? 'wait' : 'pointer',
+            ...style
+          }}
+        />
+      </div>
       {isClicked && <ExportDataTrigger />}
     </div>
   );

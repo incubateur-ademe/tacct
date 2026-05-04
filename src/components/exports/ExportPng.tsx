@@ -5,7 +5,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import html2canvas from 'html2canvas';
 import { usePostHog } from 'posthog-js/react';
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
@@ -69,7 +69,7 @@ export const ExportPngSimple = ({
         disabled={isExporting || disabled}
         icone={isExporting ? null : ExporterIcon}
         size={buttonSize}
-        text={isExporting ? 'Export en cours...' : buttonText}
+        text={isExporting ? 'En cours...' : buttonText}
         style={style}
       />
     </div>
@@ -172,7 +172,7 @@ export const ExportPngMaplibreSimple = ({
       disabled={isExporting || disabled}
       icone={isExporting ? null : ExporterIcon}
       size={buttonSize}
-      text={isExporting ? 'Export en cours...' : buttonText}
+      text={isExporting ? 'En cours...' : buttonText}
       style={style}
     />
   );
@@ -204,6 +204,14 @@ export const ExportPngMaplibreButton = ({
   const posthog = usePostHog();
   const [isLoading, setIsLoading] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   useEffect(() => {
     // ajout d'un overlay pour éviter les interactions pendant le chargement
@@ -258,7 +266,7 @@ export const ExportPngMaplibreButton = ({
       date: new Date()
     });
 
-    // Attendre que React affiche "Export en cours..." avant de démarrer l'export
+    // Attendre que React affiche "En cours..." avant de démarrer l'export
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     if (mapRef.current && mapContainer.current) {
@@ -345,17 +353,20 @@ export const ExportPngMaplibreButton = ({
   return (
     <div className={styles.exportShareWrapper}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
-      <BoutonPrimaireClassic
-        onClick={handleExportPng}
-        disabled={isLoading}
-        icone={isLoading ? null : ExporterIcon}
-        size="sm"
-        text={isLoading ? 'Export en cours...' : 'Exporter'}
-        style={{
-          cursor: isLoading ? 'wait' : 'pointer',
-          ...style
-        }}
-      />
+      <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+        <BoutonPrimaireClassic
+          onClick={handleExportPng}
+          disabled={isLoading}
+          icone={isLoading ? null : ExporterIcon}
+          size="sm"
+          text={isLoading ? 'En cours...' : 'Exporter'}
+          style={{
+            minWidth: buttonMinWidth,
+            cursor: isLoading ? 'wait' : 'pointer',
+            ...style
+          }}
+        />
+      </div>
       {isClicked && <ExportDataTrigger />}
     </div>
   );

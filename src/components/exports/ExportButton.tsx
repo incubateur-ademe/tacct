@@ -8,7 +8,7 @@ import {
 } from '@/lib/utils/export/exportXlsx';
 import Image from 'next/image';
 import { usePostHog } from 'posthog-js/react';
-import { useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
@@ -123,6 +123,14 @@ export const ExportButtonNouveauParcours = ({
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   const handleExport = async (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsClicked(true);
@@ -176,6 +184,7 @@ export const ExportButtonNouveauParcours = ({
       {data.length === 0 ? null : (
         <div className={styles.exportShareWrapper}>
           {anchor && <CopyLinkClipboard anchor={anchor} />}
+<<<<<<< HEAD
           <BoutonPrimaireClassic
             onClick={handleExport}
             disabled={disabled || isExporting}
@@ -187,6 +196,21 @@ export const ExportButtonNouveauParcours = ({
               ...style
             }}
           />
+=======
+          <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+            <BoutonPrimaireClassic
+              onClick={handleExport}
+              disabled={disabled || isExporting}
+              icone={isExporting ? null : ExporterIcon}
+              size="sm"
+              text={isExporting ? 'En cours...' : (children as string)}
+              style={{
+                minWidth: buttonMinWidth,
+                cursor: isExporting ? 'wait' : 'pointer',
+                ...style
+              }} />
+          </div>
+>>>>>>> 2d50777f (chore: fixed width export buttons)
           {isClicked && <ExportDataTrigger />}
         </div>
       )}
