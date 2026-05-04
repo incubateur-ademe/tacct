@@ -1,6 +1,7 @@
 "use client";
 
 import { StaticImageData } from "next/image";
+import { useEffect, useState } from "react";
 import { CarteCollection } from "./CarteCollection";
 import styles from "./ressources.module.scss";
 
@@ -15,6 +16,20 @@ export const SliderCollections = ({
   }[],
   sliderRef: React.RefObject<HTMLDivElement | null>;
 }) => {
+  const [sliderScrollLeft, setSliderScrollLeft] = useState(0);
+  const [isScrollEnd, setIsScrollEnd] = useState(false);
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setSliderScrollLeft(el.scrollLeft);
+      setIsScrollEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth);
+    };
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [sliderRef]);
+
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;
     const start = sliderRef.current.scrollLeft;
@@ -42,9 +57,14 @@ export const SliderCollections = ({
 
   return (
     <div className={styles.sliderContainer}>
-      <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
-        <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
-      </button>
+      {
+        sliderScrollLeft ? (
+          <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
+            <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
+          </button>
+        ) : null
+      }
+
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
           {
@@ -59,9 +79,13 @@ export const SliderCollections = ({
           }
         </div>
       </div>
-      <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
-        <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
-      </button>
+      {
+        !isScrollEnd ? (
+          <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
+            <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
+          </button>
+        ) : null
+      }
     </div>
   );
 }
