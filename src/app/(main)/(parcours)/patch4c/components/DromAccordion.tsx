@@ -163,7 +163,7 @@ export const DromAccordion = ({
                 fontSize: "0.875rem",
                 lineHeight: "1.5rem",
                 color: "#666666",
-                padding: "1rem 0",
+                padding: "2rem 0 1rem",
               }}
             >
               Source : Météo France - Les températures indiquées aux différents horizons
