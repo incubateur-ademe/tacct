@@ -80,6 +80,7 @@ model databases_v2_agriculture_bio {
   nombre_2008        Float?
 
   @@index([index], map: "ix_agriculture_bio_index")
+  @@index([epci], map: "agriculture_bio_epci_index")
   @@map("agriculture_bio")
   @@schema("databases_v2")
 }
@@ -950,6 +951,5 @@ model feux_foret {
   @@index([libelle_petr], map: "feux_foret_petr_index")
   @@index([code_pnr], map: "feux_foret_pnr_index")
   @@index([index], map: "ix_feux_foret_index")
-  @@index([epci], map: "agriculture_bio_epci_index")
   @@schema("databases_v2")
 }
