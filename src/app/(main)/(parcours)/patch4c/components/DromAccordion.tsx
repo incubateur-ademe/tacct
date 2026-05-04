@@ -144,17 +144,17 @@ export const DromAccordion = ({
                   alignItems: "center",
                   padding: "0.5rem 1rem",
                   borderRadius: "8px",
-                  backgroundColor: "#d3edeb",
+                  backgroundColor: "#D3EDEB",
                   marginTop: "4px",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                   <Image src={dromTerritory.icon} alt={dromTerritory.name} width={32} height={32} />
-                  <span style={{ fontWeight: 600 }}>{dromTerritory.name}</span>
+                  <span style={{ fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.name}</span>
                 </div>
-                <div style={{ textAlign: "center", fontWeight: 600 }}>{dromTerritory.t2030}</div>
-                <div style={{ textAlign: "center", fontWeight: 600 }}>{dromTerritory.t2050}</div>
-                <div style={{ textAlign: "center", fontWeight: 600 }}>{dromTerritory.t2100}</div>
+                <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2030}</div>
+                <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2050}</div>
+                <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2100}</div>
               </div>
             )}
 
