@@ -76,6 +76,9 @@ export const MapPatch4 = (props: {
     return ['case', ...colorPairs, '#E5E5E5'] as ExpressionSpecification;
   }, [alea, patch4]);
 
+  const colorExpressionRef = useRef(createColorExpression);
+  colorExpressionRef.current = createColorExpression;
+
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
 
   useEffect(() => {
@@ -117,7 +120,7 @@ export const MapPatch4 = (props: {
         'source-layer': 'contour_communes',
         filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
-          'fill-color': createColorExpression,
+          'fill-color': colorExpressionRef.current,
           'fill-opacity': 0.99
         }
       });
@@ -269,6 +272,9 @@ export const MapPatch4 = (props: {
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+      // Force-resync : la valeur du ref peut avoir changé pendant le chargement
+      map.setPaintProperty('patch4-fill', 'fill-color', colorExpressionRef.current);
     });
 
     return () => {
@@ -281,8 +287,19 @@ export const MapPatch4 = (props: {
 
   // Mettre à jour les couleurs quand alea/patch4 change
   useEffect(() => {
-    if (mapRef.current && mapRef.current.isStyleLoaded() && mapRef.current.getLayer('patch4-fill')) {
-      mapRef.current.setPaintProperty('patch4-fill', 'fill-color', createColorExpression);
+    const map = mapRef.current;
+    if (!map) return;
+    const ready = map.isStyleLoaded() && map.getLayer('patch4-fill');
+    if (ready) {
+      map.setPaintProperty('patch4-fill', 'fill-color', createColorExpression);
+    } else {
+      const handler = () => {
+        if (map.getLayer('patch4-fill')) {
+          map.setPaintProperty('patch4-fill', 'fill-color', colorExpressionRef.current);
+        }
+      };
+      map.once('idle', handler);
+      return () => { map.off('idle', handler); };
     }
   }, [createColorExpression]);
 
