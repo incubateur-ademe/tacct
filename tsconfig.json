@@ -37,7 +37,7 @@
     "./src/lib/json-db/types.d.ts",
     "next.config.mjs",
     ".next/dev/types/**/*.ts"
-  ],
+, "src/app/(main)/(parcours)/patch4c/components/DromAccordion.tsx", "src/app/(main)/(parcours)/patch4c/components/DromAccordion.bak"  ],
   "exclude": [
     "node_modules"
   ]

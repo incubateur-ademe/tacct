@@ -20,12 +20,12 @@ type DromTerritory = {
 };
 
 const DROM_TERRITORIES: Record<string, DromTerritory> = {
-  "973": { name: "Guyane", icon: GuyaneIcon, t2030: "+1,7 °C", t2050: "+2,3 °C", t2100: "+3,5 °C" },
-  "974": { name: "La Réunion", icon: ReunionIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
-  "976": { name: "Mayotte", icon: MayotteIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
+  "973": { name: "Guyane", icon: GuyaneIcon, t2030: "+1,7 °C", t2050: "+2,3 °C", t2100: "+3,5 °C" },
+  "974": { name: "La Réunion", icon: ReunionIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
+  "976": { name: "Mayotte", icon: MayotteIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
 };
 
-const GRID = "200px 1fr 1fr 1fr 12px";
+const GRID = "200px 0.8fr 0.5fr 1fr 12px";
 
 export const DromAccordion = ({
   patch4,
@@ -43,16 +43,18 @@ export const DromAccordion = ({
     <NewContainer size="xl" style={{ padding: "40px 1rem 0" }}>
       <div style={{ borderBottom: "1px solid #DDDDDD" }} />
       <CustomAccordion
-        label={`+4°C dans l’hexagone à l’horizon 2100, ${dromTerritory ? dromTerritory.t2100 : "+4 °C"} sur votre territoire : pourquoi cette différence ?`}
+        label={
+          `+4° C dans l’hexagone à l’horizon 2100, ${dromTerritory ? dromTerritory.t2100 : "+4 °C"
+          } sur votre territoire : pourquoi cette différence ?`
+        }
         key="DROM"
         isOpen={openId === "DROM"}
         onToggle={() => setOpenId(openId === "DROM" ? null : "DROM")}
       >
         <div>
           <p style={{ marginBottom: "8px" }}>
-            Contrairement à la métropole (+4°C d’ici 2100), les territoires ultramarins ont des projections de référence spécifiques et moins élevées.
+            Contrairement à la métropole (+4° C d’ici 2100), les territoires ultramarins ont des projections de référence spécifiques et moins élevées.
           </p>
-          <br></br>
           <p>
             Voici la trajectoire établie par Météo France.
           </p>
@@ -66,7 +68,7 @@ export const DromAccordion = ({
                 display: "grid",
                 gridTemplateColumns: GRID,
                 alignItems: "center",
-                margin: "24px 0 8px",
+                margin: "1.5rem 0 1rem",
                 padding: "0.5rem 1rem",
               }}
             >
@@ -84,7 +86,7 @@ export const DromAccordion = ({
               <div style={{ display: "flex", alignItems: "center" }}>
                 <div style={{ flex: 1, height: "3px", backgroundColor: "#E7E5E5" }} />
                 <span style={{ padding: "0 1rem", fontWeight: 600, fontSize: "0.95rem" }}>2100</span>
-                <div style={{ flex: 1, height: "3px", backgroundColor: "#E7E5E5", position: "relative" }}>
+                <div style={{ flex: 0.2, height: "3px", backgroundColor: "#E7E5E5", position: "relative" }}>
                   <div style={{ position: "absolute", top: 0, left: 0, right: "-1.65rem", height: "3px", backgroundColor: "#E7E5E5" }} />
                 </div>
               </div>
@@ -108,15 +110,20 @@ export const DromAccordion = ({
                 gridTemplateColumns: GRID,
                 alignItems: "center",
                 padding: "0.5rem 1rem",
+                margin: "0 0 0.5rem",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                 <Image src={MondeIcon} alt="Monde" width={32} height={32} />
-                <span>Monde</span>
+                <span style={{ fontWeight: 600 }}>Monde</span>
               </div>
-              <div style={{ textAlign: "center" }}>+1,5 °C</div>
-              <div style={{ textAlign: "center" }}>+2 °C</div>
-              <div style={{ textAlign: "center" }}>+3 °C</div>
+              <div style={{ textAlign: "center", fontWeight: 600 }}>+1,5 °C</div>
+              <div style={{ textAlign: "center", fontWeight: 600 }}>+2 °C</div>
+              <div style={{ display: "flex", alignItems: "center", fontWeight: 600 }}>
+                <div style={{ flex: 0.9 }} />
+                <span>+3 °C</span>
+                <div style={{ flex: 0.2 }} />
+              </div>
             </div>
 
             <div
@@ -125,15 +132,20 @@ export const DromAccordion = ({
                 gridTemplateColumns: GRID,
                 alignItems: "center",
                 padding: "0.5rem 1rem",
+                margin: "0 0 0.5rem"
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", width: "max-content" }}>
                 <Image src={FranceIcon} alt="France métropolitaine" width={32} height={32} />
-                <span>France métropolitaine</span>
+                <span style={{ fontWeight: 600, width: "max-content" }}>France métropolitaine</span>
               </div>
-              <div style={{ textAlign: "center" }}>+2 °C</div>
-              <div style={{ textAlign: "center" }}>+2,7 °C</div>
-              <div style={{ textAlign: "center" }}>+4 °C</div>
+              <div style={{ textAlign: "center", fontWeight: 600 }}>+2 °C</div>
+              <div style={{ textAlign: "center", fontWeight: 600 }}>+2,7 °C</div>
+              <div style={{ display: "flex", alignItems: "center", fontWeight: 600 }}>
+                <div style={{ flex: 0.9 }} />
+                <span>+4 °C</span>
+                <div style={{ flex: 0.2 }} />
+              </div>
             </div>
 
             {dromTerritory && (
@@ -154,7 +166,11 @@ export const DromAccordion = ({
                 </div>
                 <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2030}</div>
                 <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2050}</div>
-                <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2100}</div>
+                <div style={{ display: "flex", alignItems: "center", fontWeight: 600, color: "#2B4B49" }}>
+                  <div style={{ flex: 0.9 }} />
+                  <span>{dromTerritory.t2100}</span>
+                  <div style={{ flex: 0.2 }} />
+                </div>
               </div>
             )}
 

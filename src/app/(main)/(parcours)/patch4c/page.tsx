@@ -24,9 +24,11 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
           patch4[0].code_geographique.substring(0, 3) === "973" ||
           patch4[0].code_geographique.substring(0, 3) === "974" ||
           patch4[0].code_geographique.substring(0, 3) === "976") && (
-          <DromAccordion
-            patch4={patch4}
-          />
+          <>
+            <DromAccordion
+              patch4={patch4}
+            />
+          </>
         )
       }
 
