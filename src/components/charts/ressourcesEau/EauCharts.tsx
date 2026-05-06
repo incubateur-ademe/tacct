@@ -21,7 +21,7 @@ const EauCharts = (props: Props) => {
   const { datavizTab, setDatavizTab, ressourcesEau } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
-  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
+  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2023]);
 
   return (
     <div className={styles.dataWrapper}>
@@ -69,7 +69,7 @@ const EauCharts = (props: Props) => {
         <div className={styles.sliderWrapper}>
           <RangeSlider
             firstValue={2008}
-            lastValue={2020}
+            lastValue={2023}
             minDist={1}
             setSliderValue={setSliderValue}
             sliderValue={sliderValue}

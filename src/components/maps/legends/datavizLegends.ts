@@ -470,7 +470,7 @@ export const DateConstructionResidencesLegend = [
 
 export const prelevementEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -482,7 +482,7 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
@@ -490,7 +490,7 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];

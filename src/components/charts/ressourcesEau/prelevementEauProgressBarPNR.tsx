@@ -1,6 +1,6 @@
 'use client';
 import eclair_icon_black from '@/assets/icons/themes/eclair_icon_black.svg';
-import flocon_icon_black from '@/assets/icons/themes/flocon_icon_black.svg';
+import energie_icon_black from '@/assets/icons/themes/energie_icon_black.svg';
 import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
 import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
@@ -31,20 +31,49 @@ const SumFiltered = (
       ? 'code_geographique'
       : type === "departement"
         ? "departement"
-        : undefined
+        : type === "pnr"
+          ? "code_pnr"
+          : undefined
 
   const columnLibelle = type === "petr"
     ? "libelle_petr"
-    : type === "pnr"
-      ? "libelle_pnr"
       : "ept"
 
   return Sum(
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
-      .filter((item) => item.libelle_sous_champ?.includes(champ))
-      .map((e) => e.A2020)
+      .filter((item) => item.sous_champ === champ)
+      .map((e) => e.A2023)
+      .filter((value): value is number => value !== null)
+  );
+};
+
+const SumFilteredTousChamps = (
+  data: PrelevementsEauParsed[],
+  code: string,
+  libelle: string,
+  type: string
+) => {
+  const columnCode = type === 'epci'
+    ? 'epci'
+    : type === 'commune'
+      ? 'code_geographique'
+      : type === 'departement'
+        ? 'departement'
+        : type === "pnr"
+          ? "code_pnr"
+          : undefined
+
+  const columnLibelle = type === 'petr'
+    ? 'libelle_petr'
+    : 'ept'
+
+  return Sum(
+    data
+      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle)
+      .filter((item) => item.sous_champ !== 'exo' && item.sous_champ !== null)
+      .map((e) => e.A2023)
       .filter((value): value is number => value !== null)
   );
 };
@@ -61,88 +90,52 @@ const PrelevementEauProgressBarsPNR = ({
 
   const data = [
     {
-      titre: 'Agriculture',
-      icon: <Image src={tracteur_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'agriculture'
-      ),
+      titre: 'Irrigation',
+      icon: <Image src={tracteur_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'irr'),
       color: couleurs.graphiques.vert[2]
     },
     {
       titre: 'Eau potable',
-      icon: <Image src={robinet_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'potable'
-      ),
+      icon: <Image src={robinet_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'aep'),
       color: couleurs.graphiques.bleu[2]
     },
     {
-      titre: 'Industrie et autres usages économiques',
-      icon: <Image src={usine_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'industrie'
-      ),
+      titre: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
+      icon: <Image src={usine_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'ind'),
       color: couleurs.graphiques.violet[2]
     },
     {
-      titre: 'Refroidissement des centrales électriques',
-      icon: <Image src={flocon_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'refroidissement'
-      ),
+      titre: 'Énergie',
+      icon: <Image src={energie_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'ene'),
       color: couleurs.graphiques.rose[2]
     },
     {
       titre: 'Alimentation des canaux',
-      icon: <Image src={vagues_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'alimentation'
-      ),
+      icon: <Image src={vagues_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'can'),
       color: couleurs.graphiques.turquoise[2]
     },
     {
       titre: "Production d'électricité (barrages hydro-électriques)",
-      icon: <Image src={eclair_icon_black} alt="" />,
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'production'
-      ),
+      icon: <Image src={eclair_icon_black} alt="" width={24} />,
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'bar'),
       color: couleurs.graphiques.orange[2]
     }
   ];
 
   const total =
-    SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
+    SumFilteredTousChamps(ressourcesEau, code, libelle, type) === 0
       ? 1
-      : SumFiltered(ressourcesEau, code, libelle, type, 'total');
+      : SumFilteredTousChamps(ressourcesEau, code, libelle, type);
 
 
   return (
     <div className={styles.ressourcesEauWrapper}>
-      {libelle && data.find((e) => e.sumTerritoire !== 0) ? (
+      {code && libelle && data.find((e) => e.sumTerritoire !== 0) ? (
         <>
           {data
             .toSorted((a, b) => b.sumTerritoire - a.sumTerritoire)

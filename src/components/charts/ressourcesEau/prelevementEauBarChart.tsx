@@ -11,10 +11,10 @@ import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartRessourcesEau } from '../NivoBarChart';
 
 type GraphData = {
-  Agriculture: number;
+  Irrigation: number;
   'Eau potable': number;
-  'Industrie et autres usages économiques': number;
-  'Refroidissement des centrales électriques': number;
+  'Industries et autres usages économiques (hors irrigation, hors énergie)': number;
+  'Énergie': number;
   'Alimentation des canaux': number;
   "Production d'électricité (barrages hydro-électriques)": number;
   annee: string;
@@ -33,7 +33,10 @@ type Years =
   | 'A2017'
   | 'A2018'
   | 'A2019'
-  | 'A2020';
+  | 'A2020'
+  | 'A2021'
+  | 'A2022'
+  | 'A2023';
 
 const ressourcesEauYears = [
   'A2008',
@@ -48,30 +51,29 @@ const ressourcesEauYears = [
   'A2017',
   'A2018',
   'A2019',
-  'A2020'
+  'A2020',
+  'A2021',
+  'A2022',
+  'A2023'
 ];
 
 const graphDataFunct = (filteredYears: string[], data: PrelevementsEauParsed[]) => {
   const dataArr: GraphData[] = [];
   filteredYears.forEach((year) => {
-    const genericObjects = (text: string) =>
-      data
-        .filter((item) => item.libelle_sous_champ?.includes(text))
-        .map((e) => e[year as Years])
-        .filter((value): value is number => value !== null);
+    const sumBySousChamp = (code: string) =>
+      Sum(
+        data
+          .filter((item) => item.sous_champ === code)
+          .map((e) => e[year as Years])
+          .filter((value): value is number => value !== null)
+      );
     const obj = {
-      Agriculture: Sum(genericObjects('agriculture')),
-      'Eau potable': Sum(genericObjects('potable')),
-      'Industrie et autres usages économiques': Sum(
-        genericObjects('industrie')
-      ),
-      'Refroidissement des centrales électriques': Sum(
-        genericObjects('refroidissement')
-      ),
-      'Alimentation des canaux': Sum(genericObjects('alimentation')),
-      "Production d'électricité (barrages hydro-électriques)": Sum(
-        genericObjects('production')
-      ),
+      Irrigation: sumBySousChamp('irr'),
+      'Eau potable': sumBySousChamp('aep'),
+      'Industries et autres usages économiques (hors irrigation, hors énergie)': sumBySousChamp('ind'),
+      'Énergie': sumBySousChamp('ene'),
+      'Alimentation des canaux': sumBySousChamp('can'),
+      "Production d'électricité (barrages hydro-électriques)": sumBySousChamp('bar'),
       annee: year.split('A')[1]
     };
     const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);

@@ -7,7 +7,7 @@ import { ExportButton } from '@/components/exports/ExportButton';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { PrelevementsEau, PrelevementsEauModel, PrelevementsEauParsed } from '@/lib/postgres/models';
+import { PrelevementsEauModel, PrelevementsEauParsed } from '@/lib/postgres/models';
 import { PrelevementEauText } from '@/lib/staticTexts';
 import { prelevementEauTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
@@ -19,82 +19,19 @@ import { useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
 
-const parsePostgresArray = (str: string | null): string[] => {
-  if (!str) return [];
-  // Retirer les accolades et parser en gérant les guillemets
-  const content = str.replace(/^\{|\}$/g, '');
-  const result: string[] = [];
-  let current = '';
-  let inQuotes = false;
-
-  for (let i = 0; i < content.length; i++) {
-    const char = content[i];
-    if (char === '"') {
-      inQuotes = !inQuotes;
-    } else if (char === ',' && !inQuotes) {
-      result.push(current);
-      current = '';
-    } else {
-      current += char;
-    }
-  }
-  if (current) result.push(current);
-
-  return result;
-};
-
-const colonnesATranformer = [
-  'A2020',
-  'A2019',
-  'A2018',
-  'A2017',
-  'A2016',
-  'A2015',
-  'A2014',
-  'A2013',
-  'A2012',
-  'A2011',
-  'A2010',
-  'A2009',
-  'A2008',
-  'libelle_sous_champ',
-  'sous_champ'
+const sousChampsNew = [
+  { param: 'aep' as const, libelle: 'Eau potable' },
+  { param: 'bar' as const, libelle: "Production d'électricité (barrages hydro-électriques)" },
+  { param: 'can' as const, libelle: 'Alimentation des canaux' },
+  { param: 'ene' as const, libelle: 'Énergie' },
+  { param: 'ind' as const, libelle: 'Industries et autres usages économiques (hors irrigation, hors énergie)' },
+  { param: 'irr' as const, libelle: 'Irrigation' },
 ];
 
-const SumFiltered = (
-  data: PrelevementsEauParsed[],
-  code: string,
-  libelle: string,
-  type: string,
-  champ: string
-) => {
-  const columnCode =
-    type === 'epci'
-      ? 'epci'
-      : type === 'commune'
-        ? 'code_geographique'
-        : type === 'departement'
-          ? 'departement'
-          : undefined;
-
-  const columnLibelle =
-    type === 'petr' ? 'libelle_petr' : type === 'pnr' ? 'libelle_pnr' : 'ept';
-  return Sum(
-    data
-      .filter((obj) =>
-        columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
-      )
-      .filter((item) => item.libelle_sous_champ?.includes(champ))
-      .map((e) => e.A2020)
-      .filter((value): value is number => value !== null)
-  );
-};
-
 export const PrelevementsEnEau = (props: {
-  prelevementsEau: PrelevementsEau[];
-  prelevementsEauNew: PrelevementsEauModel[];
+  prelevementsEau: PrelevementsEauModel[];
 }) => {
-  const { prelevementsEau, prelevementsEauNew } = props;
+  const { prelevementsEau } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -105,50 +42,40 @@ export const PrelevementsEnEau = (props: {
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>(
     []
   );
-  const prelevementsParsed = prelevementsEau.flatMap((item) => {
-    const sousChampArray = parsePostgresArray(item.sous_champ);
-    const libelleArray = parsePostgresArray(item.libelle_sous_champ);
-    // Récupérer toutes les colonnes d'années
-    const anneeArrays = colonnesATranformer
-      .filter((col) => col.startsWith('A'))
-      .reduce(
-        (acc, col) => {
-          acc[col] = parsePostgresArray((item as any)[col]);
-          return acc;
-        },
-        {} as Record<string, string[]>
-      );
-
-    return sousChampArray.map((sousChamp, index) => ({
-      ...item,
-      sous_champ: sousChamp,
-      libelle_sous_champ: libelleArray[index] || null,
-      ...Object.entries(anneeArrays).reduce(
-        (acc, [col, values]) => {
-          acc[col] = values[index] ? parseFloat(values[index]) : null;
-          return acc;
-        },
-        {} as Record<string, number | null>
-      )
-    }));
-  }) as unknown as PrelevementsEauParsed[];
-
-  const volumePreleveTerritoire =
-    SumFiltered(
-      prelevementsParsed as unknown as PrelevementsEauParsed[],
-      code,
-      libelle,
-      type,
-      'total'
-    ) / 1000000;
-
-  useEffect(() => {
-    if (type === 'epci' && code) {
-      const departements = prelevementsEau.map((item) => item.departement);
-      const uniqueDepartements = Array.from(new Set(departements));
-      setMultipleDepartements(uniqueDepartements);
-    }
-  }, [type, code, prelevementsEau]);
+  const prelevementsParsed: PrelevementsEauParsed[] = prelevementsEau.flatMap((item) =>
+    sousChampsNew.map(({ param, libelle }) => ({
+      index: item.index,
+      code_geographique: item.code_geographique,
+      libelle_geographique: item.libelle_geographique,
+      epci: item.epci,
+      libelle_epci: item.libelle_epci,
+      departement: item.departement,
+      libelle_departement: item.libelle_departement,
+      region: item.region,
+      ept: item.ept,
+      libelle_petr: item.libelle_petr,
+      code_pnr: item.code_pnr,
+      libelle_pnr: item.libelle_pnr,
+      sous_champ: param,
+      libelle_sous_champ: libelle,
+      A2008: item[`annee_2008_${param}`],
+      A2009: item[`annee_2009_${param}`],
+      A2010: item[`annee_2010_${param}`],
+      A2011: item[`annee_2011_${param}`],
+      A2012: item[`annee_2012_${param}`],
+      A2013: item[`annee_2013_${param}`],
+      A2014: item[`annee_2014_${param}`],
+      A2015: item[`annee_2015_${param}`],
+      A2016: item[`annee_2016_${param}`],
+      A2017: item[`annee_2017_${param}`],
+      A2018: item[`annee_2018_${param}`],
+      A2019: item[`annee_2019_${param}`],
+      A2020: item[`annee_2020_${param}`],
+      A2021: item[`annee_2021_${param}`],
+      A2022: item[`annee_2022_${param}`],
+      A2023: item[`annee_2023_${param}`]
+    }))
+  );
 
   const dataParMaille =
     type === 'epci'
@@ -160,8 +87,23 @@ export const PrelevementsEnEau = (props: {
           : type === 'ept'
             ? prelevementsParsed.filter((obj) => obj.ept === libelle)
             : type === 'pnr'
-              ? prelevementsParsed.filter((obj) => obj.libelle_pnr === libelle)
+              ? prelevementsParsed.filter((obj) => obj.code_pnr === code)
               : prelevementsParsed;
+
+  useEffect(() => {
+    if (type === 'epci' && code) {
+      const departements = prelevementsEau.map((item) => item.departement);
+      setMultipleDepartements([...new Set(departements)]);
+    }
+  }, [type, code, prelevementsEau]);
+
+  const volumePreleveTerritoire =
+    Sum(
+      dataParMaille
+        .filter((item) => item.sous_champ !== 'exo' && item.sous_champ !== null)
+        .map((e) => e.A2023)
+        .filter((value): value is number => value !== null)
+    ) / 1000000;
 
   //sort ascending by code_geographique
   const exportData = IndicatorExportTransformations.ressourcesEau
@@ -185,7 +127,7 @@ export const PrelevementsEnEau = (props: {
             {dataParMaille.length !== 0 ? (
               <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                 Le volume total des prélèvements en eau de votre territoire en
-                2020 est de <b>{Round(volumePreleveTerritoire, 2)} Mm3</b>, soit
+                2023 est de <b>{Round(volumePreleveTerritoire, 2)} Mm3</b>, soit
                 l’équivalent de{' '}
                 <b>
                   {Round((1000000 * Number(volumePreleveTerritoire)) / 3750, 0)}
@@ -238,7 +180,7 @@ export const PrelevementsEnEau = (props: {
           )}
           <SourceExport
             anchor="Ressources-en-eau"
-            source="BNPE, Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD), 2020 (consultée en mars 2026)"
+            source="BNPE, 2023 (consultée en mars 2026)"
             condition={
               Sum(
                 exportData.map((o) =>
