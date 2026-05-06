@@ -39,8 +39,8 @@ const Home = () => {
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
-            backgroundColor: '#FFD1B4',
-            color: '#903700'
+            backgroundColor: 'var(--gris-medium)',
+            color: '#201F1E'
           })}
           isClosable={true}
           onClose={handleCloseNotice}
@@ -54,23 +54,23 @@ const Home = () => {
               >
                 comment intégrer la TRACC dans votre diagnostic
               </Link>
-               ! Et pour les Outre-mers, consultez votre {" "}
+               ! Et pour les Outre-mers, consultez votre{' '}
               <Link
                 href="https://tacct.ademe.fr/recherche-territoire-patch4"
                 target="_blank"
               >
                 projection de référence spécifique
-              </Link>
-              {" "}(disponible pour la Guyane, Mayotte et La Réunion).
+              </Link>{' '}
+              (disponible pour la Guyane, Mayotte et La Réunion).
               <br></br>
-              Autre nouveauté : TACCT vous propose désormais une {" "}
+              Autre nouveauté : TACCT vous propose désormais une{' '}
               <Link
                 href="https://tacct.ademe.fr/ressources/faq"
                 target="_blank"
               >
                 FAQ
-              </Link>
-              {" "}ainsi qu’un article spécial {" "}
+              </Link>{' '}
+              ainsi qu’un article spécial{' '}
               <Link
                 href="https://tacct.ademe.fr/ressources/batir-strategie-adaptation/financement-adaptation"
                 target="_blank"
@@ -78,7 +78,7 @@ const Home = () => {
                 financement de votre démarche d’adaptation
               </Link>
               .<br></br>
-              Une question, un retour ? {" "}
+              Une question, un retour ?{' '}
               <Link href="https://tally.so/r/mJGELz" target="_blank">
                 Contactez-nous !
               </Link>
