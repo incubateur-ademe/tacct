@@ -36,7 +36,7 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <ClientOnly>
         <HeaderComp />
       </ClientOnly>
-      <main id="contenu">{children}</main>
+      <main id="contenu" tabIndex={-1}>{children}</main>
       <AppFooter />
       <CookieBanner />
     </NextAppDirEmotionCacheProvider>

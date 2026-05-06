@@ -8,11 +8,6 @@ import { ThematiquesLieesNavigation } from '../components/ThematiquesLieesNaviga
 import styles from '../impacts.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
-  const handleScrollToSources = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const element = document.getElementById('sourcesSection');
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <>
       {/* Introduction */}

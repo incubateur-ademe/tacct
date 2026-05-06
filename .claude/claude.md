@@ -10,4 +10,4 @@ En cas de question après avoir modifié du code, il n'est pas nécessaire de re
 
 Quand on utilise typescript, il ne faut jamais utiliser le type "any". Utilise toujours des types spécifiques ou des génériques pour garantir la sécurité des types.
 
-Je travaille avec Git Bash comme terminal. Lorsque tu fournis des commandes shell, assure-toi qu'elles sont compatibles avec Git Bash sous Windows.
+Je travaille avec Git Bash comme terminal. Lorsque tu fournis des commandes shell, assure-toi qu'elles sont compatibles avec Git Bash sous Windows. Utilisation de rtk quand possible.

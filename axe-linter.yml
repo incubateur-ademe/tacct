@@ -1,0 +1,60 @@
+# axe Accessibility Linter — configuration
+# Doc : https://docs.deque.com/linter/4.0.0/en/axe-linter-configuration/
+#
+# Périmètre d'analyse :
+#   - src/app/(main)/**
+#   - src/app/iframe/**
+#   - src/components/**
+# Tout le reste est exclu via la liste `exclude` ci-dessous
+# (le YAML axe-linter ne supporte pas de champ `include`).
+
+# WCAG 2.1 niveau AA (cumul A + AA — base du RGAA 4.1)
+tags:
+  - wcag2a
+  - wcag2aa
+  - wcag21a
+  - wcag21aa
+
+# Règles forcées
+rules:
+  # Contraste couleur AA (4.5:1 texte normal, 3:1 grand texte)
+  # Déjà inclus dans wcag2aa, listé ici pour visibilité
+  color-contrast: true
+
+exclude:
+  # Dépendances et builds
+  - node_modules/**
+  - .next/**
+  - dist/**
+  - build/**
+  - coverage/**
+  - playwright-report/**
+  - public/**
+
+  # Documentation et tests
+  - doc/**
+  - tests/**
+
+  # Fichiers top-level src/ hors périmètre
+  - src/*.tsx
+  - src/*.ts
+
+  # Sous-dossiers src/ hors périmètre
+  - src/assets/**
+  - src/design-system/**
+  - src/generated/**
+  - src/hooks/**
+  - src/lib/**
+
+  # Sous-dossiers src/app/ hors périmètre
+  - src/app/_login/**
+  - src/app/_register/**
+  - src/app/_register-sandbox/**
+  - src/app/api/**
+  - src/app/sandbox/**
+
+  # Fichiers top-level src/app/ hors périmètre
+  - src/app/*.tsx
+  - src/app/*.ts
+  - src/app/*.css
+  - src/app/*.scss

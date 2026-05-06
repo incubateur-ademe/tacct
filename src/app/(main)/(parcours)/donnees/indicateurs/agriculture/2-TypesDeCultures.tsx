@@ -112,6 +112,14 @@ export const TypesDeCulture = (props: {
               ) : <Body weight='bold' style={{ color: "var(--gris-dark)" }}>Il n’y a pas de données référencées sur le territoire que vous avez sélectionné</Body>
             }
             <CustomTooltipNouveauParcours title={surfacesAgricolesTooltipText} texte="D'où vient ce chiffre ?" />
+            <a
+              className="fr-sr-only"
+              href="https://agreste.agriculture.gouv.fr/agreste-web/disaron/RA2020_1013_EPCI/detail/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consulter les données du recensement agricole 2020 sur Agreste (nouvelle fenêtre)
+            </a>
           </div>
           {/* <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}> */}
           <SurfacesAgricolesText />

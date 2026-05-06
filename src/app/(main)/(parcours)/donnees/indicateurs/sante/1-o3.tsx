@@ -45,6 +45,14 @@ export const SeuilsReglementairesO3 = ({
               title={O3TooltipText}
               texte="D'où vient ce chiffre ?"
             />
+            <a
+              className="fr-sr-only"
+              href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consulter la carte de la qualité de l&apos;air sur le site de l&apos;Ineris (nouvelle fenêtre)
+            </a>
           </div>
         </div>
         <div className='pr-5 pt-8'>

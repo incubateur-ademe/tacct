@@ -8,6 +8,7 @@ export default function AppFooter() {
       className="fr-footer !mt-0 !pt-0 bg-white relative"
       role="contentinfo"
       id="footer"
+      tabIndex={-1}
       style={{ zIndex: 999, boxShadow: "none" }}
     >
       <hr className="pb-6" />
@@ -105,6 +106,11 @@ export default function AppFooter() {
             <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/accessibilite">
                 Accessibilité : non conforme
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/plan-du-site">
+                Plan du site
               </a>
             </li>
             <li className="fr-footer__bottom-item">
