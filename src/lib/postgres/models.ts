@@ -74,11 +74,6 @@ export type ConfortThermique = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   ept: string | null;
-  age_bati_19_45: number | null;
-  age_bati_46_90: number | null;
-  age_bati_91_05: number | null;
-  age_bati_post06: number | null;
-  age_bati_pre_19: number | null;
   under_4_sum_1968: number | null;
   under_4_sum_1975: number | null;
   under_4_sum_1982: number | null;

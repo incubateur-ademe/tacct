@@ -29,11 +29,6 @@ export type AggregateDatabases_v2_confort_thermique = {
 export type Databases_v2_confort_thermiqueAvgAggregateOutputType = {
   index: number | null
   region: number | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -87,11 +82,6 @@ export type Databases_v2_confort_thermiqueAvgAggregateOutputType = {
 export type Databases_v2_confort_thermiqueSumAggregateOutputType = {
   index: number | null
   region: number | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -155,11 +145,6 @@ export type Databases_v2_confort_thermiqueMinAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -223,11 +208,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -291,11 +271,6 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
-  age_bati_post06: number
-  age_bati_91_05: number
-  age_bati_46_90: number
-  age_bati_19_45: number
-  age_bati_pre_19: number
   under_4_sum_1968: number
   to_75_sum_1968: number
   over_75_sum_1968: number
@@ -351,11 +326,6 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
 export type Databases_v2_confort_thermiqueAvgAggregateInputType = {
   index?: true
   region?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -409,11 +379,6 @@ export type Databases_v2_confort_thermiqueAvgAggregateInputType = {
 export type Databases_v2_confort_thermiqueSumAggregateInputType = {
   index?: true
   region?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -477,11 +442,6 @@ export type Databases_v2_confort_thermiqueMinAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -545,11 +505,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -613,11 +568,6 @@ export type Databases_v2_confort_thermiqueCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -768,11 +718,6 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -859,11 +804,6 @@ export type databases_v2_confort_thermiqueWhereInput = {
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -927,11 +867,6 @@ export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -998,11 +933,6 @@ export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -1066,11 +996,6 @@ export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -1142,11 +1067,6 @@ export type databases_v2_confort_thermiqueScalarWhereWithAggregatesInput = {
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
@@ -1210,11 +1130,6 @@ export type databases_v2_confort_thermiqueCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1278,11 +1193,6 @@ export type databases_v2_confort_thermiqueUncheckedCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1346,11 +1256,6 @@ export type databases_v2_confort_thermiqueUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1414,11 +1319,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1482,11 +1382,6 @@ export type databases_v2_confort_thermiqueCreateManyInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1550,11 +1445,6 @@ export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1618,11 +1508,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1686,11 +1571,6 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1744,11 +1624,6 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
 export type databases_v2_confort_thermiqueAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1812,11 +1687,6 @@ export type databases_v2_confort_thermiqueMaxOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1880,11 +1750,6 @@ export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1938,11 +1803,6 @@ export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
 export type databases_v2_confort_thermiqueSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -2008,11 +1868,6 @@ export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.E
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -2076,11 +1931,6 @@ export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -2144,11 +1994,6 @@ export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -2212,11 +2057,6 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -2267,7 +2107,7 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   nb_rp_post_06?: boolean
 }
 
-export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "age_bati_post06" | "age_bati_91_05" | "age_bati_46_90" | "age_bati_19_45" | "age_bati_pre_19" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro" | "under_4_sum_2006" | "to_75_sum_2006" | "over_75_sum_2006" | "under_4_sum_2011" | "to_75_sum_2011" | "over_75_sum_2011" | "under_4_sum_2016" | "to_75_sum_2016" | "over_75_sum_2016" | "under_4_sum_2022" | "to_75_sum_2022" | "over_75_sum_2022" | "nb_rp_tot" | "nb_rp_pre_19" | "nb_rp_19_45" | "nb_rp_46_70" | "nb_rp_71_90" | "nb_rp_91_05" | "nb_rp_post_06", ExtArgs["result"]["databases_v2_confort_thermique"]>
+export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro" | "under_4_sum_2006" | "to_75_sum_2006" | "over_75_sum_2006" | "under_4_sum_2011" | "to_75_sum_2011" | "over_75_sum_2011" | "under_4_sum_2016" | "to_75_sum_2016" | "over_75_sum_2016" | "under_4_sum_2022" | "to_75_sum_2022" | "over_75_sum_2022" | "nb_rp_tot" | "nb_rp_pre_19" | "nb_rp_19_45" | "nb_rp_46_70" | "nb_rp_71_90" | "nb_rp_91_05" | "nb_rp_post_06", ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_confort_thermique"
@@ -2285,11 +2125,6 @@ export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    age_bati_post06: number | null
-    age_bati_91_05: number | null
-    age_bati_46_90: number | null
-    age_bati_19_45: number | null
-    age_bati_pre_19: number | null
     under_4_sum_1968: number | null
     to_75_sum_1968: number | null
     over_75_sum_1968: number | null
@@ -2773,11 +2608,6 @@ export interface databases_v2_confort_thermiqueFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
   readonly code_pnr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
-  readonly age_bati_post06: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_91_05: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_46_90: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_19_45: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_pre_19: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly under_4_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly to_75_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly over_75_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>

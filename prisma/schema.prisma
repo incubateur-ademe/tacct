@@ -192,11 +192,6 @@ model databases_v2_confort_thermique {
   libelle_petr            String?
   code_pnr                String?
   libelle_pnr             String?
-  age_bati_post06         Float?
-  age_bati_91_05          Float?
-  age_bati_46_90          Float?
-  age_bati_19_45          Float?
-  age_bati_pre_19         Float?
   under_4_sum_1968        Float?
   to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
   over_75_sum_1968        Float?
