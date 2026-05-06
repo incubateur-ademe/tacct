@@ -220,11 +220,12 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          part_age_bati_pre_1919: el.age_bati_pre_19,
-          part_age_bati_1919_1945: el.age_bati_19_45,
-          part_age_bati_1946_1990: el.age_bati_46_90,
-          part_age_bati_1991_2005: el.age_bati_91_05,
-          part_age_bati_post_2006: el.age_bati_post06
+          nb_residences_principales_total: el.nb_rp_tot,
+          nb_residences_principales_pre_19: el.nb_rp_pre_19,
+          nb_residences_principales_19_45: el.nb_rp_19_45,
+          nb_residences_principales_46_90: el.nb_rp_46_70 + el.nb_rp_71_90,
+          nb_residences_principales_91_05: el.nb_rp_91_05,
+          nb_residences_principales_post_06: el.nb_rp_post_06
         };
       }),
     GrandAge75: (grandAge: GrandAgeDto[]) =>

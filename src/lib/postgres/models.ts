@@ -120,6 +120,13 @@ export type ConfortThermique = {
   clc_4_humide: number | null;
   clc_5_eau: number | null;
   superf_choro: number | null;
+  nb_rp_tot: number | null;
+  nb_rp_pre_19: number | null;
+  nb_rp_19_45: number | null;
+  nb_rp_46_70: number | null;
+  nb_rp_71_90: number | null;
+  nb_rp_91_05: number | null;
+  nb_rp_post_06: number | null;
 };
 
 export type Biodiversite = {

@@ -238,6 +238,13 @@ model databases_v2_confort_thermique {
   under_4_sum_2022        Float?
   to_75_sum_2022          Float?  @map("4_to_75_sum_2022")
   over_75_sum_2022        Float?
+  nb_rp_tot               Float?
+  nb_rp_pre_19            Float?
+  nb_rp_19_45             Float?
+  nb_rp_46_70             Float?
+  nb_rp_71_90             Float?
+  nb_rp_91_05             Float?
+  nb_rp_post_06           Float?
 
   @@index([code_geographique], map: "confort_thermique_communes_index")
   @@index([departement], map: "confort_thermique_departement_index")

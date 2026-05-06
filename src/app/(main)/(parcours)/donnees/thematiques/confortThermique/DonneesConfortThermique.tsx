@@ -148,7 +148,7 @@ const DonneesConfortThermique = ({
                 Part des résidences principales par période de construction
               </H3>
             </div>
-            <DateConstructionResidences inconfortThermique={data.confortThermique} />
+            <DateConstructionResidences confortThermique={data.confortThermique} />
           </div>
         </section>
 

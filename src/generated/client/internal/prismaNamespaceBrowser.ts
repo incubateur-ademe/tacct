@@ -296,7 +296,14 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   over_75_sum_2016: 'over_75_sum_2016',
   under_4_sum_2022: 'under_4_sum_2022',
   to_75_sum_2022: 'to_75_sum_2022',
-  over_75_sum_2022: 'over_75_sum_2022'
+  over_75_sum_2022: 'over_75_sum_2022',
+  nb_rp_tot: 'nb_rp_tot',
+  nb_rp_pre_19: 'nb_rp_pre_19',
+  nb_rp_19_45: 'nb_rp_19_45',
+  nb_rp_46_70: 'nb_rp_46_70',
+  nb_rp_71_90: 'nb_rp_71_90',
+  nb_rp_91_05: 'nb_rp_91_05',
+  nb_rp_post_06: 'nb_rp_post_06'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
