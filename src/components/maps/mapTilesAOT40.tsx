@@ -49,7 +49,9 @@ export const MapTilesAOT40 = (props: {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
-      attributionControl: false
+      attributionControl: false,
+      maxZoom: 11.9,
+      minZoom: 5,
     });
     mapRef.current = map;
 

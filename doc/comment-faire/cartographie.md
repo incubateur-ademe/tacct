@@ -72,6 +72,9 @@ docker run --rm `
 - `-s EPSG:3857` : projection correcte pour MVT
 - `-l` : spécifie le layer qui sera à exploiter dans le front pour afficher les tuiles
 - `output_z13.mbtiles` : nom du fichier généré avec la taille de zoom maximal
+- `--coalesce` : Fusionne les carrés de même valeur pour diviser drastiquement le nombre de géométries à afficher.
+- `--no-line-simplification` : Maintient les bordures des blocs parfaitement droites et fidèles, ce qui empêche les "déchirures" entre les blocs voisins
+- `-pf -pk` : Interdit à Tippecanoe d'abandonner des géométries si la tuile devient trop lourde. Peut être utile si une tuile rend de la donnée en gruyère.
 
 **👉 Résultat :** un fichier `output_z13.mbtiles` dans le dossier.
 
