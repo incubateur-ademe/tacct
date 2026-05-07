@@ -77,7 +77,7 @@ const graphDataFunct = (filteredYears: string[], data: PrelevementsEauParsed[]) 
       annee: year.split('A')[1]
     };
     const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);
-    isNull !== 0 ? dataArr.push(obj) : null;
+    if (isNull !== 0) dataArr.push(obj);
   });
   return dataArr;
 };

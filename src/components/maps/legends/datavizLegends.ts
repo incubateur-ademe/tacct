@@ -282,7 +282,7 @@ export const ageBatiBarChartLegend = [
 
 export const ressourcesEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -294,7 +294,7 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
@@ -302,7 +302,7 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];
