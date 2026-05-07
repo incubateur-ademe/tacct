@@ -128,6 +128,29 @@ export const O3Tooltip = (valeur: number, color: string) => {
   `;
 }
 
+export const AOT40TooltipDispersion = (valeur: number, color: string) => {
+  return `
+    <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0.5rem; gap: 0.5rem; align-items: center; width: max-content;">
+      <div style="background-color: ${color}; width: 1rem; height: 1rem; border-radius: 2px; border: 0.5px solid #161616"></div>
+      <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">Valeur : <b>${Round(valeur, 0)}</b></p>
+    </div>
+  `;
+}
+
+export const getAOT40Color = (valeur: number): string => {
+  const valeurArrondie = Number(Round(valeur, 0));
+  if (valeurArrondie >= 18000) return '#B982B2';
+  if (valeurArrondie >= 15000) return '#C97189';
+  if (valeurArrondie >= 12000) return '#E06060';
+  if (valeurArrondie >= 11000) return '#F37D7D';
+  if (valeurArrondie >= 10000) return '#FC9999';
+  if (valeurArrondie >= 9000) return '#FFAB66';
+  if (valeurArrondie >= 6000) return '#F5E290';
+  if (valeurArrondie >= 3000) return '#C4E8A3';
+  if (valeurArrondie > 0) return '#A4F5EE';
+  return '#E0F9F7';
+};
+
 export const O3StationsTooltip = (valeur: number, color: string, site: string) => {
   return `
     <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0.5rem; gap: 0.5rem; align-items: center; width: inherit;">

@@ -17,10 +17,11 @@ import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 import type { Feature, MultiPoint, Point } from 'geojson';
 import { useSearchParams } from "next/navigation";
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
-const MapAOT40 = lazy(() => import('@/components/maps/mapAOT40').then(m => ({ default: m.MapAOT40 })));
+// const MapAOT40 = lazy(() => import('@/components/maps/mapAOT40').then(m => ({ default: m.MapAOT40 })));
+const MapTilesAOT40 = lazy(() => import('@/components/maps/mapTilesAOT40').then(m => ({ default: m.MapTilesAOT40 })));
 
 type NearestPoint = Feature<Point, {
   featureIndex: number;
@@ -31,13 +32,18 @@ type NearestPoint = Feature<Point, {
 export const OzoneEtVegetation = (props: {
   aot40: AOT40[];
   contoursCommunes: { geometry: string } | null;
-  communesCodes: string[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
-  const { aot40, contoursCommunes, communesCodes } = props;
+  const { aot40, contoursCommunes, coordonneesCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
+const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapContainer = useRef<HTMLDivElement>(null);
 
   // Calculate center coordinates from territory geometry
   const territoireGeometry = contoursCommunes ? JSON.parse(contoursCommunes.geometry) : null;
@@ -88,7 +94,7 @@ export const OzoneEtVegetation = (props: {
         <div className='pr-5 pt-8'>
           <AOT40Text />
         </div>
-        <div className={styles.mapWrapper}>
+        {/* <div className={styles.mapWrapper}>
           {
             aot40.length && contoursCommunes ? (
               <Suspense fallback={<Loader />}>
@@ -106,11 +112,59 @@ export const OzoneEtVegetation = (props: {
               </Suspense>
             ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
           }
+        </div> */}
+        <div className={styles.mapWrapper}>
+          {coordonneesCommunes && coordonneesCommunes.codes.length ? (
+            <Suspense fallback={<Loader />}>
+              <MapTilesAOT40
+                coordonneesCommunes={coordonneesCommunes}
+                mapRef={mapRef}
+                mapContainer={mapContainer}
+                bucketUrl="aot40"
+                layer="aot40"
+                paint={{
+                  'fill-color': [
+                    'step',
+                    ['round', ['get', 'valeur']],
+                    '#A4F5EE', 
+                    3000,
+                    '#C4E8A3', 
+                    6000,
+                    '#F5E290', 
+                    9000,
+                    '#FFAB66', 
+                    10000,
+                    '#FC9999', 
+                    11000,
+                    '#F37D7D', 
+                    12000,
+                    '#E06060', 
+                    15000,
+                    '#C97189', 
+                    18000,
+                    '#B982B2'  
+                  ],
+                  'fill-opacity': 0.7,
+                  'fill-antialias': false
+                }}
+                legend={
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                    <Body weight='bold'>- O3 μg/m³.heure -</Body>
+                    <LegendCompColor legends={aot40Legends} />
+                  </div>
+                }
+              />
+            </Suspense>
+          ) : (
+            <div className="p-10 flex flex-row justify-center">
+              <DataNotFoundForGraph image={DataNotFound} />
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Geod’air (2024)
+          Source : INERIS, 2026 (consultée en mai 2026)
         </Body>
         {
           aot40.length && contoursCommunes && (
