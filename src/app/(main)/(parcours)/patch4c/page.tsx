@@ -21,9 +21,8 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
       <BlocTitre />
       {
         patch4.length > 0 && (
-          patch4[0].code_geographique.substring(0, 3) === "973" ||
-          patch4[0].code_geographique.substring(0, 3) === "974" ||
-          patch4[0].code_geographique.substring(0, 3) === "976") && (
+          patch4[0].code_geographique.substring(0, 2) === "97" ||
+          patch4[0].code_geographique.substring(0, 2) === "98") && (
           <>
             <DromAccordion
               patch4={patch4}

@@ -1,9 +1,15 @@
 "use client";
 import FranceIcon from "@/assets/icons/france_icon_black.png";
+import GuadeloupeIcon from "@/assets/icons/guadeloupe_icon_black.svg";
 import GuyaneIcon from "@/assets/icons/guyane_icon_black.png";
 import ReunionIcon from "@/assets/icons/la_reunion_icon_black.png";
+import MartiniqueIcon from "@/assets/icons/martinique_icon_black.svg";
 import MayotteIcon from "@/assets/icons/mayotte_icon_black.png";
 import MondeIcon from "@/assets/icons/monde_icon_black.png";
+import NouvelleCaledonieIcon from "@/assets/icons/nouvelle_caledonie_icon_black.svg";
+import SaintBarthelemyIcon from "@/assets/icons/saint_barthelemy_icon_black.svg";
+import SaintMartinIcon from "@/assets/icons/saint_martin_icon_black.svg";
+import TahitiIcon from "@/assets/icons/tahiti_icon_black.svg";
 import { CustomAccordion } from "@/design-system/base/Accordion";
 import { NewContainer } from "@/design-system/layout";
 import useWindowDimensions from "@/hooks/windowDimensions";
@@ -23,6 +29,12 @@ const DROM_TERRITORIES: Record<string, DromTerritory> = {
   "973": { name: "Guyane", icon: GuyaneIcon, t2030: "+1,7 °C", t2050: "+2,3 °C", t2100: "+3,5 °C" },
   "974": { name: "La Réunion", icon: ReunionIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
   "976": { name: "Mayotte", icon: MayotteIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
+  "978": { name: "Saint-Martin", icon: SaintMartinIcon, t2030: "+1,4 °C", t2050: "+1,9 °C", t2100: "+2,7 °C" },
+  "977": { name: "Saint-Barthélemy", icon: SaintBarthelemyIcon, t2030: "+1,4 °C", t2050: "+1,9 °C", t2100: "+2,7 °C" },
+  "987": { name: "Polynésie française", icon: TahitiIcon, t2030: "+1,2 °C", t2050: "+1,6 °C", t2100: "+2,3 °C" },
+  "988": { name: "Nouvelle-Calédonie", icon: NouvelleCaledonieIcon, t2030: "+1,5 °C", t2050: "+2 °C", t2100: "+3 °C" },
+  "972": { name: "Martinique", icon: MartiniqueIcon, t2030: "+1,4 °C", t2050: "+1,9 °C", t2100: "+2,7 °C" },
+  "971": { name: "Guadeloupe", icon: GuadeloupeIcon, t2030: "+1,4 °C", t2050: "+1,9 °C", t2100: "+2,7 °C" },
 };
 
 const GRID = "200px 0.8fr 0.5fr 1fr 12px";
