@@ -181,6 +181,7 @@ const DonneesConfortThermique = ({
           <Image
             src={DiagnoticImage}
             alt=""
+            className={styles.redirectionImage}
             style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
           />
           <div className={styles.textBloc} >

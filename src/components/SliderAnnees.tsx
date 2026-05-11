@@ -1,5 +1,6 @@
 'use client';
 
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const COLOR = '#038278';
@@ -16,7 +17,7 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
   const [selectedIndex, setSelectedIndex] = useState(anneeInitiale ? annees.indexOf(anneeInitiale) : annees.length - 1);
   const trackRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
-
+  const { width } = useWindowDimensions();
   const indexToPercent = (i: number) => (i / (annees.length - 1)) * 100;
 
   const percentToIndex = useCallback((clientX: number) => {
@@ -55,7 +56,7 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
   }, [percentToIndex]);
 
   return (
-    <div style={{ padding: '2rem 1rem 1rem', userSelect: 'none', minWidth: '600px' }}>
+    <div style={{ padding: '2rem 1rem 1rem', userSelect: 'none', minWidth: (width && width < 650) ? (width - 100) : 600, boxSizing: 'border-box' }}>
       {/* Track */}
       <div
         ref={trackRef}

@@ -190,7 +190,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
       </div>
       {datavizTab === 'Comparaison' ? (
         <>
-          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
             <NivoBarChart
               colors={RgaRepartitionLegend.map(e => e.couleur)}
               graphData={repartitionRga as BarDatum[]}
@@ -221,7 +221,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
           {
             multipleDepartements.length > 1 &&
-            <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+            <div className={styles.warningBox}>
               <div className='flex flex-row items-center justify-center'>
                 <Image
                   src={WarningIcon}
@@ -241,7 +241,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         </>
       ) : datavizTab === 'Répartition' ? (
         <>
-          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
             <NivoBarChart
               colors={RgaEvolutionLegend.map(e => e.couleur)}
               graphData={evolutionRga}

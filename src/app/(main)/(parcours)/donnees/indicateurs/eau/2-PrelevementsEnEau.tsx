@@ -156,13 +156,7 @@ export const PrelevementsEnEau = (props: {
             ressourcesEau={prelevementsParsed}
           />
           {multipleDepartements.length > 1 && datavizTab === 'Répartition' && (
-            <div
-              style={{
-                minWidth: '450px',
-                backgroundColor: 'white',
-                padding: '1em'
-              }}
-            >
+            <div className={styles.warningBox}>
               <div className="flex flex-row items-center justify-center">
                 <Image
                   src={WarningIcon}

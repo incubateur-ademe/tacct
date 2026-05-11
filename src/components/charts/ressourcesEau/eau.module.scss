@@ -4,11 +4,14 @@
     gap: 1rem;
     padding: 3rem 2.25rem 1rem;
     background-color: #ffffff;
+    @media (max-width: 600px) {
+        padding: 2rem 1rem 1rem;
+    }
 }
 
 // onglets de navigation en dataviz + filtres
 
-.graphTabsLegend{
+.graphTabsLegend {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,6 +23,9 @@
         flex-direction: row;
         align-items: flex-end;
         gap: 0.5rem;
+        @media (max-width: 600px) {
+            display: none;
+        }
         .progressBar {
             position: relative;
             width: 70px;
@@ -63,7 +69,7 @@
     border-bottom: 1px solid var(--gris-medium);
 }
 
-// Progress bar 
+// Progress bar
 
 .progressDataWrapper {
     display: flex;
@@ -105,7 +111,6 @@
     width: 90px;
 }
 
-
 //Tooltip
 .colorSquare {
     height: 1rem;
@@ -113,4 +118,14 @@
     border-radius: 2px;
     align-self: center;
     margin-right: 0.5rem;
+}
+
+.warningBox {
+    min-width: 450px;
+    background-color: white;
+    padding: 1em;
+
+    @media (max-width: 600px) {
+        min-width: unset;
+    }
 }

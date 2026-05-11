@@ -9,6 +9,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartRessourcesEau } from '../NivoBarChart';
+import styles from './eau.module.scss';
 
 type GraphData = {
   Irrigation: number;
@@ -128,9 +129,7 @@ const PrelevementEauBarChart = ({
   }, [minValueXTicks, maxValueXTicks]);
 
   return (
-    <div
-      style={{ height: '500px', minWidth: '450px', backgroundColor: 'white' }}
-    >
+    <div className={styles.warningBox} style={{ height: "500px" }}>
       <style>{`
         .prelevement-eau-bar-chart-container .bottom-tick {
           opacity: ${isTransitioning ? '0' : '1'};

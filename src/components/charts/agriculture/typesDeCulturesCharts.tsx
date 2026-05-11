@@ -48,7 +48,7 @@ const TypesDeCulturesCharts = (props: Props) => {
       )}
       {
         territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 ? (
-          <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+          <div className={styles.warningBox}>
             <div className='flex flex-row items-center justify-center'>
               <Image
                 src={WarningIcon}
@@ -65,7 +65,7 @@ const TypesDeCulturesCharts = (props: Props) => {
             </div>
           </div>
         ) : (
-          <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+          <div className={styles.warningBox}>
             <div className='flex flex-row items-center justify-center'>
               <Image
                 src={WarningIcon}
