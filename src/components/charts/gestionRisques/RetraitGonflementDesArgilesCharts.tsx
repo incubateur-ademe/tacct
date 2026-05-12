@@ -203,8 +203,8 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
               bottomTickValues={repartitionRga.map(el => el.alea)}
-              tickRotation={window.width! < 600 ? -60 : undefined}
-              graphMarginBottom={window.width! < 600 ? 170 : undefined}
+              tickRotation={window.width! < 600 ? -50 : undefined}
+              graphMarginBottom={window.width! < 600 ? 180 : undefined}
               isMobile={window.width! < 600}
             />
             <div style={{ position: "relative", top: "-40px" }}>
