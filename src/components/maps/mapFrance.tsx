@@ -52,6 +52,8 @@ export const MapJson = (props: {
       attributionControl: false,
       interactive: true,
       scrollZoom: false,
+      dragPan: false,
+      dragRotate: false,
       bounds: [[-5.5, 41.2], [10.0, 51.5]],
       fitBoundsOptions: { padding: 0 }
     });

@@ -18,6 +18,7 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
   const trackRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const { width } = useWindowDimensions();
+  console.log("width", width);
   const indexToPercent = (i: number) => (i / (annees.length - 1)) * 100;
 
   const percentToIndex = useCallback((clientX: number) => {
@@ -56,7 +57,7 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
   }, [percentToIndex]);
 
   return (
-    <div style={{ padding: '2rem 1rem 1rem', userSelect: 'none', minWidth: (width && width < 650) ? (width - 100) : 600, boxSizing: 'border-box' }}>
+    <div style={{ padding: '2rem 1rem 1rem', userSelect: 'none', minWidth: (width && width < 650) ? (width - 110) : 600, boxSizing: 'border-box' }}>
       {/* Track */}
       <div
         ref={trackRef}
