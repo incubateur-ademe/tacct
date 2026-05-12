@@ -300,9 +300,9 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         exportMapRef={exportMapRef}
         exportMapContainer={exportMapContainer}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
-          left: 0,
+          left: '-9999px',
           width: '500px',
           height: '500px',
           opacity: 0,
