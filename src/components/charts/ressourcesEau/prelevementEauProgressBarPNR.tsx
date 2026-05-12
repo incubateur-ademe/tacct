@@ -128,7 +128,7 @@ const PrelevementEauProgressBarsPNR = ({
       isEnergie: false
     },
     {
-      titre: "Production d'électricité (barrages hydro-électriques)",
+      titre: "Production hydro-électriques",
       icon: <Image src={eclair_icon_black} alt="" width={24} />,
       sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'bar'),
       color: couleurs.graphiques.orange[2],

@@ -9,6 +9,7 @@ import { MapRGAExport } from "@/components/maps/mapRGAExport";
 import { MapTiles } from "@/components/maps/mapTiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
+import useWindowDimensions from "@/hooks/windowDimensions";
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
@@ -141,6 +142,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
+  const window = useWindowDimensions();
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
@@ -201,6 +203,9 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
               bottomTickValues={repartitionRga.map(el => el.alea)}
+              tickRotation={window.width! < 600 ? -60 : undefined}
+              graphMarginBottom={window.width! < 600 ? 170 : undefined}
+              isMobile={window.width! < 600}
             />
             <div style={{ position: "relative", top: "-40px" }}>
               <LegendCompColor
@@ -250,8 +255,11 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               showLegend={false}
               axisLeftLegend="Nombre de logements"
               tooltip={RgaEvolutionTooltip}
+              tickRotation={window.width! < 600 ? -60 : undefined}
+              graphMarginBottom={window.width! < 600 ? 160 : undefined}
+              isMobile={window.width! < 600}
             />
-            <div style={{ position: "relative", top: "-40px" }}>
+            <div style={{ position: "relative", top: "-70px" }}>
               <LegendCompColor
                 legends={RgaEvolutionLegend
                   .map((legend, index) => ({

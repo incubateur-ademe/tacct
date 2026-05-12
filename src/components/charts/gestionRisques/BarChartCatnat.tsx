@@ -2,6 +2,7 @@
 
 import { catnatPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { BarDatum } from '@/lib/nivo/bar';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { CountOccByIndex } from '@/lib/utils/reusableFunctions/occurencesCount';
@@ -20,6 +21,7 @@ type GraphData = {
 
 export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
   const { gestionRisques } = props;
+  const windowDimensions = useWindowDimensions();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const graphData = CountOccByIndex(
     gestionRisques,
@@ -38,7 +40,11 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
   return (
     <div
       className="catnat-chart-wrapper"
-      style={{ height: '450px', width: '100%', backgroundColor: 'white' }}
+      style={{
+        height: windowDimensions.width && windowDimensions.width < 600 ? '600px' : '450px',
+        width: '100%',
+        backgroundColor: 'white'
+      }}
     >
       <style>{`
         .catnat-chart-wrapper .nivo-bar-chart-container .bottom-tick {
@@ -70,7 +76,11 @@ export const BarChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }
               ? [minDate, maxDate]
               : [minDate]}
           />
-          <div style={{ position: "relative", top: "-110px" }}>
+          <div style={{ 
+            position: "relative", 
+            top: windowDimensions.width && windowDimensions.width < 600 ? "-200px" : "-110px" ,
+            padding: "0 0.5rem"
+            }}>
             <LegendCompColor
               legends={catnatPieChartLegend.map((legend, index) => ({
                 id: index,

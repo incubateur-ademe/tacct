@@ -47,6 +47,8 @@ type NivoBarChartProps = {
   showLegend?: boolean;
   isBarLine?: boolean;
   graphMarginBottom?: number;
+  tickRotation?: number;
+  isMobile?: boolean;
 };
 
 export const NivoBarChart = ({
@@ -63,7 +65,9 @@ export const NivoBarChart = ({
   groupMode = 'stacked',
   showLegend = true,
   isBarLine = false,
-  graphMarginBottom
+  graphMarginBottom,
+  isMobile = false,
+  tickRotation = 0
 }: NivoBarChartProps) => {
   return (
     <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
@@ -97,15 +101,21 @@ export const NivoBarChart = ({
           renderTick: (e: Any) => {
             return (
               <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={45}>
+                <foreignObject
+                  x={-50}
+                  y={0}
+                  width={100}
+                  height={isMobile ? 160 : 45}
+                >
                   <div style={{
                     maxWidth: '15ch',
                     wordBreak: 'keep-all',
                     textAlign: 'center',
                     fontSize: 12,
                     fontWeight: 400,
-                    margin: '0.5rem 0',
-                    lineHeight: "normal"
+                    margin: isMobile ? '2rem 0' : '0.5rem 0',
+                    lineHeight: "normal",
+                    rotate: tickRotation ? `${tickRotation}deg` : undefined,
                   }}>{e.value}</div>
                 </foreignObject>
               </g>
@@ -340,6 +350,7 @@ export const NivoBarChartCatnat = ({
   groupMode = 'stacked',
   showLegend = true
 }: NivoBarChartProps) => {
+  const windowDimensions = useWindowDimensions();
   return (
     <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
       <ResponsiveBar
@@ -356,7 +367,12 @@ export const NivoBarChartCatnat = ({
               bottom: legendData && legendData.length >= 4 ? 120 : 80,
               left: 80
             }
-            : { top: 40, right: 100, bottom: 150, left: 80 }
+            : {
+              top: 40,
+              right: windowDimensions.width && windowDimensions.width < 600 ? 30 : 100,
+              bottom: windowDimensions.width && windowDimensions.width < 600 ? 250 : 150,
+              left: 80
+            }
         }
         groupMode={groupMode}
         padding={0.3}

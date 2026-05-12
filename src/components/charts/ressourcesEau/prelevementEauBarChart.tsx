@@ -17,7 +17,7 @@ type GraphData = {
   'Industries et autres usages économiques (hors irrigation, hors énergie)': number;
   'Énergie': number;
   'Alimentation des canaux': number;
-  "Production d'électricité (barrages hydro-électriques)": number;
+  "Production hydro-électriques": number;
   annee: string;
 };
 
@@ -74,7 +74,7 @@ const graphDataFunct = (filteredYears: string[], data: PrelevementsEauParsed[]) 
       'Industries et autres usages économiques (hors irrigation, hors énergie)': sumBySousChamp('ind'),
       'Énergie': sumBySousChamp('ene'),
       'Alimentation des canaux': sumBySousChamp('can'),
-      "Production d'électricité (barrages hydro-électriques)": sumBySousChamp('bar'),
+      "Production hydro-électriques": sumBySousChamp('bar'),
       annee: year.split('A')[1]
     };
     const isNull = Sum(Object.values(obj).slice(0, -1) as number[]);

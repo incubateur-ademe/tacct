@@ -310,7 +310,7 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {
@@ -498,7 +498,7 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {

@@ -123,7 +123,7 @@ const PrelevementEauProgressBars = ({
       isEnergie: false
     },
     {
-      titre: "Production d'électricité (barrages hydro-électriques)",
+      titre: "Production hydro-électriques",
       icon: <Image src={eclair_icon_black} alt="" width={24} />,
       sumDptmt: TotalSum(ressourcesEau, 'bar', departement),
       sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'bar'),

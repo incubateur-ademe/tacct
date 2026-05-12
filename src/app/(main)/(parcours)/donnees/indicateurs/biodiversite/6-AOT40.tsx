@@ -167,7 +167,7 @@ const mapRef = useRef<maplibregl.Map | null>(null);
           Source : INERIS, 2026 (consultée en mai 2026)
         </Body>
         {
-          aot40.length && contoursCommunes && (
+          aot40.length && contoursCommunes ? (
             <ExportButton
               data={exportData}
               baseName="aot_40"
@@ -177,7 +177,7 @@ const mapRef = useRef<maplibregl.Map | null>(null);
               sheetName="AOT 40"
               anchor='Ozone-et-végétation'
             />
-          )}
+          ) : null}
       </div>
     </>
   );

@@ -113,7 +113,7 @@ export const ProgressBarsPNRDataPrelevementEau = ({
         color: '#00C2CC'
       },
       {
-        titre: "Production d'électricité (barrages hydro-électriques)",
+        titre: "Production hydro-électriques",
         icon: <Image src={eclair_icon_black} alt="" />,
         sumTerritoire: SumFiltered(
           ressourcesEau,

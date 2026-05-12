@@ -21,7 +21,7 @@ import { SourceExport } from '../SourceExport';
 
 const sousChampsNew = [
   { param: 'aep' as const, libelle: 'Eau potable' },
-  { param: 'bar' as const, libelle: "Production d'électricité (barrages hydro-électriques)" },
+  { param: 'bar' as const, libelle: "Production hydro-électriques" },
   { param: 'can' as const, libelle: 'Alimentation des canaux' },
   { param: 'ene' as const, libelle: 'Énergie' },
   { param: 'ind' as const, libelle: 'Industries et autres usages économiques (hors irrigation, hors énergie)' },
