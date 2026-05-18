@@ -138,14 +138,16 @@ export const DiagnostiquerImpactsAgriculture = () => {
       </section>
       <SourcesSection tag="h2" thematique="agricultureImpact" />
       <section className={styles.sectionType}>
-        <div id="section4" className={styles.diagnosticWrapper}>
-          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-            Poursuivez votre exploration
-          </H2>
-          <Body>
-            Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
-          </Body>
-          <ThematiquesLieesNavigation thematiqueSelectionnee='Agriculture' />
+        <div className={styles.thematiquesLieesNavigationMobile}>
+          <div id="section4" className={styles.diagnosticWrapper}>
+            <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
+              Poursuivez votre exploration
+            </H2>
+            <Body>
+              Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
+            </Body>
+            <ThematiquesLieesNavigation thematiqueSelectionnee='Agriculture' />
+          </div>
         </div>
       </section>
     </>

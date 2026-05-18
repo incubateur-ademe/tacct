@@ -223,6 +223,12 @@
     border-bottom: 1px solid #e7e5e5;
     padding-bottom: 0;
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .aleasTabButton {
@@ -284,6 +290,11 @@
     transition:
         background-color 0.7s ease,
         border-bottom-color 2s ease;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
 }
 
 .aleaExplicationsContainerOpen {
@@ -319,12 +330,19 @@
         opacity 0.7s ease,
         padding 0.7s ease,
         background-color 0.7s ease;
+    @media (max-width: 600px) {
+        padding: 0 1rem;
+    }
 }
 
 .aleaExplicationsContentWrapperOpen {
     padding: 1rem 2.5rem 3rem;
     max-height: 1000px;
     opacity: 1;
+    @media (max-width: 600px) {
+        padding: 0 1rem;
+        max-height: 1200px;
+    }
 }
 
 .aleaExplicationsContent {
@@ -340,6 +358,7 @@
     gap: 0.5rem;
     .CircleItem {
         width: 72px;
+        min-width: 72px;
         height: 72px;
         border-radius: 50%;
         display: flex;
@@ -400,10 +419,44 @@
             line-height: 1rem;
             margin-left: 0.75rem;
         }
+        @media (max-width: 600px) {
+            max-width: 100%;
+            .titre {
+                padding: 0 0 0.5rem;
+                margin: 0 0 0.5rem;
+            }
+        }
     }
     .actionsListeWrapper {
         background-color: #fafafa;
         padding: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .analyseSensibiliteImage {
+        display: none;
+    }
+    .CursorVisualizationContainer {
+        display: none;
+    }
+    .CursorVisualizationBarColorWrapper {
+        display: none;
+    }
+    .tableau {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        thead img {
+            display: none;
+        }
+    }
+    .tableauRow {
+        min-width: 420px;
     }
 }
 

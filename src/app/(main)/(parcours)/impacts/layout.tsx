@@ -1,6 +1,7 @@
 "use client";
 import { Loader } from '@/components/ui/loader';
 import { MenuLateral } from '@/components/ui/MenuLateral';
+import { MenuMobileDrawer } from '@/components/ui/MenuMobileDrawer';
 import { type PropsWithChildren, Suspense, useState } from 'react';
 
 const ImpactsTerritoireLayout = ({ children }: PropsWithChildren) => {
@@ -13,13 +14,19 @@ const ImpactsTerritoireLayout = ({ children }: PropsWithChildren) => {
     }>
       <div className="flex min-h-screen">
         {/* Menu latéral fixe */}
-        <MenuLateral isCollapsed={isMenuCollapsed} onToggleCollapse={setIsMenuCollapsed} />
+        <div className="hidden nav:block">
+          <MenuLateral isCollapsed={isMenuCollapsed} onToggleCollapse={setIsMenuCollapsed} />
+        </div>
         {/* Contenu principal */}
-        <div className="flex-1 ml-[322px] flex flex-col">
+        <div className={`flex-1 flex flex-col transition-all duration-500 ease-in-out ${isMenuCollapsed ? 'nav:ml-[50px]' : 'nav:ml-[322px]'}`}>
           <div className="flex-1">
             {children}
           </div>
         </div>
+      </div>
+      {/* Navigation mobile */}
+      <div className="block nav:hidden">
+        <MenuMobileDrawer />
       </div>
     </Suspense>
   );
