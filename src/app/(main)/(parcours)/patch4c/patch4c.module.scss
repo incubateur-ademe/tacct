@@ -513,6 +513,9 @@
     gap: 0.5rem;
     font-weight: normal;
     text-align: inherit;
+    @media (max-width: 600px) {
+        width: 200px;
+    }
 }
 
 // Export
