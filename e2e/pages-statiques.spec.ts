@@ -22,5 +22,6 @@ for (const { url, name } of STATIC_PAGES) {
     expect(response?.status()).toBeLessThan(400);
     await expect(page.locator('text="Something went wrong"')).not.toBeVisible();
     await expect(page.locator('text="404"')).not.toBeVisible();
+    await expect(page.locator('h1:visible').first()).toBeAttached();
   });
 }

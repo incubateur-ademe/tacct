@@ -17,6 +17,7 @@ test('Thématiques - roue systémique charge sans erreur', async ({ page }) => {
 
   expect(response?.status()).toBeLessThan(400);
   await expect(page.locator('text="Something went wrong"')).not.toBeVisible();
+  await expect(page.locator('h1').first()).toBeAttached();
 });
 
 test('Parcours données - sans thématique', async ({ page }) => {
@@ -44,6 +45,7 @@ for (const thematique of THEMATIQUES) {
 
     expect(response?.status()).toBeLessThan(400);
     await expect(page.locator('text="Something went wrong"')).not.toBeVisible();
+    await expect(page.locator('h1:not(.fr-modal__title)').first()).toBeVisible();
   });
 }
 
@@ -56,6 +58,7 @@ for (const thematique of THEMATIQUES_IMPACTS) {
 
     expect(response?.status()).toBeLessThan(400);
     await expect(page.locator('text="Something went wrong"')).not.toBeVisible();
+    await expect(page.locator('h1:not(.fr-modal__title)').first()).toBeVisible();
   });
 }
 
@@ -64,4 +67,5 @@ test('Parcours Patch4°C charge sans erreur', async ({ page }) => {
 
   expect(response?.status()).toBeLessThan(400);
   await expect(page.locator('text="Something went wrong"')).not.toBeVisible();
+  await expect(page.locator('h1:not(.fr-modal__title)').first()).toBeVisible();
 });
