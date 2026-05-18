@@ -21,7 +21,8 @@
     "build:etl": "esbuild etl/index.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
     "build:etl-population": "esbuild etl/runPopulation.mjs --bundle --platform=node --format=cjs --outfile=dist/etlPopulation.js",
     "eslint": "eslint --fix ./src",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@codegouvfr/react-dsfr": "^1.30.2",
