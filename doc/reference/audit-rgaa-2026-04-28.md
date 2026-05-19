@@ -1,7 +1,7 @@
 
 # Audit RGAA — Parcours Facili-TACCT
 
-**Date de mise à jour :** 2026-05-06
+**Date de mise à jour :** 2026-05-19
 **Périmètre :** `src/app/(main)/(parcours)` et composants exploités
 **Référentiel :** RGAA 4.1.2 (Référentiel Général d'Amélioration de l'Accessibilité)
 **Méthode prévue :** ARA (Accessibility Reporting Assistant — DINUM)
@@ -106,7 +106,7 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 | 3.1.5 → 3.1.6 | ✅ N/A          | —          | Aucun média temporel ou non temporel concerné                                                                                                                                                                                                                                                                                                      |
 | 3.2.1 → 3.2.5 | ✅ Conforme     | 2026-04-29 | Couleurs de texte ≥ 4.5:1 sur fond blanc : `--principales-vert` #038278 (4.92:1), `--gris-dark` #666666 (5.74:1), texte par défaut #161616 (19.4:1). Cas limite isolé (`--gris-medium-dark` #7B7B7B → 4.34:1) dans `ThematiquesLieesNavigation.tsx:210` = safeguard jamais rendu → N/A                                                             |
 | 3.3.1         | ✅ Conforme     | 2026-04-29 | Composants d'interface principalement DSFR/MUI                                                                                                                                                                                                                                                                                                     |
-| 3.3.2         | ❌ Non conforme | 2026-04-29 | Cercles colorés de la roue Patch4 sur fond blanc — `#FFB181` (Aggravation forte) → 1.84:1 ; `#FFEBB6` (Aggravation modérée) → 1.13:1 ; `#FFFFFF` + bordure `--gris-medium` (Pas d'évolution) → 1.31:1. Seuil RGAA AA = 3:1. Conséquence : "Modérée" et "Pas d'évolution" indistinguables visuellement                                              |
+| 3.3.2         | ✅ Corrigé      | 2026-05-19 | Bordure `1px solid #808080` (3.95:1 vs fond blanc) appliquée sur chaque `CircleIcon` dans `circleVisualization.tsx` (parcours + iframe) — remplace `var(--gris-medium)` (1.31:1). La limite visible du composant dépasse le seuil de 3:1 indépendamment de la couleur de fond du cercle. |
 | 3.3.3 → 3.3.4 | ✅ Conforme     | 2026-04-29 | Pas de couleurs contiguës contradictoires sur les éléments graphiques                                                                                                                                                                                                                                                                              |
 
 ### Corrections complémentaires (audit ARA — critère 5)
