@@ -8,16 +8,43 @@ import { H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { FiltresOptions, toutesLesRessources } from "@/lib/ressources/toutesRessources";
 import { SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CollectionsData } from "../[collectionId]/collectionsData";
 import { FiltresNonTrouves } from "../components/FiltresNonTrouves";
 import styles from "../ressources.module.scss";
 import { FiltresRessources, ModalFiltresRessources } from "./FiltresRessources";
 
+const SESSION_KEY = "ressources-filtres";
+
+const loadFiltersFromSession = (): Record<string, string[]> => {
+  if (typeof window === "undefined") return {};
+  try {
+    const stored = sessionStorage.getItem(SESSION_KEY);
+    return stored ? (JSON.parse(stored) as Record<string, string[]>) : {};
+  } catch {
+    return {};
+  }
+}
+
+const applyFilters = (filters: Record<string, string[]>) => {
+  const hasActiveFilters = Object.values(filters).some(v => v.length > 0);
+  if (!hasActiveFilters) return toutesLesRessources;
+  return toutesLesRessources.filter(article =>
+    Object.entries(filters).every(([, selectedValues]) => {
+      if (selectedValues.length === 0) return true;
+      return selectedValues.some(value => article.filtres?.includes(value));
+    })
+  );
+}
+
 export const BlocToutesRessources = () => {
-  const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
-  const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
+  const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>(loadFiltersFromSession);
+  const [ArticlesFiltres, setArticlesFiltres] = useState(() => applyFilters(loadFiltersFromSession()));
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(selectedFilters));
+  }, [selectedFilters]);
+
   const ArticlesSorted = ArticlesFiltres.toSorted((a, b) => {
     const dateComparison = new Date(b.date).getTime() - new Date(a.date).getTime();
     if (dateComparison !== 0) {

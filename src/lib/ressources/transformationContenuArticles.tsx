@@ -68,7 +68,8 @@ export const renderBlock = async (el: Block, i: number) => {
     case "image":
       {
       const src = value?.type === "external" ? value?.external?.url : value?.file?.url;
-      const caption = value?.caption?.[0]?.plain_text || "";
+      const captionSegments = value?.caption || [];
+      const captionPlainText = captionSegments.map(c => c.plain_text || '').join('');
       if (!src) return null;
       
       const localImagePath = await downloadNotionImage(src, el.id);
@@ -78,17 +79,21 @@ export const renderBlock = async (el: Block, i: number) => {
           key={i}
           className="flex flex-col m-0 w-full"
           role="figure"
-          aria-label={caption || undefined}
+          aria-label={captionPlainText || undefined}
         >
           <ZoomOnClick
             src={localImagePath}
-            alt={caption || ""}
+            alt={captionPlainText || ""}
             sizes="100%"
             width={0}
             height={0}
             style={{ width: '100%' }}
           />
-          {caption && <figcaption className="text-sm text-gray-600 mt-2 text-center">{caption}</figcaption>}
+          {captionSegments.length > 0 && (
+            <figcaption className="text-sm text-gray-600 mt-2 text-center">
+              <Text text={captionSegments} />
+            </figcaption>
+          )}
         </figure>
       );
     }
