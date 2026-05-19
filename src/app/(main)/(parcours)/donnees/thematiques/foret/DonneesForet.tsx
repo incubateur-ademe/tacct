@@ -8,7 +8,6 @@ import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { HauteurCanopee } from '../../indicateurs/foret/1-HauteurCanopee';
-import { LineaireDeHaie } from '../../indicateurs/foret/2-LineaireDeHaie';
 
 interface Props {
   coordonneesCommunes: {
@@ -108,7 +107,7 @@ export const DonneesForet = (
         </div>
 
         {/* Linéaire de haie */}
-        <div id="Linéaire-de-haie" className={styles.indicateurMapWrapper}>
+        {/* <div id="Linéaire-de-haie" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
               Cartographie du linéaire de haie
@@ -118,7 +117,7 @@ export const DonneesForet = (
             coordonneesCommunes={data.coordonneesCommunes}
             contoursCommunes={data.contoursCommunes}
           />
-        </div>
+        </div> */}
       </section>
 
     </div>

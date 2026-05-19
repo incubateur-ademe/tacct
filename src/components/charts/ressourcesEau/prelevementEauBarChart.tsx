@@ -1,10 +1,12 @@
 'use client';
 
+import PasDeDonneesImage from "@/assets/images/donnees_zero.png";
 import { prelevementEauBarChartLegend, ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { simpleBarChartTooltip } from '../ChartTooltips';
@@ -170,10 +172,24 @@ const PrelevementEauBarChart = ({
           style={{
             height: 'inherit',
             alignContent: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+            padding: "1rem 4rem"
           }}
         >
-          Aucun prélèvement en eau avec ces filtres
+          <Image
+            src={PasDeDonneesImage}
+            alt=""
+            style={{
+              width: "100%",
+              height: "auto",
+              maxWidth: "300px",
+              margin: "0 auto",
+              padding: "0rem 2rem"
+            }}
+          />
+          <p className="text-center text-gray-500 mt-4">
+            Aucune donnée de prélèvement d'eau disponible pour la période sélectionnée
+          </p>
         </div>
       )}
     </div>

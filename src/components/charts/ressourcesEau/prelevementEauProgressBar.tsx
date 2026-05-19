@@ -6,7 +6,7 @@ import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
 import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
-import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
+import PasDeDonneesImage from "@/assets/images/donnees_zero.png";
 import DataNotFound from '@/components/graphDataNotFound';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
@@ -240,7 +240,26 @@ const PrelevementEauProgressBars = ({
         </div>
       </div>
     ) : (
-      <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+      <>
+        <div
+          className='flex flex-row justify-center'
+          style={{
+            maxWidth: "400px",
+            margin: "0 auto",
+            padding: "2rem 4rem",
+          }}
+        >
+          <DataNotFound image={PasDeDonneesImage} />
+        </div>
+        <p className="text-center mt-4" style={{
+          color: '#3A3A3A',
+          fontWeight: 700,
+          fontSize: '1rem',
+          padding: "0rem 4rem",
+        }}>
+          Aucun prélèvement en eau trouvé en 2023 pour le territoire sélectionné
+        </p>
+      </>
     )
   );
 };

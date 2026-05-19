@@ -139,7 +139,7 @@ export const PrelevementsEnEau = (props: {
             )}
             <CustomTooltipNouveauParcours
               title={prelevementEauTooltipText}
-              texte="D'où vient ce chiffre ?"
+              texte="D'où vient ce chiffre ?"
             />
           </div>
           <ReadMoreFade maxHeight={430}>
