@@ -32,24 +32,27 @@ export const AuthOptions: NextAuthOptions = {
         if (!credentials?.username || !credentials?.password) {
           return null;
         }
-        
+
         const user = await prisma.sandbox_users.findFirst({
           where: { username: credentials.username }
         });
-        
+
         if (!user) {
           return null;
         }
-            // deactivate rule 
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const bcrypt = require('bcryptjs');
+        // deactivate rule
+         
+        const bcrypt = require('bcryptjs');
 
-        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
-        
+        const passwordMatch = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
+
         if (!passwordMatch) {
           return null;
         }
-        
+
         return {
           id: user.pk.toString(),
           name: user.username,
