@@ -11,6 +11,15 @@
 .CursorVisualizationBarColorWrapper {
     padding: 4rem 0 2rem;
 }
+.legendContainer {
+    display: none;
+    flex-direction: row;
+    row-gap: 0.5rem;
+    column-gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
 
 .CursorVisualizationBarColor {
     width: 500px;
@@ -441,6 +450,9 @@
     }
     .CursorVisualizationBarColorWrapper {
         display: none;
+    }
+    .legendContainer {
+        display: flex;
     }
     .tableau {
         display: block;

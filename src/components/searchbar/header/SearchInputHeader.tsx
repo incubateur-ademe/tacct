@@ -116,7 +116,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
         
-        // Si Enter a été pressé et qu'une valeur a été sélectionnée
         if (isEnterPressedRef.current && newValue !== null) {
           isEnterPressedRef.current = false;
           setIsNewTypeChosen(false);
@@ -132,12 +131,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
             page: pathname.split('/')[1] || '',
             thematique
           })
-          return;
-        }
-        
-        if (newValue !== null) {
-          const input = document.getElementById(id);
-          if (input) (input as HTMLInputElement).blur();
         }
       }}
       onInputChange={(event, newInputValue) => {
@@ -152,7 +145,23 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       onKeyDown={(e) => {
         if (e.code === 'Enter') {
           e.preventDefault();
-          isEnterPressedRef.current = true;
+          if (value !== null) {
+            setIsNewTypeChosen(false);
+            setIsTerritoryChanging(false);
+            setIsTypeChanging(false);
+            const input = document.getElementById(id);
+            if (input) (input as HTMLInputElement).blur();
+            handleChangementTerritoireRedirection({
+              searchCode: value.searchCode ?? '',
+              searchLibelle: value.searchLibelle ?? '',
+              typeTerritoire,
+              router,
+              page: pathname.split('/')[1] || '',
+              thematique
+            });
+          } else {
+            isEnterPressedRef.current = true;
+          }
         }
       }}
       renderOption={(props, option) =>
