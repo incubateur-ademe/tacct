@@ -1,7 +1,7 @@
 "use client";
 import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
 import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
-import { allRadioOptions, patch4ActiveRadioOptions, patch4DisabledRadioOptions } from "@/components/searchbar/radioButtons";
+import { allRadioOptions } from "@/components/searchbar/radioButtons";
 import { Loader } from "@/components/ui/loader";
 import { H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";

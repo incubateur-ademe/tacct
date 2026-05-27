@@ -163,7 +163,26 @@ export const GetCommunesCoordinates = async (
       // Construire la requête selon le type de territoire
       let result;
 
-      if (type === 'commune') {
+      if (code && (code.startsWith("987") || code.startsWith("988") || code.startsWith("978") || code.startsWith("977"))) {
+        result = await prisma.$queryRaw<
+          Array<{
+            codes: string[];
+            minlng: number;
+            minlat: number;
+            maxlng: number;
+            maxlat: number;
+          }>
+        >`
+          SELECT
+            array_agg(code_geographique) as codes,
+            ST_XMin(ST_Extent(geometry)) as minLng,
+            ST_YMin(ST_Extent(geometry)) as minLat,
+            ST_XMax(ST_Extent(geometry)) as maxLng,
+            ST_YMax(ST_Extent(geometry)) as maxLat
+          FROM postgis_v2."communes_drom"
+          WHERE code_geographique LIKE ${code.substring(0, 3)} || '%'
+        `;
+      } else if (type === 'commune') {
         result = await prisma.$queryRaw<
           Array<{
             codes: string[];

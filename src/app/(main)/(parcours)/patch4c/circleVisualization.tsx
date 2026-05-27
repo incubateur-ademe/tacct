@@ -22,10 +22,11 @@ const CircleVisualization = ({
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const indices = patch4Indices(patch4);
-  const activeItems = patch4.niveaux_marins === null
-    ? indices.filter(item => item.key !== 'niveaux_marins')
-    : indices;
+  const activeItems = patch4Indices(patch4).filter(item => {
+    if (item.key === 'niveaux_marins') return patch4.niveaux_marins !== null;
+    if (item.key === 'feux_foret') return patch4.feux_foret !== null;
+    return true;
+  });
   const handleClick = (item: string) => {
     onSelectAlea(item, true);
   };

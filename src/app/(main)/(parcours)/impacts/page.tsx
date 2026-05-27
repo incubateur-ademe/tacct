@@ -2,11 +2,17 @@ import { ClientOnly } from '@/components/utils/ClientOnly';
 import { H1 } from '@/design-system/base/Textes';
 import type { Metadata } from 'next';
 import { SearchParams } from '../../types';
-
-export const metadata: Metadata = { title: 'Diagnostiquer les impacts' };
 import styles from '../donnees/explorerDonnees.module.scss';
 import { DiagnostiquerImpactsAgriculture } from './thematiques/ImpactsAgriculture';
 import { DiagnostiquerImpactsConfortThermique } from './thematiques/ImpactsConfortThermique';
+
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { libelle, thematique } = await searchParams;
+  const title = thematique && libelle
+    ? `${thematique} - impacts ${libelle}`
+    : thematique ?? 'Explorer les données';
+  return { title: { absolute: title } };
+}
 
 const ImpactsTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;

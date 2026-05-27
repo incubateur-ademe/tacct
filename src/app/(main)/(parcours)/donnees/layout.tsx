@@ -1,10 +1,22 @@
 "use client";
+import { DonneesIndisponiblesOutreMer } from '@/components/DonneesIndisponiblesOutreMer';
 import { MenuLateral } from '@/components/ui/MenuLateral';
 import { MenuMobileDrawer } from '@/components/ui/MenuMobileDrawer';
+import { useSearchParams } from 'next/navigation';
 import { Suspense, useState, type PropsWithChildren } from 'react';
 
 const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code')!;
   const [isMenuCollapsed, setIsMenuCollapsed] = useState<boolean>(false);
+
+  if (code && (code.startsWith("987") || code.startsWith("988") || code.startsWith("978") || code.startsWith("977"))) {
+    return (
+      <div className="py-12">
+        <DonneesIndisponiblesOutreMer />;
+      </div>
+    );
+  }
 
   return (
     <Suspense>

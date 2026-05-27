@@ -44,7 +44,6 @@ export const MapPatch4 = (props: {
   const valueByCommune = useRef<Map<string, number>>(new Map());
   const filteredCodes = communesCodes.filter(code => !listeArrondissements.includes(code));
   const alea = patch4[0] ? Object.keys(patch4[0]).find(key => key !== 'code_geographique' && key !== 'index' && key !== 'libelle_geographique') as 'feux_foret' | 'fortes_chaleurs' | 'fortes_precipitations' | 'niveaux_marins' | 'secheresse_sols' | undefined : undefined;
-
   // Mettre à jour les Maps à chaque changement de patch4
   useEffect(() => {
     nameByCommune.current = new Map(
@@ -76,11 +75,11 @@ export const MapPatch4 = (props: {
     return ['case', ...colorPairs, '#E5E5E5'] as ExpressionSpecification;
   }, [alea, patch4]);
 
+
   const colorExpressionRef = useRef(createColorExpression);
   colorExpressionRef.current = createColorExpression;
 
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
-
   useEffect(() => {
     if (!mapContainer.current || filteredCodes.length === 0) return;
     const map = new maplibregl.Map({

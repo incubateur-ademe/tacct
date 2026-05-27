@@ -64,7 +64,6 @@ export const GetPatch4 = async (
                 [column]: type === 'petr' || type === 'ept' ? libelle : code
               }
             })) as { code_geographique: string }[];
-
           const codesGeographiques = listeCommunes
             .map((commune) => commune.code_geographique)
             .filter((code) => code != null && code !== '');

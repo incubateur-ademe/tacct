@@ -29,7 +29,6 @@ export const Patch4Maps = (props: {
     patch4,
     selectedAnchor
   } = props;
-
   const params = useSearchParams()
   const libelle = params.get('libelle')!;
   const type = params.get('type')!;
