@@ -13,7 +13,9 @@ import ForetServerPage from './thematiques/foret/ForetServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
 
-export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+export async function generateMetadata(
+  { searchParams }: { searchParams: SearchParams }
+): Promise<Metadata> {
   const { libelle, thematique } = await searchParams;
   const title = thematique && libelle
     ? `${thematique} - données ${libelle}`
