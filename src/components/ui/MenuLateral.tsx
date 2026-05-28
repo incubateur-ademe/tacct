@@ -246,8 +246,11 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
               {/* Navigation */}
               <div className="flex flex-col" ref={navigationRef}>
                 <button
+                  type="button"
                   onClick={handleEtape1Toggle}
                   className={styles.BoutonEtapes}
+                  aria-expanded={openEtape1}
+                  aria-current={params === "/donnees" ? "page" : undefined}
                 >
                   {openEtape1 ? (
                     <div
@@ -279,7 +282,9 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         {thematique.sousCategories.map((item) => (
                           <button
                             key={item}
+                            type="button"
                             onClick={() => handleItemClickEtape1(item)}
+                            aria-current={activeAnchorEtape1 === item ? "location" : undefined}
                             className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item
                               ? styles.itemSurligne
                               : styles.itemNonSurligne
@@ -305,7 +310,9 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         <div className="">
                           <button
                             key={"Érosion"}
+                            type="button"
                             onClick={() => handleItemClickEtape1("Érosion côtière")}
+                            aria-current={activeAnchorEtape1 === "Érosion côtière" ? "location" : undefined}
                             className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
                               ? styles.itemSurligne
                               : styles.itemNonSurligne
@@ -321,8 +328,11 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                 {thematique === "Confort thermique" || thematique === "Agriculture" ? (
                   <>
                     <button
+                      type="button"
                       onClick={handleEtape2Toggle}
                       className={styles.BoutonEtapes}
+                      aria-expanded={openEtape2}
+                      aria-current={params === "/impacts" ? "page" : undefined}
                     >
                       {openEtape2 ? (
                         <div
@@ -344,7 +354,9 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         openEtape2 && ongletsMenuEtape2.map((item) => (
                           <button
                             key={item.id}
+                            type="button"
                             onClick={() => handleItemClickEtape2(item)}
+                            aria-current={activeAnchorEtape2 === item.id ? "location" : undefined}
                             className={`block w-full text-left ${activeAnchorEtape2 === item.id
                               ? styles.itemSurligne
                               : styles.itemNonSurligne

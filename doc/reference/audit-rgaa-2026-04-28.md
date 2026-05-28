@@ -9,12 +9,34 @@
 
 ## Sommaire
 
-1. [Synthèse — Top 12 des points bloquants](#synthèse--top-12-des-points-bloquants)
-2. [Détail par critère RGAA](#détail-par-critère-rgaa)
-3. [Plan de correction priorisé](#plan-de-correction-priorisé)
-4. [Outils pour réaliser l'audit](#outils-pour-réaliser-laudit)
-5. [Tests manuels indispensables](#tests-manuels-indispensables)
-6. [Documentation de référence](#documentation-de-référence)
+1. [Avancement des corrections](#avancement-des-corrections)
+2. [Synthèse — Top 12 des points bloquants](#synthèse--top-12-des-points-bloquants)
+3. [Détail par critère RGAA](#détail-par-critère-rgaa)
+4. [Plan de correction priorisé](#plan-de-correction-priorisé)
+5. [Outils pour réaliser l'audit](#outils-pour-réaliser-laudit)
+6. [Tests manuels indispensables](#tests-manuels-indispensables)
+7. [Documentation de référence](#documentation-de-référence)
+
+---
+
+## Avancement des corrections
+
+Dernière mise à jour : 2026-04-28.
+
+| #   | Statut         | Date       | Notes                                                                                                            |
+| --- | -------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| 1   | ✅ Corrigé      | 2026-04-28 | `Body` accepte `htmlTag` (défaut `'p'`) + 11 cas d'imbrication patchés en `htmlTag="div"`                        |
+| 2   | ✅ Corrigé      | 2026-04-28 | `<button type="button">` + `aria-expanded` + `aria-controls` (parcours + iframe)                                 |
+| 3   | ✅ Corrigé      | 2026-04-28 | Items en `<button>` + `aria-pressed` + resets DSFR (parcours + iframe)                                           |
+| 4   | ✅ Corrigé      | 2026-04-28 | Pattern ARIA Tabs complet (tablist/tab/tabpanel + flèches/Home/End + roving tabindex)                            |
+| 5   | ✅ Corrigé      | 2026-04-28 | 4 composants Tooltips + cursorVisualization → triggers focusables, classe `.tooltipTrigger` créée                |
+| 6   | ✅ Corrigé      | 2026-04-28 | `ariaLabel` dynamique sur MicroPieChart                                                                          |
+| 7   | ✅ Corrigé      | 2026-04-28 | Alt descriptif sur formule mathématique                                                                          |
+| 8   | ⏭️ Reporté     | —          | Placeholders temporaires (indicateurs forêt en cours de dev)                                                     |
+| 9   | ✅ Corrigé      | 2026-04-28 | `:focus-visible` sur Boutons MUI + `matches(':focus-visible')` sur boutons natifs + outline visible sur input recherche |
+| 10  | ⚠️ Substitué   | 2026-04-28 | Pas de Breadcrumb (hors design) → `aria-current` sur MenuLateral à la place (couvre l'esprit du critère 12)      |
+| 11  | ✅ Corrigé      | 2026-04-28 | `<table>` sémantique : `<caption>` + `<thead>/<tbody>` + `<th scope>` (parcours + iframe)                         |
+| 12  | ✅ Corrigé      | 2026-04-28 | Override global dans `global.css` + transitions D3 conditionnées via `matchMedia` dans `roue.tsx`                 |
 
 ---
 
@@ -213,37 +235,37 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 
 ### Lot 1 — Quick wins (1-2 jours)
 
-- [ ] Supprimer le contenu placeholder `TEST`/`COUCOU`/`Linéraire de haie texte` dans les indicateurs `foret/`
+- [ ] ⏭️ Supprimer le contenu placeholder `TEST`/`COUCOU`/`Linéraire de haie texte` dans les indicateurs `foret/` *(reporté : indicateurs en cours de dev)*
 - [ ] Ajouter `ariaLabel` sur tous les composants `Micro*` (~12 fichiers)
-- [ ] Corriger `ariaLabel=""` dans `2-TypesDeCultures.tsx:52`
+- [x] Corriger `ariaLabel=""` dans `2-TypesDeCultures.tsx:52`
 - [ ] Ajouter `<span className="sr-only"> (nouvelle fenêtre)</span>` sur les 5 liens `target="_blank"`
 - [ ] Ajouter `aria-label="Fermer le panneau"` sur le bouton `×` de `panneauLateral.tsx:63`
-- [ ] Renseigner `alt` correct sur `patch4Formula` (formule informative)
+- [x] Renseigner `alt` correct sur `patch4Formula` (formule informative)
 - [ ] Supprimer `title=""` invalide sur `<html>` dans `src/app/layout.tsx:16`
 - [ ] Ajouter `metadata.title` dédié sur chaque page parcours
 
 ### Lot 2 — Refactor design system (3-5 jours)
 
-- [ ] Modifier `<Body>` (`src/design-system/base/Textes.tsx`) pour accepter `htmlTag` (par défaut `'p'`)
-- [ ] Remplacer `outline: none` JS par CSS `:focus-visible` natif dans `Boutons.tsx` et `BarreDeRecherche.tsx`
+- [x] Modifier `<Body>` (`src/design-system/base/Textes.tsx`) pour accepter `htmlTag` (par défaut `'p'`)
+- [x] Remplacer `outline: none` JS par CSS `:focus-visible` natif dans `Boutons.tsx` et `BarreDeRecherche.tsx`
 - [ ] Convertir les `12px`/`14px`/`fontSize:22` en `rem`
 - [ ] Ajouter une feuille de style globale respectant `@media (prefers-reduced-motion: reduce)`
 - [ ] Conditionner les transitions D3 (`roue.tsx`) via `window.matchMedia('(prefers-reduced-motion: reduce)')`
 
 ### Lot 3 — Composants interactifs critiques (5-7 jours)
 
-- [ ] Refactorer l'accordéon `aleaExplications.tsx` en `<button aria-expanded>`
-- [ ] Refactorer `circleVisualization.tsx` items en `<button>` avec `aria-pressed`
-- [ ] Refactorer `blocAleas.tsx` en pattern ARIA tabs complet (tablist/tab/tabpanel/flèches/Home/End)
-- [ ] Refactorer `Tooltips.tsx` pour ne wrapper que des éléments focusables (`<button>` par défaut)
-- [ ] Ajouter `aria-expanded`/`aria-controls` sur les accordéons `MenuLateral.tsx`
-- [ ] Ajouter `aria-current="page"` sur l'item actif du `MenuLateral.tsx`
+- [x] Refactorer l'accordéon `aleaExplications.tsx` en `<button aria-expanded>`
+- [x] Refactorer `circleVisualization.tsx` items en `<button>` avec `aria-pressed`
+- [x] Refactorer `blocAleas.tsx` en pattern ARIA tabs complet (tablist/tab/tabpanel/flèches/Home/End)
+- [x] Refactorer `Tooltips.tsx` pour ne wrapper que des éléments focusables (`<button>` par défaut)
+- [x] Ajouter `aria-expanded`/`aria-controls` sur les accordéons `MenuLateral.tsx`
+- [x] Ajouter `aria-current="page"` sur l'item actif du `MenuLateral.tsx`
 - [ ] Gérer le retour de focus après re-render SVG dans `roue.tsx`
 - [ ] Convertir `blocConseils.tsx` en `<table>` sémantique
 
 ### Lot 4 — Navigation et structure (2-3 jours)
 
-- [ ] Ajouter un `<Breadcrumb>` DSFR sur chaque page du parcours
+- [ ] ⚠️ ~~Ajouter un `<Breadcrumb>` DSFR sur chaque page du parcours~~ *(hors design — substitué par `aria-current` sur MenuLateral, fait dans Lot 3)*
 - [ ] Réorganiser le DOM pour que le contenu principal précède le `MenuLateral` fixe (ou ajouter un second skip link `#contenu-thematique`)
 - [ ] Ajouter un `role="img"` + `<title>` sur le SVG racine de la roue D3
 - [ ] Ajouter une alternative textuelle aux cartes `Patch4Maps`
@@ -257,76 +279,9 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 
 ---
 
-## Outils pour réaliser l'audit
-
-### Outils officiels DINUM
-
-| Outil | URL | Usage |
-|-------|-----|-------|
-| **ARA** | https://ara.numerique.gouv.fr/ | Outil officiel pour mener et publier l'audit (méthode retenue pour ce projet) |
-| **Grille RGAA 4.1** | https://accessibilite.numerique.gouv.fr/methode/grille-audit/ | 106 critères × 257 tests |
-| **Assistant RGAA** | https://design.numerique.gouv.fr/outils/audit-rgaa/ | Assistant pour structurer l'audit |
-
-### Extensions navigateur (audit semi-automatique)
-
-| Outil | Plateforme | Points forts |
-|-------|------------|--------------|
-| **axe DevTools** | Chrome/Firefox/Edge | Référence — couvre ~57 % des règles WCAG en automatique |
-| **WAVE** | Chrome/Firefox/Edge | Visualise erreurs/contrastes/structure directement sur la page |
-| **Lighthouse** | Chrome (intégré) | Score accessibilité + perfs/SEO |
-| **Accessibility Insights** | Chrome/Edge | "FastPass" + audit guidé manuel |
-| **ARC Toolkit** | Chrome | Test très détaillé orienté WCAG |
-| **Tanaguru Contrast-Finder** | Web | Suggère couleurs proches conformes |
-
-### Outils CI/CD (intégration au build)
-
-| Outil | Usage |
-|-------|-------|
-| `@axe-core/react` | Audit en runtime React (console dev) — recommandé pour ce projet |
-| `eslint-plugin-jsx-a11y` | Lint statique JSX (déjà partiellement actif via Next.js) |
-| `pa11y` / `pa11y-ci` | Crawl + audit en pipeline |
-| `@axe-core/playwright` | Tests e2e avec audit a11y intégré |
-| `jest-axe` | Audit dans les tests unitaires |
-| Storybook + addon-a11y | Audit composant par composant |
-
----
-
-## Tests manuels indispensables
+## Tests manuels
 
 Représentent ~50 % de l'audit RGAA — non couverts par les outils automatiques.
-
-### Lecteurs d'écran
-
-- **NVDA** (Windows, gratuit) — https://www.nvaccess.org/
-- **JAWS** (Windows, payant) — référence professionnelle
-- **VoiceOver** (macOS/iOS, intégré) — Cmd+F5
-- **TalkBack** (Android, intégré)
-
-### Navigation 100 % clavier
-
-Tester chaque page sans souris :
-- `Tab` / `Shift+Tab` — ordre de tabulation logique ?
-- `Entrée` / `Espace` — activation des boutons/liens
-- `Échap` — fermeture des modales/dropdowns
-- `Flèches` — navigation dans tabs/listes/menus
-- Focus toujours visible ?
-- Pas de piège au clavier ?
-
-### Zoom
-
-- **Zoom 200 %** (Ctrl++) — pas de perte de contenu ni scroll horizontal
-- **Zoom 400 %** — reflow correct
-- **Taille de texte 200 %** (settings navigateur) — distinct du zoom
-
-### Daltonisme
-
-- **DevTools Chrome** : Rendering > Emulate vision deficiencies (protanopia, deuteranopia, tritanopia, achromatopsia)
-- Extension **Colorblindly**
-
-### Contraste
-
-- **Colour Contrast Analyser (TPGi)** — outil desktop de référence
-- **DevTools Chrome** : inspecteur > onglet Styles > pastille de couleur
 
 ### Validateurs
 
@@ -342,11 +297,3 @@ Tester chaque page sans souris :
 - **WCAG 2.1** — https://www.w3.org/TR/WCAG21/ (référentiel international, base du RGAA)
 
 ---
-
-## Recommandation d'enchaînement
-
-1. **Phase 1 — Correction interne** : exécuter Lots 1 → 4 ci-dessus
-2. **Phase 2 — Audit semi-auto** : passer chaque page du parcours dans axe DevTools + WAVE
-3. **Phase 3 — Audit manuel** : navigation clavier seul + NVDA sur les 5 routes du parcours
-4. **Phase 4 — Audit ARA** : remplir la grille des 106 critères dans ARA
-5. **Phase 5 — Audit professionnel** (Lot 5) : validation par un cabinet certifié avant publication de la déclaration d'accessibilité
