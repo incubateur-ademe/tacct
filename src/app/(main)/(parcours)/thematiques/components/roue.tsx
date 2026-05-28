@@ -684,7 +684,7 @@ const RoueSystemique = ({
             height={svgHeight}
             role="img"
             aria-label="Roue systémique des thématiques du territoire"
-            style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+            style={{ position: 'absolute', top: 0, left: 0, zIndex: 1, overflow: 'visible' }}
           />
 
       {/* Tooltip pour les thématiques indisponibles */}
@@ -726,6 +726,7 @@ const RoueSystemique = ({
           {
             svgRef && svgRef.current ? (
               <div
+                aria-hidden={!!selectedThematique}
                 style={{
                   position: 'absolute',
                   left: '50%',

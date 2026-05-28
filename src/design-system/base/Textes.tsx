@@ -177,7 +177,7 @@ export const Body = ({
 }) => {
   const styles: React.CSSProperties = {
     color: color,
-    fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '1rem' : size === 'lg' ? '18px' : '20px',
+    fontSize: size === 'xs' ? '0.75rem' : size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : size === 'lg' ? '1.125rem' : '1.25rem',
     fontWeight: weight === 'bold' ? 700 : weight === 'medium' ? 500 : 400,
     letterSpacing: "0.4px",
     fontFamily: "Marianne",

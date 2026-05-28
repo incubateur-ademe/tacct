@@ -31,6 +31,7 @@ export const BoutonRechercherHeader = ({
     searchLibelle === '' ? (
       <HtmlTooltip title="Sélectionnez un territoire">
         <Image
+          aria-hidden="true"
           alt=""
           src={LoupeIcon}
           height={34}
@@ -43,17 +44,8 @@ export const BoutonRechercherHeader = ({
         />
       </HtmlTooltip>
     ) : (
-      <Image
-        alt=""
-        src={LoupeIcon}
-        height={34}
-        width={34}
-        style={{
-          backgroundColor: couleursPrincipales.vert,
-          borderRadius: '30px',
-          padding: '4px',
-          cursor: 'pointer'
-        }}
+      <button
+        aria-label="Rechercher ce territoire"
         onClick={() => {
           if (searchLibelle === '') return;
           setIsNewTypeChosen(false);
@@ -68,7 +60,28 @@ export const BoutonRechercherHeader = ({
             thematique
           })
         }}
-      />
+        style={{
+          background: 'none',
+          border: 'none',
+          padding: 0,
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+        }}
+      >
+        <Image
+          aria-hidden="true"
+          alt=""
+          src={LoupeIcon}
+          height={34}
+          width={34}
+          style={{
+            backgroundColor: couleursPrincipales.vert,
+            borderRadius: '30px',
+            padding: '4px',
+          }}
+        />
+      </button>
     )
   )
 }
