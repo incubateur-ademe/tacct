@@ -30,7 +30,9 @@ export const ConseilsAggravation = () => {
           </caption>
           <thead>
             <tr className={styles.tableauRow}>
-              <th scope="col" className={styles.tableauCell} />
+              <th scope="col" className={styles.tableauCell}>
+                <span className="fr-sr-only">Niveau d&apos;aggravation</span>
+              </th>
               <th
                 scope="col"
                 className={styles.tableauCell}

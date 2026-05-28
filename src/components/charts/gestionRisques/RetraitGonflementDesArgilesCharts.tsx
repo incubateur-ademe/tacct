@@ -264,7 +264,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         </>
       ) : datavizTab === 'Cartographie' ? (
         <MapTiles
-          ariaLabel="Carte choroplèthe des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
+          ariaLabel="Cartographie des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
           coordonneesCommunes={coordonneesCommunes}
           mapRef={mapRef}
           mapContainer={mapContainer}

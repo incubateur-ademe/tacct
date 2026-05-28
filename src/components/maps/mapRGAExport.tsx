@@ -5,10 +5,10 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapRGAExport = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -91,7 +91,7 @@ export const MapRGAExport = (props: {
 
   return (
     <AccessibleMapWrapper
-      ariaLabel="Carte choroplèthe des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
+      ariaLabel="Cartographie des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
       style={{ position: 'relative', ...style }}
     >
       <div ref={exportMapContainer} style={{ height: "500px", width: "100%" }} />

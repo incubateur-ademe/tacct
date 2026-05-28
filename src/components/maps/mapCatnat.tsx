@@ -333,7 +333,7 @@ export const MapCatnat = (props: {
         <GraphDataNotFound code={code} libelle={libelle} />
       ) : (
         <AccessibleMapWrapper
-          ariaLabel="Carte choroplèthe du nombre d'arrêtés de catastrophe naturelle par commune sur votre territoire"
+          ariaLabel="Cartographie du nombre d'arrêtés de catastrophe naturelle par commune sur votre territoire"
           style={{ position: 'relative' }}
         >
           <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />

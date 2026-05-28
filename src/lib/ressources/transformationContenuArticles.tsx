@@ -69,10 +69,15 @@ export const renderBlock = async (el: Block, i: number) => {
       const localImagePath = await downloadNotionImage(src, el.id);
       
       return (
-        <figure key={i} className="flex flex-col m-0 w-full">
+        <figure
+          key={i}
+          className="flex flex-col m-0 w-full"
+          role="figure"
+          aria-label={caption || undefined}
+        >
           <ZoomOnClick
             src={localImagePath}
-            alt={caption || "Image"}
+            alt={caption || ""}
             sizes="100%"
             width={0}
             height={0}
