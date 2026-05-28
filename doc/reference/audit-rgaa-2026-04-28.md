@@ -23,59 +23,59 @@
 
 Dernière mise à jour : 2026-04-28.
 
-| #   | Statut         | Date       | Notes                                                                                                            |
-| --- | -------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| 1   | ✅ Corrigé      | 2026-04-28 | `Body` accepte `htmlTag` (défaut `'p'`) + 11 cas d'imbrication patchés en `htmlTag="div"`                        |
-| 2   | ✅ Corrigé      | 2026-04-28 | `<button type="button">` + `aria-expanded` + `aria-controls` (parcours + iframe)                                 |
-| 3   | ✅ Corrigé      | 2026-04-28 | Items en `<button>` + `aria-pressed` + resets DSFR (parcours + iframe)                                           |
-| 4   | ✅ Corrigé      | 2026-04-28 | Pattern ARIA Tabs complet (tablist/tab/tabpanel + flèches/Home/End + roving tabindex)                            |
-| 5   | ✅ Corrigé      | 2026-04-28 | 4 composants Tooltips + cursorVisualization → triggers focusables, classe `.tooltipTrigger` créée                |
-| 6   | ✅ Corrigé      | 2026-04-28 | `ariaLabel` dynamique sur MicroPieChart                                                                          |
-| 7   | ✅ Corrigé      | 2026-04-28 | Alt descriptif sur formule mathématique                                                                          |
-| 8   | ⏭️ Reporté     | —          | Placeholders temporaires (indicateurs forêt en cours de dev)                                                     |
-| 9   | ✅ Corrigé      | 2026-04-28 | `:focus-visible` sur Boutons MUI + `matches(':focus-visible')` sur boutons natifs + outline visible sur input recherche |
-| 10  | ⚠️ Substitué   | 2026-04-28 | Pas de Breadcrumb (hors design) → `aria-current` sur MenuLateral à la place (couvre l'esprit du critère 12)      |
-| 11  | ✅ Corrigé      | 2026-04-28 | `<table>` sémantique : `<caption>` + `<thead>/<tbody>` + `<th scope>` (parcours + iframe)                         |
-| 12  | ✅ Corrigé      | 2026-04-28 | Override global dans `global.css` + transitions D3 conditionnées via `matchMedia` dans `roue.tsx`                 |
+| #   | Statut       | Date       | Notes                                                                                                                   |
+| --- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 1   | ✅ Corrigé   | 2026-04-28 | `Body` accepte `htmlTag` (défaut `'p'`) + 11 cas d'imbrication patchés en `htmlTag="div"`                               |
+| 2   | ✅ Corrigé   | 2026-04-28 | `<button type="button">` + `aria-expanded` + `aria-controls` (parcours + iframe)                                        |
+| 3   | ✅ Corrigé   | 2026-04-28 | Items en `<button>` + `aria-pressed` + resets DSFR (parcours + iframe)                                                  |
+| 4   | ✅ Corrigé   | 2026-04-28 | Pattern ARIA Tabs complet (tablist/tab/tabpanel + flèches/Home/End + roving tabindex)                                   |
+| 5   | ✅ Corrigé   | 2026-04-28 | 4 composants Tooltips + cursorVisualization → triggers focusables, classe `.tooltipTrigger` créée                       |
+| 6   | ✅ Corrigé   | 2026-04-28 | `ariaLabel` dynamique sur MicroPieChart                                                                                 |
+| 7   | ✅ Corrigé   | 2026-04-28 | Alt descriptif sur formule mathématique                                                                                 |
+| 8   | ⏭️ Reporté   | —          | Placeholders temporaires (indicateurs forêt en cours de dev)                                                            |
+| 9   | ✅ Corrigé   | 2026-04-28 | `:focus-visible` sur Boutons MUI + `matches(':focus-visible')` sur boutons natifs + outline visible sur input recherche |
+| 10  | ⚠️ Substitué | 2026-04-28 | Pas de Breadcrumb (hors design) → `aria-current` sur MenuLateral à la place (couvre l'esprit du critère 12)             |
+| 11  | ✅ Corrigé   | 2026-04-28 | `<table>` sémantique : `<caption>` + `<thead>/<tbody>` + `<th scope>` (parcours + iframe)                               |
+| 12  | ✅ Corrigé   | 2026-04-28 | Override global dans `global.css` + transitions D3 conditionnées via `matchMedia` dans `roue.tsx`                       |
 
 ### Corrections complémentaires (audit ARA — critère 1)
 
-| Test ARA | Statut | Date | Notes |
-| -------- | ------ | ---- | ----- |
-| 1.1.1 | ✅ Corrigé | 2026-04-28 | `ariaLabel` ajouté sur 9 indicateurs `Micro*` + prop ajoutée à `MicroRemplissageTerritoire` |
-| 1.1.2 | ✅ N/A | — | Aucune balise `<area>` |
-| 1.1.3 | ✅ N/A | — | Aucun `<input type="image">` |
-| 1.1.4 | ✅ N/A | — | Aucune image map serveur |
-| 1.1.5 | ✅ Corrigé | 2026-04-28 | SVG décoratifs (`BaseIcons`, `home/*Line`) → `aria-hidden`. SVG informatif `roue.tsx` → `role="img"` + `aria-label` |
-| 1.1.6 | ✅ N/A | — | Aucune balise `<object type="image/...">` |
-| 1.1.7 | ✅ N/A | — | Aucune balise `<embed type="image/...">` |
-| 1.1.8 | ✅ Corrigé | 2026-04-28 | Wrapper réutilisable `AccessibleMapWrapper` (`role="img"` + `aria-label`) appliqué aux 17 cartes MapLibre/Leaflet |
-| 1.2.1 | ✅ Conforme | 2026-04-28 | Aucune image `alt=""` n'a d'`aria-label`/`title`/`aria-labelledby` parasite |
-| 1.2.2 | ✅ N/A | — | Aucune `<area>` |
-| 1.2.3 | ✅ N/A | — | Aucun `<object type="image">` |
-| 1.2.4 | ✅ Conforme | 2026-04-28 | Tous les SVG décoratifs ont `aria-hidden="true"` sans `<title>`/`<desc>` parasite |
-| 1.2.5 | ✅ N/A | — | Aucun `<canvas>` JSX décoratif (canvas MapLibre traités en 1.1.8, html2canvas off-screen) |
-| 1.2.6 | ✅ N/A | — | Aucune `<embed>` |
-| 1.3.1 | ✅ Conforme | 2026-04-28 | Toutes les alternatives textuelles des `<img>`/`role="img"` informatives sont pertinentes |
-| 1.3.2 → 1.3.5 | ✅ N/A | — | Aucune `<area>`, `<input type="image">`, `<object>`, `<embed>` |
-| 1.3.6 | ✅ Conforme | 2026-04-28 | `aria-label` de la roue D3 pertinent et concis |
-| 1.3.7 → 1.3.8 | ✅ N/A | — | Aucun `<canvas>` JSX |
-| 1.3.9 | ✅ Conforme | 2026-04-28 | Alternatives concises (cartes : libellés un peu longs mais informatifs nécessaires) |
-| 1.6.1 | ❌ Non conforme | 2026-04-28 | Une partie des cartes ne dispose pas de description détaillée accessible (voir détail ci-dessous) |
-| 1.7.1 | 🟡 Partiel | 2026-04-28 | Pour les cartes ayant une description détaillée (export XLSX), celle-ci est pertinente ; les autres cas relèvent du 1.6 |
-| 1.7.2 → 1.7.4 | ✅ N/A | — | Aucun `<input type="image">`, `<object>`, `<embed>` |
-| 1.7.5 | 🟡 Partiel | 2026-04-28 | Roue SVG : description partielle via panneau latéral, pertinente pour ce qu'elle décrit |
-| 1.7.6 | ✅ N/A | — | Aucun `<canvas>` JSX |
-| 1.8.1 → 1.8.6 | ✅ Conforme | 2026-04-28 | Aucune image-texte informative (formule mathématique = cas particulier exclu, logos = cas particulier exclu, texte SVG = texte réel non concerné) |
-| 1.9.1 | ✅ Corrigé | 2026-04-28 | `<figure>` dans `transformationContenuArticles.tsx` : ajout `role="figure"` + `aria-label={caption}` |
-| 1.9.2 → 1.9.5 | ✅ N/A | — | Pas de `<object>`, `<embed>`, `<svg>`, `<canvas>` avec légende |
-| 2.1 | ✅ Conforme | 2026-04-28 | Les 3 `<iframe>` (statistiques Metabase) ont toutes un attribut `title="Tableau de bord stats"`. Aucune `<frame>` obsolète |
-| 1.6.2 → 1.6.4 | ✅ N/A | — | Aucun `<object>`, `<embed>`, `<input type="image">` |
-| 1.6.5 | 🟡 Partiel | 2026-04-28 | Roue SVG : l'interaction (panneau latéral) fournit des éléments descriptifs mais pas une description détaillée structurée |
-| 1.6.6 | 🟡 Test manuel | — | À valider avec NVDA/VoiceOver lors de la phase de tests AT |
-| 1.6.7 → 1.6.8 | ✅ N/A | — | Aucun `<canvas>` JSX |
-| 1.6.9 | ✅ N/A | — | Aucun usage d'`aria-describedby` sur images |
-| 1.6.10 | ❌ Non conforme | 2026-04-28 | Mêmes limitations que 1.6.1 sur les cartes wrappées avec `role="img"` |
+| Test ARA      | Statut          | Date       | Notes                                                                                                                                             |
+| ------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.1.1         | ✅ Corrigé      | 2026-04-28 | `ariaLabel` ajouté sur 9 indicateurs `Micro*` + prop ajoutée à `MicroRemplissageTerritoire`                                                       |
+| 1.1.2         | ✅ N/A          | —          | Aucune balise `<area>`                                                                                                                            |
+| 1.1.3         | ✅ N/A          | —          | Aucun `<input type="image">`                                                                                                                      |
+| 1.1.4         | ✅ N/A          | —          | Aucune image map serveur                                                                                                                          |
+| 1.1.5         | ✅ Corrigé      | 2026-04-28 | SVG décoratifs (`BaseIcons`, `home/*Line`) → `aria-hidden`. SVG informatif `roue.tsx` → `role="img"` + `aria-label`                               |
+| 1.1.6         | ✅ N/A          | —          | Aucune balise `<object type="image/...">`                                                                                                         |
+| 1.1.7         | ✅ N/A          | —          | Aucune balise `<embed type="image/...">`                                                                                                          |
+| 1.1.8         | ✅ Corrigé      | 2026-04-28 | Wrapper réutilisable `AccessibleMapWrapper` (`role="img"` + `aria-label`) appliqué aux 17 cartes MapLibre/Leaflet                                 |
+| 1.2.1         | ✅ Conforme     | 2026-04-28 | Aucune image `alt=""` n'a d'`aria-label`/`title`/`aria-labelledby` parasite                                                                       |
+| 1.2.2         | ✅ N/A          | —          | Aucune `<area>`                                                                                                                                   |
+| 1.2.3         | ✅ N/A          | —          | Aucun `<object type="image">`                                                                                                                     |
+| 1.2.4         | ✅ Conforme     | 2026-04-28 | Tous les SVG décoratifs ont `aria-hidden="true"` sans `<title>`/`<desc>` parasite                                                                 |
+| 1.2.5         | ✅ N/A          | —          | Aucun `<canvas>` JSX décoratif (canvas MapLibre traités en 1.1.8, html2canvas off-screen)                                                         |
+| 1.2.6         | ✅ N/A          | —          | Aucune `<embed>`                                                                                                                                  |
+| 1.3.1         | ✅ Conforme     | 2026-04-28 | Toutes les alternatives textuelles des `<img>`/`role="img"` informatives sont pertinentes                                                         |
+| 1.3.2 → 1.3.5 | ✅ N/A          | —          | Aucune `<area>`, `<input type="image">`, `<object>`, `<embed>`                                                                                    |
+| 1.3.6         | ✅ Conforme     | 2026-04-28 | `aria-label` de la roue D3 pertinent et concis                                                                                                    |
+| 1.3.7 → 1.3.8 | ✅ N/A          | —          | Aucun `<canvas>` JSX                                                                                                                              |
+| 1.3.9         | ✅ Conforme     | 2026-04-28 | Alternatives concises (cartes : libellés un peu longs mais informatifs nécessaires)                                                               |
+| 1.6.1         | ❌ Non conforme | 2026-04-28 | Une partie des cartes ne dispose pas de description détaillée accessible (voir détail ci-dessous)                                                 |
+| 1.7.1         | 🟡 Partiel      | 2026-04-28 | Pour les cartes ayant une description détaillée (export XLSX), celle-ci est pertinente ; les autres cas relèvent du 1.6                           |
+| 1.7.2 → 1.7.4 | ✅ N/A          | —          | Aucun `<input type="image">`, `<object>`, `<embed>`                                                                                               |
+| 1.7.5         | 🟡 Partiel      | 2026-04-28 | Roue SVG : description partielle via panneau latéral, pertinente pour ce qu'elle décrit                                                           |
+| 1.7.6         | ✅ N/A          | —          | Aucun `<canvas>` JSX                                                                                                                              |
+| 1.8.1 → 1.8.6 | ✅ Conforme     | 2026-04-28 | Aucune image-texte informative (formule mathématique = cas particulier exclu, logos = cas particulier exclu, texte SVG = texte réel non concerné) |
+| 1.9.1         | ✅ Corrigé      | 2026-04-28 | `<figure>` dans `transformationContenuArticles.tsx` : ajout `role="figure"` + `aria-label={caption}`                                              |
+| 1.9.2 → 1.9.5 | ✅ N/A          | —          | Pas de `<object>`, `<embed>`, `<svg>`, `<canvas>` avec légende                                                                                    |
+| 2.1           | ✅ Conforme     | 2026-04-28 | Les 3 `<iframe>` (statistiques Metabase) ont toutes un attribut `title="Tableau de bord stats"`. Aucune `<frame>` obsolète                        |
+| 1.6.2 → 1.6.4 | ✅ N/A          | —          | Aucun `<object>`, `<embed>`, `<input type="image">`                                                                                               |
+| 1.6.5         | 🟡 Partiel      | 2026-04-28 | Roue SVG : l'interaction (panneau latéral) fournit des éléments descriptifs mais pas une description détaillée structurée                         |
+| 1.6.6         | 🟡 Test manuel  | —          | À valider avec NVDA/VoiceOver lors de la phase de tests AT                                                                                        |
+| 1.6.7 → 1.6.8 | ✅ N/A          | —          | Aucun `<canvas>` JSX                                                                                                                              |
+| 1.6.9         | ✅ N/A          | —          | Aucun usage d'`aria-describedby` sur images                                                                                                       |
+| 1.6.10        | ❌ Non conforme | 2026-04-28 | Mêmes limitations que 1.6.1 sur les cartes wrappées avec `role="img"`                                                                             |
 
 #### Note 1.6 — Non-conformité avec impact utilisateur **majeur**
 
@@ -92,13 +92,13 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 3. **Cartes alimentées par flux de tuiles vectorielles via API externes** (ex. WMS/WFS IGN, OCS GE, LCZ Cerema, BD HAIE) — 6 indicateurs concernés → ❌ **Non conforme**.
    Aucune donnée brute exportable côté application : seul un export **PNG** de la carte est proposé, qui n'est **pas accessible aux lecteurs d'écran** (image bitmap sans alternative textuelle exploitable).
 
-   Indicateurs concernés :
-   - `donnees/indicateurs/amenagement/2-LCZ.tsx`
-   - `donnees/indicateurs/confortThermique/6-LCZ.tsx`
-   - `donnees/indicateurs/foret/2-LineaireDeHaie.tsx`
-   - `donnees/indicateurs/gestionDesRisques/3-ErosionCotiere.tsx`
-   - `donnees/indicateurs/gestionDesRisques/5-Debroussaillement.tsx`
-   - `donnees/indicateurs/sante/1-o3.tsx`
+    Indicateurs concernés :
+    - `donnees/indicateurs/amenagement/2-LCZ.tsx`
+    - `donnees/indicateurs/confortThermique/6-LCZ.tsx`
+    - `donnees/indicateurs/foret/2-LineaireDeHaie.tsx`
+    - `donnees/indicateurs/gestionDesRisques/3-ErosionCotiere.tsx`
+    - `donnees/indicateurs/gestionDesRisques/5-Debroussaillement.tsx`
+    - `donnees/indicateurs/sante/1-o3.tsx`
 
 **Impact utilisateur : majeur.** Les utilisateurs aveugles, malvoyants ou utilisant des technologies d'assistance n'ont pas accès à l'information détaillée portée par ces cartes — qui est pourtant le cœur de la valeur informative de l'application.
 
@@ -107,24 +107,73 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 - **Cas 2 (sans export)** : ajouter un texte descriptif synthétique adjacent à la carte, qui restitue les données clés (ex : « X communes de votre territoire sont en zone d'aléa fort, principalement Y et Z ») ;
 - **Cas 3 (flux API)** : étudier la possibilité de récupérer les données via les API WFS/GeoJSON pour produire un export tabulaire, ou à défaut fournir un texte descriptif synthétique.
 
+### Corrections complémentaires (audit ARA — critère 3)
+
+| Test ARA      | Statut          | Date       | Notes                                                                                                                                                                                                                                                                                                                                              |
+| ------------- | --------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1.1 → 3.1.3 | ✅ Conforme     | 2026-04-29 | Aucune information véhiculée uniquement par couleur de texte ou d'image — alternative texte adjacente présente (légendes graphiques, libellés dans `analyseSensibilite`, `blocConseils`, `cursorVisualization`)                                                                                                                                    |
+| 3.1.4         | ❌ Non conforme | 2026-04-29 | `circleVisualization.tsx` (roue Patch4) : niveau d'aggravation des indices véhiculé uniquement via `backgroundColor` du cercle. Mitigation : `aria-label` enrichi sur le `<button>` → info accessible aux lecteurs d'écran. L'info reste non perçue par les utilisateurs voyants déficients en couleurs (pas de texte visible — contrainte design) |
+| 3.1.5 → 3.1.6 | ✅ N/A          | —          | Aucun média temporel ou non temporel concerné                                                                                                                                                                                                                                                                                                      |
+| 3.2.1 → 3.2.5 | ✅ Conforme     | 2026-04-29 | Couleurs de texte ≥ 4.5:1 sur fond blanc : `--principales-vert` #038278 (4.92:1), `--gris-dark` #666666 (5.74:1), texte par défaut #161616 (19.4:1). Cas limite isolé (`--gris-medium-dark` #7B7B7B → 4.34:1) dans `ThematiquesLieesNavigation.tsx:210` = safeguard jamais rendu → N/A                                                             |
+| 3.3.1         | ✅ Conforme     | 2026-04-29 | Composants d'interface principalement DSFR/MUI                                                                                                                                                                                                                                                                                                     |
+| 3.3.2         | ❌ Non conforme | 2026-04-29 | Cercles colorés de la roue Patch4 sur fond blanc — `#FFB181` (Aggravation forte) → 1.84:1 ; `#FFEBB6` (Aggravation modérée) → 1.13:1 ; `#FFFFFF` + bordure `--gris-medium` (Pas d'évolution) → 1.31:1. Seuil RGAA AA = 3:1. Conséquence : "Modérée" et "Pas d'évolution" indistinguables visuellement                                              |
+| 3.3.3 → 3.3.4 | ✅ Conforme     | 2026-04-29 | Pas de couleurs contiguës contradictoires sur les éléments graphiques                                                                                                                                                                                                                                                                              |
+
+### Corrections complémentaires (audit ARA — critère 5)
+
+| Test ARA      | Statut      | Date       | Notes                                                                                        |
+| ------------- | ----------- | ---------- | -------------------------------------------------------------------------------------------- |
+| 5.1.1         | ✅ N/A      | 2026-04-29 | Tableau simple (3×2) — pas de complexité requérant un résumé                                 |
+| 5.2.1         | ✅ N/A      | 2026-04-29 | Pas de tableau complexe                                                                      |
+| 5.3.1         | ✅ N/A      | 2026-04-29 | Aucun tableau de mise en forme                                                               |
+| 5.4.1         | ✅ Conforme | 2026-04-29 | `<caption className="fr-sr-only">` présent sur `blocConseils.tsx` (parcours + iframe)        |
+| 5.5.1         | ✅ Conforme | 2026-04-29 | Caption "Actions à mener selon le niveau d'aggravation…" — pertinent et concis               |
+| 5.6.1         | ✅ Conforme | 2026-04-29 | 3 `<th scope="col">` dans `<thead>`                                                          |
+| 5.6.2         | ✅ Conforme | 2026-04-29 | 2 `<th scope="row">` dans `<tbody>`                                                          |
+| 5.6.3 → 5.6.4 | ✅ N/A      | 2026-04-29 | Tous les en-têtes couvrent la totalité de leur ligne/colonne ; cellules de données en `<td>` |
+| 5.7.1 → 5.7.2 | ✅ Conforme | 2026-04-29 | Tous les `<th>` ont `scope` avec valeur correcte (`col`/`row`)                               |
+| 5.7.3 → 5.7.4 | ✅ N/A      | 2026-04-29 | Pas d'en-têtes partiels ; association via `scope` (pas via `id`/`headers`)                   |
+| 5.8.1         | ✅ N/A      | 2026-04-29 | Aucun tableau de mise en forme                                                               |
+
+> **Test manuel à prévoir :** `.tableauRow { display: grid }` appliqué aux `<tr>` (`patch4c.module.scss`) — vérifier que NVDA+Firefox restitue bien la structure de tableau.
+
+### Corrections complémentaires (audit ARA — critère 6)
+
+| Test ARA      | Statut      | Date       | Notes                                                                                        |
+| ------------- | ----------- | ---------- | -------------------------------------------------------------------------------------------- |
+| 6.1.1 → 6.1.5 | ✅ Conforme | 2026-04-29 | Tous les liens ont un intitulé explicite ; aucun `aria-label` contradictoire                 |
+| 6.1.2 / 6.1.4 | ✅ N/A      | —          | Aucun lien image pur ni lien SVG pur                                                         |
+| 6.2.1         | ✅ Corrigé  | 2026-04-29 | `ThematiquesLieesNavigation.tsx:181` — navigation JS remplacée par prop `link` → rendu `<a>` |
+
+### Corrections complémentaires (audit ARA — critère 7)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 7.1 / 7.3 — Accordéons, tabs, tooltips, roue D3 | ✅ Corrigé | 2026-04-28 | Traités dans le Top 12 (critères 2, 3, 4, 5) |
+| 7.1 / 7.3 — `CarteCollection.tsx` | ✅ Corrigé | 2026-04-29 | `role="link"` ajouté sur le `<div>` focusable |
+| 7.1 / 7.3 — `SliderAnnees.tsx` | ✅ Corrigé | 2026-04-29 | `role="slider"` + `aria-valuemin/max/now` + `aria-label` ajoutés sur le thumb actif |
+| 7.2 | ✅ N/A | — | Aucune alternative JS dans l'app |
+| 7.4 | ✅ N/A | — | Redirection automatique vers dernier territoire — choix UX intentionnel |
+| 7.5 — `Loader` / `LoaderText` | ✅ Corrigé | 2026-04-29 | `role="status"` + `aria-label` ajoutés sur les deux composants |
+
 ---
 
 ## Synthèse — Top 12 des points bloquants
 
-| # | Critère | Localisation | Problème |
-|---|---------|--------------|----------|
-| 1 | **9.1** | `src/design-system/base/Textes.tsx` | `<Body>` rend systématiquement un `<div>` → HTML invalide dans `<li><Body>` partout dans le parcours |
-| 2 | **7.1** | `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:74` | Accordéon `<div onClick>` non focusable, sans `aria-expanded` |
-| 3 | **7.1** | `src/app/(main)/(parcours)/patch4c/circleVisualization.tsx:60` | Items cliquables `<div>` sans rôle, focus, ni clavier |
-| 4 | **7.1** | `src/app/(main)/(parcours)/patch4c/components/blocAleas.tsx:113` | Tabs sans `role="tablist/tab/tabpanel"` ni navigation flèches |
-| 5 | **7.1** | `src/components/utils/Tooltips.tsx:100`, `src/app/(main)/(parcours)/patch4c/cursorVisualization.tsx:24` | Tooltips MUI sur `<div>`/`<img>` non focusables → contenu inaccessible au clavier |
-| 6 | **1.1** | `src/app/(main)/(parcours)/donnees/indicateurs/agriculture/2-TypesDeCultures.tsx:52` | `ariaLabel=""` sur MicroPieChart |
-| 7 | **1.2** | `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:124` | Formule mathématique informative avec `alt=""` |
-| 8 | **8.5** | `src/app/(main)/(parcours)/donnees/indicateurs/foret/1-HauteurCanopee.tsx:40-51`, `2-LineaireDeHaie.tsx:35` | Contenu placeholder `TEST`, `COUCOU` rendu en production |
-| 9 | **10.7** | `src/design-system/base/Boutons.tsx:83,199`, `src/components/searchbar/BarreDeRecherche.tsx:129` | `outline:none` au focus sans alternative `:focus-visible` CSS |
-| 10 | **12.7** | Toutes les pages parcours | Absence de fil d'Ariane (`Breadcrumb`) |
-| 11 | **5.3** | `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:27-101` | Tableau de données implémenté en `<div>` CSS Grid (pas de `<table>`) |
-| 12 | **13.8** | Tous les `.module.scss` + transitions D3 | Aucune animation ne respecte `prefers-reduced-motion` |
+| #   | Critère  | Localisation                                                                                                | Problème                                                                                             |
+| --- | -------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 1   | **9.1**  | `src/design-system/base/Textes.tsx`                                                                         | `<Body>` rend systématiquement un `<div>` → HTML invalide dans `<li><Body>` partout dans le parcours |
+| 2   | **7.1**  | `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:74`                                      | Accordéon `<div onClick>` non focusable, sans `aria-expanded`                                        |
+| 3   | **7.1**  | `src/app/(main)/(parcours)/patch4c/circleVisualization.tsx:60`                                              | Items cliquables `<div>` sans rôle, focus, ni clavier                                                |
+| 4   | **7.1**  | `src/app/(main)/(parcours)/patch4c/components/blocAleas.tsx:113`                                            | Tabs sans `role="tablist/tab/tabpanel"` ni navigation flèches                                        |
+| 5   | **7.1**  | `src/components/utils/Tooltips.tsx:100`, `src/app/(main)/(parcours)/patch4c/cursorVisualization.tsx:24`     | Tooltips MUI sur `<div>`/`<img>` non focusables → contenu inaccessible au clavier                    |
+| 6   | **1.1**  | `src/app/(main)/(parcours)/donnees/indicateurs/agriculture/2-TypesDeCultures.tsx:52`                        | `ariaLabel=""` sur MicroPieChart                                                                     |
+| 7   | **1.2**  | `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:124`                                     | Formule mathématique informative avec `alt=""`                                                       |
+| 8   | **8.5**  | `src/app/(main)/(parcours)/donnees/indicateurs/foret/1-HauteurCanopee.tsx:40-51`, `2-LineaireDeHaie.tsx:35` | Contenu placeholder `TEST`, `COUCOU` rendu en production                                             |
+| 9   | **10.7** | `src/design-system/base/Boutons.tsx:83,199`, `src/components/searchbar/BarreDeRecherche.tsx:129`            | `outline:none` au focus sans alternative `:focus-visible` CSS                                        |
+| 10  | **12.7** | Toutes les pages parcours                                                                                   | Absence de fil d'Ariane (`Breadcrumb`)                                                               |
+| 11  | **5.3**  | `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:27-101`                                      | Tableau de données implémenté en `<div>` CSS Grid (pas de `<table>`)                                 |
+| 12  | **13.8** | Tous les `.module.scss` + transitions D3                                                                    | Aucune animation ne respecte `prefers-reduced-motion`                                                |
 
 ---
 
@@ -149,6 +198,7 @@ Composants `MicroNumberCircle`, `MicroCube`, `MicroPieChart`, `MicroRemplissageT
 - `src/app/(main)/(parcours)/impacts/thematiques/ImpactsConfortThermique.tsx:65`
 
 Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de description) :
+
 - `src/app/(main)/(parcours)/donnees/indicateurs/agriculture/2-TypesDeCultures.tsx:52`
 
 #### 1.2 Images informatives avec `alt=""`
@@ -233,14 +283,14 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 
 - `src/app/layout.tsx:16` — `title=""` invalide sur `<html>`
 - Pages sans `metadata.title` dédié :
-  - `src/app/(main)/(parcours)/donnees/page.tsx`
-  - `src/app/(main)/(parcours)/impacts/page.tsx`
-  - `src/app/(main)/(parcours)/thematiques/page.tsx`
-  - `src/app/(main)/(parcours)/recherche-territoire/page.tsx`
-  - `src/app/(main)/(parcours)/recherche-territoire-patch4/page.tsx`
+    - `src/app/(main)/(parcours)/donnees/page.tsx`
+    - `src/app/(main)/(parcours)/impacts/page.tsx`
+    - `src/app/(main)/(parcours)/thematiques/page.tsx`
+    - `src/app/(main)/(parcours)/recherche-territoire/page.tsx`
+    - `src/app/(main)/(parcours)/recherche-territoire-patch4/page.tsx`
 - Contenu placeholder en production :
-  - `src/app/(main)/(parcours)/donnees/indicateurs/foret/1-HauteurCanopee.tsx:40-51` — `<p>TEST</p>`, `<div>COUCOU</div>`
-  - `src/app/(main)/(parcours)/donnees/indicateurs/foret/2-LineaireDeHaie.tsx:35` — texte brut `Linéraire de haie texte`
+    - `src/app/(main)/(parcours)/donnees/indicateurs/foret/1-HauteurCanopee.tsx:40-51` — `<p>TEST</p>`, `<div>COUCOU</div>`
+    - `src/app/(main)/(parcours)/donnees/indicateurs/foret/2-LineaireDeHaie.tsx:35` — texte brut `Linéraire de haie texte`
 
 ---
 
@@ -258,11 +308,11 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 - `src/design-system/base/Boutons.tsx:83,199,297,351` — `outline:none` au focus sans `:focus-visible` CSS natif
 - `src/components/searchbar/BarreDeRecherche.tsx:129,153` — idem sur l'input de recherche
 - Tailles texte en `px` non redimensionnables :
-  - `src/design-system/base/Textes.tsx:181` — `12px` (xs), `14px` (sm)
-  - `src/design-system/base/Boutons.tsx:42` — idem
-  - `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:13` — `fontSize:22`
-  - `src/app/(main)/(parcours)/patch4c/components/analyseSensibilite.tsx:61` — `fontSize:22`
-  - `src/app/(main)/(parcours)/impacts/components/associerLesActeurs.tsx:17` — `fontSize:22`
+    - `src/design-system/base/Textes.tsx:181` — `12px` (xs), `14px` (sm)
+    - `src/design-system/base/Boutons.tsx:42` — idem
+    - `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:13` — `fontSize:22`
+    - `src/app/(main)/(parcours)/patch4c/components/analyseSensibilite.tsx:61` — `fontSize:22`
+    - `src/app/(main)/(parcours)/impacts/components/associerLesActeurs.tsx:17` — `fontSize:22`
 - `src/app/(main)/(parcours)/thematiques/page.tsx:18-27` — scrollbar globalement masquée
 
 ---
@@ -300,57 +350,9 @@ Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de descript
 
 ---
 
-## Plan de correction priorisé
-
-### Lot 1 — Quick wins (1-2 jours)
-
-- [ ] ⏭️ Supprimer le contenu placeholder `TEST`/`COUCOU`/`Linéraire de haie texte` dans les indicateurs `foret/` *(reporté : indicateurs en cours de dev)*
-- [ ] Ajouter `ariaLabel` sur tous les composants `Micro*` (~12 fichiers)
-- [x] Corriger `ariaLabel=""` dans `2-TypesDeCultures.tsx:52`
-- [ ] Ajouter `<span className="sr-only"> (nouvelle fenêtre)</span>` sur les 5 liens `target="_blank"`
-- [ ] Ajouter `aria-label="Fermer le panneau"` sur le bouton `×` de `panneauLateral.tsx:63`
-- [x] Renseigner `alt` correct sur `patch4Formula` (formule informative)
-- [ ] Supprimer `title=""` invalide sur `<html>` dans `src/app/layout.tsx:16`
-- [ ] Ajouter `metadata.title` dédié sur chaque page parcours
-
-### Lot 2 — Refactor design system (3-5 jours)
-
-- [x] Modifier `<Body>` (`src/design-system/base/Textes.tsx`) pour accepter `htmlTag` (par défaut `'p'`)
-- [x] Remplacer `outline: none` JS par CSS `:focus-visible` natif dans `Boutons.tsx` et `BarreDeRecherche.tsx`
-- [ ] Convertir les `12px`/`14px`/`fontSize:22` en `rem`
-- [ ] Ajouter une feuille de style globale respectant `@media (prefers-reduced-motion: reduce)`
-- [ ] Conditionner les transitions D3 (`roue.tsx`) via `window.matchMedia('(prefers-reduced-motion: reduce)')`
-
-### Lot 3 — Composants interactifs critiques (5-7 jours)
-
-- [x] Refactorer l'accordéon `aleaExplications.tsx` en `<button aria-expanded>`
-- [x] Refactorer `circleVisualization.tsx` items en `<button>` avec `aria-pressed`
-- [x] Refactorer `blocAleas.tsx` en pattern ARIA tabs complet (tablist/tab/tabpanel/flèches/Home/End)
-- [x] Refactorer `Tooltips.tsx` pour ne wrapper que des éléments focusables (`<button>` par défaut)
-- [x] Ajouter `aria-expanded`/`aria-controls` sur les accordéons `MenuLateral.tsx`
-- [x] Ajouter `aria-current="page"` sur l'item actif du `MenuLateral.tsx`
-- [ ] Gérer le retour de focus après re-render SVG dans `roue.tsx`
-- [ ] Convertir `blocConseils.tsx` en `<table>` sémantique
-
-### Lot 4 — Navigation et structure (2-3 jours)
-
-- [ ] ⚠️ ~~Ajouter un `<Breadcrumb>` DSFR sur chaque page du parcours~~ *(hors design — substitué par `aria-current` sur MenuLateral, fait dans Lot 3)*
-- [ ] Réorganiser le DOM pour que le contenu principal précède le `MenuLateral` fixe (ou ajouter un second skip link `#contenu-thematique`)
-- [ ] Ajouter un `role="img"` + `<title>` sur le SVG racine de la roue D3
-- [ ] Ajouter une alternative textuelle aux cartes `Patch4Maps`
-- [ ] Indiquer le format dans les libellés des boutons d'export (`.xlsx`, `.png`)
-
-### Lot 5 — Audit professionnel final (5-10 j·h externe)
-
-- [ ] Faire valider par un cabinet certifié RGAA
-- [ ] Publier la déclaration d'accessibilité officielle
-- [ ] Mettre en place un suivi récurrent
-
----
-
 ## Tests manuels
 
-Représentent ~50 % de l'audit RGAA — non couverts par les outils automatiques.
+Non couverts par les outils automatiques.
 
 ### Validateurs
 

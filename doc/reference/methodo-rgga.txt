@@ -1,0 +1,14 @@
+7.1
+Chaque script(ouvre dans une nouvelle fenêtre) est-il, si nécessaire, compatible avec les technologies d’assistance(ouvre dans une nouvelle fenêtre) ?
+Tests et références du critère 7.1
+7.2
+Pour chaque script(ouvre dans une nouvelle fenêtre) ayant une alternative(ouvre dans une nouvelle fenêtre), cette alternative est-elle pertinente ?
+Tests et références du critère 7.2
+7.3
+Chaque script(ouvre dans une nouvelle fenêtre) est-il contrôlable par le clavier et par tout dispositif de pointage(ouvre dans une nouvelle fenêtre) (hors cas particuliers) ?
+Tests et références du critère 7.3
+7.4
+Pour chaque script(ouvre dans une nouvelle fenêtre) qui initie un changement de contexte(ouvre dans une nouvelle fenêtre), l’utilisateur est-il averti ou en a-t-il le contrôle ?
+Tests et références du critère 7.4
+7.5
+Dans chaque page web, les messages de statut(ouvre dans une nouvelle fenêtre) sont-ils correctement restitués par les technologies d’assistance ?

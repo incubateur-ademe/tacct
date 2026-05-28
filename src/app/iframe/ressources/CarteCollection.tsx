@@ -20,7 +20,7 @@ export const CarteCollection = ({
   };
   const nombreressources = toutesLesRessources.filter(ressource => ressource.collections.includes(texte)).length;
   return (
-    <div className={styles.carteCollectionWrapper} tabIndex={0} onClick={onClick}>
+    <div className={styles.carteCollectionWrapper} role="link" tabIndex={0} onClick={onClick}>
       <div className={styles.content} >
         <Image src={image} alt={`icone carte ${texte}`} className={styles.carteCollectionImage} />
         <p>{texte}</p>
