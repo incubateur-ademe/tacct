@@ -25,10 +25,10 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
   const { code, libelle, type, thematique } = await props.searchParams;
   const dbTableCommune = await GetTablecommune(code, libelle, type);
   return (
-    <>
+    <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
       {
         ((code || libelle) && type) &&
-        <Suspense fallback={<LoaderText text='Nous chargeons vos données' />}>
+        <>
           {
             type === "pnr" &&
             <DisclaimerPNR />
@@ -50,9 +50,9 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
           ) : thematique === "Forêts" ? (
             <ForetServerPage searchParams={props.searchParams} />
           ) : ""}
-        </Suspense>
+        </>
       }
-    </>
+    </Suspense>
   );
 };
 
