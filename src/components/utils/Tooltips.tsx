@@ -1,14 +1,13 @@
 "use client";
 import CalculatorIcon from '@/assets/icons/calculator_icon_blue.svg';
 import CalculatorIconGreen from '@/assets/icons/calculator_icon_green.svg';
-import InfoIconBlack from '@/assets/icons/info_icon_black.svg';
-import InfoIcon from '@/assets/icons/info_icon_lightblue.svg';
 import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { Any } from '@/lib/utils/types';
 import { styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
 import Image from 'next/image';
 import { ReactElement, ReactNode, useState } from 'react';
+import styles from './Tooltips.module.scss';
 
 interface Props {
   title: React.ReactNode;
@@ -98,22 +97,23 @@ export const CustomTooltip = ({
 }: Props) => {
   return (
     <HtmlTooltip title={title}>
-      <div
+      <button
+        type="button"
+        className={styles.tooltipTrigger}
         style={{
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           gap: '4px',
           width: 'fit-content',
-          cursor: 'pointer',
           margin: '1em 0 0'
         }}
       >
         <Image src={CalculatorIcon} alt="" />
-        <p style={{ color: '#0063CB', margin: '0' }}>
-          <b>{texte}</b>
-        </p>
-      </div>
+        <span style={{ color: '#0063CB', margin: '0', fontWeight: 'bold' }}>
+          {texte}
+        </span>
+      </button>
     </HtmlTooltip>
   );
 };
@@ -125,22 +125,23 @@ export const CustomTooltipNouveauParcours = ({
 }: Props) => {
   return (
     <HtmlTooltip title={title}>
-      <div
+      <button
+        type="button"
+        className={styles.tooltipTrigger}
         style={{
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
           gap: '4px',
           width: 'fit-content',
-          cursor: 'pointer',
           margin: '0.5em 0 0'
         }}
       >
         <Image src={CalculatorIconGreen} alt="" />
-        <Body weight='bold' style={{ color: couleurs.principales.vert }}>
+        <Body htmlTag="span" weight='bold' style={{ color: couleurs.principales.vert }}>
           {texte}
         </Body>
-      </div>
+      </button>
     </HtmlTooltip>
   );
 };
@@ -154,7 +155,7 @@ export const DefinitionTooltip = ({
 }) => {
   return (
     <HtmlTooltip title={title} placement="top" fontWeight={400}>
-      <span style={{ borderBottom: '1px dashed #0063CB', cursor: 'help' }}>
+      <span tabIndex={0} style={{ borderBottom: '1px dashed #0063CB', cursor: 'help' }}>
         {children}
       </span>
     </HtmlTooltip>
@@ -193,58 +194,5 @@ export const HtmlTooltipMousePosition = ({
     >
       {children}
     </HtmlTooltip>
-  );
-};
-
-export const TabTooltip = ({ tooltip, titre, selectedTab }: TabTooltipProps) => {
-  const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
-  ))(({ theme }) => ({
-    [`& .${tooltipClasses.tooltip}`]: {
-      backgroundColor: 'white',
-      color: 'rgba(0, 0, 0, 0.87)',
-      fontSize: theme.typography.pxToRem(16),
-      boxShadow: '0px 4px 12px 0px #00001229',
-      padding: '1em'
-    }
-  }));
-  return (
-    <>
-      {selectedTab === titre ? (
-        <HtmlTooltip title={tooltip}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '4px',
-              width: 'fit-content',
-              cursor: 'pointer'
-            }}
-          >
-            <p style={{ color: '#0063CB', margin: '0' }}>
-              <b>{titre}</b>
-            </p>
-            <Image src={InfoIcon} alt="" />
-          </div>
-        </HtmlTooltip>
-      ) : (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: '4px',
-            width: 'fit-content',
-            cursor: 'pointer'
-          }}
-        >
-          <p style={{ color: '#3A3A3A', margin: '0' }}>
-            <b>{titre}</b>
-          </p>
-          <Image src={InfoIconBlack} alt="" />
-        </div>
-      )}
-    </>
   );
 };
