@@ -95,6 +95,14 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
             title={moustiqueTigreTooltipText}
             texte="D'où vient ce chiffre ?"
           />
+          <a
+            className="fr-sr-only"
+            href="https://sante.gouv.fr/sante-et-environnement/risques-microbiologiques-physiques-et-chimiques/especes-nuisibles-et-parasites/article/cartes-de-presence-du-moustique-tigre-aedes-albopictus-en-france-metropolitaine"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consulter les cartes du ministère de la Santé (nouvelle fenêtre)
+          </a>
           <ReadMoreFade maxHeight={100}>
             <MoustiqueTigreText />
           </ReadMoreFade>

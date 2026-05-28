@@ -137,6 +137,14 @@ export const AiresAppellationsControlees = (props: {
                     title={airesAppellationsControleesTooltipText}
                     texte="Définition"
                   />
+                  <a
+                      className="fr-sr-only"
+                      href="https://agriculture.gouv.fr/bien-connaitre-les-produits-de-lorigine-et-de-la-qualite"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Consulter la page sur les signes d&apos;identification de qualité et d&apos;origine sur agriculture.gouv.fr (nouvelle fenêtre)
+                    </a>
                 </div>
               </>
             ) : (

@@ -47,6 +47,14 @@ export const LCZ = ({
         <ReadMoreFade maxHeight={350}>
           {isLczCovered ? <LCZCeremaText1 /> : <LCZText2 />}
           <CustomTooltipNouveauParcours title={LCZTooltipText} texte='Que sont les LCZ ?' />
+          <a
+            className="fr-sr-only"
+            href="https://journals.ametsoc.org/view/journals/bams/93/12/bams-d-11-00019.1.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consulter l&apos;article de Stewart et Oke (2012) sur la typologie LCZ (nouvelle fenêtre)
+          </a>
           <LCZText />
         </ReadMoreFade>
         <div className={styles.mapWrapper}>

@@ -1,27 +1,16 @@
+
 # Audit RGAA — Parcours Facili-TACCT
 
-**Date :** 2026-04-28
+**Date de mise à jour :** 2026-05-06
 **Périmètre :** `src/app/(main)/(parcours)` et composants exploités
-**Référentiel :** RGAA 4.1 (Référentiel Général d'Amélioration de l'Accessibilité)
+**Référentiel :** RGAA 4.1.2 (Référentiel Général d'Amélioration de l'Accessibilité)
 **Méthode prévue :** ARA (Accessibility Reporting Assistant — DINUM)
-
----
-
-## Sommaire
-
-1. [Avancement des corrections](#avancement-des-corrections)
-2. [Synthèse — Top 12 des points bloquants](#synthèse--top-12-des-points-bloquants)
-3. [Détail par critère RGAA](#détail-par-critère-rgaa)
-4. [Plan de correction priorisé](#plan-de-correction-priorisé)
-5. [Outils pour réaliser l'audit](#outils-pour-réaliser-laudit)
-6. [Tests manuels indispensables](#tests-manuels-indispensables)
-7. [Documentation de référence](#documentation-de-référence)
 
 ---
 
 ## Avancement des corrections
 
-Dernière mise à jour : 2026-04-28.
+Dernière mise à jour : 2026-05-06.
 
 | #   | Statut       | Date       | Notes                                                                                                                   |
 | --- | ------------ | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -135,7 +124,6 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 | 5.7.3 → 5.7.4 | ✅ N/A      | 2026-04-29 | Pas d'en-têtes partiels ; association via `scope` (pas via `id`/`headers`)                   |
 | 5.8.1         | ✅ N/A      | 2026-04-29 | Aucun tableau de mise en forme                                                               |
 
-> **Test manuel à prévoir :** `.tableauRow { display: grid }` appliqué aux `<tr>` (`patch4c.module.scss`) — vérifier que NVDA+Firefox restitue bien la structure de tableau.
 
 ### Corrections complémentaires (audit ARA — critère 6)
 
@@ -236,6 +224,57 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 
 > **NC résiduelle 11.1.1 / 11.1.3 — `SelectTypeTerritoire`** (`src/components/searchbar/header/SelectTypeTerritoire.tsx`) : La correction canonique (`<FormControl>` + `<InputLabel className="fr-sr-only">`) a été testée et produit une régression visuelle — le Select perd son sizing automatique basé sur le contenu, entraînant une troncature du texte. Correction sans régression impossible sans refonte du composant header. Mitigation en place : `inputProps['aria-label']` sur l'input caché, partiellement lu par certains AT. Impact utilisateur : modéré — le Select reste utilisable mais son rôle n'est pas annoncé explicitement.
 
+### Corrections complémentaires (audit ARA — critère 12, sous-critères 12.1 → 12.6)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 12.1.1 — Deux systèmes de navigation | ✅ Corrigé | 2026-05-06 | Création de la page `/plan-du-site` (`src/app/(main)/plan-du-site/page.tsx`) listant la totalité des pages du site avec hiérarchie. Combiné au menu de navigation principal (DSFR `<nav role="navigation" aria-label="Menu principal">` dans le Header), satisfait le 12.1 : 2 systèmes = menu de navigation + plan du site. NB : la recherche par territoire n'a **pas** été retenue comme « moteur de recherche » au sens RGAA car elle alimente le contenu dynamique des pages plutôt que de rechercher dans le contenu du site. |
+| 12.2.1 — Menu et barres à la même place | ✅ Conforme | 2026-05-06 | Header DSFR + nav principale toujours en haut via `(main)/layout.tsx`. `MenuLateral` toujours à gauche sur les pages où il existe (`/donnees`, `/impacts`). `HeaderRechercheTerritoire` toujours dans `fr-header__tools`. Apparition/disparition de la barre de recherche header conditionnée à la sélection d'un territoire = cas particulier RGAA admis (« changement initié par l'utilisateur »). Masquage en mobile (< 992px) idem (responsive). |
+| 12.3.1 → 12.3.3 — Plan du site pertinent et fonctionnel | ✅ Conforme | 2026-05-06 | Page `/plan-du-site` représentative de l'architecture (2 sections : Pages principales + Informations légales et accessibilité), liens fonctionnels, intitulés concordant avec les pages cibles. Pages dépendantes du moteur de recherche (`/thematiques`, `/donnees`, `/impacts`, `/patch4c`) signalées avec mention « territoire requis » sans lien direct (suivre le lien « Rechercher mon territoire » au-dessus). |
+| 12.4.1 → 12.4.3 — Plan du site accessible identiquement | ✅ Conforme | 2026-05-06 | Lien « Plan du site » ajouté dans le footer DSFR (`src/design-system/layout/Footer.tsx`) entre « Accessibilité » et « Mentions légales ». Footer rendu identiquement sur toutes les pages `(main)` via `(main)/layout.tsx` → fonctionnalité, place et ordre source identiques partout. |
+| 12.5.1 → 12.5.3 — Moteur de recherche atteignable identiquement | ✅ N/A | 2026-05-06 | Pas de moteur de recherche au sens RGAA (recherche dans le contenu du site). La recherche par territoire est un sélecteur de paramètre qui alimente les pages `/donnees`/`/impacts`/`/patch4c`, non un moteur de recherche de contenus. |
+| 12.6.1 — Zones de regroupement (landmarks) | ✅ Conforme | 2026-05-06 | Toutes les zones répétées disposent d'un landmark ARIA : `<header role="banner">` (DSFR Header), `<nav role="navigation" aria-label="Menu principal">` (DSFR MainNavigation), `<main id="contenu">` (rôle implicite dans `(main)/layout.tsx`), `<footer role="contentinfo" id="footer">` (`Footer.tsx`). `MenuLateral` = 2ᵉ `<nav aria-label="Navigation dans la page">` sur `/donnees` et `/impacts` (label distinct du nav principal). |
+
+> **Note 12.5 — Justification N/A** : TACCT ne propose pas de moteur de recherche de contenus textuels (articles, pages). Le composant `HeaderRechercheTerritoire` permet de sélectionner un territoire, ce qui alimente dynamiquement le contenu des pages parcours mais ne constitue pas un moteur de recherche au sens du glossaire RGAA. La conformité 12.1 est donc satisfaite par la combinaison **menu de navigation** + **plan du site** (et non menu + recherche).
+>
+> **Périmètre `/iframe`** : les critères 12.1 → 12.6 sont **N/A** pour le périmètre iframe — les pages iframe sont des embeds destinés à être intégrés dans des sites tiers (la navigation, le header et le footer sont portés par le site hôte). Le `(iframe)/layout.tsx` ne contient qu'un `<main>{children}</main>` ; le `MenuLateral` rendu dans `iframe/donnees` et `iframe/impacts` reste un `<nav>` correctement étiqueté.
+
+### Corrections complémentaires (audit ARA — critère 12, sous-critères 12.7 → 12.11)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 12.7.1 → 12.7.2 — Lien d'évitement vers le contenu principal | ✅ Corrigé | 2026-05-06 | DSFR `<SkipLinks>` dans `(main)/layout.tsx` avec deux cibles : `#contenu` (`<main>`) et `#footer`. Place identique (premier élément du layout, avant le Header), ordre source identique, visible à la prise de focus (CSS DSFR). **Correctif appliqué** : ajout de `tabIndex={-1}` sur `<main id="contenu">` (`(main)/layout.tsx:39`) et sur `<footer id="footer">` (`Footer.tsx:11`) — garantit que l'activation du lien déplace effectivement le focus sur la cible (technique WCAG G1, sans quoi le comportement varie selon le navigateur). Périmètre `/iframe` : ✅ N/A (cas particulier — `(iframe)/layout.tsx` ne contient qu'un `<main>`, pas de zones header/nav/footer à éviter). |
+| 12.8.1 — Ordre de tabulation cohérent dans le contenu | ✅ Conforme | 2026-05-06 | Analyse statique : DOM = SkipLinks → Header (brand, nav, recherche) → Main (avec `MenuLateral` à gauche puis contenu à droite) → Footer. Ordre DOM = ordre visuel (top→bottom, left→right). `MenuLateral` en `position: fixed; left: 0` (`components.module.scss:286-290`) — visuellement à gauche, dans le DOM avant le contenu → tab order cohérent. |
+| 12.8.2 — Ordre de tabulation après mise à jour scriptée | ✅ Conforme | 2026-05-06 | Tabs (`blocAleas`) : roving tabindex correct (corrigé en Top 12 #4). Accordéons (`aleaExplications`) : `aria-expanded` correct (Top 12 #2). Roue D3 : focus management corrigé (Top 12 #4). MUI Autocomplete (`SelectTypeTerritoire`, `rechercheInput`) : Tab/Escape natifs. Aucun `event.preventDefault()` détecté sur la touche Tab dans `src/`. |
+| 12.9.1 — Pas de piège au clavier | ✅ Conforme | 2026-05-06 | Aucun composant modal bloquant focus dans le périmètre. Le `CookieBanner` est un bandeau non modal en bas de page. MUI Tooltip / Autocomplete / Select : pas de trap (Tab et Escape fonctionnent nativement). Roue D3 : Tab échappe correctement. |
+| 12.10.1 — Raccourcis clavier mono-touche | ✅ N/A | 2026-05-06 | Aucun raccourci clavier global dans l'app (recherche `document.addEventListener.*key` → 0 résultat dans `src/`). Tous les `onKeyDown` sont scopés à des composants focusables (roue D3, tabs, MUI Autocomplete) et utilisent des touches non concernées par 12.10 (flèches, Home, End, Enter, Espace, Échap) ou requièrent que le focus soit sur le composant — cas particulier admis. |
+| 12.11.1 — Contenus additionnels atteignables au clavier | ✅ Corrigé | 2026-05-06 | 6 tooltips MUI (`CustomTooltipNouveauParcours`) contenaient un `<a>` lien externe inaccessible au clavier (le contenu d'un MUI Tooltip est rendu dans un Popper portail hors du flux focusable du document). **Correctif appliqué (pattern « lien sr-only adjacent »)** : ajout d'un `<a className="fr-sr-only">` immédiatement après chaque `<CustomTooltipNouveauParcours>` concerné, pointant sur la même URL externe avec un libellé explicite suffixé « (nouvelle fenêtre) ». Zéro régression visuelle (le lien original reste à l'intérieur de la tooltip pour les utilisateurs souris) ; le clavier atteint le lien dupliqué via Tab après le bouton tooltip ; les lecteurs d'écran l'annoncent. Détail des 5 emplacements ci-dessous. |
+
+> **Pattern 12.11 — lien sr-only adjacent** : la tooltip MUI reste **strictement intacte** (le `<a>` interne dans `tooltipTexts.tsx` n'est pas modifié — utilisateurs souris voient et cliquent toujours le lien dans la tooltip). Le lien dupliqué `fr-sr-only` ajouté dans la page rend le lien atteignable au clavier sans aucun changement visuel. Trade-off accepté : les utilisateurs de lecteurs d'écran entendent le texte du lien deux fois (dans la description de la tooltip via `aria-describedby` MUI, puis comme lien standalone tabulable).
+
+### Corrections complémentaires (audit ARA — critère 13)
+
+| Test ARA | Statut | Date | Notes |
+| -------- | ------ | ---- | ----- |
+| 13.1.1 — Procédé de rafraîchissement | ✅ N/A | 2026-05-06 | Aucun procédé de rafraîchissement automatique du contenu (pas de `<meta http-equiv="refresh">`, pas de `<object>` / `<embed>` rafraîchi, iframes Metabase sur `/statistiques` ne se rafraîchissent pas depuis notre code). Le `setInterval` dans `loader.tsx:58` anime les "..." du loader, ne modifie pas le contenu. |
+| 13.1.2 — Redirection `<meta>` | ✅ N/A | 2026-05-06 | 0 résultat sur `http-equiv="refresh"` dans `src/`. |
+| 13.1.3 — Redirection scriptée | ✅ Conforme | 2026-05-06 | Tous les `router.replace()` (`recherche-territoire/page.tsx:27`, `recherche-territoire-patch4/page.tsx:24`, `searchbar/fonctions.ts`) sont **immédiats** (pas de timer), basés sur l'état localStorage. Pas une « limite de temps » au sens RGAA. |
+| 13.1.4 — Limite de session | ✅ N/A | 2026-05-06 | Pas de session serveur ni de timeout côté client (PostHog + cookie consent en localStorage uniquement). |
+| 13.2.1 — Ouverture de nouvelle fenêtre sans action utilisateur | ✅ Conforme | 2026-05-06 | Tous les `window.open()` détectés sont déclenchés par un `onClick` utilisateur (`analyseSensibilite.tsx:52` via onClick ligne 196 ; `Boutons.tsx:62,178,247` dans handlers de boutons). Tous les `<a target="_blank">` requièrent un clic. Aucune ouverture automatique. |
+| 13.3.1 — Documents bureautiques accessibles | ✅ Conforme | 2026-05-06 | Exports XLSX (`ExportButton.tsx`) : ✅ les données exportées sont également visibles en HTML sur la page (graphiques Nivo, parfois tableaux) → condition 3 du test (« version alternative au format HTML compatible avec l'accessibilité »). Exports PNG (`ExportPng.tsx`) : hors scope (PNG = image, pas un document bureautique au sens RGAA). PDF externe précédemment présent dans `iframe/impacts/.../ImpactsConfortThermique.tsx` (brochure Fondation Pour le Logement) : **supprimé**, remplacé par un `ScrollToSourceTag` interne pointant vers la section sources de la page. |
+| 13.4.1 — Même information dans la version accessible | ✅ Conforme | 2026-05-06 | Pour les XLSX, la version HTML (graphiques + textes) couvre les mêmes données que l'export. |
+| 13.5.1 — Alternatives aux contenus cryptiques (émojis) | ✅ Conforme | 2026-05-06 | Émojis présents dans le périmètre : icônes de thématiques (`textesThematiques.tsx`, `categories.ts`, `MenuLateral.tsx`, `DonneesGestionRisques.tsx`), avertissement (`4-RetraitGonflementDesArgiles.tsx:87` : `⚠️ Ces chiffres reposent sur l'ancien zonage RGA…`), conclusions BD (`iframe/.../ImpactsConfortThermique.tsx:47,67` : `➡️ Vulnérabilité théorique…`). Pour tous ces cas, l'émoji est immédiatement suivi du texte qui en porte la signification → condition 2 du test (« définition donnée par le contexte adjacent »). |
+| 13.6.1 — Pertinence des alternatives | ✅ Conforme | 2026-05-06 | La définition contextuelle adjacente est pertinente dans tous les cas (ex. `🏗️ Aménagement` → le mot "Aménagement" décrit exactement la thématique). |
+| 13.7.1 → 13.7.3 — Flash / changement brusque de luminosité | ✅ Conforme | 2026-05-06 | Aucune animation à effet de flash. Inventaire `@keyframes` : `spin` (loaders, 1s linéaire — rotation continue sans variation de luminosité), `shake-collapsed` / `shake-expanded` (hover toggle MenuLateral — translation horizontale). Aucun `<canvas>` / `<video>` / SVG avec contenu strobe. Transitions D3 utilisent des courbes fluides sans clignotement. |
+| 13.8.1 → 13.8.2 — Mouvement / clignotement contrôlable | ✅ Conforme | 2026-04-28 | Déjà acté Top 12 #12 : override global `prefers-reduced-motion` dans `global.css:130-135` + check explicite `matchMedia` dans `roue.tsx:127`. Animations `spin` bornées par durée de chargement, désactivables. `shake` déclenchée au `:hover` (non automatique). Transitions D3 déclenchées par interaction utilisateur (non automatique). |
+| 13.9.1 — Orientation écran | ✅ Conforme | 2026-05-06 | Aucune `@media (orientation: ...)` ni `screen.orientation.lock()` dans le code. App responsive sur la **largeur** (breakpoint 992px notamment), pas sur l'orientation. Contenu strictement identique en portrait et en paysage — seule la largeur disponible change. |
+| 13.10.1 → 13.10.2 — Gestes complexes (multipoint / trajectoire) | ✅ Conforme | 2026-05-06 | **Pinch-zoom sur les cartes** (MapLibre/Leaflet) — geste multipoint, alternative en un point : boutons natifs MapLibre `+` / `−` toujours visibles. **Pan/drag sur les cartes** — geste à un point unique. **Drag sur le `SliderAnnees`** — geste à un point ; alternative `onClick` sur la piste (`SliderAnnees.tsx:62`) déclenche aussi la sélection au clic simple. |
+| 13.11.1 — Annulation des actions de pointage | ✅ Conforme | 2026-05-06 | Un seul `onMouseDown` actif (`SliderAnnees.tsx:78`) — sélection au mousedown puis drag. Cas particulier RGAA admis (« lorsque la fonctionnalité nécessite que le comportement attendu soit réalisé lors d'un événement descendant » — pattern slider standard). Toutes les autres actions du périmètre utilisent le comportement standard du navigateur (action au mouseup, annulable en sortant de la zone avant relâchement). |
+| 13.12.1 → 13.12.3 — Mouvement de l'appareil | ✅ N/A | 2026-05-06 | 0 résultat sur `deviceorientation`, `devicemotion`, `DeviceMotionEvent` dans `src/`. Aucune fonctionnalité ne dépend de la rotation, du shake ou de l'inclinaison de l'appareil. |
+
+> **Note 13.5/13.6 — Bonne pratique non bloquante** : les émojis seraient gagnants à être enveloppés dans un `<span aria-hidden="true">` pour éviter la double lecture par les lecteurs d'écran (qui lisent par défaut le nom Unicode, ex. « construction » + « Aménagement »). 
+> À prévoir
+
 | #   | Critère  | Localisation                                                                                                | Problème                                                                                             |
 | --- | -------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | 1   | **9.1**  | `src/design-system/base/Textes.tsx`                                                                         | `<Body>` rend systématiquement un `<div>` → HTML invalide dans `<li><Body>` partout dans le parcours |
@@ -253,194 +292,12 @@ Le critère 1.6 exige qu'une description détaillée soit disponible pour chaque
 
 ---
 
-## Détail par critère RGAA
-
-### Critère 1 — Images
-
-#### 1.1 Micro-visualisations sans `ariaLabel`
-
-Composants `MicroNumberCircle`, `MicroCube`, `MicroPieChart`, `MicroRemplissageTerritoire`, `MicroCircleGridMois` utilisés sans prop `ariaLabel` :
-
-- `src/app/(main)/(parcours)/donnees/indicateurs/amenagement/1-ConsommationEspacesNAF.tsx:43`
-- `src/app/(main)/(parcours)/donnees/indicateurs/biodiversite/2-SolsImpermeabilises.tsx:54`
-- `src/app/(main)/(parcours)/donnees/indicateurs/biodiversite/6-AOT40.tsx:76`
-- `src/app/(main)/(parcours)/donnees/indicateurs/eau/2-PrelevementsEnEau.tsx:178`
-- `src/app/(main)/(parcours)/donnees/indicateurs/gestionDesRisques/1-ArretesCatnat.tsx:127`
-- `src/app/(main)/(parcours)/donnees/indicateurs/gestionDesRisques/2-FeuxDeForet.tsx:41`
-- `src/app/(main)/(parcours)/donnees/indicateurs/gestionDesRisques/6-Secheresses.tsx:41`
-- `src/app/(main)/(parcours)/donnees/indicateurs/confortThermique/2-PrecariteEnergetique.tsx:92`
-- `src/app/(main)/(parcours)/donnees/indicateurs/agriculture/5-AiresApellationsControlees.tsx:99`
-- `src/app/(main)/(parcours)/impacts/thematiques/ImpactsAgriculture.tsx:58,96`
-- `src/app/(main)/(parcours)/impacts/thematiques/ImpactsConfortThermique.tsx:65`
-
-Cas particulier — `ariaLabel=""` (chaîne vide, équivalent à pas de description) :
-
-- `src/app/(main)/(parcours)/donnees/indicateurs/agriculture/2-TypesDeCultures.tsx:52`
-
-#### 1.2 Images informatives avec `alt=""`
-
-- `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:124` — formule de calcul `patch4Formula` marquée comme décorative
-- `src/app/(main)/(parcours)/donnees/indicateurs/gestionDesRisques/2-FeuxDeForet.tsx:79-84` — `GraphNotFound` (image de remplacement principale)
-
-#### 1.1 SVG sans `role="img"` ni `<title>`
-
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx` — racine SVG D3
-- `src/app/(main)/(parcours)/patch4c/circleVisualization.tsx`
-- `src/app/(main)/(parcours)/patch4c/cursorVisualization.tsx`
-- `src/design-system/base/BaseIcons.tsx` — `ChevronDownIcon` sans `aria-hidden`
-
-#### 1.1 Cartes sans alternative textuelle
-
-- `src/app/(main)/(parcours)/patch4c/components/Patch4Maps.tsx` — données choroplèthes MapLibre
-
----
-
-### Critère 3 — Couleurs
-
-- `src/app/(main)/(parcours)/patch4c/cursorVisualization.tsx` — barre dégradée blanc→jaune→orange→rouge sans alternative structurée
-- `src/app/(main)/(parcours)/patch4c/components/analyseSensibilite.tsx:85-125` — cercles colorés sans `aria-label` ni `aria-hidden="true"`
-- Variable CSS `--gris-dark` à vérifier (contraste possiblement < 4.5:1 sur `Body size="sm"`)
-
----
-
-### Critère 5 — Tableaux
-
-- `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:27-101` — grille CSS faisant office de tableau de données comparatif (Aggravation forte vs très forte × exposition vs sensibilité) sans `<table>`/`<caption>`/`<th scope>`
-
----
-
-### Critère 6 — Liens
-
-#### 6.5 `target="_blank"` sans avertissement
-
-- `src/app/(main)/(parcours)/patch4c/components/analyseSensibilite.tsx:208`
-- `src/app/(main)/(parcours)/patch4c/indicesDetail.tsx:63`
-- `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:127`
-- `src/app/(main)/(parcours)/donnees/indicateurs/amenagement/2-LCZ.tsx:78`
-- `src/app/(main)/(parcours)/donnees/indicateurs/confortThermique/6-LCZ.tsx:79`
-
-#### 6.1 Lien implémenté en JS au lieu de `<a>`
-
-- `src/app/(main)/(parcours)/impacts/components/ThematiquesLieesNavigation.tsx:181` — navigation via `onClick`+`window.location.href`
-
----
-
-### Critère 7 — Scripts (LE PLUS CRITIQUE)
-
-#### 7.1 / 7.3 Composants interactifs non accessibles au clavier
-
-- `src/app/(main)/(parcours)/patch4c/components/aleaExplications.tsx:74-90` — accordéon `<div onClick>`
-- `src/app/(main)/(parcours)/patch4c/circleVisualization.tsx:60-98` — items `<div>` cliquables
-- `src/app/(main)/(parcours)/thematiques/components/panneauLateral.tsx:63` — bouton fermeture `×` sans `aria-label`
-
-#### 7.1 / 7.2 Tabs sans pattern ARIA
-
-- `src/app/(main)/(parcours)/patch4c/components/blocAleas.tsx:113-155` — manque `role="tablist"`, `role="tab"`, `aria-selected`, `aria-controls`, navigation flèches gauche/droite
-
-#### 7.1 Tooltips non accessibles au clavier
-
-- `src/components/utils/Tooltips.tsx:100-162` — `CustomTooltipNouveauParcours`, `HtmlTooltip`, `DefinitionTooltip` enveloppent des `<div>`/`<span>`/`<img>` non focusables
-- `src/app/(main)/(parcours)/patch4c/cursorVisualization.tsx:24-33` — tooltip sur `<Image>` (non focusable)
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx:553-573` — tooltip sur `<div>` vide
-
-#### 7.1 / 7.2 MenuLateral
-
-- `src/components/ui/MenuLateral.tsx:248-265,323-341` — accordéons sans `aria-expanded`/`aria-controls`
-- `src/components/ui/MenuLateral.tsx:282-292,344-357` — pas d'`aria-current` sur l'item actif
-- `src/components/ui/MenuLateral.tsx:207-222` — `title` HTML au lieu d'`aria-label` ; `alt="Toggle menu"` en anglais
-
-#### 7.1 Roue D3
-
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx` — instrumentation ARIA correcte (role/aria-label/aria-pressed/tabindex/keyDown), mais perte de focus à chaque re-render complet du SVG
-
----
-
-### Critère 8 — Éléments obligatoires
-
-- `src/app/layout.tsx:16` — `title=""` invalide sur `<html>`
-- Pages sans `metadata.title` dédié :
-    - `src/app/(main)/(parcours)/donnees/page.tsx`
-    - `src/app/(main)/(parcours)/impacts/page.tsx`
-    - `src/app/(main)/(parcours)/thematiques/page.tsx`
-    - `src/app/(main)/(parcours)/recherche-territoire/page.tsx`
-    - `src/app/(main)/(parcours)/recherche-territoire-patch4/page.tsx`
-- Contenu placeholder en production :
-    - `src/app/(main)/(parcours)/donnees/indicateurs/foret/1-HauteurCanopee.tsx:40-51` — `<p>TEST</p>`, `<div>COUCOU</div>`
-    - `src/app/(main)/(parcours)/donnees/indicateurs/foret/2-LineaireDeHaie.tsx:35` — texte brut `Linéraire de haie texte`
-
----
-
-### Critère 9 — Structure sémantique
-
-- `src/design-system/base/Textes.tsx:177` — `<Body>` produit des `<div>` au lieu de `<p>` (HTML invalide dans `<li>`)
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx:592` — `<H1>` dans overlay SVG sans H1 page
-- Pas de hiérarchie de titres (h2/h3) dans `BlocAleas`, `AleaExplications`
-- `src/components/ui/MenuLateral.tsx:275,297` — `<SousTitre2>` (`<p>`) utilisé visuellement comme h3
-
----
-
-### Critère 10 — Présentation
-
-- `src/design-system/base/Boutons.tsx:83,199,297,351` — `outline:none` au focus sans `:focus-visible` CSS natif
-- `src/components/searchbar/BarreDeRecherche.tsx:129,153` — idem sur l'input de recherche
-- Tailles texte en `px` non redimensionnables :
-    - `src/design-system/base/Textes.tsx:181` — `12px` (xs), `14px` (sm)
-    - `src/design-system/base/Boutons.tsx:42` — idem
-    - `src/app/(main)/(parcours)/patch4c/components/blocConseils.tsx:13` — `fontSize:22`
-    - `src/app/(main)/(parcours)/patch4c/components/analyseSensibilite.tsx:61` — `fontSize:22`
-    - `src/app/(main)/(parcours)/impacts/components/associerLesActeurs.tsx:17` — `fontSize:22`
-- `src/app/(main)/(parcours)/thematiques/page.tsx:18-27` — scrollbar globalement masquée
-
----
-
-### Critère 11 — Formulaires
-
-- `src/components/searchbar/renderInput.tsx:14` — input recherche sans `<label>` explicite
-- `src/components/searchbar/BarreDeRecherche.tsx:64` — `RadioButtons` désactivés via tooltip CSS pseudo-element non lu par AT
-- `src/app/(main)/(parcours)/patch4c/components/blocAleas.tsx:113` — onglets non ARIA-conformes
-
----
-
-### Critère 12 — Navigation
-
-- **Aucun fil d'Ariane** dans tout le parcours (`Breadcrumb` absent sur toutes les pages)
-- `src/app/(main)/layout.tsx:30-35` — skip link `#contenu` pointe vers `<main>` qui contient d'abord le `<MenuLateral>` fixe (cible inefficace)
-- `src/components/ui/MenuLateral.tsx:282,344` — pas d'`aria-current` sur l'item actif
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx` — pas de fallback `<noscript>` ou liste de liens HTML
-
----
-
-### Critère 13 — Consultation
-
-#### 13.8 `prefers-reduced-motion` non respecté
-
-- `src/app/(main)/(parcours)/thematiques/roue.module.scss:2-7,71`
-- `src/app/(main)/(parcours)/patch4c/patch4c.module.scss:81,123,277,299-313`
-- `src/app/(main)/(parcours)/thematiques/components/roue.tsx:386,397,426,437,587` — transitions D3
-- `src/app/(main)/(parcours)/donnees/layout.tsx:14` — Tailwind `transition-all duration-500`
-
-#### 13.6 Format/taille des exports non indiqués
-
-- `src/components/exports/ExportButton.tsx:106` — bouton "Exporter" sans format (.xlsx)
-- `src/app/(main)/(parcours)/patch4c/Patch4Analyse.tsx:64-71` — bouton ExportPng sans format
-
----
-
-## Tests manuels
-
-Non couverts par les outils automatiques.
-
-### Validateurs
-
-- **W3C HTML Validator** — https://validator.w3.org/ (détecte structures invalides type `<li><div>`)
-
----
-
 ## Documentation de référence
 
-- **RGAA 4.1 officiel** — https://accessibilite.numerique.gouv.fr/
+- **RGAA 4.1.2 officiel** — https://accessibilite.numerique.gouv.fr/
 - **WAI-ARIA Authoring Practices** — https://www.w3.org/WAI/ARIA/apg/ (patterns ARIA officiels : tabs, modales, menus, accordéons, etc.)
 - **DSFR Accessibilité** — https://www.systeme-de-design.gouv.fr/ (composants déjà conformes — à privilégier)
 - **WCAG 2.1** — https://www.w3.org/TR/WCAG21/ (référentiel international, base du RGAA)
+- **Lien du rapport** — https://ara.numerique.gouv.fr/rapport/6ZZBkg91BcH9nw0tj8Sgw/ 
 
 ---

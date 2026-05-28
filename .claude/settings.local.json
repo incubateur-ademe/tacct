@@ -9,7 +9,10 @@
       "Bash(cd:*)",
       "Bash(pwd:*)",
       "Bash(grep:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(rtk grep *)",
+      "Bash(rtk tsc *)",
+      "Bash(rtk lint *)"
     ]
   }
 }
