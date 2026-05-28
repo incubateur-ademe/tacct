@@ -49,6 +49,7 @@ export const Debroussaillement = ({
           <div className={styles.mapWrapper}>
             <Suspense fallback={<Loader />}>
               <MapTiles
+                ariaLabel="Carte des obligations légales de débroussaillement par commune sur votre territoire"
                 coordonneesCommunes={coordonneesCommunes}
                 mapRef={mapRef}
                 mapContainer={mapContainer}

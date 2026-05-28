@@ -6,7 +6,8 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef } from 'react';
-import { EspacesNafTooltip } from './components/tooltips';
+import { EspacesNafTooltip } from './subcomponents/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const getColor = (d: number) => {
   return d > 200000
@@ -261,10 +262,13 @@ export const MapEspacesNaf = (props: {
             overflow: visible !important;
           }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Carte choroplèthe de la consommation d'espaces naturels, agricoles et forestiers (NAF) par commune sur votre territoire entre 2009 et 2023"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
         <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

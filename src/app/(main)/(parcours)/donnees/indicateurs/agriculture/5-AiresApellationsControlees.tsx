@@ -103,13 +103,12 @@ export const AiresAppellationsControlees = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {airesAppellationsControlees && (
-              <MicroNumberCircle
-                valeur={airesAppellationsControlees.length}
-                arrondi={1}
-                unite=""
-              />
-            )}
+            <MicroNumberCircle
+              valeur={airesAppellationsControlees.length}
+              arrondi={1}
+              unite=""
+              ariaLabel="Nombre d'aires d'appellations contrôlées sur votre territoire"
+            />
             {tableCommune !== undefined ? (
               <>
                 <div className={styles.text}>

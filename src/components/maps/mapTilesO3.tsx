@@ -8,6 +8,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { getO3Color, O3Tooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapTilesO3 = (props: {
   coordonneesCommunes: {
@@ -177,7 +178,10 @@ export const MapTilesO3 = (props: {
   }, [coordonneesCommunes]);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte représentant le nombre de jours de dépassement du seuil réglementaire d'ozone (moyenne sur 3 ans) sur votre territoire"
+      style={{ position: 'relative', ...style }}
+    >
       <style jsx global>{`
         @keyframes spin {
           0% {
@@ -212,6 +216,6 @@ export const MapTilesO3 = (props: {
       >
         {legend && legend}
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };

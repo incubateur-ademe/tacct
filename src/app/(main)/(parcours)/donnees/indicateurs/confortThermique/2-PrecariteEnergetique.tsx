@@ -90,6 +90,7 @@ export const PrecariteEnergetique = ({
                 pourcentage={100 * precariteLogTerritoire}
                 territoireContours={territoireContours}
                 arrondi={1}
+                ariaLabel="Pourcentage de logements en précarité énergétique sur votre territoire"
               />
           }
           <div className={styles.text}>

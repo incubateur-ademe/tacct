@@ -122,6 +122,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
                     Présence du moustique tigre
                   </Body>
                   <MapJson
+                    ariaLabel="Carte de France représentant la présence du moustique tigre par département"
                     mapRef={mapRef1}
                     mapContainer={mapContainer1}
                     annee={selectedAnnee}
@@ -162,6 +163,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
                       </div>
                     )}
                     <MapJson
+                      ariaLabel="Carte de France représentant le nombre de cas autochtones de dengue, chikungunya et zika par département"
                       mapRef={mapRef2}
                       mapContainer={mapContainer2}
                       annee={selectedAnnee}
