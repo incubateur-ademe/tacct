@@ -3,12 +3,12 @@
 import PasDeDonneesImage from "@/assets/images/donnees_zero.png";
 import { prelevementEauBarChartLegend, ressourcesEauBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import useWindowDimensions from '@/hooks/windowDimensions';
+import { Body } from "@/design-system/base/Textes";
 import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { simpleBarChartTooltip } from '../ChartTooltips';
 import { NivoBarChartRessourcesEau } from '../NivoBarChart';
 import styles from './eau.module.scss';
@@ -96,8 +96,10 @@ const PrelevementEauBarChart = ({
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const windowDimensions = useWindowDimensions();
+  const legendRef = useRef<HTMLDivElement>(null);
+  const [legendHeight, setLegendHeight] = useState(80);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [filterEnergie, setFilterEnergie] = useState(false);
   const dataParMaille = type === "commune"
     ? ressourcesEau.filter((obj) => obj.code_geographique === code)
     : type === "epci"
@@ -121,6 +123,23 @@ const PrelevementEauBarChart = ({
     );
   }, [sliderValue]);
 
+  useEffect(() => {
+    const element = legendRef.current;
+    if (!element) return;
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setLegendHeight(entry.contentRect.height);
+      }
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  const energieKeys = ['Énergie', "Production hydro-électriques"];
+  const filteredLegend = filterEnergie
+    ? prelevementEauBarChartLegend.filter((e) => !energieKeys.includes(e.value))
+    : prelevementEauBarChartLegend;
+
   const minValueXTicks = Math.min(...graphData.map((e) => Number(e.annee)));
   const maxValueXTicks = Math.max(...graphData.map((e) => Number(e.annee)));
 
@@ -131,68 +150,88 @@ const PrelevementEauBarChart = ({
   }, [minValueXTicks, maxValueXTicks]);
 
   return (
-    <div className={styles.warningBox} style={{ height: "500px" }}>
-      <style>{`
+    <>
+      <div className={styles.filtreEauWrapper} style={{ padding: "1rem 1.75rem" }}>
+        <input
+          type="checkbox"
+          id="filter-energie"
+          checked={filterEnergie}
+          onChange={(e) => setFilterEnergie(e.target.checked)}
+          style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
+        />
+        <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
+          <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>
+            Filtrer les prélèvements en eau pour l&apos;énergie
+          </Body>
+        </label>
+      </div>
+      <div className={styles.warningBox} style={{ height: "500px" }}>
+        <style>{`
         .prelevement-eau-bar-chart-container .bottom-tick {
           opacity: ${isTransitioning ? '0' : '1'};
           transition: opacity 0.2s ease-in-out;
         }
       `}</style>
-      {graphData && graphData.length ? (
-        <>
-          <NivoBarChartRessourcesEau
-            bottomTickValues={
-              minValueXTicks != maxValueXTicks
-                ? [`${minValueXTicks}`, `${maxValueXTicks}`]
-                : [`${minValueXTicks}`]
-            }
-            colors={prelevementEauBarChartLegend.map((e) => e.color)}
-            graphData={graphData}
-            keys={prelevementEauBarChartLegend.map((e) => e.value)}
-            indexBy="annee"
-            showLegend={false}
-            tooltip={({ data }) => simpleBarChartTooltip({
-              data,
-              legende: ressourcesEauBarChartLegend,
-              unite: 'Mm³',
-              multiplicateur: 0.000001
-            })}
-            axisLeftLegend="Volumétrie en Mm3"
-            axisLeftTickFactor={1000000}
-          />
-          <div style={{
-            paddingBottom: '1rem',
-            marginTop: windowDimensions.width! > 1850 ? '-5rem' : windowDimensions.width! > 1700 ? '-7rem' : '-9rem'
-          }}>
-            <LegendCompColor legends={prelevementEauBarChartLegend} />
-          </div>
-        </>
-      ) : (
-        <div
-          style={{
-            height: 'inherit',
-            alignContent: 'center',
-            textAlign: 'center',
-            padding: "1rem 4rem"
-          }}
-        >
-          <Image
-            src={PasDeDonneesImage}
-            alt=""
+        {graphData && graphData.length ? (
+          <>
+            <NivoBarChartRessourcesEau
+              bottomTickValues={
+                minValueXTicks != maxValueXTicks
+                  ? [`${minValueXTicks}`, `${maxValueXTicks}`]
+                  : [`${minValueXTicks}`]
+              }
+              colors={filteredLegend.map((e) => e.color)}
+              graphData={graphData}
+              keys={filteredLegend.map((e) => e.value)}
+              indexBy="annee"
+              showLegend={false}
+              tooltip={({ data }) => simpleBarChartTooltip({
+                data,
+                legende: ressourcesEauBarChartLegend,
+                unite: 'Mm³',
+                multiplicateur: 0.000001
+              })}
+              axisLeftLegend="Volumétrie en Mm3"
+              axisLeftTickFactor={1000000}
+              graphMarginBottom={legendHeight + 40}
+            />
+            <div ref={legendRef} style={{
+              paddingBottom: '1rem',
+              marginTop: `-${legendHeight}px`
+            }}>
+              <LegendCompColor
+                legends={filteredLegend}
+                textStyle={{ fontSize: '12px' }}
+              />
+            </div>
+          </>
+        ) : (
+          <div
             style={{
-              width: "100%",
-              height: "auto",
-              maxWidth: "300px",
-              margin: "0 auto",
-              padding: "0rem 2rem"
+              height: 'inherit',
+              alignContent: 'center',
+              textAlign: 'center',
+              padding: "1rem 4rem"
             }}
-          />
-          <p className="text-center text-gray-500 mt-4">
-            Aucune donnée de prélèvement d'eau disponible pour la période sélectionnée
-          </p>
-        </div>
-      )}
-    </div>
+          >
+            <Image
+              src={PasDeDonneesImage}
+              alt=""
+              style={{
+                width: "100%",
+                height: "auto",
+                maxWidth: "300px",
+                margin: "0 auto",
+                padding: "0rem 2rem"
+              }}
+            />
+            <p className="text-center text-gray-500 mt-4">
+              Aucune donnée de prélèvement d'eau disponible pour la période sélectionnée
+            </p>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -46,48 +46,6 @@ export const AgeBatiText = () => (
   </Body>
 );
 
-export const FragiliteEconomiqueText = () => (
-  <div className="px-4">
-    <p>
-      Les ménages en précarité énergétique doivent faire des choix difficiles :
-      limiter le chauffage, réduire l’utilisation de l’eau chaude pour éviter
-      des factures trop élevées. Un logement mal isolé l’hiver sera aussi
-      coûteux à rafraîchir l’été.
-    </p>
-    <p>
-      Leurs conditions de vie et leur santé se dégradent. Le changement
-      climatique amplifie ces inégalités, avec des vagues de chaleur de plus en
-      plus fréquentes et intenses. Dans un logement mal isolé, se protéger de la
-      chaleur est un défi impossible pour les ménages les plus précaires. La
-      précarité énergétique n'est pas qu’une question de confort : elle est un
-      enjeu de santé publique et de justice sociale.
-    </p>
-    <p>
-      ⇒ En 2024, <b>55 %</b> des Français déclarent avoir souffert d’un excès de
-      chaleur en été.
-    </p>
-    <p>
-      ⇒ <b>79 %</b> des Français ont dû restreindre leur chauffage.
-    </p>
-    <p>
-      ⇒ En 2023, plus d’un million de ménages ont subi une intervention de leur
-      fournisseur d’énergie pour cause d'impayés, aggravant leur précarité.
-    </p>
-    <p>
-      - - - - <br></br>
-      Plan national d'adaptation au changement climatique (PNACC-3) :
-    </p>
-    <ul>
-      <p>
-        <li>Adapter les logements au risque de forte chaleur (mesure 9)</li>
-        <li>
-          Protéger les populations précaires des fortes chaleurs (mesure 14)
-        </li>
-      </p>
-    </ul>
-  </div>
-);
-
 export const VegetalisationText = () => (
   <div className="px-4">
     <p>
@@ -386,10 +344,10 @@ export const AOT40Text = () => (
 export const PrelevementEauText = () => (
   <div className="pt-10">
     <Body size="sm">
-      Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la ressource en
+      Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la ressource en
       eau disponible devient vital. Face à l'intensification des sécheresses due
       au changement climatique, chaque territoire doit anticiper. Un prélèvement
-      n'est possible que si la ressource existe !
+      n'est possible que si la ressource existe !
     </Body>
     <Body size="sm">
       Attention aux chiffres bruts : les prélèvements ne reflètent pas les

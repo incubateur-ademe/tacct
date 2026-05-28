@@ -38,7 +38,7 @@ const SumFiltered = (
 
   const columnLibelle = type === "petr"
     ? "libelle_petr"
-      : "ept"
+    : "ept"
 
   return Sum(
     data
@@ -146,90 +146,92 @@ const PrelevementEauProgressBarsPNR = ({
     SumFilteredTousChamps(ressourcesEau, code, libelle, type) === 0
       ? 1
       : SumFilteredTousChamps(ressourcesEau, code, libelle, type) -
-        (filterEnergie
-          ? SumFiltered(ressourcesEau, code, libelle, type, 'ene') +
-            SumFiltered(ressourcesEau, code, libelle, type, 'bar')
-          : 0);
+      (filterEnergie
+        ? SumFiltered(ressourcesEau, code, libelle, type, 'ene') +
+        SumFiltered(ressourcesEau, code, libelle, type, 'bar')
+        : 0);
 
 
   return (
-    <div className={styles.ressourcesEauWrapper}>
-      {code && libelle && data.find((e) => e.sumTerritoire !== 0) ? (
-        <>
-          {filteredData
-            .toSorted((a, b) => {
-              const origA = data.find((d) => d.titre === a.titre)?.sumTerritoire ?? 0;
-              const origB = data.find((d) => d.titre === b.titre)?.sumTerritoire ?? 0;
-              return origB - origA;
-            })
-            .map((item, index) => (
-              <ArrowHtmlTooltip
-                title={
-                  <>
-                    <div className='flex flex-row g-4 items-center mb-2'>
-                      <div className={styles.colorSquare} style={{ backgroundColor: item.filtered ? '#aaa' : item.color }} />
-                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
-                    </div>
-                    <Body size='sm'>
-                      {libelle} :{' '}
-                      <b>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </b>{' '}
-                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                    </Body>
-                  </>
-                }
-                key={index}
-                placement="top"
-              >
-                <div key={index} className={styles.progressDataWrapper} style={{ opacity: item.filtered ? 0.4 : 1 }}>
-                  <div className={styles.progressDesign}>
-                    {item.icon}
-                    <div className={styles.progressBar}>
-                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
-                      <div className={styles.barMarker}>
-                        <Progress
-                          percent={Number((100 * item.sumTerritoire) / total)}
-                          showInfo={false}
-                          strokeColor={item.filtered ? '#aaa' : item.color}
-                          size={['100%', 12]}
-                          style={{ width: '95%' }}
-                          type="line"
-                          trailColor="#F9F9FF"
-                        />
+    <>
+      <div className={styles.filtreEauWrapper}>
+        <input
+          type="checkbox"
+          id="filter-energie"
+          checked={filterEnergie}
+          onChange={(e) => setFilterEnergie(e.target.checked)}
+          style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
+        />
+        <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
+          <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>Filtrer les prélèvements en eau pour l&apos;énergie</Body>
+        </label>
+      </div>
+      <div className={styles.ressourcesEauWrapper}>
+        {code && libelle && data.find((e) => e.sumTerritoire !== 0) ? (
+          <>
+            {filteredData
+              .toSorted((a, b) => {
+                const origA = data.find((d) => d.titre === a.titre)?.sumTerritoire ?? 0;
+                const origB = data.find((d) => d.titre === b.titre)?.sumTerritoire ?? 0;
+                return origB - origA;
+              })
+              .map((item, index) => (
+                <ArrowHtmlTooltip
+                  title={
+                    <>
+                      <div className='flex flex-row g-4 items-center mb-2'>
+                        <div className={styles.colorSquare} style={{ backgroundColor: item.filtered ? '#aaa' : item.color }} />
+                        <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                      </div>
+                      <Body size='sm'>
+                        {libelle} :{' '}
+                        <b>
+                          {Round((100 * item.sumTerritoire) / total, 2)} %
+                        </b>{' '}
+                        ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
+                      </Body>
+                    </>
+                  }
+                  key={index}
+                  placement="top"
+                >
+                  <div key={index} className={styles.progressDataWrapper} style={{ opacity: item.filtered ? 0.4 : 1 }}>
+                    <div className={styles.progressDesign}>
+                      {item.icon}
+                      <div className={styles.progressBar}>
+                        <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
+                        <div className={styles.barMarker}>
+                          <Progress
+                            percent={Number((100 * item.sumTerritoire) / total)}
+                            showInfo={false}
+                            strokeColor={item.filtered ? '#aaa' : item.color}
+                            size={['100%', 12]}
+                            style={{ width: '95%' }}
+                            type="line"
+                            trailColor="#F9F9FF"
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div className={styles.progressNumbers}>
+                      <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
+                        {Round((100 * item.sumTerritoire) / total, 2)} %
+                      </Body>
+                      <Body size='xs' style={{ lineHeight: "0.875rem", width: "max-content", alignSelf: "flex-end" }}>
+                        {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                      </Body>
+                    </div>
                   </div>
-                  <div className={styles.progressNumbers}>
-                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
-                      {Round((100 * item.sumTerritoire) / total, 2)} %
-                    </Body>
-                    <Body size='xs' style={{ lineHeight: "0.875rem", width: "max-content", alignSelf: "flex-end" }}>
-                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
-                    </Body>
-                  </div>
-                </div>
-              </ArrowHtmlTooltip>
-            ))}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', paddingTop: '0.5rem' }}>
-            <input
-              type="checkbox"
-              id="filter-energie-pnr"
-              checked={filterEnergie}
-              onChange={(e) => setFilterEnergie(e.target.checked)}
-              style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
-            />
-            <label htmlFor="filter-energie-pnr" style={{ cursor: 'pointer' }}>
-              <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>Filtrer les prélèvements en eau pour l&apos;énergie</Body>
-            </label>
+                </ArrowHtmlTooltip>
+              ))}
+          </>
+        ) : (
+          <div className='p-1 flex flex-row justify-center'>
+            <DataNotFound image={GraphNotFound} />
           </div>
-        </>
-      ) : (
-        <div className='p-1 flex flex-row justify-center'>
-          <DataNotFound image={GraphNotFound} />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 
