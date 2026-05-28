@@ -10,7 +10,7 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
   const { libelle, thematique } = await searchParams;
   const title = thematique && libelle
     ? `${thematique} - impacts ${libelle}`
-    : thematique ?? 'Explorer les données';
+    : thematique ?? 'Impacts';
   return { title: { absolute: title } };
 }
 

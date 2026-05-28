@@ -13,6 +13,8 @@ import ForetServerPage from './thematiques/foret/ForetServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata(
   { searchParams }: { searchParams: SearchParams }
 ): Promise<Metadata> {
