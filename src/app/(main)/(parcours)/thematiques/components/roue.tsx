@@ -1,10 +1,10 @@
-'use client';
-import { Loader } from '@/components/ui/loader';
-import { HtmlTooltip } from '@/components/utils/Tooltips';
-import { Body, H1 } from '@/design-system/base/Textes';
-import { Any } from '@/lib/utils/types';
-import * as d3 from 'd3';
-import { useEffect, useRef, useState } from 'react';
+"use client";
+import { Loader } from "@/components/ui/loader";
+import { HtmlTooltip } from "@/components/utils/Tooltips";
+import { Body } from "@/design-system/base/Textes";
+import { Any } from "@/lib/utils/types";
+import * as d3 from "d3";
+import { useEffect, useRef, useState } from "react";
 // Import CircleType (types seront déclarés en tant que any)
 // @ts-ignore
 import CircleType from 'circletype';
@@ -674,22 +674,18 @@ const RoueSystemique = ({
   }, [selectedThematique, svgWidth, svgHeight]);
 
   return (
-    <div
-      style={{
-        position: 'relative',
-        width: svgWidth,
-        height: svgHeight,
-        alignSelf: 'baseline'
-      }}
-    >
-      <svg
-        ref={svgRef}
-        width={svgWidth}
-        height={svgHeight}
-        role="img"
-        aria-label="Roue systémique des thématiques du territoire"
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-      />
+    <div ref={wrapperRef} style={{ width: '100%' }}>
+      <h1 className="fr-sr-only">Roue des thématiques</h1>
+      <div style={{ height: svgHeight * scale, overflow: 'hidden' }}>
+        <div style={{ position: 'relative', width: svgWidth, height: svgHeight, transform: `scale(${scale})`, transformOrigin: 'top left', margin: '0 auto' }}>
+          <svg
+            ref={svgRef}
+            width={svgWidth}
+            height={svgHeight}
+            role="img"
+            aria-label="Roue systémique des thématiques du territoire"
+            style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+          />
 
       {/* Tooltip pour les thématiques indisponibles */}
       {NoeudsRoue.map((node, index) => {
@@ -726,44 +722,39 @@ const RoueSystemique = ({
         );
       })}
 
-      {/* Texte central qui disparaît lors de la sélection */}
-      {svgRef && svgRef.current ? (
-        <div
-          style={{
-            position: 'absolute',
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            textAlign: 'center',
-            maxWidth: '300px',
-            opacity: selectedThematique ? 0 : 1,
-            transition: selectedThematique
-              ? 'none'
-              : 'opacity 0.5s ease-in-out',
-            zIndex: 3
-          }}
-        >
-          <H1
-            style={{
-              fontSize: '16px',
-              color: '#23282B',
-              fontWeight: 700,
-              lineHeight: 'normal',
-              letterSpacing: '0.4px',
-              margin: 0
-            }}
-          >
-            Votre territoire est un système où tout est lié.
-          </H1>
-          <br />
-          <Body>
-            Explorez les thématiques et découvrez comment elles peuvent être
-            impactées par les aléas climatiques
-          </Body>
-        </div>
-      ) : (
-        <Loader />
-      )}
+          {/* Texte central qui disparaît lors de la sélection */}
+          {
+            svgRef && svgRef.current ? (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  textAlign: 'center',
+                  maxWidth: '300px',
+                  opacity: selectedThematique ? 0 : 1,
+                  transition: selectedThematique ? 'none' : 'opacity 0.5s ease-in-out',
+                  zIndex: 3,
+                }}
+              >
+                <p style={{
+                  fontSize: '16px',
+                  color: '#23282B',
+                  fontWeight: 700,
+                  lineHeight: "normal",
+                  letterSpacing: "0.4px",
+                  margin: 0
+                }}>
+                  Votre territoire est un système où tout est lié.
+                </p>
+                <br />
+                <Body>
+                  Explorez les thématiques et découvrez comment elles peuvent être impactées par les aléas climatiques
+                </Body>
+              </div>
+            ) : <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>
+          }
 
       {/* Textes des catégories avec CircleType - contrôle individuel */}
       {/* Cadre de vie */}

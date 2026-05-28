@@ -28,8 +28,8 @@ export const ThematiquesLieesNavigation = ({
   // Refs pour mesurer les positions des éléments
   const leftSectionRef = useRef<HTMLDivElement>(null);
   const centerSectionRef = useRef<HTMLDivElement>(null);
-  const rightSectionRef = useRef<HTMLDivElement>(null);
-  const rightButtonsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const rightSectionRef = useRef<HTMLUListElement>(null);
+  const rightButtonsRef = useRef<(HTMLLIElement | null)[]>([]);
   const [lineCalculations, setLineCalculations] = useState<{
     leftToCenter: { width: number; angle: number };
     rightLines: Array<{ width: number; angle: number; yOffset: number }>;
@@ -164,12 +164,12 @@ export const ThematiquesLieesNavigation = ({
       </div>
 
       {/* Partie droite : Thématiques liées */}
-      <div ref={rightSectionRef} className={styles.rightSection}>
+      <ul ref={rightSectionRef} className={styles.rightSection} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {thematiquesLiees.length > 0 ? (
           thematiquesLiees.map((lieeLabel, index) => {
             const isDisabled = lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité";
             const buttonElement = (
-              <div
+              <li
                 key={`thematique-wrapper-${index}-${lieeLabel}`}
                 ref={(el) => {
                   rightButtonsRef.current[index] = el;
@@ -191,7 +191,7 @@ export const ThematiquesLieesNavigation = ({
                   }}
                   disabled={isDisabled}
                 />
-              </div>
+              </li>
             );
 
             return isDisabled ? (
@@ -205,15 +205,15 @@ export const ThematiquesLieesNavigation = ({
             ) : buttonElement;
           })
         ) : (
-          <div style={{
+          <li style={{
             padding: '1rem',
             color: 'var(--gris-medium-dark)',
             fontStyle: 'italic'
           }}>
             Aucune thématique liée
-          </div>
+          </li>
         )}
-      </div>
+      </ul>
     </div>
   );
 };
