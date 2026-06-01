@@ -9,9 +9,9 @@ import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import './maps.css';
 import { AOT40Tooltip } from './subcomponents/tooltips';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const color = (valeur: number) => {
   return valeur > 36000
@@ -57,11 +57,10 @@ export const MapAOT40 = (props: {
   const aot40Data = useMemo(() => {
     return aot40.map((aot) => {
       return {
-        coordinates: [aot.Longitude, aot.Latitude],
-        value: aot.valeur_brute,
+        coordinates: [aot.longitude, aot.latitude],
+        value: aot.valeur,
         nom_site: aot.nom_site,
-        type_implantation: aot.type_d_implantation,
-        color: color(aot.valeur_brute!)
+        color: color(aot.valeur)
       };
     });
   }, [aot40]);
@@ -108,7 +107,6 @@ export const MapAOT40 = (props: {
         properties: {
           nom_site: aot.nom_site,
           value: aot.value,
-          type_implantation: aot.type_implantation,
           color: aot.color
         },
         id: index

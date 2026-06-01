@@ -591,10 +591,9 @@ export const IndicatorExportTransformations = {
       return aot40.map((el) => {
         return {
           nom_site: el.nom_site,
-          type_d_implantation: el.type_d_implantation,
-          'valeur brute (µg/m³)': el.valeur_brute,
-          latitude: el.Latitude,
-          longitude: el.Longitude
+          'valeur brute (µg/m³)': el.valeur,
+          latitude: el.latitude,
+          longitude: el.longitude
         };
       });
     }
