@@ -110,6 +110,7 @@
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/parser": "8.58.2",
     "autoprefixer": "^10.4.23",
+    "eruda": "^3.4.3",
     "eslint": "^9.39.2",
     "eslint-config-next": "^15.5.9",
     "eslint-config-prettier": "^9.1.2",

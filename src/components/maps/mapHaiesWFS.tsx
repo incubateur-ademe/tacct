@@ -2,6 +2,7 @@
 
 import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
+import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import { Feature, Geometry, LineString, Polygon } from 'geojson';
 import maplibregl from 'maplibre-gl';
@@ -77,6 +78,7 @@ export const MapHaiesWfs = ({
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
       attributionControl: false,
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],

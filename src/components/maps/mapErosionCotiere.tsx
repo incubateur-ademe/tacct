@@ -1,6 +1,7 @@
 
 import { ErosionCotiereDto } from '@/lib/dto';
 import { mapStyles } from 'carte-facile';
+import { mapTransformRequest } from './mapTransformRequest';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -23,6 +24,7 @@ export const MapErosionCotiere = (props: {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
       attributionControl: false,
     });
     mapRef.current = map;

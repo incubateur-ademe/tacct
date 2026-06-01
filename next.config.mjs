@@ -21,9 +21,12 @@ const csp = {
         'https://eu.posthog.com',
         'https://eu.i.posthog.com',
         process.env.NEXT_PUBLIC_ENV === 'preprod' && 'https://vercel.live',
-        process.env.NODE_ENV === 'development' && 'http://localhost'
+        process.env.NODE_ENV === 'development' && 'http://localhost',
+        // HMR de Next : sur Safari, '*' ne couvre pas le scheme ws/wss.
+        process.env.NODE_ENV === 'development' && 'ws:',
+        process.env.NODE_ENV === 'development' && 'wss:'
     ],
-    'font-src': ["'self'"],
+    'font-src': ["'self'", process.env.NODE_ENV === 'development' && 'data:'],
     'media-src': ["'self'"],
     'img-src': ['*', "'self'", 'data:', 'https:'], //REPLACE (done to display map)
     'script-src': [
@@ -40,8 +43,13 @@ const csp = {
     'frame-ancestors': ['https://metabase.tacct.ademe.fr'],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
     'form-action': ["'self'", 'https://*.gouv.fr'],
-    'block-all-mixed-content': [],
-    'upgrade-insecure-requests': [],
+    // En dev, le serveur est servi en HTTP (IP locale pour tester sur mobile).
+    // Ces deux directives forcent le HTTPS : Safari upgrade alors les assets en
+    // https://<ip> (sans TLS), ils échouent et la page s'affiche sans CSS/JS.
+    'block-all-mixed-content':
+        process.env.NODE_ENV === 'development' ? false : [],
+    'upgrade-insecure-requests':
+        process.env.NODE_ENV === 'development' ? false : [],
     'frame-src': [
         'https://metabase.tacct.ademe.fr' // Iframe source
     ],
@@ -65,12 +73,17 @@ const statsHeaders = [
 ];
 
 const ContentSecurityPolicy = Object.entries(csp)
+    .filter(([, value]) => Array.isArray(value))
     .map(([key, value]) => `${key} ${value.filter(Boolean).join(' ')};`)
     .join(' ');
 
 /** @type {import('next').NextConfig} */
 const config = {
     poweredByHeader: false,
+    // Autorise l'accès au serveur de dev depuis le réseau local (test sur mobile).
+    // Sans ça, Next bloque silencieusement les ressources de dev et l'hydratation
+    // n'aboutit pas quand on ouvre la page via l'IP de la machine.
+    allowedDevOrigins: ['192.168.1.10', '192.168.*.*'],
     // API Notion
     images: {
         remotePatterns: [

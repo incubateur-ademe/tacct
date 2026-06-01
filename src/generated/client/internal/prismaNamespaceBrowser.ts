@@ -186,10 +186,9 @@ export type Databases_v2_agriculture_bioScalarFieldEnum = (typeof Databases_v2_a
 export const Databases_v2_aot_40ScalarFieldEnum = {
   index: 'index',
   nom_site: 'nom_site',
-  type_d_implantation: 'type_d_implantation',
-  valeur_brute: 'valeur_brute',
-  Latitude: 'Latitude',
-  Longitude: 'Longitude'
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
 } as const
 
 export type Databases_v2_aot_40ScalarFieldEnum = (typeof Databases_v2_aot_40ScalarFieldEnum)[keyof typeof Databases_v2_aot_40ScalarFieldEnum]

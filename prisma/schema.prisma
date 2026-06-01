@@ -94,12 +94,11 @@ model databases_v2_agriculture_bio {
 }
 
 model databases_v2_aot_40 {
-  index               Int    @id
-  nom_site            String @map("nom site")
-  type_d_implantation String @map("type d'implantation")
-  valeur_brute        Float  @map("valeur brute")
-  Latitude            Float
-  Longitude           Float
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
 
   @@index([index], map: "ix_aot_40_index")
   @@map("aot_40")

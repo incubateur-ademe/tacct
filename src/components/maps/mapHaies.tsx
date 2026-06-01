@@ -1,6 +1,7 @@
 'use client';
 
 import { mapStyles } from 'carte-facile';
+import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -218,6 +219,7 @@ export const MapHaies = ({
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
       attributionControl: false,
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],

@@ -1,5 +1,6 @@
 import './global.css';
 
+import { ErudaDevConsole } from '@/components/dev/ErudaDevConsole';
 import { DsfrProvider, StartDsfrOnHydration } from '@/design-system';
 import { DsfrHead, getHtmlAttributes } from '@/design-system/server-only-index';
 import { cx } from '@codegouvfr/react-dsfr/tools/cx';
@@ -29,6 +30,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <body>
           <DsfrProvider lang="fr">
             <StartDsfrOnHydration />
+            <ErudaDevConsole />
             {children}
           </DsfrProvider>
         </body>

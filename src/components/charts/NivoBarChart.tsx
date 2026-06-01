@@ -1,5 +1,7 @@
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { isIOS } from '@/lib/utils/browser';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
+import { wrapWords } from '@/lib/utils/string';
 import { Any } from '@/lib/utils/types';
 import {
   BarDatum,
@@ -32,40 +34,16 @@ const legendProps: BarLegendProps = {
   symbolSize: 20
 };
 
-const isIOSSafari = (): boolean =>
-  typeof navigator !== 'undefined' && (
-    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-  );
-
-const wrapWords = (text: string, maxChars = 14): string[] => {
-  const words = String(text).split(' ');
-  const lines: string[] = [];
-  let current = '';
-  for (const word of words) {
-    if (!current) {
-      current = word;
-    } else if (current.length + 1 + word.length <= maxChars) {
-      current += ' ' + word;
-    } else {
-      lines.push(current);
-      current = word;
-    }
-  }
-  if (current) lines.push(current);
-  return lines;
-};
-
 const renderBottomTick = (
   e: Any,
   options: { isMobile?: boolean; tickRotation?: number; foreignObjectHeight?: number } = {}
 ) => {
   const { isMobile = false, tickRotation = 0, foreignObjectHeight } = options;
 
-  if (isIOSSafari()) {
+  if (isIOS()) {
     const lines = wrapWords(String(e.value));
     return (
-      <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+      <g transform={tickRotation ? `translate(${e.x - 25},${e.y + 30})` : `translate(${e.x},${e.y})`} className="bottom-tick">
         <text
           textAnchor="middle"
           transform={tickRotation ? `rotate(${tickRotation})` : undefined}
@@ -85,7 +63,7 @@ const renderBottomTick = (
     <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
       <foreignObject
         x={-50}
-        y={-50}
+        y={0}
         width={100}
         height={foreignObjectHeight ?? (isMobile ? 160 : 45)}
       >

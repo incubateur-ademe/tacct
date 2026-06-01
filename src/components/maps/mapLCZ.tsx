@@ -4,6 +4,7 @@ import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
 import { LCZselectionTerritoires } from '@/lib/territoireData/LCZselectionTerritoires';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
+import { mapTransformRequest } from './mapTransformRequest';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from 'next/image';
@@ -52,6 +53,7 @@ export const MapLCZ = ({
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
       attributionControl: false,
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],

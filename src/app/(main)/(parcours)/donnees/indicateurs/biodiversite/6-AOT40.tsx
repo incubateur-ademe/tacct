@@ -42,7 +42,7 @@ export const OzoneEtVegetation = (props: {
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-const mapRef = useRef<maplibregl.Map | null>(null);
+  const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
 
   // Calculate center coordinates from territory geometry
@@ -56,9 +56,9 @@ const mapRef = useRef<maplibregl.Map | null>(null);
   let nearestStation: NearestPoint | null = null;
 
   if (aot40 && aot40.length > 0) {
-    const aot40map = aot40.map((station: AOT40) =>
-      turf.point([station.Latitude, station.Longitude], {
-        value: station.valeur_brute,
+    const aot40map = aot40?.map((station: AOT40) =>
+      turf.point([station.latitude, station.longitude], {
+        value: station.valeur,
         nom_site: station.nom_site,
       })
     );
@@ -126,23 +126,23 @@ const mapRef = useRef<maplibregl.Map | null>(null);
                   'fill-color': [
                     'step',
                     ['round', ['get', 'valeur']],
-                    '#A4F5EE', 
+                    '#A4F5EE',
                     3000,
-                    '#C4E8A3', 
+                    '#C4E8A3',
                     6000,
-                    '#F5E290', 
+                    '#F5E290',
                     9000,
-                    '#FFAB66', 
+                    '#FFAB66',
                     10000,
-                    '#FC9999', 
+                    '#FC9999',
                     11000,
-                    '#F37D7D', 
+                    '#F37D7D',
                     12000,
-                    '#E06060', 
+                    '#E06060',
                     15000,
-                    '#C97189', 
+                    '#C97189',
                     18000,
-                    '#B982B2'  
+                    '#B982B2'
                   ],
                   'fill-opacity': 0.7,
                   'fill-antialias': false

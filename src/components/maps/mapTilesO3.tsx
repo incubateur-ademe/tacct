@@ -2,6 +2,7 @@
 
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { mapStyles } from 'carte-facile';
+import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -50,7 +51,8 @@ export const MapTilesO3 = (props: {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
-      attributionControl: false
+      attributionControl: false,
+      transformRequest: mapTransformRequest
     });
     mapRef.current = map;
 

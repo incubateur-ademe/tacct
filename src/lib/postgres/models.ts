@@ -657,10 +657,9 @@ export type EtatCoursDeau = {
 export type AOT40 = {
   index: number;
   nom_site: string;
-  type_d_implantation: string;
-  valeur_brute: number;
-  Latitude: number;
-  Longitude: number;
+  valeur: number;
+  latitude: number;
+  longitude: number;
 };
 
 export type O3 = {

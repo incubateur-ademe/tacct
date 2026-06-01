@@ -28,86 +28,80 @@ export type AggregateDatabases_v2_aot_40 = {
 
 export type Databases_v2_aot_40AvgAggregateOutputType = {
   index: number | null
-  valeur_brute: number | null
-  Latitude: number | null
-  Longitude: number | null
+  valeur: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type Databases_v2_aot_40SumAggregateOutputType = {
   index: number | null
-  valeur_brute: number | null
-  Latitude: number | null
-  Longitude: number | null
+  valeur: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type Databases_v2_aot_40MinAggregateOutputType = {
   index: number | null
   nom_site: string | null
-  type_d_implantation: string | null
-  valeur_brute: number | null
-  Latitude: number | null
-  Longitude: number | null
+  valeur: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type Databases_v2_aot_40MaxAggregateOutputType = {
   index: number | null
   nom_site: string | null
-  type_d_implantation: string | null
-  valeur_brute: number | null
-  Latitude: number | null
-  Longitude: number | null
+  valeur: number | null
+  latitude: number | null
+  longitude: number | null
 }
 
 export type Databases_v2_aot_40CountAggregateOutputType = {
   index: number
   nom_site: number
-  type_d_implantation: number
-  valeur_brute: number
-  Latitude: number
-  Longitude: number
+  valeur: number
+  latitude: number
+  longitude: number
   _all: number
 }
 
 
 export type Databases_v2_aot_40AvgAggregateInputType = {
   index?: true
-  valeur_brute?: true
-  Latitude?: true
-  Longitude?: true
+  valeur?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type Databases_v2_aot_40SumAggregateInputType = {
   index?: true
-  valeur_brute?: true
-  Latitude?: true
-  Longitude?: true
+  valeur?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type Databases_v2_aot_40MinAggregateInputType = {
   index?: true
   nom_site?: true
-  type_d_implantation?: true
-  valeur_brute?: true
-  Latitude?: true
-  Longitude?: true
+  valeur?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type Databases_v2_aot_40MaxAggregateInputType = {
   index?: true
   nom_site?: true
-  type_d_implantation?: true
-  valeur_brute?: true
-  Latitude?: true
-  Longitude?: true
+  valeur?: true
+  latitude?: true
+  longitude?: true
 }
 
 export type Databases_v2_aot_40CountAggregateInputType = {
   index?: true
   nom_site?: true
-  type_d_implantation?: true
-  valeur_brute?: true
-  Latitude?: true
-  Longitude?: true
+  valeur?: true
+  latitude?: true
+  longitude?: true
   _all?: true
 }
 
@@ -200,10 +194,9 @@ export type databases_v2_aot_40GroupByArgs<ExtArgs extends runtime.Types.Extensi
 export type Databases_v2_aot_40GroupByOutputType = {
   index: number
   nom_site: string
-  type_d_implantation: string
-  valeur_brute: number
-  Latitude: number
-  Longitude: number
+  valeur: number
+  latitude: number
+  longitude: number
   _count: Databases_v2_aot_40CountAggregateOutputType | null
   _avg: Databases_v2_aot_40AvgAggregateOutputType | null
   _sum: Databases_v2_aot_40SumAggregateOutputType | null
@@ -232,19 +225,17 @@ export type databases_v2_aot_40WhereInput = {
   NOT?: Prisma.databases_v2_aot_40WhereInput | Prisma.databases_v2_aot_40WhereInput[]
   index?: Prisma.IntFilter<"databases_v2_aot_40"> | number
   nom_site?: Prisma.StringFilter<"databases_v2_aot_40"> | string
-  type_d_implantation?: Prisma.StringFilter<"databases_v2_aot_40"> | string
-  valeur_brute?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
-  Latitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
-  Longitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  valeur?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  latitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  longitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
 }
 
 export type databases_v2_aot_40OrderByWithRelationInput = {
   index?: Prisma.SortOrder
   nom_site?: Prisma.SortOrder
-  type_d_implantation?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type databases_v2_aot_40WhereUniqueInput = Prisma.AtLeast<{
@@ -253,19 +244,17 @@ export type databases_v2_aot_40WhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.databases_v2_aot_40WhereInput[]
   NOT?: Prisma.databases_v2_aot_40WhereInput | Prisma.databases_v2_aot_40WhereInput[]
   nom_site?: Prisma.StringFilter<"databases_v2_aot_40"> | string
-  type_d_implantation?: Prisma.StringFilter<"databases_v2_aot_40"> | string
-  valeur_brute?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
-  Latitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
-  Longitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  valeur?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  latitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
+  longitude?: Prisma.FloatFilter<"databases_v2_aot_40"> | number
 }, "index">
 
 export type databases_v2_aot_40OrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   nom_site?: Prisma.SortOrder
-  type_d_implantation?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
   _count?: Prisma.databases_v2_aot_40CountOrderByAggregateInput
   _avg?: Prisma.databases_v2_aot_40AvgOrderByAggregateInput
   _max?: Prisma.databases_v2_aot_40MaxOrderByAggregateInput
@@ -279,114 +268,103 @@ export type databases_v2_aot_40ScalarWhereWithAggregatesInput = {
   NOT?: Prisma.databases_v2_aot_40ScalarWhereWithAggregatesInput | Prisma.databases_v2_aot_40ScalarWhereWithAggregatesInput[]
   index?: Prisma.IntWithAggregatesFilter<"databases_v2_aot_40"> | number
   nom_site?: Prisma.StringWithAggregatesFilter<"databases_v2_aot_40"> | string
-  type_d_implantation?: Prisma.StringWithAggregatesFilter<"databases_v2_aot_40"> | string
-  valeur_brute?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
-  Latitude?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
-  Longitude?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
+  valeur?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
+  latitude?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
+  longitude?: Prisma.FloatWithAggregatesFilter<"databases_v2_aot_40"> | number
 }
 
 export type databases_v2_aot_40CreateInput = {
   index: number
   nom_site: string
-  type_d_implantation: string
-  valeur_brute: number
-  Latitude: number
-  Longitude: number
+  valeur: number
+  latitude: number
+  longitude: number
 }
 
 export type databases_v2_aot_40UncheckedCreateInput = {
   index: number
   nom_site: string
-  type_d_implantation: string
-  valeur_brute: number
-  Latitude: number
-  Longitude: number
+  valeur: number
+  latitude: number
+  longitude: number
 }
 
 export type databases_v2_aot_40UpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   nom_site?: Prisma.StringFieldUpdateOperationsInput | string
-  type_d_implantation?: Prisma.StringFieldUpdateOperationsInput | string
-  valeur_brute?: Prisma.FloatFieldUpdateOperationsInput | number
-  Latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  Longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  valeur?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type databases_v2_aot_40UncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   nom_site?: Prisma.StringFieldUpdateOperationsInput | string
-  type_d_implantation?: Prisma.StringFieldUpdateOperationsInput | string
-  valeur_brute?: Prisma.FloatFieldUpdateOperationsInput | number
-  Latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  Longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  valeur?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type databases_v2_aot_40CreateManyInput = {
   index: number
   nom_site: string
-  type_d_implantation: string
-  valeur_brute: number
-  Latitude: number
-  Longitude: number
+  valeur: number
+  latitude: number
+  longitude: number
 }
 
 export type databases_v2_aot_40UpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   nom_site?: Prisma.StringFieldUpdateOperationsInput | string
-  type_d_implantation?: Prisma.StringFieldUpdateOperationsInput | string
-  valeur_brute?: Prisma.FloatFieldUpdateOperationsInput | number
-  Latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  Longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  valeur?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type databases_v2_aot_40UncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   nom_site?: Prisma.StringFieldUpdateOperationsInput | string
-  type_d_implantation?: Prisma.StringFieldUpdateOperationsInput | string
-  valeur_brute?: Prisma.FloatFieldUpdateOperationsInput | number
-  Latitude?: Prisma.FloatFieldUpdateOperationsInput | number
-  Longitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  valeur?: Prisma.FloatFieldUpdateOperationsInput | number
+  latitude?: Prisma.FloatFieldUpdateOperationsInput | number
+  longitude?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
 export type databases_v2_aot_40CountOrderByAggregateInput = {
   index?: Prisma.SortOrder
   nom_site?: Prisma.SortOrder
-  type_d_implantation?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type databases_v2_aot_40AvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type databases_v2_aot_40MaxOrderByAggregateInput = {
   index?: Prisma.SortOrder
   nom_site?: Prisma.SortOrder
-  type_d_implantation?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type databases_v2_aot_40MinOrderByAggregateInput = {
   index?: Prisma.SortOrder
   nom_site?: Prisma.SortOrder
-  type_d_implantation?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type databases_v2_aot_40SumOrderByAggregateInput = {
   index?: Prisma.SortOrder
-  valeur_brute?: Prisma.SortOrder
-  Latitude?: Prisma.SortOrder
-  Longitude?: Prisma.SortOrder
+  valeur?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 
@@ -394,40 +372,36 @@ export type databases_v2_aot_40SumOrderByAggregateInput = {
 export type databases_v2_aot_40Select<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   nom_site?: boolean
-  type_d_implantation?: boolean
-  valeur_brute?: boolean
-  Latitude?: boolean
-  Longitude?: boolean
+  valeur?: boolean
+  latitude?: boolean
+  longitude?: boolean
 }, ExtArgs["result"]["databases_v2_aot_40"]>
 
 export type databases_v2_aot_40SelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   nom_site?: boolean
-  type_d_implantation?: boolean
-  valeur_brute?: boolean
-  Latitude?: boolean
-  Longitude?: boolean
+  valeur?: boolean
+  latitude?: boolean
+  longitude?: boolean
 }, ExtArgs["result"]["databases_v2_aot_40"]>
 
 export type databases_v2_aot_40SelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   nom_site?: boolean
-  type_d_implantation?: boolean
-  valeur_brute?: boolean
-  Latitude?: boolean
-  Longitude?: boolean
+  valeur?: boolean
+  latitude?: boolean
+  longitude?: boolean
 }, ExtArgs["result"]["databases_v2_aot_40"]>
 
 export type databases_v2_aot_40SelectScalar = {
   index?: boolean
   nom_site?: boolean
-  type_d_implantation?: boolean
-  valeur_brute?: boolean
-  Latitude?: boolean
-  Longitude?: boolean
+  valeur?: boolean
+  latitude?: boolean
+  longitude?: boolean
 }
 
-export type databases_v2_aot_40Omit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "nom_site" | "type_d_implantation" | "valeur_brute" | "Latitude" | "Longitude", ExtArgs["result"]["databases_v2_aot_40"]>
+export type databases_v2_aot_40Omit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "nom_site" | "valeur" | "latitude" | "longitude", ExtArgs["result"]["databases_v2_aot_40"]>
 
 export type $databases_v2_aot_40Payload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_aot_40"
@@ -435,10 +409,9 @@ export type $databases_v2_aot_40Payload<ExtArgs extends runtime.Types.Extensions
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     index: number
     nom_site: string
-    type_d_implantation: string
-    valeur_brute: number
-    Latitude: number
-    Longitude: number
+    valeur: number
+    latitude: number
+    longitude: number
   }, ExtArgs["result"]["databases_v2_aot_40"]>
   composites: {}
 }
@@ -864,10 +837,9 @@ export interface Prisma__databases_v2_aot_40Client<T, Null = never, ExtArgs exte
 export interface databases_v2_aot_40FieldRefs {
   readonly index: Prisma.FieldRef<"databases_v2_aot_40", 'Int'>
   readonly nom_site: Prisma.FieldRef<"databases_v2_aot_40", 'String'>
-  readonly type_d_implantation: Prisma.FieldRef<"databases_v2_aot_40", 'String'>
-  readonly valeur_brute: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
-  readonly Latitude: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
-  readonly Longitude: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
+  readonly valeur: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
+  readonly latitude: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
+  readonly longitude: Prisma.FieldRef<"databases_v2_aot_40", 'Float'>
 }
     
 
