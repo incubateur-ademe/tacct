@@ -455,7 +455,7 @@ export async function generateMapPngBlob({
           const legendCanvas = await Promise.race([
             html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
             new Promise<never>((_, reject) =>
-              setTimeout(() => reject(new Error('html2canvas timeout')), 10000)
+              setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
             )
           ]);
           console.log('[zip] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
