@@ -169,8 +169,9 @@
     }
     .donneesNationalesWrapper {
         flex-direction: column;
+        border-bottom: 2px solid var(--gris-medium-dark);
         .leftData {
-            border-bottom: 1px solid var(--gris-medium);
+            border-bottom: none;
             border-right: none;
             padding: 0 0 2rem 0;
             width: 100%;

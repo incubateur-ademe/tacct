@@ -199,6 +199,9 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 0.875rem;
+    @media (max-width: 600px) {
+        align-self: center;
+    }
 }
 
 .microChartText {
@@ -211,6 +214,9 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 0.875rem;
+    @media (max-width: 600px) {
+        align-self: center;
+    }
 }
 
 .cercleIndividuel {
@@ -226,6 +232,9 @@
     width: 110px;
     position: relative;
     margin-bottom: 1rem;
+    @media (max-width: 600px) {
+        align-self: center;
+    }
 }
 
 .circleGrid {
@@ -244,4 +253,7 @@
     flex-direction: column;
     margin-bottom: 1rem;
     align-items: center;
+    @media (max-width: 600px) {
+        align-self: center;
+    }
 }

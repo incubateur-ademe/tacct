@@ -99,6 +99,7 @@ type NivoBarChartProps = {
   graphMarginBottom?: number;
   tickRotation?: number;
   isMobile?: boolean;
+  xMargins?: number;
 };
 
 export const NivoBarChart = ({
@@ -117,7 +118,8 @@ export const NivoBarChart = ({
   isBarLine = false,
   graphMarginBottom,
   isMobile = false,
-  tickRotation = 0
+  tickRotation = 0,
+  xMargins = 80
 }: NivoBarChartProps) => {
   return (
     <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
@@ -129,8 +131,8 @@ export const NivoBarChart = ({
         colors={colors}
         margin={
           isBarLine
-            ? { top: 40, right: 80, bottom: graphMarginBottom ?? 60, left: 80 }
-            : { top: 40, right: 80, bottom: graphMarginBottom ?? 100, left: 80 }
+            ? { top: 40, right: xMargins, bottom: graphMarginBottom ?? 60, left: xMargins }
+            : { top: 40, right: xMargins, bottom: graphMarginBottom ?? 100, left: xMargins }
         }
         groupMode={groupMode}
         padding={0.3}

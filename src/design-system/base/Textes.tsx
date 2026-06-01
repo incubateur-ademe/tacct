@@ -36,6 +36,7 @@ export const H2 = ({
 }) => {
   return (
     <h2
+      className="ds-h2"
       style={{
         color: color,
         fontSize: "2rem",
