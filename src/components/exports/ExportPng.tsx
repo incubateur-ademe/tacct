@@ -3,6 +3,7 @@
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
+import { isIOS } from '@/lib/utils/browser';
 import html2canvas from 'html2canvas';
 import { usePostHog } from 'posthog-js/react';
 import { RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -258,6 +259,12 @@ export const ExportPngMaplibreButton = ({
     e.currentTarget.blur();
     setIsLoading(true);
 
+    // Sur iOS, window.open est bloqué s'il est appelé après un await (perte de
+    // l'activation utilisateur). On ouvre donc l'onglet immédiatement, de façon
+    // synchrone dans le geste, puis on lui affecte l'URL du blob une fois prête.
+    const onIOS = isIOS();
+    const iosWindow = onIOS ? window.open('', '_blank') : null;
+
     posthog.capture('export_png_bouton', {
       thematique: thematique,
       code: code,
@@ -309,6 +316,7 @@ export const ExportPngMaplibreButton = ({
 
       await new Promise<void>((resolve) => {
         const safetyTimeout = setTimeout(() => {
+          iosWindow?.close();
           cleanup();
           resolve();
         }, 7000);
@@ -339,11 +347,18 @@ export const ExportPngMaplibreButton = ({
             finalCanvas.toBlob((blob) => {
               if (blob) {
                 const url = URL.createObjectURL(blob);
-                const isIOS =
-                  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-                if (isIOS) {
-                  window.open(url, '_blank');
+                if (onIOS) {
+                  if (iosWindow) {
+                    iosWindow.location.href = url;
+                  } else {
+                    // Popup bloqué malgré tout : on retombe sur le téléchargement.
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }
                   setTimeout(() => URL.revokeObjectURL(url), 1000);
                 } else {
                   const link = document.createElement('a');
@@ -354,12 +369,15 @@ export const ExportPngMaplibreButton = ({
                   document.body.removeChild(link);
                   URL.revokeObjectURL(url);
                 }
+              } else {
+                iosWindow?.close();
               }
               cleanup();
               resolve();
             });
           } catch (error) {
             console.error('Error capturing canvas:', error);
+            iosWindow?.close();
             cleanup();
             resolve();
           }
@@ -370,6 +388,7 @@ export const ExportPngMaplibreButton = ({
       setTimeout(() => setIsLoading(false), 3000);
     } else {
       console.log('Map or container not found');
+      iosWindow?.close();
       setIsLoading(false);
     }
   };

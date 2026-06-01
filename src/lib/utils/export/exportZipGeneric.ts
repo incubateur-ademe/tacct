@@ -2,9 +2,23 @@ import { toPng } from 'html-to-image';
 import JSZip from 'jszip';
 import { type RefObject } from 'react';
 import * as XLSX from 'xlsx';
+import { isIOS } from '../browser';
 import { type Any } from '../types';
 import { calculateColumnWidths } from './calculateColumnWidths';
 import { generateExportFilename } from './exportXlsx';
+
+/**
+ * Rejette si la promesse ne se résout pas dans le délai imparti.
+ * Évite que toPng reste bloqué indéfiniment (cas iOS Safari où l'onload
+ * de l'image générée ne se déclenche jamais).
+ */
+const withTimeout = <T>(promise: Promise<T>, ms: number, label: string): Promise<T> =>
+  Promise.race([
+    promise,
+    new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error(label)), ms)
+    )
+  ]);
 
 type ExportDataRow = Record<
   string,
@@ -77,21 +91,38 @@ const createPngBlob = async (
     throw new Error('PNG reference is not available');
   }
 
-  const pngDataUrl = await toPng(ref.current, {
-    quality: 1,
-    pixelRatio: 1,
-    width: ref.current.offsetWidth * 2,
-    height: ref.current.offsetHeight * 2,
-    style: {
-      transform: 'scale(2)',
-      transformOrigin: 'top left'
-    },
-    cacheBust: true,
-    onImageErrorHandler: (error) => {
-      console.error('Error exporting image:', error);
-      throw new Error("Erreur lors de la capture de l'image");
-    }
-  });
+  // Sur iOS Safari, le canvas est plafonné (~16,7 Mpx) : la mise à l'échelle x2
+  // fait échouer ou bloquer la capture. On capture donc en taille réelle sur iOS.
+  const onIOS = isIOS();
+  const toPngOptions = onIOS
+    ? {
+        quality: 1,
+        pixelRatio: 1,
+        cacheBust: true
+      }
+    : {
+        quality: 1,
+        pixelRatio: 1,
+        width: ref.current.offsetWidth * 2,
+        height: ref.current.offsetHeight * 2,
+        style: {
+          transform: 'scale(2)',
+          transformOrigin: 'top left'
+        },
+        cacheBust: true
+      };
+
+  const pngDataUrl = await withTimeout(
+    toPng(ref.current, {
+      ...toPngOptions,
+      onImageErrorHandler: (error) => {
+        console.error('Error exporting image:', error);
+        throw new Error("Erreur lors de la capture de l'image");
+      }
+    }),
+    12000,
+    "Timeout lors de la capture de l'image"
+  );
 
   // Convert data URL to blob without fetch (CSP-safe)
   const base64Data = pngDataUrl.split(',')[1];
