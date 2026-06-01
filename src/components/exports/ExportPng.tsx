@@ -316,22 +316,19 @@ export const ExportPngMaplibreButton = ({
         mapRef.current!.once('render', async () => {
           clearTimeout(safetyTimeout);
           try {
-            const htmlCanvasWithTimeout = (el: HTMLElement) =>
-              Promise.race([
-                html2canvas(el, { useCORS: true }),
-                new Promise<never>((_, reject) =>
-                  setTimeout(() => reject(new Error('html2canvas timeout')), 10000)
-                )
-              ]);
-
-            const [mapCanvas, legendCanvas] = await Promise.all([
-              htmlCanvasWithTimeout(mapContainer.current!),
-              htmlCanvasWithTimeout(originalLegendDiv)
+            // Capture native du canvas WebGL (rapide, fiable, non taché grâce
+            // au proxy) ; html2canvas seulement pour la légende.
+            const mapCanvas = mapRef.current!.getCanvas();
+            const legendCanvas = await Promise.race([
+              html2canvas(originalLegendDiv, { useCORS: true }),
+              new Promise<never>((_, reject) =>
+                setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
+              )
             ]);
 
             const finalCanvas = document.createElement('canvas');
             const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-            finalCanvas.width = mapCanvas.width - 16;
+            finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
             finalCanvas.height = mapCanvas.height + legendCanvas.height;
             ctx.drawImage(mapCanvas, 0, 0);
             ctx.drawImage(legendCanvas, 0, mapCanvas.height);
@@ -430,33 +427,44 @@ export async function generateMapPngBlob({
     if (exportButton) exportButton.style.display = 'none';
     // Wait for map to render
     return new Promise((resolve) => {
+      const restore = () => {
+        navControls.forEach((control) => {
+          (control as HTMLElement).style.display = '';
+        });
+        if (exportButton) exportButton.style.display = '';
+      };
+      // Garde-fou : si l'event 'render' ne se déclenche pas (cas iOS), on ne
+      // bloque pas indéfiniment l'export ZIP.
+      const safetyTimeout = setTimeout(() => {
+        restore();
+        resolve(null);
+      }, 8000);
+
       mapRef.current!.once('render', async () => {
+        clearTimeout(safetyTimeout);
         try {
-          const mapCanvas = await html2canvas(mapContainer.current!, {
-            useCORS: true
-          });
-          const legendCanvas = await html2canvas(originalLegendDiv, {
-            useCORS: true
-          });
+          // Capture native du canvas WebGL (rapide, fiable, non taché grâce au
+          // proxy same-origin) au lieu de html2canvas, trop lent sur iOS.
+          const mapCanvas = mapRef.current!.getCanvas();
+          const legendCanvas = await Promise.race([
+            html2canvas(originalLegendDiv, { useCORS: true }),
+            new Promise<never>((_, reject) =>
+              setTimeout(() => reject(new Error('html2canvas timeout')), 10000)
+            )
+          ]);
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-          finalCanvas.width = mapCanvas.width - 16;
+          finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
           finalCanvas.height = mapCanvas.height + legendCanvas.height;
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
           finalCanvas.toBlob((blob) => {
-            navControls.forEach((control) => {
-              (control as HTMLElement).style.display = '';
-            });
-            if (exportButton) exportButton.style.display = '';
+            restore();
             resolve(blob);
           });
         } catch (error) {
           console.error('generateMapPngBlob - error:', error);
-          navControls.forEach((control) => {
-            (control as HTMLElement).style.display = '';
-          });
-          if (exportButton) exportButton.style.display = '';
+          restore();
           resolve(null);
         }
       });

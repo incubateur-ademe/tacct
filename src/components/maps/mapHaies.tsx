@@ -220,6 +220,7 @@ export const MapHaies = ({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],

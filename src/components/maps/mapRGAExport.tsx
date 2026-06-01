@@ -1,6 +1,7 @@
 "use client";
 
 import { mapStyles } from 'carte-facile';
+import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -25,6 +26,8 @@ export const MapRGAExport = (props: {
       container: exportMapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
     });
     exportMapRef.current = map;
 

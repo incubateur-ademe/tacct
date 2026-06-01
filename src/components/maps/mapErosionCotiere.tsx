@@ -25,6 +25,7 @@ export const MapErosionCotiere = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
     });
     mapRef.current = map;

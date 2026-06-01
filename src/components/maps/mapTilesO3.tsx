@@ -52,7 +52,8 @@ export const MapTilesO3 = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
-      transformRequest: mapTransformRequest
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true }
     });
     mapRef.current = map;
 
