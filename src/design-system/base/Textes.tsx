@@ -11,11 +11,10 @@ export const H1 = ({
 }) => {
   return (
     <h1
+      className="ds-h1"
       style={{
         color: color,
-        fontSize: "2.5rem",
         fontWeight: 700,
-        lineHeight: "3rem",
         letterSpacing: "0.85px",
         fontFamily: "Marianne",
         ...style

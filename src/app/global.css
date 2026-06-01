@@ -124,6 +124,18 @@ html {
     scroll-behavior: smooth !important;
 }
 
+.ds-h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
+@media (max-width: 600px) {
+    .ds-h1 {
+        font-size: 1.75rem !important;
+        line-height: 2.5rem;
+    }
+}
+
 /* Respect de la préférence utilisateur pour réduire les animations
    (RGAA 13.8 / WCAG 2.3.3). S'applique globalement à toutes les
    animations CSS, transitions et au scroll smooth. */

@@ -406,6 +406,9 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 2.5rem;
+        @media (max-width: 600px) {
+            flex-direction: column;
+        }
     }
     .themesListe {
         max-width: 50%;
@@ -418,6 +421,7 @@
             border-bottom: 1px solid #e7e5e5;
             .circleIndicator {
                 width: 24px;
+                min-width: 24px;
                 height: 24px;
                 border-radius: 50%;
                 display: inline-block;

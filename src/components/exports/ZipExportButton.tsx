@@ -95,7 +95,12 @@ export const ZipExportButton = ({
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     try {
-      await handleExport();
+      await Promise.race([
+        handleExport(),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Export timeout')), 8000)
+        )
+      ]);
     } catch (error) {
       console.error('Export failed:', error);
     } finally {
