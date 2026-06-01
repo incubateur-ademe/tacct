@@ -100,10 +100,10 @@ export const NivoBarChart = ({
           legendPosition: 'middle',
           renderTick: (e: Any) => {
             return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+              <g className="bottom-tick">
                 <foreignObject
-                  x={-50}
-                  y={0}
+                  x={e.x - 50}
+                  y={e.y}
                   width={100}
                   height={isMobile ? 160 : 45}
                 >
@@ -238,8 +238,8 @@ export const NivoBarChartRessourcesEau = ({
           legendPosition: 'middle',
           renderTick: (e: Any) => {
             return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={40}>
+              <g className="bottom-tick">
+                <foreignObject x={e.x - 50} y={e.y} width={100} height={40}>
                   <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
                     maxWidth: '10ch',
                     wordBreak: 'keep-all',
@@ -391,8 +391,8 @@ export const NivoBarChartCatnat = ({
           legend: axisBottomLegend,
           renderTick: (e: Any) => {
             return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={40}>
+              <g className="bottom-tick">
+                <foreignObject x={e.x - 50} y={e.y} width={100} height={40}>
                   <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
                     maxWidth: '10ch',
                     wordBreak: 'keep-all',

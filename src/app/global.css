@@ -132,7 +132,7 @@ html {
 @media (max-width: 600px) {
     .ds-h1 {
         font-size: 1.75rem !important;
-        line-height: 2.5rem;
+        line-height: 2.5rem !important;
     }
 }
 
