@@ -2,13 +2,21 @@
 
 import { ScrollToTop } from '@/components/interactions/ScrollToTop';
 import { NewContainer } from '@/design-system/layout';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import PanneauLateral from './components/panneauLateral';
 import RoueSystemique from './components/roue';
 import styles from './roue.module.scss';
 
 const RouePage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const panneauRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (selectedItem && window.innerWidth < 1050 && panneauRef.current) {
+      const top = panneauRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, [selectedItem]);
 
   return (
     <Suspense>
@@ -34,7 +42,7 @@ const RouePage = () => {
               selectedItem={selectedItem}
             />
           </div>
-          <div className={styles.panneauLateralContainer}>
+          <div ref={panneauRef} className={styles.panneauLateralContainer}>
             <PanneauLateral
               setSelectedItem={setSelectedItem}
               selectedItem={selectedItem}

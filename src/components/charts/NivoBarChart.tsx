@@ -32,6 +32,78 @@ const legendProps: BarLegendProps = {
   symbolSize: 20
 };
 
+const isIOSSafari = (): boolean =>
+  typeof navigator !== 'undefined' && (
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  );
+
+const wrapWords = (text: string, maxChars = 14): string[] => {
+  const words = String(text).split(' ');
+  const lines: string[] = [];
+  let current = '';
+  for (const word of words) {
+    if (!current) {
+      current = word;
+    } else if (current.length + 1 + word.length <= maxChars) {
+      current += ' ' + word;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+};
+
+const renderBottomTick = (
+  e: Any,
+  options: { isMobile?: boolean; tickRotation?: number; foreignObjectHeight?: number } = {}
+) => {
+  const { isMobile = false, tickRotation = 0, foreignObjectHeight } = options;
+
+  if (isIOSSafari()) {
+    const lines = wrapWords(String(e.value));
+    return (
+      <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+        <text
+          textAnchor="middle"
+          transform={tickRotation ? `rotate(${tickRotation})` : undefined}
+          style={{ fontSize: 12, fontWeight: 400, fill: '#23282B' }}
+        >
+          {lines.map((line, i) => (
+            <tspan key={i} x={0} dy={i === 0 ? '1em' : '1.2em'}>
+              {line}
+            </tspan>
+          ))}
+        </text>
+      </g>
+    );
+  }
+
+  return (
+    <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+      <foreignObject
+        x={-50}
+        y={0}
+        width={100}
+        height={foreignObjectHeight ?? (isMobile ? 160 : 45)}
+      >
+        <div style={{
+          maxWidth: '15ch',
+          wordBreak: 'keep-all',
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: 400,
+          margin: isMobile ? '2rem 0' : '0.5rem 0',
+          lineHeight: 'normal',
+          rotate: tickRotation ? `${tickRotation}deg` : undefined,
+        }}>{e.value}</div>
+      </foreignObject>
+    </g>
+  );
+};
+
 type NivoBarChartProps = {
   graphData: BarDatum[];
   keys: string[];
@@ -98,29 +170,7 @@ export const NivoBarChart = ({
           legend: axisBottomLegend,
           legendOffset: 50,
           legendPosition: 'middle',
-          renderTick: (e: Any) => {
-            return (
-              <g className="bottom-tick">
-                <foreignObject
-                  x={e.x - 50}
-                  y={e.y}
-                  width={100}
-                  height={isMobile ? 160 : 45}
-                >
-                  <div style={{
-                    maxWidth: '15ch',
-                    wordBreak: 'keep-all',
-                    textAlign: 'center',
-                    fontSize: 12,
-                    fontWeight: 400,
-                    margin: isMobile ? '2rem 0' : '0.5rem 0',
-                    lineHeight: "normal",
-                    rotate: tickRotation ? `${tickRotation}deg` : undefined,
-                  }}>{e.value}</div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { isMobile, tickRotation })
         }}
         gridYValues={5}
         axisLeft={{
@@ -236,23 +286,7 @@ export const NivoBarChartRessourcesEau = ({
           legend: axisBottomLegend,
           legendOffset: 50,
           legendPosition: 'middle',
-          renderTick: (e: Any) => {
-            return (
-              <g className="bottom-tick">
-                <foreignObject x={e.x - 50} y={e.y} width={100} height={40}>
-                  <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
-                    maxWidth: '10ch',
-                    wordBreak: 'keep-all',
-                    textAlign: 'center',
-                    color: 'black',
-                    fontSize: 12,
-                    fontWeight: 400,
-                    margin: '0 auto'
-                  }}>{e.value}</div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { foreignObjectHeight: 40 })
         }}
         gridYValues={5}
         axisLeft={{
@@ -389,23 +423,7 @@ export const NivoBarChartCatnat = ({
           tickSize: 0,
           tickPadding: 15,
           legend: axisBottomLegend,
-          renderTick: (e: Any) => {
-            return (
-              <g className="bottom-tick">
-                <foreignObject x={e.x - 50} y={e.y} width={100} height={40}>
-                  <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
-                    maxWidth: '10ch',
-                    wordBreak: 'keep-all',
-                    textAlign: 'center',
-                    color: 'black',
-                    fontSize: 12,
-                    fontWeight: 400,
-                    margin: '0 auto'
-                  }}>{e.value}</div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { foreignObjectHeight: 40 })
         }}
         gridYValues={5}
         axisLeft={{

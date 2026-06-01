@@ -2,6 +2,7 @@
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
+import { setPreOpenedWindow } from '@/lib/utils/export/exportZipGeneric';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
@@ -79,6 +80,15 @@ export const ZipExportButton = ({
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsClicked(true);
     if (isExporting) return;
+
+    // Ouvrir la fenêtre de façon synchrone (dans le contexte du geste utilisateur)
+    // avant tout await, sinon iOS Safari bloque window.open()
+    const iosDevice =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (iosDevice) {
+      setPreOpenedWindow(window.open('about:blank', '_blank'));
+    }
 
     e.currentTarget.blur();
     setIsExporting(true);
