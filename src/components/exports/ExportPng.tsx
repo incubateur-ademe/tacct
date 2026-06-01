@@ -319,12 +319,15 @@ export const ExportPngMaplibreButton = ({
             // Capture native du canvas WebGL (rapide, fiable, non taché grâce
             // au proxy) ; html2canvas seulement pour la légende.
             const mapCanvas = mapRef.current!.getCanvas();
+            console.log('[export] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
+            const t0 = Date.now();
             const legendCanvas = await Promise.race([
-              html2canvas(originalLegendDiv, { useCORS: true }),
+              html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
               new Promise<never>((_, reject) =>
                 setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
               )
             ]);
+            console.log('[export] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
 
             const finalCanvas = document.createElement('canvas');
             const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
@@ -348,7 +351,8 @@ export const ExportPngMaplibreButton = ({
               resolve();
             });
           } catch (error) {
-            console.error('Error capturing canvas:', error);
+            const e = error as Error;
+            console.error('Error capturing canvas:', e?.name, '|', e?.message, '|', e?.stack);
             cleanup();
             resolve();
           }
@@ -446,12 +450,15 @@ export async function generateMapPngBlob({
           // Capture native du canvas WebGL (rapide, fiable, non taché grâce au
           // proxy same-origin) au lieu de html2canvas, trop lent sur iOS.
           const mapCanvas = mapRef.current!.getCanvas();
+          console.log('[zip] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
+          const t0 = Date.now();
           const legendCanvas = await Promise.race([
-            html2canvas(originalLegendDiv, { useCORS: true }),
+            html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
             new Promise<never>((_, reject) =>
               setTimeout(() => reject(new Error('html2canvas timeout')), 10000)
             )
           ]);
+          console.log('[zip] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
           finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
@@ -463,7 +470,8 @@ export async function generateMapPngBlob({
             resolve(blob);
           });
         } catch (error) {
-          console.error('generateMapPngBlob - error:', error);
+          const e = error as Error;
+          console.error('generateMapPngBlob - error:', e?.name, '|', e?.message, '|', e?.stack);
           restore();
           resolve(null);
         }
