@@ -46,8 +46,10 @@ export const BoutonRechercherHeader = ({
     ) : (
       <button
         aria-label="Rechercher ce territoire"
+        onMouseDown={(e) => e.preventDefault()}
         onClick={() => {
           if (searchLibelle === '') return;
+          (document.activeElement as HTMLElement | null)?.blur();
           setIsNewTypeChosen(false);
           setIsTerritoryChanging(false);
           setIsTypeChanging(false);

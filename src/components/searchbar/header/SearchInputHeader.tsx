@@ -96,7 +96,8 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       loadingText="Chargement..."
       noOptionsText="Aucun territoire trouvé"
       open={isOpen}
-      onOpen={() => {
+      onOpen={(event) => {
+        if (event?.type !== 'mousedown' && isTerritoryChanging) return;
         setValue(null);
         setIsTerritoryChanging(true);
         setIsTypeChanging(false);
