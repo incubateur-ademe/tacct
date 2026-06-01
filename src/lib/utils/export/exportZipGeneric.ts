@@ -36,40 +36,17 @@ interface ZipExportOptions {
   zipFilename?: string;
 }
 
-const isIOS = (): boolean =>
-  /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-
-let _preOpenedWindow: Window | null = null;
-
-export const setPreOpenedWindow = (w: Window | null): void => {
-  _preOpenedWindow = w;
-};
-
 /**
  * Downloads a blob as a file
  */
 const downloadBlob = (blob: Blob, filename: string): void => {
-  const url = URL.createObjectURL(blob);
-
-  if (isIOS()) {
-    const target = _preOpenedWindow;
-    _preOpenedWindow = null;
-    if (target && !target.closed) {
-      target.location.href = url;
-    } else {
-      window.open(url, '_blank');
-    }
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  } else {
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  }
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(link.href);
 };
 
 /**

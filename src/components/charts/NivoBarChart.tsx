@@ -85,7 +85,7 @@ const renderBottomTick = (
     <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
       <foreignObject
         x={-50}
-        y={0}
+        y={-50}
         width={100}
         height={foreignObjectHeight ?? (isMobile ? 160 : 45)}
       >
