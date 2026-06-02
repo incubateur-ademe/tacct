@@ -4,7 +4,7 @@ import patch4Formula from '@/assets/images/patch4_formula.svg';
 import { ChevronDownIcon } from "@/design-system/base/BaseIcons";
 import { Body } from "@/design-system/base/Textes";
 import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
+import { useId, useState } from "react";
 import styles from '../patch4c.module.scss';
 import { getBackgroundColor } from "./fonctions";
 
@@ -36,6 +36,7 @@ export const AleaExplications = ({
   isMap: boolean
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentId = useId();
   return (
     <>
       <div
@@ -71,11 +72,15 @@ export const AleaExplications = ({
             </Body>
           </div>
         </div>
-        <div
+        <button
+          type="button"
           className={styles.aleaExplicationsToggle}
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls={contentId}
         >
           <Body
+            htmlTag="span"
             style={{
               color: "var(--principales-vert)",
               fontWeight: 500
@@ -87,9 +92,12 @@ export const AleaExplications = ({
             transform={isOpen ? 'rotate(180deg)' : 'rotate(0deg)'}
             transition='transform 0.3s ease'
           />
-        </div>
+        </button>
       </div>
-      <div className={`${styles.aleaExplicationsContentWrapper} ${isOpen ? styles.aleaExplicationsContentWrapperOpen : ''}`}>
+      <div
+        id={contentId}
+        className={`${styles.aleaExplicationsContentWrapper} ${isOpen ? styles.aleaExplicationsContentWrapperOpen : ''}`}
+      >
         <div className={styles.aleaExplicationsContent}>
           <Body weight="bold" style={{ marginBottom: '0.5rem' }}>
             Calcul de l'indice
@@ -121,7 +129,12 @@ export const AleaExplications = ({
             annuels. Lorsque plusieurs indicateurs sont disponibles pour un même aléa, le
             niveau d’évolution considéré est la valeur maximale de l’indicateur.
           </Body>
-          <Image src={patch4Formula} alt="" height={80} style={{ margin: "0.5rem 0" }} />
+          <Image
+            src={patch4Formula}
+            alt="Formule de calcul de l'indice d'aggravation : (valeur 2100 moins valeur 2050) divisée par la valeur 2050"
+            height={80}
+            style={{ margin: "0.5rem 0" }}
+          />
           <Body>
             Retrouvez vos indicateurs climatiques détaillés sur le portail{' '}
             <a

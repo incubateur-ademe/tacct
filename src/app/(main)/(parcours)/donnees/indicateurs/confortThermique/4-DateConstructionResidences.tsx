@@ -62,9 +62,7 @@ export const DateConstructionResidences = ({
   );
 
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.AgeBati(
-      ageBatiTerritoire
-    );
+    IndicatorExportTransformations.confortThermique.AgeBati(ageBatiTerritoire);
 
   return (
     <>

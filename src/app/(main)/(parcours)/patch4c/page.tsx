@@ -15,7 +15,6 @@ const Patch4C = async (props: { searchParams: SearchParams }) => {
   const { code, type, libelle } = await props.searchParams;
   const patch4 = await GetPatch4(code, type, libelle);
   const coordonneesCommunes = await GetCommunesCoordinates(code, libelle, type);
-
   return (
     <>
       <BlocTitre />

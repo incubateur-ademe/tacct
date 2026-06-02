@@ -89,7 +89,6 @@ export const DonneesBiodiversite = ({
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
-  console.log('agricultureBio', agricultureBio);
 
   useLayoutEffect(() => {
     if (isFirstRender) {

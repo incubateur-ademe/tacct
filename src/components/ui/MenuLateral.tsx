@@ -15,12 +15,12 @@ import styles from '../components.module.scss';
 
 export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: boolean; onToggleCollapse: (collapsed: boolean) => void }) => {
   const searchParams = useSearchParams();
+  const posthog = usePostHog();
   const params = usePathname();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture";
-  const posthog = usePostHog();
   const [topPosition, setTopPosition] = useState<number>(173);
   const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);
@@ -93,12 +93,12 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
         const allAnchors = ongletsMenuEtape1.thematiquesLiees.flatMap(section => section.sousCategories);
         allAnchors.push("Érosion côtière");
         for (const item of allAnchors) {
-          const element = document.getElementById(item);
+          const element = document.getElementById(toAnchorId(item));
           if (element) {
             const elementTop = element.offsetTop;
             const elementBottom = elementTop + element.offsetHeight;
             if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-              setActiveAnchorEtape1(item);
+              setActiveAnchorEtape1(toAnchorId(item));
               break;
             }
           }
@@ -133,6 +133,8 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     }
   }, [isCollapsed]);
 
+  const toAnchorId = (s: string) => s.replace(/\s+/g, '-');
+
   const scrollToAnchor = (anchor: string) => {
     const decodedAnchor = decodeURIComponent(anchor);
     const element = document.getElementById(decodedAnchor);
@@ -152,13 +154,13 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
         type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
         page: 'donnees',
         thematique: thematique,
-        anchor: item ? item : ""
+        anchor: item ? toAnchorId(item) : ""
       });
       return;
     }
     setUrlAnchor(item);
     setActiveAnchorEtape2('');
-    scrollToAnchor(item);
+    scrollToAnchor(toAnchorId(item));
   };
   const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
     if (params !== "/impacts") {
@@ -202,7 +204,6 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
             transition: 'width 0.5s ease-in-out, padding 0.5s ease-in-out'
           }}
           aria-label="Navigation dans la page"
-          role="navigation"
         >
           <button
             onClick={() => onToggleCollapse(!isCollapsed)}
@@ -211,7 +212,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
           >
             <Image
               src={DoubleChevronIcon}
-              alt="Toggle menu"
+              alt={isCollapsed ? "Ouvrir le menu" : "Réduire le menu"}
               className={`${isCollapsed ? styles.toggle_icon_collapsed : styles.toggle_icon_expanded}`}
               style={{
                 width: '16px',
@@ -246,21 +247,24 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
               {/* Navigation */}
               <div className="flex flex-col" ref={navigationRef}>
                 <button
+                  type="button"
                   onClick={handleEtape1Toggle}
                   className={styles.BoutonEtapes}
+                  aria-expanded={openEtape1}
+                  aria-current={params === "/donnees" ? "page" : undefined}
                 >
                   {openEtape1 ? (
-                    <div
+                    <span
                       className={styles['chevron-right-green']}
                       style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                     />
                   ) : (
-                    <div
+                    <span
                       className={styles['chevron-right-black']}
                       style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                     />
                   )}
-                  <Body size='lg' weight='bold' style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
+                  <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape1 ? "var(--principales-vert)" : "black" }}>
                     {thematique === "Confort thermique" ? <>Étape 1. <br />Données de votre territoire</> : "Données de votre territoire"}
                   </Body>
                 </button>
@@ -275,20 +279,23 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                       >
                         {thematique.icone}{" "}{thematique.thematique}
                       </SousTitre2>
-                      <div className="">
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                         {thematique.sousCategories.map((item) => (
-                          <button
-                            key={item}
-                            onClick={() => handleItemClickEtape1(item)}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === item
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm'>{item}</Body>
-                          </button>
+                          <li key={item}>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape1(item)}
+                              aria-current={activeAnchorEtape1 === toAnchorId(item) ? "location" : undefined}
+                              className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === toAnchorId(item)
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">{item}</Body>
+                            </button>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   ))}
                   {
@@ -302,18 +309,21 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                         >
                           🏗️ Aménagement
                         </SousTitre2>
-                        <div className="">
-                          <button
-                            key={"Érosion"}
-                            onClick={() => handleItemClickEtape1("Érosion côtière")}
-                            className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion côtière"
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm'>Érosion côtière</Body>
-                          </button>
-                        </div>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape1("Érosion côtière")}
+                              aria-current={activeAnchorEtape1 === "Érosion-côtière" ? "location" : undefined}
+                              className={`block w-full text-left p-2 text-sm rounded-md transition-colors ${activeAnchorEtape1 === "Érosion-côtière"
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">Érosion côtière</Body>
+                            </button>
+                          </li>
+                        </ul>
                       </>
                     )
                   }
@@ -321,40 +331,46 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                 {thematique === "Confort thermique" || thematique === "Agriculture" ? (
                   <>
                     <button
+                      type="button"
                       onClick={handleEtape2Toggle}
                       className={styles.BoutonEtapes}
+                      aria-expanded={openEtape2}
+                      aria-current={params === "/impacts" ? "page" : undefined}
                     >
                       {openEtape2 ? (
-                        <div
+                        <span
                           className={styles['chevron-right-green']}
                           style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       ) : (
-                        <div
+                        <span
                           className={styles['chevron-right-black']}
                           style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       )}
-                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                      <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
                         Étape 2. <br />Diagnostiquez les impacts
                       </Body>
                     </button>
-                    <div className={styles.menuEtapeImpacts}>
+                    <ul className={styles.menuEtapeImpacts} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {
                         openEtape2 && ongletsMenuEtape2.map((item) => (
-                          <button
-                            key={item.id}
-                            onClick={() => handleItemClickEtape2(item)}
-                            className={`block w-full text-left ${activeAnchorEtape2 === item.id
-                              ? styles.itemSurligne
-                              : styles.itemNonSurligne
-                              }`}
-                          >
-                            <Body size='sm'>{item.titre}</Body>
-                          </button>
+                          <li key={item.id}>
+                            <button
+                              type="button"
+                              onClick={() => handleItemClickEtape2(item)}
+                              aria-current={activeAnchorEtape2 === item.id ? "location" : undefined}
+                              className={`block w-full text-left ${activeAnchorEtape2 === item.id
+                                ? styles.itemSurligne
+                                : styles.itemNonSurligne
+                                }`}
+                            >
+                              <Body size='sm' htmlTag="span">{item.titre}</Body>
+                            </button>
+                          </li>
                         ))
                       }
-                    </div>
+                    </ul>
                   </>
                 ) : ""
                 }
@@ -365,17 +381,17 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                       className={styles.BoutonEtapes}
                     >
                       {openEtape2 ? (
-                        <div
+                        <span
                           className={styles['chevron-right-green']}
                           style={{ transform: 'rotate(90deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       ) : (
-                        <div
+                        <span
                           className={styles['chevron-right-black']}
                           style={{ transform: 'rotate(0deg)', transition: 'transform 0.2s ease-in-out' }}
                         />
                       )}
-                      <Body size='lg' weight='bold' style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
+                      <Body size='lg' weight='bold' htmlTag="span" style={{ color: openEtape2 ? "var(--principales-vert)" : "black" }}>
                         Étape 2. <br />Diagnostiquez les impacts
                       </Body>
                     </button>
@@ -390,7 +406,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                               : styles.itemNonSurligne
                               }`}
                           >
-                            <Body size='sm'>{item.titre}</Body>
+                            <Body size='sm' htmlTag="span">{item.titre}</Body>
                           </button>
                         ))
                       }

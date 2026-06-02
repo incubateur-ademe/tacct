@@ -152,3 +152,8 @@ export type arbovirose = Prisma.arboviroseModel
  * 
  */
 export type feux_foret = Prisma.feux_foretModel
+/**
+ * Model aot_40_new
+ * 
+ */
+export type aot_40_new = Prisma.aot_40_newModel

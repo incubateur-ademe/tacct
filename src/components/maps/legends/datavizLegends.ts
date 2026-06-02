@@ -60,7 +60,7 @@ export const etatCoursDeauLegends = [
   }
 ];
 
-export const aot40Legends = [
+export const oldAot40Legends = [
   {
     value: '> 36 000 µg/m³',
     color: '#5524A0'
@@ -85,6 +85,18 @@ export const aot40Legends = [
     value: '< 6 000 µg/m³',
     color: '#5EEDF3'
   }
+];
+
+export const aot40Legends = [
+  { color: '#A4F5EE', value: '0-3000' },
+  { color: '#C4E8A3', value: '3000-6000' },
+  { color: '#F5E290', value: '6000-9000' },
+  { color: '#FFAB66', value: '9000-10000' },
+  { color: '#FC9999', value: '10000-11000' },
+  { color: '#F37D7D', value: '11000-12000' },
+  { color: '#E06060', value: '12000-15000' },
+  { color: '#C97189', value: '15000-18000' },
+  { color: '#B982B2', value: '≥ 18000' }
 ];
 
 export const travailExterieurPieChartLegend = [
@@ -282,7 +294,7 @@ export const ageBatiBarChartLegend = [
 
 export const ressourcesEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -294,15 +306,15 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];
@@ -470,7 +482,7 @@ export const DateConstructionResidencesLegend = [
 
 export const prelevementEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -482,15 +494,15 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];

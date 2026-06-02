@@ -77,7 +77,8 @@ export const ModelName = {
   secheresses: 'secheresses',
   inondations_par_debordement: 'inondations_par_debordement',
   arbovirose: 'arbovirose',
-  feux_foret: 'feux_foret'
+  feux_foret: 'feux_foret',
+  aot_40_new: 'aot_40_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -939,6 +940,17 @@ export const Feux_foretScalarFieldEnum = {
 } as const
 
 export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
+
+
+export const Aot_40_newScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type Aot_40_newScalarFieldEnum = (typeof Aot_40_newScalarFieldEnum)[keyof typeof Aot_40_newScalarFieldEnum]
 
 
 export const SortOrder = {

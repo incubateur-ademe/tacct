@@ -2,8 +2,8 @@
 import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
-import { EtatCoursDeau, PrelevementsEau } from "@/lib/postgres/models";
-import { GetPrelevementsEau } from "@/lib/queries/databases/ressourcesEau";
+import { EtatCoursDeau, PrelevementsEauModel } from "@/lib/postgres/models";
+import { GetPrelevementsEauNew } from "@/lib/queries/databases/ressourcesEau";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { PrelevementsEnEau } from '../../indicateurs/eau/2-PrelevementsEnEau';
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   etatCoursDeau: EtatCoursDeau[];
-  prelevementsEau: PrelevementsEau[];
+  prelevementsEau: PrelevementsEauModel[];
 }
 
 export const DonneesEau = ({
@@ -45,7 +45,7 @@ export const DonneesEau = ({
     void (async () => {
       const [newEtatCoursDeau, newPrelevementsEau] = await Promise.all([
         GetEtatCoursDeau(code, libelle, type),
-        GetPrelevementsEau(code, libelle, type)
+        GetPrelevementsEauNew(code, libelle, type)
       ]);
       setData({
         etatCoursDeau: newEtatCoursDeau,
@@ -67,6 +67,9 @@ export const DonneesEau = ({
           <Body size='lg'>
             Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain vous donnera les vraies réponses.
           </Body>
+          <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+            À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
+          </Body>
         </section>
 
         {/* Section Biodiversité */}
@@ -81,7 +84,7 @@ export const DonneesEau = ({
           }}>            {ongletsMenu.thematiquesLiees[0].icone}{" "}{ongletsMenu.thematiquesLiees[0].thematique}
           </H2>
           {/* Ressources en eau */}
-          <div id="Ressources en eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
+          <div id="Ressources-en-eau" className={styles.indicateurWrapper} style={{ borderBottom: '1px solid var(--gris-medium)' }}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Répartition des prélèvements d’eau par usage
@@ -91,7 +94,7 @@ export const DonneesEau = ({
           </div>
 
           {/* État écologique des cours d'eau */}
-          <div id="État des cours d'eau" className={styles.indicateurMapWrapper}>
+          <div id="État-des-cours-d'eau" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 État écologique des cours d’eau
