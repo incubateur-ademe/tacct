@@ -191,7 +191,8 @@ export const NivoBarChartRessourcesEau = ({
   axisBottomLegend,
   axisLeftTickFactor = 1,
   groupMode = 'stacked',
-  showLegend = true
+  showLegend = true,
+  graphMarginBottom
 }: NivoBarChartProps) => {
   const windowDimensions = useWindowDimensions();
   return (
@@ -217,11 +218,12 @@ export const NivoBarChartRessourcesEau = ({
                 top: 40,
                 right: 80,
                 bottom:
-                  windowDimensions.width && windowDimensions.width > 1850
+                  graphMarginBottom ??
+                  (windowDimensions.width && windowDimensions.width > 1850
                     ? 130
                     : windowDimensions.width && windowDimensions.width > 1700
                       ? 160
-                      : 220,
+                      : 220),
                 left: 80
               }
         }
