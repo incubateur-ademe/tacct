@@ -1,3 +1,4 @@
+'use client';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Any } from '@/lib/utils/types';
@@ -66,7 +67,10 @@ export const NivoBarChart = ({
   graphMarginBottom
 }: NivoBarChartProps) => {
   return (
-    <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
+    <div
+      className="nivo-bar-chart-container"
+      style={{ width: '100%', height: '100%' }}
+    >
       <ResponsiveBar
         data={graphData}
         keys={keys}
@@ -98,15 +102,19 @@ export const NivoBarChart = ({
             return (
               <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
                 <foreignObject x={-50} y={0} width={100} height={45}>
-                  <div style={{
-                    maxWidth: '15ch',
-                    wordBreak: 'keep-all',
-                    textAlign: 'center',
-                    fontSize: 12,
-                    fontWeight: 400,
-                    margin: '0.5rem 0',
-                    lineHeight: "normal"
-                  }}>{e.value}</div>
+                  <div
+                    style={{
+                      maxWidth: '15ch',
+                      wordBreak: 'keep-all',
+                      textAlign: 'center',
+                      fontSize: 12,
+                      fontWeight: 400,
+                      margin: '0.5rem 0',
+                      lineHeight: 'normal'
+                    }}
+                  >
+                    {e.value}
+                  </div>
                 </foreignObject>
               </g>
             );
@@ -147,25 +155,25 @@ export const NivoBarChart = ({
         legends={
           showLegend
             ? [
-              {
-                ...legendProps,
-                data: legendData,
-                direction: "row",
-                anchor: "bottom",
-                translateX: 0,
-                translateY: 80,
-                itemsSpacing: 50,
-              }
-            ]
+                {
+                  ...legendProps,
+                  data: legendData,
+                  direction: 'row',
+                  anchor: 'bottom',
+                  translateX: 0,
+                  translateY: 80,
+                  itemsSpacing: 50
+                }
+              ]
             : []
         }
         tooltip={tooltip}
         role="application"
-      // motionConfig={{
-      //   friction: 20,
-      //   mass: 2,
-      //   tension: 170
-      // }}
+        // motionConfig={{
+        //   friction: 20,
+        //   mass: 2,
+        //   tension: 170
+        // }}
       />
     </div>
   );
@@ -186,137 +194,156 @@ export const NivoBarChartRessourcesEau = ({
   showLegend = true
 }: NivoBarChartProps) => {
   const windowDimensions = useWindowDimensions();
+  console.log('windowDimensions', windowDimensions);
   return (
-    <div className="prelevement-eau-bar-chart-container" style={{ width: '100%', height: '100%' }}>
+    <div
+      className="prelevement-eau-bar-chart-container"
+      style={{ width: '100%', height: '100%' }}
+    >
       <ResponsiveBar
         data={graphData}
         keys={keys}
         isFocusable={true}
         indexBy={indexBy}
         colors={colors}
-      margin={
-        showLegend
-          ? {
-            top: 40,
-            right: 80,
-            bottom: legendData && legendData.length >= 4 ? 120 : 80,
-            left: 80
+        margin={
+          showLegend
+            ? {
+                top: 40,
+                right: 80,
+                bottom: legendData && legendData.length >= 4 ? 120 : 80,
+                left: 80
+              }
+            : {
+                top: 40,
+                right: 80,
+                bottom:
+                  windowDimensions.width && windowDimensions.width > 1850
+                    ? 130
+                    : windowDimensions.width && windowDimensions.width > 1700
+                      ? 160
+                      : 220,
+                left: 80
+              }
+        }
+        groupMode={groupMode}
+        padding={0.3}
+        innerPadding={2}
+        borderRadius={1}
+        valueScale={{ type: 'linear' }}
+        indexScale={{ type: 'band', round: true }}
+        borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+          tickValues: bottomTickValues,
+          tickSize: 0,
+          tickPadding: 15,
+          legend: axisBottomLegend,
+          legendOffset: 50,
+          legendPosition: 'middle',
+          renderTick: (e: Any) => {
+            return (
+              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+                <foreignObject x={-50} y={0} width={100} height={40}>
+                  <div
+                    {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)}
+                    style={{
+                      maxWidth: '10ch',
+                      wordBreak: 'keep-all',
+                      textAlign: 'center',
+                      color: 'black',
+                      fontSize: 12,
+                      fontWeight: 400,
+                      margin: '0 auto'
+                    }}
+                  >
+                    {e.value}
+                  </div>
+                </foreignObject>
+              </g>
+            );
           }
-          : { top: 40, right: 80, bottom: windowDimensions.width! > 1850 ? 130 : windowDimensions.width! > 1700 ? 160 : 180, left: 80 }
-      }
-      groupMode={groupMode}
-      padding={0.3}
-      innerPadding={2}
-      borderRadius={1}
-      valueScale={{ type: 'linear' }}
-      indexScale={{ type: 'band', round: true }}
-      borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        tickValues: bottomTickValues,
-        tickSize: 0,
-        tickPadding: 15,
-        legend: axisBottomLegend,
-        legendOffset: 50,
-        legendPosition: 'middle',
-        renderTick: (e: Any) => {
-          return (
-            <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-              <foreignObject x={-50} y={0} width={100} height={40}>
-                <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
-                  maxWidth: '10ch',
-                  wordBreak: 'keep-all',
-                  textAlign: 'center',
-                  color: 'black',
-                  fontSize: 12,
-                  fontWeight: 400,
-                  margin: '0 auto'
-                }}>{e.value}</div>
-              </foreignObject>
-            </g>
-          );
+        }}
+        gridYValues={5}
+        axisLeft={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: axisLeftLegend,
+          legendPosition: 'middle',
+          legendOffset: -50,
+          truncateTickAt: 0,
+          tickValues: 5, //number of tickvalues displayed along the ax
+          renderTick: (e) => {
+            return (
+              <g transform={`translate(${e.x},${e.y})`}>
+                <text
+                  x={-20}
+                  y={5}
+                  textAnchor="middle"
+                  style={{
+                    fill: 'black',
+                    fontSize: 12,
+                    fontWeight: 400
+                  }}
+                >
+                  {(e.value / axisLeftTickFactor) % 1 != 0
+                    ? ''
+                    : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
+                </text>
+              </g>
+            );
+          }
+        }}
+        enableLabel={false}
+        legends={
+          showLegend && legendData
+            ? legendData.length >= 4
+              ? [
+                  // First row - first half of items
+                  {
+                    ...legendProps,
+                    data: legendData.slice(0, Math.ceil(legendData.length / 2)),
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 70,
+                    itemsSpacing: 40,
+                    itemWidth: 120,
+                    itemHeight: 25,
+                    symbolSize: 15
+                  },
+                  // Second row - second half of items
+                  {
+                    ...legendProps,
+                    data: legendData.slice(Math.ceil(legendData.length / 2)),
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 100,
+                    itemsSpacing: 40,
+                    itemWidth: 120,
+                    itemHeight: 25,
+                    symbolSize: 15
+                  }
+                ]
+              : [
+                  {
+                    ...legendProps,
+                    data: legendData,
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 70,
+                    itemsSpacing: 50
+                  }
+                ]
+            : []
         }
-      }}
-      gridYValues={5}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: axisLeftLegend,
-        legendPosition: 'middle',
-        legendOffset: -50,
-        truncateTickAt: 0,
-        tickValues: 5, //number of tickvalues displayed along the ax
-        renderTick: (e) => {
-          return (
-            <g transform={`translate(${e.x},${e.y})`}>
-              <text
-                x={-20}
-                y={5}
-                textAnchor="middle"
-                style={{
-                  fill: 'black',
-                  fontSize: 12,
-                  fontWeight: 400
-                }}
-              >
-                {(e.value / axisLeftTickFactor) % 1 != 0
-                  ? ''
-                  : numberWithSpacesRegex(e.value / axisLeftTickFactor)}
-              </text>
-            </g>
-          );
-        }
-      }}
-      enableLabel={false}
-      legends={
-        showLegend && legendData
-          ? legendData.length >= 4
-            ? [
-              // First row - first half of items
-              {
-                ...legendProps,
-                data: legendData.slice(0, Math.ceil(legendData.length / 2)),
-                direction: "row",
-                anchor: "bottom",
-                translateX: 0,
-                translateY: 70,
-                itemsSpacing: 40,
-                itemWidth: 120,
-                itemHeight: 25,
-                symbolSize: 15,
-              },
-              // Second row - second half of items
-              {
-                ...legendProps,
-                data: legendData.slice(Math.ceil(legendData.length / 2)),
-                direction: "row",
-                anchor: "bottom",
-                translateX: 0,
-                translateY: 100,
-                itemsSpacing: 40,
-                itemWidth: 120,
-                itemHeight: 25,
-                symbolSize: 15,
-              }
-            ]
-            : [
-              {
-                ...legendProps,
-                data: legendData,
-                direction: "row",
-                anchor: "bottom",
-                translateX: 0,
-                translateY: 70,
-                itemsSpacing: 50,
-              }
-            ]
-          : []
-      }
-      tooltip={tooltip}
-      role="application"
-    />
+        tooltip={tooltip}
+        role="application"
+      />
     </div>
   );
 };
@@ -336,7 +363,10 @@ export const NivoBarChartCatnat = ({
   showLegend = true
 }: NivoBarChartProps) => {
   return (
-    <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
+    <div
+      className="nivo-bar-chart-container"
+      style={{ width: '100%', height: '100%' }}
+    >
       <ResponsiveBar
         data={graphData}
         keys={keys}
@@ -346,11 +376,11 @@ export const NivoBarChartCatnat = ({
         margin={
           showLegend
             ? {
-              top: 40,
-              right: 100,
-              bottom: legendData && legendData.length >= 4 ? 120 : 80,
-              left: 80
-            }
+                top: 40,
+                right: 100,
+                bottom: legendData && legendData.length >= 4 ? 120 : 80,
+                left: 80
+              }
             : { top: 40, right: 100, bottom: 150, left: 80 }
         }
         groupMode={groupMode}
@@ -371,15 +401,20 @@ export const NivoBarChartCatnat = ({
             return (
               <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
                 <foreignObject x={-50} y={0} width={100} height={40}>
-                  <div {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)} style={{
-                    maxWidth: '10ch',
-                    wordBreak: 'keep-all',
-                    textAlign: 'center',
-                    color: 'black',
-                    fontSize: 12,
-                    fontWeight: 400,
-                    margin: '0 auto'
-                  }}>{e.value}</div>
+                  <div
+                    {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)}
+                    style={{
+                      maxWidth: '10ch',
+                      wordBreak: 'keep-all',
+                      textAlign: 'center',
+                      color: 'black',
+                      fontSize: 12,
+                      fontWeight: 400,
+                      margin: '0 auto'
+                    }}
+                  >
+                    {e.value}
+                  </div>
                 </foreignObject>
               </g>
             );
@@ -421,44 +456,44 @@ export const NivoBarChartCatnat = ({
           showLegend && legendData
             ? legendData.length >= 4
               ? [
-                // First row - first half of items
-                {
-                  ...legendProps,
-                  data: legendData.slice(0, Math.ceil(legendData.length / 2)),
-                  direction: "row",
-                  anchor: "bottom",
-                  translateX: 0,
-                  translateY: 70,
-                  itemsSpacing: 40,
-                  itemWidth: 120,
-                  itemHeight: 25,
-                  symbolSize: 15,
-                },
-                // Second row - second half of items
-                {
-                  ...legendProps,
-                  data: legendData.slice(Math.ceil(legendData.length / 2)),
-                  direction: "row",
-                  anchor: "bottom",
-                  translateX: 0,
-                  translateY: 100,
-                  itemsSpacing: 40,
-                  itemWidth: 120,
-                  itemHeight: 25,
-                  symbolSize: 15,
-                }
-              ]
+                  // First row - first half of items
+                  {
+                    ...legendProps,
+                    data: legendData.slice(0, Math.ceil(legendData.length / 2)),
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 70,
+                    itemsSpacing: 40,
+                    itemWidth: 120,
+                    itemHeight: 25,
+                    symbolSize: 15
+                  },
+                  // Second row - second half of items
+                  {
+                    ...legendProps,
+                    data: legendData.slice(Math.ceil(legendData.length / 2)),
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 100,
+                    itemsSpacing: 40,
+                    itemWidth: 120,
+                    itemHeight: 25,
+                    symbolSize: 15
+                  }
+                ]
               : [
-                {
-                  ...legendProps,
-                  data: legendData,
-                  direction: "row",
-                  anchor: "bottom",
-                  translateX: 0,
-                  translateY: 70,
-                  itemsSpacing: 50,
-                }
-              ]
+                  {
+                    ...legendProps,
+                    data: legendData,
+                    direction: 'row',
+                    anchor: 'bottom',
+                    translateX: 0,
+                    translateY: 70,
+                    itemsSpacing: 50
+                  }
+                ]
             : []
         }
         tooltip={tooltip}

@@ -192,11 +192,6 @@ model databases_v2_confort_thermique {
   libelle_petr            String?
   code_pnr                String?
   libelle_pnr             String?
-  age_bati_post06         Float?
-  age_bati_91_05          Float?
-  age_bati_46_90          Float?
-  age_bati_19_45          Float?
-  age_bati_pre_19         Float?
   under_4_sum_1968        Float?
   to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
   over_75_sum_1968        Float?
@@ -238,6 +233,13 @@ model databases_v2_confort_thermique {
   under_4_sum_2022        Float?
   to_75_sum_2022          Float?  @map("4_to_75_sum_2022")
   over_75_sum_2022        Float?
+  nb_rp_tot               Float?
+  nb_rp_pre_19            Float?
+  nb_rp_19_45             Float?
+  nb_rp_46_70             Float?
+  nb_rp_71_90             Float?
+  nb_rp_91_05             Float?
+  nb_rp_post_06           Float?
 
   @@index([code_geographique], map: "confort_thermique_communes_index")
   @@index([departement], map: "confort_thermique_departement_index")
@@ -951,5 +953,16 @@ model feux_foret {
   @@index([libelle_petr], map: "feux_foret_petr_index")
   @@index([code_pnr], map: "feux_foret_pnr_index")
   @@index([index], map: "ix_feux_foret_index")
+  @@schema("databases_v2")
+}
+
+model aot_40_new {
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
+
+  @@index([index], map: "ix_aot_40_new_index")
   @@schema("databases_v2")
 }

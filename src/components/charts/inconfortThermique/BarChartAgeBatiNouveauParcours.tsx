@@ -22,10 +22,20 @@ type Props = {
 };
 
 export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
-  const sumAllCount = chartData.reduce((sum, item) => sum + (Number(item["Votre territoire"]) || 0), 0);
+  const sumAllCount = chartData.reduce(
+    (sum, item) => sum + (Number(item['Votre territoire']) || 0),
+    0
+  );
   return (
-    <div style={{ height: sumAllCount > 0 ? '500px' : "fit-content", width: '100%', backgroundColor: 'white', borderRadius: '1rem' }}>
-      {sumAllCount > 0 ?
+    <div
+      style={{
+        height: sumAllCount > 0 ? '500px' : 'fit-content',
+        width: '100%',
+        backgroundColor: 'white',
+        borderRadius: '1rem'
+      }}
+    >
+      {sumAllCount > 0 ? (
         <>
           <ResponsiveBar
             data={chartData}
@@ -46,8 +56,10 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
                       className={styles.colorSquare}
                       style={{ background: color }}
                     />
-                    <Body size='sm'>{id} :</Body>
-                    <Body size='sm' weight='bold'>{Round(value, 1)} %</Body>
+                    <Body size="sm">{id} :</Body>
+                    <Body size="sm" weight="bold">
+                      {Round(value, 1)} %
+                    </Body>
                   </div>
                 </div>
               </div>
@@ -63,27 +75,34 @@ export const BarChartAgeBatiNouveauParcours = ({ chartData }: Props) => {
                 return (
                   <g transform={`translate(${e.x},${e.y})`}>
                     <foreignObject x={-50} y={0} width={100} height={45}>
-                      <div style={{
-                        maxWidth: '15ch',
-                        wordBreak: 'keep-all',
-                        textAlign: 'center',
-                        fontSize: 12,
-                        fontWeight: 400,
-                        margin: '0.5rem 0',
-                        lineHeight: "normal"
-                      }}>{e.value}</div>
+                      <div
+                        style={{
+                          maxWidth: '15ch',
+                          wordBreak: 'keep-all',
+                          textAlign: 'center',
+                          fontSize: 12,
+                          fontWeight: 400,
+                          margin: '0.5rem 0',
+                          lineHeight: 'normal'
+                        }}
+                      >
+                        {e.value}
+                      </div>
                     </foreignObject>
                   </g>
                 );
               }
             }}
           />
-          <div style={{ margin: "-2.5rem 0.5rem"}}>
+          <div style={{ margin: '-2.5rem 0.5rem' }}>
             <LegendCompColor legends={DateConstructionResidencesLegend} />
           </div>
         </>
-        : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
-      }
+      ) : (
+        <div className="p-10 flex flex-row justify-center">
+          <DataNotFoundForGraph image={DataNotFound} />
+        </div>
+      )}
     </div>
   );
 };

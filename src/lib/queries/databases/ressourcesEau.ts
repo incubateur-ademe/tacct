@@ -199,8 +199,8 @@ export const GetPrelevementsEauNew = async (
         } else if (type === 'pnr') {
           const value = await prisma.prelevements_eau_new.findMany({
             where: {
-              libelle_pnr: {
-                contains: libelle,
+              code_pnr: {
+                contains: code,
                 mode: 'insensitive'
               }
             }

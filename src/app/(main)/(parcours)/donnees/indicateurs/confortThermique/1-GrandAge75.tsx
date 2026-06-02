@@ -83,7 +83,7 @@ export const GrandAge75 = ({
     }
   }, [type, code, confortThermique]);
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.GrandAge75(
+    IndicatorExportTransformations.confortThermique.GrandAge75(
       grandAgeTerritoire
     );
 

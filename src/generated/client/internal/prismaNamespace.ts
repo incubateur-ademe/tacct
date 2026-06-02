@@ -410,7 +410,8 @@ export const ModelName = {
   secheresses: 'secheresses',
   inondations_par_debordement: 'inondations_par_debordement',
   arbovirose: 'arbovirose',
-  feux_foret: 'feux_foret'
+  feux_foret: 'feux_foret',
+  aot_40_new: 'aot_40_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -426,7 +427,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2396,6 +2397,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    aot_40_new: {
+      payload: Prisma.$aot_40_newPayload<ExtArgs>
+      fields: Prisma.aot_40_newFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.aot_40_newFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.aot_40_newFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        findFirst: {
+          args: Prisma.aot_40_newFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.aot_40_newFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        findMany: {
+          args: Prisma.aot_40_newFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>[]
+        }
+        create: {
+          args: Prisma.aot_40_newCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        createMany: {
+          args: Prisma.aot_40_newCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.aot_40_newCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>[]
+        }
+        delete: {
+          args: Prisma.aot_40_newDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        update: {
+          args: Prisma.aot_40_newUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        deleteMany: {
+          args: Prisma.aot_40_newDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.aot_40_newUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.aot_40_newUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>[]
+        }
+        upsert: {
+          args: Prisma.aot_40_newUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$aot_40_newPayload>
+        }
+        aggregate: {
+          args: Prisma.Aot_40_newAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAot_40_new>
+        }
+        groupBy: {
+          args: Prisma.aot_40_newGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Aot_40_newGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.aot_40_newCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Aot_40_newCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2590,11 +2665,6 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  age_bati_post06: 'age_bati_post06',
-  age_bati_91_05: 'age_bati_91_05',
-  age_bati_46_90: 'age_bati_46_90',
-  age_bati_19_45: 'age_bati_19_45',
-  age_bati_pre_19: 'age_bati_pre_19',
   under_4_sum_1968: 'under_4_sum_1968',
   to_75_sum_1968: 'to_75_sum_1968',
   over_75_sum_1968: 'over_75_sum_1968',
@@ -2635,7 +2705,14 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   over_75_sum_2016: 'over_75_sum_2016',
   under_4_sum_2022: 'under_4_sum_2022',
   to_75_sum_2022: 'to_75_sum_2022',
-  over_75_sum_2022: 'over_75_sum_2022'
+  over_75_sum_2022: 'over_75_sum_2022',
+  nb_rp_tot: 'nb_rp_tot',
+  nb_rp_pre_19: 'nb_rp_pre_19',
+  nb_rp_19_45: 'nb_rp_19_45',
+  nb_rp_46_70: 'nb_rp_46_70',
+  nb_rp_71_90: 'nb_rp_71_90',
+  nb_rp_91_05: 'nb_rp_91_05',
+  nb_rp_post_06: 'nb_rp_post_06'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -3278,6 +3355,17 @@ export const Feux_foretScalarFieldEnum = {
 export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
 
 
+export const Aot_40_newScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type Aot_40_newScalarFieldEnum = (typeof Aot_40_newScalarFieldEnum)[keyof typeof Aot_40_newScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3471,6 +3559,7 @@ export type GlobalOmitConfig = {
   inondations_par_debordement?: Prisma.inondations_par_debordementOmit
   arbovirose?: Prisma.arboviroseOmit
   feux_foret?: Prisma.feux_foretOmit
+  aot_40_new?: Prisma.aot_40_newOmit
 }
 
 /* Types for Logging */

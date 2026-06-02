@@ -13,6 +13,7 @@ import {
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  Patch4,
   PrelevementsEauParsed,
   QualiteSitesBaignadeModel,
   RGAdb,
@@ -21,6 +22,24 @@ import {
   TableCommuneModel
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
+
+export const Patch4Export = ({
+  type,
+  patch4
+}: {
+  type: string;
+  patch4: Patch4;
+}) => {
+  if (type === 'epci') {
+    return {
+      epci: patch4.code_geographique,
+      feux_foret: patch4.feux_foret,
+      fortes_chaleurs: patch4.fortes_chaleurs,
+      fortes_precipitations: patch4.fortes_precipitations,
+      secheresse_sols: patch4.secheresse_sols
+    };
+  } else return patch4;
+};
 
 export const IndicatorExportTransformations = {
   agriculture: {
@@ -206,7 +225,7 @@ export const IndicatorExportTransformations = {
         };
       })
   },
-  inconfort_thermique: {
+  confortThermique: {
     AgeBati: (ageBati: AgeBatiDto[]) =>
       ageBati.map((el) => {
         return {
@@ -220,11 +239,12 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          part_age_bati_pre_1919: el.age_bati_pre_19,
-          part_age_bati_1919_1945: el.age_bati_19_45,
-          part_age_bati_1946_1990: el.age_bati_46_90,
-          part_age_bati_1991_2005: el.age_bati_91_05,
-          part_age_bati_post_2006: el.age_bati_post06
+          nb_residences_principales_total: el.nb_rp_tot,
+          nb_residences_principales_pre_19: el.nb_rp_pre_19,
+          nb_residences_principales_19_45: el.nb_rp_19_45,
+          nb_residences_principales_46_90: el.nb_rp_46_70 + el.nb_rp_71_90,
+          nb_residences_principales_91_05: el.nb_rp_91_05,
+          nb_residences_principales_post_06: el.nb_rp_post_06
         };
       }),
     GrandAge75: (grandAge: GrandAgeDto[]) =>

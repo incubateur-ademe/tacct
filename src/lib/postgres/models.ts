@@ -74,11 +74,6 @@ export type ConfortThermique = {
   code_pnr: string | null;
   libelle_pnr: string | null;
   ept: string | null;
-  age_bati_19_45: number | null;
-  age_bati_46_90: number | null;
-  age_bati_91_05: number | null;
-  age_bati_post06: number | null;
-  age_bati_pre_19: number | null;
   under_4_sum_1968: number | null;
   under_4_sum_1975: number | null;
   under_4_sum_1982: number | null;
@@ -120,6 +115,13 @@ export type ConfortThermique = {
   clc_4_humide: number | null;
   clc_5_eau: number | null;
   superf_choro: number | null;
+  nb_rp_tot: number | null;
+  nb_rp_pre_19: number | null;
+  nb_rp_19_45: number | null;
+  nb_rp_46_70: number | null;
+  nb_rp_71_90: number | null;
+  nb_rp_91_05: number | null;
+  nb_rp_post_06: number | null;
 };
 
 export type Biodiversite = {
@@ -285,69 +287,6 @@ export type PrelevementsEau = {
   A2020: string | null;
 };
 
-export type PrelevementsEauModel = {
-  index: number;
-  code_geographique: string;
-  libelle_geographique: string;
-  epci: string;
-  libelle_epci: string;
-  departement: string;
-  libelle_departement: string;
-  region: number;
-  ept: string | null;
-  libelle_petr: string | null;
-  code_pnr: string | null;
-  libelle_pnr: string | null;
-  annee_2017_aep: number;
-  annee_2017_bar: number;
-  annee_2017_can: number;
-  annee_2017_ene: number;
-  annee_2017_exo: number;
-  annee_2017_ind: number;
-  annee_2017_irr: number;
-  annee_2018_aep: number;
-  annee_2018_bar: number;
-  annee_2018_can: number;
-  annee_2018_ene: number;
-  annee_2018_exo: number;
-  annee_2018_ind: number;
-  annee_2018_irr: number;
-  annee_2019_aep: number;
-  annee_2019_bar: number;
-  annee_2019_can: number;
-  annee_2019_ene: number;
-  annee_2019_exo: number;
-  annee_2019_ind: number;
-  annee_2019_irr: number;
-  annee_2020_aep: number;
-  annee_2020_bar: number;
-  annee_2020_can: number;
-  annee_2020_ene: number;
-  annee_2020_exo: number;
-  annee_2020_ind: number;
-  annee_2020_irr: number;
-  annee_2021_aep: number;
-  annee_2021_bar: number;
-  annee_2021_can: number;
-  annee_2021_ene: number;
-  annee_2021_exo: number;
-  annee_2021_ind: number;
-  annee_2021_irr: number;
-  annee_2022_aep: number;
-  annee_2022_bar: number;
-  annee_2022_can: number;
-  annee_2022_ene: number;
-  annee_2022_ind: number;
-  annee_2022_irr: number;
-  annee_2023_aep: number;
-  annee_2023_bar: number;
-  annee_2023_can: number;
-  annee_2023_ene: number;
-  annee_2023_exo: number;
-  annee_2023_ind: number;
-  annee_2023_irr: number;
-};
-
 export type PrelevementsEauParsed = {
   libelle_sous_champ: string | null;
   sous_champ: string | null;
@@ -376,6 +315,9 @@ export type PrelevementsEauParsed = {
   A2018: number;
   A2019: number;
   A2020: number;
+  A2021: number;
+  A2022: number;
+  A2023: number;
 };
 
 export type AgricultureBio = {
@@ -729,6 +671,25 @@ export type O3 = {
   longitude: number;
 };
 
+// export type QualiteSitesBaignade = {
+//   index: number;
+//   DEP_NOM: string;
+//   DEP_NUM: string;
+//   TYPE: string;
+//   COMMUNE: string;
+//   POINT: string;
+//   LONG: number;
+//   LAT: number;
+//   QEB_2013: string | null;
+//   QEB_2014: string | null;
+//   QEB_2015: string | null;
+//   QEB_2016: string | null;
+//   QEB_2017: string | null;
+//   QEB_2018: string | null;
+//   QEB_2019: string | null;
+//   QEB_2020: string | null;
+// };
+
 export type Agriculture = {
   index: number;
   code_geographique: string;
@@ -836,6 +797,22 @@ export type RGAdb = {
   part_logement_alea_faible_apres_1975: number;
   part_alea_faible_commune: number;
   part_alea_moyen_fort_commune: number;
+};
+
+export type SecheressesPasseesModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string | null;
+  epci: string | null;
+  libelle_epci: string | null;
+  departement: string | null;
+  libelle_departement: string | null;
+  region: number | null;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  restrictions: string | null;
 };
 
 export type SurfacesAgricolesModel = {
@@ -977,22 +954,6 @@ export type DebroussaillementModel = {
   geometry: string;
 };
 
-export type SecheressesPasseesModel = {
-  index: number;
-  code_geographique: string;
-  libelle_geographique: string | null;
-  epci: string | null;
-  libelle_epci: string | null;
-  departement: string | null;
-  libelle_departement: string | null;
-  region: number | null;
-  ept: string | null;
-  libelle_petr: string | null;
-  code_pnr: string | null;
-  libelle_pnr: string | null;
-  restrictions: string | null;
-};
-
 export type QualiteSitesBaignadeModel = {
   index: number;
   code_geographique: string;
@@ -1008,6 +969,133 @@ export type QualiteSitesBaignadeModel = {
   type_eau_norm: string;
   statut_donnees: string;
   qualite: string;
+};
+
+export type PrelevementsEauModel = {
+  index: number;
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  departement: string;
+  libelle_departement: string;
+  region: number;
+  ept: string | null;
+  libelle_petr: string | null;
+  code_pnr: string | null;
+  libelle_pnr: string | null;
+  annee_2008_aep: number;
+  annee_2008_bar: number;
+  annee_2008_can: number;
+  annee_2008_ene: number;
+  annee_2008_exo: number;
+  annee_2008_ind: number;
+  annee_2008_irr: number;
+  annee_2009_aep: number;
+  annee_2009_bar: number;
+  annee_2009_can: number;
+  annee_2009_ene: number;
+  annee_2009_exo: number;
+  annee_2009_ind: number;
+  annee_2009_irr: number;
+  annee_2010_aep: number;
+  annee_2010_bar: number;
+  annee_2010_can: number;
+  annee_2010_ene: number;
+  annee_2010_exo: number;
+  annee_2010_ind: number;
+  annee_2010_irr: number;
+  annee_2011_aep: number;
+  annee_2011_bar: number;
+  annee_2011_can: number;
+  annee_2011_ene: number;
+  annee_2011_exo: number;
+  annee_2011_ind: number;
+  annee_2011_irr: number;
+  annee_2012_aep: number;
+  annee_2012_bar: number;
+  annee_2012_can: number;
+  annee_2012_ene: number;
+  annee_2012_exo: number;
+  annee_2012_ind: number;
+  annee_2012_irr: number;
+  annee_2013_aep: number;
+  annee_2013_bar: number;
+  annee_2013_can: number;
+  annee_2013_ene: number;
+  annee_2013_exo: number;
+  annee_2013_ind: number;
+  annee_2013_irr: number;
+  annee_2014_aep: number;
+  annee_2014_bar: number;
+  annee_2014_can: number;
+  annee_2014_ene: number;
+  annee_2014_exo: number;
+  annee_2014_ind: number;
+  annee_2014_irr: number;
+  annee_2015_aep: number;
+  annee_2015_bar: number;
+  annee_2015_can: number;
+  annee_2015_ene: number;
+  annee_2015_exo: number;
+  annee_2015_ind: number;
+  annee_2015_irr: number;
+  annee_2016_aep: number;
+  annee_2016_bar: number;
+  annee_2016_can: number;
+  annee_2016_ene: number;
+  annee_2016_exo: number;
+  annee_2016_ind: number;
+  annee_2016_irr: number;
+  annee_2017_aep: number;
+  annee_2017_bar: number;
+  annee_2017_can: number;
+  annee_2017_ene: number;
+  annee_2017_exo: number;
+  annee_2017_ind: number;
+  annee_2017_irr: number;
+  annee_2018_aep: number;
+  annee_2018_bar: number;
+  annee_2018_can: number;
+  annee_2018_ene: number;
+  annee_2018_exo: number;
+  annee_2018_ind: number;
+  annee_2018_irr: number;
+  annee_2019_aep: number;
+  annee_2019_bar: number;
+  annee_2019_can: number;
+  annee_2019_ene: number;
+  annee_2019_exo: number;
+  annee_2019_ind: number;
+  annee_2019_irr: number;
+  annee_2020_aep: number;
+  annee_2020_bar: number;
+  annee_2020_can: number;
+  annee_2020_ene: number;
+  annee_2020_exo: number;
+  annee_2020_ind: number;
+  annee_2020_irr: number;
+  annee_2021_aep: number;
+  annee_2021_bar: number;
+  annee_2021_can: number;
+  annee_2021_ene: number;
+  annee_2021_exo: number;
+  annee_2021_ind: number;
+  annee_2021_irr: number;
+  annee_2022_aep: number;
+  annee_2022_bar: number;
+  annee_2022_can: number;
+  annee_2022_ene: number;
+  annee_2022_exo: number;
+  annee_2022_ind: number;
+  annee_2022_irr: number;
+  annee_2023_aep: number;
+  annee_2023_bar: number;
+  annee_2023_can: number;
+  annee_2023_ene: number;
+  annee_2023_exo: number;
+  annee_2023_ind: number;
+  annee_2023_irr: number;
 };
 
 export type ArboviroseModel = {

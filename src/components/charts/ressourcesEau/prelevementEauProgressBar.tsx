@@ -1,12 +1,12 @@
 'use client';
 
 import eclair_icon_black from '@/assets/icons/themes/eclair_icon_black.svg';
-import flocon_icon_black from '@/assets/icons/themes/flocon_icon_black.svg';
+import energie_icon_black from '@/assets/icons/themes/energie_icon_black.svg';
 import robinet_icon_black from '@/assets/icons/themes/robinet_icon_black.svg';
 import tracteur_icon_black from '@/assets/icons/themes/tracteur_icon_black.svg';
 import usine_icon_black from '@/assets/icons/themes/usine_icon_black.svg';
 import vagues_icon_black from '@/assets/icons/themes/vagues_icon_black.svg';
-import GraphNotFound from '@/assets/images/data_not_found_prelevement.png';
+import PasDeDonneesImage from "@/assets/images/donnees_zero.png";
 import DataNotFound from '@/components/graphDataNotFound';
 import { ArrowHtmlTooltip } from '@/components/utils/Tooltips';
 import { Body, H4 } from '@/design-system/base/Textes';
@@ -17,6 +17,7 @@ import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { Progress } from 'antd';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import styles from './eau.module.scss';
 
 const SumFiltered = (
@@ -24,7 +25,7 @@ const SumFiltered = (
   code: string,
   libelle: string,
   type: string,
-  champ: string
+  sousChamp: string
 ) => {
   const columnCode = type === 'epci'
     ? 'epci'
@@ -44,25 +45,27 @@ const SumFiltered = (
     data
       .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
-      .filter((item) => item.libelle_sous_champ?.includes(champ))
-      .map((e) => e.A2020)
+      .filter((item) => item.sous_champ === sousChamp)
+      .map((e) => e.A2023)
       .filter((value): value is number => value !== null)
   );
 };
 
+
 const TotalSum = (
   data: PrelevementsEauParsed[],
-  champ: string,
+  sousChamp: string,
   departement: string
 ) => {
   return Sum(
     data
       .filter((item) => item.departement === departement)
-      .filter((item) => item.libelle_sous_champ?.includes(champ))
-      .map((e) => e.A2020)
+      .filter((item) => item.sous_champ === sousChamp)
+      .map((e) => e.A2023)
       .filter((value): value is number => value !== null)
   );
 }
+
 
 const PrelevementEauProgressBars = ({
   ressourcesEau
@@ -76,170 +79,189 @@ const PrelevementEauProgressBars = ({
   const departement = ressourcesEau[0]?.departement;
   const libelleDepartement = ressourcesEau[0]?.libelle_departement;
 
+  const [filterEnergie, setFilterEnergie] = useState(false);
+
   const data = [
     {
-      titre: 'Agriculture',
-      icon: <Image src={tracteur_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'agriculture', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'agriculture'
-      ),
-      color: couleurs.graphiques.vert[2]
+      titre: 'Irrigation',
+      icon: <Image src={tracteur_icon_black} alt="" width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'irr', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'irr'),
+      color: couleurs.graphiques.vert[2],
+      isEnergie: false
     },
     {
       titre: 'Eau potable',
-      icon: <Image src={robinet_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'potable', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'potable'
-      ),
-      color: couleurs.graphiques.bleu[2]
+      icon: <Image src={robinet_icon_black} alt="" width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'aep', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'aep'),
+      color: couleurs.graphiques.bleu[2],
+      isEnergie: false
     },
     {
-      titre: 'Industrie et autres usages économiques',
-      icon: <Image src={usine_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'industrie', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'industrie'
-      ),
-      color: couleurs.graphiques.violet[2]
+      titre: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
+      icon: <Image src={usine_icon_black} alt="" width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'ind', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'ind'),
+      color: couleurs.graphiques.violet[2],
+      isEnergie: false
     },
     {
-      titre: 'Refroidissement des centrales électriques',
-      icon: <Image src={flocon_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'refroidissement', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'refroidissement'
-      ),
-      color: couleurs.graphiques.rose[2]
+      titre: 'Énergie',
+      icon: <Image src={energie_icon_black} alt="" height={30} width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'ene', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'ene'),
+      color: couleurs.graphiques.rose[2],
+      isEnergie: true
     },
     {
       titre: 'Alimentation des canaux',
-      icon: <Image src={vagues_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'alimentation', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'alimentation'
-      ),
-      color: couleurs.graphiques.turquoise[2]
+      icon: <Image src={vagues_icon_black} alt="" width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'can', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'can'),
+      color: couleurs.graphiques.turquoise[2],
+      isEnergie: false
     },
     {
-      titre: "Production d'électricité (barrages hydro-électriques)",
-      icon: <Image src={eclair_icon_black} alt="" />,
-      sumDptmt: TotalSum(ressourcesEau, 'production', departement),
-      sumTerritoire: SumFiltered(
-        ressourcesEau,
-        code,
-        libelle,
-        type,
-        'production'
-      ),
-      color: couleurs.graphiques.orange[2]
+      titre: "Production hydro-électriques",
+      icon: <Image src={eclair_icon_black} alt="" width={24} />,
+      sumDptmt: TotalSum(ressourcesEau, 'bar', departement),
+      sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'bar'),
+      color: couleurs.graphiques.orange[2],
+      isEnergie: true
     }
   ];
+
+  const filteredData = data.map((item) => ({
+    ...item,
+    sumTerritoire: filterEnergie && item.isEnergie ? 0 : item.sumTerritoire,
+    sumDptmt: filterEnergie && item.isEnergie ? 0 : item.sumDptmt,
+    filtered: filterEnergie && item.isEnergie
+  }));
+
   const totalDptmt =
-    TotalSum(ressourcesEau, 'total', departement) === 0
+    filteredData.reduce((acc, item) => acc + item.sumDptmt, 0) === 0
       ? 1
-      : TotalSum(ressourcesEau, 'total', departement);
+      : filteredData.reduce((acc, item) => acc + item.sumDptmt, 0);
   const total =
-    SumFiltered(ressourcesEau, code, libelle, type, 'total') === 0
+    filteredData.reduce((acc, item) => acc + item.sumTerritoire, 0) === 0
       ? 1
-      : SumFiltered(ressourcesEau, code, libelle, type, 'total');
+      : filteredData.reduce((acc, item) => acc + item.sumTerritoire, 0);
 
   return (
     libelle && data.find((e) => e.sumTerritoire !== 0) ? (
-      <div className={styles.ressourcesEauWrapper}>
-        {data
-          .toSorted((a, b) => b.sumTerritoire - a.sumTerritoire)
-          .map((item, index) => (
-            <ArrowHtmlTooltip
-              title={
-                <>
-                  <div className='flex flex-row g-4 items-center mb-2'>
-                    <div className={styles.colorSquare} style={{ backgroundColor: item.color }} />
-                    <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
-                  </div>
-                  <Body size='sm'>
-                    {libelle} :{' '}
-                    <b>
-                      {Round((100 * item.sumTerritoire) / total, 2)} %
-                    </b>{' '}
-                    ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
-                  </Body>
-                  {
-                    type !== 'departement' && (
-                      <Body size='sm'>
-                        Département ({libelleDepartement}) :{' '}
-                        <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
-                        ({Round(item.sumDptmt / 1000000, 2)} Mm3)
-                      </Body>
-                    )
-                  }
-                </>
-              }
-              key={index}
-              placement="top"
-            >
-              <div key={index} className={styles.progressDataWrapper}>
-                <div className={styles.progressDesign}>
-                  {item.icon}
-                  <div className={styles.progressBar}>
-                    <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
-                    <div className={styles.barMarker}>
-                      <Progress
-                        percent={Number((100 * item.sumTerritoire) / total)}
-                        showInfo={false}
-                        strokeColor={item.color}
-                        size={['100%', 12]}
-                        style={{ width: '95%' }}
-                        type="line"
-                        trailColor="#F9F9FF"
-                      />
-                      <div
-                        style={{
-                          position: 'relative',
-                          width: '100%',
-                          transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
-                        }}
-                      >
-                        <div className={styles.marker}></div>
+      <>
+        <div className={styles.filtreEauWrapper}>
+          <input
+            type="checkbox"
+            id="filter-energie"
+            checked={filterEnergie}
+            onChange={(e) => setFilterEnergie(e.target.checked)}
+            style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
+          />
+          <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
+            <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>Filtrer les prélèvements en eau pour l&apos;énergie</Body>
+          </label>
+        </div>
+        <div className={styles.ressourcesEauWrapper}>
+          {filteredData
+            .toSorted((a, b) => {
+              const origA = data.find((d) => d.titre === a.titre)?.sumTerritoire ?? 0;
+              const origB = data.find((d) => d.titre === b.titre)?.sumTerritoire ?? 0;
+              return origB - origA;
+            })
+            .map((item, index) => (
+              <ArrowHtmlTooltip
+                title={
+                  <>
+                    <div className='flex flex-row g-4 items-center mb-2'>
+                      <div className={styles.colorSquare} style={{ backgroundColor: item.filtered ? '#aaa' : item.color }} />
+                      <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                    </div>
+                    <Body size='sm'>
+                      {libelle} :{' '}
+                      <b>
+                        {Round((100 * item.sumTerritoire) / total, 2)} %
+                      </b>{' '}
+                      ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
+                    </Body>
+                    {
+                      type !== 'departement' && (
+                        <Body size='sm'>
+                          Département ({libelleDepartement}) :{' '}
+                          <b>{Round((100 * item.sumDptmt) / totalDptmt, 2)} %</b>{' '}
+                          ({Round(item.sumDptmt / 1000000, 2)} Mm3)
+                        </Body>
+                      )
+                    }
+                  </>
+                }
+                key={index}
+                placement="top"
+              >
+                <div key={index} className={styles.progressDataWrapper} style={{ opacity: item.filtered ? 0.4 : 1, transition: 'opacity 0.3s ease' }}>
+                  <div className={styles.progressDesign}>
+                    {item.icon}
+                    <div className={styles.progressBar}>
+                      <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
+                      <div className={styles.barMarker}>
+                        <Progress
+                          percent={Number((100 * item.sumTerritoire) / total)}
+                          showInfo={false}
+                          strokeColor={item.filtered ? '#aaa' : item.color}
+                          size={['100%', 12]}
+                          style={{ width: '95%' }}
+                          type="line"
+                          trailColor="#F9F9FF"
+                        />
+                        {!item.filtered && (
+                          <div
+                            style={{
+                              position: 'relative',
+                              width: '100%',
+                              transform: `translate(${(95 * item.sumDptmt) / totalDptmt}%, -1.25rem)`
+                            }}
+                          >
+                            <div className={styles.marker}></div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
+                  <div className={styles.progressNumbers}>
+                    <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
+                      {Round((100 * item.sumTerritoire) / total, 2)} %
+                    </Body>
+                    <Body size='xs' style={{ lineHeight: "0.875rem" }}>
+                      {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                    </Body>
+                  </div>
                 </div>
-                <div className={styles.progressNumbers}>
-                  <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
-                    {Round((100 * item.sumTerritoire) / total, 2)} %
-                  </Body>
-                  <Body size='xs' style={{ lineHeight: "0.875rem" }}>
-                    {Round(item.sumTerritoire / 1000000, 2)} Mm3
-                  </Body>
-                </div>
-              </div>
-            </ArrowHtmlTooltip>
-          ))}
-      </div>
+              </ArrowHtmlTooltip>
+            ))}
+        </div>
+      </>
     ) : (
-      <div className='p-1 flex flex-row justify-center'><DataNotFound image={GraphNotFound} /></div>
+      <>
+        <div
+          className='flex flex-row justify-center'
+          style={{
+            maxWidth: "400px",
+            margin: "0 auto",
+            padding: "2rem 4rem",
+          }}
+        >
+          <DataNotFound image={PasDeDonneesImage} />
+        </div>
+        <p className="text-center mt-4" style={{
+          color: '#3A3A3A',
+          fontWeight: 700,
+          fontSize: '1rem',
+          padding: "0rem 4rem",
+        }}>
+          Aucun prélèvement en eau trouvé en 2023 pour le territoire sélectionné
+        </p>
+      </>
     )
   );
 };

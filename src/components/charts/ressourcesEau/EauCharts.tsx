@@ -2,7 +2,6 @@
 
 import RangeSlider from "@/components/Slider";
 import SubTabs from '@/components/ui/SubTabs';
-import { Body } from "@/design-system/base/Textes";
 import { PrelevementsEauParsed } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
@@ -21,15 +20,15 @@ const EauCharts = (props: Props) => {
   const { datavizTab, setDatavizTab, ressourcesEau } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
-  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2020]);
+  const [sliderValue, setSliderValue] = useState<number[]>([2008, 2023]);
 
   return (
     <div className={styles.dataWrapper}>
       <div
         className={styles.graphTabsLegend}
-        style={{ justifyContent: type !== "departement" && type !== "pnr" ? "space-between" : "flex-end" }}
+        style={{ justifyContent:  "flex-end" }} //type !== "departement" && type !== "pnr" ? "space-between" : "flex-end"
       >
-        {
+        {/* {
           type !== "departement" && type !== "pnr" &&
           <div className={styles.legendWrapper}>
             <Body
@@ -48,7 +47,7 @@ const EauCharts = (props: Props) => {
               <div className={styles.cursor}></div>
             </div>
           </div>
-        }
+        } */}
         <div className={styles.graphTabsWrapper}>
           <SubTabs
             data={['Répartition', 'Évolution']}
@@ -69,7 +68,7 @@ const EauCharts = (props: Props) => {
         <div className={styles.sliderWrapper}>
           <RangeSlider
             firstValue={2008}
-            lastValue={2020}
+            lastValue={2023}
             minDist={1}
             setSliderValue={setSliderValue}
             sliderValue={sliderValue}

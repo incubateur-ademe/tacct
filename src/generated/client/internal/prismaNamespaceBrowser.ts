@@ -77,7 +77,8 @@ export const ModelName = {
   secheresses: 'secheresses',
   inondations_par_debordement: 'inondations_par_debordement',
   arbovirose: 'arbovirose',
-  feux_foret: 'feux_foret'
+  feux_foret: 'feux_foret',
+  aot_40_new: 'aot_40_new'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -251,11 +252,6 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  age_bati_post06: 'age_bati_post06',
-  age_bati_91_05: 'age_bati_91_05',
-  age_bati_46_90: 'age_bati_46_90',
-  age_bati_19_45: 'age_bati_19_45',
-  age_bati_pre_19: 'age_bati_pre_19',
   under_4_sum_1968: 'under_4_sum_1968',
   to_75_sum_1968: 'to_75_sum_1968',
   over_75_sum_1968: 'over_75_sum_1968',
@@ -296,7 +292,14 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   over_75_sum_2016: 'over_75_sum_2016',
   under_4_sum_2022: 'under_4_sum_2022',
   to_75_sum_2022: 'to_75_sum_2022',
-  over_75_sum_2022: 'over_75_sum_2022'
+  over_75_sum_2022: 'over_75_sum_2022',
+  nb_rp_tot: 'nb_rp_tot',
+  nb_rp_pre_19: 'nb_rp_pre_19',
+  nb_rp_19_45: 'nb_rp_19_45',
+  nb_rp_46_70: 'nb_rp_46_70',
+  nb_rp_71_90: 'nb_rp_71_90',
+  nb_rp_91_05: 'nb_rp_91_05',
+  nb_rp_post_06: 'nb_rp_post_06'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -937,6 +940,17 @@ export const Feux_foretScalarFieldEnum = {
 } as const
 
 export type Feux_foretScalarFieldEnum = (typeof Feux_foretScalarFieldEnum)[keyof typeof Feux_foretScalarFieldEnum]
+
+
+export const Aot_40_newScalarFieldEnum = {
+  index: 'index',
+  nom_site: 'nom_site',
+  valeur: 'valeur',
+  latitude: 'latitude',
+  longitude: 'longitude'
+} as const
+
+export type Aot_40_newScalarFieldEnum = (typeof Aot_40_newScalarFieldEnum)[keyof typeof Aot_40_newScalarFieldEnum]
 
 
 export const SortOrder = {

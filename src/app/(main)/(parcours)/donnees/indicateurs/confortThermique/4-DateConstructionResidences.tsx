@@ -13,20 +13,20 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
-import { averageProperty } from '../fonctions';
+import { sumProperty } from '../fonctions';
 import { DateConstructionResidencesBarChartData } from '../graphData';
 import { SourceExport } from '../SourceExport';
 
 export const DateConstructionResidences = ({
-  inconfortThermique
+  confortThermique
 }: {
-  inconfortThermique: ConfortThermique[];
+  confortThermique: ConfortThermique[];
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const ageBatiMapped = inconfortThermique.map(ageBatiMapper);
+  const ageBatiMapped = confortThermique.map(ageBatiMapper);
   const ageBatiTerritoire =
     type === 'commune'
       ? ageBatiMapped.filter((e) => e.code_geographique === code)
@@ -35,31 +35,43 @@ export const DateConstructionResidences = ({
         : type === 'epci' && !eptRegex.test(libelle)
           ? ageBatiMapped.filter((e) => e.epci === code)
           : ageBatiMapped;
-  const exportData =
-    IndicatorExportTransformations.inconfort_thermique.AgeBati(
-      ageBatiTerritoire
-    );
-  const averages = {
-    averageAgeBatiPre19: averageProperty(ageBatiTerritoire, 'age_bati_pre_19'),
-    averageAgeBati1945: averageProperty(ageBatiTerritoire, 'age_bati_19_45'),
-    averageAgeBati4690: averageProperty(ageBatiTerritoire, 'age_bati_46_90'),
-    averageAgeBati9105: averageProperty(ageBatiTerritoire, 'age_bati_91_05'),
-    averageAgeBatiPost06: averageProperty(ageBatiTerritoire, 'age_bati_post06')
+
+  const totalNbRp = sumProperty(ageBatiTerritoire, 'nb_rp_tot');
+  const pourcentagesDatesConstruction = {
+    ageBatiPre19:
+      (sumProperty(ageBatiTerritoire, 'nb_rp_pre_19') / totalNbRp) * 100,
+    ageBati1945:
+      (sumProperty(ageBatiTerritoire, 'nb_rp_19_45') / totalNbRp) * 100,
+    ageBati4690:
+      ((sumProperty(ageBatiTerritoire, 'nb_rp_46_70') +
+        sumProperty(ageBatiTerritoire, 'nb_rp_71_90')) /
+        totalNbRp) *
+      100,
+    ageBati9105:
+      (sumProperty(ageBatiTerritoire, 'nb_rp_91_05') / totalNbRp) * 100,
+    ageBatiPost06:
+      (sumProperty(ageBatiTerritoire, 'nb_rp_post_06') / totalNbRp) * 100
   };
   const constructionBefore2006 =
-    averages.averageAgeBatiPre19 +
-    averages.averageAgeBati1945 +
-    averages.averageAgeBati4690 +
-    averages.averageAgeBati9105;
-  const chartData = DateConstructionResidencesBarChartData(averages);
+    pourcentagesDatesConstruction.ageBatiPre19 +
+    pourcentagesDatesConstruction.ageBati1945 +
+    pourcentagesDatesConstruction.ageBati4690 +
+    pourcentagesDatesConstruction.ageBati9105;
+  const chartData = DateConstructionResidencesBarChartData(
+    pourcentagesDatesConstruction
+  );
+
+  const exportData =
+    IndicatorExportTransformations.confortThermique.AgeBati(ageBatiTerritoire);
+
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
             {constructionBefore2006 &&
-            !Object.values(averages).includes(NaN) &&
-            Sum(Object.values(averages)) != 0 ? (
+            !Object.values(pourcentagesDatesConstruction).includes(NaN) &&
+            Sum(Object.values(pourcentagesDatesConstruction)) != 0 ? (
               <>
                 <MicroCircleGrid
                   pourcentage={constructionBefore2006}
@@ -85,7 +97,7 @@ export const DateConstructionResidences = ({
             <Loader />
           )}
           <SourceExport
-            source="INSEE, RP 2015-2021 (consultée en décembre 2024)"
+            source="INSEE, RP2022 (consultée en avril 2026)"
             condition={
               Sum(chartData.map((el) => Number(el['Votre territoire']))) !==
                 0 &&
@@ -100,7 +112,6 @@ export const DateConstructionResidences = ({
                 libelle={libelle}
                 code={code}
                 sheetName="Age du bâti"
-                // style={{ backgroundColor: 'var(--principales-vert)' }}
               />
             }
           />
