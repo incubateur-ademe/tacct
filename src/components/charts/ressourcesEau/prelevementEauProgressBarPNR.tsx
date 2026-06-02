@@ -26,23 +26,23 @@ const SumFiltered = (
   type: string,
   champ: string
 ) => {
-  const columnCode = type === 'epci'
-    ? 'epci'
-    : type === 'commune'
-      ? 'code_geographique'
-      : type === "departement"
-        ? "departement"
-        : type === "pnr"
-          ? "code_pnr"
-          : undefined
+  const columnCode =
+    type === 'epci'
+      ? 'epci'
+      : type === 'commune'
+        ? 'code_geographique'
+        : type === 'departement'
+          ? 'departement'
+          : type === 'pnr'
+            ? 'code_pnr'
+            : undefined;
 
-  const columnLibelle = type === "petr"
-    ? "libelle_petr"
-    : "ept"
+  const columnLibelle = type === 'petr' ? 'libelle_petr' : 'ept';
 
   return Sum(
     data
-      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      .filter((obj) =>
+        columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
       )
       .filter((item) => item.sous_champ === champ)
       .map((e) => e.A2023)
@@ -56,23 +56,24 @@ const SumFilteredTousChamps = (
   libelle: string,
   type: string
 ) => {
-  const columnCode = type === 'epci'
-    ? 'epci'
-    : type === 'commune'
-      ? 'code_geographique'
-      : type === 'departement'
-        ? 'departement'
-        : type === "pnr"
-          ? "code_pnr"
-          : undefined
+  const columnCode =
+    type === 'epci'
+      ? 'epci'
+      : type === 'commune'
+        ? 'code_geographique'
+        : type === 'departement'
+          ? 'departement'
+          : type === 'pnr'
+            ? 'code_pnr'
+            : undefined;
 
-  const columnLibelle = type === 'petr'
-    ? 'libelle_petr'
-    : 'ept'
+  const columnLibelle = type === 'petr' ? 'libelle_petr' : 'ept';
 
   return Sum(
     data
-      .filter((obj) => columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle)
+      .filter((obj) =>
+        columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+      )
       .filter((item) => item.sous_champ !== 'exo' && item.sous_champ !== null)
       .map((e) => e.A2023)
       .filter((value): value is number => value !== null)
@@ -107,7 +108,8 @@ const PrelevementEauProgressBarsPNR = ({
       isEnergie: false
     },
     {
-      titre: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
+      titre:
+        'Industries et autres usages économiques (hors irrigation, hors énergie)',
       icon: <Image src={usine_icon_black} alt="" width={24} />,
       sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'ind'),
       color: couleurs.graphiques.violet[2],
@@ -128,7 +130,7 @@ const PrelevementEauProgressBarsPNR = ({
       isEnergie: false
     },
     {
-      titre: "Production hydro-électriques",
+      titre: 'Production hydro-électriques',
       icon: <Image src={eclair_icon_black} alt="" width={24} />,
       sumTerritoire: SumFiltered(ressourcesEau, code, libelle, type, 'bar'),
       color: couleurs.graphiques.orange[2],
@@ -146,11 +148,10 @@ const PrelevementEauProgressBarsPNR = ({
     SumFilteredTousChamps(ressourcesEau, code, libelle, type) === 0
       ? 1
       : SumFilteredTousChamps(ressourcesEau, code, libelle, type) -
-      (filterEnergie
-        ? SumFiltered(ressourcesEau, code, libelle, type, 'ene') +
-        SumFiltered(ressourcesEau, code, libelle, type, 'bar')
-        : 0);
-
+        (filterEnergie
+          ? SumFiltered(ressourcesEau, code, libelle, type, 'ene') +
+            SumFiltered(ressourcesEau, code, libelle, type, 'bar')
+          : 0);
 
   return (
     <>
@@ -160,10 +161,17 @@ const PrelevementEauProgressBarsPNR = ({
           id="filter-energie"
           checked={filterEnergie}
           onChange={(e) => setFilterEnergie(e.target.checked)}
-          style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
+          style={{
+            cursor: 'pointer',
+            width: '1rem',
+            height: '1rem',
+            accentColor: 'var(--principales-vert)'
+          }}
         />
         <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
-          <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>Filtrer les prélèvements en eau pour l&apos;énergie</Body>
+          <Body size="sm" style={{ color: 'var(--gris-medium-dark)' }}>
+            Filtrer les prélèvements en eau pour l&apos;énergie
+          </Body>
         </label>
       </div>
       <div className={styles.ressourcesEauWrapper}>
@@ -171,23 +179,30 @@ const PrelevementEauProgressBarsPNR = ({
           <>
             {filteredData
               .toSorted((a, b) => {
-                const origA = data.find((d) => d.titre === a.titre)?.sumTerritoire ?? 0;
-                const origB = data.find((d) => d.titre === b.titre)?.sumTerritoire ?? 0;
+                const origA =
+                  data.find((d) => d.titre === a.titre)?.sumTerritoire ?? 0;
+                const origB =
+                  data.find((d) => d.titre === b.titre)?.sumTerritoire ?? 0;
                 return origB - origA;
               })
               .map((item, index) => (
                 <ArrowHtmlTooltip
                   title={
                     <>
-                      <div className='flex flex-row g-4 items-center mb-2'>
-                        <div className={styles.colorSquare} style={{ backgroundColor: item.filtered ? '#aaa' : item.color }} />
-                        <H4 style={{ fontSize: '1rem', marginBottom: "0" }}>{item.titre}</H4>
+                      <div className="flex flex-row g-4 items-center mb-2">
+                        <div
+                          className={styles.colorSquare}
+                          style={{
+                            backgroundColor: item.filtered ? '#aaa' : item.color
+                          }}
+                        />
+                        <H4 style={{ fontSize: '1rem', marginBottom: '0' }}>
+                          {item.titre}
+                        </H4>
                       </div>
-                      <Body size='sm'>
+                      <Body size="sm">
                         {libelle} :{' '}
-                        <b>
-                          {Round((100 * item.sumTerritoire) / total, 2)} %
-                        </b>{' '}
+                        <b>{Round((100 * item.sumTerritoire) / total, 2)} %</b>{' '}
                         ({Round(item.sumTerritoire / 1000000, 2)} Mm3)
                       </Body>
                     </>
@@ -195,11 +210,23 @@ const PrelevementEauProgressBarsPNR = ({
                   key={index}
                   placement="top"
                 >
-                  <div key={index} className={styles.progressDataWrapper} style={{ opacity: item.filtered ? 0.4 : 1 }}>
+                  <div
+                    key={index}
+                    className={styles.progressDataWrapper}
+                    style={{ opacity: item.filtered ? 0.4 : 1 }}
+                  >
                     <div className={styles.progressDesign}>
                       {item.icon}
                       <div className={styles.progressBar}>
-                        <Body size='xs' style={{ textTransform: 'uppercase', lineHeight: "0.875rem" }}>{item.titre}</Body>
+                        <Body
+                          size="xs"
+                          style={{
+                            textTransform: 'uppercase',
+                            lineHeight: '0.875rem'
+                          }}
+                        >
+                          {item.titre}
+                        </Body>
                         <div className={styles.barMarker}>
                           <Progress
                             percent={Number((100 * item.sumTerritoire) / total)}
@@ -214,19 +241,41 @@ const PrelevementEauProgressBarsPNR = ({
                       </div>
                     </div>
                     <div className={styles.progressNumbers}>
-                      <Body size='xs' weight='bold' style={{ lineHeight: "0.875rem" }}>
-                        {Round((100 * item.sumTerritoire) / total, 2)} %
-                      </Body>
-                      <Body size='xs' style={{ lineHeight: "0.875rem", width: "max-content", alignSelf: "flex-end" }}>
-                        {Round(item.sumTerritoire / 1000000, 2)} Mm3
-                      </Body>
+                      {item.filtered ? (
+                        <Body
+                          size="xs"
+                          style={{ lineHeight: '0.875rem', color: '#aaa' }}
+                        >
+                          (non inclus)
+                        </Body>
+                      ) : (
+                        <>
+                          <Body
+                            size="xs"
+                            weight="bold"
+                            style={{ lineHeight: '0.875rem' }}
+                          >
+                            {Round((100 * item.sumTerritoire) / total, 2)} %
+                          </Body>
+                          <Body
+                            size="xs"
+                            style={{
+                              lineHeight: '0.875rem',
+                              width: 'max-content',
+                              alignSelf: 'flex-end'
+                            }}
+                          >
+                            {Round(item.sumTerritoire / 1000000, 2)} Mm3
+                          </Body>
+                        </>
+                      )}
                     </div>
                   </div>
                 </ArrowHtmlTooltip>
               ))}
           </>
         ) : (
-          <div className='p-1 flex flex-row justify-center'>
+          <div className="p-1 flex flex-row justify-center">
             <DataNotFound image={GraphNotFound} />
           </div>
         )}
