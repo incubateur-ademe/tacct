@@ -30,7 +30,7 @@ import styles from './home.module.scss';
 export const DemarcheBloc = () => {
   const { width } = useWindowDimensions();
   return (
-    <div style={{ background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) " }}>
+    <div id="communaute-adaptation" style={{ background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) " }}>
       <NewContainer size="xl" style={{ padding: (width && width <= 768) ? "2rem 1rem" : "3rem 2rem" }}>
         <div
           style={{
