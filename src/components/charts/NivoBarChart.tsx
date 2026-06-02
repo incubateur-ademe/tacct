@@ -194,7 +194,6 @@ export const NivoBarChartRessourcesEau = ({
   showLegend = true
 }: NivoBarChartProps) => {
   const windowDimensions = useWindowDimensions();
-  console.log('windowDimensions', windowDimensions);
   return (
     <div
       className="prelevement-eau-bar-chart-container"
