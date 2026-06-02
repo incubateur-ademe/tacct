@@ -65,7 +65,7 @@ export const Debroussaillement = ({
           </div>
           <div className={styles.sourcesExportMapWrapper}>
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-              Source : Institut national de l’information géographique et forestière, 2025
+              Source : Institut national de l’information géographique et forestière, 2025 (consultée en février 2026)
             </Body>
             <ExportPngMaplibreButton
               mapRef={mapRef}

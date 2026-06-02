@@ -149,12 +149,12 @@ export const RetraitGonflementDesArgiles = ({
             }}
           >
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-              Source des graphiques : BRGM, 2019 ; Fideli, 2017. Traitements :
+              Source des graphiques : BRGM, 2019 ; Fideli, 2017. Traitements :
               SDES, 2021. (consultée en juin 2025)<br></br>
               Source de la carte : BRGM, 2026 (consultée en mars 2026)
             </Body>
             <ZipExportButton
-              anchor="Retrait-gonflement des argiles"
+              anchor="Retrait-gonflement-des-argiles"
               handleExport={async () => {
                 const pngBlob = await generateMapPngBlob({
                   mapRef: exportMapRef,

@@ -47,11 +47,11 @@ export const SurfacesToujoursEnHerbe = ({
   const territoiresPartiellementCouverts =
     type === 'departement'
       ? multipleEpciBydepartementLibelle.find(
-          (dept) => dept.departement === code
-        )?.liste_epci_multi_dept
+        (dept) => dept.departement === code
+      )?.liste_epci_multi_dept
       : type === 'pnr'
         ? multipleEpciByPnrLibelle.find((pnr) => pnr.libelle_pnr === libelle)
-            ?.liste_epci_multi_pnr
+          ?.liste_epci_multi_pnr
         : undefined;
   const exportData =
     IndicatorExportTransformations.agriculture.surfacesAgricoles(
@@ -102,7 +102,7 @@ export const SurfacesToujoursEnHerbe = ({
           libelle={libelle}
           code={code}
           sheetName="Surfaces agricoles"
-          anchor="Surfaces toujours en herbe"
+          anchor="Surfaces-toujours-en-herbe"
         />
       </div>
     </>

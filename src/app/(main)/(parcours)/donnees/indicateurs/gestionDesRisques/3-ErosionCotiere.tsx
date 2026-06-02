@@ -3,7 +3,7 @@ import GraphNotFound from '@/assets/images/no_data_on_territory.svg';
 import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { LegendErosionCotiere } from '@/components/maps/legends/legendErosionCotiere';
-import { MapErosionCotiere } from '@/components/maps/mapErosionCotiere';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from "@/components/utils/Tooltips";
 import { Body } from "@/design-system/base/Textes";
@@ -12,8 +12,10 @@ import { ErosionCotiere } from "@/lib/postgres/models";
 import { ErosionCotiereText } from '@/lib/staticTexts';
 import { erosionCotiereTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from "next/navigation";
-import { useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+
+const MapErosionCotiere = lazy(() => import('@/components/maps/mapErosionCotiere').then(m => ({ default: m.MapErosionCotiere })));
 
 export const ErosionCotiereComp = ({
   erosionCotiere,
@@ -47,13 +49,15 @@ export const ErosionCotiereComp = ({
           {
             erosionCotiere[0].length > 0 ?
               <>
-                <MapErosionCotiere
-                  erosionCotiere={erosionCotiereMap}
-                  envelope={JSON.parse(erosionCotiere[1])}
-                  coordonneesCommunes={coordonneesCommunes}
-                  mapRef={mapRef}
-                  mapContainer={mapContainer}
-                />
+                <Suspense fallback={<Loader />}>
+                  <MapErosionCotiere
+                    erosionCotiere={erosionCotiereMap}
+                    envelope={JSON.parse(erosionCotiere[1])}
+                    coordonneesCommunes={coordonneesCommunes}
+                    mapRef={mapRef}
+                    mapContainer={mapContainer}
+                  />
+                </Suspense>
                 <div className='erosionCotiereLegendWrapper'>
                   <LegendErosionCotiere />
                 </div>
@@ -64,14 +68,14 @@ export const ErosionCotiereComp = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CEREMA, 2018.
+          Source : CEREMA, 2018
         </Body>
         <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".erosionCotiereLegendWrapper"
           fileName={`Erosion_cotiere_${type}_${libelle}`}
-          anchor='Érosion côtière'
+          anchor='Érosion-côtière'
           type={type}
           libelle={libelle}
           code={code}

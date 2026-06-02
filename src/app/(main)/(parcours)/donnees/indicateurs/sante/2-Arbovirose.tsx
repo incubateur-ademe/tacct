@@ -228,7 +228,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
             libelle={libelle}
             code={code}
             sheetName="Arbovirose"
-            anchor="Arbovirose"
+            anchor="Moustique-tigre-et-arboviroses"
           />
         </div>
       </div>

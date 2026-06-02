@@ -96,6 +96,10 @@ const DonneesConfortThermique = ({
           Ces quelques indicateurs vous aideront à poser les bonnes questions,
           le terrain (étape 2) vous donnera les vraies réponses.
         </Body>
+        <Body size="lg" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
+          À noter : Ces données représentent les informations les plus récentes
+          disponibles à l'échelle nationale.
+        </Body>
       </section>
 
       {/* Section Santé */}
@@ -116,7 +120,7 @@ const DonneesConfortThermique = ({
 
         {/* Grand âge */}
         <div
-          id="Grand âge"
+          id="Grand-âge"
           className={styles.indicateurWrapper}
           style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
@@ -132,7 +136,7 @@ const DonneesConfortThermique = ({
 
         {/* Précarité énergétique */}
         <div
-          id="Précarité énergétique"
+          id="Précarité-énergétique"
           className={styles.indicateurMapWrapper}
           style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
@@ -152,7 +156,7 @@ const DonneesConfortThermique = ({
         </div>
 
         {/* Emplois en extérieur */}
-        <div id="Emplois en extérieur" className={styles.indicateurWrapper}>
+        <div id="Emplois-en-extérieur" className={styles.indicateurWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -180,7 +184,7 @@ const DonneesConfortThermique = ({
           {ongletsMenu.thematiquesLiees[1].thematique}
         </H2>
         {/* Âge du bâtiment */}
-        <div id="Âge du bâtiment" className={styles.indicateurWrapper}>
+        <div id="Âge-du-bâtiment" className={styles.indicateurWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -228,6 +232,7 @@ const DonneesConfortThermique = ({
         <Image
           src={DiagnoticImage}
           alt=""
+          className={styles.redirectionImage}
           style={{ width: '100%', height: 'auto', maxWidth: '180px' }}
         />
         <div className={styles.textBloc}>

@@ -159,7 +159,7 @@ export const DonneesBiodiversite = ({
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
         {/* Types de sols */}
-        <div id="Types de sols" className={styles.indicateurMapWrapper}>
+        <div id="Types-de-sols" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -182,7 +182,7 @@ export const DonneesBiodiversite = ({
           {ongletsMenu.thematiquesLiees[1].thematique}
         </H2>
         {/* Sols imperméabilisés */}
-        <div id="Sols imperméabilisés" className={styles.indicateurMapWrapper}>
+        <div id="Sols-imperméabilisés" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -206,7 +206,7 @@ export const DonneesBiodiversite = ({
         </H2>
         {/* Surfaces toujours en herbe */}
         <div
-          id="Surfaces toujours en herbe"
+          id="Surfaces-toujours-en-herbe"
           className={styles.indicateurMapWrapper}
           style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
@@ -220,7 +220,7 @@ export const DonneesBiodiversite = ({
           <SurfacesToujoursEnHerbe surfacesAgricoles={data.surfacesAgricoles} />
         </div>
         {/* Surfaces en bio */}
-        <div id="Surfaces en bio" className={styles.indicateurWrapper}>
+        <div id="Surfaces-en-bio" className={styles.indicateurWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -239,7 +239,7 @@ export const DonneesBiodiversite = ({
           {ongletsMenu.thematiquesLiees[3].thematique}
         </H2>
         {/* État écologique des cours d'eau */}
-        <div id="État des cours d'eau" className={styles.indicateurMapWrapper}>
+        <div id="État-des-cours-d'eau" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -276,7 +276,7 @@ export const DonneesBiodiversite = ({
           {ongletsMenu.thematiquesLiees[4].thematique}
         </H2>
         {/* Ozone et végétation */}
-        <div id="Ozone et végétation" className={styles.indicateurMapWrapper}>
+        <div id="Ozone-et-végétation" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}

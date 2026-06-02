@@ -103,7 +103,7 @@ export const DateConstructionResidences = ({
                 0 &&
               !isNaN(Sum(chartData.map((el) => Number(el['Votre territoire']))))
             }
-            anchor="Âge du bâtiment"
+            anchor="Âge-du-bâtiment"
             exportComponent={
               <ExportButton
                 data={exportData}
