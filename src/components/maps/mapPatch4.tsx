@@ -5,7 +5,8 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { Patch4Tooltip } from './components/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
   if (value === null) return '#FFF';
@@ -75,6 +76,9 @@ export const MapPatch4 = (props: {
     return ['case', ...colorPairs, '#E5E5E5'] as ExpressionSpecification;
   }, [alea, patch4]);
 
+  const colorExpressionRef = useRef(createColorExpression);
+  colorExpressionRef.current = createColorExpression;
+
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
 
   useEffect(() => {
@@ -85,7 +89,7 @@ export const MapPatch4 = (props: {
       attributionControl: false,
     });
     mapRef.current = map;
-    
+
     if (mapRefCallback) {
       mapRefCallback(mapRef);
     }
@@ -116,7 +120,7 @@ export const MapPatch4 = (props: {
         'source-layer': 'contour_communes',
         filter: ['in', ['get', 'code_geographique'], ['literal', filteredCodes]],
         paint: {
-          'fill-color': createColorExpression,
+          'fill-color': colorExpressionRef.current,
           'fill-opacity': 0.99
         }
       });
@@ -268,6 +272,9 @@ export const MapPatch4 = (props: {
       });
 
       map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+      // Force-resync : la valeur du ref peut avoir changé pendant le chargement
+      map.setPaintProperty('patch4-fill', 'fill-color', colorExpressionRef.current);
     });
 
     return () => {
@@ -280,8 +287,19 @@ export const MapPatch4 = (props: {
 
   // Mettre à jour les couleurs quand alea/patch4 change
   useEffect(() => {
-    if (mapRef.current && mapRef.current.isStyleLoaded() && mapRef.current.getLayer('patch4-fill')) {
-      mapRef.current.setPaintProperty('patch4-fill', 'fill-color', createColorExpression);
+    const map = mapRef.current;
+    if (!map) return;
+    const ready = map.isStyleLoaded() && map.getLayer('patch4-fill');
+    if (ready) {
+      map.setPaintProperty('patch4-fill', 'fill-color', createColorExpression);
+    } else {
+      const handler = () => {
+        if (map.getLayer('patch4-fill')) {
+          map.setPaintProperty('patch4-fill', 'fill-color', colorExpressionRef.current);
+        }
+      };
+      map.once('idle', handler);
+      return () => { map.off('idle', handler); };
     }
   }, [createColorExpression]);
 
@@ -300,10 +318,13 @@ export const MapPatch4 = (props: {
             overflow: visible !important;
           }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Cartographie représentant le niveau d'aggravation par aléa climatique par commune sur votre territoire"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
         <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

@@ -7,8 +7,9 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { CoursDeauTooltip } from './components/tooltips';
 import styles from './maps.module.scss';
+import { CoursDeauTooltip } from './subcomponents/tooltips';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -634,10 +635,13 @@ export const MapEtatCoursDeau = (props: {
           overflow: visible !important;
         }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Carte de l'état écologique des cours d'eau et de la qualité des sites de baignade sur votre territoire"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%', cursor: 'pointer' }} />
         <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

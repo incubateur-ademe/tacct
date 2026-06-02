@@ -110,7 +110,7 @@ export const SurfacesEnHerbeDynamicText = ({
           {territoiresPartiellementCouverts &&
             (type === 'departement' || type === 'pnr') && (
               <>
-                <Body style={{ color: 'var(--gris-dark)' }}>
+                <Body htmlTag="div" style={{ color: 'var(--gris-dark)' }}>
                   <br></br>
                   <b>À noter</b> : Ces données ne sont disponibles qu’à
                   l’échelle intercommunale. Ces{' '}

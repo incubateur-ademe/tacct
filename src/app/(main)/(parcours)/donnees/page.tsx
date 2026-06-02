@@ -1,7 +1,10 @@
 import { LoaderText } from '@/components/ui/loader';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
+
+export const metadata: Metadata = { title: 'Explorer les données' };
 import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';

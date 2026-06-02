@@ -28,11 +28,16 @@ export const SelectTypeTerritoire = ({
   return (
     <Select
       labelId="Sélection du territoire"
+      inputProps={{ 'aria-label': 'Type de territoire' }}
       value={value}
       open={isSelectOpen}
-      onOpen={() => {
+      onOpen={(event) => {
         setIsTypeChanging(true);
-        setTimeout(() => setIsSelectOpen(true), 500);
+        if (event.type === 'keydown') {
+          setIsSelectOpen(true);
+        } else {
+          setTimeout(() => setIsSelectOpen(true), 500);
+        }
       }}
       onClose={() => {
         setIsSelectOpen(false);
@@ -94,7 +99,7 @@ export const SelectTypeTerritoire = ({
           border: 'none',
         },
       }}
-    >
+      >
       {collectivites.map((option) => (
         <MenuItem key={option} value={option}>
           {option}

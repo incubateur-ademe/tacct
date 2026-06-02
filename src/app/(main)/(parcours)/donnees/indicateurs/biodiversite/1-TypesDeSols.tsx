@@ -142,6 +142,7 @@ export const TypesDeSols = ({
           coordonneesCommunes ? (
             <>
               <MapTiles
+                ariaLabel="Carte des types de sols par commune sur votre territoire (CORINE Land Cover)"
                 coordonneesCommunes={coordonneesCommunes}
                 mapRef={mapRef}
                 mapContainer={mapContainer}

@@ -103,13 +103,12 @@ export const AiresAppellationsControlees = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            {airesAppellationsControlees && (
-              <MicroNumberCircle
-                valeur={airesAppellationsControlees.length}
-                arrondi={1}
-                unite=""
-              />
-            )}
+            <MicroNumberCircle
+              valeur={airesAppellationsControlees.length}
+              arrondi={1}
+              unite=""
+              ariaLabel="Nombre d'aires d'appellations contrôlées sur votre territoire"
+            />
             {tableCommune !== undefined ? (
               <>
                 <div className={styles.text}>
@@ -138,6 +137,14 @@ export const AiresAppellationsControlees = (props: {
                     title={airesAppellationsControleesTooltipText}
                     texte="Définition"
                   />
+                  <a
+                      className="fr-sr-only"
+                      href="https://agriculture.gouv.fr/bien-connaitre-les-produits-de-lorigine-et-de-la-qualite"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Consulter la page sur les signes d&apos;identification de qualité et d&apos;origine sur agriculture.gouv.fr (nouvelle fenêtre)
+                    </a>
                 </div>
               </>
             ) : (

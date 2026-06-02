@@ -69,7 +69,7 @@ export const TypesDeCulture = (props: {
               <MicroPieChart
                 pourcentage={(maxCategory.count / sau) * 100}
                 arrondi={1}
-                ariaLabel=""
+                ariaLabel={`${Round((maxCategory.count / sau) * 100, 1)} % de la surface agricole utile est de type ${maxCategory.id.toLowerCase()}`}
               />
             )}
             {surfacesAgricoles.length ? (
@@ -89,7 +89,10 @@ export const TypesDeCulture = (props: {
 
                     {territoiresPartiellementCouverts && (
                       <>
-                        <Body style={{ color: 'var(--gris-dark)' }}>
+                        <Body
+                          htmlTag="div"
+                          style={{ color: 'var(--gris-dark)' }}
+                        >
                           <br></br>
                           <b>À noter</b> : Ces données ne sont disponibles qu’à
                           l’échelle intercommunale. Ces{' '}
@@ -155,6 +158,15 @@ export const TypesDeCulture = (props: {
               title={surfacesAgricolesTooltipText}
               texte="D'où vient ce chiffre ?"
             />
+            <a
+              className="fr-sr-only"
+              href="https://agreste.agriculture.gouv.fr/agreste-web/disaron/RA2020_1013_EPCI/detail/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consulter les données du recensement agricole 2020 sur Agreste
+              (nouvelle fenêtre)
+            </a>
           </div>
           {/* <ReadMoreFade maxHeight={territoiresPartiellementCouverts?.length ? 400 / territoiresPartiellementCouverts?.length : 350}> */}
           <SurfacesAgricolesText />
@@ -186,7 +198,7 @@ export const TypesDeCulture = (props: {
               libelle={libelle}
               code={code}
               sheetName="Surfaces agricoles"
-              anchor="Types de culture"
+              anchor="Types-de-culture"
             />
           </div>
         </div>

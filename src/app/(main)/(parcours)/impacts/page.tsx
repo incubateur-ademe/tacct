@@ -1,6 +1,9 @@
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import { H1 } from '@/design-system/base/Textes';
+import type { Metadata } from 'next';
 import { SearchParams } from '../../types';
+
+export const metadata: Metadata = { title: 'Diagnostiquer les impacts' };
 import styles from '../donnees/explorerDonnees.module.scss';
 import { DiagnostiquerImpactsAgriculture } from './thematiques/ImpactsAgriculture';
 import { DiagnostiquerImpactsConfortThermique } from './thematiques/ImpactsConfortThermique';

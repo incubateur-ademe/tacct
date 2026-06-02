@@ -2,7 +2,7 @@ import { ScrollToSourceTag } from '@/components/interactions/scrollToSource';
 import { Body } from '@/design-system/base/Textes';
 
 export const fragiliteEconomiqueTooltipText = (
-  <Body weight="bold" size="sm">
+  <Body weight="bold" size="sm" htmlTag="div">
     La précarité énergétique liée au logement concerne :
     <br></br>
     <ul>
@@ -61,7 +61,7 @@ export const espacesNAFTooltipText = (
 );
 
 export const agricultureBioTooltipText = (
-  <Body weight="bold" size="sm">
+  <Body weight="bold" size="sm" htmlTag="div">
     Les superficies totales en agriculture biologique comprennent :
     <ul>
       <li>
@@ -111,7 +111,7 @@ export const AOT40TooltipText = (
 );
 
 export const etatCoursDeauTooltipTextBiodiv = (
-  <Body weight="bold" size="sm">
+  <Body weight="bold" size="sm" htmlTag="div">
     En application de la directive-cadre européenne sur l’eau, l’état écologique
     global de chaque rivière est évalué tous les 6 ans par les agences de l’eau,
     à partir de relevés sur 3 ans (N-1, N-2, N-3) issus des stations de mesure
@@ -153,7 +153,7 @@ export const etatCoursDeauTooltipTextBiodiv = (
 );
 
 export const etatCoursDeauTooltipTextEau = (
-  <Body weight="bold" size="sm">
+  <Body weight="bold" size="sm" htmlTag="div">
     En application de la directive-cadre européenne sur l’eau, l’état écologique
     global de chaque rivière est évalué tous les 6 ans par les agences de l’eau,
     à partir de relevés sur 3 ans (N-1, N-2, N-3) issus des stations de mesure
@@ -240,7 +240,7 @@ export const debroussaillementTooltipText = (
 );
 
 export const feuxForetTooltipText = (
-  <Body weight="bold" size="sm">
+  <Body weight="bold" size="sm" htmlTag="div">
     Un incendie de forêt est un incendie qui démarre en forêt ou qui se propage
     en forêt ou au sein de terres boisées au cours de son évolution (y compris
     dans les maquis ou garrigues dans l’aire méditerranéenne).

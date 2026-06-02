@@ -113,7 +113,7 @@ export const BoutonPrimaireClassic = ({
     padding: size === 'xs' ? '1px 10px' : '4px 12px',
     fontWeight: 500,
     fontFamily: 'Marianne',
-    fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+    fontSize: size === 'xs' ? '0.75rem' : size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : '1.125rem',
     width: 'max-content',
     alignItems: 'center',
     backgroundImage: 'none',
@@ -153,7 +153,7 @@ export const BoutonPrimaireClassic = ({
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (!disabled) {
+    if (!disabled && e.currentTarget.matches(':focus-visible')) {
       e.currentTarget.style.outline = 'none';
       e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[1]}`;
       e.currentTarget.style.boxShadow = `0 0 0 2px white, 0 0 0 4px ${couleursBoutons.primaire[1]}`;
@@ -230,7 +230,7 @@ export const BoutonSecondaireClassic = ({
     padding: size === 'xs' ? '1px 10px' : '4px 12px',
     fontWeight: 500,
     fontFamily: 'Marianne',
-    fontSize: size === 'xs' ? '12px' : size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+    fontSize: size === 'xs' ? '0.75rem' : size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : '1.125rem',
     width: 'fit-content',
     alignItems: 'center',
     backgroundImage: 'none',
@@ -269,7 +269,7 @@ export const BoutonSecondaireClassic = ({
   };
 
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
-    if (!disabled) {
+    if (!disabled && e.currentTarget.matches(':focus-visible')) {
       e.currentTarget.style.outline = 'none';
       e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[2]}`;
       e.currentTarget.style.boxShadow = `0 0 0 2px ${couleursBoutons.primaire[1]}, 0 0 0 4px ${couleursBoutons.primaire[2]}`;
@@ -361,13 +361,13 @@ export const BoutonSecondaire = ({
         padding: '4px 20px',
         fontWeight: 500,
         fontFamily: 'Marianne',
-        fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+        fontSize: size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : '1.125rem',
         width: 'fit-content',
         backgroundImage: 'none',
         '&:hover': {
           backgroundColor: `${couleursBoutons.primaire[2]} !important`,
         },
-        '&:focus': {
+        '&:focus-visible': {
           outline: 'none',
           border: `1px solid ${couleursBoutons.primaire[2]}`,
           boxShadow: `
@@ -415,13 +415,13 @@ export const BoutonTertiaire = ({
         padding: '4px 20px',
         fontWeight: 500,
         fontFamily: 'Marianne',
-        fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
+        fontSize: size === 'sm' ? '0.875rem' : size === 'md' ? '1rem' : '1.125rem',
         width: 'fit-content',
         backgroundImage: 'none',
         '&:hover': {
           backgroundColor: `${couleursBoutons.primaire[2]} !important`,
         },
-        '&:focus': {
+        '&:focus-visible': {
           outline: 'none',
           border: `1px solid ${couleursBoutons.primaire[3]}`,
           boxShadow: `

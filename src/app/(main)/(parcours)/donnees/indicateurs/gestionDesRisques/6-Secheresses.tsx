@@ -41,6 +41,7 @@ export const SecheressesPassees = (props: {
             <MicroCircleGridMois
               nombreJours={moyenneJoursAvecRestriction}
               arrondi={0}
+              ariaLabel="Nombre moyen de jours de restriction d'usage de l'eau par mois lors de l'année la plus sèche"
             />
             <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
               Sur la période 2020-2025, c'est en {anneeMaxRestriction} que votre
