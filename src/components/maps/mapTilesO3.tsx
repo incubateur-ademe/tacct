@@ -2,14 +2,14 @@
 
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { mapStyles } from 'carte-facile';
-import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
-import styles from './maps.module.scss';
-import { getO3Color, O3Tooltip } from './subcomponents/tooltips';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
+import { getO3Color, O3Tooltip } from './subcomponents/tooltips';
 
 export const MapTilesO3 = (props: {
   coordonneesCommunes: {
@@ -52,6 +52,10 @@ export const MapTilesO3 = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true }
     });

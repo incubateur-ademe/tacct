@@ -36,6 +36,10 @@ export const MapTilesFrance = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
 
@@ -98,7 +102,7 @@ export const MapTilesFrance = (props: {
         if (e.features && e.features.length > 0) {
           const feature = e.features[0];
           const valeur = feature.properties?.valeur;
-          
+
           if (valeur !== undefined) {
             const color = getO3Color(valeur);
             popup

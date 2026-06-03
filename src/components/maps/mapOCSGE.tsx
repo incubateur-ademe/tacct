@@ -6,8 +6,8 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
 import { Loader } from '../ui/loader';
-import styles from './maps.module.scss';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import styles from './maps.module.scss';
 
 export const MapOCSGE = ({
   coordonneesCommunes,
@@ -29,6 +29,10 @@ export const MapOCSGE = ({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
         [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
@@ -43,7 +47,7 @@ export const MapOCSGE = ({
 
     map.on('load', () => {
       setIsTilesLoading(true);
-      
+
       try {
         map.addSource('ocsge-usage', {
           type: 'raster',
@@ -122,7 +126,7 @@ export const MapOCSGE = ({
           100% { transform: rotate(360deg); }
         }
       `}</style>
-      
+
       {isLoading ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Loader />
@@ -130,7 +134,7 @@ export const MapOCSGE = ({
       ) : (
         <>
           <div ref={mapContainer} className='map-container' style={{ width: '100%', height: '500px' }} />
-          
+
           {isTilesLoading && (
             <div className={styles.tileLoadingWrapper}>
               <div style={{
@@ -150,8 +154,8 @@ export const MapOCSGE = ({
           <div className={styles.legendLCZWrapperNouveauParcours}>
             <div className={styles.legendLCZNouveauParcours}>
               <h3>OCS GE - Usages des sols 2021-2023</h3>
-              <img 
-                src="https://data.geopf.fr/annexes/ressources/legendes/LEGEND.jpg" 
+              <img
+                src="https://data.geopf.fr/annexes/ressources/legendes/LEGEND.jpg"
                 alt="Légende OCS GE - Usages des sols"
                 style={{ width: '100%', marginTop: '0.5rem', display: 'none' }}
               />

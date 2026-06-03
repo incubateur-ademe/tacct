@@ -4,18 +4,18 @@ import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
 import { LCZselectionTerritoires } from '@/lib/territoireData/LCZselectionTerritoires';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import { mapTransformRequest } from './mapTransformRequest';
 import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../ui/loader';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
 import { CeremaFallbackError, handleCeremaFallback } from './subcomponents/ceremaLCZFallback';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapLCZ = ({
   coordonneesCommunes,
@@ -56,6 +56,10 @@ export const MapLCZ = ({
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
         [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]

@@ -13,16 +13,16 @@ import { colorsCatnat } from './legends/legendCatnat';
 import { CatnatTooltip } from './subcomponents/tooltips';
 
 interface CatNatData {
-        sumCatnat: number;
-        indexName: string;
-        Inondations?: number | undefined;
-        'Gr\u00EAle / neige'?: number | undefined;
-        Sécheresse?: number | undefined;
-        'Cyclones / Temp\u00EAtes'?: number | undefined;
-        'Retrait-gonflement des argiles'?: number | undefined;
-        'Mouvements de terrain'?: number | undefined;
-        Avalanche?: number | undefined;
-    };
+  sumCatnat: number;
+  indexName: string;
+  Inondations?: number | undefined;
+  'Gr\u00EAle / neige'?: number | undefined;
+  Sécheresse?: number | undefined;
+  'Cyclones / Temp\u00EAtes'?: number | undefined;
+  'Retrait-gonflement des argiles'?: number | undefined;
+  'Mouvements de terrain'?: number | undefined;
+  Avalanche?: number | undefined;
+};
 
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colorsCatnat[typeCatnat];
@@ -123,6 +123,10 @@ export const MapCatnat = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
 

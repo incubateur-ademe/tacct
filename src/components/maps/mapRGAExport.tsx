@@ -1,7 +1,6 @@
 "use client";
 
 import { mapStyles } from 'carte-facile';
-import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -10,6 +9,7 @@ import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
 
 export const MapRGAExport = (props: {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -26,6 +26,10 @@ export const MapRGAExport = (props: {
       container: exportMapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true },
     });

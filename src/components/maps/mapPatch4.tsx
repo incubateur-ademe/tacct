@@ -87,6 +87,10 @@ export const MapPatch4 = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true },
     });

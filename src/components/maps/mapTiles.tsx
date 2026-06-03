@@ -2,13 +2,13 @@
 
 import { Any } from '@/lib/utils/types';
 import { mapStyles } from 'carte-facile';
-import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
-import styles from './maps.module.scss';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
 
 export const MapTiles = (props: {
   coordonneesCommunes: {
@@ -42,6 +42,10 @@ export const MapTiles = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true }
     });

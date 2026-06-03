@@ -7,18 +7,18 @@ import { fromUrl } from 'geotiff';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
 import { CanopeeTooltip } from './subcomponents/tooltips';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const COG_PATH = '/canopee/France_Forest_COG.tif';
 const TARGET_RESOLUTION_M = 10;
 const MAX_CANVAS_SIZE = 1024;
 const MIN_CANVAS_SIZE = 512;
 const MAX_CANOPY_HEIGHT = 30;
-const COLOR_LOW:  [number, number, number] = [217, 255, 217];  
-const COLOR_HIGH: [number, number, number] = [ 26, 107,  24]; 
+const COLOR_LOW: [number, number, number] = [217, 255, 217];
+const COLOR_HIGH: [number, number, number] = [26, 107, 24];
 
 type BBox = { minLng: number; minLat: number; maxLng: number; maxLat: number };
 
@@ -224,7 +224,11 @@ export const MapCanopee = (props: {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
-      attributionControl: false
+      attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
 

@@ -2,14 +2,14 @@
 
 import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
-import { mapTransformRequest } from './mapTransformRequest';
 import 'carte-facile/carte-facile.css';
 import { Feature, Geometry, LineString, Polygon } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
-import styles from './maps.module.scss';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
 
 const HEDGE_WFS_BASE = 'https://data.geopf.fr/wfs/ows';
 const HEDGE_WMS_BASE = 'https://data.geopf.fr/wms-v/ows';
@@ -81,6 +81,10 @@ export const MapHaiesWfs = ({
       transformRequest: mapTransformRequest,
       canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
         [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]

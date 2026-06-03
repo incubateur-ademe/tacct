@@ -210,3 +210,8 @@ li > ol {
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+.maplibregl-cooperative-gesture-screen {
+    z-index: 1000;
+    text-align: center;
+}

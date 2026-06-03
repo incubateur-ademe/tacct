@@ -7,9 +7,9 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import styles from './maps.module.scss';
 import { CoursDeauTooltip } from './subcomponents/tooltips';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapEtatCoursDeau = (props: {
   etatCoursDeau: EtatCoursDeauDto[];
@@ -110,6 +110,10 @@ export const MapEtatCoursDeau = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
     // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
