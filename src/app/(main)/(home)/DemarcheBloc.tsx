@@ -25,20 +25,10 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { useEffect } from 'react';
 import styles from './home.module.scss';
 
 export const DemarcheBloc = () => {
   const { width } = useWindowDimensions();
-
-  useEffect(() => {
-    if (window.location.hash === '#communaute-adaptation') {
-      window.scrollTo({ top: 0 });
-      requestAnimationFrame(() => {
-        document.getElementById('communaute-adaptation')?.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  }, []);
 
   return (
     <div
