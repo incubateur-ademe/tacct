@@ -1,6 +1,7 @@
 'use client';
 
 import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { DemarcheBloc } from './(home)/DemarcheBloc';
@@ -10,7 +11,7 @@ import styles from './(home)/home.module.scss';
 import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
-import Link from 'next/link';
+import { MaintenanceNotice } from './MaintenanceNotice';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
 const NOTICE_START = new Date('2026-05-06');
@@ -36,6 +37,7 @@ const Home = () => {
 
   return (
     <div>
+      <MaintenanceNotice />
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
