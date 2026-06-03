@@ -10,6 +10,7 @@ import styles from "./(home)/home.module.scss";
 import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
+import { MaintenanceNotice } from './MaintenanceNotice';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
 const NOTICE_START = new Date('2026-03-26');
@@ -34,6 +35,7 @@ const Home = () => {
 
   return (
     <div>
+      <MaintenanceNotice />
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
