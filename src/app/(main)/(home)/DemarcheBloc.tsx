@@ -25,12 +25,27 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { useEffect } from 'react';
 import styles from './home.module.scss';
 
 export const DemarcheBloc = () => {
   const { width } = useWindowDimensions();
+
+  useEffect(() => {
+    if (window.location.hash === '#communaute-adaptation') {
+      window.scrollTo({ top: 0 });
+      requestAnimationFrame(() => {
+        document.getElementById('communaute-adaptation')?.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  }, []);
+
   return (
-    <div id="communaute-adaptation" style={{ background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) " }}>
+    <div
+      id="communaute-adaptation"
+      style={{
+        background: "linear-gradient(128deg, #B7ECE9 -1.4%, #D3EDEB 36.73%, #D3EDEB, 67.23%, #ECFFFD 97.73%) "
+      }}>
       <NewContainer size="xl" style={{ padding: (width && width <= 768) ? "2rem 1rem" : "3rem 2rem" }}>
         <div
           style={{
