@@ -8,7 +8,7 @@ import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { DefaultRawDatum, PieCustomLayerProps } from '@nivo/pie';
 import styles from '../charts.module.scss';
-import { simplePieChartTooltip } from '../ChartTooltips';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
 type ArreteCatNatEnriched = ArreteCatNat & {
@@ -80,7 +80,7 @@ const PieChartCatnat = (props: { gestionRisques: ArreteCatNatEnriched[] }) => {
         graphData={graphData}
         colors={(graphData) => catnatPieChartLegend.find(el => el.value === graphData.id)?.color!}
         CenteredMetric={CenteredMetric}
-        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'arrêté(s)' })}
+        tooltip={({ datum }) => simplePieChartCountTooltip({ datum, unite: 'arrêté(s)' })}
       />
     </div>
   )

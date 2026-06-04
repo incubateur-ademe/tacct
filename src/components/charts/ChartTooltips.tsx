@@ -1,11 +1,13 @@
 import { Body, H4 } from "@/design-system/base/Textes";
 import { Round } from "@/lib/utils/reusableFunctions/round";
+import { Any } from "@/lib/utils/types";
 import { BarDatum, BarTooltipProps } from "@nivo/bar";
 import { DefaultRawDatum, PieTooltipProps } from "@nivo/pie";
 import { espacesNAFBarChartLegend, RgaEvolutionLegend, RgaRepartitionLegend } from "../maps/legends/datavizLegends";
 import styles from './charts.module.scss';
 
 export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps<DefaultRawDatum>['datum'], unite?: string }) => {
+  console.log("datum", datum);
   return (
     <div className={styles.tooltipEvolutionWrapper}>
       <div className={styles.itemWrapper}>
@@ -15,6 +17,45 @@ export const simplePieChartTooltip = ({ datum, unite }: { datum: PieTooltipProps
             style={{ background: datum.color }}
           />
           <Body size="sm">{datum.id ? datum.id : datum.label} : <b>{Round(Number(datum.value), 1)} {unite ?? null}</b></Body>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type PieChartCount = {
+  arc: Any;
+  color: string;
+  data: {
+    id: string;
+    label: string;
+    value: number;
+    count: number;
+  };
+  id: number;
+  label: number;
+  value: number;
+  hidden: boolean;
+  formattedValue: string;
+};
+
+export const simplePieChartCountTooltip = (
+  {
+    datum, unite
+  }:
+    {
+      datum: PieChartCount, unite?: string
+    }
+) => {
+  return (
+    <div className={styles.tooltipEvolutionWrapper}>
+      <div className={styles.itemWrapper}>
+        <div className={styles.titre}>
+          <div
+            className={styles.colorSquare}
+            style={{ background: datum.color }}
+          />
+          <Body size="sm">{datum.id ? datum.id : datum.label} : <b>{Round(Number(datum.data.count), 1)} {unite ?? null}</b></Body>
         </div>
       </div>
     </div>
