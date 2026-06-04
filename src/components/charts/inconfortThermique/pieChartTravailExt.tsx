@@ -5,7 +5,7 @@ import ZeroData from '@/assets/images/zero_data_found.png';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { travailExterieurPieChartLegend } from '@/components/maps/legends/datavizLegends';
 import { travailExtDto } from '@/lib/dto';
-import { simplePieChartTooltip } from '../ChartTooltips';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
 type Props = {
@@ -26,7 +26,7 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
         <NivoPieChart
           graphData={graphData}
           colors={(graphData) => travailExterieurPieChartLegend.find(legend => legend.value === graphData.label)?.color!}
-          tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
+          tooltip={({ datum }) => simplePieChartCountTooltip({ datum, arrondi: 0 })}
         />
         : (
           <div className='p-1 flex flex-row justify-center'>

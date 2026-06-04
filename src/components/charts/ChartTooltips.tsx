@@ -41,10 +41,14 @@ type PieChartCount = {
 
 export const simplePieChartCountTooltip = (
   {
-    datum, unite
+    datum, 
+    unite,
+    arrondi = 1
   }:
     {
-      datum: PieChartCount, unite?: string
+      datum: PieChartCount, 
+      unite?: string,
+      arrondi?: number
     }
 ) => {
   return (
@@ -55,7 +59,9 @@ export const simplePieChartCountTooltip = (
             className={styles.colorSquare}
             style={{ background: datum.color }}
           />
-          <Body size="sm">{datum.id ? datum.id : datum.label} : <b>{Round(Number(datum.data.count), 1)} {unite ?? null}</b></Body>
+          <Body size="sm">
+            {datum.id ? datum.id : datum.label} : <b>{Round(Number(datum.data.count), arrondi)} {unite ?? null}</b> ({Round(Number(datum.value), 1)} %)
+          </Body>
         </div>
       </div>
     </div>

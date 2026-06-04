@@ -1,10 +1,9 @@
 // @ts-nocheck
 'use client';
 
-import { Body } from '@/design-system/base/Textes';
 import useWindowDimensions from '@/hooks/windowDimensions';
-import { Round } from '@/lib/utils/reusableFunctions/round';
 import styles from '../charts.module.scss';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
 const PieChartAiresAppellationsControlees = (props: { airesAppellationsControlees: any[] }) => {
@@ -86,21 +85,7 @@ const PieChartAiresAppellationsControlees = (props: { airesAppellationsControlee
         graphData={graphData}
         colors={({ id }) => colors[id as string] || '#CCCCCC'}
         CenteredMetric={CenteredMetric}
-        tooltip={({ datum }) => {
-          return (
-            <div className={styles.tooltipEvolutionWrapper}>
-              <div className={styles.itemWrapper}>
-                <div className={styles.titre}>
-                  <div
-                    className={styles.colorSquare}
-                    style={{ background: datum.color }}
-                  />
-                  <Body size="sm">{datum.id} : <b>{Round(Number(datum.data.count), 0)} appellation(s) contrôlée(s)</b></Body>
-                </div>
-              </div>
-            </div>
-          )
-        }}
+        tooltip={({ datum }) => simplePieChartCountTooltip({ datum, unite: 'appellation(s) contrôlée(s)' })}
       />
     </div>
   )
