@@ -11,11 +11,11 @@ interface TagPatch4Props {
 export const TagPatch4 = ({ children }: TagPatch4Props) => {
   const color =
     children === 'Aggravation très forte'
-      ? '#DA1B5C'
+      ? '#FF1C64'
       : children === 'Aggravation forte'
-        ? '#F66E19'
+        ? '#FFB181'
         : children === 'Aggravation modérée'
-          ? '#FFCF5E'
+          ? '#FFEBB6'
           : '#FFF';
   const textColor = children === 'Aggravation très forte' ? 'white' : 'black';
   return (

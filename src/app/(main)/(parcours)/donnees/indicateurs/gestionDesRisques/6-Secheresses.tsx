@@ -1,79 +1,91 @@
 "use client";
 import DataNotFound from '@/assets/images/zero_data_found.png';
 import SecheressesCharts from '@/components/charts/gestionRisques/secheressesCharts';
-import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
+import { MicroCircleGridMois } from '@/components/charts/MicroDataviz';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
-import { Body } from "@/design-system/base/Textes";
-import { RestrictionData, Secheresses, SecheressesParsed } from "@/lib/postgres/models";
-import { useSearchParams } from "next/navigation";
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
+import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
+import { Body } from '@/design-system/base/Textes';
+import { calculerMoyenneJoursMensuelleAvecRestriction } from '@/lib/charts/gestionRisques';
+import { SecheressesPasseesModel } from "@/lib/postgres/models";
+import { SecheressesText } from '@/lib/staticTexts';
+import { secheressesPasseesTooltipText } from '@/lib/tooltipTexts';
+import { secheressesPasseesDoc } from '@/lib/utils/export/documentations';
+import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import { useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+import { SourceExport } from '../SourceExport';
 
 export const SecheressesPassees = (props: {
-  secheresses: Secheresses[];
+  secheresses: SecheressesPasseesModel[];
 }) => {
   const { secheresses } = props;
-  const [datavizTab, setDatavizTab] = useState<string>('Évolution');
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
-  const parsedSecheresses: SecheressesParsed[] = secheresses.map(secheresse => {
-    const parsed: Record<string, unknown> = { ...secheresse };
-    Object.keys(secheresse).forEach(key => {
-      if (key.startsWith('restrictions_') && secheresse[key as keyof Secheresses]) {
-        try {
-          const restrictions = JSON.parse(secheresse[key as keyof Secheresses] as string) as RestrictionData[];
-          // Filtrer les restrictions où zas.pct > 0.01
-          parsed[key] = restrictions.filter(r => r.zas.pct > 0.01);
-        } catch (error) {
-          console.error(`Erreur lors du parsing de ${key}:`, error);
-          parsed[key] = null;
-        }
-      }
-    });
-    return parsed as SecheressesParsed;
-  });
-
-  // Calcul du nombre total de restrictions. On parcourt toutes les années de 2013 à 2024.
-  const nombreTotalRestrictions = parsedSecheresses.reduce((total, secheresse) => {
-    let count = 0;
-    for (let year = 2013; year <= 2024; year++) {
-      const restrictionsKey = `restrictions_${year}` as keyof SecheressesParsed;
-      const restrictions = secheresse[restrictionsKey] as RestrictionData[] | null;
-      if (restrictions && Array.isArray(restrictions)) {
-        count += restrictions.length;
-      }
-    }
-    return total + count;
-  }, 0);
+  const [datavizTab, setDatavizTab] = useState<string>('Intensité');
+  const { moyenne: moyenneJoursAvecRestriction, annee: anneeMaxRestriction } = calculerMoyenneJoursMensuelleAvecRestriction({ secheresses });
+  const exportData =
+    IndicatorExportTransformations.gestionRisques.SecheressesPassees(secheresses).toSorted(
+      (a, b) => a.code_geographique.localeCompare(b.code_geographique)
+    );
 
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={nombreTotalRestrictions} arrondi={0} />
-            {parsedSecheresses.length !== 0 && (
-              <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
-                {nombreTotalRestrictions} restrictions au total dans toutes les communes
-              </Body>
-            )}
+            <MicroCircleGridMois
+              nombreJours={moyenneJoursAvecRestriction}
+              arrondi={0}
+              ariaLabel="Nombre moyen de jours de restriction d'usage de l'eau par mois lors de l'année la plus sèche"
+            />
+            <Body weight='bold' style={{ color: "var(--gris-dark)" }}>
+              Sur la période 2020-2025, c'est en {anneeMaxRestriction} que votre territoire
+              a connu le plus de restrictions liées à la sécheresse, avec une moyenne
+              de {moyenneJoursAvecRestriction} jours de restriction par mois.
+            </Body>
+            <CustomTooltipNouveauParcours
+              title={secheressesPasseesTooltipText}
+              texte="D'où vient ce chiffre ?"
+            />
           </div>
+          <ReadMoreFade maxHeight={300}>
+            <SecheressesText />
+          </ReadMoreFade>
         </div>
         <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
           {
-            parsedSecheresses.length !== 0 ?
+            secheresses.length !== 0 ?
               <SecheressesCharts
                 datavizTab={datavizTab}
                 setDatavizTab={setDatavizTab}
-                secheresses={parsedSecheresses}
+                secheresses={secheresses}
               /> : (
                 <div className={styles.dataNotFoundForGraph}>
                   <DataNotFoundForGraph image={DataNotFound} />
                 </div>
               )
           }
+          <SourceExport
+            anchor="Sécheresses-passées"
+            source="Ministère de la transition écologique, 2026 (consultée en février 2026)"
+            condition={secheresses.length !== 0}
+            exportComponent={
+              <ExportButton
+                data={exportData}
+                baseName="secheresses_passees"
+                type={type}
+                libelle={libelle}
+                code={code}
+                sheetName="Sécheresses passées"
+                documentation={secheressesPasseesDoc}
+              />
+            }
+          />
         </div>
       </div>
     </>

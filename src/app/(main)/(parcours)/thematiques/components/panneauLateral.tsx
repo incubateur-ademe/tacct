@@ -58,7 +58,7 @@ const PanneauLateral = ({
             }}
           >
             {selectedItem && (
-              <div className="h-full">
+              <div style={{ height: "fit-content"}}>
                 {/* En-tête du panneau */}
                 <div className="relative">
                   <button

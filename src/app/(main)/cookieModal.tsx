@@ -24,11 +24,11 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
   const [areTermAccepted, setAreTermAccepted] = useState(true);
   const handleValidateCookies = () => {
     if (areTermAccepted) {
-      localStorage.setItem('cookie_consent', 'yes');
-      setConsentGiven?.('yes');
+      localStorage.setItem('cookie_consent', 'all');
+      setConsentGiven?.('all');
     } else {
-      localStorage.setItem('cookie_consent', 'no');
-      setConsentGiven?.('no');
+      localStorage.setItem('cookie_consent', 'essential');
+      setConsentGiven?.('essential');
     }
     modal.close();
   };
@@ -42,7 +42,8 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
               <h2>Cookies obligatoires</h2>
               <p>
                 Ces cookies sont nécessaires au bon fonctionnement du site. Vous
-                ne pouvez pas les désactiver.
+                ne pouvez pas les désactiver. Il sont utiles pour mesurer l'audience
+                du site de façon anonyme.
               </p>
               <div
                 className="container"
@@ -64,8 +65,7 @@ const CookieModal = ({ modal, setConsentGiven }: CookieModalProps) => {
             <div className={styles.cookieModalConsentWrapper}>
               <h2>Cookies facultatifs</h2>
               <p>
-                Ces cookies correspondent aux suivis d'audience et de
-                performance.
+                Ces cookies correspondent aux enregistrements de session et de heatmaps réalisés par PostHog.
               </p>
               <div
                 className="container"

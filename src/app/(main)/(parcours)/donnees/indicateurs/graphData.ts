@@ -6,47 +6,57 @@ import { sumProperty } from './fonctions';
 export const GrandAge75LineChartYData = (
   grandAgeTerritoire: GrandAgeDto[]
 ) => {
+  const calculatePercent = (numerator: number, denominator: number) => {
+    const result = (100 * numerator) / denominator;
+    return isFinite(result) ? result.toFixed(2) : '0';
+  };
+
   return {
-    over_75_1968_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1968')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1968') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1968'))
-    ).toFixed(2),
-    over_75_1975_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1975')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1975') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1975'))
-    ).toFixed(2),
-    over_75_1982_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1982')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1982') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1982'))
-    ).toFixed(2),
-    over_75_1990_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1990')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1990') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1990'))
-    ).toFixed(2),
-    over_75_1999_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_1999')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_1999') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1999'))
-    ).toFixed(2),
-    over_75_2009_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2009')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2009') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2009'))
-    ).toFixed(2),
-    over_75_2014_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2014')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2014') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2014'))
-    ).toFixed(2),
-    over_75_2020_percent: (
-      (100 * sumProperty(grandAgeTerritoire, 'over_75_sum_2020')) /
-      (sumProperty(grandAgeTerritoire, 'to_75_sum_2020') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2020'))
-    ).toFixed(2)
+    over_75_1968_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1968'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1968') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1968')
+    ),
+    over_75_1975_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1975'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1975') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1975')
+    ),
+    over_75_1982_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1982'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1982') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1982')
+    ),
+    over_75_1990_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1990'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1990') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1990')
+    ),
+    over_75_1999_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_1999'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_1999') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1999')
+    ),
+    over_75_2006_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2006'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2006') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2006')
+    ),
+    over_75_2011_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2011'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2011') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2011')
+    ),
+    over_75_2016_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2016'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2016') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2016')
+    ),
+    over_75_2022_percent: calculatePercent(
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2022'),
+      sumProperty(grandAgeTerritoire, 'to_75_sum_2022') +
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2022')
+    )
   };
 };
 
@@ -95,42 +105,82 @@ export const EmploisEnExterieurPieChartData = (sums: {
   }
 ];
 
-export const DateConstructionResidencesBarChartData = (averages: {
+export const DateConstructionResidencesBarChartData = (pourcentage: {
   [key: string]: number;
 }) => [
   {
     periode: 'Avant 1919',
-    'Votre territoire': averages.averageAgeBatiPre19.toFixed(1),
+    'Votre territoire': pourcentage.ageBatiPre19.toFixed(1),
     'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 20.5,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1919-1945',
-    'Votre territoire': averages.averageAgeBati1945.toFixed(1),
+    'Votre territoire': pourcentage.ageBati1945.toFixed(1),
     'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 9.2,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1946-1990',
-    'Votre territoire': averages.averageAgeBati4690.toFixed(1),
+    'Votre territoire': pourcentage.ageBati4690.toFixed(1),
     'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 43.4,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: '1991-2005',
-    'Votre territoire': averages.averageAgeBati9105.toFixed(1),
+    'Votre territoire': pourcentage.ageBati9105.toFixed(1),
     'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 15.5,
     FranceColor: couleurs.graphiques.rouge[3]
   },
   {
     periode: 'Après 2006',
-    'Votre territoire': averages.averageAgeBatiPost06.toFixed(1),
+    'Votre territoire': pourcentage.ageBatiPost06.toFixed(1),
     'Votre territoireColor': couleurs.graphiques.bleu[1],
     France: 11.4,
     FranceColor: couleurs.graphiques.rouge[3]
   }
 ];
+
+// export const DateConstructionResidencesBarChartData = (averages: {
+//   [key: string]: number;
+// }) => [
+//   {
+//     periode: 'Avant 1919',
+//     'Votre territoire': averages.averageAgeBatiPre19.toFixed(1),
+//     'Votre territoireColor': couleurs.graphiques.bleu[1],
+//     France: 20.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1919-1945',
+//     'Votre territoire': averages.averageAgeBati1945.toFixed(1),
+//     'Votre territoireColor': couleurs.graphiques.bleu[1],
+//     France: 9.2,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1946-1990',
+//     'Votre territoire': averages.averageAgeBati4690.toFixed(1),
+//     'Votre territoireColor': couleurs.graphiques.bleu[1],
+//     France: 43.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: '1991-2005',
+//     'Votre territoire': averages.averageAgeBati9105.toFixed(1),
+//     'Votre territoireColor': couleurs.graphiques.bleu[1],
+//     France: 15.5,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   },
+//   {
+//     periode: 'Après 2006',
+//     'Votre territoire': averages.averageAgeBatiPost06.toFixed(1),
+//     'Votre territoireColor': couleurs.graphiques.bleu[1],
+//     France: 11.4,
+//     FranceColor: couleurs.graphiques.rouge[3]
+//   }
+// ];

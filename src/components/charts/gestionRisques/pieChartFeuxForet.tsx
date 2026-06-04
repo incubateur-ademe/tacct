@@ -7,7 +7,7 @@ import { CountOcc } from '@/lib/utils/reusableFunctions/occurencesCount';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { animated } from '@react-spring/web';
 import styles from '../charts.module.scss';
-import { simplePieChartTooltip } from '../ChartTooltips';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
 const colors: { [key: string]: string } = {
@@ -94,7 +94,7 @@ const PieChartFeuxForet = (props: { incendiesForet: IncendiesForet[] }) => {
       <NivoPieChart
         graphData={graphData}
         colors={(graphData) => colors[graphData.id]}
-        tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: 'ha' })}
+        tooltip={({ datum }) => simplePieChartCountTooltip({ datum, unite: 'ha' })}
       />
     </div>
   );

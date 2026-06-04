@@ -11,6 +11,9 @@
     .indicateurWrapper {
         padding: 2rem 0 0 2rem;
     }
+    .indicateurMultipleMapsWrapper {
+        padding: 2rem 0 0;
+    }
     .indicateurMapWrapper {
         padding: 2rem 2rem 0 2rem;
     }
@@ -86,6 +89,53 @@
         }
         .legendTypesDeSols {
             padding: 0.75rem;
+        }
+    }
+}
+
+.datavizDoubleMapContainer {
+    display: flex;
+    flex-direction: column;
+    .chiffresWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        border-bottom: 1px solid #e7e5e5;
+        border-top: 1px solid #e7e5e5;
+        padding: 2rem;
+        .chiffreDynamiqueWrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 1.25rem;
+            align-items: center;
+        }
+    }
+    .graphiquesWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem 2rem;
+        .tabsWrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: end;
+        }
+        .slider {
+            display: flex;
+            justify-content: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .doubleMaps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            .singleMaps {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     }
 }

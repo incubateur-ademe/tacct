@@ -259,3 +259,20 @@
     border-radius: 2px;
     transform-origin: left center;
 }
+
+// Associer les acteurs
+
+.associerLesActeursContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #D3EDEB;
+    .texte {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

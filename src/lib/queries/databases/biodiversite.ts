@@ -6,7 +6,6 @@ import {
   ConsommationNAF
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -77,7 +76,6 @@ export const GetAgricultureBio = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -139,7 +137,10 @@ export const GetConsommationNAF = async (
                     ? 'code_pnr'
                     : type === 'departement'
                       ? 'departement'
-                      : '']: code
+                      : '']: {
+                  contains: code,
+                  mode: 'insensitive'
+                }
               }
             });
           return value;
@@ -147,7 +148,6 @@ export const GetConsommationNAF = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     } finally {
       console.timeEnd('Query Execution Time NAF');
@@ -168,7 +168,6 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
       return value;
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -202,7 +201,13 @@ export const GetAtlasBiodiversite = async (
                 annee_debut: { not: null }
               },
               {
-                [column]: type === 'petr' || type === 'ept' ? libelle : code
+                [column]:
+                  type === 'petr' || type === 'ept'
+                    ? libelle
+                    : {
+                        contains: code,
+                        mode: 'insensitive'
+                      }
               }
             ]
           }
@@ -211,7 +216,6 @@ export const GetAtlasBiodiversite = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

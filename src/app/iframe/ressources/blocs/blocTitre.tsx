@@ -12,7 +12,7 @@ export const BlocTitre = () => {
             color: "var(--boutons-primaire-1)"
           }}
         >
-          Bienvenue dans votre boîte à outils !
+          Bienvenue dans votre boîte à outils !
         </H1>
       </NewContainer>
     </div>

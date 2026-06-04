@@ -9,12 +9,12 @@ const CookiePolicyPage = () => {
       <Suspense>
         <CookiesPolicy
           analyticTool={{
-            name: 'Potshog',
+            name: 'Posthog',
             cookieListUrl: 'https://posthog.com/docs/privacy/gdpr-compliance',
             policyUrl: ''
           }}
           cookieConsentButton={<CookieConsentButton />}
-          siteName="Facili-TACCT"
+          siteName="TACCT"
         />
       </Suspense>
     </div>

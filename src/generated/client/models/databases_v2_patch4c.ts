@@ -33,6 +33,7 @@ export type Databases_v2_patch4cAvgAggregateOutputType = {
   secheresse_sols: number | null
   fortes_precipitations: number | null
   fortes_chaleurs: number | null
+  region: number | null
 }
 
 export type Databases_v2_patch4cSumAggregateOutputType = {
@@ -42,6 +43,7 @@ export type Databases_v2_patch4cSumAggregateOutputType = {
   secheresse_sols: number | null
   fortes_precipitations: number | null
   fortes_chaleurs: number | null
+  region: number | null
 }
 
 export type Databases_v2_patch4cMinAggregateOutputType = {
@@ -52,6 +54,16 @@ export type Databases_v2_patch4cMinAggregateOutputType = {
   secheresse_sols: number | null
   fortes_precipitations: number | null
   fortes_chaleurs: number | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
 }
 
 export type Databases_v2_patch4cMaxAggregateOutputType = {
@@ -62,6 +74,16 @@ export type Databases_v2_patch4cMaxAggregateOutputType = {
   secheresse_sols: number | null
   fortes_precipitations: number | null
   fortes_chaleurs: number | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
 }
 
 export type Databases_v2_patch4cCountAggregateOutputType = {
@@ -72,6 +94,16 @@ export type Databases_v2_patch4cCountAggregateOutputType = {
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
+  libelle_geographique: number
+  epci: number
+  libelle_epci: number
+  departement: number
+  libelle_departement: number
+  region: number
+  ept: number
+  libelle_petr: number
+  code_pnr: number
+  libelle_pnr: number
   _all: number
 }
 
@@ -83,6 +115,7 @@ export type Databases_v2_patch4cAvgAggregateInputType = {
   secheresse_sols?: true
   fortes_precipitations?: true
   fortes_chaleurs?: true
+  region?: true
 }
 
 export type Databases_v2_patch4cSumAggregateInputType = {
@@ -92,6 +125,7 @@ export type Databases_v2_patch4cSumAggregateInputType = {
   secheresse_sols?: true
   fortes_precipitations?: true
   fortes_chaleurs?: true
+  region?: true
 }
 
 export type Databases_v2_patch4cMinAggregateInputType = {
@@ -102,6 +136,16 @@ export type Databases_v2_patch4cMinAggregateInputType = {
   secheresse_sols?: true
   fortes_precipitations?: true
   fortes_chaleurs?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
 }
 
 export type Databases_v2_patch4cMaxAggregateInputType = {
@@ -112,6 +156,16 @@ export type Databases_v2_patch4cMaxAggregateInputType = {
   secheresse_sols?: true
   fortes_precipitations?: true
   fortes_chaleurs?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
 }
 
 export type Databases_v2_patch4cCountAggregateInputType = {
@@ -122,6 +176,16 @@ export type Databases_v2_patch4cCountAggregateInputType = {
   secheresse_sols?: true
   fortes_precipitations?: true
   fortes_chaleurs?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
   _all?: true
 }
 
@@ -215,10 +279,20 @@ export type Databases_v2_patch4cGroupByOutputType = {
   index: number
   code_geographique: string
   niveaux_marins: number | null
-  feux_foret: number
+  feux_foret: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
   _count: Databases_v2_patch4cCountAggregateOutputType | null
   _avg: Databases_v2_patch4cAvgAggregateOutputType | null
   _sum: Databases_v2_patch4cSumAggregateOutputType | null
@@ -248,20 +322,40 @@ export type databases_v2_patch4cWhereInput = {
   index?: Prisma.IntFilter<"databases_v2_patch4c"> | number
   code_geographique?: Prisma.StringFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  libelle_geographique?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  epci?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_epci?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  departement?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_departement?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  region?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
+  ept?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
 }
 
 export type databases_v2_patch4cOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   niveaux_marins?: Prisma.SortOrderInput | Prisma.SortOrder
-  feux_foret?: Prisma.SortOrder
+  feux_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrderInput | Prisma.SortOrder
+  epci?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrderInput | Prisma.SortOrder
+  departement?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type databases_v2_patch4cWhereUniqueInput = Prisma.AtLeast<{
@@ -271,20 +365,40 @@ export type databases_v2_patch4cWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.databases_v2_patch4cWhereInput | Prisma.databases_v2_patch4cWhereInput[]
   code_geographique?: Prisma.StringFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatFilter<"databases_v2_patch4c"> | number
+  libelle_geographique?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  epci?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_epci?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  departement?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_departement?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  region?: Prisma.FloatNullableFilter<"databases_v2_patch4c"> | number | null
+  ept?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_patch4c"> | string | null
 }, "index">
 
 export type databases_v2_patch4cOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   niveaux_marins?: Prisma.SortOrderInput | Prisma.SortOrder
-  feux_foret?: Prisma.SortOrder
+  feux_foret?: Prisma.SortOrderInput | Prisma.SortOrder
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrderInput | Prisma.SortOrder
+  epci?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrderInput | Prisma.SortOrder
+  departement?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  ept?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.databases_v2_patch4cCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_patch4cAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_patch4cMaxOrderByAggregateInput
@@ -299,80 +413,160 @@ export type databases_v2_patch4cScalarWhereWithAggregatesInput = {
   index?: Prisma.IntWithAggregatesFilter<"databases_v2_patch4c"> | number
   code_geographique?: Prisma.StringWithAggregatesFilter<"databases_v2_patch4c"> | string
   niveaux_marins?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_patch4c"> | number | null
-  feux_foret?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
+  feux_foret?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_patch4c"> | number | null
   secheresse_sols?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
   fortes_precipitations?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
   fortes_chaleurs?: Prisma.FloatWithAggregatesFilter<"databases_v2_patch4c"> | number
+  libelle_geographique?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  epci?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  libelle_epci?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  departement?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  libelle_departement?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  region?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_patch4c"> | number | null
+  ept?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
+  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_patch4c"> | string | null
 }
 
 export type databases_v2_patch4cCreateInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
+  libelle_geographique?: string | null
+  epci?: string | null
+  libelle_epci?: string | null
+  departement?: string | null
+  libelle_departement?: string | null
+  region?: number | null
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
 }
 
 export type databases_v2_patch4cUncheckedCreateInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
+  libelle_geographique?: string | null
+  epci?: string | null
+  libelle_epci?: string | null
+  departement?: string | null
+  libelle_departement?: string | null
+  region?: number | null
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
 }
 
 export type databases_v2_patch4cUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
+  libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type databases_v2_patch4cUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
+  libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type databases_v2_patch4cCreateManyInput = {
   index: number
   code_geographique: string
   niveaux_marins?: number | null
-  feux_foret: number
+  feux_foret?: number | null
   secheresse_sols: number
   fortes_precipitations: number
   fortes_chaleurs: number
+  libelle_geographique?: string | null
+  epci?: string | null
+  libelle_epci?: string | null
+  departement?: string | null
+  libelle_departement?: string | null
+  region?: number | null
+  ept?: string | null
+  libelle_petr?: string | null
+  code_pnr?: string | null
+  libelle_pnr?: string | null
 }
 
 export type databases_v2_patch4cUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
+  libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type databases_v2_patch4cUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   niveaux_marins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  feux_foret?: Prisma.FloatFieldUpdateOperationsInput | number
+  feux_foret?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   secheresse_sols?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_precipitations?: Prisma.FloatFieldUpdateOperationsInput | number
   fortes_chaleurs?: Prisma.FloatFieldUpdateOperationsInput | number
+  libelle_geographique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_epci?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type databases_v2_patch4cCountOrderByAggregateInput = {
@@ -383,6 +577,16 @@ export type databases_v2_patch4cCountOrderByAggregateInput = {
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
 }
 
 export type databases_v2_patch4cAvgOrderByAggregateInput = {
@@ -392,6 +596,7 @@ export type databases_v2_patch4cAvgOrderByAggregateInput = {
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  region?: Prisma.SortOrder
 }
 
 export type databases_v2_patch4cMaxOrderByAggregateInput = {
@@ -402,6 +607,16 @@ export type databases_v2_patch4cMaxOrderByAggregateInput = {
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
 }
 
 export type databases_v2_patch4cMinOrderByAggregateInput = {
@@ -412,6 +627,16 @@ export type databases_v2_patch4cMinOrderByAggregateInput = {
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
 }
 
 export type databases_v2_patch4cSumOrderByAggregateInput = {
@@ -421,6 +646,7 @@ export type databases_v2_patch4cSumOrderByAggregateInput = {
   secheresse_sols?: Prisma.SortOrder
   fortes_precipitations?: Prisma.SortOrder
   fortes_chaleurs?: Prisma.SortOrder
+  region?: Prisma.SortOrder
 }
 
 
@@ -433,6 +659,16 @@ export type databases_v2_patch4cSelect<ExtArgs extends runtime.Types.Extensions.
   secheresse_sols?: boolean
   fortes_precipitations?: boolean
   fortes_chaleurs?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
 }, ExtArgs["result"]["databases_v2_patch4c"]>
 
 export type databases_v2_patch4cSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -443,6 +679,16 @@ export type databases_v2_patch4cSelectCreateManyAndReturn<ExtArgs extends runtim
   secheresse_sols?: boolean
   fortes_precipitations?: boolean
   fortes_chaleurs?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
 }, ExtArgs["result"]["databases_v2_patch4c"]>
 
 export type databases_v2_patch4cSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -453,6 +699,16 @@ export type databases_v2_patch4cSelectUpdateManyAndReturn<ExtArgs extends runtim
   secheresse_sols?: boolean
   fortes_precipitations?: boolean
   fortes_chaleurs?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
 }, ExtArgs["result"]["databases_v2_patch4c"]>
 
 export type databases_v2_patch4cSelectScalar = {
@@ -463,9 +719,19 @@ export type databases_v2_patch4cSelectScalar = {
   secheresse_sols?: boolean
   fortes_precipitations?: boolean
   fortes_chaleurs?: boolean
+  libelle_geographique?: boolean
+  epci?: boolean
+  libelle_epci?: boolean
+  departement?: boolean
+  libelle_departement?: boolean
+  region?: boolean
+  ept?: boolean
+  libelle_petr?: boolean
+  code_pnr?: boolean
+  libelle_pnr?: boolean
 }
 
-export type databases_v2_patch4cOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "niveaux_marins" | "feux_foret" | "secheresse_sols" | "fortes_precipitations" | "fortes_chaleurs", ExtArgs["result"]["databases_v2_patch4c"]>
+export type databases_v2_patch4cOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "niveaux_marins" | "feux_foret" | "secheresse_sols" | "fortes_precipitations" | "fortes_chaleurs" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr", ExtArgs["result"]["databases_v2_patch4c"]>
 
 export type $databases_v2_patch4cPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_patch4c"
@@ -474,10 +740,20 @@ export type $databases_v2_patch4cPayload<ExtArgs extends runtime.Types.Extension
     index: number
     code_geographique: string
     niveaux_marins: number | null
-    feux_foret: number
+    feux_foret: number | null
     secheresse_sols: number
     fortes_precipitations: number
     fortes_chaleurs: number
+    libelle_geographique: string | null
+    epci: string | null
+    libelle_epci: string | null
+    departement: string | null
+    libelle_departement: string | null
+    region: number | null
+    ept: string | null
+    libelle_petr: string | null
+    code_pnr: string | null
+    libelle_pnr: string | null
   }, ExtArgs["result"]["databases_v2_patch4c"]>
   composites: {}
 }
@@ -908,6 +1184,16 @@ export interface databases_v2_patch4cFieldRefs {
   readonly secheresse_sols: Prisma.FieldRef<"databases_v2_patch4c", 'Float'>
   readonly fortes_precipitations: Prisma.FieldRef<"databases_v2_patch4c", 'Float'>
   readonly fortes_chaleurs: Prisma.FieldRef<"databases_v2_patch4c", 'Float'>
+  readonly libelle_geographique: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly epci: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly libelle_epci: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly departement: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly libelle_departement: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly region: Prisma.FieldRef<"databases_v2_patch4c", 'Float'>
+  readonly ept: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly libelle_petr: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly code_pnr: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
+  readonly libelle_pnr: Prisma.FieldRef<"databases_v2_patch4c", 'String'>
 }
     
 

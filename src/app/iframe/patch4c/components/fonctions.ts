@@ -26,6 +26,8 @@ export const patch4Indices = (patch4: Patch4) => [
       'Continuité de service des réseaux (énergie, télécom et transport)',
       'Inconfort thermique'
     ],
+    themesSansAggravation: null,
+        themesSansAggravationEpciCommunes: null,
     actions: [
       {
         title:
@@ -35,7 +37,7 @@ export const patch4Indices = (patch4: Patch4) => [
       },
       {
         title: 'Plus fraîche ma ville',
-        link: 'https://plusfraichemaville.fr/',
+        link: 'https://plusfraichemaville.fr/fiche-solution',
         image: null
       }
     ]
@@ -50,6 +52,12 @@ export const patch4Indices = (patch4: Patch4) => [
     linkedThemes: [
       'Adaptation des bassins d’emploi et activités économiques',
       'Continuité de service des réseaux (énergie, télécom et transport)'
+    ],
+    themesSansAggravation: [
+      'Indépendamment de la tendance d’aggravation, le changement climatique intensifie le phénomène de pluie extrême, exposant tous les territoires à des risques d’inondations brutales.'
+    ],
+    themesSansAggravationEpciCommunes: [
+      "La TRACC projette une aggravation limitée des fortes précipitations sur votre territoire. Ce constat n'exclut pas le risque : les pluies extrêmes peuvent frapper n'importe où et provoquer des inondations brutales."
     ],
     actions: [
       {
@@ -72,11 +80,17 @@ export const patch4Indices = (patch4: Patch4) => [
       'Santé des forêts, parcs et espaces naturels',
       'Disponibilité et qualité des ressources en eau'
     ],
+    themesSansAggravation: [
+      "Indépendamment de la tendance d'aggravation, le rythme des sécheresses constitue un facteur de risque immédiat pour l'agriculture et les ressources en eau de tous les territoires."
+    ],
+    themesSansAggravationEpciCommunes: [
+      "La TRACC projette une aggravation limitée de l’aléa sécheresse des sols sur votre territoire. Ce constat n'exclut pas les risques liés aux sécheresses répétées : retrait gonflement des argiles, tensions sur les ressources en eau, activité agricole compromise…"
+    ],
     actions: [
       {
         title:
           'CRACC : retrait gonflement des argiles, à quoi s’attendre et comment s’adapter ?',
-        link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles#toc-agir',
+        link: 'https://www.adaptation-changement-climatique.gouv.fr/dossiers-thematiques/impacts/retrait-gonflement-des-argiles-quoi-sattendre-et-sadapter#toc-agir',
         image: RGA
       }
     ]
@@ -93,6 +107,12 @@ export const patch4Indices = (patch4: Patch4) => [
       'Santé des populations et cadre de vie',
       'Continuité de service des réseaux (énergie, télécom et transport)',
       'Adaptation des bassins d’emploi et activités économiques'
+    ],
+    themesSansAggravation: [
+      'Le facteur humain reste central dans le déclenchement des incendies, même sans aggravation des conditions propices aux feux de forêt.'
+    ],
+    themesSansAggravationEpciCommunes: [
+      "La TRACC projette une aggravation limitée de l’aléa feux de forêt sur votre territoire. Ce constat n'exclut pas le risque : indépendamment des conditions météorologiques plus ou moins propices, plus de 90 % des incendies restent d'origine humaine."
     ],
     actions: [
       {
@@ -114,6 +134,8 @@ export const patch4Indices = (patch4: Patch4) => [
     definition:
       'L’indice s’appuie sur l’indicateur d’évolution de l’élévation du niveau moyen de la mer.',
     linkedThemes: ['Adaptation des bassins d’emploi et activités économiques'],
+    themesSansAggravation: null,
+    themesSansAggravationEpciCommunes: null,
     actions: [
       {
         title:
@@ -128,11 +150,11 @@ export const patch4Indices = (patch4: Patch4) => [
 export const getBackgroundColor = (value: string | null) => {
   switch (value) {
     case 'Aggravation très forte':
-      return '#F80206';
+      return '#FF1C64';
     case 'Aggravation forte':
-      return '#F66E19';
+      return '#FFB181';
     case 'Aggravation modérée':
-      return '#FFC03F';
+      return '#FFEBB6';
     case "Pas d'évolution":
       return '#FFFFFF';
     default:

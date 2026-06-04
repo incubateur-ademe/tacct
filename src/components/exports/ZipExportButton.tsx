@@ -1,10 +1,10 @@
-"use client";
+'use client';
 import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import Image from 'next/image';
+import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import { usePostHog } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
-import styles from "../components.module.scss";
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import styles from '../components.module.scss';
 import { CopyLinkClipboard } from '../interactions/CopyLinkClipboard';
 
 interface ZipExportButtonProps {
@@ -22,84 +22,6 @@ export const ZipExportButton = ({
   handleExport,
   children = 'Exporter',
   style,
-}: ZipExportButtonProps) => {
-  const posthog = usePostHog();
-  const [isExporting, setIsExporting] = useState(false);
-  // posthog.capture('export_xlsx_bouton', {
-  //   thematique: baseName,
-  //   code: code,
-  //   libelle: libelle,
-  //   type: type,
-  //   date: new Date()
-  // });
-
-  useEffect(() => {
-    if (isExporting) {
-      document.body.style.setProperty('cursor', 'wait', 'important');
-      const overlay = document.createElement('div');
-      overlay.id = 'export-loading-overlay';
-      overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: transparent;
-        cursor: wait !important;
-        z-index: 9999;
-        pointer-events: auto;
-      `;
-      document.body.appendChild(overlay);
-      document.body.classList.add('export-loading');
-    } else {
-      document.body.style.removeProperty('cursor');
-      const overlay = document.getElementById('export-loading-overlay');
-      if (overlay) {
-        overlay.remove();
-      }
-      document.body.classList.remove('export-loading');
-    }
-    return () => {
-      document.body.style.removeProperty('cursor');
-      const overlay = document.getElementById('export-loading-overlay');
-      if (overlay) {
-        overlay.remove();
-      }
-      document.body.classList.remove('export-loading');
-    };
-  }, [isExporting]);
-
-  const handleClick = async () => {
-    setIsExporting(true);
-    try {
-      await handleExport();
-    } finally {
-      setIsExporting(false);
-    }
-  };
-
-  return (
-    <button
-      className={styles.exportIndicatorButton}
-      onClick={handleClick}
-      disabled={isExporting}
-      style={{ ...style }}
-    >
-      {isExporting ? 'Export en cours...' : children}
-      <Image
-        alt="Exporter les données"
-        src={ExporterIcon}
-        width={16}
-        height={16}
-      />
-    </button>
-  );
-};
-
-export const ZipExportButtonNouveauParcours = ({
-  handleExport,
-  children = 'Exporter',
-  style,
   anchor,
   code,
   libelle,
@@ -108,6 +30,15 @@ export const ZipExportButtonNouveauParcours = ({
 }: ZipExportButtonProps) => {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const buttonWrapperRef = useRef<HTMLDivElement>(null);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (buttonWrapperRef.current) {
+      setButtonMinWidth(buttonWrapperRef.current.offsetWidth);
+    }
+  }, []);
 
   useEffect(() => {
     if (isExporting) {
@@ -146,6 +77,7 @@ export const ZipExportButtonNouveauParcours = ({
   }, [isExporting]);
 
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsClicked(true);
     if (isExporting) return;
 
     e.currentTarget.blur();
@@ -160,7 +92,7 @@ export const ZipExportButtonNouveauParcours = ({
     });
 
     // Attendre que React affiche "Export en cours..." avant de démarrer l'export
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise((resolve) => setTimeout(resolve, 0));
 
     try {
       await handleExport();
@@ -176,17 +108,21 @@ export const ZipExportButtonNouveauParcours = ({
   return (
     <div className={styles.exportShareWrapper}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
-      <BoutonPrimaireClassic
-        onClick={handleClick}
-        disabled={isExporting}
-        icone={isExporting ? null : ExporterIcon}
-        size='sm'
-        text={isExporting ? 'Export en cours...' : children as string}
-        style={{
-          cursor: isExporting ? 'wait' : 'pointer',
-          ...style,
-        }}
-      />
+      <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+        <BoutonPrimaireClassic
+          onClick={handleClick}
+          disabled={isExporting}
+          icone={isExporting ? null : ExporterIcon}
+          size="sm"
+          text={isExporting ? 'En cours...' : (children as string)}
+          style={{
+            minWidth: buttonMinWidth,
+            cursor: isExporting ? 'wait' : 'pointer',
+            ...style
+          }}
+        />
+      </div>
+      {isClicked && <ExportDataTrigger />}
     </div>
   );
 };

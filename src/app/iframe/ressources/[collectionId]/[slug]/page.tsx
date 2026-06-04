@@ -70,7 +70,6 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
       const richText = block.heading_2?.rich_text || [];
       return normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
     });
-
   const pageContent = await groupAndRenderBlocks(contentWithoutH1);
   const collection = CollectionsData.find(c => c.slug === collectionId);
   const collectionSlug = CollectionsData.find(c => c.titre === article?.collections[0])?.slug || collectionId;
@@ -84,10 +83,10 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
           <ClientOnly>
             <Breadcrumb
               currentPageLabel={pageTitle}
-              homeLinkProps={{ href: '/' }}
+              homeLinkProps={{ href: '/iframe' }}
               segments={[
-                { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
-                { label: collection?.titre, linkProps: { href: `/ressources/${collectionSlug}` } }
+                { label: 'Boîte à outils', linkProps: { href: '/iframe/ressources' } },
+                { label: collection?.titre, linkProps: { href: `/iframe/ressources/${collectionSlug}` } }
               ]}
             />
           </ClientOnly>

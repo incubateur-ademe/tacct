@@ -14,17 +14,19 @@ export const CookieConsentButton = () => {
   const posthog = usePostHog();
 
   const handleConsentChange = useCallback((consent: string) => {
-    posthog.set_config({
-      persistence: consent === 'yes' ? 'localStorage+cookie' : 'memory',
-      disable_session_recording: consent !== 'yes'
-    });
-
-    if (consent === 'yes') {
-      posthog.opt_in_capturing();
+    if (consent === 'all') {
+      posthog.set_config({
+        persistence: 'localStorage+cookie',
+        disable_session_recording: false,
+        capture_heatmaps: true
+      });
       posthog.startSessionRecording();
     } else {
-      posthog.opt_out_capturing();
-      posthog.stopSessionRecording();
+      posthog.set_config({
+        persistence: 'memory',
+        disable_session_recording: true,
+        capture_heatmaps: false
+      });
     }
   }, [posthog]);
 

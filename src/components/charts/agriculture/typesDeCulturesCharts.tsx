@@ -47,22 +47,39 @@ const TypesDeCulturesCharts = (props: Props) => {
         ''
       )}
       {
-        territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 &&
-        <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
-          <div className='flex flex-row items-center justify-center'>
-            <Image
-              src={WarningIcon}
-              alt="Attention"
-              width={24}
-              height={24}
-              style={{ marginRight: '0.5em', alignItems: 'center' }}
-            />
-            <Body size="sm">
-              {territoiresPartiellementCouverts.length} EPCI{" "}
-              {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"} de votre territoire
-            </Body>
+        territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 ? (
+          <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+            <div className='flex flex-row items-center justify-center'>
+              <Image
+                src={WarningIcon}
+                alt="Attention"
+                width={24}
+                height={24}
+                style={{ marginRight: '0.5em', alignItems: 'center' }}
+              />
+              <Body size="sm">
+                {territoiresPartiellementCouverts.length} EPCI{" "}
+                {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"} de votre territoire et
+                certaines données sont sous secret statistique.
+              </Body>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+            <div className='flex flex-row items-center justify-center'>
+              <Image
+                src={WarningIcon}
+                alt="Attention"
+                width={24}
+                height={24}
+                style={{ marginRight: '0.5em', alignItems: 'center' }}
+              />
+              <Body size="sm">
+                Certaines données de votre territoire sont sous secret statistique.
+              </Body>
+            </div>
+          </div>
+        )
       }
     </div>
   );

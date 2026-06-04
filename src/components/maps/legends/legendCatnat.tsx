@@ -7,7 +7,17 @@ import styles from './mapsComponents.module.scss';
 interface Props {
   data: string;
   typeRisqueValue: string;
-  catnatData: { code: string; name: string; catnat: any }[];
+  catnatData: { code: string; name: string; catnat: {
+      sumCatnat: number;
+      indexName: string;
+      Inondations?: number | undefined;
+      'Gr\u00EAle / neige'?: number | undefined;
+      Sécheresse?: number | undefined;
+      'Cyclones / Temp\u00EAtes'?: number | undefined;
+      'Retrait-gonflement des argiles'?: number | undefined;
+      'Mouvements de terrain'?: number | undefined;
+      Avalanche?: number | undefined;
+    } }[];
 }
 
 export const colorsCatnat: { [key: string]: string[] } = {
@@ -40,8 +50,8 @@ export const colorsCatnat: { [key: string]: string[] } = {
 };
 
 const getIntegersBetweenFloats = (minValue: number, maxValue: number) => {
-  var list = [];
-  for (var i = minValue; i <= maxValue + 1; i++) {
+  const list = [];
+  for (let i = minValue; i <= maxValue + 1; i++) {
     const rounded = Math.round(i);
     if (minValue <= rounded) {
       if (maxValue > rounded) {
@@ -56,7 +66,7 @@ const getIntegersBetweenFloats = (minValue: number, maxValue: number) => {
 const LegendBlock: React.FC<{ color: string; value: number }> = ({
   color,
   value
-}) => {
+}: { color: string; value: number }) => {
   return (
     <div className={styles.legendItem}>
       <div

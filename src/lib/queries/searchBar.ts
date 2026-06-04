@@ -1,6 +1,5 @@
 'use server';
 
-import * as Sentry from '@sentry/nextjs';
 import { CollectivitesSearchbar } from '../postgres/models';
 import { Commune, Departement, EPCI, PETR, PNR } from './territoiresQueries';
 
@@ -52,7 +51,6 @@ export const GetCollectivite = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

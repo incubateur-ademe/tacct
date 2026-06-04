@@ -34,7 +34,7 @@ export const exportToXLSX = (
     return;
   }
   try {
-    const filename = generateExportFilename(baseName, type, libelle);
+    const filename = baseName !== "arbovirose" ? generateExportFilename(baseName, type, libelle) : `${baseName}.xlsx`;
     const worksheet = XLSX.utils.json_to_sheet(data);
     worksheet['!cols'] = calculateColumnWidths(worksheet);
     const workbook = XLSX.utils.book_new();

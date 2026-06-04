@@ -324,6 +324,7 @@
     &:hover {
         transform: translateY(-50%) scale(1.05);
         transition: all 0.2s ease-in-out;
+        background-color: #ffffff !important;
     }
 }
 
@@ -346,6 +347,7 @@
     &:hover {
         transform: translateY(-50%) scale(1.05);
         transition: all 0.2s ease-in-out;
+        background-color: #ffffff !important;
     }
 }
 
@@ -362,9 +364,10 @@
     align-items: center;
     position: relative;
     overflow: visible;
+    background-image: none;
 
     &:hover {
-        background-color: var(--boutons-primaire-3);
+        background-color: var(--boutons-primaire-3) !important;
         cursor: pointer;
 
         .content {
@@ -479,14 +482,10 @@
         }
     }
     .cartesWrapper {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         align-self: center;
-        // display: grid;
-        // grid-template-columns: repeat(2, 1fr);
-        // grid-template-rows: repeat(2, 1fr);
-        // gap: 1.5rem;
     }
 }
 
@@ -871,6 +870,22 @@
                 }
             }
         }
+    }
+}
+
+.questionsThemes {
+    margin: 2rem 1.5rem 2rem auto;
+    align-self: end;
+    font-weight: 500;
+    color: var(--boutons-primaire-1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    background-image: none;
+    &::after {
+        display: none;
     }
 }
 

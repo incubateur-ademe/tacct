@@ -544,44 +544,44 @@ export type databases_v2_surfaces_agricolesGroupByArgs<ExtArgs extends runtime.T
 export type Databases_v2_surfaces_agricolesGroupByOutputType = {
   index: number
   epci: string
-  exploitation_sau: number
-  exploitation_sau_terres_arables: number
-  exploitation_sau_terres_arables_cereales: number
-  exploitation_sau_terres_arables_oleagineux: number
-  exploitation_sau_terres_arables_fourrageres: number
-  exploitation_sau_terres_arables_tubercules: number
-  exploitation_sau_terres_arables_legumes_melons_fraises: number
-  exploitation_sau_terres_arables_fleurs: number
-  exploitation_sau_terres_arables_autres: number
-  exploitation_sau_cultures_permanentes: number
-  exploitation_sau_cultures_permanentes_vigne: number
-  exploitation_sau_cultures_permanentes_fruits: number
-  exploitation_sau_cultures_permanentes_autres: number
-  exploitation_sau_herbe: number
-  exploitation_sau_herbe_prairies_productives: number
-  exploitation_sau_herbe_prairies_peu_productives: number
-  exploitation_sau_herbe_subventions: number
-  exploitation_sau_herbe_bois_patures: number
-  exploitation_sau_jardins: number
-  superficie_sau: number
-  superficie_sau_terres_arables: number
-  superficie_sau_terres_arables_cereales: number
-  superficie_sau_terres_arables_oleagineux: number
-  superficie_sau_terres_arables_fourrageres: number
-  superficie_sau_terres_arables_tubercules: number
-  superficie_sau_terres_arables_legumes_melons_fraises: number
-  superficie_sau_terres_arables_fleurs: number
-  superficie_sau_terres_arables_autres: number
-  superficie_sau_cultures_permanentes: number
-  superficie_sau_cultures_permanentes_vigne: number
-  superficie_sau_cultures_permanentes_fruits: number
-  superficie_sau_cultures_permanentes_autres: number
-  superficie_sau_herbe: number
-  superficie_sau_herbe_prairies_productives: number
-  superficie_sau_herbe_prairies_peu_productives: number
-  superficie_sau_herbe_subventions: number
-  superficie_sau_herbe_bois_patures: number
-  superficie_sau_jardins: number
+  exploitation_sau: number | null
+  exploitation_sau_terres_arables: number | null
+  exploitation_sau_terres_arables_cereales: number | null
+  exploitation_sau_terres_arables_oleagineux: number | null
+  exploitation_sau_terres_arables_fourrageres: number | null
+  exploitation_sau_terres_arables_tubercules: number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+  exploitation_sau_terres_arables_fleurs: number | null
+  exploitation_sau_terres_arables_autres: number | null
+  exploitation_sau_cultures_permanentes: number | null
+  exploitation_sau_cultures_permanentes_vigne: number | null
+  exploitation_sau_cultures_permanentes_fruits: number | null
+  exploitation_sau_cultures_permanentes_autres: number | null
+  exploitation_sau_herbe: number | null
+  exploitation_sau_herbe_prairies_productives: number | null
+  exploitation_sau_herbe_prairies_peu_productives: number | null
+  exploitation_sau_herbe_subventions: number | null
+  exploitation_sau_herbe_bois_patures: number | null
+  exploitation_sau_jardins: number | null
+  superficie_sau: number | null
+  superficie_sau_terres_arables: number | null
+  superficie_sau_terres_arables_cereales: number | null
+  superficie_sau_terres_arables_oleagineux: number | null
+  superficie_sau_terres_arables_fourrageres: number | null
+  superficie_sau_terres_arables_tubercules: number | null
+  superficie_sau_terres_arables_legumes_melons_fraises: number | null
+  superficie_sau_terres_arables_fleurs: number | null
+  superficie_sau_terres_arables_autres: number | null
+  superficie_sau_cultures_permanentes: number | null
+  superficie_sau_cultures_permanentes_vigne: number | null
+  superficie_sau_cultures_permanentes_fruits: number | null
+  superficie_sau_cultures_permanentes_autres: number | null
+  superficie_sau_herbe: number | null
+  superficie_sau_herbe_prairies_productives: number | null
+  superficie_sau_herbe_prairies_peu_productives: number | null
+  superficie_sau_herbe_subventions: number | null
+  superficie_sau_herbe_bois_patures: number | null
+  superficie_sau_jardins: number | null
   _count: Databases_v2_surfaces_agricolesCountAggregateOutputType | null
   _avg: Databases_v2_surfaces_agricolesAvgAggregateOutputType | null
   _sum: Databases_v2_surfaces_agricolesSumAggregateOutputType | null
@@ -610,87 +610,87 @@ export type databases_v2_surfaces_agricolesWhereInput = {
   NOT?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
   index?: Prisma.IntFilter<"databases_v2_surfaces_agricoles"> | number
   epci?: Prisma.StringFilter<"databases_v2_surfaces_agricoles"> | string
-  exploitation_sau?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_jardins?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_jardins?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
+  exploitation_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_subventions?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_jardins?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_subventions?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_jardins?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
 }
 
 export type databases_v2_surfaces_agricolesOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   epci?: Prisma.SortOrder
-  exploitation_sau?: Prisma.SortOrder
-  exploitation_sau_terres_arables?: Prisma.SortOrder
-  exploitation_sau_terres_arables_cereales?: Prisma.SortOrder
-  exploitation_sau_terres_arables_oleagineux?: Prisma.SortOrder
-  exploitation_sau_terres_arables_fourrageres?: Prisma.SortOrder
-  exploitation_sau_terres_arables_tubercules?: Prisma.SortOrder
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrder
-  exploitation_sau_terres_arables_fleurs?: Prisma.SortOrder
-  exploitation_sau_terres_arables_autres?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_autres?: Prisma.SortOrder
-  exploitation_sau_herbe?: Prisma.SortOrder
-  exploitation_sau_herbe_prairies_productives?: Prisma.SortOrder
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.SortOrder
-  exploitation_sau_herbe_subventions?: Prisma.SortOrder
-  exploitation_sau_herbe_bois_patures?: Prisma.SortOrder
-  exploitation_sau_jardins?: Prisma.SortOrder
-  superficie_sau?: Prisma.SortOrder
-  superficie_sau_terres_arables?: Prisma.SortOrder
-  superficie_sau_terres_arables_cereales?: Prisma.SortOrder
-  superficie_sau_terres_arables_oleagineux?: Prisma.SortOrder
-  superficie_sau_terres_arables_fourrageres?: Prisma.SortOrder
-  superficie_sau_terres_arables_tubercules?: Prisma.SortOrder
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrder
-  superficie_sau_terres_arables_fleurs?: Prisma.SortOrder
-  superficie_sau_terres_arables_autres?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_vigne?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_fruits?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_autres?: Prisma.SortOrder
-  superficie_sau_herbe?: Prisma.SortOrder
-  superficie_sau_herbe_prairies_productives?: Prisma.SortOrder
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.SortOrder
-  superficie_sau_herbe_subventions?: Prisma.SortOrder
-  superficie_sau_herbe_bois_patures?: Prisma.SortOrder
-  superficie_sau_jardins?: Prisma.SortOrder
+  exploitation_sau?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_cereales?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_oleagineux?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_fourrageres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_tubercules?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_fleurs?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_prairies_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_subventions?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_bois_patures?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_jardins?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_cereales?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_oleagineux?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_fourrageres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_tubercules?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_fleurs?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_vigne?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_fruits?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_prairies_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_subventions?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_bois_patures?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_jardins?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type databases_v2_surfaces_agricolesWhereUniqueInput = Prisma.AtLeast<{
@@ -699,87 +699,87 @@ export type databases_v2_surfaces_agricolesWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.databases_v2_surfaces_agricolesWhereInput[]
   NOT?: Prisma.databases_v2_surfaces_agricolesWhereInput | Prisma.databases_v2_surfaces_agricolesWhereInput[]
   epci?: Prisma.StringFilter<"databases_v2_surfaces_agricoles"> | string
-  exploitation_sau?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_jardins?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_jardins?: Prisma.FloatFilter<"databases_v2_surfaces_agricoles"> | number
+  exploitation_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_subventions?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_jardins?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_subventions?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_jardins?: Prisma.FloatNullableFilter<"databases_v2_surfaces_agricoles"> | number | null
 }, "index">
 
 export type databases_v2_surfaces_agricolesOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   epci?: Prisma.SortOrder
-  exploitation_sau?: Prisma.SortOrder
-  exploitation_sau_terres_arables?: Prisma.SortOrder
-  exploitation_sau_terres_arables_cereales?: Prisma.SortOrder
-  exploitation_sau_terres_arables_oleagineux?: Prisma.SortOrder
-  exploitation_sau_terres_arables_fourrageres?: Prisma.SortOrder
-  exploitation_sau_terres_arables_tubercules?: Prisma.SortOrder
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrder
-  exploitation_sau_terres_arables_fleurs?: Prisma.SortOrder
-  exploitation_sau_terres_arables_autres?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.SortOrder
-  exploitation_sau_cultures_permanentes_autres?: Prisma.SortOrder
-  exploitation_sau_herbe?: Prisma.SortOrder
-  exploitation_sau_herbe_prairies_productives?: Prisma.SortOrder
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.SortOrder
-  exploitation_sau_herbe_subventions?: Prisma.SortOrder
-  exploitation_sau_herbe_bois_patures?: Prisma.SortOrder
-  exploitation_sau_jardins?: Prisma.SortOrder
-  superficie_sau?: Prisma.SortOrder
-  superficie_sau_terres_arables?: Prisma.SortOrder
-  superficie_sau_terres_arables_cereales?: Prisma.SortOrder
-  superficie_sau_terres_arables_oleagineux?: Prisma.SortOrder
-  superficie_sau_terres_arables_fourrageres?: Prisma.SortOrder
-  superficie_sau_terres_arables_tubercules?: Prisma.SortOrder
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrder
-  superficie_sau_terres_arables_fleurs?: Prisma.SortOrder
-  superficie_sau_terres_arables_autres?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_vigne?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_fruits?: Prisma.SortOrder
-  superficie_sau_cultures_permanentes_autres?: Prisma.SortOrder
-  superficie_sau_herbe?: Prisma.SortOrder
-  superficie_sau_herbe_prairies_productives?: Prisma.SortOrder
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.SortOrder
-  superficie_sau_herbe_subventions?: Prisma.SortOrder
-  superficie_sau_herbe_bois_patures?: Prisma.SortOrder
-  superficie_sau_jardins?: Prisma.SortOrder
+  exploitation_sau?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_cereales?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_oleagineux?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_fourrageres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_tubercules?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_fleurs?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_terres_arables_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_cultures_permanentes_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_prairies_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_subventions?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_herbe_bois_patures?: Prisma.SortOrderInput | Prisma.SortOrder
+  exploitation_sau_jardins?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_cereales?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_oleagineux?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_fourrageres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_tubercules?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_fleurs?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_terres_arables_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_vigne?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_fruits?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_cultures_permanentes_autres?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_prairies_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_subventions?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_herbe_bois_patures?: Prisma.SortOrderInput | Prisma.SortOrder
+  superficie_sau_jardins?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.databases_v2_surfaces_agricolesCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_surfaces_agricolesAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_surfaces_agricolesMaxOrderByAggregateInput
@@ -793,345 +793,345 @@ export type databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput = {
   NOT?: Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput | Prisma.databases_v2_surfaces_agricolesScalarWhereWithAggregatesInput[]
   index?: Prisma.IntWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
   epci?: Prisma.StringWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | string
-  exploitation_sau?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  exploitation_sau_jardins?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_subventions?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
-  superficie_sau_jardins?: Prisma.FloatWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number
+  exploitation_sau?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_subventions?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  exploitation_sau_jardins?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_terres_arables_autres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_subventions?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
+  superficie_sau_jardins?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_surfaces_agricoles"> | number | null
 }
 
 export type databases_v2_surfaces_agricolesCreateInput = {
   index: number
   epci: string
-  exploitation_sau: number
-  exploitation_sau_terres_arables: number
-  exploitation_sau_terres_arables_cereales: number
-  exploitation_sau_terres_arables_oleagineux: number
-  exploitation_sau_terres_arables_fourrageres: number
-  exploitation_sau_terres_arables_tubercules: number
-  exploitation_sau_terres_arables_legumes_melons_fraises: number
-  exploitation_sau_terres_arables_fleurs: number
-  exploitation_sau_terres_arables_autres: number
-  exploitation_sau_cultures_permanentes: number
-  exploitation_sau_cultures_permanentes_vigne: number
-  exploitation_sau_cultures_permanentes_fruits: number
-  exploitation_sau_cultures_permanentes_autres: number
-  exploitation_sau_herbe: number
-  exploitation_sau_herbe_prairies_productives: number
-  exploitation_sau_herbe_prairies_peu_productives: number
-  exploitation_sau_herbe_subventions: number
-  exploitation_sau_herbe_bois_patures: number
-  exploitation_sau_jardins: number
-  superficie_sau: number
-  superficie_sau_terres_arables: number
-  superficie_sau_terres_arables_cereales: number
-  superficie_sau_terres_arables_oleagineux: number
-  superficie_sau_terres_arables_fourrageres: number
-  superficie_sau_terres_arables_tubercules: number
-  superficie_sau_terres_arables_legumes_melons_fraises: number
-  superficie_sau_terres_arables_fleurs: number
-  superficie_sau_terres_arables_autres: number
-  superficie_sau_cultures_permanentes: number
-  superficie_sau_cultures_permanentes_vigne: number
-  superficie_sau_cultures_permanentes_fruits: number
-  superficie_sau_cultures_permanentes_autres: number
-  superficie_sau_herbe: number
-  superficie_sau_herbe_prairies_productives: number
-  superficie_sau_herbe_prairies_peu_productives: number
-  superficie_sau_herbe_subventions: number
-  superficie_sau_herbe_bois_patures: number
-  superficie_sau_jardins: number
+  exploitation_sau?: number | null
+  exploitation_sau_terres_arables?: number | null
+  exploitation_sau_terres_arables_cereales?: number | null
+  exploitation_sau_terres_arables_oleagineux?: number | null
+  exploitation_sau_terres_arables_fourrageres?: number | null
+  exploitation_sau_terres_arables_tubercules?: number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: number | null
+  exploitation_sau_terres_arables_fleurs?: number | null
+  exploitation_sau_terres_arables_autres?: number | null
+  exploitation_sau_cultures_permanentes?: number | null
+  exploitation_sau_cultures_permanentes_vigne?: number | null
+  exploitation_sau_cultures_permanentes_fruits?: number | null
+  exploitation_sau_cultures_permanentes_autres?: number | null
+  exploitation_sau_herbe?: number | null
+  exploitation_sau_herbe_prairies_productives?: number | null
+  exploitation_sau_herbe_prairies_peu_productives?: number | null
+  exploitation_sau_herbe_subventions?: number | null
+  exploitation_sau_herbe_bois_patures?: number | null
+  exploitation_sau_jardins?: number | null
+  superficie_sau?: number | null
+  superficie_sau_terres_arables?: number | null
+  superficie_sau_terres_arables_cereales?: number | null
+  superficie_sau_terres_arables_oleagineux?: number | null
+  superficie_sau_terres_arables_fourrageres?: number | null
+  superficie_sau_terres_arables_tubercules?: number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: number | null
+  superficie_sau_terres_arables_fleurs?: number | null
+  superficie_sau_terres_arables_autres?: number | null
+  superficie_sau_cultures_permanentes?: number | null
+  superficie_sau_cultures_permanentes_vigne?: number | null
+  superficie_sau_cultures_permanentes_fruits?: number | null
+  superficie_sau_cultures_permanentes_autres?: number | null
+  superficie_sau_herbe?: number | null
+  superficie_sau_herbe_prairies_productives?: number | null
+  superficie_sau_herbe_prairies_peu_productives?: number | null
+  superficie_sau_herbe_subventions?: number | null
+  superficie_sau_herbe_bois_patures?: number | null
+  superficie_sau_jardins?: number | null
 }
 
 export type databases_v2_surfaces_agricolesUncheckedCreateInput = {
   index: number
   epci: string
-  exploitation_sau: number
-  exploitation_sau_terres_arables: number
-  exploitation_sau_terres_arables_cereales: number
-  exploitation_sau_terres_arables_oleagineux: number
-  exploitation_sau_terres_arables_fourrageres: number
-  exploitation_sau_terres_arables_tubercules: number
-  exploitation_sau_terres_arables_legumes_melons_fraises: number
-  exploitation_sau_terres_arables_fleurs: number
-  exploitation_sau_terres_arables_autres: number
-  exploitation_sau_cultures_permanentes: number
-  exploitation_sau_cultures_permanentes_vigne: number
-  exploitation_sau_cultures_permanentes_fruits: number
-  exploitation_sau_cultures_permanentes_autres: number
-  exploitation_sau_herbe: number
-  exploitation_sau_herbe_prairies_productives: number
-  exploitation_sau_herbe_prairies_peu_productives: number
-  exploitation_sau_herbe_subventions: number
-  exploitation_sau_herbe_bois_patures: number
-  exploitation_sau_jardins: number
-  superficie_sau: number
-  superficie_sau_terres_arables: number
-  superficie_sau_terres_arables_cereales: number
-  superficie_sau_terres_arables_oleagineux: number
-  superficie_sau_terres_arables_fourrageres: number
-  superficie_sau_terres_arables_tubercules: number
-  superficie_sau_terres_arables_legumes_melons_fraises: number
-  superficie_sau_terres_arables_fleurs: number
-  superficie_sau_terres_arables_autres: number
-  superficie_sau_cultures_permanentes: number
-  superficie_sau_cultures_permanentes_vigne: number
-  superficie_sau_cultures_permanentes_fruits: number
-  superficie_sau_cultures_permanentes_autres: number
-  superficie_sau_herbe: number
-  superficie_sau_herbe_prairies_productives: number
-  superficie_sau_herbe_prairies_peu_productives: number
-  superficie_sau_herbe_subventions: number
-  superficie_sau_herbe_bois_patures: number
-  superficie_sau_jardins: number
+  exploitation_sau?: number | null
+  exploitation_sau_terres_arables?: number | null
+  exploitation_sau_terres_arables_cereales?: number | null
+  exploitation_sau_terres_arables_oleagineux?: number | null
+  exploitation_sau_terres_arables_fourrageres?: number | null
+  exploitation_sau_terres_arables_tubercules?: number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: number | null
+  exploitation_sau_terres_arables_fleurs?: number | null
+  exploitation_sau_terres_arables_autres?: number | null
+  exploitation_sau_cultures_permanentes?: number | null
+  exploitation_sau_cultures_permanentes_vigne?: number | null
+  exploitation_sau_cultures_permanentes_fruits?: number | null
+  exploitation_sau_cultures_permanentes_autres?: number | null
+  exploitation_sau_herbe?: number | null
+  exploitation_sau_herbe_prairies_productives?: number | null
+  exploitation_sau_herbe_prairies_peu_productives?: number | null
+  exploitation_sau_herbe_subventions?: number | null
+  exploitation_sau_herbe_bois_patures?: number | null
+  exploitation_sau_jardins?: number | null
+  superficie_sau?: number | null
+  superficie_sau_terres_arables?: number | null
+  superficie_sau_terres_arables_cereales?: number | null
+  superficie_sau_terres_arables_oleagineux?: number | null
+  superficie_sau_terres_arables_fourrageres?: number | null
+  superficie_sau_terres_arables_tubercules?: number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: number | null
+  superficie_sau_terres_arables_fleurs?: number | null
+  superficie_sau_terres_arables_autres?: number | null
+  superficie_sau_cultures_permanentes?: number | null
+  superficie_sau_cultures_permanentes_vigne?: number | null
+  superficie_sau_cultures_permanentes_fruits?: number | null
+  superficie_sau_cultures_permanentes_autres?: number | null
+  superficie_sau_herbe?: number | null
+  superficie_sau_herbe_prairies_productives?: number | null
+  superficie_sau_herbe_prairies_peu_productives?: number | null
+  superficie_sau_herbe_subventions?: number | null
+  superficie_sau_herbe_bois_patures?: number | null
+  superficie_sau_jardins?: number | null
 }
 
 export type databases_v2_surfaces_agricolesUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   epci?: Prisma.StringFieldUpdateOperationsInput | string
-  exploitation_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
+  exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_surfaces_agricolesUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   epci?: Prisma.StringFieldUpdateOperationsInput | string
-  exploitation_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
+  exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_surfaces_agricolesCreateManyInput = {
   index: number
   epci: string
-  exploitation_sau: number
-  exploitation_sau_terres_arables: number
-  exploitation_sau_terres_arables_cereales: number
-  exploitation_sau_terres_arables_oleagineux: number
-  exploitation_sau_terres_arables_fourrageres: number
-  exploitation_sau_terres_arables_tubercules: number
-  exploitation_sau_terres_arables_legumes_melons_fraises: number
-  exploitation_sau_terres_arables_fleurs: number
-  exploitation_sau_terres_arables_autres: number
-  exploitation_sau_cultures_permanentes: number
-  exploitation_sau_cultures_permanentes_vigne: number
-  exploitation_sau_cultures_permanentes_fruits: number
-  exploitation_sau_cultures_permanentes_autres: number
-  exploitation_sau_herbe: number
-  exploitation_sau_herbe_prairies_productives: number
-  exploitation_sau_herbe_prairies_peu_productives: number
-  exploitation_sau_herbe_subventions: number
-  exploitation_sau_herbe_bois_patures: number
-  exploitation_sau_jardins: number
-  superficie_sau: number
-  superficie_sau_terres_arables: number
-  superficie_sau_terres_arables_cereales: number
-  superficie_sau_terres_arables_oleagineux: number
-  superficie_sau_terres_arables_fourrageres: number
-  superficie_sau_terres_arables_tubercules: number
-  superficie_sau_terres_arables_legumes_melons_fraises: number
-  superficie_sau_terres_arables_fleurs: number
-  superficie_sau_terres_arables_autres: number
-  superficie_sau_cultures_permanentes: number
-  superficie_sau_cultures_permanentes_vigne: number
-  superficie_sau_cultures_permanentes_fruits: number
-  superficie_sau_cultures_permanentes_autres: number
-  superficie_sau_herbe: number
-  superficie_sau_herbe_prairies_productives: number
-  superficie_sau_herbe_prairies_peu_productives: number
-  superficie_sau_herbe_subventions: number
-  superficie_sau_herbe_bois_patures: number
-  superficie_sau_jardins: number
+  exploitation_sau?: number | null
+  exploitation_sau_terres_arables?: number | null
+  exploitation_sau_terres_arables_cereales?: number | null
+  exploitation_sau_terres_arables_oleagineux?: number | null
+  exploitation_sau_terres_arables_fourrageres?: number | null
+  exploitation_sau_terres_arables_tubercules?: number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: number | null
+  exploitation_sau_terres_arables_fleurs?: number | null
+  exploitation_sau_terres_arables_autres?: number | null
+  exploitation_sau_cultures_permanentes?: number | null
+  exploitation_sau_cultures_permanentes_vigne?: number | null
+  exploitation_sau_cultures_permanentes_fruits?: number | null
+  exploitation_sau_cultures_permanentes_autres?: number | null
+  exploitation_sau_herbe?: number | null
+  exploitation_sau_herbe_prairies_productives?: number | null
+  exploitation_sau_herbe_prairies_peu_productives?: number | null
+  exploitation_sau_herbe_subventions?: number | null
+  exploitation_sau_herbe_bois_patures?: number | null
+  exploitation_sau_jardins?: number | null
+  superficie_sau?: number | null
+  superficie_sau_terres_arables?: number | null
+  superficie_sau_terres_arables_cereales?: number | null
+  superficie_sau_terres_arables_oleagineux?: number | null
+  superficie_sau_terres_arables_fourrageres?: number | null
+  superficie_sau_terres_arables_tubercules?: number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: number | null
+  superficie_sau_terres_arables_fleurs?: number | null
+  superficie_sau_terres_arables_autres?: number | null
+  superficie_sau_cultures_permanentes?: number | null
+  superficie_sau_cultures_permanentes_vigne?: number | null
+  superficie_sau_cultures_permanentes_fruits?: number | null
+  superficie_sau_cultures_permanentes_autres?: number | null
+  superficie_sau_herbe?: number | null
+  superficie_sau_herbe_prairies_productives?: number | null
+  superficie_sau_herbe_prairies_peu_productives?: number | null
+  superficie_sau_herbe_subventions?: number | null
+  superficie_sau_herbe_bois_patures?: number | null
+  superficie_sau_jardins?: number | null
 }
 
 export type databases_v2_surfaces_agricolesUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   epci?: Prisma.StringFieldUpdateOperationsInput | string
-  exploitation_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
+  exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_surfaces_agricolesUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   epci?: Prisma.StringFieldUpdateOperationsInput | string
-  exploitation_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  exploitation_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_cereales?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_oleagineux?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fourrageres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_tubercules?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_fleurs?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_terres_arables_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_vigne?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_fruits?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_cultures_permanentes_autres?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_prairies_peu_productives?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_subventions?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_herbe_bois_patures?: Prisma.FloatFieldUpdateOperationsInput | number
-  superficie_sau_jardins?: Prisma.FloatFieldUpdateOperationsInput | number
+  exploitation_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  exploitation_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_cereales?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_oleagineux?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fourrageres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_tubercules?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_legumes_melons_fraises?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_fleurs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_terres_arables_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_vigne?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_fruits?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_cultures_permanentes_autres?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_prairies_peu_productives?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_subventions?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_herbe_bois_patures?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  superficie_sau_jardins?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_surfaces_agricolesCountOrderByAggregateInput = {
@@ -1529,44 +1529,44 @@ export type $databases_v2_surfaces_agricolesPayload<ExtArgs extends runtime.Type
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     index: number
     epci: string
-    exploitation_sau: number
-    exploitation_sau_terres_arables: number
-    exploitation_sau_terres_arables_cereales: number
-    exploitation_sau_terres_arables_oleagineux: number
-    exploitation_sau_terres_arables_fourrageres: number
-    exploitation_sau_terres_arables_tubercules: number
-    exploitation_sau_terres_arables_legumes_melons_fraises: number
-    exploitation_sau_terres_arables_fleurs: number
-    exploitation_sau_terres_arables_autres: number
-    exploitation_sau_cultures_permanentes: number
-    exploitation_sau_cultures_permanentes_vigne: number
-    exploitation_sau_cultures_permanentes_fruits: number
-    exploitation_sau_cultures_permanentes_autres: number
-    exploitation_sau_herbe: number
-    exploitation_sau_herbe_prairies_productives: number
-    exploitation_sau_herbe_prairies_peu_productives: number
-    exploitation_sau_herbe_subventions: number
-    exploitation_sau_herbe_bois_patures: number
-    exploitation_sau_jardins: number
-    superficie_sau: number
-    superficie_sau_terres_arables: number
-    superficie_sau_terres_arables_cereales: number
-    superficie_sau_terres_arables_oleagineux: number
-    superficie_sau_terres_arables_fourrageres: number
-    superficie_sau_terres_arables_tubercules: number
-    superficie_sau_terres_arables_legumes_melons_fraises: number
-    superficie_sau_terres_arables_fleurs: number
-    superficie_sau_terres_arables_autres: number
-    superficie_sau_cultures_permanentes: number
-    superficie_sau_cultures_permanentes_vigne: number
-    superficie_sau_cultures_permanentes_fruits: number
-    superficie_sau_cultures_permanentes_autres: number
-    superficie_sau_herbe: number
-    superficie_sau_herbe_prairies_productives: number
-    superficie_sau_herbe_prairies_peu_productives: number
-    superficie_sau_herbe_subventions: number
-    superficie_sau_herbe_bois_patures: number
-    superficie_sau_jardins: number
+    exploitation_sau: number | null
+    exploitation_sau_terres_arables: number | null
+    exploitation_sau_terres_arables_cereales: number | null
+    exploitation_sau_terres_arables_oleagineux: number | null
+    exploitation_sau_terres_arables_fourrageres: number | null
+    exploitation_sau_terres_arables_tubercules: number | null
+    exploitation_sau_terres_arables_legumes_melons_fraises: number | null
+    exploitation_sau_terres_arables_fleurs: number | null
+    exploitation_sau_terres_arables_autres: number | null
+    exploitation_sau_cultures_permanentes: number | null
+    exploitation_sau_cultures_permanentes_vigne: number | null
+    exploitation_sau_cultures_permanentes_fruits: number | null
+    exploitation_sau_cultures_permanentes_autres: number | null
+    exploitation_sau_herbe: number | null
+    exploitation_sau_herbe_prairies_productives: number | null
+    exploitation_sau_herbe_prairies_peu_productives: number | null
+    exploitation_sau_herbe_subventions: number | null
+    exploitation_sau_herbe_bois_patures: number | null
+    exploitation_sau_jardins: number | null
+    superficie_sau: number | null
+    superficie_sau_terres_arables: number | null
+    superficie_sau_terres_arables_cereales: number | null
+    superficie_sau_terres_arables_oleagineux: number | null
+    superficie_sau_terres_arables_fourrageres: number | null
+    superficie_sau_terres_arables_tubercules: number | null
+    superficie_sau_terres_arables_legumes_melons_fraises: number | null
+    superficie_sau_terres_arables_fleurs: number | null
+    superficie_sau_terres_arables_autres: number | null
+    superficie_sau_cultures_permanentes: number | null
+    superficie_sau_cultures_permanentes_vigne: number | null
+    superficie_sau_cultures_permanentes_fruits: number | null
+    superficie_sau_cultures_permanentes_autres: number | null
+    superficie_sau_herbe: number | null
+    superficie_sau_herbe_prairies_productives: number | null
+    superficie_sau_herbe_prairies_peu_productives: number | null
+    superficie_sau_herbe_subventions: number | null
+    superficie_sau_herbe_bois_patures: number | null
+    superficie_sau_jardins: number | null
   }, ExtArgs["result"]["databases_v2_surfaces_agricoles"]>
   composites: {}
 }

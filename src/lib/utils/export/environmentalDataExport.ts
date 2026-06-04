@@ -7,24 +7,44 @@ import {
 import {
   AgricultureBio,
   AOT40,
+  ArboviroseModel,
   ArreteCatNat,
-  CarteCommunes,
   ConsommationNAF,
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  Patch4,
   PrelevementsEauParsed,
-  QualiteSitesBaignade,
+  QualiteSitesBaignadeModel,
   RGAdb,
+  SecheressesPasseesModel,
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
 
+export const Patch4Export = ({
+  type,
+  patch4
+}: {
+  type: string;
+  patch4: Patch4;
+}) => {
+  if (type === 'epci') {
+    return {
+      epci: patch4.code_geographique,
+      feux_foret: patch4.feux_foret,
+      fortes_chaleurs: patch4.fortes_chaleurs,
+      fortes_precipitations: patch4.fortes_precipitations,
+      secheresse_sols: patch4.secheresse_sols
+    };
+  } else return patch4;
+};
+
 export const IndicatorExportTransformations = {
   agriculture: {
-    surfacesIrriguees: (carteCommunes: CarteCommunes[]) =>
-      carteCommunes.map((commune) => {
+    surfacesIrriguees: (tableCommune: TableCommuneModel[]) =>
+      tableCommune.map((commune) => {
         return {
           code_geographique: commune.code_geographique,
           libelle_geographique: commune.libelle_geographique,
@@ -38,10 +58,12 @@ export const IndicatorExportTransformations = {
           libelle_pnr: commune.libelle_pnr,
           libelle_petr: commune.libelle_petr,
           'part_surface_irriguee (%)': (() => {
-            if (commune.surfacesIrriguees === 0) return 0;
-            if (!commune.surfacesIrriguees || isNaN(commune.surfacesIrriguees))
+            if (
+              !commune.part_irr_sau_2020 ||
+              commune.part_irr_sau_2020 === null
+            )
               return 'secret statistique';
-            return commune.surfacesIrriguees;
+            return Number(commune.part_irr_sau_2020);
           })()
         };
       }),
@@ -64,76 +86,115 @@ export const IndicatorExportTransformations = {
       }),
     surfacesAgricoles: (surfacesAgricoles: SurfacesAgricolesModel[]) =>
       surfacesAgricoles.map((el) => {
+        const secretStat = (value: number | null) => {
+          if (value === null || isNaN(value)) {
+            return 'secret statistique';
+          } else return value;
+        };
         return {
           code_epci: el.epci,
-          exploitation_sau: el.exploitation_sau,
-          exploitation_sau_terres_arables: el.exploitation_sau_terres_arables,
-          exploitation_sau_terres_arables_cereales:
-            el.exploitation_sau_terres_arables_cereales,
-          exploitation_sau_terres_arables_oleagineux:
-            el.exploitation_sau_terres_arables_oleagineux,
-          exploitation_sau_terres_arables_fourrageres:
-            el.exploitation_sau_terres_arables_fourrageres,
-          exploitation_sau_terres_arables_tubercules:
-            el.exploitation_sau_terres_arables_tubercules,
-          exploitation_sau_terres_arables_legumes_melons_fraises:
-            el.exploitation_sau_terres_arables_legumes_melons_fraises,
-          exploitation_sau_terres_arables_fleurs:
-            el.exploitation_sau_terres_arables_fleurs,
-          exploitation_sau_terres_arables_autres:
-            el.exploitation_sau_terres_arables_autres,
-          exploitation_sau_cultures_permanentes:
-            el.exploitation_sau_cultures_permanentes,
-          exploitation_sau_cultures_permanentes_vigne:
-            el.exploitation_sau_cultures_permanentes_vigne,
-          exploitation_sau_cultures_permanentes_fruits:
-            el.exploitation_sau_cultures_permanentes_fruits,
-          exploitation_sau_cultures_permanentes_autres:
-            el.exploitation_sau_cultures_permanentes_autres,
-          exploitation_sau_herbe: el.exploitation_sau_herbe,
-          exploitation_sau_herbe_prairies_productives:
-            el.exploitation_sau_herbe_prairies_productives,
-          exploitation_sau_herbe_prairies_peu_productives:
-            el.exploitation_sau_herbe_prairies_peu_productives,
-          exploitation_sau_herbe_subventions:
-            el.exploitation_sau_herbe_subventions,
-          exploitation_sau_herbe_bois_patures:
-            el.exploitation_sau_herbe_bois_patures,
-          exploitation_sau_jardins: el.exploitation_sau_jardins,
-          superficie_sau_ha: el.superficie_sau,
-          superficie_sau_terres_arables_ha: el.superficie_sau_terres_arables,
-          superficie_sau_terres_arables_cereales_ha:
-            el.superficie_sau_terres_arables_cereales,
-          superficie_sau_terres_arables_oleagineux_ha:
-            el.superficie_sau_terres_arables_oleagineux,
-          superficie_sau_terres_arables_fourrageres_ha:
-            el.superficie_sau_terres_arables_fourrageres,
-          superficie_sau_terres_arables_tubercules_ha:
-            el.superficie_sau_terres_arables_tubercules,
-          superficie_sau_terres_arables_legumes_melons_fraises_ha:
-            el.superficie_sau_terres_arables_legumes_melons_fraises,
-          superficie_sau_terres_arables_fleurs_ha:
-            el.superficie_sau_terres_arables_fleurs,
-          superficie_sau_terres_arables_autres_ha:
-            el.superficie_sau_terres_arables_autres,
-          superficie_sau_cultures_permanentes_ha:
-            el.superficie_sau_cultures_permanentes,
-          superficie_sau_cultures_permanentes_vigne_ha:
-            el.superficie_sau_cultures_permanentes_vigne,
-          superficie_sau_cultures_permanentes_fruits_ha:
-            el.superficie_sau_cultures_permanentes_fruits,
-          superficie_sau_cultures_permanentes_autres_ha:
-            el.superficie_sau_cultures_permanentes_autres,
-          superficie_sau_herbe_ha: el.superficie_sau_herbe,
-          superficie_sau_herbe_prairies_productives_ha:
-            el.superficie_sau_herbe_prairies_productives,
-          superficie_sau_herbe_prairies_peu_productives_ha:
-            el.superficie_sau_herbe_prairies_peu_productives,
-          superficie_sau_herbe_subventions_ha:
-            el.superficie_sau_herbe_subventions,
-          superficie_sau_herbe_bois_patures_ha:
-            el.superficie_sau_herbe_bois_patures,
-          superficie_sau_jardins_ha: el.superficie_sau_jardins
+          exploitation_sau: secretStat(el.exploitation_sau),
+          exploitation_sau_terres_arables: secretStat(
+            el.exploitation_sau_terres_arables
+          ),
+          exploitation_sau_terres_arables_cereales: secretStat(
+            el.exploitation_sau_terres_arables_cereales
+          ),
+          exploitation_sau_terres_arables_oleagineux: secretStat(
+            el.exploitation_sau_terres_arables_oleagineux
+          ),
+          exploitation_sau_terres_arables_fourrageres: secretStat(
+            el.exploitation_sau_terres_arables_fourrageres
+          ),
+          exploitation_sau_terres_arables_tubercules: secretStat(
+            el.exploitation_sau_terres_arables_tubercules
+          ),
+          exploitation_sau_terres_arables_legumes_melons_fraises: secretStat(
+            el.exploitation_sau_terres_arables_legumes_melons_fraises
+          ),
+          exploitation_sau_terres_arables_fleurs: secretStat(
+            el.exploitation_sau_terres_arables_fleurs
+          ),
+          exploitation_sau_terres_arables_autres: secretStat(
+            el.exploitation_sau_terres_arables_autres
+          ),
+          exploitation_sau_cultures_permanentes: secretStat(
+            el.exploitation_sau_cultures_permanentes
+          ),
+          exploitation_sau_cultures_permanentes_vigne: secretStat(
+            el.exploitation_sau_cultures_permanentes_vigne
+          ),
+          exploitation_sau_cultures_permanentes_fruits: secretStat(
+            el.exploitation_sau_cultures_permanentes_fruits
+          ),
+          exploitation_sau_cultures_permanentes_autres: secretStat(
+            el.exploitation_sau_cultures_permanentes_autres
+          ),
+          exploitation_sau_herbe: secretStat(el.exploitation_sau_herbe),
+          exploitation_sau_herbe_prairies_productives: secretStat(
+            el.exploitation_sau_herbe_prairies_productives
+          ),
+          exploitation_sau_herbe_prairies_peu_productives: secretStat(
+            el.exploitation_sau_herbe_prairies_peu_productives
+          ),
+          exploitation_sau_herbe_subventions: secretStat(
+            el.exploitation_sau_herbe_subventions
+          ),
+          exploitation_sau_herbe_bois_patures: secretStat(
+            el.exploitation_sau_herbe_bois_patures
+          ),
+          exploitation_sau_jardins: secretStat(el.exploitation_sau_jardins),
+          superficie_sau_ha: secretStat(el.superficie_sau),
+          superficie_sau_terres_arables_ha: secretStat(
+            el.superficie_sau_terres_arables
+          ),
+          superficie_sau_terres_arables_cereales_ha: secretStat(
+            el.superficie_sau_terres_arables_cereales
+          ),
+          superficie_sau_terres_arables_oleagineux_ha: secretStat(
+            el.superficie_sau_terres_arables_oleagineux
+          ),
+          superficie_sau_terres_arables_fourrageres_ha: secretStat(
+            el.superficie_sau_terres_arables_fourrageres
+          ),
+          superficie_sau_terres_arables_tubercules_ha: secretStat(
+            el.superficie_sau_terres_arables_tubercules
+          ),
+          superficie_sau_terres_arables_legumes_melons_fraises_ha: secretStat(
+            el.superficie_sau_terres_arables_legumes_melons_fraises
+          ),
+          superficie_sau_terres_arables_fleurs_ha: secretStat(
+            el.superficie_sau_terres_arables_fleurs
+          ),
+          superficie_sau_terres_arables_autres_ha: secretStat(
+            el.superficie_sau_terres_arables_autres
+          ),
+          superficie_sau_cultures_permanentes_ha: secretStat(
+            el.superficie_sau_cultures_permanentes
+          ),
+          superficie_sau_cultures_permanentes_vigne_ha: secretStat(
+            el.superficie_sau_cultures_permanentes_vigne
+          ),
+          superficie_sau_cultures_permanentes_fruits_ha: secretStat(
+            el.superficie_sau_cultures_permanentes_fruits
+          ),
+          superficie_sau_cultures_permanentes_autres_ha: secretStat(
+            el.superficie_sau_cultures_permanentes_autres
+          ),
+          superficie_sau_herbe_ha: secretStat(el.superficie_sau_herbe),
+          superficie_sau_herbe_prairies_productives_ha: secretStat(
+            el.superficie_sau_herbe_prairies_productives
+          ),
+          superficie_sau_herbe_prairies_peu_productives_ha: secretStat(
+            el.superficie_sau_herbe_prairies_peu_productives
+          ),
+          superficie_sau_herbe_subventions_ha: secretStat(
+            el.superficie_sau_herbe_subventions
+          ),
+          superficie_sau_herbe_bois_patures_ha: secretStat(
+            el.superficie_sau_herbe_bois_patures
+          ),
+          superficie_sau_jardins_ha: secretStat(el.superficie_sau_jardins)
         };
       }),
     chefsExploitationSeniors: (tableCommune: TableCommuneModel[]) =>
@@ -164,7 +225,7 @@ export const IndicatorExportTransformations = {
         };
       })
   },
-  inconfort_thermique: {
+  confortThermique: {
     AgeBati: (ageBati: AgeBatiDto[]) =>
       ageBati.map((el) => {
         return {
@@ -178,11 +239,12 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          part_age_bati_pre_1919: el.age_bati_pre_19,
-          part_age_bati_1919_1945: el.age_bati_19_45,
-          part_age_bati_1946_1990: el.age_bati_46_90,
-          part_age_bati_1991_2005: el.age_bati_91_05,
-          part_age_bati_post_2006: el.age_bati_post06
+          nb_residences_principales_total: el.nb_rp_tot,
+          nb_residences_principales_pre_19: el.nb_rp_pre_19,
+          nb_residences_principales_19_45: el.nb_rp_19_45,
+          nb_residences_principales_46_90: el.nb_rp_46_70 + el.nb_rp_71_90,
+          nb_residences_principales_91_05: el.nb_rp_91_05,
+          nb_residences_principales_post_06: el.nb_rp_post_06
         };
       }),
     GrandAge75: (grandAge: GrandAgeDto[]) =>
@@ -213,15 +275,18 @@ export const IndicatorExportTransformations = {
           '1999_population_de_moins_de_4_ans': el.under_4_sum_1999,
           '1999_population_de_4_a_75_ans': el.to_75_sum_1999,
           '1999_population_de_plus_de_75_ans': el.over_75_sum_1999,
-          '2009_population_de_moins_de_4_ans': el.under_4_sum_2009,
-          '2009_population_de_4_a_75_ans': el.to_75_sum_2009,
-          '2009_population_de_plus_de_75_ans': el.over_75_sum_2009,
-          '2014_population_de_moins_de_4_ans': el.under_4_sum_2014,
-          '2014_population_de_4_a_75_ans': el.to_75_sum_2014,
-          '2014_population_de_plus_de_75_ans': el.over_75_sum_2014,
-          '2020_population_de_moins_de_4_ans': el.under_4_sum_2020,
-          '2020_population_de_4_a_75_ans': el.to_75_sum_2020,
-          '2020_population_de_plus_de_75_ans': el.over_75_sum_2020
+          '2006_population_de_moins_de_4_ans': el.under_4_sum_2006,
+          '2006_population_de_4_a_75_ans': el.to_75_sum_2006,
+          '2006_population_de_plus_de_75_ans': el.over_75_sum_2006,
+          '2011_population_de_moins_de_4_ans': el.under_4_sum_2011,
+          '2011_population_de_4_a_75_ans': el.to_75_sum_2011,
+          '2011_population_de_plus_de_75_ans': el.over_75_sum_2011,
+          '2016_population_de_moins_de_4_ans': el.under_4_sum_2016,
+          '2016_population_de_4_a_75_ans': el.to_75_sum_2016,
+          '2016_population_de_plus_de_75_ans': el.over_75_sum_2016,
+          '2022_population_de_moins_de_4_ans': el.under_4_sum_2022,
+          '2022_population_de_4_a_75_ans': el.to_75_sum_2022,
+          '2022_population_de_plus_de_75_ans': el.over_75_sum_2022
         };
       }),
     travailExt: (travailExt: travailExtDto[]) =>
@@ -340,24 +405,18 @@ export const IndicatorExportTransformations = {
         };
       });
     },
-    QualiteSitesBaignade: (qualiteSitesBaignade: QualiteSitesBaignade[]) => {
+    QualiteSitesBaignade: (
+      qualiteSitesBaignade: QualiteSitesBaignadeModel[]
+    ) => {
       return qualiteSitesBaignade.map((el) => {
         return {
-          libelle_geographique: el.COMMUNE,
-          libelle_departement: el.DEP_NOM,
-          departement: el.DEP_NUM,
-          latitude: el.LAT,
-          longitude: el.LONG,
-          point_d_eau: el.POINT,
-          qualite_eau_2013: el.QEB_2013,
-          qualite_eau_2014: el.QEB_2014,
-          qualite_eau_2015: el.QEB_2015,
-          qualite_eau_2016: el.QEB_2016,
-          qualite_eau_2017: el.QEB_2017,
-          qualite_eau_2018: el.QEB_2018,
-          qualite_eau_2019: el.QEB_2019,
-          qualite_eau_2020: el.QEB_2020,
-          type_d_eau: el.TYPE
+          libelle_geographique: el.libelle_geographique,
+          libelle_departement: el.libelle_departement,
+          departement: el.departement,
+          latitude: el.latitude,
+          longitude: el.longitude,
+          point_d_eau: el.nom_site,
+          qualite_eau_2024: el.qualite
         };
       });
     }
@@ -492,6 +551,10 @@ export const IndicatorExportTransformations = {
           libelle_epci: bio.libelle_epci,
           variable: bio.VARIABLE,
           sous_champ: bio.LIBELLE_SOUS_CHAMP,
+          nombre_exploitations_2024: bio.nombre_2024,
+          surface_2024_ha: bio.surface_2024,
+          nombre_exploitations_2023: bio.nombre_2023,
+          surface_2023_ha: bio.surface_2023,
           nombre_exploitations_2022: bio.nombre_2022,
           surface_2022_ha: bio.surface_2022,
           nombre_exploitations_2021: bio.nombre_2021,
@@ -499,7 +562,29 @@ export const IndicatorExportTransformations = {
           nombre_exploitations_2020: bio.nombre_2020,
           surface_2020_ha: bio.surface_2020,
           nombre_exploitations_2019: bio.nombre_2019,
-          surface_2019_ha: bio.surface_2019
+          surface_2019_ha: bio.surface_2019,
+          nombre_exploitations_2018: bio.nombre_2018,
+          surface_2018_ha: bio.surface_2018,
+          nombre_exploitations_2017: bio.nombre_2017,
+          surface_2017_ha: bio.surface_2017,
+          nombre_exploitations_2016: bio.nombre_2016,
+          surface_2016_ha: bio.surface_2016,
+          nombre_exploitations_2015: bio.nombre_2015,
+          surface_2015_ha: bio.surface_2015,
+          nombre_exploitations_2014: bio.nombre_2014,
+          surface_2014_ha: bio.surface_2014,
+          nombre_exploitations_2013: bio.nombre_2013,
+          surface_2013_ha: bio.surface_2013,
+          nombre_exploitations_2012: bio.nombre_2012,
+          surface_2012_ha: bio.surface_2012,
+          nombre_exploitations_2011: bio.nombre_2011,
+          surface_2011_ha: bio.surface_2011,
+          nombre_exploitations_2010: bio.nombre_2010,
+          surface_2010_ha: bio.surface_2010,
+          nombre_exploitations_2009: bio.nombre_2009,
+          surface_2009_ha: bio.surface_2009,
+          nombre_exploitations_2008: bio.nombre_2008,
+          surface_2008_ha: bio.surface_2008
         };
       }),
     aot40: (aot40: AOT40[]) => {
@@ -624,6 +709,36 @@ export const IndicatorExportTransformations = {
           date_fin_catastrophe: item.dat_fin,
           date_publication_arrete: item.dat_pub_arrete,
           libelle_risque: item.lib_risque_jo
+        };
+      });
+    },
+    SecheressesPassees: (secheressesPassees: SecheressesPasseesModel[]) => {
+      return secheressesPassees.map((el) => {
+        return {
+          code_geographique: el.code_geographique,
+          libelle_geographique: el.libelle_geographique,
+          code_epci: el.epci,
+          libelle_epci: el.libelle_epci,
+          code_departement: el.departement,
+          libelle_departement: el.libelle_departement,
+          region: el.region,
+          ept: el.ept,
+          code_pnr: el.code_pnr,
+          libelle_pnr: el.libelle_pnr,
+          libelle_petr: el.libelle_petr,
+          restrictions: el.restrictions
+        };
+      });
+    }
+  },
+  sante: {
+    Arbovirose: (arbovirose: ArboviroseModel[]) => {
+      return arbovirose.map((el) => {
+        return {
+          Année: el.annee,
+          Département: el.departement,
+          'Nombre de cas autochtones': el.nb_cas_autochtones,
+          'Nombre de cas importés': el.nb_cas_importes
         };
       });
     }

@@ -13,12 +13,16 @@ import habitatIconGreen from '@/assets/icons/habitat_icon_green.svg';
 import habitatIconWhite from '@/assets/icons/habitat_icon_white.svg';
 import inconnuIconGreen from '@/assets/icons/inconnu_icon_green.svg';
 import inconnuIconWhite from '@/assets/icons/inconnu_icon_white.svg';
+import intensiteIconGreen from '@/assets/icons/intensite_icon_green.svg';
+import intensiteIconWhite from '@/assets/icons/intensite_icon_white.svg';
 import mixteIconGreen from '@/assets/icons/mixte_icon_green.svg';
 import mixteIconWhite from '@/assets/icons/mixte_icon_white.svg';
 import routesIconGreen from '@/assets/icons/route_icon_green.svg';
 import routesIconWhite from '@/assets/icons/route_icon_white.svg';
+import SunIconGreen from '@/assets/icons/sun_icon_green.svg';
+import SunIconWhite from '@/assets/icons/sun_icon_white.svg';
 import ferroviaireIconGreen from '@/assets/icons/train_icon_green.svg';
-import ferroviaireIconhite from '@/assets/icons/train_icon_white.svg';
+import ferroviaireIconWhite from '@/assets/icons/train_icon_white.svg';
 import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { useState } from 'react';
 
@@ -79,12 +83,22 @@ const tabIcons = [
   {
     name: 'Ferroviaire',
     iconNotSelected: ferroviaireIconGreen,
-    iconSelected: ferroviaireIconhite
+    iconSelected: ferroviaireIconWhite
   },
   {
     name: 'Inconnu',
     iconNotSelected: inconnuIconGreen,
     iconSelected: inconnuIconWhite
+  },
+  {
+    name: 'Intensité',
+    iconNotSelected: intensiteIconGreen,
+    iconSelected: intensiteIconWhite
+  },
+  {
+    name: 'Saisonnalité',
+    iconNotSelected: SunIconGreen,
+    iconSelected: SunIconWhite
   }
 ];
 

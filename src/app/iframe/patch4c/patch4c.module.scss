@@ -1,23 +1,46 @@
+.CursorVisualizationContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    min-height: 84px;
+    margin: 1rem 0 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.CursorVisualizationBarColorWrapper {
+    padding: 4rem 0 2rem;
+}
+
 .CursorVisualizationBarColor {
-    width: 550px;
+    width: 500px;
     height: 1rem;
-    background: linear-gradient(
-        to right,
-        white 0%,
-        white 5%,
-        #ffc03f 33%,
-        #f66e19 67%,
-        #f80206 100%
-    );
-    margin: 20px auto;
+    align-self: center;
+    margin: 0 12.5rem 0 auto;
     position: relative;
     overflow: visible;
-    border: 1px solid #f7f7f7ff;
+    border: 1px solid #f7f7f7;
+    background-color: white;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            white 0%,
+            white 5%,
+            #ffebb6 33%,
+            #ffb181 67%,
+            #ff1c64 100%
+        );
+    }
     .barColorText {
         position: absolute;
         top: -25px;
         transform: translateY(-50%);
         white-space: nowrap;
+        z-index: 1;
     }
     .infoIcon {
         margin-left: 5px;
@@ -33,14 +56,25 @@
         width: 1px;
         height: 10px;
         background-color: black;
+        z-index: 1;
     }
+}
+
+.CircleVisualizationTerritory {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-direction: column;
 }
 
 .CircleVisualizationContainer {
     width: 100%;
     display: flex;
-    min-height: 400px;
-    margin: 1rem 0 1rem;
+    min-height: 380px;
+    margin: 0 0 1rem;
+    justify-content: center;
 }
 
 .CircleVisualizationWrapper {
@@ -48,7 +82,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: -4rem;
     .extCircle {
         width: 338px;
         height: 338px;
@@ -65,6 +98,13 @@
             border-radius: 50%;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
+            background: none;
+            border: none;
+            padding: 0;
+            color: inherit;
+            font: inherit;
+            --hover-tint: transparent;
+            --active-tint: transparent;
             &:hover {
                 transform: scale(1.1);
             }
@@ -93,7 +133,7 @@
     .lateralWrapper {
         display: flex;
         height: fit-content;
-        max-height: 250px;
+        max-height: 300px;
         flex-direction: column;
         border-radius: 1rem;
         padding: 1.5rem;
@@ -138,4 +178,304 @@
     .IndiceDetailsText {
         width: 93%;
     }
+}
+
+// Bloc titre
+
+.patch4TitreContainer {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+    padding: 1.5rem 0rem;
+    height: fit-content;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 364px;
+        height: 364px;
+        border-radius: 50%;
+        background-color: var(--boutons-primaire-2);
+        top: 100%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+}
+
+// Bloc aléas
+
+.aleasTabsContainer {
+    margin: 2rem 0;
+}
+
+.aleasTabButtons {
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-bottom: 1px solid #e7e5e5;
+    padding-bottom: 0;
+    width: 100%;
+}
+
+.aleasTabButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background-color: #fafafa;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #161616;
+    width: inherit;
+
+    &:hover {
+        background-color: white;
+    }
+
+    &:focus {
+        background-color: #f6f6f6;
+        border-radius: 0.5rem 0.5rem 0 0;
+        outline: 6px solid #038278;
+    }
+}
+
+.aleasTabButtonActive {
+    background-color: white;
+    color: var(--principales-vert);
+    font-weight: 600;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-left: 1px solid #e7e5e5;
+    border-right: 1px solid #e7e5e5;
+    border-top: 1px solid #e7e5e5;
+    box-shadow: 0 1px 0 #fff;
+
+    .iconMask {
+        background-color: var(--principales-vert);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+    }
+}
+
+.aleasTabContent {
+    padding: 0;
+}
+
+.aleaExplicationsContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e7e5e5;
+    transition:
+        background-color 0.7s ease,
+        border-bottom-color 2s ease;
+}
+
+.aleaExplicationsContainerOpen {
+    background-color: #fafafa;
+    border-bottom-color: transparent;
+    transition: background-color 0.7s ease;
+}
+
+.aleaExplicationsToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+    --hover-tint: transparent;
+    --active-tint: transparent;
+}
+
+.aleaExplicationsContentWrapper {
+    padding: 0 2.5rem;
+    background-color: #fafafa;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.7s ease,
+        opacity 0.7s ease,
+        padding 0.7s ease,
+        background-color 0.7s ease;
+}
+
+.aleaExplicationsContentWrapperOpen {
+    padding: 1rem 2.5rem 3rem;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.aleaExplicationsContent {
+    padding: 1rem;
+    background-color: #fafafa;
+    border-top: 1px solid #e7e5e5;
+}
+
+.aleaAggravationWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    .CircleItem {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gris-medium);
+    }
+    .aleaAggravationTexte {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+// Bloc analyse sensibilité
+
+.analyseSensibiliteContainer {
+    padding: 3rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .titreWrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding-bottom: 1.5rem;
+        .left {
+            display: flex;
+            flex-direction: column;
+            .separator {
+                width: 48px;
+                height: 1px;
+                background-color: #dddddd;
+            }
+        }
+    }
+    .themesListeMap {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2.5rem;
+    }
+    .themesListe {
+        max-width: 50%;
+        .titre {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            padding: 0 0 1rem;
+            margin: 0 0 1rem;
+            border-bottom: 1px solid #e7e5e5;
+            .circleIndicator {
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        }
+        .linkedThemes {
+            line-height: 1rem;
+            margin-left: 0.75rem;
+        }
+    }
+    .actionsListeWrapper {
+        background-color: #fafafa;
+        padding: 1rem;
+    }
+}
+
+// Bloc conseil aggravation fort ou très fort
+
+.conseilsAggravationContainer {
+    padding: 2rem 2rem 3rem;
+    border-radius: 1rem;
+    background-color: #ecfffd;
+    .separator {
+        width: 48px;
+        height: 1px;
+        background-color: #dddddd;
+        margin-bottom: 1rem;
+    }
+    .aNoter {
+        background-color: var(--boutons-primaire-2);
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-top: 1.5rem;
+        .aNoterTitre {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-items: flex-end;
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.tableau {
+    margin-top: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+
+    tbody .tableauRow:last-child {
+        border-bottom: none;
+    }
+}
+
+.tableauRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid #e7e5e5;
+}
+
+.tableauCell {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    font-weight: normal;
+    text-align: inherit;
+}
+
+// Export
+
+.exportShareContainer {
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e7e5e5;
+    border-bottom: 1px solid #e7e5e5;
+}
+.exportShareWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }

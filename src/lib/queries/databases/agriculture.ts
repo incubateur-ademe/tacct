@@ -1,10 +1,10 @@
 'use server';
 import { Agriculture, SurfacesAgricolesModel } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import fs from 'fs/promises';
 import path from 'path';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
+import { Any } from '@/lib/utils/types';
 
 export const GetAgricultureLocal = async (
   code: string,
@@ -21,20 +21,20 @@ export const GetAgricultureLocal = async (
 
   if (type === 'ept' || type === 'petr') {
     return db.databases_v2.agriculture.filter(
-      (row: any) => row[column] === libelle
+      (row: Any) => row[column] === libelle
     );
   } else if (type === 'commune') {
     const collectivite =
       db.databases_v2.databases_v2_collectivites_searchbar.find(
-        (c: any) => c.code_geographique === code
+        (c: Any) => c.code_geographique === code
       );
     if (!collectivite) return [];
     return db.databases_v2.agriculture.filter(
-      (row: any) => row.epci === collectivite.epci
+      (row: Any) => row.epci === collectivite.epci
     );
   } else {
     return db.databases_v2.agriculture.filter(
-      (row: any) => row[column] === code
+      (row: Any) => row[column] === code
     );
   }
 };
@@ -85,7 +85,10 @@ export const GetAgriculture = async (
         } else {
           const value = await prisma.databases_v2_agriculture.findMany({
             where: {
-              [column]: code
+              [column]: {
+                contains: code,
+                mode: 'insensitive'
+              }
             }
           });
           return value;
@@ -93,7 +96,6 @@ export const GetAgriculture = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();
@@ -151,7 +153,13 @@ export const GetSurfacesAgricoles = async (
                     epci: { not: null }
                   },
                   {
-                    [column]: type === 'petr' || type === 'ept' ? libelle : code
+                    [column]:
+                      type === 'petr' || type === 'ept'
+                        ? libelle
+                        : {
+                            contains: code,
+                            mode: 'insensitive'
+                          }
                   }
                 ]
               },
@@ -169,7 +177,6 @@ export const GetSurfacesAgricoles = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

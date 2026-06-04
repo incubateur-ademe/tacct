@@ -4,11 +4,12 @@ import { BlocAutresOutils } from './blocs/blocAutresOutils';
 import { BlocCollections, BlocCollectionsResponsive } from './blocs/blocCollections';
 import { BlocTitre } from './blocs/blocTitre';
 import { BlocToutesRessources } from './blocs/blocToutesRessources';
+import { ModaleToutesCollections } from './blocs/ModaleToutesCollections';
 import styles from './ressources.module.scss';
 
 export const metadata: Metadata = {
   title: 'Ressources',
-  description: 'Catalogue de ressources Facili-TACCT à destination des collectivités',
+  description: 'Catalogue de ressources TACCT à destination des collectivités',
 };
 
 const Ressources = () => {
@@ -23,6 +24,7 @@ const Ressources = () => {
       </div>
       <BlocAutresOutils />
       <BlocToutesRessources />
+      <ModaleToutesCollections collectionsCartes={collectionsCartes} />
     </>
   );
 };

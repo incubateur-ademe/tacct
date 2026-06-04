@@ -56,7 +56,7 @@ export const SliderArticles = ({
               const isExternalLink = article.lien.startsWith('https://');
               const lien = isExternalLink
                 ? article.lien
-                : `/ressources/${collectionSlug}/${article.slug}`;
+                : `/iframe/ressources/${collectionSlug}/${article.slug}`;
               return (
                 <TuileVerticale
                   key={index}

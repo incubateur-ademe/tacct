@@ -29,7 +29,7 @@ export const sourcesEtudes = {
       numero: 3,
       url: 'https://itab.bio/sites/default/files/medias/fichier/2024/06/Quantification_Externalites_AB_Note_4p_0.pdf',
       texte:
-        "ITAB, Quantification des externalités de l’agriculture biologique, juin 2024"
+        'ITAB, Quantification des externalités de l’agriculture biologique, juin 2024'
     }
   ],
   confortThermique: [
@@ -78,6 +78,32 @@ export const sourcesEtudes = {
       numero: 3,
       url: 'https://baignades.sante.gouv.fr/baignades/editorial/fr/actualites/Bilan_national_QEB_2024_vf.pdf',
       texte: 'Pour en savoir plus sur les eaux de baignade'
+    }
+  ],
+  gestionDesRisques: [
+    {
+      numero: 1,
+      url: 'https://www.onf.fr/vivre-la-foret/%2B/1525::foire-aux-questions-faq-les-obligations-legales-de-debroussaillement-old.html',
+      texte:
+        "L'Office National des Forêts, Foire aux questions : les obligations légales de débroussaillement"
+    },
+    {
+      numero: 2,
+      url: 'https://www.service-public.gouv.fr/particuliers/actualites/A15819',
+      texte:
+        'Service Public, les bons gestes pour éviter de déclencher un feu de forêt'
+    },
+    {
+      numero: 3,
+      url: 'https://files.georisques.fr/ial/Fiche_OLD.pdf',
+      texte: 'Fiche d’information sur les obligations de débroussaillement'
+    }
+  ],
+  sante: [
+    {
+      numero: 1,
+      url: "https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022",
+      texte: "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
     }
   ]
 };

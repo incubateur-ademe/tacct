@@ -1,118 +1,122 @@
 "use client";
+import { ReplaceDisplayEpci } from '@/components/searchbar/fonctions';
+import { HtmlTooltip } from '@/components/utils/Tooltips';
+import { TagsSimples } from '@/design-system/base/Tags';
 import { Body } from '@/design-system/base/Textes';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { getBackgroundColor, getItemPosition, patch4Indices } from './components/fonctions';
 import styles from './patch4c.module.scss';
 
 const CircleVisualization = ({
-  patch4
+  patch4,
+  selectedAleaKey,
+  onSelectAlea
 }: {
   patch4: Patch4;
+  selectedAleaKey?: string;
+  onSelectAlea: (key: string, shouldScroll?: boolean) => void;
 }) => {
-  const [selectedItem, setSelectedItem] = useState<string | undefined>(undefined);
-  const [showContent, setShowContent] = useState<boolean>(false);
+  const searchParams = useSearchParams();
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
   const indices = patch4Indices(patch4);
   const activeItems = patch4.niveaux_marins === null
     ? indices.filter(item => item.key !== 'niveaux_marins')
     : indices;
   const handleClick = (item: string) => {
-    setSelectedItem(item);
-    setTimeout(() => setShowContent(true), 800);
+    onSelectAlea(item, true);
   };
-  const handleClose = () => {
-    setShowContent(false);
-    setTimeout(() => setSelectedItem(undefined), 200);
-  };
+  const [focusedKey, setFocusedKey] = useState<string | null>(null);
 
   return (
-    <div className={styles.CircleVisualizationContainer}>
-      <div
-        className={styles.CircleVisualizationWrapper}
-        style={{
-          width: selectedItem ? '50%' : '100%',
-          paddingLeft: selectedItem ? '4rem' : '0',
-        }}
-      >
-        <div className={styles.extCircle}>
-          {activeItems.map((item, index) => {
-            const position = getItemPosition(index, activeItems.length);
-            return (
-              <div
-                key={item.key}
-                className={styles.CircleItem}
-                style={{
-                  left: position.x - 35,
-                  top: position.y - 30,
-                }}
-                onClick={() => handleClick(item.key)}
-              >
-                {/* Circle with icon */}
-                <div
-                  className={styles.CircleIcon}
-                  style={{
-                    backgroundColor: getBackgroundColor(item.value),
-                    border: selectedItem === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
-                  }}
-                >
-                  <Image
-                    src={item.icon}
-                    alt={item.label}
-                    width={34}
-                    height={34}
-                  />
-                </div>
-                {/* Label */}
-                <Body
-                  size='xs'
-                  style={{
-                    maxWidth: '88px',
-                    lineHeight: '1.2'
-                  }}>
-                  {item.label}
-                </Body>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div
-        className={styles.lateralView}
-        style={{
-          width: selectedItem ? '50%' : '0%',
-          opacity: selectedItem ? 1 : 0,
-        }}
-      >
-        <div
-          className={styles.lateralWrapper}
-          style={{
-            border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
-            margin: selectedItem ? '3rem' : '0px',
-            // boxShadow: selectedItem ? '0 2px 15px rgba(0, 0, 0, 0.08)' : 'none',
-          }}
+    <>
+      <div className={styles.CircleVisualizationTerritory}>
+        <Body
+          size='lg'
+          weight='bold'
+          style={{ fontSize: "22px" }}
         >
-          <button
-            className={styles.closeBtn}
-            onClick={handleClose}
-            style={{ opacity: showContent ? 1 : 0 }}
-          >
-            ×
-          </button>
-          <div style={{
-            opacity: showContent ? 1 : 0,
-            transition: 'opacity 0.3s ease-in-out',
-            transitionDelay: showContent ? '0s' : '0s'
-          }}>
-            <Body size='lg' weight='bold'>{indices.find(item => item.key === selectedItem)?.label}</Body>
-            <br></br>
-            <Body size='sm' weight='regular'>
-              {indices.find(item => item.key === selectedItem)?.definition}
-            </Body>
+          {ReplaceDisplayEpci(libelle)}
+        </Body>
+        <TagsSimples
+          texte={
+            (type === "epci" || type === "petr" || type === "ept" || type === "pnr")
+              ? type.toUpperCase()
+              : type === "departement"
+                ? "Département"
+                : type === "commune"
+                  ? "Commune"
+                  : type
+          }
+          couleur="#E3FAF9"
+          couleurTexte="var(--bouton-primaire-3)"
+          taille="small"
+        />
+      </div>
+      <div className={styles.CircleVisualizationContainer}>
+        <div className={styles.CircleVisualizationWrapper}>
+          <div className={styles.extCircle}>
+            {activeItems.map((item, index) => {
+              const position = getItemPosition(index, activeItems.length);
+              return (
+                <button
+                  type="button"
+                  key={item.key}
+                  className={styles.CircleItem}
+                  style={{
+                    left: position.x - 35,
+                    top: position.y - 30,
+                  }}
+                  onClick={() => handleClick(item.key)}
+                  onFocus={() => setFocusedKey(item.key)}
+                  onBlur={() => setFocusedKey(null)}
+                  aria-pressed={selectedAleaKey === item.key}
+                  aria-label={item.value ? `${item.label} — ${item.value}` : item.label}
+                >
+                  {/* Circle with icon */}
+                  <HtmlTooltip
+                    title={item.value ?? "Pas d'évolution"}
+                    placement="top"
+                    open={focusedKey === item.key}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                  >
+                  <div
+                    className={styles.CircleIcon}
+                    style={{
+                      backgroundColor: getBackgroundColor(item.value),
+                      border: selectedAleaKey === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
+                    }}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      width={34}
+                      height={34}
+                    />
+                  </div>
+                  </HtmlTooltip>
+                  {/* Label */}
+                  <Body
+                    htmlTag="span"
+                    size='xs'
+                    style={{
+                      maxWidth: '88px',
+                      lineHeight: '1.2'
+                    }}>
+                    {item.label}
+                  </Body>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

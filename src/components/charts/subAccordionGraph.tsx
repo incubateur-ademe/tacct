@@ -59,7 +59,7 @@ const SubAccordion = styled((props: AccordionProps) => (
 type graphDataItem = {
   [key: string]: {
     id: string;
-    value: number;
+    value: number | null;
     color: string;
   }[];
 }
@@ -75,7 +75,7 @@ export const SubAccordionGraph = ({
 }) => {
   const [expanded, setExpanded] = useState(isDefaultExpanded);
   const accordionTitle = Object.keys(graphDataItem)[0];
-  const sortedData = [...Object.values(graphDataItem)[0]].sort((a, b) => b.value - a.value);
+  const sortedData = Object.values(graphDataItem)[0].toSorted((a, b) => Number(b.value) - Number(a.value));
   return (
     <SubAccordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
       <AccordionSummary
@@ -105,7 +105,7 @@ export const SubAccordionGraph = ({
                   <p>{item.id}</p>
                   <div>
                     <Progress
-                      percent={Number(100 * item.value / superficieSau)}
+                      percent={100 * Number(item.value) / superficieSau}
                       showInfo={false}
                       strokeColor={item.color}
                       size={['100%', 12]}
@@ -118,9 +118,11 @@ export const SubAccordionGraph = ({
               </div>
               <div className={styles.progressNumbers}>
                 <p>
-                  <b>
-                    {Round(item.value, 1)} ha
-                  </b>
+                  {
+                    item.value === null
+                      ? "Secret statistique"
+                      : <b>{`${Round(item.value, 1)} ha`}</b>
+                  }
                 </p>
               </div>
             </div>

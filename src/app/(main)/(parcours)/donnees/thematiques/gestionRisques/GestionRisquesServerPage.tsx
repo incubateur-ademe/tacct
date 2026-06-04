@@ -1,5 +1,5 @@
 import { SearchParams } from "@/app/(main)/types";
-import { GetArretesCatnat, GetIncendiesForet, GetRga } from "@/lib/queries/databases/gestionRisques";
+import { GetArretesCatnat, GetIncendiesForet, GetRga, GetSecheressesPassees } from "@/lib/queries/databases/gestionRisques";
 import { GetCommunesCoordinates, GetErosionCotiere } from "@/lib/queries/postgis/cartographie";
 import { DonneesGestionRisques } from "./DonneesGestionRisques";
 
@@ -10,6 +10,7 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
   const erosionCotiere = await GetErosionCotiere(code, libelle, type);
   const dbIncendiesForet = await GetIncendiesForet(code, libelle, type);
   const rga = await GetRga(code, libelle, type);
+  const dbSecheressesPassees = await GetSecheressesPassees(code, libelle, type);
 
   return (
     <DonneesGestionRisques
@@ -18,6 +19,7 @@ const GestionRisquesServerPage = async (props: { searchParams: SearchParams }) =
       erosionCotiere={erosionCotiere}
       incendiesForet={dbIncendiesForet}
       rga={rga}
+      secheressesPassees={dbSecheressesPassees}
     />
   );
 };

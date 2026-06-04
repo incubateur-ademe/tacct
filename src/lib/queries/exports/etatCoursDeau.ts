@@ -1,5 +1,4 @@
 import { ExportCoursDeau } from '@/lib/postgres/models';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -32,7 +31,6 @@ export const GetExportCoursDeau = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       return [];
     }
   })();

@@ -63,6 +63,8 @@ export const BarreDeRecherche = ({
           radioOptions.map((options, index) => (
             <RadioButtons
               key={index}
+              legend="Type de territoire"
+              classes={{ legend: "fr-sr-only" }}
               name={`radio-${index}`}
               disabled={options[0].nativeInputProps.onChange ? false : true}
               options={options}
@@ -125,8 +127,8 @@ export const BarreDeRecherche = ({
                 color: couleursPrincipales.vert,
                 backgroundColor: 'white',
                 boxShadow: 'none',
-                '&:focus': {
-                  outline: 'none'
+                '&:focus-visible': {
+                  outline: `0px solid ${couleursPrincipales.vert}`,
                 },
                 '&::placeholder': {
                   color: '#7B7B7B'
@@ -149,8 +151,9 @@ export const BarreDeRecherche = ({
                 color: couleursPrincipales.vert,
                 backgroundColor: '#EEEEEE',
                 boxShadow: 'none',
-                '&:focus': {
-                  outline: 'none'
+                '&:focus-visible': {
+                  outline: `2px solid ${couleursPrincipales.vert}`,
+                  outlineOffset: '2px'
                 },
                 '&::placeholder': {
                   color: '#7B7B7B'

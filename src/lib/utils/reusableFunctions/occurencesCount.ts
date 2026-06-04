@@ -22,7 +22,7 @@ export const CountOccByIndex = <T extends GenericObject>(
 ) => {
   const newArray: T[] = [];
   const arraySortedByIndex = arr
-    ? [...new Set(arr.map((it) => it[byIndex]))].sort()
+    ? [...new Set(arr.map((it) => it[byIndex]))].toSorted()
     : [''];
   arraySortedByIndex?.forEach((date) => {
     const elementByDate = arr?.filter((el) => el[byIndex] === date);

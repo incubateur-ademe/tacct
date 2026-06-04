@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Sandbox_users
- * const sandbox_users = await prisma.sandbox_users.findMany()
+ * // Fetch zero or more Databases_v2_agricultures
+ * const databases_v2_agricultures = await prisma.databases_v2_agriculture.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -39,11 +39,6 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
-/**
- * Model sandbox_users
- * 
- */
-export type sandbox_users = Prisma.sandbox_usersModel
 /**
  * Model databases_v2_agriculture
  * 
@@ -90,11 +85,6 @@ export type databases_v2_consommation_espaces_naf = Prisma.databases_v2_consomma
  */
 export type databases_v2_export_cours_d_eau = Prisma.databases_v2_export_cours_d_eauModel
 /**
- * Model databases_v2_feux_foret
- * 
- */
-export type databases_v2_feux_foret = Prisma.databases_v2_feux_foretModel
-/**
  * Model databases_v2_lcz_couverture
  * 
  */
@@ -125,11 +115,6 @@ export type databases_v2_rga = Prisma.databases_v2_rgaModel
  */
 export type databases_v2_surfaces_agricoles = Prisma.databases_v2_surfaces_agricolesModel
 /**
- * Model databases_v2_surfaces_protegees
- * 
- */
-export type databases_v2_surfaces_protegees = Prisma.databases_v2_surfaces_protegeesModel
-/**
  * Model databases_v2_table_commune
  * 
  */
@@ -159,3 +144,38 @@ export type postgis_v2_etat_cours_d_eau = Prisma.postgis_v2_etat_cours_d_eauMode
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type spatial_ref_sys = Prisma.spatial_ref_sysModel
+/**
+ * Model prelevements_eau_new
+ * 
+ */
+export type prelevements_eau_new = Prisma.prelevements_eau_newModel
+/**
+ * Model o3_seuils
+ * 
+ */
+export type o3_seuils = Prisma.o3_seuilsModel
+/**
+ * Model secheresses
+ * 
+ */
+export type secheresses = Prisma.secheressesModel
+/**
+ * Model inondations_par_debordement
+ * 
+ */
+export type inondations_par_debordement = Prisma.inondations_par_debordementModel
+/**
+ * Model arbovirose
+ * 
+ */
+export type arbovirose = Prisma.arboviroseModel
+/**
+ * Model feux_foret
+ * 
+ */
+export type feux_foret = Prisma.feux_foretModel
+/**
+ * Model aot_40_new
+ * 
+ */
+export type aot_40_new = Prisma.aot_40_newModel

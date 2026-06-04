@@ -13,7 +13,6 @@ L'objectif de cette section est de permettre aux utilisateurs d'acquérir une co
 - PostgreSql et Postgis
 - Leaflet
 - TypeScript
-- Sentry
 - Posthog
 
 ## Architecture

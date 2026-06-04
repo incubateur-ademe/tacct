@@ -4,6 +4,7 @@ import { TuileVerticale } from "@/components/Tuile";
 import { TagsIcone } from "@/design-system/base/Tags";
 import { FiltresOptions, ToutesRessources } from "@/lib/ressources/toutesRessources";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import styles from "./ressources.module.scss";
 
 export const SliderArticles = ({
@@ -16,6 +17,20 @@ export const SliderArticles = ({
   const pathname = usePathname();
   const collectionSlug = pathname.split('/')[2];
   const territoireOptions = FiltresOptions.find(f => f.titre === 'Territoire')?.options || [];
+  const [sliderScrollLeft, setSliderScrollLeft] = useState(0);
+  const [isScrollEnd, setIsScrollEnd] = useState(false);
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      setSliderScrollLeft(el.scrollLeft);
+      setIsScrollEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth);
+    };
+    el.addEventListener("scroll", onScroll);
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [sliderRef]);
+
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;
     const start = sliderRef.current.scrollLeft;
@@ -44,10 +59,11 @@ export const SliderArticles = ({
   return (
     <div className={styles.sliderContainer}>
       {
-        listeArticles && listeArticles.length > 2 &&
-        <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
-          <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
-        </button>
+        sliderScrollLeft && listeArticles && listeArticles.length > 2 ?
+          <button className={styles.flecheGauche} aria-label="Précédent" onClick={scrollLeft}>
+            <span className="fr-icon-arrow-left-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
+          </button>
+          : null
       }
       <div className={styles.sliderInnerWrapper}>
         <div className={styles.sliderWrapper} ref={sliderRef}>
@@ -81,7 +97,7 @@ export const SliderArticles = ({
         </div>
       </div>
       {
-        listeArticles && listeArticles.length > 2 &&
+        !isScrollEnd && listeArticles && listeArticles.length > 2 &&
         <button className={styles.flecheDroite} aria-label="Suivant" onClick={scrollRight}>
           <span className="fr-icon-arrow-right-line" aria-hidden="true" style={{ color: "var(--boutons-primaire-3)" }}></span>
         </button>

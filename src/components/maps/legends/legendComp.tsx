@@ -12,11 +12,16 @@ type LegendIcon = {
   value: string;
 };
 
-export const LegendCompColor = ({ legends }: { legends: LegendColor[] }) => {
+export const LegendCompColor = (
+  {
+    legends, style, textStyle
+  }: {
+    legends: LegendColor[], style?: React.CSSProperties; textStyle?: React.CSSProperties;
+  }) => {
   return (
-    <div className={styles.legendItemsWrapper}>
+    <div className={styles.legendItemsWrapper} style={style}>
       {legends.map((el, index) => (
-        <LegendBlockColor key={index} color={el.color} value={el.value} />
+        <LegendBlockColor key={index} color={el.color} value={el.value} textStyle={textStyle} />
       ))}
     </div>
   );

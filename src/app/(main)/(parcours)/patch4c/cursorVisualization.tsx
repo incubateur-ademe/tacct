@@ -1,42 +1,52 @@
 "use client";
 import InfoIcon from '@/assets/icons/info_round_icon_black.svg';
 import { HtmlTooltip } from '@/components/utils/Tooltips';
+import tooltipStyles from '@/components/utils/Tooltips.module.scss';
 import { Body } from "@/design-system/base/Textes";
 import Image from "next/image";
 import { agravationItems } from './components/constantes';
 import styles from './patch4c.module.scss';
 
-const CursorVisualization = () => {
+const CursorVisualization = ({
+  isMap
+}: {
+  isMap: boolean;
+}) => {
   return (
-    <div className="pt-20">
-      <div className={styles.CursorVisualizationBarColor}>
-        {
-          agravationItems.map((item, index) => (
-            <div key={index}>
-              <div className={styles.barColorText} style={{ left: `calc(${index * 25}% + ${item.offset}px)` }}>
-                <div className='flex flex-row items-center'>
-                  <Body size="sm">
-                    {item.label}
-                  </Body>
-                  <HtmlTooltip
-                    title={item.hover}
-                    placement="top"
+    <div className={styles.CursorVisualizationBarColor} style={{ margin: isMap ? "0 auto !important" : "0 12.5rem 0 auto" }}>
+      {
+        agravationItems.map((item, index) => (
+          <div key={index}>
+            <div className={styles.barColorText} style={{ left: `calc(${index * 25}% + ${item.offset}px)` }}>
+              <div className='flex flex-row items-center'>
+                <Body size="sm">
+                  {item.label}
+                </Body>
+                <HtmlTooltip
+                  title={item.hover}
+                  placement="top"
+                >
+                  <button
+                    type="button"
+                    className={tooltipStyles.tooltipTrigger}
+                    aria-label={`Plus d'informations sur ${item.label}`}
+                    style={{ display: 'inline-flex', alignItems: 'center' }}
                   >
                     <Image
                       src={InfoIcon}
-                      alt="hover d'information"
+                      alt=""
                       width={20}
                       height={20}
                       className={styles.infoIcon}
                     />
-                  </HtmlTooltip>
-                </div>
+                  </button>
+                </HtmlTooltip>
               </div>
-              <div className={styles.cursor} style={{ left: item.values }} />
             </div>
-          ))
-        }
-      </div>
+            <div className={styles.cursor} style={{ left: item.values }} />
+          </div>
+        ))
+      }
     </div>
   );
 }

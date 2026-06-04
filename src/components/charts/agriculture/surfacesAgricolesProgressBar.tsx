@@ -2,7 +2,7 @@
 
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import { PrograssBarDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
+import { ProgressBarDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
@@ -12,7 +12,7 @@ import styles from './agriculture.module.scss';
 type graphDataItem = {
   [key: string]: {
     id: string;
-    value: number;
+    value: number | null;
     color: string;
   }[];
 }
@@ -24,8 +24,8 @@ const SurfacesAgricolesProgressBar = ({
 }) => {
   const searchParams = useSearchParams();
   const libelle = searchParams.get('libelle');
-  const graphData = PrograssBarDataSurfacesAgricoles(surfacesAgricoles);
-  const superficieSau = Sum(surfacesAgricoles.map(el => el.superficie_sau));
+  const graphData = ProgressBarDataSurfacesAgricoles(surfacesAgricoles);
+  const superficieSau = Sum(surfacesAgricoles.map(el => Number(el.superficie_sau)));
   return (
     <div className={styles.surfacesAgricolesWrapper}>
       {libelle && surfacesAgricoles.length ? (

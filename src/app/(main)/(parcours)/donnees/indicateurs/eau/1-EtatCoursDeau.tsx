@@ -1,10 +1,10 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportButtonNouveauParcours } from '@/components/exports/ExportButton';
+import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { etatCoursDeauLegends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
-import { MapEtatCoursDeau } from '@/components/maps/mapEtatCoursDeau';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { Body } from "@/design-system/base/Textes";
 import { EtatCoursDeauMapper } from '@/lib/mapper/etatCoursDeau';
@@ -12,8 +12,10 @@ import { EtatCoursDeau, ExportCoursDeau } from "@/lib/postgres/models";
 import { EtatCoursEauRessourcesEauText } from '@/lib/staticTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';
+
+const MapEtatCoursDeau = lazy(() => import('@/components/maps/mapEtatCoursDeau').then(m => ({ default: m.MapEtatCoursDeau })));
 
 type DataToExport = {
   code_geographique: string;
@@ -82,7 +84,7 @@ export const EtatEcoCoursDeau = (props: {
         </div>
         <div className={styles.mapWrapper}>
           {etatCoursDeau.length ? (
-            <>
+            <Suspense fallback={<Loader />}>
               <MapEtatCoursDeau
                 etatCoursDeau={etatCoursDeauMap}
                 communesCodes={communesCodes}
@@ -91,7 +93,7 @@ export const EtatEcoCoursDeau = (props: {
               <div className={styles.legendCoursDeauWrapper}>
                 <LegendCompColor legends={etatCoursDeauLegends} />
               </div>
-            </>
+            </Suspense>
           ) : <div className='p-10 flex flex-row justify-center'>
             <DataNotFoundForGraph image={DataNotFound} />
           </div>
@@ -100,9 +102,9 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l'eau, 2024.
+          Source : Agences de l’eau, 2024 (consultée en février 2025)
         </Body>
-        <ExportButtonNouveauParcours
+        <ExportButton
           data={exportData}
           baseName="etat_cours_deau"
           type={type}
@@ -110,10 +112,10 @@ export const EtatEcoCoursDeau = (props: {
           code={code}
           sheetName="État des cours d'eau"
           disabled={exportData.length === 0}
-          anchor="État des cours d'eau"
+          anchor="État-des-cours-d'eau"
         >
           Exporter
-        </ExportButtonNouveauParcours>
+        </ExportButton>
       </div>
     </>
   );

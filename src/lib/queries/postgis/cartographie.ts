@@ -2,7 +2,6 @@
 
 import { CarteCommunes, ErosionCotiere } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import * as Sentry from '@sentry/nextjs';
 import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
@@ -130,8 +129,6 @@ export const GetCommunes = async (
       }
     } catch (error) {
       console.error(error);
-      // prisma.$disconnect();
-      Sentry.captureException(error);
       console.error('Database connection error occurred.');
       return [];
     }
@@ -293,7 +290,6 @@ export const GetCommunesCoordinates = async (
       };
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       console.error('Database connection error occurred.');
       return null;
     }
@@ -560,7 +556,6 @@ export const GetCommunesContours = async (
       return { geometry: result[0].geometry };
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       console.error('Database connection error occurred.');
       return null;
     }
@@ -632,7 +627,6 @@ export const GetCommunesGeometries = async (
       }
     } catch (error) {
       console.error(error);
-      Sentry.captureException(error);
       console.error('Database connection error occurred.');
       return [];
     }

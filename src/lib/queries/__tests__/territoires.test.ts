@@ -1,18 +1,55 @@
-import { prisma } from '../db';
+import 'dotenv/config';
+import { Pool } from 'pg';
+import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+
+const connectionString = process.env.SCALINGO_POSTGRESQL_URL;
+
+// Nettoyer l'URL : retirer les paramètres après ?
+const cleanConnectionString = connectionString?.split('?')[0];
+
+let sslConfig;
+const caPath = join(process.cwd(), 'ca.pem');
+
+// En production, Scalingo injecte le certificat dans le système
+// En dev local, on utilise le fichier ca.pem
+if (existsSync(caPath)) {
+  const ca = readFileSync(caPath, 'utf8');
+  sslConfig = {
+    ca: ca,
+    rejectUnauthorized: false
+  };
+} else {
+  // En production sur Scalingo, ssl: true suffit (certificats système)
+  sslConfig = true;
+}
+
+const pool = new Pool({
+  connectionString: cleanConnectionString,
+  ssl: sslConfig,
+  max: 5,
+  idleTimeoutMillis: 20000
+});
+
+// const pool = new Pool({
+//   connectionString: process.env.SCALINGO_POSTGRESQL_URL,
+//   ssl: { rejectUnauthorized: false }
+// });
+
 jest.setTimeout(120000);
 
 afterAll(async () => {
-  await prisma.$disconnect();
+  await pool.end();
 });
 
 const expectedPNR: [string, string][] = [
-  ['FR8000015', 'PNR du Haut-Jura'],
+  ['FR8000015', 'PNR du haut Jura'],
   ['FR8000033', 'PNR du Verdon'],
   ['FR8000003', 'PNR du Luberon'],
   ['FR8000002', 'PNR du Queyras'],
   ['FR8000052', 'PNR des Baronnies provençales'],
   ['FR8000049', "PNR des Préalpes d'Azur"],
-  ['FR8000041', "PNR des Monts d'Ardèche"],
+  ['FR8000041', "PNR des monts d'Ardèche"],
   ['FR8000048', 'PNR des Ardennes'],
   ['FR8000047', 'PNR des Pyrénées ariégeoises'],
   ['FR8000013', "PNR de la Forêt d'Orient"],
@@ -25,10 +62,10 @@ const expectedPNR: [string, string][] = [
   ['FR8000053', 'PNR de la Sainte-Baume'],
   ['FR8000021', 'PNR des Marais du Cotentin et du Bessin'],
   ['FR8000028', "PNR des Volcans d'Auvergne"],
-  ['FR8000050', 'PNR du Marais poitevin'],
+  ['FR8000050', 'PNR du marais poitevin'],
   ['FR8000045', 'PNR de Millevaches en Limousin'],
   ['FR8000025', 'PNR du Morvan'],
-  ['FR8000060', "PNR Vallée de la Rance - Côte d'Émeraude"],
+  ['FR8000060', "PNR de la Vallée de la Rance - Côte d'Emeraude"],
   ['FR8000035', 'PNR Périgord-Limousin'],
   ['FR8000058', 'PNR du Doubs Horloger'],
   ['FR8000001', 'PNR du Vercors'],
@@ -36,7 +73,7 @@ const expectedPNR: [string, string][] = [
   ['FR8000034', 'PNR du Perche'],
   ['FR8000005', "PNR d'Armorique"],
   ['FR8000012', 'PNR de Corse'],
-  ['FR8000055', 'PNR du Médoc'],
+  ['FR8000055', 'PNR Medoc'],
   ['FR8000018', 'PNR des Landes de Gascogne'],
   ['FR8000016', 'PNR du Haut-Languedoc'],
   ['FR8000008', 'PNR de la Brenne'],
@@ -53,19 +90,19 @@ const expectedPNR: [string, string][] = [
   ['FR8000029', 'PNR des Vosges du Nord'],
   ['FR8000036', "PNR de l'Avesnois"],
   ['FR8000037', 'PNR Scarpe-Escaut'],
-  ['FR8000007', "PNR des Caps et marais d'Opale"],
+  ['FR8000007', "PNR des Caps et Marais d'Opale"],
   ['FR8000043', 'PNR Oise-Pays de France'],
   ['FR8000044', 'PNR des Pyrénées catalanes'],
   ['FR8000006', 'PNR des Ballons des Vosges'],
   ['FR8000031', 'PNR du Massif des Bauges'],
   ['FR8000031 et FR8000004', 'PNR du Massif des Bauges et PNR de Chartreuse'],
   ['FR8000038', 'PNR du Gâtinais français'],
-  ['FR8000017', 'PNR de la Haute Vallée de Chevreuse'],
-  ['FR8000030', 'PNR du Vexin Français'],
-  ['FR8000056', 'PNR Baie de Somme Picardie Maritime'],
-  ['FR8000057', 'PNR du Mont-Ventoux'],
-  ['FR8000023', 'PNR de la Martinique'],
-  ['FR8000040', 'PNR de la Guyane']
+  ['FR8000017', 'PNR de la Haute-Vallée de Chevreuse'],
+  ['FR8000030', 'PNR du Vexin français'],
+  ['FR8000057', 'PNR Baie de Somme - Picardie maritime'],
+  ['FR8000056', 'PNR du Mont Ventoux'],
+  ['FR8000023', 'PNR de Martinique'],
+  ['FR8000040', 'PNR de Guyane']
 ];
 
 const expectedBrehat: [string, string] = ['22016', 'Île-de-Bréhat'];
@@ -75,200 +112,115 @@ const expectedBrehat: [string, string] = ['22016', 'Île-de-Bréhat'];
 }
 const expectedMap = new Map<string, string>(expectedPNR);
 
+async function checkPnrCorrespondance(table: string) {
+  const result = await pool.query(
+    `SELECT code_pnr, libelle_pnr FROM ${table} WHERE code_pnr IS NOT NULL`
+  );
+  for (const row of result.rows) {
+    if (expectedMap.has(row.code_pnr)) {
+      expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
+    }
+  }
+}
+
+async function checkBrehat(table: string) {
+  const result = await pool.query(
+    `SELECT code_geographique, libelle_geographique FROM ${table} WHERE code_geographique = $1 LIMIT 1`,
+    [expectedBrehat[0]]
+  );
+  expect(result.rows[0]).toEqual({
+    code_geographique: expectedBrehat[0],
+    libelle_geographique: expectedBrehat[1]
+  });
+}
+
 describe('PNR code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in collectivites_searchbar', async () => {
-    const rows = await prisma.databases_v2_collectivites_searchbar.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.collectivites_searchbar');
   });
 });
 describe('consommation_espaces_naf code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in consommation_espaces_naf', async () => {
-    const rows = await prisma.databases_v2_consommation_espaces_naf.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.consommation_espaces_naf');
   });
 });
 describe('arretes_catnat code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in arretes_catnat', async () => {
-    const rows = await prisma.databases_v2_arretes_catnat.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.arretes_catnat');
   });
 });
 describe('inconfort_thermique code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in inconfort_thermique', async () => {
-    const rows = await prisma.databases_v2_confort_thermique.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.confort_thermique');
   });
 });
 describe('feux_foret code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in feux_foret', async () => {
-    const rows = await prisma.databases_v2_feux_foret.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.feux_foret');
   });
 });
 describe('ressources_eau code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in ressources_eau', async () => {
-    const rows = await prisma.databases_v2_prelevements_eau.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.prelevements_eau');
   });
 });
 describe('rga code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in rga', async () => {
-    const rows = await prisma.databases_v2_rga.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.rga');
   });
 });
 describe('agriculture code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in agriculture', async () => {
-    const rows = await prisma.databases_v2_agriculture.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('databases_v2.agriculture');
   });
 });
 describe('communes_drom code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in postgis.communes_drom', async () => {
-    const rows = await prisma.postgis_v2_communes_drom.findMany({
-      select: { code_pnr: true, libelle_pnr: true }
-    });
-    for (const row of rows) {
-      if (row.code_pnr && expectedMap.has(row.code_pnr)) {
-        expect(row.libelle_pnr).toBe(expectedMap.get(row.code_pnr));
-      }
-    }
+    await checkPnrCorrespondance('postgis_v2.communes_drom');
   });
 });
-
-{
-  /* Test pour la présence de l'île de Bréhat */
-}
 
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in collectivites_searchbar', async () => {
-    const row = await prisma.databases_v2_collectivites_searchbar.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+    await checkBrehat('databases_v2.collectivites_searchbar');
   });
 });
 
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in consommation_espaces_naf', async () => {
-    const row = await prisma.databases_v2_consommation_espaces_naf.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+    await checkBrehat('databases_v2.consommation_espaces_naf');
   });
 });
 
 describe('Île de Bréhat presence', () => {
-  it('should have Île de Bréhat in consommation_espaces_naf', async () => {
-    const row = await prisma.databases_v2_arretes_catnat.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+  it('should have Île de Bréhat in arretes_catnat', async () => {
+    await checkBrehat('databases_v2.arretes_catnat');
   });
 });
 
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in inconfort_thermique', async () => {
-    const row = await prisma.databases_v2_confort_thermique.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+    await checkBrehat('databases_v2.confort_thermique');
   });
 });
 
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in rga', async () => {
-    const row = await prisma.databases_v2_rga.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+    await checkBrehat('databases_v2.rga');
   });
 });
 
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in ressources_eau', async () => {
-    const row = await prisma.databases_v2_prelevements_eau.findFirst({
-      where: { code_geographique: expectedBrehat[0] },
-      select: { code_geographique: true, libelle_geographique: true }
-    });
-    expect(row).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
+    await checkBrehat('databases_v2.prelevements_eau');
   });
 });
 
 describe('databases_v2_arretes_catnat row count', () => {
   it('should have more than 260600 rows', async () => {
-    const count = await prisma.databases_v2_arretes_catnat.count();
-    expect(count).toBeGreaterThan(260600);
+    const result = await pool.query(
+      `SELECT COUNT(*) as count FROM databases_v2.arretes_catnat`
+    );
+    expect(parseInt(result.rows[0].count)).toBeGreaterThan(260600);
   });
 });

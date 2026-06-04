@@ -136,9 +136,21 @@
         background-image: none !important;
     }
 
+    &:focus {
+        outline: 6px solid #971356;
+        outline-offset: -1px;
+        background-color: var(--boutons-primaire-3);
+    }
+
     &::after,
     &::before {
         display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .tuile {
+        width: 345px;
     }
 }
 
@@ -236,5 +248,100 @@
     .arrow {
         color: var(--boutons-primaire-1, #038278);
         font-size: 1.25rem;
+    }
+}
+
+// Tuile horizontales des collections
+
+.tuileHorizontaleCollection {
+    width: 100%;
+    min-width: 100%;
+    max-width: 452px;
+    height: 146px;
+    border-radius: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding-right: 1.5rem;
+
+    &:hover {
+        background-color: var(--boutons-primaire-3);
+    }
+
+    .imageContainer {
+        width: 100%;
+        max-width: 184px;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .contenu {
+        flex: 1;
+        padding: 30px 0.5rem 30px 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        transition: background-color 0.3s ease;
+    }
+
+    .titre {
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 28px;
+        color: #fafafa;
+        text-align: left;
+        max-height: 55px;
+        overflow: hidden;
+    }
+
+    .leftSection {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .tempsLecture {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        color: #fafafa;
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.tuileLinkCollection {
+    text-decoration: none !important;
+    color: inherit;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    background-image: none !important;
+    background-color: var(--principales-vert);
+
+    &:hover {
+        text-decoration: none !important;
+        background-image: none !important;
+        background-color: var(--boutons-primaire-3);
+    }
+
+    &:focus {
+        outline: 6px solid #971356;
+        outline-offset: -1px;
+        background-color: var(--boutons-primaire-3);
+    }
+
+    &::after,
+    &::before {
+        display: none !important;
     }
 }

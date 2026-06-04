@@ -16,8 +16,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/*', '/sandbox/*', '/iframe/*']
+      disallow: ['/api/*', '/sandbox/*', '/iframe/*', '/iframe']
     },
-    sitemap: 'https://facili-tacct.beta.gouv.fr/sitemap.xml'
+    sitemap: 'https://tacct.ademe.fr/sitemap.xml'
   };
 }

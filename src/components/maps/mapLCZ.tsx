@@ -10,10 +10,11 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../ui/loader';
-import { CeremaFallbackError, handleCeremaFallback } from './components/ceremaLCZFallback';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { CeremaFallbackError, handleCeremaFallback } from './subcomponents/ceremaLCZFallback';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapLCZ = ({
   coordonneesCommunes,
@@ -314,7 +315,10 @@ export const MapLCZ = ({
   }, [isLczCovered]);
 
   return (
-    <div style={{ position: 'relative' }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte des Zones Climatiques Locales (LCZ) représentant la morphologie urbaine et les types d'occupation du sol sur votre territoire"
+      style={{ position: 'relative' }}
+    >
       <style jsx global>{`
         .maplibregl-popup {
           z-index: 1002 !important;
@@ -352,7 +356,7 @@ export const MapLCZ = ({
       {isLoading ? (<div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>) : (
         <>
           <div ref={mapContainer} className='map-container' style={{ width: '100%', height: '500px' }}>
-            {!useLczGenerator && (
+            {!useLczGenerator && !serviceStatus.fallbackToGlobal && (
               <Image
                 id="cerema-logo"
                 src={CeremaLogo}
@@ -397,7 +401,7 @@ export const MapLCZ = ({
           </div>
         </>
       )}
-    </div>
+    </AccessibleMapWrapper>
   );
 };
 

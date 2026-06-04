@@ -1,138 +1,115 @@
 import couleurs from '@/design-system/couleurs';
 import { SurfacesAgricolesModel } from '../postgres/models';
-import { Sum } from '../utils/reusableFunctions/sum';
-
-// superficie_sau_terres_arables_cereales: number;
-// superficie_sau_terres_arables_oleagineux: number;
-// superficie_sau_terres_arables_fourrageres: number;
-// superficie_sau_terres_arables_tubercules: number;
-// superficie_sau_terres_arables_legumes_melons_fraises: number;
-// superficie_sau_terres_arables_fleurs: number;
-// superficie_sau_terres_arables_autres: number;
-// superficie_sau_cultures_permanentes_vigne: number;
-// superficie_sau_cultures_permanentes_fruits: number;
-// superficie_sau_cultures_permanentes_autres: number;
-// superficie_sau_herbe_prairies_productives: number;
-// superficie_sau_herbe_prairies_peu_productives: number;
-// superficie_sau_herbe_subventions: number;
-// superficie_sau_herbe_bois_patures: number;
-// superficie_sau_jardins: number;
+import {
+  SumWithNullHandling,
+  addWithNullHandling
+} from '../utils/reusableFunctions/sum';
 
 export const PieChartDataSurfacesAgricoles = (
   surfacesAgricoles: SurfacesAgricolesModel[]
 ) => {
-  const sommeToutesSuperficies = Sum(
-    surfacesAgricoles.map(
-      (el) =>
-        el.superficie_sau_terres_arables_cereales +
-        el.superficie_sau_terres_arables_oleagineux +
-        el.superficie_sau_terres_arables_fourrageres +
-        el.superficie_sau_terres_arables_tubercules +
-        el.superficie_sau_terres_arables_legumes_melons_fraises +
-        el.superficie_sau_terres_arables_fleurs +
-        el.superficie_sau_terres_arables_autres +
-        el.superficie_sau_cultures_permanentes_vigne +
-        el.superficie_sau_cultures_permanentes_fruits +
-        el.superficie_sau_cultures_permanentes_autres +
-        el.superficie_sau_herbe_prairies_productives +
-        el.superficie_sau_herbe_prairies_peu_productives +
-        el.superficie_sau_herbe_subventions +
-        el.superficie_sau_herbe_bois_patures +
-        el.superficie_sau_jardins
-    )
+  const countCulturesPermanentes = SumWithNullHandling(
+    surfacesAgricoles.map((el) => {
+      const isSecretStatistique =
+        el.superficie_sau_cultures_permanentes === null;
+      if (!isSecretStatistique) {
+        return el.superficie_sau_cultures_permanentes;
+      } else {
+        return addWithNullHandling(
+          el.superficie_sau_cultures_permanentes_vigne,
+          el.superficie_sau_cultures_permanentes_fruits,
+          el.superficie_sau_cultures_permanentes_autres
+        );
+      }
+    })
   );
+
+  const countSurfacesHerbe = SumWithNullHandling(
+    surfacesAgricoles.map((el) => {
+      const isSecretStatistique = el.superficie_sau_herbe === null;
+      if (!isSecretStatistique) {
+        return el.superficie_sau_herbe;
+      } else {
+        return addWithNullHandling(
+          el.superficie_sau_herbe_prairies_productives,
+          el.superficie_sau_herbe_prairies_peu_productives,
+          el.superficie_sau_herbe_subventions,
+          el.superficie_sau_herbe_bois_patures
+        );
+      }
+    })
+  );
+
+  const countTerresArables = SumWithNullHandling(
+    surfacesAgricoles.map((el) => {
+      const isSecretStatistique = el.superficie_sau_terres_arables === null;
+      if (!isSecretStatistique) {
+        return el.superficie_sau_terres_arables;
+      }
+      return addWithNullHandling(
+        el.superficie_sau_terres_arables_cereales,
+        el.superficie_sau_terres_arables_oleagineux,
+        el.superficie_sau_terres_arables_fourrageres,
+        el.superficie_sau_terres_arables_tubercules,
+        el.superficie_sau_terres_arables_legumes_melons_fraises,
+        el.superficie_sau_terres_arables_fleurs,
+        el.superficie_sau_terres_arables_autres
+      );
+    })
+  );
+
+  const countJardin = SumWithNullHandling(
+    surfacesAgricoles.map((el) => el.superficie_sau_jardins)
+  );
+
+  const sommeToutesSuperficies = addWithNullHandling(
+    countCulturesPermanentes,
+    countSurfacesHerbe,
+    countTerresArables,
+    countJardin
+  );
+
   return [
     {
       id: 'Cultures permanentes',
-      count: Sum(
-        surfacesAgricoles.map(
-          (el) =>
-            el.superficie_sau_cultures_permanentes_vigne +
-            el.superficie_sau_cultures_permanentes_fruits +
-            el.superficie_sau_cultures_permanentes_autres
-        )
-      ),
+      count: countCulturesPermanentes,
       color: '#00C190',
       value:
-        (100 *
-          Sum(
-            surfacesAgricoles.map(
-              (el) =>
-                el.superficie_sau_cultures_permanentes_vigne +
-                el.superficie_sau_cultures_permanentes_fruits +
-                el.superficie_sau_cultures_permanentes_autres
-            )
-          )) /
-        sommeToutesSuperficies
+        countCulturesPermanentes !== null && sommeToutesSuperficies !== null
+          ? (100 * countCulturesPermanentes) / sommeToutesSuperficies
+          : null
     },
     {
       id: 'Surfaces toujours en herbe',
-      count: Sum(
-        surfacesAgricoles.map(
-          (el) =>
-            el.superficie_sau_herbe_prairies_productives +
-            el.superficie_sau_herbe_prairies_peu_productives +
-            el.superficie_sau_herbe_subventions +
-            el.superficie_sau_herbe_bois_patures
-        )
-      ),
+      count: countSurfacesHerbe,
       color: '#009ADC',
       value:
-        (100 *
-          Sum(
-            surfacesAgricoles.map(
-              (el) =>
-                el.superficie_sau_herbe_prairies_productives +
-                el.superficie_sau_herbe_prairies_peu_productives +
-                el.superficie_sau_herbe_subventions +
-                el.superficie_sau_herbe_bois_patures
-            )
-          )) /
-        sommeToutesSuperficies
+        countSurfacesHerbe !== null && sommeToutesSuperficies !== null
+          ? (100 * countSurfacesHerbe) / sommeToutesSuperficies
+          : null
     },
     {
       id: 'Terres arables',
-      count: Sum(
-        surfacesAgricoles.map(
-          (el) =>
-            el.superficie_sau_terres_arables_cereales +
-            el.superficie_sau_terres_arables_oleagineux +
-            el.superficie_sau_terres_arables_fourrageres +
-            el.superficie_sau_terres_arables_tubercules +
-            el.superficie_sau_terres_arables_legumes_melons_fraises +
-            el.superficie_sau_terres_arables_fleurs +
-            el.superficie_sau_terres_arables_autres
-        )
-      ),
+      count: countTerresArables,
       color: '#7A49BE',
       value:
-        (100 *
-          Sum(
-            surfacesAgricoles.map(
-              (el) =>
-                el.superficie_sau_terres_arables_cereales +
-                el.superficie_sau_terres_arables_oleagineux +
-                el.superficie_sau_terres_arables_fourrageres +
-                el.superficie_sau_terres_arables_tubercules +
-                el.superficie_sau_terres_arables_legumes_melons_fraises +
-                el.superficie_sau_terres_arables_fleurs +
-                el.superficie_sau_terres_arables_autres
-            )
-          )) /
-        sommeToutesSuperficies
+        countTerresArables !== null && sommeToutesSuperficies !== null
+          ? (100 * countTerresArables) / sommeToutesSuperficies
+          : null
     },
     {
       id: 'Jardin',
-      count: Sum(surfacesAgricoles.map((el) => el.superficie_sau_jardins)),
+      count: countJardin,
       color: '#BB43BD',
       value:
-        (100 * Sum(surfacesAgricoles.map((el) => el.superficie_sau_jardins))) /
-        sommeToutesSuperficies
+        countJardin !== null && sommeToutesSuperficies !== null
+          ? (100 * countJardin) / sommeToutesSuperficies
+          : null
     }
   ];
 };
 
-export const PrograssBarDataSurfacesAgricoles = (
+export const ProgressBarDataSurfacesAgricoles = (
   surfacesAgricoles: SurfacesAgricolesModel[]
 ) => {
   return [
@@ -140,7 +117,7 @@ export const PrograssBarDataSurfacesAgricoles = (
       'Terres arables': [
         {
           id: 'Céréales',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_terres_arables_cereales
             )
@@ -149,7 +126,7 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Oléagineux, protéagineux, plantes à fibres et cultures industrielles protéagineux',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_terres_arables_oleagineux
             )
@@ -158,20 +135,21 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Légumes, Fleurs et plantes ornementales',
-          value: Sum(
-            surfacesAgricoles.map(
-              (el) =>
-                el.superficie_sau_terres_arables_fleurs +
-                el.superficie_sau_terres_arables_legumes_melons_fraises +
-                el.superficie_sau_terres_arables_autres +
+          value: SumWithNullHandling(
+            surfacesAgricoles.map((el) =>
+              addWithNullHandling(
+                el.superficie_sau_terres_arables_fleurs,
+                el.superficie_sau_terres_arables_legumes_melons_fraises,
+                el.superficie_sau_terres_arables_autres,
                 el.superficie_sau_terres_arables_tubercules
+              )
             )
           ),
           color: couleurs.graphiques.vert[3]
         },
         {
           id: 'Cultures fourragères',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_terres_arables_fourrageres
             )
@@ -184,7 +162,7 @@ export const PrograssBarDataSurfacesAgricoles = (
       'Cultures permanentes': [
         {
           id: 'Vignes',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_cultures_permanentes_vigne
             )
@@ -193,7 +171,7 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Fruits',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_cultures_permanentes_fruits
             )
@@ -202,7 +180,7 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Autres',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_cultures_permanentes_autres
             )
@@ -215,7 +193,7 @@ export const PrograssBarDataSurfacesAgricoles = (
       'Surfaces toujours en herbe': [
         {
           id: 'Pâturages et prés',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_herbe_prairies_productives
             )
@@ -224,7 +202,7 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Prairies permanentes peu productives',
-          value: Sum(
+          value: SumWithNullHandling(
             surfacesAgricoles.map(
               (el) => el.superficie_sau_herbe_prairies_peu_productives
             )
@@ -233,11 +211,12 @@ export const PrograssBarDataSurfacesAgricoles = (
         },
         {
           id: 'Surfaces toujours en herbe non productives et bois pâturés',
-          value: Sum(
-            surfacesAgricoles.map(
-              (el) =>
-                el.superficie_sau_herbe_subventions +
+          value: SumWithNullHandling(
+            surfacesAgricoles.map((el) =>
+              addWithNullHandling(
+                el.superficie_sau_herbe_subventions,
                 el.superficie_sau_herbe_bois_patures
+              )
             )
           ),
           color: couleurs.graphiques.vert[1]
@@ -248,7 +227,9 @@ export const PrograssBarDataSurfacesAgricoles = (
       Jardin: [
         {
           id: 'Jardin',
-          value: Sum(surfacesAgricoles.map((el) => el.superficie_sau_jardins)),
+          value: SumWithNullHandling(
+            surfacesAgricoles.map((el) => el.superficie_sau_jardins)
+          ),
           color: couleurs.graphiques.vert[2]
         }
       ]

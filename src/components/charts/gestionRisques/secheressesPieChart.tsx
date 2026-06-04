@@ -1,14 +1,12 @@
 // @ts-nocheck
 'use client';
 
-import useWindowDimensions from '@/hooks/windowDimensions';
 import { SecheressesParsed } from '@/lib/postgres/models';
 import styles from '../charts.module.scss';
 import NivoPieChart from '../NivoPieChart';
 
 const SecheressesPieChart = (props: { secheresses: SecheressesParsed[] }) => {
   const { secheresses } = props;
-  const windowDimensions = useWindowDimensions();
 
   // Compter les occurrences de chaque type d'eau
   const typeCounts: Record<string, number> = {

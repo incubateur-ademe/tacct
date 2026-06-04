@@ -5,6 +5,7 @@ import 'carte-facile/carte-facile.css';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { RgaMapLegend } from './legends/datavizLegends';
 import { LegendCompColor } from './legends/legendComp';
 import styles from './maps.module.scss';
@@ -89,7 +90,10 @@ export const MapRGAExport = (props: {
   }, []);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel="Cartographie des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
+      style={{ position: 'relative', ...style }}
+    >
       <div ref={exportMapContainer} style={{ height: "500px", width: "100%" }} />
       <div className="exportPNGWrapper">
         <div
@@ -99,6 +103,6 @@ export const MapRGAExport = (props: {
           <LegendCompColor legends={RgaMapLegend} />
         </div>
       </div>
-    </div>
+    </AccessibleMapWrapper>
   );
 };

@@ -29,11 +29,6 @@ export type AggregateDatabases_v2_confort_thermique = {
 export type Databases_v2_confort_thermiqueAvgAggregateOutputType = {
   index: number | null
   region: number | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -49,15 +44,6 @@ export type Databases_v2_confort_thermiqueAvgAggregateOutputType = {
   under_4_sum_1999: number | null
   to_75_sum_1999: number | null
   over_75_sum_1999: number | null
-  under_4_sum_2009: number | null
-  to_75_sum_2009: number | null
-  over_75_sum_2009: number | null
-  under_4_sum_2014: number | null
-  to_75_sum_2014: number | null
-  over_75_sum_2014: number | null
-  under_4_sum_2020: number | null
-  to_75_sum_2020: number | null
-  over_75_sum_2020: number | null
   tee_log: number | null
   tee_mob: number | null
   precarite_logement: number | null
@@ -72,16 +58,30 @@ export type Databases_v2_confort_thermiqueAvgAggregateOutputType = {
   clc_4_humide: number | null
   clc_5_eau: number | null
   superf_choro: number | null
+  under_4_sum_2006: number | null
+  to_75_sum_2006: number | null
+  over_75_sum_2006: number | null
+  under_4_sum_2011: number | null
+  to_75_sum_2011: number | null
+  over_75_sum_2011: number | null
+  under_4_sum_2016: number | null
+  to_75_sum_2016: number | null
+  over_75_sum_2016: number | null
+  under_4_sum_2022: number | null
+  to_75_sum_2022: number | null
+  over_75_sum_2022: number | null
+  nb_rp_tot: number | null
+  nb_rp_pre_19: number | null
+  nb_rp_19_45: number | null
+  nb_rp_46_70: number | null
+  nb_rp_71_90: number | null
+  nb_rp_91_05: number | null
+  nb_rp_post_06: number | null
 }
 
 export type Databases_v2_confort_thermiqueSumAggregateOutputType = {
   index: number | null
   region: number | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -97,15 +97,6 @@ export type Databases_v2_confort_thermiqueSumAggregateOutputType = {
   under_4_sum_1999: number | null
   to_75_sum_1999: number | null
   over_75_sum_1999: number | null
-  under_4_sum_2009: number | null
-  to_75_sum_2009: number | null
-  over_75_sum_2009: number | null
-  under_4_sum_2014: number | null
-  to_75_sum_2014: number | null
-  over_75_sum_2014: number | null
-  under_4_sum_2020: number | null
-  to_75_sum_2020: number | null
-  over_75_sum_2020: number | null
   tee_log: number | null
   tee_mob: number | null
   precarite_logement: number | null
@@ -120,6 +111,25 @@ export type Databases_v2_confort_thermiqueSumAggregateOutputType = {
   clc_4_humide: number | null
   clc_5_eau: number | null
   superf_choro: number | null
+  under_4_sum_2006: number | null
+  to_75_sum_2006: number | null
+  over_75_sum_2006: number | null
+  under_4_sum_2011: number | null
+  to_75_sum_2011: number | null
+  over_75_sum_2011: number | null
+  under_4_sum_2016: number | null
+  to_75_sum_2016: number | null
+  over_75_sum_2016: number | null
+  under_4_sum_2022: number | null
+  to_75_sum_2022: number | null
+  over_75_sum_2022: number | null
+  nb_rp_tot: number | null
+  nb_rp_pre_19: number | null
+  nb_rp_19_45: number | null
+  nb_rp_46_70: number | null
+  nb_rp_71_90: number | null
+  nb_rp_91_05: number | null
+  nb_rp_post_06: number | null
 }
 
 export type Databases_v2_confort_thermiqueMinAggregateOutputType = {
@@ -135,11 +145,6 @@ export type Databases_v2_confort_thermiqueMinAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -155,15 +160,6 @@ export type Databases_v2_confort_thermiqueMinAggregateOutputType = {
   under_4_sum_1999: number | null
   to_75_sum_1999: number | null
   over_75_sum_1999: number | null
-  under_4_sum_2009: number | null
-  to_75_sum_2009: number | null
-  over_75_sum_2009: number | null
-  under_4_sum_2014: number | null
-  to_75_sum_2014: number | null
-  over_75_sum_2014: number | null
-  under_4_sum_2020: number | null
-  to_75_sum_2020: number | null
-  over_75_sum_2020: number | null
   tee_log: number | null
   tee_mob: number | null
   precarite_logement: number | null
@@ -178,6 +174,25 @@ export type Databases_v2_confort_thermiqueMinAggregateOutputType = {
   clc_4_humide: number | null
   clc_5_eau: number | null
   superf_choro: number | null
+  under_4_sum_2006: number | null
+  to_75_sum_2006: number | null
+  over_75_sum_2006: number | null
+  under_4_sum_2011: number | null
+  to_75_sum_2011: number | null
+  over_75_sum_2011: number | null
+  under_4_sum_2016: number | null
+  to_75_sum_2016: number | null
+  over_75_sum_2016: number | null
+  under_4_sum_2022: number | null
+  to_75_sum_2022: number | null
+  over_75_sum_2022: number | null
+  nb_rp_tot: number | null
+  nb_rp_pre_19: number | null
+  nb_rp_19_45: number | null
+  nb_rp_46_70: number | null
+  nb_rp_71_90: number | null
+  nb_rp_91_05: number | null
+  nb_rp_post_06: number | null
 }
 
 export type Databases_v2_confort_thermiqueMaxAggregateOutputType = {
@@ -193,11 +208,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -213,15 +223,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateOutputType = {
   under_4_sum_1999: number | null
   to_75_sum_1999: number | null
   over_75_sum_1999: number | null
-  under_4_sum_2009: number | null
-  to_75_sum_2009: number | null
-  over_75_sum_2009: number | null
-  under_4_sum_2014: number | null
-  to_75_sum_2014: number | null
-  over_75_sum_2014: number | null
-  under_4_sum_2020: number | null
-  to_75_sum_2020: number | null
-  over_75_sum_2020: number | null
   tee_log: number | null
   tee_mob: number | null
   precarite_logement: number | null
@@ -236,6 +237,25 @@ export type Databases_v2_confort_thermiqueMaxAggregateOutputType = {
   clc_4_humide: number | null
   clc_5_eau: number | null
   superf_choro: number | null
+  under_4_sum_2006: number | null
+  to_75_sum_2006: number | null
+  over_75_sum_2006: number | null
+  under_4_sum_2011: number | null
+  to_75_sum_2011: number | null
+  over_75_sum_2011: number | null
+  under_4_sum_2016: number | null
+  to_75_sum_2016: number | null
+  over_75_sum_2016: number | null
+  under_4_sum_2022: number | null
+  to_75_sum_2022: number | null
+  over_75_sum_2022: number | null
+  nb_rp_tot: number | null
+  nb_rp_pre_19: number | null
+  nb_rp_19_45: number | null
+  nb_rp_46_70: number | null
+  nb_rp_71_90: number | null
+  nb_rp_91_05: number | null
+  nb_rp_post_06: number | null
 }
 
 export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
@@ -251,11 +271,6 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
-  age_bati_post06: number
-  age_bati_91_05: number
-  age_bati_46_90: number
-  age_bati_19_45: number
-  age_bati_pre_19: number
   under_4_sum_1968: number
   to_75_sum_1968: number
   over_75_sum_1968: number
@@ -271,15 +286,6 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
   under_4_sum_1999: number
   to_75_sum_1999: number
   over_75_sum_1999: number
-  under_4_sum_2009: number
-  to_75_sum_2009: number
-  over_75_sum_2009: number
-  under_4_sum_2014: number
-  to_75_sum_2014: number
-  over_75_sum_2014: number
-  under_4_sum_2020: number
-  to_75_sum_2020: number
-  over_75_sum_2020: number
   tee_log: number
   tee_mob: number
   precarite_logement: number
@@ -294,6 +300,25 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
   clc_4_humide: number
   clc_5_eau: number
   superf_choro: number
+  under_4_sum_2006: number
+  to_75_sum_2006: number
+  over_75_sum_2006: number
+  under_4_sum_2011: number
+  to_75_sum_2011: number
+  over_75_sum_2011: number
+  under_4_sum_2016: number
+  to_75_sum_2016: number
+  over_75_sum_2016: number
+  under_4_sum_2022: number
+  to_75_sum_2022: number
+  over_75_sum_2022: number
+  nb_rp_tot: number
+  nb_rp_pre_19: number
+  nb_rp_19_45: number
+  nb_rp_46_70: number
+  nb_rp_71_90: number
+  nb_rp_91_05: number
+  nb_rp_post_06: number
   _all: number
 }
 
@@ -301,11 +326,6 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
 export type Databases_v2_confort_thermiqueAvgAggregateInputType = {
   index?: true
   region?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -321,15 +341,6 @@ export type Databases_v2_confort_thermiqueAvgAggregateInputType = {
   under_4_sum_1999?: true
   to_75_sum_1999?: true
   over_75_sum_1999?: true
-  under_4_sum_2009?: true
-  to_75_sum_2009?: true
-  over_75_sum_2009?: true
-  under_4_sum_2014?: true
-  to_75_sum_2014?: true
-  over_75_sum_2014?: true
-  under_4_sum_2020?: true
-  to_75_sum_2020?: true
-  over_75_sum_2020?: true
   tee_log?: true
   tee_mob?: true
   precarite_logement?: true
@@ -344,16 +355,30 @@ export type Databases_v2_confort_thermiqueAvgAggregateInputType = {
   clc_4_humide?: true
   clc_5_eau?: true
   superf_choro?: true
+  under_4_sum_2006?: true
+  to_75_sum_2006?: true
+  over_75_sum_2006?: true
+  under_4_sum_2011?: true
+  to_75_sum_2011?: true
+  over_75_sum_2011?: true
+  under_4_sum_2016?: true
+  to_75_sum_2016?: true
+  over_75_sum_2016?: true
+  under_4_sum_2022?: true
+  to_75_sum_2022?: true
+  over_75_sum_2022?: true
+  nb_rp_tot?: true
+  nb_rp_pre_19?: true
+  nb_rp_19_45?: true
+  nb_rp_46_70?: true
+  nb_rp_71_90?: true
+  nb_rp_91_05?: true
+  nb_rp_post_06?: true
 }
 
 export type Databases_v2_confort_thermiqueSumAggregateInputType = {
   index?: true
   region?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -369,15 +394,6 @@ export type Databases_v2_confort_thermiqueSumAggregateInputType = {
   under_4_sum_1999?: true
   to_75_sum_1999?: true
   over_75_sum_1999?: true
-  under_4_sum_2009?: true
-  to_75_sum_2009?: true
-  over_75_sum_2009?: true
-  under_4_sum_2014?: true
-  to_75_sum_2014?: true
-  over_75_sum_2014?: true
-  under_4_sum_2020?: true
-  to_75_sum_2020?: true
-  over_75_sum_2020?: true
   tee_log?: true
   tee_mob?: true
   precarite_logement?: true
@@ -392,6 +408,25 @@ export type Databases_v2_confort_thermiqueSumAggregateInputType = {
   clc_4_humide?: true
   clc_5_eau?: true
   superf_choro?: true
+  under_4_sum_2006?: true
+  to_75_sum_2006?: true
+  over_75_sum_2006?: true
+  under_4_sum_2011?: true
+  to_75_sum_2011?: true
+  over_75_sum_2011?: true
+  under_4_sum_2016?: true
+  to_75_sum_2016?: true
+  over_75_sum_2016?: true
+  under_4_sum_2022?: true
+  to_75_sum_2022?: true
+  over_75_sum_2022?: true
+  nb_rp_tot?: true
+  nb_rp_pre_19?: true
+  nb_rp_19_45?: true
+  nb_rp_46_70?: true
+  nb_rp_71_90?: true
+  nb_rp_91_05?: true
+  nb_rp_post_06?: true
 }
 
 export type Databases_v2_confort_thermiqueMinAggregateInputType = {
@@ -407,11 +442,6 @@ export type Databases_v2_confort_thermiqueMinAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -427,15 +457,6 @@ export type Databases_v2_confort_thermiqueMinAggregateInputType = {
   under_4_sum_1999?: true
   to_75_sum_1999?: true
   over_75_sum_1999?: true
-  under_4_sum_2009?: true
-  to_75_sum_2009?: true
-  over_75_sum_2009?: true
-  under_4_sum_2014?: true
-  to_75_sum_2014?: true
-  over_75_sum_2014?: true
-  under_4_sum_2020?: true
-  to_75_sum_2020?: true
-  over_75_sum_2020?: true
   tee_log?: true
   tee_mob?: true
   precarite_logement?: true
@@ -450,6 +471,25 @@ export type Databases_v2_confort_thermiqueMinAggregateInputType = {
   clc_4_humide?: true
   clc_5_eau?: true
   superf_choro?: true
+  under_4_sum_2006?: true
+  to_75_sum_2006?: true
+  over_75_sum_2006?: true
+  under_4_sum_2011?: true
+  to_75_sum_2011?: true
+  over_75_sum_2011?: true
+  under_4_sum_2016?: true
+  to_75_sum_2016?: true
+  over_75_sum_2016?: true
+  under_4_sum_2022?: true
+  to_75_sum_2022?: true
+  over_75_sum_2022?: true
+  nb_rp_tot?: true
+  nb_rp_pre_19?: true
+  nb_rp_19_45?: true
+  nb_rp_46_70?: true
+  nb_rp_71_90?: true
+  nb_rp_91_05?: true
+  nb_rp_post_06?: true
 }
 
 export type Databases_v2_confort_thermiqueMaxAggregateInputType = {
@@ -465,11 +505,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -485,15 +520,6 @@ export type Databases_v2_confort_thermiqueMaxAggregateInputType = {
   under_4_sum_1999?: true
   to_75_sum_1999?: true
   over_75_sum_1999?: true
-  under_4_sum_2009?: true
-  to_75_sum_2009?: true
-  over_75_sum_2009?: true
-  under_4_sum_2014?: true
-  to_75_sum_2014?: true
-  over_75_sum_2014?: true
-  under_4_sum_2020?: true
-  to_75_sum_2020?: true
-  over_75_sum_2020?: true
   tee_log?: true
   tee_mob?: true
   precarite_logement?: true
@@ -508,6 +534,25 @@ export type Databases_v2_confort_thermiqueMaxAggregateInputType = {
   clc_4_humide?: true
   clc_5_eau?: true
   superf_choro?: true
+  under_4_sum_2006?: true
+  to_75_sum_2006?: true
+  over_75_sum_2006?: true
+  under_4_sum_2011?: true
+  to_75_sum_2011?: true
+  over_75_sum_2011?: true
+  under_4_sum_2016?: true
+  to_75_sum_2016?: true
+  over_75_sum_2016?: true
+  under_4_sum_2022?: true
+  to_75_sum_2022?: true
+  over_75_sum_2022?: true
+  nb_rp_tot?: true
+  nb_rp_pre_19?: true
+  nb_rp_19_45?: true
+  nb_rp_46_70?: true
+  nb_rp_71_90?: true
+  nb_rp_91_05?: true
+  nb_rp_post_06?: true
 }
 
 export type Databases_v2_confort_thermiqueCountAggregateInputType = {
@@ -523,11 +568,6 @@ export type Databases_v2_confort_thermiqueCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  age_bati_post06?: true
-  age_bati_91_05?: true
-  age_bati_46_90?: true
-  age_bati_19_45?: true
-  age_bati_pre_19?: true
   under_4_sum_1968?: true
   to_75_sum_1968?: true
   over_75_sum_1968?: true
@@ -543,15 +583,6 @@ export type Databases_v2_confort_thermiqueCountAggregateInputType = {
   under_4_sum_1999?: true
   to_75_sum_1999?: true
   over_75_sum_1999?: true
-  under_4_sum_2009?: true
-  to_75_sum_2009?: true
-  over_75_sum_2009?: true
-  under_4_sum_2014?: true
-  to_75_sum_2014?: true
-  over_75_sum_2014?: true
-  under_4_sum_2020?: true
-  to_75_sum_2020?: true
-  over_75_sum_2020?: true
   tee_log?: true
   tee_mob?: true
   precarite_logement?: true
@@ -566,6 +597,25 @@ export type Databases_v2_confort_thermiqueCountAggregateInputType = {
   clc_4_humide?: true
   clc_5_eau?: true
   superf_choro?: true
+  under_4_sum_2006?: true
+  to_75_sum_2006?: true
+  over_75_sum_2006?: true
+  under_4_sum_2011?: true
+  to_75_sum_2011?: true
+  over_75_sum_2011?: true
+  under_4_sum_2016?: true
+  to_75_sum_2016?: true
+  over_75_sum_2016?: true
+  under_4_sum_2022?: true
+  to_75_sum_2022?: true
+  over_75_sum_2022?: true
+  nb_rp_tot?: true
+  nb_rp_pre_19?: true
+  nb_rp_19_45?: true
+  nb_rp_46_70?: true
+  nb_rp_71_90?: true
+  nb_rp_91_05?: true
+  nb_rp_post_06?: true
   _all?: true
 }
 
@@ -668,11 +718,6 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  age_bati_post06: number | null
-  age_bati_91_05: number | null
-  age_bati_46_90: number | null
-  age_bati_19_45: number | null
-  age_bati_pre_19: number | null
   under_4_sum_1968: number | null
   to_75_sum_1968: number | null
   over_75_sum_1968: number | null
@@ -688,15 +733,6 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   under_4_sum_1999: number | null
   to_75_sum_1999: number | null
   over_75_sum_1999: number | null
-  under_4_sum_2009: number | null
-  to_75_sum_2009: number | null
-  over_75_sum_2009: number | null
-  under_4_sum_2014: number | null
-  to_75_sum_2014: number | null
-  over_75_sum_2014: number | null
-  under_4_sum_2020: number | null
-  to_75_sum_2020: number | null
-  over_75_sum_2020: number | null
   tee_log: number | null
   tee_mob: number | null
   precarite_logement: number | null
@@ -711,6 +747,25 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   clc_4_humide: number | null
   clc_5_eau: number | null
   superf_choro: number | null
+  under_4_sum_2006: number | null
+  to_75_sum_2006: number | null
+  over_75_sum_2006: number | null
+  under_4_sum_2011: number | null
+  to_75_sum_2011: number | null
+  over_75_sum_2011: number | null
+  under_4_sum_2016: number | null
+  to_75_sum_2016: number | null
+  over_75_sum_2016: number | null
+  under_4_sum_2022: number | null
+  to_75_sum_2022: number | null
+  over_75_sum_2022: number | null
+  nb_rp_tot: number | null
+  nb_rp_pre_19: number | null
+  nb_rp_19_45: number | null
+  nb_rp_46_70: number | null
+  nb_rp_71_90: number | null
+  nb_rp_91_05: number | null
+  nb_rp_post_06: number | null
   _count: Databases_v2_confort_thermiqueCountAggregateOutputType | null
   _avg: Databases_v2_confort_thermiqueAvgAggregateOutputType | null
   _sum: Databases_v2_confort_thermiqueSumAggregateOutputType | null
@@ -749,11 +804,6 @@ export type databases_v2_confort_thermiqueWhereInput = {
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -769,15 +819,6 @@ export type databases_v2_confort_thermiqueWhereInput = {
   under_4_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   tee_log?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   tee_mob?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   precarite_logement?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -792,6 +833,25 @@ export type databases_v2_confort_thermiqueWhereInput = {
   clc_4_humide?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   clc_5_eau?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   superf_choro?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_tot?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_46_70?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_71_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_post_06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
 }
 
 export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
@@ -807,11 +867,6 @@ export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -827,15 +882,6 @@ export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
   under_4_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
   tee_log?: Prisma.SortOrderInput | Prisma.SortOrder
   tee_mob?: Prisma.SortOrderInput | Prisma.SortOrder
   precarite_logement?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -850,6 +896,25 @@ export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
   clc_4_humide?: Prisma.SortOrderInput | Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrderInput | Prisma.SortOrder
   superf_choro?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
@@ -868,11 +933,6 @@ export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -888,15 +948,6 @@ export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
   under_4_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1999?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2009?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2014?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2020?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   tee_log?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   tee_mob?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   precarite_logement?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
@@ -911,6 +962,25 @@ export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
   clc_4_humide?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   clc_5_eau?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   superf_choro?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2006?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2011?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2016?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2022?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_tot?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_pre_19?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_19_45?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_46_70?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_71_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_post_06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
 }, "index">
 
 export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
@@ -926,11 +996,6 @@ export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -946,15 +1011,6 @@ export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
   under_4_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrderInput | Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrderInput | Prisma.SortOrder
   tee_log?: Prisma.SortOrderInput | Prisma.SortOrder
   tee_mob?: Prisma.SortOrderInput | Prisma.SortOrder
   precarite_logement?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -969,6 +1025,25 @@ export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
   clc_4_humide?: Prisma.SortOrderInput | Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrderInput | Prisma.SortOrder
   superf_choro?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrderInput | Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.databases_v2_confort_thermiqueCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_confort_thermiqueAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_confort_thermiqueMaxOrderByAggregateInput
@@ -992,11 +1067,6 @@ export type databases_v2_confort_thermiqueScalarWhereWithAggregatesInput = {
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | string | null
-  age_bati_post06?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_91_05?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_46_90?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_19_45?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  age_bati_pre_19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   under_4_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1968?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
@@ -1012,15 +1082,6 @@ export type databases_v2_confort_thermiqueScalarWhereWithAggregatesInput = {
   under_4_sum_1999?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   to_75_sum_1999?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   over_75_sum_1999?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2009?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2009?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2009?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2014?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2014?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2014?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  under_4_sum_2020?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  to_75_sum_2020?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
-  over_75_sum_2020?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   tee_log?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   tee_mob?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   precarite_logement?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
@@ -1035,6 +1096,25 @@ export type databases_v2_confort_thermiqueScalarWhereWithAggregatesInput = {
   clc_4_humide?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   clc_5_eau?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   superf_choro?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2006?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2006?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2006?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2011?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2011?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2011?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2016?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2016?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2016?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  under_4_sum_2022?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  to_75_sum_2022?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  over_75_sum_2022?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_tot?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_pre_19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_19_45?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_46_70?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_71_90?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_91_05?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  nb_rp_post_06?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
 }
 
 export type databases_v2_confort_thermiqueCreateInput = {
@@ -1050,11 +1130,6 @@ export type databases_v2_confort_thermiqueCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1070,15 +1145,6 @@ export type databases_v2_confort_thermiqueCreateInput = {
   under_4_sum_1999?: number | null
   to_75_sum_1999?: number | null
   over_75_sum_1999?: number | null
-  under_4_sum_2009?: number | null
-  to_75_sum_2009?: number | null
-  over_75_sum_2009?: number | null
-  under_4_sum_2014?: number | null
-  to_75_sum_2014?: number | null
-  over_75_sum_2014?: number | null
-  under_4_sum_2020?: number | null
-  to_75_sum_2020?: number | null
-  over_75_sum_2020?: number | null
   tee_log?: number | null
   tee_mob?: number | null
   precarite_logement?: number | null
@@ -1093,6 +1159,25 @@ export type databases_v2_confort_thermiqueCreateInput = {
   clc_4_humide?: number | null
   clc_5_eau?: number | null
   superf_choro?: number | null
+  under_4_sum_2006?: number | null
+  to_75_sum_2006?: number | null
+  over_75_sum_2006?: number | null
+  under_4_sum_2011?: number | null
+  to_75_sum_2011?: number | null
+  over_75_sum_2011?: number | null
+  under_4_sum_2016?: number | null
+  to_75_sum_2016?: number | null
+  over_75_sum_2016?: number | null
+  under_4_sum_2022?: number | null
+  to_75_sum_2022?: number | null
+  over_75_sum_2022?: number | null
+  nb_rp_tot?: number | null
+  nb_rp_pre_19?: number | null
+  nb_rp_19_45?: number | null
+  nb_rp_46_70?: number | null
+  nb_rp_71_90?: number | null
+  nb_rp_91_05?: number | null
+  nb_rp_post_06?: number | null
 }
 
 export type databases_v2_confort_thermiqueUncheckedCreateInput = {
@@ -1108,11 +1193,6 @@ export type databases_v2_confort_thermiqueUncheckedCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1128,15 +1208,6 @@ export type databases_v2_confort_thermiqueUncheckedCreateInput = {
   under_4_sum_1999?: number | null
   to_75_sum_1999?: number | null
   over_75_sum_1999?: number | null
-  under_4_sum_2009?: number | null
-  to_75_sum_2009?: number | null
-  over_75_sum_2009?: number | null
-  under_4_sum_2014?: number | null
-  to_75_sum_2014?: number | null
-  over_75_sum_2014?: number | null
-  under_4_sum_2020?: number | null
-  to_75_sum_2020?: number | null
-  over_75_sum_2020?: number | null
   tee_log?: number | null
   tee_mob?: number | null
   precarite_logement?: number | null
@@ -1151,6 +1222,25 @@ export type databases_v2_confort_thermiqueUncheckedCreateInput = {
   clc_4_humide?: number | null
   clc_5_eau?: number | null
   superf_choro?: number | null
+  under_4_sum_2006?: number | null
+  to_75_sum_2006?: number | null
+  over_75_sum_2006?: number | null
+  under_4_sum_2011?: number | null
+  to_75_sum_2011?: number | null
+  over_75_sum_2011?: number | null
+  under_4_sum_2016?: number | null
+  to_75_sum_2016?: number | null
+  over_75_sum_2016?: number | null
+  under_4_sum_2022?: number | null
+  to_75_sum_2022?: number | null
+  over_75_sum_2022?: number | null
+  nb_rp_tot?: number | null
+  nb_rp_pre_19?: number | null
+  nb_rp_19_45?: number | null
+  nb_rp_46_70?: number | null
+  nb_rp_71_90?: number | null
+  nb_rp_91_05?: number | null
+  nb_rp_post_06?: number | null
 }
 
 export type databases_v2_confort_thermiqueUpdateInput = {
@@ -1166,11 +1256,6 @@ export type databases_v2_confort_thermiqueUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1186,15 +1271,6 @@ export type databases_v2_confort_thermiqueUpdateInput = {
   under_4_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_log?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_mob?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1209,6 +1285,25 @@ export type databases_v2_confort_thermiqueUpdateInput = {
   clc_4_humide?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   clc_5_eau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   superf_choro?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_tot?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_46_70?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
@@ -1224,11 +1319,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1244,15 +1334,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
   under_4_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_log?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_mob?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1267,6 +1348,25 @@ export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
   clc_4_humide?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   clc_5_eau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   superf_choro?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_tot?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_46_70?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_confort_thermiqueCreateManyInput = {
@@ -1282,11 +1382,6 @@ export type databases_v2_confort_thermiqueCreateManyInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  age_bati_post06?: number | null
-  age_bati_91_05?: number | null
-  age_bati_46_90?: number | null
-  age_bati_19_45?: number | null
-  age_bati_pre_19?: number | null
   under_4_sum_1968?: number | null
   to_75_sum_1968?: number | null
   over_75_sum_1968?: number | null
@@ -1302,15 +1397,6 @@ export type databases_v2_confort_thermiqueCreateManyInput = {
   under_4_sum_1999?: number | null
   to_75_sum_1999?: number | null
   over_75_sum_1999?: number | null
-  under_4_sum_2009?: number | null
-  to_75_sum_2009?: number | null
-  over_75_sum_2009?: number | null
-  under_4_sum_2014?: number | null
-  to_75_sum_2014?: number | null
-  over_75_sum_2014?: number | null
-  under_4_sum_2020?: number | null
-  to_75_sum_2020?: number | null
-  over_75_sum_2020?: number | null
   tee_log?: number | null
   tee_mob?: number | null
   precarite_logement?: number | null
@@ -1325,6 +1411,25 @@ export type databases_v2_confort_thermiqueCreateManyInput = {
   clc_4_humide?: number | null
   clc_5_eau?: number | null
   superf_choro?: number | null
+  under_4_sum_2006?: number | null
+  to_75_sum_2006?: number | null
+  over_75_sum_2006?: number | null
+  under_4_sum_2011?: number | null
+  to_75_sum_2011?: number | null
+  over_75_sum_2011?: number | null
+  under_4_sum_2016?: number | null
+  to_75_sum_2016?: number | null
+  over_75_sum_2016?: number | null
+  under_4_sum_2022?: number | null
+  to_75_sum_2022?: number | null
+  over_75_sum_2022?: number | null
+  nb_rp_tot?: number | null
+  nb_rp_pre_19?: number | null
+  nb_rp_19_45?: number | null
+  nb_rp_46_70?: number | null
+  nb_rp_71_90?: number | null
+  nb_rp_91_05?: number | null
+  nb_rp_post_06?: number | null
 }
 
 export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
@@ -1340,11 +1445,6 @@ export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1360,15 +1460,6 @@ export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
   under_4_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_log?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_mob?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1383,6 +1474,25 @@ export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
   clc_4_humide?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   clc_5_eau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   superf_choro?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_tot?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_46_70?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
@@ -1398,11 +1508,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  age_bati_post06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_46_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  age_bati_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   under_4_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1968?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1418,15 +1523,6 @@ export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
   under_4_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   to_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   over_75_sum_1999?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2009?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2014?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  under_4_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  to_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  over_75_sum_2020?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_log?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   tee_mob?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
@@ -1441,6 +1537,25 @@ export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
   clc_4_humide?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   clc_5_eau?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   superf_choro?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2006?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2011?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2016?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  under_4_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  to_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  over_75_sum_2022?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_tot?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_pre_19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_19_45?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_46_70?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
@@ -1456,11 +1571,6 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1476,15 +1586,6 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
   under_4_sum_1999?: Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrder
   tee_log?: Prisma.SortOrder
   tee_mob?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
@@ -1499,16 +1600,30 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
   clc_4_humide?: Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrder
   superf_choro?: Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1524,15 +1639,6 @@ export type databases_v2_confort_thermiqueAvgOrderByAggregateInput = {
   under_4_sum_1999?: Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrder
   tee_log?: Prisma.SortOrder
   tee_mob?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
@@ -1547,6 +1653,25 @@ export type databases_v2_confort_thermiqueAvgOrderByAggregateInput = {
   clc_4_humide?: Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrder
   superf_choro?: Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueMaxOrderByAggregateInput = {
@@ -1562,11 +1687,6 @@ export type databases_v2_confort_thermiqueMaxOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1582,15 +1702,6 @@ export type databases_v2_confort_thermiqueMaxOrderByAggregateInput = {
   under_4_sum_1999?: Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrder
   tee_log?: Prisma.SortOrder
   tee_mob?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
@@ -1605,6 +1716,25 @@ export type databases_v2_confort_thermiqueMaxOrderByAggregateInput = {
   clc_4_humide?: Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrder
   superf_choro?: Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
@@ -1620,11 +1750,6 @@ export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1640,15 +1765,6 @@ export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
   under_4_sum_1999?: Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrder
   tee_log?: Prisma.SortOrder
   tee_mob?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
@@ -1663,16 +1779,30 @@ export type databases_v2_confort_thermiqueMinOrderByAggregateInput = {
   clc_4_humide?: Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrder
   superf_choro?: Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  age_bati_post06?: Prisma.SortOrder
-  age_bati_91_05?: Prisma.SortOrder
-  age_bati_46_90?: Prisma.SortOrder
-  age_bati_19_45?: Prisma.SortOrder
-  age_bati_pre_19?: Prisma.SortOrder
   under_4_sum_1968?: Prisma.SortOrder
   to_75_sum_1968?: Prisma.SortOrder
   over_75_sum_1968?: Prisma.SortOrder
@@ -1688,15 +1818,6 @@ export type databases_v2_confort_thermiqueSumOrderByAggregateInput = {
   under_4_sum_1999?: Prisma.SortOrder
   to_75_sum_1999?: Prisma.SortOrder
   over_75_sum_1999?: Prisma.SortOrder
-  under_4_sum_2009?: Prisma.SortOrder
-  to_75_sum_2009?: Prisma.SortOrder
-  over_75_sum_2009?: Prisma.SortOrder
-  under_4_sum_2014?: Prisma.SortOrder
-  to_75_sum_2014?: Prisma.SortOrder
-  over_75_sum_2014?: Prisma.SortOrder
-  under_4_sum_2020?: Prisma.SortOrder
-  to_75_sum_2020?: Prisma.SortOrder
-  over_75_sum_2020?: Prisma.SortOrder
   tee_log?: Prisma.SortOrder
   tee_mob?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
@@ -1711,6 +1832,25 @@ export type databases_v2_confort_thermiqueSumOrderByAggregateInput = {
   clc_4_humide?: Prisma.SortOrder
   clc_5_eau?: Prisma.SortOrder
   superf_choro?: Prisma.SortOrder
+  under_4_sum_2006?: Prisma.SortOrder
+  to_75_sum_2006?: Prisma.SortOrder
+  over_75_sum_2006?: Prisma.SortOrder
+  under_4_sum_2011?: Prisma.SortOrder
+  to_75_sum_2011?: Prisma.SortOrder
+  over_75_sum_2011?: Prisma.SortOrder
+  under_4_sum_2016?: Prisma.SortOrder
+  to_75_sum_2016?: Prisma.SortOrder
+  over_75_sum_2016?: Prisma.SortOrder
+  under_4_sum_2022?: Prisma.SortOrder
+  to_75_sum_2022?: Prisma.SortOrder
+  over_75_sum_2022?: Prisma.SortOrder
+  nb_rp_tot?: Prisma.SortOrder
+  nb_rp_pre_19?: Prisma.SortOrder
+  nb_rp_19_45?: Prisma.SortOrder
+  nb_rp_46_70?: Prisma.SortOrder
+  nb_rp_71_90?: Prisma.SortOrder
+  nb_rp_91_05?: Prisma.SortOrder
+  nb_rp_post_06?: Prisma.SortOrder
 }
 
 
@@ -1728,11 +1868,6 @@ export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.E
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -1748,15 +1883,6 @@ export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.E
   under_4_sum_1999?: boolean
   to_75_sum_1999?: boolean
   over_75_sum_1999?: boolean
-  under_4_sum_2009?: boolean
-  to_75_sum_2009?: boolean
-  over_75_sum_2009?: boolean
-  under_4_sum_2014?: boolean
-  to_75_sum_2014?: boolean
-  over_75_sum_2014?: boolean
-  under_4_sum_2020?: boolean
-  to_75_sum_2020?: boolean
-  over_75_sum_2020?: boolean
   tee_log?: boolean
   tee_mob?: boolean
   precarite_logement?: boolean
@@ -1771,6 +1897,25 @@ export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.E
   clc_4_humide?: boolean
   clc_5_eau?: boolean
   superf_choro?: boolean
+  under_4_sum_2006?: boolean
+  to_75_sum_2006?: boolean
+  over_75_sum_2006?: boolean
+  under_4_sum_2011?: boolean
+  to_75_sum_2011?: boolean
+  over_75_sum_2011?: boolean
+  under_4_sum_2016?: boolean
+  to_75_sum_2016?: boolean
+  over_75_sum_2016?: boolean
+  under_4_sum_2022?: boolean
+  to_75_sum_2022?: boolean
+  over_75_sum_2022?: boolean
+  nb_rp_tot?: boolean
+  nb_rp_pre_19?: boolean
+  nb_rp_19_45?: boolean
+  nb_rp_46_70?: boolean
+  nb_rp_71_90?: boolean
+  nb_rp_91_05?: boolean
+  nb_rp_post_06?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1786,11 +1931,6 @@ export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -1806,15 +1946,6 @@ export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs exte
   under_4_sum_1999?: boolean
   to_75_sum_1999?: boolean
   over_75_sum_1999?: boolean
-  under_4_sum_2009?: boolean
-  to_75_sum_2009?: boolean
-  over_75_sum_2009?: boolean
-  under_4_sum_2014?: boolean
-  to_75_sum_2014?: boolean
-  over_75_sum_2014?: boolean
-  under_4_sum_2020?: boolean
-  to_75_sum_2020?: boolean
-  over_75_sum_2020?: boolean
   tee_log?: boolean
   tee_mob?: boolean
   precarite_logement?: boolean
@@ -1829,6 +1960,25 @@ export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs exte
   clc_4_humide?: boolean
   clc_5_eau?: boolean
   superf_choro?: boolean
+  under_4_sum_2006?: boolean
+  to_75_sum_2006?: boolean
+  over_75_sum_2006?: boolean
+  under_4_sum_2011?: boolean
+  to_75_sum_2011?: boolean
+  over_75_sum_2011?: boolean
+  under_4_sum_2016?: boolean
+  to_75_sum_2016?: boolean
+  over_75_sum_2016?: boolean
+  under_4_sum_2022?: boolean
+  to_75_sum_2022?: boolean
+  over_75_sum_2022?: boolean
+  nb_rp_tot?: boolean
+  nb_rp_pre_19?: boolean
+  nb_rp_19_45?: boolean
+  nb_rp_46_70?: boolean
+  nb_rp_71_90?: boolean
+  nb_rp_91_05?: boolean
+  nb_rp_post_06?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1844,11 +1994,6 @@ export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -1864,15 +2009,6 @@ export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs exte
   under_4_sum_1999?: boolean
   to_75_sum_1999?: boolean
   over_75_sum_1999?: boolean
-  under_4_sum_2009?: boolean
-  to_75_sum_2009?: boolean
-  over_75_sum_2009?: boolean
-  under_4_sum_2014?: boolean
-  to_75_sum_2014?: boolean
-  over_75_sum_2014?: boolean
-  under_4_sum_2020?: boolean
-  to_75_sum_2020?: boolean
-  over_75_sum_2020?: boolean
   tee_log?: boolean
   tee_mob?: boolean
   precarite_logement?: boolean
@@ -1887,6 +2023,25 @@ export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs exte
   clc_4_humide?: boolean
   clc_5_eau?: boolean
   superf_choro?: boolean
+  under_4_sum_2006?: boolean
+  to_75_sum_2006?: boolean
+  over_75_sum_2006?: boolean
+  under_4_sum_2011?: boolean
+  to_75_sum_2011?: boolean
+  over_75_sum_2011?: boolean
+  under_4_sum_2016?: boolean
+  to_75_sum_2016?: boolean
+  over_75_sum_2016?: boolean
+  under_4_sum_2022?: boolean
+  to_75_sum_2022?: boolean
+  over_75_sum_2022?: boolean
+  nb_rp_tot?: boolean
+  nb_rp_pre_19?: boolean
+  nb_rp_19_45?: boolean
+  nb_rp_46_70?: boolean
+  nb_rp_71_90?: boolean
+  nb_rp_91_05?: boolean
+  nb_rp_post_06?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectScalar = {
@@ -1902,11 +2057,6 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  age_bati_post06?: boolean
-  age_bati_91_05?: boolean
-  age_bati_46_90?: boolean
-  age_bati_19_45?: boolean
-  age_bati_pre_19?: boolean
   under_4_sum_1968?: boolean
   to_75_sum_1968?: boolean
   over_75_sum_1968?: boolean
@@ -1922,15 +2072,6 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   under_4_sum_1999?: boolean
   to_75_sum_1999?: boolean
   over_75_sum_1999?: boolean
-  under_4_sum_2009?: boolean
-  to_75_sum_2009?: boolean
-  over_75_sum_2009?: boolean
-  under_4_sum_2014?: boolean
-  to_75_sum_2014?: boolean
-  over_75_sum_2014?: boolean
-  under_4_sum_2020?: boolean
-  to_75_sum_2020?: boolean
-  over_75_sum_2020?: boolean
   tee_log?: boolean
   tee_mob?: boolean
   precarite_logement?: boolean
@@ -1945,9 +2086,28 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   clc_4_humide?: boolean
   clc_5_eau?: boolean
   superf_choro?: boolean
+  under_4_sum_2006?: boolean
+  to_75_sum_2006?: boolean
+  over_75_sum_2006?: boolean
+  under_4_sum_2011?: boolean
+  to_75_sum_2011?: boolean
+  over_75_sum_2011?: boolean
+  under_4_sum_2016?: boolean
+  to_75_sum_2016?: boolean
+  over_75_sum_2016?: boolean
+  under_4_sum_2022?: boolean
+  to_75_sum_2022?: boolean
+  over_75_sum_2022?: boolean
+  nb_rp_tot?: boolean
+  nb_rp_pre_19?: boolean
+  nb_rp_19_45?: boolean
+  nb_rp_46_70?: boolean
+  nb_rp_71_90?: boolean
+  nb_rp_91_05?: boolean
+  nb_rp_post_06?: boolean
 }
 
-export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "age_bati_post06" | "age_bati_91_05" | "age_bati_46_90" | "age_bati_19_45" | "age_bati_pre_19" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "under_4_sum_2009" | "to_75_sum_2009" | "over_75_sum_2009" | "under_4_sum_2014" | "to_75_sum_2014" | "over_75_sum_2014" | "under_4_sum_2020" | "to_75_sum_2020" | "over_75_sum_2020" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro", ExtArgs["result"]["databases_v2_confort_thermique"]>
+export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro" | "under_4_sum_2006" | "to_75_sum_2006" | "over_75_sum_2006" | "under_4_sum_2011" | "to_75_sum_2011" | "over_75_sum_2011" | "under_4_sum_2016" | "to_75_sum_2016" | "over_75_sum_2016" | "under_4_sum_2022" | "to_75_sum_2022" | "over_75_sum_2022" | "nb_rp_tot" | "nb_rp_pre_19" | "nb_rp_19_45" | "nb_rp_46_70" | "nb_rp_71_90" | "nb_rp_91_05" | "nb_rp_post_06", ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_confort_thermique"
@@ -1965,11 +2125,6 @@ export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    age_bati_post06: number | null
-    age_bati_91_05: number | null
-    age_bati_46_90: number | null
-    age_bati_19_45: number | null
-    age_bati_pre_19: number | null
     under_4_sum_1968: number | null
     to_75_sum_1968: number | null
     over_75_sum_1968: number | null
@@ -1985,15 +2140,6 @@ export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types
     under_4_sum_1999: number | null
     to_75_sum_1999: number | null
     over_75_sum_1999: number | null
-    under_4_sum_2009: number | null
-    to_75_sum_2009: number | null
-    over_75_sum_2009: number | null
-    under_4_sum_2014: number | null
-    to_75_sum_2014: number | null
-    over_75_sum_2014: number | null
-    under_4_sum_2020: number | null
-    to_75_sum_2020: number | null
-    over_75_sum_2020: number | null
     tee_log: number | null
     tee_mob: number | null
     precarite_logement: number | null
@@ -2008,6 +2154,25 @@ export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types
     clc_4_humide: number | null
     clc_5_eau: number | null
     superf_choro: number | null
+    under_4_sum_2006: number | null
+    to_75_sum_2006: number | null
+    over_75_sum_2006: number | null
+    under_4_sum_2011: number | null
+    to_75_sum_2011: number | null
+    over_75_sum_2011: number | null
+    under_4_sum_2016: number | null
+    to_75_sum_2016: number | null
+    over_75_sum_2016: number | null
+    under_4_sum_2022: number | null
+    to_75_sum_2022: number | null
+    over_75_sum_2022: number | null
+    nb_rp_tot: number | null
+    nb_rp_pre_19: number | null
+    nb_rp_19_45: number | null
+    nb_rp_46_70: number | null
+    nb_rp_71_90: number | null
+    nb_rp_91_05: number | null
+    nb_rp_post_06: number | null
   }, ExtArgs["result"]["databases_v2_confort_thermique"]>
   composites: {}
 }
@@ -2443,11 +2608,6 @@ export interface databases_v2_confort_thermiqueFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
   readonly code_pnr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_confort_thermique", 'String'>
-  readonly age_bati_post06: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_91_05: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_46_90: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_19_45: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly age_bati_pre_19: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly under_4_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly to_75_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly over_75_sum_1968: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
@@ -2463,15 +2623,6 @@ export interface databases_v2_confort_thermiqueFieldRefs {
   readonly under_4_sum_1999: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly to_75_sum_1999: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly over_75_sum_1999: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly under_4_sum_2009: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly to_75_sum_2009: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly over_75_sum_2009: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly under_4_sum_2014: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly to_75_sum_2014: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly over_75_sum_2014: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly under_4_sum_2020: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly to_75_sum_2020: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
-  readonly over_75_sum_2020: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly tee_log: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly tee_mob: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly precarite_logement: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
@@ -2486,6 +2637,25 @@ export interface databases_v2_confort_thermiqueFieldRefs {
   readonly clc_4_humide: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly clc_5_eau: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly superf_choro: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly under_4_sum_2006: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly to_75_sum_2006: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly over_75_sum_2006: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly under_4_sum_2011: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly to_75_sum_2011: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly over_75_sum_2011: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly under_4_sum_2016: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly to_75_sum_2016: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly over_75_sum_2016: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly under_4_sum_2022: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly to_75_sum_2022: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly over_75_sum_2022: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_tot: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_pre_19: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_19_45: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_46_70: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_71_90: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_91_05: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly nb_rp_post_06: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
 }
     
 

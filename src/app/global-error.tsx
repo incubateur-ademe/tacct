@@ -1,20 +1,11 @@
 'use client';
 
-import * as Sentry from '@sentry/nextjs';
 import NextError from 'next/error';
-import { useEffect } from 'react';
 
-export default function GlobalError({
-  error
-}: {
-  error: Error & { digest?: string };
-}) {
-  useEffect(() => {
-    Sentry.captureException(error);
-  }, [error]);
+export default function GlobalError() {
 
   return (
-    <html lang="fr" title="Erreur site Facili-TACCT">
+    <html lang="fr" title="Erreur site TACCT">
       <body>
         <NextError statusCode={0} />
       </body>

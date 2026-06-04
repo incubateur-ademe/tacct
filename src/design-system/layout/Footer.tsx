@@ -1,6 +1,5 @@
 "use client";
 
-import { headerFooterDisplayItem } from "@codegouvfr/react-dsfr/Display";
 import Image from "next/image";
 
 export default function AppFooter() {
@@ -9,6 +8,7 @@ export default function AppFooter() {
       className="fr-footer !mt-0 !pt-0 bg-white relative"
       role="contentinfo"
       id="footer"
+      tabIndex={-1}
       style={{ zIndex: 999, boxShadow: "none" }}
     >
       <hr className="pb-6" />
@@ -39,12 +39,12 @@ export default function AppFooter() {
           <div className="fr-footer__content">
             {/* Description */}
             <p className="fr-footer__content-desc">
-              Facili-TACCT est un service porté par l’Agence de la transition écologique
+              TACCT est un service porté par l’Agence de la transition écologique
               (ADEME), en partenariat avec Météo France.
               <br></br>
-              Notre mission : Accompagner les territoires pour une meilleure appropriation
-              de leur vulnérabilité aux impacts du changement climatique.
-              Facili-TACCT met à disposition les données climatiques du patch 4°C,
+              Notre mission : Aider chaque territoire à initier ou renforcer sa démarche 
+              d’adaptation au changement climatique.
+              TACCT met à disposition les données climatiques du patch 4°C,
               mesure 23 du plan national d’adaptation au changement climatique (PNACC 3).
             </p>
             {/* Liste de liens */}
@@ -53,7 +53,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener noreferrer external"
                   title="Agir pour la transition - nouvelle fenêtre"
                   href="https://agirpourlatransition.ademe.fr"
                 >
@@ -64,7 +64,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener noreferrer external"
                   title="Data Gouv - nouvelle fenêtre"
                   href="https://data.gouv.fr"
                 >
@@ -75,7 +75,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener noreferrer external"
                   title="ADEME - nouvelle fenêtre"
                   href="https://www.ademe.fr"
                 >
@@ -86,7 +86,7 @@ export default function AppFooter() {
                 <a
                   className="fr-footer__content-link"
                   target="_blank"
-                  rel="noopener external"
+                  rel="noopener noreferrer external"
                   title="Beta Gouv - nouvelle fenêtre"
                   href="https://beta.gouv.fr"
                 >
@@ -99,13 +99,18 @@ export default function AppFooter() {
         <div className="fr-footer__bottom">
           <ul className="fr-footer__bottom-list">
             <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="https://tally.so/r/mJGELz" rel="noopener external" target="_blank">
+              <a className="fr-footer__bottom-link" href="https://tally.so/r/mJGELz" rel="noopener noreferrer external" target="_blank">
                 Contactez-nous
               </a>
             </li>
             <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/accessibilite">
                 Accessibilité : non conforme
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/plan-du-site">
+                Plan du site
               </a>
             </li>
             <li className="fr-footer__bottom-item">
@@ -129,11 +134,6 @@ export default function AppFooter() {
               </a>
             </li>
             {/* <li className="fr-footer__bottom-item">
-          <a className="fr-footer__bottom-link" href="/stats" target="_self">
-          Statistiques
-          </a>
-        </li> */}
-            <li className="fr-footer__bottom-item">
               <button {...headerFooterDisplayItem.buttonProps}
                 className="fr-footer__bottom-link"
                 id='fr-theme-modal-control-button'
@@ -152,7 +152,7 @@ export default function AppFooter() {
           `}</style>
                 {headerFooterDisplayItem.text}
               </button>
-            </li>
+            </li> */}
           </ul>
           <div className="fr-footer__bottom-copy">
             <p>
@@ -160,7 +160,7 @@ export default function AppFooter() {
               proposés sous{" "}
               <a
                 href="https://github.com/etalab/licence-ouverte/blob/master/LO.md"
-                rel="noopener external"
+                rel="noopener noreferrer external"
                 title="Voir la licence Etalab 2.0 - nouvelle fenêtre"
                 target="_blank"
               >

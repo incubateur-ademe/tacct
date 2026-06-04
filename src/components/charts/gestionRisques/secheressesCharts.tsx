@@ -1,16 +1,16 @@
 import SubTabs from '@/components/ui/SubTabs';
-import { SecheressesParsed } from '@/lib/postgres/models';
-import { useSearchParams } from 'next/navigation';
+import { transformerRestrictionsParAnneeUnique, transformerRestrictionsSaisons } from '@/lib/charts/gestionRisques';
+import { SecheressesPasseesModel } from '@/lib/postgres/models';
 import styles from './gestionRisquesCharts.module.scss';
 import { SecheressesBarChart } from './secheressesBarChart';
-import SecheressesPieChart from './secheressesPieChart';
-
+import { SecheressesSaisonsBarChart } from './secheressesSaisonsBarChart';
 
 type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
-  secheresses: SecheressesParsed[];
+  secheresses: SecheressesPasseesModel[];
 };
+
 
 const SecheressesCharts = (props: Props) => {
   const {
@@ -18,22 +18,28 @@ const SecheressesCharts = (props: Props) => {
     setDatavizTab,
     secheresses,
   } = props;
-  const searchParams = useSearchParams();
-  const type = searchParams.get('type')!;
+
+  const toutesLesRestrictions = secheresses.flatMap(s =>
+    s.restrictions
+      ? JSON.parse(s.restrictions.replace(/None/g, 'null').replace(/'/g, '"'))
+      : []
+  );
+  const restrictionsParAnnee = transformerRestrictionsParAnneeUnique(toutesLesRestrictions);
+  const restrictionsParSaison = transformerRestrictionsSaisons(toutesLesRestrictions);
 
   return (
     <div className={styles.dataWrapper}>
       <div className={styles.graphTabsWrapper}>
         <SubTabs
-          data={['Répartition', 'Évolution']}
+          data={['Intensité', 'Saisonnalité']}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
       </div>
-      {datavizTab === 'Répartition' ? (
-        <SecheressesPieChart secheresses={secheresses} />
-      ) : datavizTab === 'Évolution' ? (
-        <SecheressesBarChart secheresses={secheresses} />
+      {datavizTab === 'Intensité' ? (
+        <SecheressesBarChart restrictionsParAnnee={restrictionsParAnnee} />
+      ) : datavizTab === 'Saisonnalité' ? (
+        <SecheressesSaisonsBarChart restrictionsParSaison={restrictionsParSaison} />
       ) : (
         ''
       )}

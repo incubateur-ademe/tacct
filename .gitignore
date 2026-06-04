@@ -55,3 +55,11 @@ next-env.d.ts
 
 /.specstory
 desktop.ini
+
+# tests
+/tests-results
+/test-results
+playwright-report
+
+# dossiers
+.vscode

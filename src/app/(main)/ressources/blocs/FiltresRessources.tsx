@@ -1,7 +1,7 @@
 "use client";
 
 import ReinitialiserIcon from "@/assets/icons/refresh_icon_green.png";
-import { MultiSelect, MultiSelectResponsive } from "@/components/MultiSelect";
+import { MultiSelect, MultiSelectResponsive, SingleSelect, SingleSelectResponsive } from "@/components/MultiSelect";
 import { BoutonPrimaireClassic, BoutonSecondaireClassic } from "@/design-system/base/Boutons";
 import { TagsSimples } from "@/design-system/base/Tags";
 import { Body, H2 } from "@/design-system/base/Textes";
@@ -16,13 +16,15 @@ interface FiltresRessourcesProps {
   onSelectOptions: (filterTitre: string) => (event: SelectChangeEvent<string[]>) => void;
   onReset: () => void;
   onRemoveFilter: (filterTitre: string, value: string) => void;
+  onSelectFormatRessource: (format: string) => void;
 }
 
 export const FiltresRessources = ({
   selectedFilters,
   onSelectOptions,
   onReset,
-  onRemoveFilter
+  onRemoveFilter,
+  onSelectFormatRessource
 }: FiltresRessourcesProps) => {
   const showTerritoireFilter = selectedFilters['Format de ressource']?.includes("Retour d'expérience");
 
@@ -40,6 +42,19 @@ export const FiltresRessources = ({
         {FiltresOptions.map(filter => {
           if (filter.titre === 'Territoire' && !showTerritoireFilter) {
             return null;
+          }
+          if (filter.titre === 'Format de ressource') {
+            return (
+              <div key={filter.titre} className={styles.filtreItem}>
+                <Body>{filter.titre}</Body>
+                <SingleSelect
+                  options={filter.options}
+                  handleSelectOption={onSelectFormatRessource}
+                  selectedValue={selectedFilters[filter.titre]?.[0] || ''}
+                  label="Sélectionnez une option"
+                />
+              </div>
+            );
           }
           return (
             <div key={filter.titre} className={styles.filtreItem}>
@@ -99,6 +114,7 @@ interface ModalFiltresRessourcesProps {
   onClose: () => void;
   articles: ToutesRessources[];
   onRemoveFilter: (filterTitre: string, value: string) => void;
+  onSelectFormatRessource: (format: string) => void;
 }
 
 export const ModalFiltresRessources = ({
@@ -108,7 +124,8 @@ export const ModalFiltresRessources = ({
   onReset,
   onClose,
   articles,
-  onRemoveFilter
+  onRemoveFilter,
+  onSelectFormatRessource
 }: ModalFiltresRessourcesProps) => {
   const showTerritoireFilter = selectedFilters['Format de ressource']?.includes("Retour d'expérience");
 
@@ -156,6 +173,17 @@ export const ModalFiltresRessources = ({
             {FiltresOptions.map(filtre => {
               if (filtre.titre === 'Territoire' && !showTerritoireFilter) {
                 return null;
+              }
+              if (filtre.titre === 'Format de ressource') {
+                return (
+                  <div key={filtre.titre} className={styles.filtreItem}>
+                    <SingleSelectResponsive
+                      handleSelectOption={onSelectFormatRessource}
+                      selectedValue={selectedFilters[filtre.titre]?.[0] || ''}
+                      filtre={filtre}
+                    />
+                  </div>
+                );
               }
               return (
                 <div key={filtre.titre} className={styles.filtreItem}>

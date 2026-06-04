@@ -89,7 +89,7 @@ export const consommationEspacesNafDoc = [
   },
   {
     Variable: 'Source',
-    Description: 'CEREMA, avril 2024'
+    Description: 'CEREMA, avril 2024 (consultée en décembre 2024)'
   },
   {
     Variable: 'Documentation complète',
@@ -163,7 +163,7 @@ export const surfacesEnBioDoc = [
   {
     Nomenclature: 'Source',
     Description:
-      'Agence Bio, Service de la Statistique et de la Prospective (SSP - Ministère de l’agriculture) dans Catalogue DiDo (Indicateurs territoriaux de développement durable - ITDD) - AGRESTE, 2020'
+      'Donnée produite par l’AGRESTE, 2020 et extraite du catalogue DiDo (consultée en juillet 2025)'
   },
   {
     Nomenclature: 'Documentation complète',
@@ -180,5 +180,29 @@ export const aot40Doc = [
   {
     '': 'Documentation complète',
     '': 'https://www.geodair.fr/reglementation'
+  }
+];
+
+export const secheressesPasseesDoc = [
+  {
+    Nomenclature: 'SOU',
+    Description: 'Eaux souterraines'
+  },
+  {
+    Nomenclature: 'AEP',
+    Description: 'Eaux potables'
+  },
+  {
+    Nomenclature: 'SUP',
+    Description: 'Eaux superficielles'
+  },
+  {
+    Nomenclature: '',
+    Description: ''
+  },
+  {
+    Nomenclature: 'Niveaux de restriction',
+    Description:
+      'Les restrictions ont 4 niveaux de sévérité croissante : 1) vigilance, 2) alerte, 3) alerte renforcée, 4) crise.'
   }
 ];

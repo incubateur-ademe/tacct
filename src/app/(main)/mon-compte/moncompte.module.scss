@@ -1,0 +1,40 @@
+.moncompteWrapper {
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+        margin: 0;
+    }
+    .bloc {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 5rem;
+        gap: 1rem;
+        border-right: 1px solid #e7e5e5;
+        align-items: center;
+        text-align: center;
+
+        @media screen and (max-width: 768px) {
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.moncompteContact {
+    margin: 3rem 4rem 8rem;
+    background-color: #d3edeb;
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    @media screen and (max-width: 768px) {
+        margin: 2rem 1rem 4rem;
+        padding: 1.5rem;
+    }
+    .moncompteContactHeader {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+}

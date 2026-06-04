@@ -1,788 +1,968 @@
 generator client {
-    provider      = "prisma-client"
-    output        = "../src/generated/client"
-    binaryTargets = ["native", "debian-openssl-3.0.x"]
-    engineType    = "library"
+  provider      = "prisma-client"
+  output        = "../src/generated/client"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-    provider = "postgres"
-    schemas  = ["databases_v2", "postgis_v2", "public"]
-}
-
-model sandbox_users {
-    username   String   @db.VarChar(128)
-    pk         Int      @id @default(autoincrement())
-    password   String   @db.VarChar(512)
-    created_at DateTime @db.Timestamptz(6)
-
-    @@schema("public")
+  provider = "postgres"
+  schemas  = ["databases_v2", "postgis_v2", "public"]
 }
 
 model databases_v2_agriculture {
-    index                Int     @id(map: "agriculture_cleaned_pkey")
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Float
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    part_irr_SAU_2020    Float?
-    otex_12_postes       String
+  index                Int     @id(map: "agriculture_cleaned_pkey")
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  part_irr_SAU_2020    Float?
+  otex_12_postes       String
 
-    @@index([code_geographique], map: "agriculture_cleaned_communes_index")
-    @@index([epci], map: "agriculture_cleaned_epci_index")
-    @@index([code_geographique], map: "agriculture_communes_index")
-    @@index([departement], map: "agriculture_departement_index")
-    @@index([epci], map: "agriculture_epci_index")
-    @@index([ept], map: "agriculture_ept_index")
-    @@index([libelle_petr], map: "agriculture_petr_index")
-    @@index([code_pnr], map: "agriculture_pnr_index")
-    @@index([index], map: "ix_agriculture_cleaned_index")
-    @@map("agriculture")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "agriculture_cleaned_communes_index")
+  @@index([epci], map: "agriculture_cleaned_epci_index")
+  @@index([code_geographique], map: "agriculture_communes_index")
+  @@index([departement], map: "agriculture_departement_index")
+  @@index([epci], map: "agriculture_epci_index")
+  @@index([ept], map: "agriculture_ept_index")
+  @@index([libelle_petr], map: "agriculture_petr_index")
+  @@index([code_pnr], map: "agriculture_pnr_index")
+  @@index([index], map: "ix_agriculture_cleaned_index")
+  @@map("agriculture")
+  @@schema("databases_v2")
 }
 
 model databases_v2_agriculture_bio {
-    index              Int     @id
-    epci               String
-    libelle_epci       String
-    VARIABLE           String
-    LIBELLE_SOUS_CHAMP String?
-    surface_2023       Float?
-    surface_2022       Float?
-    surface_2021       Float?
-    surface_2020       Float?
-    surface_2019       Float?
-    surface_2018       Float?
-    surface_2017       Float?
-    surface_2016       Float?
-    surface_2015       Float?
-    surface_2014       Float?
-    surface_2013       Float?
-    surface_2012       Float?
-    surface_2011       Float?
-    surface_2010       Float?
-    surface_2009       Float?
-    surface_2008       Float?
-    nombre_2023        Float?
-    nombre_2022        Float?
-    nombre_2021        Float?
-    nombre_2020        Float?
-    nombre_2019        Float?
-    nombre_2018        Float?
-    nombre_2017        Float?
-    nombre_2016        Float?
-    nombre_2015        Float?
-    nombre_2014        Float?
-    nombre_2013        Float?
-    nombre_2012        Float?
-    nombre_2011        Float?
-    nombre_2010        Float?
-    nombre_2009        Float?
-    nombre_2008        Float?
+  index              Int     @id
+  epci               String
+  libelle_epci       String
+  VARIABLE           String
+  LIBELLE_SOUS_CHAMP String?
+  surface_2024       Float?
+  surface_2023       Float?
+  surface_2022       Float?
+  surface_2021       Float?
+  surface_2020       Float?
+  surface_2019       Float?
+  surface_2018       Float?
+  surface_2017       Float?
+  surface_2016       Float?
+  surface_2015       Float?
+  surface_2014       Float?
+  surface_2013       Float?
+  surface_2012       Float?
+  surface_2011       Float?
+  surface_2010       Float?
+  surface_2009       Float?
+  surface_2008       Float?
+  nombre_2024        Float?
+  nombre_2023        Float?
+  nombre_2022        Float?
+  nombre_2021        Float?
+  nombre_2020        Float?
+  nombre_2019        Float?
+  nombre_2018        Float?
+  nombre_2017        Float?
+  nombre_2016        Float?
+  nombre_2015        Float?
+  nombre_2014        Float?
+  nombre_2013        Float?
+  nombre_2012        Float?
+  nombre_2011        Float?
+  nombre_2010        Float?
+  nombre_2009        Float?
+  nombre_2008        Float?
 
-    @@index([index], map: "ix_agriculture_bio_index")
-    @@map("agriculture_bio")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_agriculture_bio_index")
+  @@index([epci], map: "agriculture_bio_epci_index")
+  @@map("agriculture_bio")
+  @@schema("databases_v2")
 }
 
 model databases_v2_aot_40 {
-    index               Int    @id
-    nom_site            String @map("nom site")
-    type_d_implantation String @map("type d'implantation")
-    valeur_brute        Float  @map("valeur brute")
-    Latitude            Float
-    Longitude           Float
+  index               Int    @id
+  nom_site            String @map("nom site")
+  type_d_implantation String @map("type d'implantation")
+  valeur_brute        Float  @map("valeur brute")
+  Latitude            Float
+  Longitude           Float
 
-    @@index([index], map: "ix_aot_40_index")
-    @@map("aot_40")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_aot_40_index")
+  @@map("aot_40")
+  @@schema("databases_v2")
 }
 
 model databases_v2_arretes_catnat {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Float
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    lib_risque_jo        String
-    dat_deb              String
-    dat_fin              String
-    dat_pub_arrete       String
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  lib_risque_jo        String
+  dat_deb              String
+  dat_fin              String
+  dat_pub_arrete       String
 
-    @@index([code_geographique], map: "arretes_catnat_communes_index")
-    @@index([departement], map: "arretes_catnat_departement_index")
-    @@index([epci], map: "arretes_catnat_epci_index")
-    @@index([libelle_petr], map: "arretes_catnat_petr_index")
-    @@index([code_pnr], map: "arretes_catnat_pnr_index")
-    @@index([index], map: "ix_arretes_catnat_index")
-    @@map("arretes_catnat")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "arretes_catnat_communes_index")
+  @@index([departement], map: "arretes_catnat_departement_index")
+  @@index([epci], map: "arretes_catnat_epci_index")
+  @@index([libelle_petr], map: "arretes_catnat_petr_index")
+  @@index([code_pnr], map: "arretes_catnat_pnr_index")
+  @@index([index], map: "ix_arretes_catnat_index")
+  @@map("arretes_catnat")
+  @@schema("databases_v2")
 }
 
 model databases_v2_atlas_biodiversite {
-    index                      Int     @id
-    code_geographique          String
-    libelle_geographique       String
-    epci                       String
-    libelle_epci               String
-    departement                String
-    libelle_departement        String
-    region                     Float
-    ept                        String?
-    libelle_petr               String?
-    code_pnr                   String?
-    libelle_pnr                String?
-    nom                        String?
-    structure_porteuse         String?
-    type_de_structure_porteuse String?
-    annee_debut                Float?
-    avancement                 String?
+  index                      Int     @id
+  code_geographique          String
+  libelle_geographique       String
+  epci                       String
+  libelle_epci               String
+  departement                String
+  libelle_departement        String
+  region                     Float
+  ept                        String?
+  libelle_petr               String?
+  code_pnr                   String?
+  libelle_pnr                String?
+  nom                        String?
+  structure_porteuse         String?
+  type_de_structure_porteuse String?
+  annee_debut                Float?
+  avancement                 String?
 
-    @@index([code_geographique], map: "atlas_biodiversite_communes_index")
-    @@index([departement], map: "atlas_biodiversite_departement_index")
-    @@index([epci], map: "atlas_biodiversite_epci_index")
-    @@index([ept], map: "atlas_biodiversite_ept_index")
-    @@index([libelle_petr], map: "atlas_biodiversite_petr_index")
-    @@index([code_pnr], map: "atlas_biodiversite_pnr_index")
-    @@index([index], map: "ix_atlas_biodiversite_index")
-    @@map("atlas_biodiversite")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "atlas_biodiversite_communes_index")
+  @@index([departement], map: "atlas_biodiversite_departement_index")
+  @@index([epci], map: "atlas_biodiversite_epci_index")
+  @@index([ept], map: "atlas_biodiversite_ept_index")
+  @@index([libelle_petr], map: "atlas_biodiversite_petr_index")
+  @@index([code_pnr], map: "atlas_biodiversite_pnr_index")
+  @@index([index], map: "ix_atlas_biodiversite_index")
+  @@map("atlas_biodiversite")
+  @@schema("databases_v2")
 }
 
 model databases_v2_collectivites_searchbar {
-    index                Int     @id
-    code_geographique    String?
-    libelle_geographique String?
-    epci                 String?
-    libelle_epci         String?
-    departement          String?
-    libelle_departement  String?
-    region               String?
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    search_code          String?
-    search_libelle       String
+  index                Int     @id
+  code_geographique    String?
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  libelle_departement  String?
+  region               String?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  search_code          String?
+  search_libelle       String
 
-    @@index([search_code], map: "collectivites_searchbar_search_code_index")
-    @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
-    @@index([index], map: "ix_collectivites_searchbar_index")
-    @@map("collectivites_searchbar")
-    @@schema("databases_v2")
+  @@index([search_code], map: "collectivites_searchbar_search_code_index")
+  @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
+  @@index([index], map: "ix_collectivites_searchbar_index")
+  @@map("collectivites_searchbar")
+  @@schema("databases_v2")
 }
 
 model databases_v2_confort_thermique {
-    index                   Int     @id
-    code_geographique       String
-    libelle_geographique    String
-    epci                    String
-    libelle_epci            String
-    departement             String
-    libelle_departement     String
-    region                  Int
-    ept                     String?
-    libelle_petr            String?
-    code_pnr                String?
-    libelle_pnr             String?
-    age_bati_post06         Float?
-    age_bati_91_05          Float?
-    age_bati_46_90          Float?
-    age_bati_19_45          Float?
-    age_bati_pre_19         Float?
-    under_4_sum_1968        Float?
-    to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
-    over_75_sum_1968        Float?
-    under_4_sum_1975        Float?
-    to_75_sum_1975          Float?  @map("4_to_75_sum_1975")
-    over_75_sum_1975        Float?
-    under_4_sum_1982        Float?
-    to_75_sum_1982          Float?  @map("4_to_75_sum_1982")
-    over_75_sum_1982        Float?
-    under_4_sum_1990        Float?
-    to_75_sum_1990          Float?  @map("4_to_75_sum_1990")
-    over_75_sum_1990        Float?
-    under_4_sum_1999        Float?
-    to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
-    over_75_sum_1999        Float?
-    under_4_sum_2009        Float?
-    to_75_sum_2009          Float?  @map("4_to_75_sum_2009")
-    over_75_sum_2009        Float?
-    under_4_sum_2014        Float?
-    to_75_sum_2014          Float?  @map("4_to_75_sum_2014")
-    over_75_sum_2014        Float?
-    under_4_sum_2020        Float?
-    to_75_sum_2020          Float?  @map("4_to_75_sum_2020")
-    over_75_sum_2020        Float?
-    tee_log                 Float?
-    tee_mob                 Float?
-    precarite_logement      Float?
-    NA5AZ_sum               Float?
-    NA5BE_sum               Float?
-    NA5FZ_sum               Float?
-    NA5GU_sum               Float?
-    NA5OQ_sum               Float?
-    clc_1_artificialise     Float?
-    clc_2_agricole          Float?
-    clc_3_foret_semiNaturel Float?
-    clc_4_humide            Float?
-    clc_5_eau               Float?
-    superf_choro            Float?
+  index                   Int     @id
+  code_geographique       String
+  libelle_geographique    String
+  epci                    String
+  libelle_epci            String
+  departement             String
+  libelle_departement     String
+  region                  Int
+  ept                     String?
+  libelle_petr            String?
+  code_pnr                String?
+  libelle_pnr             String?
+  under_4_sum_1968        Float?
+  to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
+  over_75_sum_1968        Float?
+  under_4_sum_1975        Float?
+  to_75_sum_1975          Float?  @map("4_to_75_sum_1975")
+  over_75_sum_1975        Float?
+  under_4_sum_1982        Float?
+  to_75_sum_1982          Float?  @map("4_to_75_sum_1982")
+  over_75_sum_1982        Float?
+  under_4_sum_1990        Float?
+  to_75_sum_1990          Float?  @map("4_to_75_sum_1990")
+  over_75_sum_1990        Float?
+  under_4_sum_1999        Float?
+  to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
+  over_75_sum_1999        Float?
+  tee_log                 Float?
+  tee_mob                 Float?
+  precarite_logement      Float?
+  NA5AZ_sum               Float?
+  NA5BE_sum               Float?
+  NA5FZ_sum               Float?
+  NA5GU_sum               Float?
+  NA5OQ_sum               Float?
+  clc_1_artificialise     Float?
+  clc_2_agricole          Float?
+  clc_3_foret_semiNaturel Float?
+  clc_4_humide            Float?
+  clc_5_eau               Float?
+  superf_choro            Float?
+  under_4_sum_2006        Float?
+  to_75_sum_2006          Float?  @map("4_to_75_sum_2006")
+  over_75_sum_2006        Float?
+  under_4_sum_2011        Float?
+  to_75_sum_2011          Float?  @map("4_to_75_sum_2011")
+  over_75_sum_2011        Float?
+  under_4_sum_2016        Float?
+  to_75_sum_2016          Float?  @map("4_to_75_sum_2016")
+  over_75_sum_2016        Float?
+  under_4_sum_2022        Float?
+  to_75_sum_2022          Float?  @map("4_to_75_sum_2022")
+  over_75_sum_2022        Float?
+  nb_rp_tot               Float?
+  nb_rp_pre_19            Float?
+  nb_rp_19_45             Float?
+  nb_rp_46_70             Float?
+  nb_rp_71_90             Float?
+  nb_rp_91_05             Float?
+  nb_rp_post_06           Float?
 
-    @@index([code_geographique], map: "confort_thermique_communes_index")
-    @@index([departement], map: "confort_thermique_departement_index")
-    @@index([epci], map: "confort_thermique_epci_index")
-    @@index([ept], map: "confort_thermique_ept_index")
-    @@index([libelle_petr], map: "confort_thermique_petr_index")
-    @@index([code_pnr], map: "confort_thermique_pnr_index")
-    @@index([index], map: "ix_confort_thermique_index")
-    @@map("confort_thermique")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "confort_thermique_communes_index")
+  @@index([departement], map: "confort_thermique_departement_index")
+  @@index([epci], map: "confort_thermique_epci_index")
+  @@index([ept], map: "confort_thermique_ept_index")
+  @@index([libelle_petr], map: "confort_thermique_petr_index")
+  @@index([code_pnr], map: "confort_thermique_pnr_index")
+  @@index([index], map: "ix_confort_thermique_index")
+  @@map("confort_thermique")
+  @@schema("databases_v2")
 }
 
 model databases_v2_consommation_espaces_naf {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Float
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    naf09art10           Float?
-    art09act10           Float?
-    art09hab10           Float?
-    art09mix10           Float?
-    art09rou10           Float?
-    art09fer10           Float?
-    art09inc10           Float?
-    naf10art11           Float?
-    art10act11           Float?
-    art10hab11           Float?
-    art10mix11           Float?
-    art10rou11           Float?
-    art10fer11           Float?
-    art10inc11           Float?
-    naf11art12           Float?
-    art11act12           Float?
-    art11hab12           Float?
-    art11mix12           Float?
-    art11rou12           Float?
-    art11fer12           Float?
-    art11inc12           Float?
-    naf12art13           Float?
-    art12act13           Float?
-    art12hab13           Float?
-    art12mix13           Float?
-    art12rou13           Float?
-    art12fer13           Float?
-    art12inc13           Float?
-    naf13art14           Float?
-    art13act14           Float?
-    art13hab14           Float?
-    art13mix14           Float?
-    art13rou14           Float?
-    art13fer14           Float?
-    art13inc14           Float?
-    naf14art15           Float?
-    art14act15           Float?
-    art14hab15           Float?
-    art14mix15           Float?
-    art14rou15           Float?
-    art14fer15           Float?
-    art14inc15           Float?
-    naf15art16           Float?
-    art15act16           Float?
-    art15hab16           Float?
-    art15mix16           Float?
-    art15rou16           Float?
-    art15fer16           Float?
-    art15inc16           Float?
-    naf16art17           Float?
-    art16act17           Float?
-    art16hab17           Float?
-    art16mix17           Float?
-    art16rou17           Float?
-    art16fer17           Float?
-    art16inc17           Float?
-    naf17art18           Float?
-    art17act18           Float?
-    art17hab18           Float?
-    art17mix18           Float?
-    art17rou18           Float?
-    art17fer18           Float?
-    art17inc18           Float?
-    naf18art19           Float?
-    art18act19           Float?
-    art18hab19           Float?
-    art18mix19           Float?
-    art18rou19           Float?
-    art18fer19           Float?
-    art18inc19           Float?
-    naf19art20           Float?
-    art19act20           Float?
-    art19hab20           Float?
-    art19mix20           Float?
-    art19rou20           Float?
-    art19fer20           Float?
-    art19inc20           Float?
-    naf20art21           Float?
-    art20act21           Float?
-    art20hab21           Float?
-    art20mix21           Float?
-    art20rou21           Float?
-    art20fer21           Float?
-    art20inc21           Float?
-    naf21art22           Float?
-    art21act22           Float?
-    art21hab22           Float?
-    art21mix22           Float?
-    art21rou22           Float?
-    art21fer22           Float?
-    art21inc22           Float?
-    naf22art23           Float?
-    art22act23           Float?
-    art22hab23           Float?
-    art22mix23           Float?
-    art22rou23           Float?
-    art22fer23           Float?
-    art22inc23           Float?
-    naf09art23           Float?
-    art09act23           Float?
-    art09hab23           Float?
-    art09mix23           Float?
-    art09inc23           Float?
-    art09rou23           Float?
-    art09fer23           Float?
-    artcom0923           Float?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  naf09art10           Float?
+  art09act10           Float?
+  art09hab10           Float?
+  art09mix10           Float?
+  art09rou10           Float?
+  art09fer10           Float?
+  art09inc10           Float?
+  naf10art11           Float?
+  art10act11           Float?
+  art10hab11           Float?
+  art10mix11           Float?
+  art10rou11           Float?
+  art10fer11           Float?
+  art10inc11           Float?
+  naf11art12           Float?
+  art11act12           Float?
+  art11hab12           Float?
+  art11mix12           Float?
+  art11rou12           Float?
+  art11fer12           Float?
+  art11inc12           Float?
+  naf12art13           Float?
+  art12act13           Float?
+  art12hab13           Float?
+  art12mix13           Float?
+  art12rou13           Float?
+  art12fer13           Float?
+  art12inc13           Float?
+  naf13art14           Float?
+  art13act14           Float?
+  art13hab14           Float?
+  art13mix14           Float?
+  art13rou14           Float?
+  art13fer14           Float?
+  art13inc14           Float?
+  naf14art15           Float?
+  art14act15           Float?
+  art14hab15           Float?
+  art14mix15           Float?
+  art14rou15           Float?
+  art14fer15           Float?
+  art14inc15           Float?
+  naf15art16           Float?
+  art15act16           Float?
+  art15hab16           Float?
+  art15mix16           Float?
+  art15rou16           Float?
+  art15fer16           Float?
+  art15inc16           Float?
+  naf16art17           Float?
+  art16act17           Float?
+  art16hab17           Float?
+  art16mix17           Float?
+  art16rou17           Float?
+  art16fer17           Float?
+  art16inc17           Float?
+  naf17art18           Float?
+  art17act18           Float?
+  art17hab18           Float?
+  art17mix18           Float?
+  art17rou18           Float?
+  art17fer18           Float?
+  art17inc18           Float?
+  naf18art19           Float?
+  art18act19           Float?
+  art18hab19           Float?
+  art18mix19           Float?
+  art18rou19           Float?
+  art18fer19           Float?
+  art18inc19           Float?
+  naf19art20           Float?
+  art19act20           Float?
+  art19hab20           Float?
+  art19mix20           Float?
+  art19rou20           Float?
+  art19fer20           Float?
+  art19inc20           Float?
+  naf20art21           Float?
+  art20act21           Float?
+  art20hab21           Float?
+  art20mix21           Float?
+  art20rou21           Float?
+  art20fer21           Float?
+  art20inc21           Float?
+  naf21art22           Float?
+  art21act22           Float?
+  art21hab22           Float?
+  art21mix22           Float?
+  art21rou22           Float?
+  art21fer22           Float?
+  art21inc22           Float?
+  naf22art23           Float?
+  art22act23           Float?
+  art22hab23           Float?
+  art22mix23           Float?
+  art22rou23           Float?
+  art22fer23           Float?
+  art22inc23           Float?
+  naf09art23           Float?
+  art09act23           Float?
+  art09hab23           Float?
+  art09mix23           Float?
+  art09inc23           Float?
+  art09rou23           Float?
+  art09fer23           Float?
+  artcom0923           Float?
 
-    @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
-    @@index([epci], map: "consommation_espaces_naf_epci_index")
-    @@index([index], map: "ix_consommation_espaces_naf_index")
-    @@map("consommation_espaces_naf")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
+  @@index([epci], map: "consommation_espaces_naf_epci_index")
+  @@index([index], map: "ix_consommation_espaces_naf_index")
+  @@map("consommation_espaces_naf")
+  @@schema("databases_v2")
 }
 
 model databases_v2_export_cours_d_eau {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Float
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    cours_d_eau          String
-    etat_ecologique      String?
-    longueur             Float
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  cours_d_eau          String
+  etat_ecologique      String?
+  longueur             Float
 
-    @@index([code_geographique], map: "export_cours_d_eau_communes_index")
-    @@index([index], map: "ix_export_cours_d_eau_index")
-    @@map("export_cours_d_eau")
-    @@schema("databases_v2")
-}
-
-model databases_v2_feux_foret {
-    index                                 Int     @id
-    code_geographique                     String
-    libelle_geographique                  String
-    epci                                  String
-    libelle_epci                          String
-    departement                           String
-    libelle_departement                   String
-    region                                Float
-    ept                                   String?
-    libelle_petr                          String?
-    code_pnr                              String?
-    libelle_pnr                           String?
-    annee                                 Float
-    nature                                String?
-    surface_parcourue                     Float
-    surface_foret                         Float?
-    surface_maquis_garrigues              Float?
-    autres_surfaces_naturelles_hors_foret Float?
-    surfaces_agricoles                    Float?
-    surfaces_non_boisees                  Float?
-    surfaces_non_boisees_artificialisees  Float?
-    surfaces_non_boisees_naturelles       Float?
-    surface_autres_terres_boisees         Float?
-    autres_surfaces                       Float?
-
-    @@index([code_geographique], map: "feux_foret_communes_index")
-    @@index([departement], map: "feux_foret_departement_index")
-    @@index([epci], map: "feux_foret_epci_index")
-    @@index([ept], map: "feux_foret_ept_index")
-    @@index([libelle_petr], map: "feux_foret_petr_index")
-    @@index([code_pnr], map: "feux_foret_pnr_index")
-    @@index([index], map: "ix_feux_foret_index")
-    @@map("feux_foret")
-    @@schema("databases_v2")
+  @@index([code_geographique], map: "export_cours_d_eau_communes_index")
+  @@index([index], map: "ix_export_cours_d_eau_index")
+  @@map("export_cours_d_eau")
+  @@schema("databases_v2")
 }
 
 model databases_v2_lcz_couverture {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String?
-    epci                 String?
-    libelle_epci         String?
-    departement          String?
-    libelle_departement  String?
-    region               Float?
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    couverture_lcz       Float
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  libelle_departement  String?
+  region               Float?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  couverture_lcz       Float
 
-    @@index([index], map: "ix_lcz_couverture_index")
-    @@index([code_geographique], map: "lcz_couverture_communes_index")
-    @@index([departement], map: "lcz_couverture_departement_index")
-    @@index([epci], map: "lcz_couverture_epci_index")
-    @@index([ept], map: "lcz_couverture_ept_index")
-    @@index([libelle_petr], map: "lcz_couverture_petr_index")
-    @@index([code_pnr], map: "lcz_couverture_pnr_index")
-    @@map("lcz_couverture")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_lcz_couverture_index")
+  @@index([code_geographique], map: "lcz_couverture_communes_index")
+  @@index([departement], map: "lcz_couverture_departement_index")
+  @@index([epci], map: "lcz_couverture_epci_index")
+  @@index([ept], map: "lcz_couverture_ept_index")
+  @@index([libelle_petr], map: "lcz_couverture_petr_index")
+  @@index([code_pnr], map: "lcz_couverture_pnr_index")
+  @@map("lcz_couverture")
+  @@schema("databases_v2")
 }
 
 model databases_v2_patch4c {
-    index                 Int    @id
-    code_geographique     String
-    niveaux_marins        Float?
-    feux_foret            Float
-    secheresse_sols       Float
-    fortes_precipitations Float
-    fortes_chaleurs       Float
+  index                 Int     @id
+  code_geographique     String
+  niveaux_marins        Float?
+  feux_foret            Float?
+  secheresse_sols       Float
+  fortes_precipitations Float
+  fortes_chaleurs       Float
+  libelle_geographique  String?
+  epci                  String?
+  libelle_epci          String?
+  departement           String?
+  libelle_departement   String?
+  region                Float?
+  ept                   String?
+  libelle_petr          String?
+  code_pnr              String?
+  libelle_pnr           String?
 
-    @@index([index], map: "ix_patch4c_index")
-    @@index([code_geographique], map: "patch4c_communes_index")
-    @@map("patch4c")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_patch4c_index")
+  @@index([code_geographique], map: "patch4c_communes_index")
+  @@map("patch4c")
+  @@schema("databases_v2")
 }
 
 model databases_v2_prelevements_eau {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Int
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
-    libelle_sous_champ   String?
-    A2020                String?
-    A2019                String?
-    A2018                String?
-    A2017                String?
-    A2016                String?
-    A2015                String?
-    A2014                String?
-    A2013                String?
-    A2012                String?
-    A2011                String?
-    A2010                String?
-    A2009                String?
-    A2008                String?
-    sous_champ           String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Int
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  libelle_sous_champ   String?
+  A2020                String?
+  A2019                String?
+  A2018                String?
+  A2017                String?
+  A2016                String?
+  A2015                String?
+  A2014                String?
+  A2013                String?
+  A2012                String?
+  A2011                String?
+  A2010                String?
+  A2009                String?
+  A2008                String?
+  sous_champ           String?
 
-    @@index([index], map: "ix_prelevements_eau_index")
-    @@index([code_geographique], map: "prelevements_eau_communes_index")
-    @@index([departement], map: "prelevements_eau_departement_index")
-    @@index([epci], map: "prelevements_eau_epci_index")
-    @@index([ept], map: "prelevements_eau_ept_index")
-    @@index([libelle_petr], map: "prelevements_eau_petr_index")
-    @@index([code_pnr], map: "prelevements_eau_pnr_index")
-    @@map("prelevements_eau")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_prelevements_eau_index")
+  @@index([code_geographique], map: "prelevements_eau_communes_index")
+  @@index([departement], map: "prelevements_eau_departement_index")
+  @@index([epci], map: "prelevements_eau_epci_index")
+  @@index([ept], map: "prelevements_eau_ept_index")
+  @@index([libelle_petr], map: "prelevements_eau_petr_index")
+  @@index([code_pnr], map: "prelevements_eau_pnr_index")
+  @@map("prelevements_eau")
+  @@schema("databases_v2")
 }
 
 model databases_v2_qualite_sites_baignade {
-    index    Int     @id
-    DEP_NOM  String
-    DEP_NUM  String
-    TYPE     String
-    COMMUNE  String
-    POINT    String
-    LONG     Float
-    LAT      Float
-    QEB_2013 String?
-    QEB_2014 String?
-    QEB_2015 String?
-    QEB_2016 String?
-    QEB_2017 String?
-    QEB_2018 String?
-    QEB_2019 String?
-    QEB_2020 String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  nom_site             String
+  latitude             Float
+  longitude            Float
+  type_eau_norm        String
+  statut_donnees       String
+  qualite              String
 
-    @@index([index], map: "ix_qualite_sites_baignade_index")
-    @@map("qualite_sites_baignade")
-    @@schema("databases_v2")
+  @@map("qualite_sites_baignade")
+  @@schema("databases_v2")
 }
 
 model databases_v2_rga {
-    index                                    Int     @id
-    code_geographique                        String
-    libelle_geographique                     String
-    epci                                     String
-    libelle_epci                             String
-    departement                              String
-    libelle_departement                      String
-    region                                   Float
-    ept                                      String?
-    libelle_petr                             String?
-    code_pnr                                 String?
-    libelle_pnr                              String?
-    nb_logement                              Int
-    nb_logement_alea_moyen_fort              Int
-    nb_logement_alea_faible                  Int
-    nb_logement_sans_alea                    Int
-    nb_logement_alea_moyen_fort_avant_1920   Int
-    nb_logement_alea_moyen_fort_1920_1945    Int
-    nb_logement_alea_moyen_fort_1945_1975    Int
-    nb_logement_alea_moyen_fort_apres_1975   Int
-    nb_logement_alea_faible_avant_1920       Int
-    nb_logement_alea_faible_1920_1945        Int
-    nb_logement_alea_faible_1945_1975        Int
-    nb_logement_alea_faible_apres_1975       Int
-    surface_commune                          Int
-    surface_alea_faible_commune              Int
-    surface_alea_moyen_fort_commune          Int
-    part_logement_alea_moyen_fort_avant_1920 Int
-    part_logement_alea_moyen_fort_1920_1945  Int
-    part_logement_alea_moyen_fort_1945_1975  Int
-    part_logement_alea_moyen_fort_apres_1975 Int
-    part_logement_alea_faible_avant_1920     Int
-    part_logement_alea_faible_1920_1945      Int
-    part_logement_alea_faible_1945_1975      Int
-    part_logement_alea_faible_apres_1975     Int
-    part_alea_faible_commune                 Int
-    part_alea_moyen_fort_commune             Int
+  index                                    Int     @id
+  code_geographique                        String
+  libelle_geographique                     String
+  epci                                     String
+  libelle_epci                             String
+  departement                              String
+  libelle_departement                      String
+  region                                   Float
+  ept                                      String?
+  libelle_petr                             String?
+  code_pnr                                 String?
+  libelle_pnr                              String?
+  nb_logement                              Int
+  nb_logement_alea_moyen_fort              Int
+  nb_logement_alea_faible                  Int
+  nb_logement_sans_alea                    Int
+  nb_logement_alea_moyen_fort_avant_1920   Int
+  nb_logement_alea_moyen_fort_1920_1945    Int
+  nb_logement_alea_moyen_fort_1945_1975    Int
+  nb_logement_alea_moyen_fort_apres_1975   Int
+  nb_logement_alea_faible_avant_1920       Int
+  nb_logement_alea_faible_1920_1945        Int
+  nb_logement_alea_faible_1945_1975        Int
+  nb_logement_alea_faible_apres_1975       Int
+  surface_commune                          Int
+  surface_alea_faible_commune              Int
+  surface_alea_moyen_fort_commune          Int
+  part_logement_alea_moyen_fort_avant_1920 Int
+  part_logement_alea_moyen_fort_1920_1945  Int
+  part_logement_alea_moyen_fort_1945_1975  Int
+  part_logement_alea_moyen_fort_apres_1975 Int
+  part_logement_alea_faible_avant_1920     Int
+  part_logement_alea_faible_1920_1945      Int
+  part_logement_alea_faible_1945_1975      Int
+  part_logement_alea_faible_apres_1975     Int
+  part_alea_faible_commune                 Int
+  part_alea_moyen_fort_commune             Int
 
-    @@index([index], map: "ix_rga_index")
-    @@index([code_geographique], map: "rga_communes_index")
-    @@index([departement], map: "rga_departement_index")
-    @@index([epci], map: "rga_epci_index")
-    @@index([ept], map: "rga_ept_index")
-    @@index([libelle_petr], map: "rga_petr_index")
-    @@index([code_pnr], map: "rga_pnr_index")
-    @@map("rga")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_rga_index")
+  @@index([code_geographique], map: "rga_communes_index")
+  @@index([departement], map: "rga_departement_index")
+  @@index([epci], map: "rga_epci_index")
+  @@index([ept], map: "rga_ept_index")
+  @@index([libelle_petr], map: "rga_petr_index")
+  @@index([code_pnr], map: "rga_pnr_index")
+  @@map("rga")
+  @@schema("databases_v2")
 }
 
 model databases_v2_surfaces_agricoles {
-    index                                                  Int    @id
-    epci                                                   String
-    exploitation_sau                                       Float
-    exploitation_sau_terres_arables                        Float
-    exploitation_sau_terres_arables_cereales               Float
-    exploitation_sau_terres_arables_oleagineux             Float
-    exploitation_sau_terres_arables_fourrageres            Float
-    exploitation_sau_terres_arables_tubercules             Float
-    exploitation_sau_terres_arables_legumes_melons_fraises Float
-    exploitation_sau_terres_arables_fleurs                 Float
-    exploitation_sau_terres_arables_autres                 Float
-    exploitation_sau_cultures_permanentes                  Float
-    exploitation_sau_cultures_permanentes_vigne            Float
-    exploitation_sau_cultures_permanentes_fruits           Float
-    exploitation_sau_cultures_permanentes_autres           Float
-    exploitation_sau_herbe                                 Float
-    exploitation_sau_herbe_prairies_productives            Float
-    exploitation_sau_herbe_prairies_peu_productives        Float
-    exploitation_sau_herbe_subventions                     Float
-    exploitation_sau_herbe_bois_patures                    Float
-    exploitation_sau_jardins                               Float
-    superficie_sau                                         Float
-    superficie_sau_terres_arables                          Float
-    superficie_sau_terres_arables_cereales                 Float
-    superficie_sau_terres_arables_oleagineux               Float
-    superficie_sau_terres_arables_fourrageres              Float
-    superficie_sau_terres_arables_tubercules               Float
-    superficie_sau_terres_arables_legumes_melons_fraises   Float
-    superficie_sau_terres_arables_fleurs                   Float
-    superficie_sau_terres_arables_autres                   Float
-    superficie_sau_cultures_permanentes                    Float
-    superficie_sau_cultures_permanentes_vigne              Float
-    superficie_sau_cultures_permanentes_fruits             Float
-    superficie_sau_cultures_permanentes_autres             Float
-    superficie_sau_herbe                                   Float
-    superficie_sau_herbe_prairies_productives              Float
-    superficie_sau_herbe_prairies_peu_productives          Float
-    superficie_sau_herbe_subventions                       Float
-    superficie_sau_herbe_bois_patures                      Float
-    superficie_sau_jardins                                 Float
+  index                                                  Int    @id
+  epci                                                   String
+  exploitation_sau                                       Float?
+  exploitation_sau_terres_arables                        Float?
+  exploitation_sau_terres_arables_cereales               Float?
+  exploitation_sau_terres_arables_oleagineux             Float?
+  exploitation_sau_terres_arables_fourrageres            Float?
+  exploitation_sau_terres_arables_tubercules             Float?
+  exploitation_sau_terres_arables_legumes_melons_fraises Float?
+  exploitation_sau_terres_arables_fleurs                 Float?
+  exploitation_sau_terres_arables_autres                 Float?
+  exploitation_sau_cultures_permanentes                  Float?
+  exploitation_sau_cultures_permanentes_vigne            Float?
+  exploitation_sau_cultures_permanentes_fruits           Float?
+  exploitation_sau_cultures_permanentes_autres           Float?
+  exploitation_sau_herbe                                 Float?
+  exploitation_sau_herbe_prairies_productives            Float?
+  exploitation_sau_herbe_prairies_peu_productives        Float?
+  exploitation_sau_herbe_subventions                     Float?
+  exploitation_sau_herbe_bois_patures                    Float?
+  exploitation_sau_jardins                               Float?
+  superficie_sau                                         Float?
+  superficie_sau_terres_arables                          Float?
+  superficie_sau_terres_arables_cereales                 Float?
+  superficie_sau_terres_arables_oleagineux               Float?
+  superficie_sau_terres_arables_fourrageres              Float?
+  superficie_sau_terres_arables_tubercules               Float?
+  superficie_sau_terres_arables_legumes_melons_fraises   Float?
+  superficie_sau_terres_arables_fleurs                   Float?
+  superficie_sau_terres_arables_autres                   Float?
+  superficie_sau_cultures_permanentes                    Float?
+  superficie_sau_cultures_permanentes_vigne              Float?
+  superficie_sau_cultures_permanentes_fruits             Float?
+  superficie_sau_cultures_permanentes_autres             Float?
+  superficie_sau_herbe                                   Float?
+  superficie_sau_herbe_prairies_productives              Float?
+  superficie_sau_herbe_prairies_peu_productives          Float?
+  superficie_sau_herbe_subventions                       Float?
+  superficie_sau_herbe_bois_patures                      Float?
+  superficie_sau_jardins                                 Float?
 
-    @@index([index], map: "ix_surfaces_agricoles_index")
-    @@index([epci], map: "surfaces_agricoles_epci_index")
-    @@map("surfaces_agricoles")
-    @@schema("databases_v2")
-}
-
-model databases_v2_surfaces_protegees {
-    index                Int     @id
-    code_geographique    String
-    PNC                  String?
-    RAMSAR               String?
-    PNR                  String?
-    PNP                  String?
-    FOR_PRO              String?
-    ZZZ                  String?
-    ZNIEFF2              String?
-    ZNIEFF1              String?
-    RNR                  String?
-    TOU_PRO              String?
-    NATURA               String?
-    ZPS                  String?
-    SIC                  String?
-    CELRL                String?
-    BIO                  String?
-    APB                  String?
-    RN                   String?
-    RBFD                 String?
-    RNCFS                String?
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    region               Float
-
-    @@index([index], map: "ix_surfaces_protegees_index")
-    @@map("surfaces_protegees")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_surfaces_agricoles_index")
+  @@index([epci], map: "surfaces_agricoles_epci_index")
+  @@map("surfaces_agricoles")
+  @@schema("databases_v2")
 }
 
 model databases_v2_table_commune {
-    index                          Int     @id
-    code_geographique              String
-    libelle_geographique           String
-    epci                           String
-    libelle_epci                   String
-    departement                    String
-    libelle_departement            String
-    region                         Int
-    ept                            String?
-    libelle_petr                   String?
-    code_pnr                       String?
-    libelle_pnr                    String?
-    atlas_biodiversite_nom         String?
-    atlas_biodiversite_annee_debut String?
-    atlas_biodiversite_avancement  String?
-    type_touristique               String?
-    otex_12_postes                 String?
-    part_irr_sau_2020              String?
-    agriculture_part_over_55       String?
-    couverture_lcz                 String?
+  index                               Int      @id
+  code_geographique                   String
+  libelle_geographique                String
+  epci                                String
+  libelle_epci                        String
+  departement                         String
+  libelle_departement                 String
+  region                              Int
+  ept                                 String?
+  libelle_petr                        String?
+  code_pnr                            String?
+  libelle_pnr                         String?
+  atlas_biodiversite_nom              String?
+  atlas_biodiversite_annee_debut      String?
+  atlas_biodiversite_avancement       String?
+  type_touristique                    String?
+  otex_12_postes                      String?
+  part_irr_sau_2020                   String?
+  agriculture_part_over_55            String?
+  couverture_lcz                      String?
+  aires_appellations_controlees_nom   String[]
+  aires_appellations_controlees_signe String[]
 
-    @@index([index], map: "ix_table_commune_index")
-    @@index([code_geographique], map: "table_commune_communes_index")
-    @@index([departement], map: "table_commune_departement_index")
-    @@index([epci], map: "table_commune_epci_index")
-    @@index([ept], map: "table_commune_ept_index")
-    @@index([libelle_petr], map: "table_commune_petr_index")
-    @@index([code_pnr], map: "table_commune_pnr_index")
-    @@map("table_commune")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_table_commune_index")
+  @@index([code_geographique], map: "table_commune_communes_index")
+  @@index([departement], map: "table_commune_departement_index")
+  @@index([epci], map: "table_commune_epci_index")
+  @@index([ept], map: "table_commune_ept_index")
+  @@index([libelle_petr], map: "table_commune_petr_index")
+  @@index([code_pnr], map: "table_commune_pnr_index")
+  @@map("table_commune")
+  @@schema("databases_v2")
 }
 
 model databases_v2_table_territoires {
-    index                Int     @id
-    code_geographique    String
-    libelle_geographique String
-    epci                 String
-    libelle_epci         String
-    departement          String
-    libelle_departement  String
-    region               Int
-    ept                  String?
-    libelle_petr         String?
-    code_pnr             String?
-    libelle_pnr          String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Int
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
 
-    @@index([index], map: "ix_table_territoires_index")
-    @@map("table_territoires")
-    @@schema("databases_v2")
+  @@index([index], map: "ix_table_territoires_index")
+  @@map("table_territoires")
+  @@schema("databases_v2")
 }
 
 model postgis_v2_communes_drom {
-    pk                   Int                      @id @default(autoincrement())
-    code_geographique    String?                  @db.VarChar
-    libelle_geographique String?                  @db.VarChar
-    epci                 String?                  @db.VarChar
-    libelle_epci         String?                  @db.VarChar
-    departement          String?                  @db.VarChar
-    libelle_departement  String?                  @db.VarChar
-    region               Int?
-    ept                  String?                  @db.VarChar
-    libelle_petr         String?                  @db.VarChar
-    code_pnr             String?                  @db.VarChar
-    libelle_pnr          String?                  @db.VarChar
-    coordinates          String?                  @db.VarChar
-    geometry             Unsupported("geometry")?
-    precarite_logement   Float?
-    surface              Float?
+  pk                   Int                      @id @default(autoincrement())
+  code_geographique    String?                  @db.VarChar
+  libelle_geographique String?                  @db.VarChar
+  epci                 String?                  @db.VarChar
+  libelle_epci         String?                  @db.VarChar
+  departement          String?                  @db.VarChar
+  libelle_departement  String?                  @db.VarChar
+  region               Int?
+  ept                  String?                  @db.VarChar
+  libelle_petr         String?                  @db.VarChar
+  code_pnr             String?                  @db.VarChar
+  libelle_pnr          String?                  @db.VarChar
+  coordinates          String?                  @db.VarChar
+  geometry             Unsupported("geometry")?
+  precarite_logement   Float?
+  surface              Float?
 
-    @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
-    @@map("communes_drom")
-    @@schema("postgis_v2")
+  @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@map("communes_drom")
+  @@schema("postgis_v2")
 }
 
 model postgis_v2_erosion_cotiere {
-    pk         Int                     @id @default(autoincrement())
-    taux       Float
-    duree      Float
-    tdc_ancien Int
-    tdc_rec    Int
-    geometry   Unsupported("geometry")
+  pk         Int                     @id @default(autoincrement())
+  taux       Float
+  duree      Float
+  tdc_ancien Int
+  tdc_rec    Int
+  geometry   Unsupported("geometry")
 
-    @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
-    @@map("erosion_cotiere")
-    @@schema("postgis_v2")
+  @@index([geometry], map: "erosion_cotiere_geometry_geom_idx", type: Gist)
+  @@map("erosion_cotiere")
+  @@schema("postgis_v2")
 }
 
 model postgis_v2_etat_cours_d_eau {
-    pk       Int                     @id @default(autoincrement())
-    name     String                  @db.VarChar
-    longueur Float
-    etateco  String?                 @db.VarChar
-    geometry Unsupported("geometry")
+  pk       Int                     @id @default(autoincrement())
+  name     String                  @db.VarChar
+  longueur Float
+  etateco  String?                 @db.VarChar
+  geometry Unsupported("geometry")
 
-    @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
-    @@map("etat_cours_d_eau")
-    @@schema("postgis_v2")
+  @@index([geometry], map: "etat_cours_d_eau_geometry_geom_idx", type: Gist)
+  @@map("etat_cours_d_eau")
+  @@schema("postgis_v2")
 }
 
 /// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
 model spatial_ref_sys {
-    srid      Int     @id
-    auth_name String? @db.VarChar(256)
-    auth_srid Int?
-    srtext    String? @db.VarChar(2048)
-    proj4text String? @db.VarChar(2048)
+  srid      Int     @id
+  auth_name String? @db.VarChar(256)
+  auth_srid Int?
+  srtext    String? @db.VarChar(2048)
+  proj4text String? @db.VarChar(2048)
 
-    @@schema("public")
+  @@schema("public")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model liste_pnr {
+  pnr               String
+  code_pnr          String
+  code_geographique String
+
+  @@ignore
+  @@schema("databases_v2")
+}
+
+model prelevements_eau_new {
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  annee_2008_aep       Float
+  annee_2008_bar       Float
+  annee_2008_can       Float
+  annee_2008_ene       Float
+  annee_2008_ind       Float
+  annee_2008_irr       Float
+  annee_2009_aep       Float
+  annee_2009_bar       Float
+  annee_2009_can       Float
+  annee_2009_ene       Float
+  annee_2009_ind       Float
+  annee_2009_irr       Float
+  annee_2010_aep       Float
+  annee_2010_bar       Float
+  annee_2010_can       Float
+  annee_2010_ene       Float
+  annee_2010_ind       Float
+  annee_2010_irr       Float
+  annee_2011_aep       Float
+  annee_2011_bar       Float
+  annee_2011_can       Float
+  annee_2011_ene       Float
+  annee_2011_ind       Float
+  annee_2011_irr       Float
+  annee_2012_aep       Float
+  annee_2012_bar       Float
+  annee_2012_can       Float
+  annee_2012_ene       Float
+  annee_2012_exo       Float
+  annee_2012_ind       Float
+  annee_2012_irr       Float
+  annee_2013_aep       Float
+  annee_2013_bar       Float
+  annee_2013_can       Float
+  annee_2013_ene       Float
+  annee_2013_ind       Float
+  annee_2013_irr       Float
+  annee_2014_aep       Float
+  annee_2014_bar       Float
+  annee_2014_can       Float
+  annee_2014_ene       Float
+  annee_2014_ind       Float
+  annee_2014_irr       Float
+  annee_2015_aep       Float
+  annee_2015_bar       Float
+  annee_2015_can       Float
+  annee_2015_ene       Float
+  annee_2015_exo       Float
+  annee_2015_ind       Float
+  annee_2015_irr       Float
+  annee_2016_aep       Float
+  annee_2016_bar       Float
+  annee_2016_can       Float
+  annee_2016_ene       Float
+  annee_2016_exo       Float
+  annee_2016_ind       Float
+  annee_2016_irr       Float
+  annee_2017_aep       Float
+  annee_2017_bar       Float
+  annee_2017_can       Float
+  annee_2017_ene       Float
+  annee_2017_exo       Float
+  annee_2017_ind       Float
+  annee_2017_irr       Float
+  annee_2018_aep       Float
+  annee_2018_bar       Float
+  annee_2018_can       Float
+  annee_2018_ene       Float
+  annee_2018_exo       Float
+  annee_2018_ind       Float
+  annee_2018_irr       Float
+  annee_2019_aep       Float
+  annee_2019_bar       Float
+  annee_2019_can       Float
+  annee_2019_ene       Float
+  annee_2019_exo       Float
+  annee_2019_ind       Float
+  annee_2019_irr       Float
+  annee_2020_aep       Float
+  annee_2020_bar       Float
+  annee_2020_can       Float
+  annee_2020_ene       Float
+  annee_2020_exo       Float
+  annee_2020_ind       Float
+  annee_2020_irr       Float
+  annee_2021_aep       Float
+  annee_2021_bar       Float
+  annee_2021_can       Float
+  annee_2021_ene       Float
+  annee_2021_exo       Float
+  annee_2021_ind       Float
+  annee_2021_irr       Float
+  annee_2022_aep       Float
+  annee_2022_bar       Float
+  annee_2022_can       Float
+  annee_2022_ene       Float
+  annee_2022_ind       Float
+  annee_2022_irr       Float
+  annee_2023_aep       Float
+  annee_2023_bar       Float
+  annee_2023_can       Float
+  annee_2023_ene       Float
+  annee_2023_exo       Float
+  annee_2023_ind       Float
+  annee_2023_irr       Float
+
+  @@index([index], map: "ix_prelevements_eau_new_index")
+  @@index([code_geographique], map: "prelevements_eau_new_communes_index")
+  @@index([departement], map: "prelevements_eau_new_departement_index")
+  @@index([epci], map: "prelevements_eau_new_epci_index")
+  @@index([libelle_petr], map: "prelevements_eau_new_petr_index")
+  @@index([code_pnr], map: "prelevements_eau_new_pnr_index")
+  @@schema("databases_v2")
+}
+
+model o3_seuils {
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
+
+  @@index([index], map: "ix_o3_seuils_index")
+  @@schema("databases_v2")
+}
+
+model secheresses {
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String?
+  epci                 String?
+  libelle_epci         String?
+  departement          String?
+  libelle_departement  String?
+  region               Float?
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  restrictions         String
+
+  @@index([index], map: "ix_secheresses_index")
+  @@schema("databases_v2")
+}
+
+model inondations_par_debordement {
+  index                 Int    @id
+  epci                  String
+  libelle_epci          String
+  indicateur_exposition String
+  valeur_exposition     Float?
+
+  @@index([epci], map: "inondations_par_debordement_epci_index")
+  @@index([index], map: "ix_inondations_par_debordement_index")
+  @@schema("databases_v2")
+}
+
+model arbovirose {
+  index              Int    @id
+  annee              String
+  departement        String
+  nb_cas_importes    Int
+  nb_cas_autochtones Int
+
+  @@index([departement], map: "arbovirose_departement_index")
+  @@index([index], map: "ix_arbovirose_index")
+  @@schema("databases_v2")
+}
+
+model feux_foret {
+  index                                 Int     @id
+  code_geographique                     String
+  libelle_geographique                  String
+  epci                                  String
+  libelle_epci                          String
+  departement                           String
+  libelle_departement                   String
+  region                                Float
+  ept                                   String?
+  libelle_petr                          String?
+  code_pnr                              String?
+  libelle_pnr                           String?
+  nature                                String
+  annee                                 Float
+  surface_parcourue                     Float
+  surface_foret                         Float?
+  surface_maquis_garrigues              Float?
+  autres_surfaces_naturelles_hors_foret Float?
+  surfaces_agricoles                    Float?
+  surfaces_non_boisees                  Float?
+  surfaces_non_boisees_artificialisees  Float?
+  surfaces_non_boisees_naturelles       Float?
+  surface_autres_terres_boisees         Float?
+  autres_surfaces                       Float?
+
+  @@index([code_geographique], map: "feux_foret_communes_index")
+  @@index([departement], map: "feux_foret_departement_index")
+  @@index([epci], map: "feux_foret_epci_index")
+  @@index([ept], map: "feux_foret_ept_index")
+  @@index([libelle_petr], map: "feux_foret_petr_index")
+  @@index([code_pnr], map: "feux_foret_pnr_index")
+  @@index([index], map: "ix_feux_foret_index")
+  @@schema("databases_v2")
+}
+
+model aot_40_new {
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
+
+  @@index([index], map: "ix_aot_40_new_index")
+  @@schema("databases_v2")
 }

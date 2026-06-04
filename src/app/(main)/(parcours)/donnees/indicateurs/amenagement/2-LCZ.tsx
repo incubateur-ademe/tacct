@@ -1,6 +1,6 @@
 "use client";
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
-import { ExportPngMaplibreButtonNouveauParcours } from '@/components/exports/ExportPng';
+import { ExportPngMaplibreButton } from '@/components/exports/ExportPng';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { MapLCZ } from '@/components/maps/mapLCZ';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
@@ -42,6 +42,14 @@ export const LCZ = ({
         <ReadMoreFade maxHeight={350}>
           {isLczCovered ? <LCZCeremaText1 /> : <LCZText2 />}
           <CustomTooltipNouveauParcours title={LCZTooltipText} texte='Que sont les LCZ ?' />
+          <a
+            className="fr-sr-only"
+            href="https://journals.ametsoc.org/view/journals/bams/93/12/bams-d-11-00019.1.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consulter l&apos;article de Stewart et Oke (2012) sur la typologie LCZ (nouvelle fenêtre)
+          </a>
           <LCZText />
         </ReadMoreFade>
         <div className={styles.mapWrapper}>
@@ -68,7 +76,7 @@ export const LCZ = ({
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
           Source : {
             isLczCovered
-              ? "CEREMA, 2025."
+              ? "CEREMA, 2025 (consultée en janvier 2026)"
               : <a
                 href="https://doi.org/10.5194/essd-14-3835-2022"
                 target="_blank"
@@ -77,7 +85,7 @@ export const LCZ = ({
                 Matthias Demuzere et al. 2022
               </a>}
         </Body>
-        <ExportPngMaplibreButtonNouveauParcours
+        <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".lczLegendWrapper"
@@ -86,7 +94,7 @@ export const LCZ = ({
           type={type}
           libelle={libelle}
           code={code}
-          thematique="Aménagement"
+          thematique="lcz"
         />
       </div>
     </>

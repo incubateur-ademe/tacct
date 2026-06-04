@@ -1,5 +1,7 @@
 import ImageTuileArticle from '@/assets/images/imageTuileArticle.png';
 import ImageTuileAutre from '@/assets/images/imageTuileAutre.png';
+import ImageTuileMethodo from '@/assets/images/imageTuileMethodo.png';
+import ImageTuileQuiz from '@/assets/images/imageTuileQuiz.png';
 import ImageTuileRex from '@/assets/images/imageTuileRex.png';
 import { StaticImageData } from 'next/image';
 import { JSX } from 'react';
@@ -11,14 +13,20 @@ export const FiltresOptions = [
   },
   {
     titre: 'Format de ressource',
-    options: ['Article', "Retour d'expérience", 'Formation', 'Quiz']
+    options: [
+      'Article',
+      "Retour d'expérience",
+      'Formation',
+      'Quiz',
+      'Support méthodo'
+    ]
   },
   {
     titre: 'Territoire',
     options: [
       'Auvergne-Rhône-Alpes',
       'Bourgogne-Franche-Comté',
-      // 'Bretagne',
+      'Bretagne',
       'Centre-Val de Loire',
       // 'Corse',
       'Grand Est',
@@ -96,7 +104,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
-    ordreCollection: 2,
+    ordreCollection: 3,
     metadata: {
       title: 'PNACC, TRACC, Comment suis-je concerné ?',
       description:
@@ -109,7 +117,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     titre:
       'Adaptation au changement climatique : déploiement de la démarche TACCT',
     description:
-      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche  !',
+      'Le Pays Pyrénées Méditerranée a mis en œuvre la démarche TACCT du diagnostic à la stratégie. Retrouvez toutes les étapes de la démarche !',
     lien: 'https://www.payspyreneesmediterranee.org/thematiques/transitions-energie-climat/adaptation-au-changement-climatique/',
     filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
@@ -117,7 +125,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
-    ordreCollection: 8
+    ordreCollection: 10
   },
   {
     id: 4,
@@ -133,13 +141,13 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
-    ordreCollection: 7
+    ordreCollection: 9
   },
   {
     id: 5,
     type: "Retour d'expérience",
     titre:
-      "Réalisation d'un diagnostic de vulnérabilité au changement climatique",
+      "Réalisation d'un diagnostic de vulnérabilité - Epernay Agglo Champagne",
     description:
       'Diagnostic de vulnérabilité réalisé dans le cadre d’un PCAET grâce à la démarche TACCT : découvrez les apprentissages d’Epernay Agglo Champagne !',
     lien: 'https://www.climaxion.fr/docutheque/realisation-dun-diagnostic-vulnerabilite-au-changement-climatique-epernay-agglo-champagne',
@@ -149,7 +157,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 110,
-    ordreCollection: 6
+    ordreCollection: 8
   },
   {
     id: 6,
@@ -170,7 +178,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 80,
-    ordreCollection: 9
+    ordreCollection: 11
   },
   {
     id: 7,
@@ -345,7 +353,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
-    ordreCollection: 4
+    ordreCollection: 7
   },
   {
     id: 16,
@@ -361,7 +369,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
-    ordreCollection: 3
+    ordreCollection: 10
   },
   {
     id: 17,
@@ -377,7 +385,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
-    ordreCollection: 7
+    ordreCollection: 11
   },
   {
     id: 18,
@@ -392,7 +400,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 6
+    ordreCollection: 8
   },
   {
     id: 19,
@@ -408,7 +416,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
-    ordreCollection: 5
+    ordreCollection: 9
   },
   {
     id: 20,
@@ -424,7 +432,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 150,
-    ordreCollection: 3
+    ordreCollection: 4
   },
   {
     id: 21,
@@ -439,7 +447,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 140,
-    ordreCollection: 6
+    ordreCollection: 7
   },
   {
     id: 22,
@@ -454,7 +462,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 130,
-    ordreCollection: 7
+    ordreCollection: 8
   },
   {
     id: 23,
@@ -470,7 +478,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 70,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 24,
@@ -485,7 +493,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 10,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 25,
@@ -501,7 +509,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 40,
-    ordreCollection: 2
+    ordreCollection: 3
   },
   {
     id: 26,
@@ -587,7 +595,6 @@ export const toutesLesRessources: ToutesRessources[] = [
         'Le rôle du cahier des charges dans l’intégration de la facilitation pour l’adaptation au changement climatique.'
     }
   },
-
   {
     id: 30,
     type: "Retour d'expérience",
@@ -601,7 +608,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 170,
-    ordreCollection: 3
+    ordreCollection: 5
   },
   {
     id: 31,
@@ -641,7 +648,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-11-25',
     ordre: 10,
-    ordreCollection: 1,
+    ordreCollection: 3,
     metadata: {
       title:
         'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
@@ -705,10 +712,10 @@ export const toutesLesRessources: ToutesRessources[] = [
     filtres: ['Quiz', 'Me former'],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 10,
-    image: ImageTuileAutre,
+    image: ImageTuileQuiz,
     date: '2025-12-10',
     ordre: 10,
-    ordreCollection: 3
+    ordreCollection: 4
   },
   {
     id: 36,
@@ -724,7 +731,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 20,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 37,
@@ -739,6 +746,186 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 30,
+    ordreCollection: 6
+  },
+  {
+    id: 38,
+    type: 'Article',
+    titre: 'Réaliser votre diagnostic de vulnérabilité',
+    slug: 'realiser-diagnostic-vulnerabilite',
+    description:
+      'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.',
+    lien: '/ressources/articles/realiser-diagnostic-vulnerabilite',
+    filtres: ['Article', "Retour d'expérience", 'Me former', 'Bretagne'],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-02-04',
+    ordre: 10,
+    ordreCollection: 2,
+    metadata: {
+      title: 'Réaliser votre diagnostic de vulnérabilité',
+      description:
+        'Découvrez comment Rennes Ville & Métropole a réalisé son diagnostic de vulnérabilité à l’aide de la méthode TACCT.'
+    }
+  },
+  {
+    id: 39,
+    type: 'Article',
+    titre:
+      'Construire une stratégie d’adaptation : ce que nous avons appris en chemin',
+    slug: 'strategie-trajectoire-adaptation',
+    description:
+      'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole',
+    lien: '/ressources/articles/strategie-trajectoire-adaptation',
+    filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-02-25',
+    ordre: 9,
+    ordreCollection: 1,
+    metadata: {
+      title:
+        'Construire une stratégie d’adaptation : ce que nous avons appris en chemin',
+      description:
+        'D’un diagnostic de vulnérabilité priorisé à la définition de votre stratégie d’adaptation : témoignage de Montpellier Méditerranée Métropole'
+    }
+  },
+  {
+    id: 40,
+    type: "Retour d'expérience",
+    titre:
+      'Utiliser les récits et illustrations paysagères pour s’approprier le territoire',
+    description:
+      'Les supports “sensibles” permettent une meilleure appropriation des enjeux et impacts du changement climatique, découvrez des exemples de récits et illustrations paysagères.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9084-recits-et-illustrations-paysageres-comme-outils-d-appropriation-des-enjeux-climatiques-territoriaux.html#',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Restituer le diagnostic de vulnérabilité'],
+    tempsLecture: 4,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 2
+  },
+  {
+    id: 41,
+    type: "Retour d'expérience",
+    titre: "Faire de l'adaptation climatique un enjeu partagé par tous",
+    description:
+      'CLS, PADD, PAS, DOO : découvrez comment le “réflexe adaptation” est infusé dans différents documents réglementaires grâce aux démarches TACCT portées collectivement.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9082-faire-de-l-adaptation-climatique-un-enjeu-partage-par-tous-les-services-d-une-collectivite.html#',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Piloter la démarche d’adaptation'],
+    tempsLecture: 4,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 3
+  },
+  {
+    id: 42,
+    type: "Retour d'expérience",
+    titre: 'Une mobilisation collective pour mettre le territoire en mouvement',
+    description:
+      'Les trajectoires d’adaptation et les actions relèvent de compétences locales, découvrez comment des démarches TACCT à échelle infra ont associé leurs communes pour décupler le portage de l’adaptation.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9083-mettre-le-territoire-en-mouvement-une-mobilisation-collective-pour-l-adaptation-au-changement-climatique.html',
+    filtres: ["Retour d'expérience", "M'inspirer", 'Occitanie'],
+    collections: ['Piloter la démarche d’adaptation'],
+    tempsLecture: 5,
+    image: ImageTuileRex,
+    date: '2026-03-03',
+    ordre: 170,
+    ordreCollection: 4
+  },
+  {
+    id: 43,
+    type: 'Support méthodo',
+    titre: "Diagnostiquer l'impact du changement climatique sur un territoire",
+    description:
+      'Ce guide méthodologique vous présente la démarche TACCT et vous aidera à réaliser sa première marche : le diagnostic de vulnérabilité.',
+    lien: 'https://librairie.ademe.fr/changement-climatique/920-diagnostiquer-l-impact-du-changement-climatique-sur-un-territoire-9791029712982.html',
+    filtres: ['Support méthodo', 'Me former'],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 120,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 170,
+    ordreCollection: 7
+  },
+  {
+    id: 44,
+    type: 'Support méthodo',
+    titre:
+      "Construire des trajectoires d'adaptation au changement climatique du territoire",
+    description:
+      "Ce guide présente le cheminement méthodologique pour intégrer les seuils d'impacts, les trajectoires d'adaptation et organiser une planification à long terme des actions d'adaptation.",
+    lien: 'https://librairie.ademe.fr/changement-climatique/1165-construire-des-trajectoires-d-adaptation-au-changement-climatique-du-territoire-9791029713750.html',
+    filtres: ['Support méthodo', 'Me former'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 90,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 110,
     ordreCollection: 5
+  },
+  {
+    id: 45,
+    type: 'Support méthodo',
+    titre: "Evaluer les politiques d'adaptation au changement climatique",
+    description:
+      "Ce guide est la dernière brique de la méthodologie TACCT. Il propose une approche du suivi-évaluation des politiques d'adaptation au changement climatique.",
+    lien: 'https://librairie.ademe.fr/changement-climatique/756-evaluer-les-politiques-d-adaptation-au-changement-climatique-9791029713767.html',
+    filtres: ['Support méthodo', 'Me former'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 90,
+    image: ImageTuileMethodo,
+    date: '2026-04-14',
+    ordre: 120,
+    ordreCollection: 6
+  },
+  {
+    id: 46,
+    type: 'Article',
+    titre:
+      'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
+    slug: 'financement-adaptation',
+    description:
+      'Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.',
+    lien: '/ressources/articles/financement-adaptation',
+    filtres: ['Article', "M'inspirer"],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 7,
+    image: ImageTuileArticle,
+    date: '2026-05-06',
+    ordre: 4,
+    ordreCollection: 4,
+    metadata: {
+      title:
+        'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
+      description:
+        'Vous portez une stratégie d’adaptation ? Le financement est un levier majeur pour mettre en œuvre vos solutions d’adaptation.'
+    }
+  },
+  {
+    id: 47,
+    type: 'Article',
+    titre: 'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+    slug: 'patch4-integrer-tracc',
+    description:
+      'Grâce au patch 4°C, ajustez votre diagnostic de vulnérabilité en intégrant la trajectoire de réchauffement de référence pour l’adaptation.',
+    lien: '/ressources/articles/patch4-integrer-tracc',
+    filtres: ['Article', 'Agir'],
+    collections: ['Évaluer les impacts du changement climatique'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-05-06',
+    ordre: 1,
+    ordreCollection: 1,
+    metadata: {
+      title: 'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
+      description:
+        'Découvrez comment le patch 4°C peut vous aider à intégrer la trajectoire de référence pour l’adaptation au changement climatique (TRACC).'
+    }
   }
 ];

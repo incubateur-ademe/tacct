@@ -60,7 +60,7 @@ export const etatCoursDeauLegends = [
   }
 ];
 
-export const aot40Legends = [
+export const oldAot40Legends = [
   {
     value: '> 36 000 µg/m³',
     color: '#5524A0'
@@ -85,6 +85,18 @@ export const aot40Legends = [
     value: '< 6 000 µg/m³',
     color: '#5EEDF3'
   }
+];
+
+export const aot40Legends = [
+  { color: '#A4F5EE', value: '0-3000' },
+  { color: '#C4E8A3', value: '3000-6000' },
+  { color: '#F5E290', value: '6000-9000' },
+  { color: '#FFAB66', value: '9000-10000' },
+  { color: '#FC9999', value: '10000-11000' },
+  { color: '#F37D7D', value: '11000-12000' },
+  { color: '#E06060', value: '12000-15000' },
+  { color: '#C97189', value: '15000-18000' },
+  { color: '#B982B2', value: '≥ 18000' }
 ];
 
 export const travailExterieurPieChartLegend = [
@@ -282,7 +294,7 @@ export const ageBatiBarChartLegend = [
 
 export const ressourcesEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -294,15 +306,15 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];
@@ -470,7 +482,7 @@ export const DateConstructionResidencesLegend = [
 
 export const prelevementEauBarChartLegend = [
   {
-    value: 'Agriculture',
+    value: 'Irrigation',
     color: couleurs.graphiques.vert[2]
   },
   {
@@ -482,15 +494,15 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industrie et autres usages économiques',
+    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production d'électricité (barrages hydro-électriques)",
+    value: "Production hydro-électriques",
     color: couleurs.graphiques.orange[2]
   },
   {
-    value: 'Refroidissement des centrales électriques',
+    value: 'Énergie',
     color: couleurs.graphiques.rose[2]
   }
 ];
@@ -760,5 +772,119 @@ export const RgaMapLegend = [
   {
     value: 'Exposition forte',
     color: '#E8323B'
+  }
+];
+
+export const o3Legend = [
+  { color: '#A4F5EE', value: '0-4' },
+  { color: '#C4E8A3', value: '5-9' },
+  { color: '#F5E290', value: '10-14' },
+  { color: '#FFAB66', value: '15-19' },
+  { color: '#FC9999', value: '20-24' },
+  { color: '#F37D7D', value: '25-29' },
+  { color: '#E06060', value: '30-34' },
+  { color: '#C97189', value: '35-39' },
+  { color: '#B982B2', value: '≥ 40' }
+];
+
+export const debroussaillementLegend = [
+  {
+    color: '#F83DD9',
+    value: 'Zonage informatif des obligations légales de débroussaillement'
+  }
+];
+
+export const secheressesBarChartLegend = [
+  {
+    value: 'Vigilance',
+    color: "#FFFF00"
+  },
+  {
+    value: 'Alerte',
+    color: "#FF9900"
+  },
+  {
+    value: 'Alerte renforcée',
+    color: "#EA4335"
+  },
+  {
+    value: 'Crise',
+    color: "#980000"
+  },
+];
+
+export const secheressesSaisonsChartLegend = [
+  {
+    value: '2020',
+    color: "#FFC9E4"
+  },
+  {
+    value: '2021',
+    color: "#FFA3D2"
+  },
+  {
+    value: '2022',
+    color: "#FD57AB"
+  },
+  {
+    value: '2023',
+    color: "#CA307E"
+  },
+  {
+    value: '2024',
+    color: "#971356"
+  },
+  {
+    value: '2025',
+    color: "#640234"
+  },
+];
+
+export const arboviroseBarChartLegend = [
+  {
+    value: 'Cas importés',
+    color: couleurs.graphiques.bleu[3]
+  },
+  {
+    value: 'Cas autochtones',
+    color: couleurs.graphiques.bleu[1]
+  },
+];
+
+export const arboviroseMapMoustiqueTigreLegend = [
+  {
+    value: "Absence",
+    color: '#ffffff'
+  },
+  {
+    value: "Présence",
+    color: '#FF8094'
+  },
+];
+
+export const arboviroseMapAutochtonesLegend = [
+  {
+    value: "0",
+    color: '#ffffff'
+  },
+  {
+    value: "1",
+    color: '#FFCD72'
+  },
+  {
+    value: "2 à 9",
+    color: '#F8B334'
+  },
+  {
+    value: "10 à 19",
+    color: '#CF911E'
+  },
+  {
+    value: "20 à 39",
+    color: '#A6710E'
+  },
+  {
+    value: "40 ou plus",
+    color: '#7E5202'
   }
 ];

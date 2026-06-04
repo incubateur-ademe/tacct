@@ -1,8 +1,10 @@
 "use client";
 
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
+import DocIcon from "@/assets/icons/doc_icon_white.png";
 import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
-import { Round } from "@/lib/utils/reusableFunctions/round";
+import useWindowDimensions from "@/hooks/windowDimensions";
+import { MinuteToHours } from "@/lib/utils/reusableFunctions/MinuteToHours";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,6 +18,7 @@ interface Props {
   lienExterne?: boolean;
   tags?: React.ReactNode[];
   tempsLecture?: number;
+  nombreArticles?: number;
 }
 
 export const TuileVerticale = ({
@@ -36,12 +39,21 @@ export const TuileVerticale = ({
     });
 
     const hasRetourExperience = tagTexts.includes("Retour d'expérience");
+    const hasMethodo = tagTexts.includes("Support méthodo");
     // const hasArticle = tagTexts.includes("Article");
 
     if (hasRetourExperience) {
       return tags.map(tag => {
         if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Retour d'expérience") {
           return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "REX" });
+        }
+        return tag;
+      });
+    }
+    if (hasMethodo) {
+      return tags.map(tag => {
+        if (React.isValidElement(tag) && tag.props && (tag.props as { texte?: string }).texte === "Support méthodo") {
+          return React.cloneElement(tag as React.ReactElement<{ texte: string }>, { ...tag.props, texte: "Méthodo" });
         }
         return tag;
       });
@@ -74,9 +86,7 @@ export const TuileVerticale = ({
         {tempsLecture && (
           <div className={styles.tempsLecture}>
             <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-            {
-              tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{tempsLecture / 60} h</span>
-            }
+            <span>{MinuteToHours(tempsLecture)}</span>
           </div>
         )}
         {
@@ -142,9 +152,7 @@ export const TuileHorizontale = ({
             {tempsLecture && (
               <div className={styles.tempsLecture}>
                 <Image src={ClockIcon} alt="Temps de lecture" width={16} height={16} />
-                {
-                  tempsLecture < 60 ? <span>{tempsLecture} min</span> : <span>{Round(tempsLecture / 60, 0)} h</span>
-                }
+                <span>{MinuteToHours(tempsLecture)}</span>
               </div>
             )}
           </div>
@@ -166,6 +174,85 @@ export const TuileHorizontale = ({
         target={lienExterne ? "_blank" : "_self"}
         rel={lienExterne ? "noopener noreferrer" : undefined}
         className={styles.tuileLink}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return content;
+}
+
+export const TuileHorizontaleCollection = ({
+  titre,
+  image,
+  lien,
+  tempsLecture,
+  nombreArticles
+}: Props) => {
+  const windowDimensions = useWindowDimensions();
+
+  const content = (
+    <div className={styles.tuileHorizontaleCollection} tabIndex={lien ? -1 : 0} role="collection">
+      <div className={styles.contenu}>
+        <div className={styles.titre}>
+          {titre}
+        </div>
+
+        <div className={styles.footer}>
+          <div className={styles.leftSection}>
+            {nombreArticles && (
+              <div className={styles.tempsLecture}>
+                <Image
+                  src={DocIcon}
+                  alt="Nombre d'articles"
+                  width={16}
+                  height={16}
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                <span>
+                  {nombreArticles}
+                </span>
+              </div>
+            )}
+            {tempsLecture && (
+              <div className={styles.tempsLecture}>
+                <Image
+                  src={ClockIcon}
+                  alt="Temps de lecture"
+                  width={16}
+                  height={16}
+                  style={{ filter: 'brightness(0) invert(1)' }}
+                />
+                <span>{MinuteToHours(tempsLecture)}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div
+        className={styles.imageContainer}
+        style={windowDimensions.width && windowDimensions.width <= 768 ? { maxWidth: 100 } : undefined}
+      >
+        <Image
+          src={image}
+          alt={titre}
+          fill
+          style={{
+            objectFit: windowDimensions.width && windowDimensions.width <= 768 ? 'contain' : 'cover',
+            objectPosition: windowDimensions.width && windowDimensions.width <= 768 ? 'center' : 'top',
+          }}
+        />
+      </div>
+    </div>
+  );
+
+  if (lien) {
+    return (
+      <Link
+        href={lien}
+        target={"_self"}
+        className={styles.tuileLinkCollection}
       >
         {content}
       </Link>

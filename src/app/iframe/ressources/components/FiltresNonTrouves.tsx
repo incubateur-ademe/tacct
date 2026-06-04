@@ -8,7 +8,7 @@ import styles from '../ressources.module.scss';
 export const FiltresNonTrouves = () => {
   return (
     <div className={styles.filtresNonTrouvesContainer}>
-      <Body size='xl' weight='bold' style={{ color: "#666666", marginBottom: "4px"}}>Oops !</Body>
+      <Body size='xl' weight='bold' style={{ color: "#666666", marginBottom: "4px"}}>Oups !</Body>
       <Body style={{ color: "#666666"}}>Aucune ressource trouvée. Comment pouvons-nous vous aider ?</Body>
       <div className={styles.boutons}>
         <BoutonPrimaireClassic

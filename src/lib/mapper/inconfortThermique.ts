@@ -38,11 +38,13 @@ export const ageBatiMapper = (ageBati: ConfortThermique): AgeBatiDto => ({
   code_pnr: ageBati.code_pnr,
   departement: ageBati.departement,
   libelle_departement: ageBati.libelle_departement,
-  age_bati_pre_19: Number(ageBati.age_bati_pre_19),
-  age_bati_19_45: Number(ageBati.age_bati_19_45),
-  age_bati_46_90: Number(ageBati.age_bati_46_90),
-  age_bati_91_05: Number(ageBati.age_bati_91_05),
-  age_bati_post06: Number(ageBati.age_bati_post06)
+  nb_rp_tot: Number(ageBati.nb_rp_tot),
+  nb_rp_pre_19: Number(ageBati.nb_rp_pre_19),
+  nb_rp_19_45: Number(ageBati.nb_rp_19_45),
+  nb_rp_46_70: Number(ageBati.nb_rp_46_70),
+  nb_rp_71_90: Number(ageBati.nb_rp_71_90),
+  nb_rp_91_05: Number(ageBati.nb_rp_91_05),
+  nb_rp_post_06: Number(ageBati.nb_rp_post_06)
 });
 
 export const travailExtMapper = (
@@ -91,13 +93,16 @@ export const grandAgeMapper = (grandAge: ConfortThermique): GrandAgeDto => ({
   under_4_sum_1999: Number(grandAge.under_4_sum_1999),
   to_75_sum_1999: Number(grandAge['4_to_75_sum_1999']),
   over_75_sum_1999: Number(grandAge.over_75_sum_1999),
-  under_4_sum_2009: Number(grandAge.under_4_sum_2009),
-  to_75_sum_2009: Number(grandAge['4_to_75_sum_2009']),
-  over_75_sum_2009: Number(grandAge.over_75_sum_2009),
-  under_4_sum_2014: Number(grandAge.under_4_sum_2014),
-  to_75_sum_2014: Number(grandAge['4_to_75_sum_2014']),
-  over_75_sum_2014: Number(grandAge.over_75_sum_2014),
-  under_4_sum_2020: Number(grandAge.under_4_sum_2020),
-  to_75_sum_2020: Number(grandAge['4_to_75_sum_2020']),
-  over_75_sum_2020: Number(grandAge.over_75_sum_2020)
+  under_4_sum_2006: Number(grandAge.under_4_sum_2006),
+  to_75_sum_2006: Number(grandAge['4_to_75_sum_2006']),
+  over_75_sum_2006: Number(grandAge.over_75_sum_2006),
+  under_4_sum_2011: Number(grandAge.under_4_sum_2011),
+  to_75_sum_2011: Number(grandAge['4_to_75_sum_2011']),
+  over_75_sum_2011: Number(grandAge.over_75_sum_2011),
+  under_4_sum_2016: Number(grandAge.under_4_sum_2016),
+  to_75_sum_2016: Number(grandAge['4_to_75_sum_2016']),
+  over_75_sum_2016: Number(grandAge.over_75_sum_2016),
+  under_4_sum_2022: Number(grandAge.under_4_sum_2022),
+  to_75_sum_2022: Number(grandAge['4_to_75_sum_2022']),
+  over_75_sum_2022: Number(grandAge.over_75_sum_2022)
 });

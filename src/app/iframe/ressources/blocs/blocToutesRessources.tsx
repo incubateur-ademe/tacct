@@ -18,7 +18,7 @@ export const BlocToutesRessources = () => {
   const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({});
   const [ArticlesFiltres, setArticlesFiltres] = useState(toutesLesRessources);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const ArticlesSorted = ArticlesFiltres.sort((a, b) => {
+  const ArticlesSorted = ArticlesFiltres.toSorted((a, b) => {
     const dateComparison = new Date(b.date).getTime() - new Date(a.date).getTime();
     if (dateComparison !== 0) {
       return dateComparison;
@@ -46,7 +46,7 @@ export const BlocToutesRessources = () => {
       setArticlesFiltres(
         toutesLesRessources.filter(article => {
           // Pour chaque type de filtre actif, vérifier que l'article satisfait au moins une des options (OR au sein du filtre)
-          return Object.entries(updatedFilters).every(([filterType, selectedValues]) => {
+          return Object.entries(updatedFilters).every(([, selectedValues]) => {
             if (selectedValues.length === 0) return true;
             // Au moins une des valeurs sélectionnées dans ce type de filtre doit être présente
             return selectedValues.some(value => article.filtres?.includes(value));
@@ -69,6 +69,7 @@ export const BlocToutesRessources = () => {
       const updatedValues = prev[filterTitre].filter(v => v !== value);
       let updatedFilters;
       if (updatedValues.length === 0) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { [filterTitre]: _, ...rest } = prev;
         updatedFilters = rest;
       } else {
@@ -86,9 +87,44 @@ export const BlocToutesRessources = () => {
         setArticlesFiltres(
           toutesLesRessources.filter(article => {
             // Pour chaque type de filtre actif, vérifier que l'article satisfait au moins une des options (OR au sein du filtre)
-            return Object.entries(updatedFilters).every(([filterType, selectedValues]) => {
+            return Object.entries(updatedFilters).every(([, selectedValues]) => {
               if (selectedValues.length === 0) return true;
               // Au moins une des valeurs sélectionnées dans ce type de filtre doit être présente
+              return selectedValues.some(value => article.filtres?.includes(value));
+            });
+          })
+        );
+      }
+
+      return updatedFilters;
+    });
+  };
+
+  const handleSelectFormatRessource = (format: string) => {
+    setSelectedFilters(prev => {
+      const currentFormat = prev['Format de ressource']?.[0];
+      let updatedFilters;
+      
+      if (currentFormat === format) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { ['Format de ressource']: _, ...rest } = prev;
+        updatedFilters = rest;
+      } else {
+        updatedFilters = {
+          ...prev,
+          'Format de ressource': [format]
+        };
+      }
+
+      const hasActiveFilters = Object.values(updatedFilters).some(values => values.length > 0);
+      
+      if (!hasActiveFilters) {
+        setArticlesFiltres(toutesLesRessources);
+      } else {
+        setArticlesFiltres(
+          toutesLesRessources.filter(article => {
+            return Object.entries(updatedFilters).every(([, selectedValues]) => {
+              if (selectedValues.length === 0) return true;
               return selectedValues.some(value => article.filtres?.includes(value));
             });
           })
@@ -111,6 +147,7 @@ export const BlocToutesRessources = () => {
           onSelectOptions={handleSelectOptions}
           onReset={handleReset}
           onRemoveFilter={handleRemoveFilter}
+          onSelectFormatRessource={handleSelectFormatRessource}
         />
         <div className={styles.boutonFiltre}>
           <BoutonPrimaireClassic
@@ -129,6 +166,7 @@ export const BlocToutesRessources = () => {
           onClose={() => setIsModalOpen(false)}
           articles={ArticlesSorted}
           onRemoveFilter={handleRemoveFilter}
+          onSelectFormatRessource={handleSelectFormatRessource}
         />
         <div className={styles.resultatsWrapper}>
           <p className={styles.resultats}>

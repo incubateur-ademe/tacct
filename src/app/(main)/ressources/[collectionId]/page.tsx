@@ -1,10 +1,12 @@
 import { NewContainer } from "@/design-system/layout";
+import { getFaqItems } from "@/lib/queries/notion/notion";
 import { collectionsCartes } from "@/lib/ressources/cartes";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { sharedMetadata } from "../../shared-metadata";
 import { BlocCollections, BlocCollectionsResponsive } from "../blocs/blocCollections";
+import { ModaleToutesCollections } from "../blocs/ModaleToutesCollections";
 import styles from "../ressources.module.scss";
 import { CollectionComponent } from "./collectionComponent";
 import { CollectionsData } from "./collectionsData";
@@ -16,11 +18,11 @@ export async function generateMetadata({ params }: { params: Promise<{ collectio
   if (!collection) {
     return {
       ...sharedMetadata,
-      title: "Boîte à outils - Facili-TACCT",
+      title: "Boîte à outils - TACCT",
       description: "Découvrez notre boîte à outils pour l'adaptation au changement climatique"
     };
   }
-  const url = `https://www.facili-tacct.fr/ressources/${collection.slug}`;
+  const url = `https://www.tacct.incubateur.ademe.dev/ressources/${collection.slug}`;
 
   return {
     ...sharedMetadata,
@@ -49,7 +51,10 @@ export async function generateMetadata({ params }: { params: Promise<{ collectio
 const Collections = async ({ params }: { params: Promise<{ collectionId: string }> }) => {
   const { collectionId } = await params;
   const collection = CollectionsData.find(c => c.slug === collectionId);
-
+  const allFaqItems = await getFaqItems();
+  const faqItems = allFaqItems.filter(item =>
+    item.collections.includes(collection!.titre)
+  );
   if (!collection) {
     redirect('/ressources');
   }
@@ -65,13 +70,14 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
           />
         </div>
       </NewContainer>
-      <CollectionComponent collectionId={collectionId} />
+      <CollectionComponent collectionId={collectionId} faqItems={faqItems} />
       <div className={styles.desktopOnly}>
         <BlocCollections collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
       <div className={styles.mobileOnly}>
         <BlocCollectionsResponsive collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
       </div>
+      <ModaleToutesCollections collectionsCartes={collectionsCartes.filter(c => !c.lien.includes(collectionId))} />
     </>
   )
 };

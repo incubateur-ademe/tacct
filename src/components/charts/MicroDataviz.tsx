@@ -225,6 +225,64 @@ export const MicroCircleGrid = ({
   );
 }
 
+export const MicroCircleGridMois = ({
+  nombreJours,
+  arrondi = 0,
+  ariaLabel = ""
+}: {
+  nombreJours: number;
+  arrondi?: number;
+  ariaLabel?: string;
+}) => {
+  const cerclesComplets = Math.floor(nombreJours);
+  const reste = nombreJours % 1;
+  const aDemiCercle = reste >= 0.5;
+
+  const cercles = Array.from({ length: 30 }, (_, index) => {
+    let etatCercle: 'vide' | 'demi' | 'complet' = 'vide';
+    if (index < cerclesComplets) {
+      etatCercle = 'complet';
+    } else if (index === cerclesComplets && aDemiCercle) {
+      etatCercle = 'demi';
+    }
+    let backgroundStyle: string;
+    if (etatCercle === 'complet') {
+      backgroundStyle = couleurs.gris.dark;
+    } else if (etatCercle === 'demi') {
+      backgroundStyle = `linear-gradient(90deg, ${couleurs.gris.dark} 50%, ${couleurs.gris.light} 50%)`;
+    } else {
+      backgroundStyle = couleurs.gris.light;
+    }
+    return (
+      <div
+        key={index}
+        className={styles.cercleIndividuel}
+        style={{
+          background: backgroundStyle,
+        }}
+      />
+    );
+  });
+
+  return (
+    <>
+      {
+        isNaN(Number(nombreJours)) ? null : (
+          <div
+            className={styles.microCircleGridWrapper}
+            aria-label={ariaLabel}
+            style={{ width: "120px" }}
+          >
+            <Body weight="bold">{Round(nombreJours, arrondi)} jours / mois</Body>
+            <div className={styles.circleGrid}>
+              {cercles}
+            </div>
+          </div>
+        )}
+    </>
+  );
+}
+
 export const MicroCube = ({
   valeur,
   arrondi = 0,
@@ -263,8 +321,9 @@ export const MicroRemplissageTerritoire = (props: {
   pourcentage: number;
   height?: number;
   arrondi?: number;
+  ariaLabel?: string;
 }) => {
-  const { territoireContours, pourcentage, arrondi = 0, height = 150 } = props;
+  const { territoireContours, pourcentage, arrondi = 0, height = 150, ariaLabel = "" } = props;
   const mapRef = useRef<maplibregl.Map | null>(null);
   const [bounds, setBounds] = useState<number[]>([0, 0, 0, 0]);
   const south = bounds[1];
@@ -343,6 +402,8 @@ export const MicroRemplissageTerritoire = (props: {
       <div
         className='flex flex-column items-center'
         style={{ flexDirection: 'column' }}
+        role='img'
+        aria-label={ariaLabel ? `${Round(pourcentage, arrondi)} % — ${ariaLabel}` : undefined}
       >
         <Body weight="bold" style={{ color: couleurs.gris.dark, position: "absolute" }}>
           {Round(pourcentage, arrondi)} %
