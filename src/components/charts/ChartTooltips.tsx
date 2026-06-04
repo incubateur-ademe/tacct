@@ -55,10 +55,12 @@ type PieChartCount = {
 
 export const simplePieChartCountTooltip = ({
   datum,
-  unite
+  unite,
+  arrondi = 1
 }: {
   datum: PieChartCount;
   unite?: string;
+  arrondi?: number;
 }) => {
   return (
     <div className={styles.tooltipEvolutionWrapper}>
@@ -71,8 +73,9 @@ export const simplePieChartCountTooltip = ({
           <Body size="sm">
             {datum.id ? datum.id : datum.label} :{' '}
             <b>
-              {Round(Number(datum.data.count), 1)} {unite ?? null}
-            </b>
+              {Round(Number(datum.data.count), arrondi)} {unite ?? null}
+            </b>{' '}
+            ({Round(Number(datum.value), 1)} %)
           </Body>
         </div>
       </div>
