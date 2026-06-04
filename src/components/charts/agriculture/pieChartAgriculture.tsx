@@ -9,7 +9,7 @@ import couleurs from '@/design-system/couleurs';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
-import { simplePieChartTooltip } from '../ChartTooltips';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
 export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
@@ -27,7 +27,7 @@ export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: 
             couleurs.graphiques.vert[3], // arables
             couleurs.graphiques.vert[2], // jardins
           ]}
-          tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
+          tooltip={({ datum }) => simplePieChartCountTooltip({ datum, unite: 'ha' })}
           unit='ha'
         />
         : (
