@@ -12,13 +12,12 @@ import { NewContainer } from '@/design-system/layout';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MaintenanceNotice } from '../MaintenanceNotice';
 import styles from './moncompte.module.scss';
 
 const MonCompte = () => {
   return (
     <>
-      <MaintenanceNotice />
+      {/* <MaintenanceNotice /> */}
       <NewContainer size="xl" style={{ padding: 0 }}>
         <Breadcrumb
           currentPageLabel={'Mon compte'}
