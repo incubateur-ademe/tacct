@@ -42,7 +42,7 @@ export const MaintenanceNotice = () => {
         phase === 1 ? (
           <>
             Nous vous informons qu'une maintenance est prévue le{' '}
-            <strong>lundi 8 juin, de 9h00 à 11h00</strong>. Durant cette
+            <strong>lundi 8 juin, de 9h00 à 14h00</strong>. Durant cette
             période,{' '}
             <strong>
               vous pourrez accéder à l'ensemble de notre site, à l'exception du
@@ -53,7 +53,7 @@ export const MaintenanceNotice = () => {
         ) : (
           <>
             Nous vous informons qu'une maintenance est prévue{' '}
-            <strong>aujourd'hui, de 9h00 à 11h00</strong>. Durant cette période,{' '}
+            <strong>aujourd'hui, de 9h00 à 14h00</strong>. Durant cette période,{' '}
             <strong>
               vous pouvez accéder à l'ensemble de notre site, à l'exception du
               compte TACCT qui est temporairement indisponible
