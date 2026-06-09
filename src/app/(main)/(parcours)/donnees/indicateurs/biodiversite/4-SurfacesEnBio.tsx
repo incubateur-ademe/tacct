@@ -28,11 +28,11 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
   const territoiresPartiellementCouverts =
     type === 'departement'
       ? multipleEpciBydepartementLibelle.find(
-          (dept) => dept.departement === code
-        )?.liste_epci_multi_dept
+        (dept) => dept.departement === code
+      )?.liste_epci_multi_dept
       : type === 'pnr'
         ? multipleEpciByPnrLibelle.find((pnr) => pnr.libelle_pnr === libelle)
-            ?.liste_epci_multi_pnr
+          ?.liste_epci_multi_pnr
         : undefined;
 
   const nombreExploitations = agricultureBio.reduce((acc, obj) => {
@@ -160,8 +160,7 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
             }}
           >
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-              Source : Donnée produite par l’AGRESTE, 2020 et extraite du
-              catalogue DiDo (consultée en avril 2026)
+              Source : Donnée produite par l’AGRESTE, 2020 et extraite du catalogue DiDo (consultée en avril 2026)
             </Body>
             {agricultureBio.length !== 0 && (
               <ExportButton
@@ -172,7 +171,7 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
                 code={code}
                 sheetName="Agriculture bio"
                 documentation={surfacesEnBioDoc}
-                anchor="Surfaces en bio"
+                anchor="Surfaces-en-bio"
               />
             )}
           </div>

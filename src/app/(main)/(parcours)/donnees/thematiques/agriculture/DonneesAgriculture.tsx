@@ -97,6 +97,9 @@ export const DonneesAgriculture = ({
           <Body size='lg'>
             Ces quelques indicateurs vous aideront à poser les bonnes questions, le terrain (étape 2) vous donnera les vraies réponses.
           </Body>
+          <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+            À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
+          </Body>
         </section>
 
         {/* Section Agriculture */}
@@ -113,7 +116,7 @@ export const DonneesAgriculture = ({
           </H2>
           {/* Part des chefs d’exploitation séniors */}
           <div
-            id="Part des chefs d’exploitation séniors"
+            id="Part-des-chefs-d’exploitation-séniors"
             className={styles.indicateurWrapper}
             style={{ borderBottom: '1px solid var(--gris-medium)' }}
           >
@@ -128,7 +131,7 @@ export const DonneesAgriculture = ({
           </div>
 
           {/* Types de cultures */}
-          <div id="Types de culture" className={styles.indicateurWrapper}>
+          <div id="Types-de-culture" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Surface agricole par type de culture
@@ -154,7 +157,7 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[1].icone}{" "}{ongletsMenu.thematiquesLiees[1].thematique}
           </H2>
           {/* Superficies irriguées */}
-          <div id="Superficies irriguées" className={styles.indicateurMapWrapper}>
+          <div id="Superficies-irriguées" className={styles.indicateurMapWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de la surface agricole irriguée dans la SAU en 2020
@@ -180,7 +183,7 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[2].icone}{" "}{ongletsMenu.thematiquesLiees[2].thematique}
           </H2>
           {/* Surfaces en bio */}
-          <div id="Surfaces en bio" className={styles.indicateurWrapper}>
+          <div id="Surfaces-en-bio" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Part de l’agriculture biologique
@@ -202,7 +205,7 @@ export const DonneesAgriculture = ({
             {ongletsMenu.thematiquesLiees[3].icone}{" "}{ongletsMenu.thematiquesLiees[3].thematique}
           </H2>
           {/* Aires des appellations contrôlées */}
-          <div id="Appellations contrôlées" className={styles.indicateurWrapper}>
+          <div id="Appellations-contrôlées" className={styles.indicateurWrapper}>
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Nombre d’appellations contrôlées
@@ -219,6 +222,7 @@ export const DonneesAgriculture = ({
           <Image
             src={DiagnoticImage}
             alt=""
+            className={styles.redirectionImage}
             style={{ width: '100%', height: 'auto', maxWidth: "180px" }}
           />
           <div className={styles.textBloc} >

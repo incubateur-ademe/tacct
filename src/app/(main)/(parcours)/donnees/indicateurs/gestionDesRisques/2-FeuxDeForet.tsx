@@ -16,11 +16,7 @@ import { lazy, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
 
-const FeuxForetCharts = lazy(() =>
-  import('@/components/charts/gestionRisques/feuxForetCharts').then((m) => ({
-    default: m.default
-  }))
-);
+const FeuxForetCharts = lazy(() => import('@/components/charts/gestionRisques/feuxForetCharts').then(m => ({ default: m.default })));
 
 export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
   const { incendiesForet } = props;
@@ -42,7 +38,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={incendiesForet.length} arrondi={0} />
+            <MicroNumberCircle valeur={incendiesForet.length} arrondi={0} ariaLabel="Nombre de départs de feux de forêt sur votre territoire depuis 2006" />
             {incendiesForet ? (
               <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                 Depuis 2006, votre territoire a connu {incendiesForet.length}{' '}
@@ -90,7 +86,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
             </div>
           )}
           <SourceExport
-            anchor="Feux de forêt"
+            anchor="Feux-de-forêt"
             source="Base de Données sur les Incendies de Forêts en France, 2024 (consultée en avril 2026)"
             condition={incendiesForet.length !== 0}
             exportComponent={

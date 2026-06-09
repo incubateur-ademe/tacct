@@ -955,3 +955,14 @@ model feux_foret {
   @@index([index], map: "ix_feux_foret_index")
   @@schema("databases_v2")
 }
+
+model aot_40_new {
+  index     Int    @id
+  nom_site  String
+  valeur    Float
+  latitude  Float
+  longitude Float
+
+  @@index([index], map: "ix_aot_40_new_index")
+  @@schema("databases_v2")
+}

@@ -49,6 +49,7 @@ export const Debroussaillement = ({
           <div className={styles.mapWrapper}>
             <Suspense fallback={<Loader />}>
               <MapTiles
+                ariaLabel="Carte des obligations légales de débroussaillement par commune sur votre territoire"
                 coordonneesCommunes={coordonneesCommunes}
                 mapRef={mapRef}
                 mapContainer={mapContainer}
@@ -64,7 +65,7 @@ export const Debroussaillement = ({
           </div>
           <div className={styles.sourcesExportMapWrapper}>
             <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-              Source : Institut national de l’information géographique et forestière, 2025
+              Source : Institut national de l’information géographique et forestière, 2025 (consultée en février 2026)
             </Body>
             <ExportPngMaplibreButton
               mapRef={mapRef}

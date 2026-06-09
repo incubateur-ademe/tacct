@@ -9,33 +9,43 @@ import couleurs from '@/design-system/couleurs';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { PieChartDataSurfacesAgricoles } from '@/lib/charts/surfacesAgricoles';
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
-import { simplePieChartTooltip } from '../ChartTooltips';
+import { simplePieChartCountTooltip } from '../ChartTooltips';
 import NivoPieChart from '../NivoPieChart';
 
-export const PieChartAgriculture = ({ surfacesAgricoles }: { surfacesAgricoles: SurfacesAgricolesModel[] }) => {
+export const PieChartAgriculture = ({
+  surfacesAgricoles
+}: {
+  surfacesAgricoles: SurfacesAgricolesModel[];
+}) => {
   const graphData = PieChartDataSurfacesAgricoles(surfacesAgricoles);
-  const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
+  const sumAllCount = graphData.reduce(
+    (sum, item) => sum + (item.count || 0),
+    0
+  );
   const windowDimensions = useWindowDimensions();
   return (
     <div className={styles.responsivePieContainer}>
-      {sumAllCount > 0 ?
+      {sumAllCount > 0 ? (
         <NivoPieChart
           graphData={graphData}
           colors={[
             couleurs.graphiques.vert[5], // cultures permanents,
             couleurs.graphiques.vert[1], // STH
             couleurs.graphiques.vert[3], // arables
-            couleurs.graphiques.vert[2], // jardins
+            couleurs.graphiques.vert[2] // jardins
           ]}
-          tooltip={({ datum }) => simplePieChartTooltip({ datum, unite: '%' })}
-          unit='ha'
+          tooltip={({ datum }) =>
+            simplePieChartCountTooltip({ datum, unite: 'ha' })
+          }
+          unit="ha"
         />
-        : (
-          <div className='p-10 flex flex-row justify-center'>
-            <DataNotFoundForGraph image={surfacesAgricoles.length === 0 ? DataNotFound : ZeroData} />
-          </div>
-        )
-      }
+      ) : (
+        <div className="p-10 flex flex-row justify-center">
+          <DataNotFoundForGraph
+            image={surfacesAgricoles.length === 0 ? DataNotFound : ZeroData}
+          />
+        </div>
+      )}
     </div>
   );
 };

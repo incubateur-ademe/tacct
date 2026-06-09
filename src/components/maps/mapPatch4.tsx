@@ -5,6 +5,7 @@ import { mapStyles } from 'carte-facile';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
@@ -317,10 +318,13 @@ export const MapPatch4 = (props: {
             overflow: visible !important;
           }
       `}</style>
-      <div style={{ position: 'relative' }}>
+      <AccessibleMapWrapper
+        ariaLabel="Cartographie représentant le niveau d'aggravation par aléa climatique par commune sur votre territoire"
+        style={{ position: 'relative' }}
+      >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />
         <RetardScroll mapRef={mapRef} containerRef={localContainerRef} delay={300} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

@@ -148,7 +148,7 @@ export const OzoneEtVegetation = (props: {
             libelle={libelle}
             code={code}
             sheetName="AOT 40"
-            anchor="Ozone et végétation"
+            anchor="Ozone-et-végétation"
           />
         )}
       </div>

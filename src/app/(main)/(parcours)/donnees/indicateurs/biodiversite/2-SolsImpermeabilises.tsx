@@ -6,6 +6,7 @@ import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { espacesNAFDatavizLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -16,7 +17,7 @@ import { espacesNAFTooltipText } from '@/lib/tooltipTexts';
 import { consommationEspacesNafDoc } from '@/lib/utils/export/documentations';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { useSearchParams } from 'next/navigation';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 const MapEspacesNaf = lazy(() =>
@@ -63,6 +64,7 @@ export const SolsImpermeabilises = (props: {
                   valeur={sumNaf / 10000}
                   arrondi={1}
                   unite="ha"
+                  ariaLabel="Hectares de sols imperméabilisés sur votre territoire"
                 />
                 <div className={styles.text}>
                   <SolsImpermeabilisesBiodiversiteDynamicText
@@ -86,7 +88,7 @@ export const SolsImpermeabilises = (props: {
         </div>
         <div className={styles.mapWrapper}>
           {consommationNAF && coordonneesCommunes ? (
-            <>
+            <Suspense fallback={<Loader />}>
               <MapEspacesNaf
                 consommationNAF={consommationNAF}
                 communesCodes={coordonneesCommunes?.codes ?? []}
@@ -111,7 +113,7 @@ export const SolsImpermeabilises = (props: {
               >
                 <LegendCompColor legends={espacesNAFDatavizLegend} />
               </div>
-            </>
+            </Suspense>
           ) : (
             <div className="p-10 flex flex-row justify-center">
               <DataNotFoundForGraph image={DataNotFound} />
@@ -132,7 +134,7 @@ export const SolsImpermeabilises = (props: {
             code={code}
             sheetName="Espaces NAF"
             documentation={consommationEspacesNafDoc}
-            anchor="Sols imperméabilisés"
+            anchor="Sols-imperméabilisés"
           />
         )}
       </div>

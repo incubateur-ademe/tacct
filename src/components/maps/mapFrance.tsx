@@ -8,6 +8,7 @@ import { FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 const BLANK_STYLE: maplibregl.StyleSpecification = {
   version: 8,
@@ -32,8 +33,9 @@ export const MapJson = (props: {
   mapContainer: RefObject<HTMLDivElement | null>;
   annee: number;
   casParDepartement?: Record<string, number>;
+  ariaLabel: string;
 }) => {
-  const { mapRef, mapContainer, annee, casParDepartement } = props;
+  const { mapRef, mapContainer, annee, casParDepartement, ariaLabel } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
@@ -208,9 +210,12 @@ export const MapJson = (props: {
             overflow: visible !important;
           }
       `}</style>
-      <div style={{ position: 'relative', aspectRatio: '1.146' }}>
+      <AccessibleMapWrapper
+        ariaLabel={ariaLabel}
+        style={{ position: 'relative', aspectRatio: '1.146' }}
+      >
         <div ref={mapContainer} style={{ position: 'absolute', inset: 0 }} />
-      </div>
+      </AccessibleMapWrapper>
     </>
   );
 };

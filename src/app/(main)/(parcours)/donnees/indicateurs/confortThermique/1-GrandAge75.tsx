@@ -83,7 +83,7 @@ export const GrandAge75 = ({
     }
   }, [type, code, confortThermique]);
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.GrandAge75(
+    IndicatorExportTransformations.confortThermique.GrandAge75(
       grandAgeTerritoire
     );
 
@@ -196,7 +196,7 @@ export const GrandAge75 = ({
                 type={type}
                 libelle={libelle}
                 code={code}
-                sheetName="Grand âge"
+                sheetName="Grand-âge"
               />
             }
             source="INSEE, 2024 (consultée en février 2026)"

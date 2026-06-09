@@ -6,6 +6,7 @@ import { ZipExportButton } from '@/components/exports/ZipExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { vegetalisationLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import { Loader } from '@/components/ui/loader';
 import { Body } from '@/design-system/base/Textes';
 import { vegetalisationMapper } from '@/lib/mapper/inconfortThermique';
 import { ConfortThermique } from '@/lib/postgres/models';
@@ -14,7 +15,7 @@ import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { useSearchParams } from 'next/navigation';
-import { lazy, useRef } from 'react';
+import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 
@@ -85,7 +86,7 @@ export const TypesDeSols = ({
     (100 * foretSum) /
     (100 * sumProperty(vegetalisationTerritoire, 'superf_choro'));
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.vegetalisation(
+    IndicatorExportTransformations.confortThermique.vegetalisation(
       vegetalisationTerritoire
     );
 
@@ -140,8 +141,9 @@ export const TypesDeSols = ({
           {confortThermique &&
           confortThermique.length &&
           coordonneesCommunes ? (
-            <>
+            <Suspense fallback={<Loader />}>
               <MapTiles
+                ariaLabel="Carte des types de sols par commune sur votre territoire (CORINE Land Cover)"
                 coordonneesCommunes={coordonneesCommunes}
                 mapRef={mapRef}
                 mapContainer={mapContainer}
@@ -251,7 +253,7 @@ export const TypesDeSols = ({
               >
                 <LegendCompColor legends={vegetalisationLegend} />
               </div>
-            </>
+            </Suspense>
           ) : (
             <div className="p-10 flex flex-row justify-center">
               <DataNotFoundForGraph image={DataNotFound} />
@@ -265,7 +267,7 @@ export const TypesDeSols = ({
             Source : CORINE Land Cover, 2018 (consultée en décembre 2024)
           </Body>
           <ZipExportButton
-            anchor="Types de sols"
+            anchor="Types-de-sols"
             handleExport={async () => {
               const pngBlob = await generateMapPngBlob({
                 mapRef,

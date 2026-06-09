@@ -95,6 +95,14 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
             title={moustiqueTigreTooltipText}
             texte="D'où vient ce chiffre ?"
           />
+          <a
+            className="fr-sr-only"
+            href="https://sante.gouv.fr/sante-et-environnement/risques-microbiologiques-physiques-et-chimiques/especes-nuisibles-et-parasites/article/cartes-de-presence-du-moustique-tigre-aedes-albopictus-en-france-metropolitaine"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consulter les cartes du ministère de la Santé (nouvelle fenêtre)
+          </a>
           <ReadMoreFade maxHeight={100}>
             <MoustiqueTigreText />
           </ReadMoreFade>
@@ -122,6 +130,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
                     Présence du moustique tigre
                   </Body>
                   <MapJson
+                    ariaLabel="Carte de France représentant la présence du moustique tigre par département"
                     mapRef={mapRef1}
                     mapContainer={mapContainer1}
                     annee={selectedAnnee}
@@ -162,6 +171,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
                       </div>
                     )}
                     <MapJson
+                      ariaLabel="Carte de France représentant le nombre de cas autochtones de dengue, chikungunya et zika par département"
                       mapRef={mapRef2}
                       mapContainer={mapContainer2}
                       annee={selectedAnnee}
@@ -218,7 +228,7 @@ export const Arbovirose = (props: { arbovirose: ArboviroseModel[] }) => {
             libelle={libelle}
             code={code}
             sheetName="Arbovirose"
-            anchor="Arbovirose"
+            anchor="Moustique-tigre-et-arboviroses"
           />
         </div>
       </div>

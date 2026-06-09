@@ -13,6 +13,7 @@ import {
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  Patch4,
   PrelevementsEauParsed,
   QualiteSitesBaignadeModel,
   RGAdb,
@@ -21,6 +22,24 @@ import {
   TableCommuneModel
 } from '@/lib/postgres/models';
 import { Round } from '../reusableFunctions/round';
+
+export const Patch4Export = ({
+  type,
+  patch4
+}: {
+  type: string;
+  patch4: Patch4;
+}) => {
+  if (type === 'epci') {
+    return {
+      epci: patch4.code_geographique,
+      feux_foret: patch4.feux_foret,
+      fortes_chaleurs: patch4.fortes_chaleurs,
+      fortes_precipitations: patch4.fortes_precipitations,
+      secheresse_sols: patch4.secheresse_sols
+    };
+  } else return patch4;
+};
 
 export const IndicatorExportTransformations = {
   agriculture: {
@@ -206,7 +225,7 @@ export const IndicatorExportTransformations = {
         };
       })
   },
-  inconfort_thermique: {
+  confortThermique: {
     AgeBati: (ageBati: AgeBatiDto[]) =>
       ageBati.map((el) => {
         return {

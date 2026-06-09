@@ -62,9 +62,7 @@ export const DateConstructionResidences = ({
   );
 
   const exportData =
-    IndicatorExportTransformations.inconfort_thermique.AgeBati(
-      ageBatiTerritoire
-    );
+    IndicatorExportTransformations.confortThermique.AgeBati(ageBatiTerritoire);
 
   return (
     <>
@@ -105,7 +103,7 @@ export const DateConstructionResidences = ({
                 0 &&
               !isNaN(Sum(chartData.map((el) => Number(el['Votre territoire']))))
             }
-            anchor="Âge du bâtiment"
+            anchor="Âge-du-bâtiment"
             exportComponent={
               <ExportButton
                 data={exportData}

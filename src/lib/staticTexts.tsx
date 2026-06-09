@@ -46,48 +46,6 @@ export const AgeBatiText = () => (
   </Body>
 );
 
-export const FragiliteEconomiqueText = () => (
-  <div className="px-4">
-    <p>
-      Les ménages en précarité énergétique doivent faire des choix difficiles :
-      limiter le chauffage, réduire l’utilisation de l’eau chaude pour éviter
-      des factures trop élevées. Un logement mal isolé l’hiver sera aussi
-      coûteux à rafraîchir l’été.
-    </p>
-    <p>
-      Leurs conditions de vie et leur santé se dégradent. Le changement
-      climatique amplifie ces inégalités, avec des vagues de chaleur de plus en
-      plus fréquentes et intenses. Dans un logement mal isolé, se protéger de la
-      chaleur est un défi impossible pour les ménages les plus précaires. La
-      précarité énergétique n'est pas qu’une question de confort : elle est un
-      enjeu de santé publique et de justice sociale.
-    </p>
-    <p>
-      ⇒ En 2024, <b>55 %</b> des Français déclarent avoir souffert d’un excès de
-      chaleur en été.
-    </p>
-    <p>
-      ⇒ <b>79 %</b> des Français ont dû restreindre leur chauffage.
-    </p>
-    <p>
-      ⇒ En 2023, plus d’un million de ménages ont subi une intervention de leur
-      fournisseur d’énergie pour cause d'impayés, aggravant leur précarité.
-    </p>
-    <p>
-      - - - - <br></br>
-      Plan national d'adaptation au changement climatique (PNACC 3) :
-    </p>
-    <ul>
-      <p>
-        <li>Adapter les logements au risque de forte chaleur (mesure 9)</li>
-        <li>
-          Protéger les populations précaires des fortes chaleurs (mesure 14)
-        </li>
-      </p>
-    </ul>
-  </div>
-);
-
 export const VegetalisationText = () => (
   <div className="px-4">
     <p>
@@ -386,10 +344,10 @@ export const AOT40Text = () => (
 export const PrelevementEauText = () => (
   <div className="pt-10">
     <Body size="sm">
-      Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la ressource en
+      Les sécheresses 2022 et 2023 sonnent l'alerte : optimiser la ressource en
       eau disponible devient vital. Face à l'intensification des sécheresses due
       au changement climatique, chaque territoire doit anticiper. Un prélèvement
-      n'est possible que si la ressource existe !
+      n'est possible que si la ressource existe !
     </Body>
     <Body size="sm">
       Attention aux chiffres bruts : les prélèvements ne reflètent pas les
@@ -416,7 +374,7 @@ export const PrelevementEauText = () => (
       ⇒ 20 % des prélèvements d’eau potable sont perdus à cause des fuites, soit
       l’équivalent de la consommation de 18,5 millions d’habitants.
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       - - - - <br></br>
       Le Plan Eau agit pour atteindre -10% d’eau prélevée d’ici 2030 :
       <li>
@@ -434,7 +392,7 @@ export const PrelevementEauText = () => (
       </li>
     </Body>
     <Body size="sm">
-      Plan National d’Adaptation au Changement Climatique (PNACC 3) :<br></br>La
+      Plan National d’Adaptation au Changement Climatique (PNACC-3) :<br></br>La
       mesure 21 prévoit une étude spécifique sur les vulnérabilités de
       l'approvisionnement en eau potable dans les départements et régions
       d'Outre-mer.
@@ -490,7 +448,7 @@ export const ErosionCotiereText = () => (
       disparaissent peu à peu. En 50 ans, la mer a englouti l'équivalent de la
       ville de La Rochelle : 30 km² de terres perdues.
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       Impacts locaux sur les milieux :
       <ul style={{ marginLeft: '1rem' }}>
         <li>Augmentation des intrusions salines des aquifères côtiers,</li>
@@ -498,7 +456,7 @@ export const ErosionCotiereText = () => (
         <li>Appauvrissement des sols dû à la salinisation.</li>
       </ul>
     </Body>
-    <Body size="sm">
+    <Body size="sm" htmlTag="div">
       Impacts locaux sur les activités humaines :
       <ul style={{ marginLeft: '1rem' }}>
         <li>
@@ -524,7 +482,7 @@ export const ErosionCotiereText = () => (
     </Body>
     <Body size="sm">
       - - - - <br></br>
-      Plan National d'Adaptation au Changement Climatique (PNACC 3) : La mesure
+      Plan National d'Adaptation au Changement Climatique (PNACC-3) : La mesure
       35 prévoit d’accompagner l’adaptation du tourisme culturel, de montagne,
       littoral et nautique.
     </Body>
@@ -555,49 +513,18 @@ export const RGAText = () => (
   <div className="pt-10">
     <Body size="sm">
       Phénomène lié à l’alternance de sécheresses extrêmes et de fortes pluies,
-      le retrait gonflement des argiles (RGA) impacte désormais tout le
-      territoire métropolitain à l’exception de la Bretagne et de la Normandie.
-      Il touche surtout les maisons individuelles anciennes. Mais les routes,
-      les écoles, les canalisations ou les équipements municipaux peuvent aussi
-      être affectés, mettant en jeu la sécurité et l’attractivité du territoire.
+      le retrait gonflement des argiles (RGA) touche surtout les maisons
+      individuelles anciennes. Mais les routes, les écoles, les canalisations
+      ou les équipements municipaux peuvent aussi être affectés, mettant en
+      jeu la sécurité et l’attractivité du territoire.
     </Body>
     <Body size="sm">
-      Si le phénomène est incontestablement amplifié par le changement
-      climatique, la qualité des constructions est aussi en cause. La fréquence
-      des sinistres RGA des maisons construites après 1975 est cinq fois
-      supérieure à celle des maisons construites avant 1975, alors même que ces
-      dernières ont subi davantage de cycles de RGA. Multifactoriel, le RGA est
-      donc un sujet complexe qui nécessite une approche combinée sols, bâtiment,
-      urbanisme…
-    </Body>
-    <Body size="sm">
-      Il y a urgence à mieux prendre en compte le RGA dans les politiques
-      d’aménagement car son coût explose : de 400 millions d’euros par an
-      (1989-2015) à 1 milliard d’euros par an (2016-2020), pour atteindre en
-      2022 un record à 3,5 milliards d’euros. Il représente 52 % du total des
-      indemnisations versées au titre du régime des catastrophes naturelles sur
-      les dix dernières années, devenant non seulement le péril naturel le plus
-      coûteux devant les inondations mais mettant en péril l’équilibre même du
-      régime CatNat. Il est temps de sortir d’une logique « dommages ⇒
-      indemnisations » alors qu’il existe un certain nombre d’actions de
-      prévention qui pourraient éviter ou réduire l’apparition de dommages.
-    </Body>
-    <Body size="sm">
-      ⇒ En France métropolitaine, 48 % du territoire est exposé à un risque RGA
-      moyen ou fort. Cela représente 10,4 millions de logements (près de la
-      moitié du parc de logements) et 20 millions de Français.
-    </Body>
-    <Body size="sm">
-      ⇒ En 2022, le nombre de maisons individuelles touchées par le RGA a été
-      deux fois supérieur au nombre de maisons individuelles construites en
-      2024.
-    </Body>
-    <Body size="sm">
-      - - - - Plan national d’adaptation au changement climatique (PNACC 3) :
-      <li>
-        Protéger la population des désordres sur les bâtiments liés au
-        retrait-gonflement des argiles (mesure 5)
-      </li>
+      Si le phénomène est incontestablement amplifié par le changement climatique,
+      la qualité des constructions est aussi en cause. La fréquence des sinistres
+      RGA des maisons construites après 1975 est 5 fois supérieure à celle des
+      maisons construites avant 1975, alors même que ces dernières ont subi
+      davantage de cycles de RGA. Multifactoriel, le RGA est donc un sujet
+      complexe qui nécessite une approche combinée sols, bâtiment, urbanisme…
     </Body>
   </div>
 );

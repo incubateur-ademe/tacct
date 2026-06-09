@@ -5,6 +5,7 @@ import { Feature, GeoJsonProperties, Geometry } from 'geojson';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect } from 'react';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
@@ -102,8 +103,11 @@ export const MapErosionCotiere = (props: {
   }, [erosionCotiere, coordonneesCommunes, envelope]);
 
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <AccessibleMapWrapper
+      ariaLabel="Carte représentant le taux d'évolution du trait de côte (érosion ou accrétion en m/an) sur le littoral de votre territoire"
+      style={{ position: 'relative', ...style }}
+    >
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
-    </div>
+    </AccessibleMapWrapper>
   );
 };

@@ -1,11 +1,12 @@
 "use client";
 import { ReplaceDisplayEpci } from '@/components/searchbar/fonctions';
+import { HtmlTooltip } from '@/components/utils/Tooltips';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body } from '@/design-system/base/Textes';
-import { NewContainer } from '@/design-system/layout';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { getBackgroundColor, getItemPosition, patch4Indices } from './components/fonctions';
 import styles from './patch4c.module.scss';
 
@@ -28,6 +29,7 @@ const CircleVisualization = ({
   const handleClick = (item: string) => {
     onSelectAlea(item, true);
   };
+  const [focusedKey, setFocusedKey] = useState<string | null>(null);
 
   return (
     <>
@@ -60,7 +62,8 @@ const CircleVisualization = ({
             {activeItems.map((item, index) => {
               const position = getItemPosition(index, activeItems.length);
               return (
-                <div
+                <button
+                  type="button"
                   key={item.key}
                   className={styles.CircleItem}
                   style={{
@@ -68,8 +71,20 @@ const CircleVisualization = ({
                     top: position.y - 30,
                   }}
                   onClick={() => handleClick(item.key)}
+                  onFocus={() => setFocusedKey(item.key)}
+                  onBlur={() => setFocusedKey(null)}
+                  aria-pressed={selectedAleaKey === item.key}
+                  aria-label={item.value ? `${item.label} — ${item.value}` : item.label}
                 >
                   {/* Circle with icon */}
+                  <HtmlTooltip
+                    title={item.value ?? "Pas d'évolution"}
+                    placement="top"
+                    open={focusedKey === item.key}
+                    disableFocusListener
+                    disableHoverListener
+                    disableTouchListener
+                  >
                   <div
                     className={styles.CircleIcon}
                     style={{
@@ -79,13 +94,15 @@ const CircleVisualization = ({
                   >
                     <Image
                       src={item.icon}
-                      alt={item.label}
+                      alt=""
                       width={34}
                       height={34}
                     />
                   </div>
+                  </HtmlTooltip>
                   {/* Label */}
                   <Body
+                    htmlTag="span"
                     size='xs'
                     style={{
                       maxWidth: '88px',
@@ -93,7 +110,7 @@ const CircleVisualization = ({
                     }}>
                     {item.label}
                   </Body>
-                </div>
+                </button>
               );
             })}
           </div>

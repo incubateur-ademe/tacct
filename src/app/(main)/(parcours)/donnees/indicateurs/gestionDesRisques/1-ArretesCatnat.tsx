@@ -22,11 +22,7 @@ import { lazy, useEffect, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { SourceExport } from '../SourceExport';
 
-const ArretesCatnatCharts = lazy(() =>
-  import('@/components/charts/gestionRisques/arretesCatnatCharts').then(
-    (m) => ({ default: m.default })
-  )
-);
+const ArretesCatnatCharts = lazy(() => import('@/components/charts/gestionRisques/arretesCatnatCharts').then(m => ({ default: m.default })));
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
@@ -92,8 +88,8 @@ export const ArretesCatnat = (props: {
       typeRisqueValue === 'Tous types'
         ? gestionRisques
         : gestionRisques.filter(
-            (item) => item.lib_risque_jo === typeRisqueValue
-          );
+          (item) => item.lib_risque_jo === typeRisqueValue
+        );
     const gestionRisquesEnrichBarChart = catnatFilteredByType
       ?.map((item) => {
         return {
@@ -128,10 +124,14 @@ export const ArretesCatnat = (props: {
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle valeur={gestionRisques.length} arrondi={0} />
+            <MicroNumberCircle
+              valeur={gestionRisques.length}
+              arrondi={0}
+              ariaLabel="Nombre d'arrêtés de catastrophe naturelle sur votre territoire depuis 1982"
+            />
             <>
               {dataByCodeGeographique[0]?.sumCatnat === 0 ||
-              gestionRisques.length === 0 ? (
+                gestionRisques.length === 0 ? (
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                   L’absence d’arrêté CatNat ne signifie pas que votre territoire
                   n’a jamais connu d’événements climatiques importants, ni subis
@@ -178,9 +178,9 @@ export const ArretesCatnat = (props: {
             </div>
           )}
           <SourceExport
-            anchor="Arrêtés CatNat"
+            anchor="Arrêtés-CatNat"
             source="Base nationale de Gestion ASsistée des Procédures
-              Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
+              Administratives relatives aux Risques (GASPAR). Dernière mise à jour :
               septembre 2025"
             condition={gestionRisques.length !== 0}
             exportComponent={

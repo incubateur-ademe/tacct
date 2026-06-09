@@ -2,6 +2,7 @@ import HeaderComp from "@/components/ui/Header";
 import { ClientOnly } from "@/components/utils/ClientOnly";
 import AppFooter from "@/design-system/layout/Footer";
 import { type Metadata } from 'next';
+import SkipLinks from "@codegouvfr/react-dsfr/SkipLinks";
 import dynamic from 'next/dynamic';
 import { Suspense, type PropsWithChildren } from 'react';
 import { NextAppDirEmotionCacheProvider } from 'tss-react/next/appDir';
@@ -26,10 +27,16 @@ const LayoutMain = ({ children }: PropsWithChildren) => {
       <Suspense>
         <PostHogPageView />
       </Suspense>
+      <SkipLinks
+        links={[
+          { anchor: '#contenu', label: 'Accéder au contenu' },
+          { anchor: '#footer', label: 'Accéder au pied de page' }
+        ]}
+      />
       <ClientOnly>
         <HeaderComp />
       </ClientOnly>
-      <main>{children}</main>
+      <main id="contenu" tabIndex={-1}>{children}</main>
       <AppFooter />
       <CookieBanner />
     </NextAppDirEmotionCacheProvider>
