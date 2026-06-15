@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
   };
 
   const toMonCompte = () =>
-    clearSession(NextResponse.redirect(new URL('/mon-compte', request.url)));
+    clearSession(NextResponse.redirect(`${getBaseUrl()}/mon-compte`));
 
   const raw = request.cookies.get(cookieName)?.value;
   if (!raw) return toMonCompte();

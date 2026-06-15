@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   encodeUserSession,
+  getBaseUrl,
   getClientId,
   getDiscovery,
   getRedirectUri,
@@ -26,7 +27,7 @@ export async function GET(request: NextRequest) {
 
   const fail = (reason: string) =>
     NextResponse.redirect(
-      new URL(`/mon-compte?error=${encodeURIComponent(reason)}`, request.url)
+      `${getBaseUrl()}/mon-compte?error=${encodeURIComponent(reason)}`
     );
 
   if (oidcError) return fail(oidcError);
@@ -100,9 +101,7 @@ export async function GET(request: NextRequest) {
       id_token: tokens.id_token
     });
 
-    const response = NextResponse.redirect(
-      new URL('/mon-espace', request.url)
-    );
+    const response = NextResponse.redirect(`${getBaseUrl()}/mon-espace`);
     response.cookies.set(sessionCookieName(), sessionJwt, {
       httpOnly: true,
       sameSite: 'lax',
