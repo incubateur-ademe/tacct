@@ -11,6 +11,20 @@ export const authConfig: NextAuthConfig = {
     maxAge: 1800, // 30 minutes
     updateAge: 1800 // force session update toutes les 30 minutes
   },
+  cookies: {
+    sessionToken: {
+      name:
+        process.env.NODE_ENV === 'production'
+          ? '__Secure-authjs.stats-session-token'
+          : 'authjs.stats-session-token',
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production'
+      }
+    }
+  },
   pages: {
     signIn: '/statistiques-login'
   },

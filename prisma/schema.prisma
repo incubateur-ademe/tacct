@@ -6,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "postgres"
-  schemas  = ["analytics", "databases_v2", "postgis_v2", "public", "ressources"]
+  schemas  = ["analytics", "databases_v2", "postgis_v2", "public", "ressources", "tacct"]
 }
 
 model sandbox_users {
@@ -1201,4 +1201,709 @@ model inondations_par_debordement {
   @@index([epci], map: "inondations_par_debordement_epci_index")
   @@index([index], map: "ix_inondations_par_debordement_index")
   @@schema("databases_v2")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model climate {
+  id                         String      @id(map: "idx_16386_primary") @db.Char(36)
+  region_id                  String?     @unique(map: "idx_16386_uniq_3af4f4f798260155") @db.VarChar(255)
+  temperature_evolution      String?
+  level_precipitation_first  String?
+  level_precipitation_second String?
+  created_at                 DateTime    @db.Timestamptz(6)
+  updated_at                 DateTime    @db.Timestamptz(6)
+  old_region                 old_region? @relation(fields: [region_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_3af4f4f798260155")
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model climate_hazard {
+  id                         String                   @id(map: "idx_16391_primary") @db.Char(36)
+  climate_hazard_category_id String?                  @db.Char(36)
+  name                       String                   @db.VarChar(255)
+  created_at                 DateTime                 @db.Timestamptz(6)
+  updated_at                 DateTime                 @db.Timestamptz(6)
+  climate_hazard_category    climate_hazard_category? @relation(fields: [climate_hazard_category_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_1fbd7b308da04186")
+  observed_exposure          observed_exposure[]
+
+  @@index([climate_hazard_category_id], map: "idx_16391_idx_1fbd7b308da04186")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model climate_hazard_category {
+  id                                 String                               @id(map: "idx_16394_primary") @db.Char(36)
+  name                               String                               @db.VarChar(255)
+  icon                               String                               @db.VarChar(255)
+  created_at                         DateTime                             @db.Timestamptz(6)
+  updated_at                         DateTime                             @db.Timestamptz(6)
+  climate_hazard                     climate_hazard[]
+  climate_hazard_category_department climate_hazard_category_department[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model climate_hazard_category_department {
+  climate_hazard_category_id String                  @db.Char(36)
+  department_id              String                  @db.VarChar(255)
+  climate_hazard_category    climate_hazard_category @relation(fields: [climate_hazard_category_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_408a3eda8da04186")
+  department                 department              @relation(fields: [department_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_408a3edaae80f5df")
+
+  @@id([climate_hazard_category_id, department_id], map: "idx_16399_primary")
+  @@index([climate_hazard_category_id], map: "idx_16399_idx_408a3eda8da04186")
+  @@index([department_id], map: "idx_16399_idx_408a3edaae80f5df")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model command_migration {
+  id             String    @id(map: "idx_16402_primary") @db.VarChar(255)
+  command        String
+  description    String    @db.VarChar(255)
+  executed_at    DateTime? @db.Timestamptz(6)
+  execution_time String?   @db.VarChar(255)
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model command_process {
+  id         String    @id(map: "idx_16407_primary") @db.Char(36)
+  pid        BigInt
+  command    String    @db.VarChar(255)
+  started_at DateTime? @db.Timestamptz(6)
+  ended_at   DateTime? @db.Timestamptz(6)
+
+  @@schema("tacct")
+}
+
+model commune {
+  id                              String                            @id(map: "idx_16410_primary") @db.VarChar(255)
+  department_id                   String?                           @db.VarChar(255)
+  label                           String                            @db.VarChar(255)
+  postal_code                     String?                           @db.VarChar(255)
+  department                      department?                       @relation(fields: [department_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e2e2d1eeae80f5df")
+  natural_disaster                natural_disaster[]
+  natural_disaster_search_commune natural_disaster_search_commune[]
+  study                           study[]
+  study_office                    study_office[]
+  user                            user[]
+
+  @@index([department_id], map: "idx_16410_idx_e2e2d1eeae80f5df")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model config {
+  id         String   @id(map: "idx_16415_primary") @db.Char(36)
+  name       String   @unique(map: "idx_16415_uniq_d48a2f7c5e237e06") @db.VarChar(255)
+  label      String   @db.VarChar(255)
+  value      String   @db.VarChar(255)
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+
+  @@schema("tacct")
+}
+
+model department {
+  id                                 String                               @id(map: "idx_16420_primary") @db.VarChar(255)
+  region_id                          String?                              @db.VarChar(255)
+  old_region_id                      String?                              @db.VarChar(255)
+  label                              String                               @db.VarChar(255)
+  climate_hazard_category_department climate_hazard_category_department[]
+  commune                            commune[]
+  region                             region?                              @relation(fields: [region_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cd1de18a98260155")
+  old_region                         old_region?                          @relation(fields: [old_region_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_cd1de18add9245e4")
+
+  @@index([region_id], map: "idx_16420_idx_cd1de18a98260155")
+  @@index([old_region_id], map: "idx_16420_idx_cd1de18add9245e4")
+  @@schema("tacct")
+}
+
+model doctrine_migration_versions {
+  version        String    @id(map: "idx_16425_primary") @db.VarChar(191)
+  executed_at    DateTime? @db.Timestamptz(6)
+  execution_time BigInt?
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model domain {
+  id                   String                 @id(map: "idx_16428_primary") @db.Char(36)
+  name                 String                 @db.VarChar(255)
+  icon                 String                 @db.VarChar(255)
+  created_at           DateTime               @db.Timestamptz(6)
+  updated_at           DateTime               @db.Timestamptz(6)
+  project_sheet_detail project_sheet_detail[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model file {
+  id                   String                @id(map: "idx_16433_primary") @db.Char(36)
+  file_name            String?               @db.VarChar(255)
+  original_name        String?               @db.VarChar(255)
+  type                 String?               @db.VarChar(32)
+  created_at           DateTime              @db.Timestamptz(6)
+  updated_at           DateTime              @db.Timestamptz(6)
+  project_sheet_detail project_sheet_detail?
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model future_climate {
+  id            String      @id(map: "idx_16438_primary") @db.Char(36)
+  old_region_id String?     @db.VarChar(255)
+  indice        String      @db.VarChar(255)
+  unit          String      @db.VarChar(255)
+  season        String      @db.VarChar(255)
+  scenario      String      @db.VarChar(255)
+  year          String      @db.VarChar(255)
+  period        String      @db.VarChar(255)
+  min_value     Float
+  max_value     Float
+  average_value Float
+  created_at    DateTime    @db.Timestamptz(6)
+  updated_at    DateTime    @db.Timestamptz(6)
+  old_region    old_region? @relation(fields: [old_region_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_65906d58dd9245e4")
+
+  @@index([old_region_id], map: "idx_16438_idx_65906d58dd9245e4")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model future_exposure {
+  id                   String             @id(map: "idx_16443_primary") @db.Char(36)
+  observed_exposure_id String?            @unique(map: "idx_16443_uniq_7fb9f32dbe9809ad") @db.Char(36)
+  trends               String?            @db.VarChar(255)
+  exposure             BigInt?
+  justification        String?
+  created_at           DateTime           @db.Timestamptz(6)
+  updated_at           DateTime           @db.Timestamptz(6)
+  observed_exposure    observed_exposure? @relation(fields: [observed_exposure_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_7fb9f32dbe9809ad")
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact {
+  id                       String                     @id(map: "idx_16448_primary") @db.Char(36)
+  impact_theme_id          String?                    @db.Char(36)
+  primary_exposure_id      String?                    @db.Char(36)
+  description              String?
+  sensitivity              BigInt?
+  justification            String?
+  observed_impact          String
+  action_plan              String?
+  created_at               DateTime                   @db.Timestamptz(6)
+  updated_at               DateTime                   @db.Timestamptz(6)
+  revoked_diagnostic       Boolean                    @default(false)
+  strategy_studied         Boolean                    @default(false)
+  impact_level_id          String?                    @unique(map: "idx_16448_uniq_c409c00770573d48") @db.Char(36)
+  observed_exposure        observed_exposure?         @relation(fields: [primary_exposure_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_c409c0076298a1c1")
+  impact_level             impact_level?              @relation(fields: [impact_level_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_c409c00770573d48")
+  impact_theme             impact_theme?              @relation(fields: [impact_theme_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_c409c00776e40268")
+  impact_action            impact_action[]
+  impact_climate_hazard    impact_climate_hazard[]
+  impact_competence        impact_competence[]
+  impact_review_criteria   impact_review_criteria[]
+  impact_trajectory        impact_trajectory[]
+  observed_exposure_impact observed_exposure_impact[]
+
+  @@index([primary_exposure_id], map: "idx_16448_idx_c409c0076298a1c1")
+  @@index([impact_theme_id], map: "idx_16448_idx_c409c00776e40268")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_action {
+  id                              String                            @id(map: "idx_16455_primary") @db.Char(36)
+  intitule                        String                            @db.VarChar(255)
+  type_approche                   String?                           @db.VarChar(255)
+  description                     String?                           @db.VarChar(255)
+  type_action                     String?                           @db.VarChar(255)
+  finalite1                       Boolean                           @default(false)
+  finalite2                       Boolean                           @default(false)
+  finalite3                       Boolean                           @default(false)
+  anticipe1                       Boolean                           @default(false)
+  anticipe2                       Boolean                           @default(false)
+  incompatibles                   String
+  impact_id                       String?                           @db.Char(36)
+  impact_strategy_id              String?                           @db.Char(36)
+  created_at                      DateTime                          @db.Timestamptz(6)
+  updated_at                      DateTime                          @db.Timestamptz(6)
+  impact_strategy                 impact_strategy?                  @relation(fields: [impact_strategy_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_9e8f500b4778d7bd")
+  impact                          impact?                           @relation(fields: [impact_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_9e8f500bd128bc9b")
+  impact_action_review            impact_action_review[]
+  impact_trajectory_impact_action impact_trajectory_impact_action[]
+
+  @@index([impact_strategy_id], map: "idx_16455_idx_9e8f500b4778d7bd")
+  @@index([impact_id], map: "idx_16455_idx_9e8f500bd128bc9b")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_action_review {
+  id               String        @id(map: "idx_16465_primary") @db.Char(36)
+  impact_action_id String        @db.Char(36)
+  rank             Int           @db.SmallInt
+  value            Int           @default(0) @db.SmallInt
+  created_at       DateTime      @db.Timestamptz(6)
+  updated_at       DateTime      @db.Timestamptz(6)
+  impact_action    impact_action @relation(fields: [impact_action_id], references: [id], onUpdate: Restrict, map: "fk_9619f063ada8e9aa")
+
+  @@index([impact_action_id], map: "idx_16465_idx_e0d08b9cada8e9aa")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_climate_hazard {
+  id         String   @id(map: "idx_16469_primary") @db.Char(36)
+  impact_id  String?  @db.Char(36)
+  type       String   @db.VarChar(255)
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+  impact     impact?  @relation(fields: [impact_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_4e38d831d128bc9b")
+
+  @@index([impact_id], map: "idx_16469_idx_4e38d831d128bc9b")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_competence {
+  id                 String           @id(map: "idx_16472_primary") @db.Char(36)
+  impact_id          String           @db.Char(36)
+  skill_territory_id String?          @db.Char(36)
+  other_organization String
+  created_at         DateTime         @db.Timestamptz(6)
+  updated_at         DateTime         @db.Timestamptz(6)
+  impact             impact           @relation(fields: [impact_id], references: [id], onUpdate: Restrict, map: "fk_f4547cb3d128bc9b")
+  skill_territory    skill_territory? @relation(fields: [skill_territory_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_f4547cb3e19bdad6")
+
+  @@index([impact_id], map: "idx_16472_idx_f4547cb3d128bc9b")
+  @@index([skill_territory_id], map: "idx_16472_idx_f4547cb3e19bdad6")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_level {
+  id               String           @id(map: "idx_16477_primary") @db.Char(36)
+  indicateur_suivi String           @db.VarChar(500)
+  description1     String           @db.VarChar(500)
+  description2     String           @db.VarChar(500)
+  description3     String           @db.VarChar(500)
+  finalite1        String           @db.VarChar(500)
+  finalite2        String           @db.VarChar(500)
+  finalite3        String           @db.VarChar(500)
+  seuil1           String           @db.VarChar(500)
+  seuil2           String           @db.VarChar(500)
+  impact           impact?
+  impact_strategy  impact_strategy?
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_review_criteria {
+  id                 String           @id(map: "idx_16482_primary") @db.Char(36)
+  impact_id          String?          @db.Char(36)
+  impact_strategy_id String?          @db.Char(36)
+  name               String           @db.VarChar(255)
+  weighting          Int              @default(1) @db.SmallInt
+  rank               Int              @db.SmallInt
+  created_at         DateTime         @db.Timestamptz(6)
+  updated_at         DateTime         @db.Timestamptz(6)
+  impact_strategy    impact_strategy? @relation(fields: [impact_strategy_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e20ba7bf4778d7bd")
+  impact             impact?          @relation(fields: [impact_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e20ba7bfd128bc9b")
+
+  @@index([impact_strategy_id], map: "idx_16482_idx_e20ba7bf4778d7bd")
+  @@index([impact_id], map: "idx_16482_idx_e20ba7bfd128bc9b")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_strategy {
+  id                     String                   @id(map: "idx_16486_primary") @db.Char(36)
+  impact_theme_id        String?                  @db.Char(36)
+  description            String?
+  created_at             DateTime                 @db.Timestamptz(6)
+  updated_at             DateTime                 @db.Timestamptz(6)
+  impact_level_id        String?                  @unique(map: "idx_16486_uniq_3ba0330270573d48") @db.Char(36)
+  impact_action          impact_action[]
+  impact_review_criteria impact_review_criteria[]
+  impact_level           impact_level?            @relation(fields: [impact_level_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_3ba0330270573d48")
+  impact_theme           impact_theme?            @relation(fields: [impact_theme_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_81016ad76e40268")
+  impact_trajectory      impact_trajectory[]
+
+  @@index([impact_theme_id], map: "idx_16486_idx_3ba0330276e40268")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_theme {
+  id              String            @id(map: "idx_16491_primary") @db.Char(36)
+  study_id        String?           @db.Char(36)
+  thematic_id     String?           @db.Char(36)
+  name            String?           @db.VarChar(255)
+  justification   String?
+  created_at      DateTime          @db.Timestamptz(6)
+  updated_at      DateTime          @db.Timestamptz(6)
+  impact          impact[]
+  impact_strategy impact_strategy[]
+  thematic        thematic?         @relation(fields: [thematic_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_2f3a2e12395fced")
+  study           study?            @relation(fields: [study_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_2f3a2e1e7b003e9")
+
+  @@index([thematic_id], map: "idx_16491_idx_2f3a2e12395fced")
+  @@index([study_id], map: "idx_16491_idx_2f3a2e1e7b003e9")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_trajectory {
+  id                              String                            @id(map: "idx_16496_primary") @db.Char(36)
+  impact_id                       String?                           @db.Char(36)
+  impact_strategy_id              String?                           @db.Char(36)
+  name                            String                            @db.VarChar(255)
+  created_at                      DateTime                          @db.Timestamptz(6)
+  impact_strategy                 impact_strategy?                  @relation(fields: [impact_strategy_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_84d7fbcb4778d7bd")
+  impact                          impact?                           @relation(fields: [impact_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_84d7fbcbd128bc9b")
+  impact_trajectory_impact_action impact_trajectory_impact_action[]
+
+  @@index([impact_strategy_id], map: "idx_16496_idx_84d7fbcb4778d7bd")
+  @@index([impact_id], map: "idx_16496_idx_84d7fbcbd128bc9b")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model impact_trajectory_impact_action {
+  id                String            @id(map: "idx_16499_primary") @db.Char(36)
+  trajectory_id     String            @db.Char(36)
+  action_id         String            @db.Char(36)
+  created_at        DateTime          @db.Timestamptz(6)
+  impact_trajectory impact_trajectory @relation(fields: [trajectory_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_ae664f954fe7f825")
+  impact_action     impact_action     @relation(fields: [action_id], references: [id], onUpdate: Restrict, map: "fk_ae664f959d32f035")
+
+  @@index([trajectory_id], map: "idx_16499_idx_ae664f954fe7f825")
+  @@index([action_id], map: "idx_16499_idx_ae664f959d32f035")
+  @@schema("tacct")
+}
+
+model messenger_messages {
+  id           BigInt    @id(map: "idx_16503_primary") @default(autoincrement())
+  body         String
+  headers      String
+  queue_name   String    @db.VarChar(190)
+  created_at   DateTime  @db.Timestamptz(6)
+  available_at DateTime  @db.Timestamptz(6)
+  delivered_at DateTime? @db.Timestamptz(6)
+
+  @@index([delivered_at], map: "idx_16503_idx_75ea56e016ba31db")
+  @@index([available_at], map: "idx_16503_idx_75ea56e0e3bd61ce")
+  @@index([queue_name], map: "idx_16503_idx_75ea56e0fb7336f0")
+  @@schema("tacct")
+}
+
+model natural_disaster {
+  id                String   @id(map: "idx_16509_primary") @db.VarChar(255)
+  commune_id        String?  @db.VarChar(255)
+  risk_number       BigInt
+  risk_label        String   @db.VarChar(255)
+  tacct_risk_number BigInt?
+  tacct_risk_label  String?  @db.VarChar(255)
+  start_date        DateTime @db.Date
+  end_date          DateTime @db.Date
+  season            String   @db.VarChar(255)
+  created_at        DateTime @db.Timestamptz(6)
+  updated_at        DateTime @db.Timestamptz(6)
+  commune           commune? @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8a26a798131a4f72")
+
+  @@index([commune_id], map: "idx_16509_idx_8a26a798131a4f72")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model natural_disaster_search {
+  id                              String                            @id(map: "idx_16514_primary") @db.Char(36)
+  study_id                        String                            @unique(map: "idx_16514_uniq_5998a9d2e7b003e9") @db.Char(36)
+  start_year                      BigInt?
+  end_year                        BigInt?
+  created_at                      DateTime                          @db.Timestamptz(6)
+  updated_at                      DateTime                          @db.Timestamptz(6)
+  study                           study                             @relation(fields: [study_id], references: [id], onUpdate: Restrict, map: "fk_5998a9d2e7b003e9")
+  natural_disaster_search_commune natural_disaster_search_commune[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model natural_disaster_search_commune {
+  natural_disaster_search_id String                  @db.Char(36)
+  commune_id                 String                  @db.VarChar(255)
+  commune                    commune                 @relation(fields: [commune_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_c497eedb131a4f72")
+  natural_disaster_search    natural_disaster_search @relation(fields: [natural_disaster_search_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_c497eedb695d38e1")
+
+  @@id([natural_disaster_search_id, commune_id], map: "idx_16517_primary")
+  @@index([commune_id], map: "idx_16517_idx_c497eedb131a4f72")
+  @@index([natural_disaster_search_id], map: "idx_16517_idx_c497eedb695d38e1")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model observed_exposure {
+  id                       String                     @id(map: "idx_16520_primary") @db.Char(36)
+  study_id                 String?                    @db.Char(36)
+  climate_hazard_id        String?                    @db.Char(36)
+  climate_hazard_custom    String?
+  climate_features         String
+  trends                   String
+  sources                  String?
+  exposure                 BigInt?
+  justification            String?
+  created_at               DateTime                   @db.Timestamptz(6)
+  updated_at               DateTime                   @db.Timestamptz(6)
+  future_exposure          future_exposure?
+  impact                   impact[]
+  climate_hazard           climate_hazard?            @relation(fields: [climate_hazard_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_c42067bb3b314fb3")
+  study                    study?                     @relation(fields: [study_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_c42067bbe7b003e9")
+  observed_exposure_impact observed_exposure_impact[]
+
+  @@index([climate_hazard_id], map: "idx_16520_idx_c42067bb3b314fb3")
+  @@index([study_id], map: "idx_16520_idx_c42067bbe7b003e9")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model observed_exposure_impact {
+  impact_id            String            @db.Char(36)
+  observed_exposure_id String            @db.Char(36)
+  observed_exposure    observed_exposure @relation(fields: [observed_exposure_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_32575569be9809ad")
+  impact               impact            @relation(fields: [impact_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_32575569d128bc9b")
+
+  @@id([impact_id, observed_exposure_id], map: "idx_16525_primary")
+  @@index([observed_exposure_id], map: "idx_16525_idx_32575569be9809ad")
+  @@index([impact_id], map: "idx_16525_idx_32575569d128bc9b")
+  @@schema("tacct")
+}
+
+model old_region {
+  id             String           @id(map: "idx_16528_primary") @db.VarChar(255)
+  label          String           @db.VarChar(255)
+  climate        climate?
+  department     department[]
+  future_climate future_climate[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model page {
+  id           String     @id(map: "idx_16533_primary") @db.Char(36)
+  page_info_id String?    @db.Char(36)
+  name         String     @db.VarChar(255)
+  rank         BigInt
+  page_type    String     @db.VarChar(255)
+  content      String?
+  created_at   DateTime   @db.Timestamptz(6)
+  updated_at   DateTime   @db.Timestamptz(6)
+  slug         String?    @db.VarChar(255)
+  page_info    page_info? @relation(fields: [page_info_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_140ab620a7eb2a6d")
+
+  @@index([page_info_id], map: "idx_16533_idx_140ab620a7eb2a6d")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model page_info {
+  id         String   @id(map: "idx_16538_primary") @db.Char(36)
+  name       String   @db.VarChar(255)
+  title      String   @db.VarChar(255)
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+  page       page[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model project_sheet_detail {
+  id                                                                                                            String                          @id(map: "idx_16543_primary") @db.Char(36)
+  image_id                                                                                                      String?                         @unique(map: "idx_16543_uniq_abc8d5ae3da5256d") @db.Char(36)
+  created_at                                                                                                    DateTime                        @db.Timestamptz(6)
+  updated_at                                                                                                    DateTime                        @db.Timestamptz(6)
+  name                                                                                                          String                          @db.VarChar(70)
+  image_alt                                                                                                     String?                         @db.VarChar(50)
+  image_credit                                                                                                  String?                         @db.VarChar(50)
+  abstract                                                                                                      String                          @db.VarChar(200)
+  activity_type                                                                                                 String?                         @db.VarChar(4)
+  area_type                                                                                                     String?                         @db.VarChar(4)
+  expected_effects                                                                                              String
+  consequences                                                                                                  String
+  slug                                                                                                          String                          @unique(map: "idx_16543_uniq_abc8d5ae989d9b62") @db.VarChar(255)
+  resources                                                                                                     String?
+  domain_id                                                                                                     String?                         @db.Char(36)
+  domain                                                                                                        domain?                         @relation(fields: [domain_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_abc8d5ae115f0ee5")
+  file                                                                                                          file?                           @relation(fields: [image_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_abc8d5ae3da5256d")
+  project_sheet_detail_relation_project_sheet_detail_relation_project_sheet_detail_childToproject_sheet_detail  project_sheet_detail_relation[] @relation("project_sheet_detail_relation_project_sheet_detail_childToproject_sheet_detail")
+  project_sheet_detail_relation_project_sheet_detail_relation_project_sheet_detail_parentToproject_sheet_detail project_sheet_detail_relation[] @relation("project_sheet_detail_relation_project_sheet_detail_parentToproject_sheet_detail")
+  project_sheet_question                                                                                        project_sheet_question[]
+
+  @@index([domain_id], map: "idx_16543_idx_abc8d5ae115f0ee5")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model project_sheet_detail_relation {
+  project_sheet_detail_parent                                                                          String               @db.Char(36)
+  project_sheet_detail_child                                                                           String               @db.Char(36)
+  project_sheet_detail_project_sheet_detail_relation_project_sheet_detail_childToproject_sheet_detail  project_sheet_detail @relation("project_sheet_detail_relation_project_sheet_detail_childToproject_sheet_detail", fields: [project_sheet_detail_child], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_25ba7072a934d0ce")
+  project_sheet_detail_project_sheet_detail_relation_project_sheet_detail_parentToproject_sheet_detail project_sheet_detail @relation("project_sheet_detail_relation_project_sheet_detail_parentToproject_sheet_detail", fields: [project_sheet_detail_parent], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_25ba7072b0d18041")
+
+  @@id([project_sheet_detail_parent, project_sheet_detail_child], map: "idx_16548_primary")
+  @@index([project_sheet_detail_child], map: "idx_16548_idx_25ba7072a934d0ce")
+  @@index([project_sheet_detail_parent], map: "idx_16548_idx_25ba7072b0d18041")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model project_sheet_question {
+  id                      String               @id(map: "idx_16551_primary") @db.Char(36)
+  project_sheet_detail_id String               @db.Char(36)
+  created_at              DateTime             @db.Timestamptz(6)
+  updated_at              DateTime             @db.Timestamptz(6)
+  name                    String               @db.VarChar(255)
+  diagnosis               Boolean
+  strategy                Boolean
+  review                  Boolean
+  highlighted             Boolean              @default(false)
+  thematic                String               @default("") @db.VarChar(50)
+  project_sheet_detail    project_sheet_detail @relation(fields: [project_sheet_detail_id], references: [id], onUpdate: Restrict, map: "fk_ea1ccec8dc57ce29")
+
+  @@index([project_sheet_detail_id], map: "idx_16551_idx_ea1ccec8dc57ce29")
+  @@schema("tacct")
+}
+
+model region {
+  id                String       @id(map: "idx_16556_primary") @db.VarChar(255)
+  label             String       @db.VarChar(255)
+  location          String?      @db.VarChar(255)
+  count_communities BigInt       @default(0)
+  department        department[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model skill_territory {
+  id                String              @id(map: "idx_16562_primary") @db.Char(36)
+  label             String              @db.VarChar(255)
+  created_at        DateTime            @db.Timestamptz(6)
+  updated_at        DateTime            @db.Timestamptz(6)
+  impact_competence impact_competence[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model study {
+  id                          String                   @id(map: "idx_16565_primary") @db.Char(36)
+  commune_id                  String?                  @db.VarChar(255)
+  year                        BigInt
+  territory_name              String                   @db.VarChar(255)
+  observed_exposure_valid     String                   @default("in-progress") @db.VarChar(255)
+  sensibility_valid           String                   @default("in-progress") @db.VarChar(255)
+  exposition_future_valid     String                   @default("in-progress") @db.VarChar(255)
+  created_at                  DateTime                 @db.Timestamptz(6)
+  updated_at                  DateTime                 @db.Timestamptz(6)
+  strategy_construction_valid String                   @default("incomplete") @db.VarChar(255)
+  impact_theme                impact_theme[]
+  natural_disaster_search     natural_disaster_search?
+  observed_exposure           observed_exposure[]
+  commune                     commune?                 @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e67f9749131a4f72")
+  user_study                  user_study[]
+
+  @@index([commune_id], map: "idx_16565_idx_e67f9749131a4f72")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model study_office {
+  id         String   @id(map: "idx_16574_primary") @db.Char(36)
+  commune_id String?  @db.VarChar(255)
+  name       String   @db.VarChar(255)
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+  commune    commune? @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_d404f32a131a4f72")
+  user       user[]
+
+  @@index([commune_id], map: "idx_16574_idx_d404f32a131a4f72")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model thematic {
+  id           String         @id(map: "idx_16579_primary") @db.Char(36)
+  name         String         @db.VarChar(255)
+  icon         String         @db.VarChar(255)
+  created_at   DateTime       @db.Timestamptz(6)
+  updated_at   DateTime       @db.Timestamptz(6)
+  impact_theme impact_theme[]
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model token {
+  id         String   @id(map: "idx_16584_primary") @db.Char(36)
+  token      String
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model user {
+  id                     String        @id(map: "idx_16589_primary") @db.Char(36)
+  study_office_id        String?       @db.Char(36)
+  commune_id             String?       @db.VarChar(255)
+  email                  String        @unique(map: "idx_16589_uniq_8d93d649e7927c74") @db.VarChar(255)
+  username               String        @db.VarChar(255)
+  firstname              String        @db.VarChar(255)
+  lastname               String        @db.VarChar(255)
+  validated              Boolean       @default(false)
+  validated_terms_of_use Boolean       @default(true)
+  authenticated_id       String?       @unique(map: "idx_16589_uniq_8d93d649cbcb99a7") @db.VarChar(255)
+  access_token           String?
+  roles                  String
+  created_at             DateTime      @db.Timestamptz(6)
+  updated_at             DateTime      @db.Timestamptz(6)
+  has_accepted_surveys   Boolean?
+  commune                commune?      @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
+  study_office           study_office? @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
+  user_study             user_study[]
+
+  @@index([commune_id], map: "idx_16589_idx_8d93d649131a4f72")
+  @@index([study_office_id], map: "idx_16589_idx_8d93d6496b6770b5")
+  @@schema("tacct")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model user_study {
+  id         String   @id(map: "idx_16596_primary") @db.Char(36)
+  user_id    String?  @db.Char(36)
+  study_id   String?  @db.Char(36)
+  head_study Boolean  @default(false)
+  created_at DateTime @db.Timestamptz(6)
+  updated_at DateTime @db.Timestamptz(6)
+  user       user?    @relation(fields: [user_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_4bd6c11a76ed395")
+  study      study?   @relation(fields: [study_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_4bd6c11e7b003e9")
+
+  @@index([user_id], map: "idx_16596_idx_4bd6c11a76ed395")
+  @@index([study_id], map: "idx_16596_idx_4bd6c11e7b003e9")
+  @@schema("tacct")
 }

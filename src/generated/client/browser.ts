@@ -212,3 +212,228 @@ export type arbovirose = Prisma.arboviroseModel
  * 
  */
 export type inondations_par_debordement = Prisma.inondations_par_debordementModel
+/**
+ * Model climate
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type climate = Prisma.climateModel
+/**
+ * Model climate_hazard
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type climate_hazard = Prisma.climate_hazardModel
+/**
+ * Model climate_hazard_category
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type climate_hazard_category = Prisma.climate_hazard_categoryModel
+/**
+ * Model climate_hazard_category_department
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type climate_hazard_category_department = Prisma.climate_hazard_category_departmentModel
+/**
+ * Model command_migration
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type command_migration = Prisma.command_migrationModel
+/**
+ * Model command_process
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type command_process = Prisma.command_processModel
+/**
+ * Model commune
+ * 
+ */
+export type commune = Prisma.communeModel
+/**
+ * Model config
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type config = Prisma.configModel
+/**
+ * Model department
+ * 
+ */
+export type department = Prisma.departmentModel
+/**
+ * Model doctrine_migration_versions
+ * 
+ */
+export type doctrine_migration_versions = Prisma.doctrine_migration_versionsModel
+/**
+ * Model domain
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type domain = Prisma.domainModel
+/**
+ * Model file
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type file = Prisma.fileModel
+/**
+ * Model future_climate
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type future_climate = Prisma.future_climateModel
+/**
+ * Model future_exposure
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type future_exposure = Prisma.future_exposureModel
+/**
+ * Model impact
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact = Prisma.impactModel
+/**
+ * Model impact_action
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_action = Prisma.impact_actionModel
+/**
+ * Model impact_action_review
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_action_review = Prisma.impact_action_reviewModel
+/**
+ * Model impact_climate_hazard
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_climate_hazard = Prisma.impact_climate_hazardModel
+/**
+ * Model impact_competence
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_competence = Prisma.impact_competenceModel
+/**
+ * Model impact_level
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_level = Prisma.impact_levelModel
+/**
+ * Model impact_review_criteria
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_review_criteria = Prisma.impact_review_criteriaModel
+/**
+ * Model impact_strategy
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_strategy = Prisma.impact_strategyModel
+/**
+ * Model impact_theme
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_theme = Prisma.impact_themeModel
+/**
+ * Model impact_trajectory
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_trajectory = Prisma.impact_trajectoryModel
+/**
+ * Model impact_trajectory_impact_action
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type impact_trajectory_impact_action = Prisma.impact_trajectory_impact_actionModel
+/**
+ * Model messenger_messages
+ * 
+ */
+export type messenger_messages = Prisma.messenger_messagesModel
+/**
+ * Model natural_disaster
+ * 
+ */
+export type natural_disaster = Prisma.natural_disasterModel
+/**
+ * Model natural_disaster_search
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type natural_disaster_search = Prisma.natural_disaster_searchModel
+/**
+ * Model natural_disaster_search_commune
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type natural_disaster_search_commune = Prisma.natural_disaster_search_communeModel
+/**
+ * Model observed_exposure
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type observed_exposure = Prisma.observed_exposureModel
+/**
+ * Model observed_exposure_impact
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type observed_exposure_impact = Prisma.observed_exposure_impactModel
+/**
+ * Model old_region
+ * 
+ */
+export type old_region = Prisma.old_regionModel
+/**
+ * Model page
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type page = Prisma.pageModel
+/**
+ * Model page_info
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type page_info = Prisma.page_infoModel
+/**
+ * Model project_sheet_detail
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type project_sheet_detail = Prisma.project_sheet_detailModel
+/**
+ * Model project_sheet_detail_relation
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type project_sheet_detail_relation = Prisma.project_sheet_detail_relationModel
+/**
+ * Model project_sheet_question
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type project_sheet_question = Prisma.project_sheet_questionModel
+/**
+ * Model region
+ * 
+ */
+export type region = Prisma.regionModel
+/**
+ * Model skill_territory
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type skill_territory = Prisma.skill_territoryModel
+/**
+ * Model study
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type study = Prisma.studyModel
+/**
+ * Model study_office
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type study_office = Prisma.study_officeModel
+/**
+ * Model thematic
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type thematic = Prisma.thematicModel
+/**
+ * Model token
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type token = Prisma.tokenModel
+/**
+ * Model user
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type user = Prisma.userModel
+/**
+ * Model user_study
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type user_study = Prisma.user_studyModel

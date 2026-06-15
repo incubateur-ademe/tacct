@@ -174,6 +174,22 @@ const config = {
             { source: '/sandbox/stats', headers: statsHeaders }
         ];
     },
+    async rewrites() {
+        if (
+            process.env.NODE_ENV === 'production' ||
+            !process.env.TACCT_APP_URL
+        ) {
+            return [];
+        }
+        return {
+            beforeFiles: [
+                {
+                    source: '/workspace-tacct/:path*',
+                    destination: `${process.env.TACCT_APP_URL}/workspace-tacct/:path*`
+                }
+            ]
+        };
+    },
     async redirects() {
         return [
             {
