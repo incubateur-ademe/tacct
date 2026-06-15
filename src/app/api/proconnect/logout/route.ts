@@ -1,59 +1,52 @@
-import jwt from 'jsonwebtoken';
+import { randomBytes } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
-
-interface OidcDiscovery {
-  end_session_endpoint: string;
-}
-
-interface SessionPayload {
-  id_token?: string;
-}
+import {
+  decodeUserSession,
+  getDiscovery,
+  sessionCookieName
+} from '@/lib/auth/proconnect';
 
 export async function GET(request: NextRequest) {
-  const fallbackResponse = NextResponse.redirect(
-    new URL('/proconnect-test', request.url)
-  );
-  fallbackResponse.cookies.delete('pc_session');
+  const cookieName = sessionCookieName();
 
-  const sessionCookie = request.cookies.get('pc_session')?.value;
-  if (!sessionCookie) {
-    return fallbackResponse;
-  }
+  const clearSession = (res: NextResponse) => {
+    res.cookies.set(cookieName, '', {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+      maxAge: 0
+    });
+    return res;
+  };
+
+  const toMonCompte = () =>
+    clearSession(NextResponse.redirect(new URL('/mon-compte', request.url)));
+
+  const raw = request.cookies.get(cookieName)?.value;
+  if (!raw) return toMonCompte();
 
   let idToken: string | undefined;
   try {
-    const session = jwt.decode(sessionCookie) as SessionPayload;
-    idToken = session?.id_token;
+    const session = await decodeUserSession(raw);
+    idToken = session?.id_token || undefined;
   } catch {
-    return fallbackResponse;
+    return toMonCompte();
   }
 
-  const domain = process.env.PROCONNECT_DOMAIN;
-  if (!domain || !idToken) {
-    return fallbackResponse;
-  }
+  if (!idToken) return toMonCompte();
 
   try {
-    const discoveryRes = await fetch(
-      `https://${domain}/api/v2/.well-known/openid-configuration`,
-      { cache: 'no-store' }
-    );
-    const discovery = (await discoveryRes.json()) as OidcDiscovery;
-
-    const postLogoutRedirectUri = `${process.env.NEXTAUTH_URL ?? 'http://localhost:3000'}/proconnect-test`;
-
+    const discovery = await getDiscovery();
     const endSessionUrl = new URL(discovery.end_session_endpoint);
     endSessionUrl.searchParams.set('id_token_hint', idToken);
     endSessionUrl.searchParams.set(
       'post_logout_redirect_uri',
-      postLogoutRedirectUri
+      `${process.env.NEXTAUTH_URL}/mon-compte`
     );
-    endSessionUrl.searchParams.set('state', 'logout');
-
-    const response = NextResponse.redirect(endSessionUrl.toString());
-    response.cookies.delete('pc_session');
-    return response;
+    endSessionUrl.searchParams.set('state', randomBytes(16).toString('hex'));
+    return clearSession(NextResponse.redirect(endSessionUrl.toString()));
   } catch {
-    return fallbackResponse;
+    return toMonCompte();
   }
 }

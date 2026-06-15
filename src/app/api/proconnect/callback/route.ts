@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
 
   const fail = (reason: string) =>
     NextResponse.redirect(
-      new URL(`/proconnect-espace?error=${encodeURIComponent(reason)}`, request.url)
+      new URL(`/mon-compte?error=${encodeURIComponent(reason)}`, request.url)
     );
 
   if (oidcError) return fail(oidcError);
@@ -101,7 +101,7 @@ export async function GET(request: NextRequest) {
     });
 
     const response = NextResponse.redirect(
-      new URL('/proconnect-espace', request.url)
+      new URL('/mon-espace', request.url)
     );
     response.cookies.set(sessionCookieName(), sessionJwt, {
       httpOnly: true,

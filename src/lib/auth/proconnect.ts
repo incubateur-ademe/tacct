@@ -1,6 +1,6 @@
 import 'server-only';
 import { createRemoteJWKSet, jwtVerify, type JWTPayload } from 'jose';
-import { encode } from 'next-auth/jwt';
+import { decode, encode } from 'next-auth/jwt';
 
 export const USERS_SESSION_MAX_AGE = 60 * 60 * 12;
 
@@ -101,4 +101,26 @@ export async function encodeUserSession(token: {
     secret,
     maxAge: USERS_SESSION_MAX_AGE
   });
+}
+
+export interface UserSessionToken {
+  sub: string;
+  id_token: string;
+}
+
+export async function decodeUserSession(
+  cookieValue: string
+): Promise<UserSessionToken | null> {
+  const secret = process.env.AUTH_TACCT_SECRET;
+  if (!secret) throw new Error('AUTH_TACCT_SECRET non configuré');
+  const token = await decode({
+    token: cookieValue,
+    salt: sessionCookieName(),
+    secret
+  });
+  if (!token?.sub) return null;
+  return {
+    sub: token.sub,
+    id_token: typeof token.id_token === 'string' ? token.id_token : ''
+  };
 }

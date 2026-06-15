@@ -26,6 +26,16 @@ const HeaderComp = () => {
   const [displayCode, setDisplayCode] = useState<string | null>(urlCode);
   const [displayLibelle, setDisplayLibelle] = useState<string | null>(urlLibelle);
   const [displayType, setDisplayType] = useState<"epci" | "commune" | "departement" | "ept" | "petr" | "pnr" | null>(urlType);
+  const [user, setUser] = useState<
+    null | { username: string; email: string; firstname: string; lastname: string }
+  >(null);
+
+  useEffect(() => {
+    fetch('/api/proconnect/me')
+      .then((r) => r.json())
+      .then((d) => setUser(d.user))
+      .catch(() => setUser(null));
+  }, []);
 
   useEffect(() => {
     if (params === "/") {
@@ -116,42 +126,48 @@ const HeaderComp = () => {
         orientation: 'horizontal'
       }}
       quickAccessItems={
-        params === "/" && !displayType
-          ? [
-            <button
-              className='flex flex-row items-center'
-              onClick={() => {
-                posthog.capture("click_bouton_mon_compte_header", { date: new Date() });
-                router.push('/mon-compte');
-              }}
-              key="mon-compte-header"
-              aria-label="Mon compte"
-            >
-              <Image
-                src={MonCompteIcone}
-                alt="Mon compte"
-                width={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
-                height={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
-              />
-              {
-                windowDimensions.width && windowDimensions.width > 992 &&
-                <Body style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
-                  Mon compte
-                </Body>
-              }
-            </button>
-          ]
-          : windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/"
-            ? []
-            : displayType && params !== "/"
-              ? [
-                <HeaderRechercheTerritoire
-                  key="recherche-territoire"
-                  libelle={displayLibelle ?? ''}
-                  code={displayCode ?? ''}
-                  type={displayType}
+        params === "/mon-compte" && user ? [
+          <Body key="username" style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
+            {user.username}
+          </Body>
+        ]
+          :
+          params === "/" && !displayType
+            ? [
+              <button
+                className='flex flex-row items-center'
+                onClick={() => {
+                  posthog.capture("click_bouton_mon_compte_header", { date: new Date() });
+                  router.push('/mon-compte');
+                }}
+                key="mon-compte-header"
+                aria-label="Mon compte"
+              >
+                <Image
+                  src={MonCompteIcone}
+                  alt="Mon compte"
+                  width={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
+                  height={windowDimensions.width && windowDimensions.width > 992 ? 16 : 24}
                 />
-              ] : []
+                {
+                  windowDimensions.width && windowDimensions.width > 992 &&
+                  <Body style={{ marginLeft: "0.5rem", color: "var(--principales-vert)" }}>
+                    Mon compte
+                  </Body>
+                }
+              </button>
+            ]
+            : windowDimensions.width && windowDimensions.width < 992 && displayType && params !== "/"
+              ? []
+              : displayType && params !== "/"
+                ? [
+                  <HeaderRechercheTerritoire
+                    key="recherche-territoire"
+                    libelle={displayLibelle ?? ''}
+                    code={displayCode ?? ''}
+                    type={displayType}
+                  />
+                ] : []
       }
       navigation={(params !== "/" && params !== "/mon-compte") ? [
         {
