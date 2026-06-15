@@ -3,10 +3,6 @@ import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-interface MiddlewareTokenOptions {
-  req: NextRequest;
-}
-
 /**
  * Protection contre les open redirects : bloque toutes les redirections externes
  * Vérifie tous les paramètres d'URL suspects qui pourraient être utilisés pour des redirections
@@ -90,7 +86,10 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
   }
   // Only protect /sandbox/* routes
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
-    const token: JWT | null = await getToken({ req } as MiddlewareTokenOptions);
+    const token: JWT | null = await getToken({
+      req,
+      secret: process.env.NEXTAUTH_SECRET
+    });
     if (!token) {
       // Redirect unauthenticated users to the home page
       return NextResponse.redirect(new URL('/', req.url));

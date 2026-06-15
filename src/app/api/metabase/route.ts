@@ -1,13 +1,12 @@
-import { AuthOptions } from '@/lib/auth/authOptions';
+import { auth } from '@/lib/auth/authOptions';
 import jwt from 'jsonwebtoken';
-import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
 const METABASE_URL = process.env.METABASE_URL!;
 const METABASE_EMBEDDING_KEY = process.env.METABASE_EMBEDDING_KEY!;
 
 export const GET = async (req: Request) => {
-  const session = await getServerSession(AuthOptions);
+  const session = await auth();
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

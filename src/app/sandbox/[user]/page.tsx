@@ -1,4 +1,4 @@
-import { getServerSession } from 'next-auth';
+import { auth } from '@/lib/auth/authOptions';
 import { redirect } from 'next/navigation';
 import DisconnectButton from '../stats/DisconnectButton';
 
@@ -7,7 +7,7 @@ type SegmentParams<T extends object = any> = T extends Record<string, any>
   : T
 
 const SandboxUserPage = async ({ params }: { params: Promise<SegmentParams> }) => {
-  const session = await getServerSession();
+  const session = await auth();
   const resolvedParams = await params;
   const user = resolvedParams.user as string;
   // If the session user does not match the URL param, redirect to home

@@ -1,9 +1,9 @@
-import { getServerSession } from 'next-auth';
+import { auth } from '@/lib/auth/authOptions';
 // import { redirect } from "next/navigation";
 import LoginForm from './form';
 
 export default async function SignIn() {
-  const session = await getServerSession();
+  const session = await auth();
   console.log('session', session);
   if (session) {
     // redirect("/api/ressources");

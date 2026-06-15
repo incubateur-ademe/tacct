@@ -10,12 +10,15 @@ export default function LoginForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await signIn('credentials', {
-      redirect: true,
+      redirect: false,
       username,
       password,
-      callbackUrl: '/sandbox/' + username,
     });
-    if (res?.error) setError('Mot de passe incorrect');
+    if (res?.error) {
+      setError('Mot de passe incorrect');
+    } else {
+      window.location.href = '/sandbox/' + username;
+    }
   };
 
   return (

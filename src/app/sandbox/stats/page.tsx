@@ -1,10 +1,10 @@
-import { getServerSession } from 'next-auth';
+import { auth } from '@/lib/auth/authOptions';
 import { redirect } from 'next/navigation';
 import DisconnectButton from './DisconnectButton';
 import MetabaseComponent from './metabaseComponent';
 
 const SandboxUserPage = async () => {
-  const session = await getServerSession();
+  const session = await auth();
   if (!session) {
     redirect('/');
   }
