@@ -42,8 +42,12 @@ export function getClientId(): string {
   return id;
 }
 
+export function getBaseUrl(): string {
+  return (process.env.NEXTAUTH_URL ?? '').replace(/\/+$/, '');
+}
+
 export function getRedirectUri(): string {
-  return `${process.env.NEXTAUTH_URL}/api/proconnect/callback`;
+  return `${getBaseUrl()}/api/proconnect/callback`;
 }
 
 export function sessionCookieName(): string {

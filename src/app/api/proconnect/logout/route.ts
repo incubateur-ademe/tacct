@@ -2,6 +2,7 @@ import { randomBytes } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import {
   decodeUserSession,
+  getBaseUrl,
   getDiscovery,
   sessionCookieName
 } from '@/lib/auth/proconnect';
@@ -42,7 +43,7 @@ export async function GET(request: NextRequest) {
     endSessionUrl.searchParams.set('id_token_hint', idToken);
     endSessionUrl.searchParams.set(
       'post_logout_redirect_uri',
-      `${process.env.NEXTAUTH_URL}/mon-compte`
+      `${getBaseUrl()}/mon-compte`
     );
     endSessionUrl.searchParams.set('state', randomBytes(16).toString('hex'));
     return clearSession(NextResponse.redirect(endSessionUrl.toString()));
