@@ -176,7 +176,7 @@ const config = {
     },
     async rewrites() {
         if (
-            process.env.NODE_ENV === 'production' ||
+            process.env.NEXT_PUBLIC_ENV === 'production' ||
             !process.env.TACCT_APP_URL
         ) {
             return [];
