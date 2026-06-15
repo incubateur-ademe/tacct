@@ -42,7 +42,12 @@ const csp = {
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': ['https://metabase.tacct.ademe.fr'],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
-    'form-action': ["'self'", 'https://*.gouv.fr'],
+    'form-action': [
+        "'self'",
+        'https://*.gouv.fr',
+        process.env.NEXT_PUBLIC_ENV !== 'production' &&
+            'https://*.dev-agentconnect.fr'
+    ],
     // En dev, le serveur est servi en HTTP (IP locale pour tester sur mobile).
     // Ces deux directives forcent le HTTPS : Safari upgrade alors les assets en
     // https://<ip> (sans TLS), ils échouent et la page s'affiche sans CSS/JS.
