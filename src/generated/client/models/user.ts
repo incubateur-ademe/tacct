@@ -20,8 +20,18 @@ export type userModel = runtime.Types.Result.DefaultSelection<Prisma.$userPayloa
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
+}
+
+export type UserAvgAggregateOutputType = {
+  encryption_version: number | null
+}
+
+export type UserSumAggregateOutputType = {
+  encryption_version: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -40,6 +50,9 @@ export type UserMinAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   has_accepted_surveys: boolean | null
+  authenticated_id_bidx: string | null
+  email_bidx: string | null
+  encryption_version: number | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -58,6 +71,9 @@ export type UserMaxAggregateOutputType = {
   created_at: Date | null
   updated_at: Date | null
   has_accepted_surveys: boolean | null
+  authenticated_id_bidx: string | null
+  email_bidx: string | null
+  encryption_version: number | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -76,9 +92,20 @@ export type UserCountAggregateOutputType = {
   created_at: number
   updated_at: number
   has_accepted_surveys: number
+  authenticated_id_bidx: number
+  email_bidx: number
+  encryption_version: number
   _all: number
 }
 
+
+export type UserAvgAggregateInputType = {
+  encryption_version?: true
+}
+
+export type UserSumAggregateInputType = {
+  encryption_version?: true
+}
 
 export type UserMinAggregateInputType = {
   id?: true
@@ -96,6 +123,9 @@ export type UserMinAggregateInputType = {
   created_at?: true
   updated_at?: true
   has_accepted_surveys?: true
+  authenticated_id_bidx?: true
+  email_bidx?: true
+  encryption_version?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -114,6 +144,9 @@ export type UserMaxAggregateInputType = {
   created_at?: true
   updated_at?: true
   has_accepted_surveys?: true
+  authenticated_id_bidx?: true
+  email_bidx?: true
+  encryption_version?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -132,6 +165,9 @@ export type UserCountAggregateInputType = {
   created_at?: true
   updated_at?: true
   has_accepted_surveys?: true
+  authenticated_id_bidx?: true
+  email_bidx?: true
+  encryption_version?: true
   _all?: true
 }
 
@@ -173,6 +209,18 @@ export type UserAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: UserAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UserSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: UserMinAggregateInputType
@@ -203,6 +251,8 @@ export type userGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: UserCountAggregateInputType | true
+  _avg?: UserAvgAggregateInputType
+  _sum?: UserSumAggregateInputType
   _min?: UserMinAggregateInputType
   _max?: UserMaxAggregateInputType
 }
@@ -223,7 +273,12 @@ export type UserGroupByOutputType = {
   created_at: Date
   updated_at: Date
   has_accepted_surveys: boolean | null
+  authenticated_id_bidx: string | null
+  email_bidx: string | null
+  encryption_version: number
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
@@ -262,6 +317,9 @@ export type userWhereInput = {
   created_at?: Prisma.DateTimeFilter<"user"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"user"> | Date | string
   has_accepted_surveys?: Prisma.BoolNullableFilter<"user"> | boolean | null
+  authenticated_id_bidx?: Prisma.StringNullableFilter<"user"> | string | null
+  email_bidx?: Prisma.StringNullableFilter<"user"> | string | null
+  encryption_version?: Prisma.IntFilter<"user"> | number
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   study_office?: Prisma.XOR<Prisma.Study_officeNullableScalarRelationFilter, Prisma.study_officeWhereInput> | null
   user_study?: Prisma.User_studyListRelationFilter
@@ -283,6 +341,9 @@ export type userOrderByWithRelationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   has_accepted_surveys?: Prisma.SortOrderInput | Prisma.SortOrder
+  authenticated_id_bidx?: Prisma.SortOrderInput | Prisma.SortOrder
+  email_bidx?: Prisma.SortOrderInput | Prisma.SortOrder
+  encryption_version?: Prisma.SortOrder
   commune?: Prisma.communeOrderByWithRelationInput
   study_office?: Prisma.study_officeOrderByWithRelationInput
   user_study?: Prisma.user_studyOrderByRelationAggregateInput
@@ -290,27 +351,30 @@ export type userOrderByWithRelationInput = {
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  email?: string
-  authenticated_id?: string
+  authenticated_id_bidx?: string
+  email_bidx?: string
   AND?: Prisma.userWhereInput | Prisma.userWhereInput[]
   OR?: Prisma.userWhereInput[]
   NOT?: Prisma.userWhereInput | Prisma.userWhereInput[]
   study_office_id?: Prisma.StringNullableFilter<"user"> | string | null
   commune_id?: Prisma.StringNullableFilter<"user"> | string | null
+  email?: Prisma.StringFilter<"user"> | string
   username?: Prisma.StringFilter<"user"> | string
   firstname?: Prisma.StringFilter<"user"> | string
   lastname?: Prisma.StringFilter<"user"> | string
   validated?: Prisma.BoolFilter<"user"> | boolean
   validated_terms_of_use?: Prisma.BoolFilter<"user"> | boolean
+  authenticated_id?: Prisma.StringNullableFilter<"user"> | string | null
   access_token?: Prisma.StringNullableFilter<"user"> | string | null
   roles?: Prisma.StringFilter<"user"> | string
   created_at?: Prisma.DateTimeFilter<"user"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"user"> | Date | string
   has_accepted_surveys?: Prisma.BoolNullableFilter<"user"> | boolean | null
+  encryption_version?: Prisma.IntFilter<"user"> | number
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   study_office?: Prisma.XOR<Prisma.Study_officeNullableScalarRelationFilter, Prisma.study_officeWhereInput> | null
   user_study?: Prisma.User_studyListRelationFilter
-}, "id" | "email" | "authenticated_id">
+}, "id" | "authenticated_id_bidx" | "email_bidx">
 
 export type userOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -328,9 +392,14 @@ export type userOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   has_accepted_surveys?: Prisma.SortOrderInput | Prisma.SortOrder
+  authenticated_id_bidx?: Prisma.SortOrderInput | Prisma.SortOrder
+  email_bidx?: Prisma.SortOrderInput | Prisma.SortOrder
+  encryption_version?: Prisma.SortOrder
   _count?: Prisma.userCountOrderByAggregateInput
+  _avg?: Prisma.userAvgOrderByAggregateInput
   _max?: Prisma.userMaxOrderByAggregateInput
   _min?: Prisma.userMinOrderByAggregateInput
+  _sum?: Prisma.userSumOrderByAggregateInput
 }
 
 export type userScalarWhereWithAggregatesInput = {
@@ -352,6 +421,9 @@ export type userScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeWithAggregatesFilter<"user"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"user"> | Date | string
   has_accepted_surveys?: Prisma.BoolNullableWithAggregatesFilter<"user"> | boolean | null
+  authenticated_id_bidx?: Prisma.StringNullableWithAggregatesFilter<"user"> | string | null
+  email_bidx?: Prisma.StringNullableWithAggregatesFilter<"user"> | string | null
+  encryption_version?: Prisma.IntWithAggregatesFilter<"user"> | number
 }
 
 export type userCreateInput = {
@@ -368,6 +440,9 @@ export type userCreateInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutUserInput
@@ -389,6 +464,9 @@ export type userUncheckedCreateInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -406,6 +484,9 @@ export type userUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutUserNestedInput
@@ -427,6 +508,9 @@ export type userUncheckedUpdateInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -446,6 +530,9 @@ export type userCreateManyInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
 }
 
 export type userUpdateManyMutationInput = {
@@ -462,6 +549,9 @@ export type userUpdateManyMutationInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type userUncheckedUpdateManyInput = {
@@ -480,6 +570,9 @@ export type userUncheckedUpdateManyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserListRelationFilter = {
@@ -508,6 +601,13 @@ export type userCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   has_accepted_surveys?: Prisma.SortOrder
+  authenticated_id_bidx?: Prisma.SortOrder
+  email_bidx?: Prisma.SortOrder
+  encryption_version?: Prisma.SortOrder
+}
+
+export type userAvgOrderByAggregateInput = {
+  encryption_version?: Prisma.SortOrder
 }
 
 export type userMaxOrderByAggregateInput = {
@@ -526,6 +626,9 @@ export type userMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   has_accepted_surveys?: Prisma.SortOrder
+  authenticated_id_bidx?: Prisma.SortOrder
+  email_bidx?: Prisma.SortOrder
+  encryption_version?: Prisma.SortOrder
 }
 
 export type userMinOrderByAggregateInput = {
@@ -544,6 +647,13 @@ export type userMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
   has_accepted_surveys?: Prisma.SortOrder
+  authenticated_id_bidx?: Prisma.SortOrder
+  email_bidx?: Prisma.SortOrder
+  encryption_version?: Prisma.SortOrder
+}
+
+export type userSumOrderByAggregateInput = {
+  encryption_version?: Prisma.SortOrder
 }
 
 export type UserNullableScalarRelationFilter = {
@@ -665,6 +775,9 @@ export type userCreateWithoutCommuneInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutUserInput
 }
@@ -684,6 +797,9 @@ export type userUncheckedCreateWithoutCommuneInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -732,6 +848,9 @@ export type userScalarWhereInput = {
   created_at?: Prisma.DateTimeFilter<"user"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"user"> | Date | string
   has_accepted_surveys?: Prisma.BoolNullableFilter<"user"> | boolean | null
+  authenticated_id_bidx?: Prisma.StringNullableFilter<"user"> | string | null
+  email_bidx?: Prisma.StringNullableFilter<"user"> | string | null
+  encryption_version?: Prisma.IntFilter<"user"> | number
 }
 
 export type userCreateWithoutStudy_officeInput = {
@@ -748,6 +867,9 @@ export type userCreateWithoutStudy_officeInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutUserInput
 }
@@ -767,6 +889,9 @@ export type userUncheckedCreateWithoutStudy_officeInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -810,6 +935,9 @@ export type userCreateWithoutUser_studyInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
 }
@@ -830,6 +958,9 @@ export type userUncheckedCreateWithoutUser_studyInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
 }
 
 export type userCreateOrConnectWithoutUser_studyInput = {
@@ -862,6 +993,9 @@ export type userUpdateWithoutUser_studyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
 }
@@ -882,6 +1016,9 @@ export type userUncheckedUpdateWithoutUser_studyInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type userCreateManyCommuneInput = {
@@ -899,6 +1036,9 @@ export type userCreateManyCommuneInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
 }
 
 export type userUpdateWithoutCommuneInput = {
@@ -915,6 +1055,9 @@ export type userUpdateWithoutCommuneInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutUserNestedInput
 }
@@ -934,6 +1077,9 @@ export type userUncheckedUpdateWithoutCommuneInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -952,6 +1098,9 @@ export type userUncheckedUpdateManyWithoutCommuneInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type userCreateManyStudy_officeInput = {
@@ -969,6 +1118,9 @@ export type userCreateManyStudy_officeInput = {
   created_at: Date | string
   updated_at: Date | string
   has_accepted_surveys?: boolean | null
+  authenticated_id_bidx?: string | null
+  email_bidx?: string | null
+  encryption_version?: number
 }
 
 export type userUpdateWithoutStudy_officeInput = {
@@ -985,6 +1137,9 @@ export type userUpdateWithoutStudy_officeInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutUserNestedInput
 }
@@ -1004,6 +1159,9 @@ export type userUncheckedUpdateWithoutStudy_officeInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -1022,6 +1180,9 @@ export type userUncheckedUpdateManyWithoutStudy_officeInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   has_accepted_surveys?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  authenticated_id_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email_bidx?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  encryption_version?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1071,6 +1232,9 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   created_at?: boolean
   updated_at?: boolean
   has_accepted_surveys?: boolean
+  authenticated_id_bidx?: boolean
+  email_bidx?: boolean
+  encryption_version?: boolean
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
   user_study?: boolean | Prisma.user$user_studyArgs<ExtArgs>
@@ -1093,6 +1257,9 @@ export type userSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   created_at?: boolean
   updated_at?: boolean
   has_accepted_surveys?: boolean
+  authenticated_id_bidx?: boolean
+  email_bidx?: boolean
+  encryption_version?: boolean
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1113,6 +1280,9 @@ export type userSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   created_at?: boolean
   updated_at?: boolean
   has_accepted_surveys?: boolean
+  authenticated_id_bidx?: boolean
+  email_bidx?: boolean
+  encryption_version?: boolean
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1133,9 +1303,12 @@ export type userSelectScalar = {
   created_at?: boolean
   updated_at?: boolean
   has_accepted_surveys?: boolean
+  authenticated_id_bidx?: boolean
+  email_bidx?: boolean
+  encryption_version?: boolean
 }
 
-export type userOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "study_office_id" | "commune_id" | "email" | "username" | "firstname" | "lastname" | "validated" | "validated_terms_of_use" | "authenticated_id" | "access_token" | "roles" | "created_at" | "updated_at" | "has_accepted_surveys", ExtArgs["result"]["user"]>
+export type userOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "study_office_id" | "commune_id" | "email" | "username" | "firstname" | "lastname" | "validated" | "validated_terms_of_use" | "authenticated_id" | "access_token" | "roles" | "created_at" | "updated_at" | "has_accepted_surveys" | "authenticated_id_bidx" | "email_bidx" | "encryption_version", ExtArgs["result"]["user"]>
 export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
@@ -1174,6 +1347,9 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     created_at: Date
     updated_at: Date
     has_accepted_surveys: boolean | null
+    authenticated_id_bidx: string | null
+    email_bidx: string | null
+    encryption_version: number
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1615,6 +1791,9 @@ export interface userFieldRefs {
   readonly created_at: Prisma.FieldRef<"user", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"user", 'DateTime'>
   readonly has_accepted_surveys: Prisma.FieldRef<"user", 'Boolean'>
+  readonly authenticated_id_bidx: Prisma.FieldRef<"user", 'String'>
+  readonly email_bidx: Prisma.FieldRef<"user", 'String'>
+  readonly encryption_version: Prisma.FieldRef<"user", 'Int'>
 }
     
 

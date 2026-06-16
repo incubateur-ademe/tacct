@@ -28,12 +28,12 @@ L'intégration se fait « tel quel » : on ne réécrit pas TACCT dans la stack 
 
 - **`tacct-legacy`** : à ne PAS rapatrier, c'est le legacy historique inutile désormais.
 - **`tacct-next`** : réécriture moderne, c'est elle qu'on intègre.
-  - Next.js 16 (App Router, Server Components, Server Actions), TypeScript strict.
-  - **Auth.js v5** (`next-auth@5.0.0-beta`).
-  - Prisma 7 + adaptateur `@prisma/adapter-pg`, PostgreSQL, **schéma `tacct`** (46 modèles).
-  - UI : react-bootstrap / Bootstrap 4 (port pixel-perfect du legacy).
-  - Métier : une collectivité crée une **étude** (`study`) pour une commune + année, saisit ses **expositions observées**, **sensibilités**, **projections climatiques**, identifie des **impacts**, construit des **stratégies** et des **actions** d'adaptation, et exporte un rapport.
-  - Modèle `user` (schéma `tacct`) : `id`, `email` (unique), `username`, `firstname`, `lastname`, `authenticated_id` (= `sub` ProConnect, unique), `roles` (JSON, ex. `["ROLE_ADMIN","ROLE_USER"]`), rattachements `commune_id` / `study_office_id`, etc.
+    - Next.js 16 (App Router, Server Components, Server Actions), TypeScript strict.
+    - **Auth.js v5** (`next-auth@5.0.0-beta`).
+    - Prisma 7 + adaptateur `@prisma/adapter-pg`, PostgreSQL, **schéma `tacct`** (46 modèles).
+    - UI : react-bootstrap / Bootstrap 4 (port pixel-perfect du legacy).
+    - Métier : une collectivité crée une **étude** (`study`) pour une commune + année, saisit ses **expositions observées**, **sensibilités**, **projections climatiques**, identifie des **impacts**, construit des **stratégies** et des **actions** d'adaptation, et exporte un rapport.
+    - Modèle `user` (schéma `tacct`) : `id`, `email` (unique), `username`, `firstname`, `lastname`, `authenticated_id` (= `sub` ProConnect, unique), `roles` (JSON, ex. `["ROLE_ADMIN","ROLE_USER"]`), rattachements `commune_id` / `study_office_id`, etc.
 
 ### 2.2 Facili-TACCT (cible d'accueil)
 
@@ -85,12 +85,12 @@ L'intégration se fait « tel quel » : on ne réécrit pas TACCT dans la stack 
 
 - L'outil TACCT est servi sous le préfixe **`/workspace-tacct`** (configuré via `basePath: '/workspace-tacct'` côté app TACCT). Toutes les routes TACCT sont donc sous `/workspace-tacct/...`.
 - La réorientation `/workspace-tacct/*` → application TACCT se fait :
-  - **hors production** (`NODE_ENV !== 'production'`) : via les `rewrites` de `next.config` de Facili-TACCT, destination = URL interne de l'app TACCT ;
-  - **en production** : via l'**app nginx (WAF)** placée devant la prod.
+    - **hors production** (`NODE_ENV !== 'production'`) : via les `rewrites` de `next.config` de Facili-TACCT, destination = URL interne de l'app TACCT ;
+    - **en production** : via l'**app nginx (WAF)** placée devant la prod.
 - Domaines :
-  - dev / intégration : `http://localhost:3000` (Facili-TACCT), l'app TACCT sur un autre port en local.
-  - application TACCT déployée : `https://tacct-legacy.osc-fr1.scalingo.io` (cible du rewrite hors-prod et du proxy WAF en prod).
-  - production : **`https://tacct.ademe.fr`** (imposé, cf. §6.5).
+    - dev / intégration : `http://localhost:3000` (Facili-TACCT), l'app TACCT sur un autre port en local.
+    - application TACCT déployée : `https://tacct-legacy.osc-fr1.scalingo.io` (cible du rewrite hors-prod et du proxy WAF en prod).
+    - production : **`https://tacct.ademe.fr`** (imposé, cf. §6.5).
 
 ---
 
@@ -100,10 +100,10 @@ L'intégration se fait « tel quel » : on ne réécrit pas TACCT dans la stack 
 
 Le cloisonnement entre l'accès aux statistiques internes et l'accès aux données usagers est **primordial pour la sécurité** : un accès aux statistiques ne doit **jamais** permettre d'accéder aux données usagers. Ce cloisonnement est garanti **par construction** au moyen de **deux instances Auth.js v5 séparées**, avec des **cookies et des secrets distincts**.
 
-| Instance | Public | Schéma | Cookie | Secret |
-| --- | --- | --- | --- | --- |
-| **stats** | agents internes | `public.sandbox_users` | cookie dédié (ex. `authjs.stats-session-token`) | `NEXTAUTH_SECRET` |
-| **users** | usagers | `tacct.user` | cookie users (nom épinglé, ex. `authjs.session-token`) | `AUTH_TACCT_SECRET` |
+| Instance  | Public          | Schéma                 | Cookie                                                 | Secret              |
+| --------- | --------------- | ---------------------- | ------------------------------------------------------ | ------------------- |
+| **stats** | agents internes | `public.sandbox_users` | cookie dédié (ex. `authjs.stats-session-token`)        | `NEXTAUTH_SECRET`   |
+| **users** | usagers         | `tacct.user`           | cookie users (nom épinglé, ex. `authjs.session-token`) | `AUTH_TACCT_SECRET` |
 
 Conséquence : une session stats vit dans un cookie différent ; elle ne peut pas servir à accéder aux données usagers, et TACCT ne connaît que le cookie users.
 
@@ -120,7 +120,7 @@ ProConnect est intégré comme **provider OIDC** (authorization code flow) de l'
 Issues de la documentation officielle ProConnect :
 
 - **Discovery / issuer** : toutes les URLs sont sous `https://${PROCONNECT_DOMAIN}/api/v2/`. La discovery est `https://${PROCONNECT_DOMAIN}/api/v2/.well-known/openid-configuration`, donc l'**issuer OIDC est `https://${PROCONNECT_DOMAIN}/api/v2`**.
-  - `PROCONNECT_DOMAIN` : intégration = `fca.integ01.dev-agentconnect.fr` ; production = `auth.agentconnect.gouv.fr`.
+    - `PROCONNECT_DOMAIN` : intégration = `fca.integ01.dev-agentconnect.fr` ; production = `auth.agentconnect.gouv.fr`.
 - **Scopes** : `openid given_name usual_name email`.
 - **Aucun paramètre superflu** : tout paramètre non standard sur `/authorize` provoque une erreur `Y000400`. En conséquence, **PKCE doit être désactivé** côté Auth.js (`checks: ['state', 'nonce']`) : seuls `response_type`, `client_id`, `redirect_uri`, `scope`, `state`, `nonce` sont envoyés.
 - **Authentification au token endpoint** : `client_secret_post` (identifiants dans le corps de la requête).
@@ -168,16 +168,16 @@ La déconnexion est gérée par Facili-TACCT (propriétaire de l'auth) : signOut
 - **Résolution** : le compte est résolu par `authenticated_id = sub` (le `sub` ProConnect, stable). L'email n'est pas utilisé comme clé de résolution.
 - **Première connexion** : si le compte existe → on le garde tel quel (les comptes migrés ne sont jamais modifiés). S'il n'existe pas → on le **crée** à partir des claims ProConnect.
 - **Correspondance des claims à la création** :
-  - `authenticated_id` = `sub`
-  - `email` = `email`
-  - `username` = `email` (identique à l'email)
-  - `firstname` = `given_name`
-  - `lastname` = `usual_name`
-  - `roles` = `["ROLE_USER"]`
-  - `validated` = `true`, `validated_terms_of_use` = `true`
-  - `commune_id` / `study_office_id` = `null`
-  - horodatages = maintenant
-  - Les autres claims ProConnect (siret, etc.) sont ignorés (pas de colonne correspondante).
+    - `authenticated_id` = `sub`
+    - `email` = `email`
+    - `username` = `email` (identique à l'email)
+    - `firstname` = `given_name`
+    - `lastname` = `usual_name`
+    - `roles` = `["ROLE_USER"]`
+    - `validated` = `true`, `validated_terms_of_use` = `true`
+    - `commune_id` / `study_office_id` = `null`
+    - horodatages = maintenant
+    - Les autres claims ProConnect (siret, etc.) sont ignorés (pas de colonne correspondante).
 
 ---
 
@@ -185,8 +185,8 @@ La déconnexion est gérée par Facili-TACCT (propriétaire de l'auth) : signOut
 
 - **Une seule base PostgreSQL**, partagée par les deux applications (sur Scalingo, l'addon est porté par Facili-TACCT ; l'app TACCT pointe sur la même instance).
 - **Accès** :
-  - **TACCT** : n'utilise que le schéma `tacct`.
-  - **Facili-TACCT** : accède à **l'intégralité de la base** — tous ses schémas (`databases_v2`, `postgis_v2`, `analytics`, `public`) **et la totalité du schéma `tacct`** (tous ses modèles, dont `user`), en lecture et écriture. Son client Prisma est configuré en **multiSchema** et inclut le schéma `tacct` complet : création du compte au premier login (cf. §7) et autres usages des données TACCT.
+    - **TACCT** : n'utilise que le schéma `tacct`.
+    - **Facili-TACCT** : accède à **l'intégralité de la base** — tous ses schémas (`databases_v2`, `postgis_v2`, `analytics`, `public`) **et la totalité du schéma `tacct`** (tous ses modèles, dont `user`), en lecture et écriture. Son client Prisma est configuré en **multiSchema** et inclut le schéma `tacct` complet : création du compte au premier login (cf. §7) et autres usages des données TACCT.
 
 ---
 

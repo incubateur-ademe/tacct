@@ -36,8 +36,8 @@ Un chiffrement fort (AES-GCM) utilise un **IV aléatoire** : le même clair prod
 ### 3.2 Blind index (lookup et unicité)
 
 - Pour les champs interrogés / uniques, une colonne **blind index** dédiée stocke un **`HMAC-SHA256(valeur, clé)`** (déterministe) :
-  - `authenticated_id_bidx` → résolution du compte à la connexion.
-  - `email_bidx` → conservation de l'unicité de l'email.
+    - `authenticated_id_bidx` → résolution du compte à la connexion.
+    - `email_bidx` → conservation de l'unicité de l'email.
 - L'unicité est portée par la colonne blind index. La valeur réelle reste chiffrée en AES-GCM.
 
 ### 3.3 Mise en œuvre dans l'application
@@ -75,8 +75,8 @@ Un chiffrement fort (AES-GCM) utilise un **IV aléatoire** : le même clair prod
 
 ## 5. Variables d'environnement
 
-| Variable | Portée | Usage |
-| --- | --- | --- |
+| Variable              | Portée                    | Usage                                                                                                                                                                                                                     |
+| --------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `USER_ENCRYPTION_KEY` | Facili-TACCT **et** TACCT | Clé maître de chiffrement des champs sensibles de `user`. **Valeur distincte par environnement** (prod ≠ preprod), identique entre les deux apps d'un même environnement. Sous-clés chiffrement + HMAC dérivées par HKDF. |
 
 ---

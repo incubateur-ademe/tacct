@@ -11,6 +11,7 @@ import {
   verifyIdToken,
   verifyUserinfo
 } from '@/lib/auth/proconnect';
+import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
 
 interface TokenResponse {
@@ -73,18 +74,22 @@ export async function GET(request: NextRequest) {
 
     const sub = idClaims.sub;
     let user = await prisma.user.findFirst({
-      where: { authenticated_id: sub }
+      where: { authenticated_id_bidx: blindIndex(sub) }
     });
     if (!user) {
       const now = new Date();
+      const email = claims.email ?? '';
       user = await prisma.user.create({
         data: {
           id: randomUUID(),
-          authenticated_id: sub,
-          email: claims.email ?? '',
-          username: claims.email ?? '',
-          firstname: claims.given_name ?? '',
-          lastname: claims.usual_name ?? '',
+          authenticated_id: encryptField(sub),
+          authenticated_id_bidx: blindIndex(sub),
+          email: encryptField(email),
+          email_bidx: blindIndex(email),
+          username: encryptField(email),
+          firstname: encryptField(claims.given_name ?? ''),
+          lastname: encryptField(claims.usual_name ?? ''),
+          encryption_version: 1,
           roles: JSON.stringify(['ROLE_USER']),
           validated: true,
           validated_terms_of_use: true,

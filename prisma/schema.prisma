@@ -1871,18 +1871,21 @@ model user {
   id                     String        @id(map: "idx_16589_primary") @db.Char(36)
   study_office_id        String?       @db.Char(36)
   commune_id             String?       @db.VarChar(255)
-  email                  String        @unique(map: "idx_16589_uniq_8d93d649e7927c74") @db.VarChar(255)
-  username               String        @db.VarChar(255)
-  firstname              String        @db.VarChar(255)
-  lastname               String        @db.VarChar(255)
+  email                  String
+  username               String
+  firstname              String
+  lastname               String
   validated              Boolean       @default(false)
   validated_terms_of_use Boolean       @default(true)
-  authenticated_id       String?       @unique(map: "idx_16589_uniq_8d93d649cbcb99a7") @db.VarChar(255)
+  authenticated_id       String?
   access_token           String?
   roles                  String
   created_at             DateTime      @db.Timestamptz(6)
   updated_at             DateTime      @db.Timestamptz(6)
   has_accepted_surveys   Boolean?
+  authenticated_id_bidx  String?       @unique
+  email_bidx             String?       @unique
+  encryption_version     Int           @default(0)
   commune                commune?      @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
   study_office           study_office? @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
   user_study             user_study[]

@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,9 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -36,11 +30,11 @@
     "tailwind.config.js",
     "./src/lib/json-db/types.d.ts",
     "next.config.mjs",
-    ".next/dev/types/**/*.ts"
-, "src/app/(main)/(parcours)/patch4c/components/DromAccordion.tsx", "src/app/(main)/(parcours)/patch4c/components/DromAccordion.bak"  ],
-  "exclude": [
-    "node_modules",
-    "playwright.config.ts",
-    "e2e"
-  ]
+    ".next/dev/types/**/*.ts",
+    "src/app/(main)/(parcours)/patch4c/components/DromAccordion.tsx",
+    "src/app/(main)/(parcours)/patch4c/components/DromAccordion.bak",
+    "scripts/lire-user.mjs",
+    "scripts/lire-user.js"
+  ],
+  "exclude": ["node_modules", "playwright.config.ts", "e2e"]
 }
