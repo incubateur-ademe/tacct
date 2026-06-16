@@ -8,6 +8,8 @@
 
 ## 1. Contexte et objectif
 
+Pour plus de clarté, l'outil legacy sera intitulé "TACCT" et le nouvel outil sera nommé "Facili-TACCT", bien qu'aujourd'hui, le service Facili-TACCT n'existe plus et tout le service s'appelle TACCT.
+
 TACCT est un outil historique d'accompagnement des collectivités dans l'adaptation au changement climatique. Il dispose de comptes utilisateurs réels (authentification ProConnect), rattachés à des territoires, et d'une base de données contenant des données personnelles et des données métier (études, impacts, stratégies). Cet outil était déployé ailleurs ; ce déploiement est arrêté. La base de données a été récupérée et migrée.
 
 Facili-TACCT est un outil plus récent, en production, de diagnostic de vulnérabilité climatique des territoires. Il s'appuie essentiellement sur de la donnée publique (open data) et ne contient pas de données personnelles d'usagers.

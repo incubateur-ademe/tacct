@@ -1,0 +1,26 @@
+-- Conversion MariaDB (dump legacy) -> Postgres, dans le schéma `tacct`.
+-- Données chargées EN CLAIR : le chiffrement est appliqué ensuite (phase2 +
+-- backfill + phase4) par run.sh. Pgloader crée le schéma au nom de la base
+-- MySQL (`7706_tacct`) puis on le renomme en `tacct`.
+--
+-- Casts notables (sinon par défaut pgloader convient) :
+--  - tinyint(1) -> boolean : géré par la règle par défaut de pgloader
+--    (validated / validated_terms_of_use / has_accepted_surveys).
+--  - datetime  -> timestamptz, et dates « zéro » MySQL (0000-00-00) -> NULL.
+
+LOAD DATABASE
+     FROM     mysql://prep:prep@mariadb/7706_tacct
+     INTO     postgresql://postgres:prep@postgres/tacct_prep
+
+ WITH include drop, create tables, create indexes, foreign keys,
+      reset sequences, workers = 4, concurrency = 1
+
+  SET maintenance_work_mem to '256MB', work_mem to '24MB'
+
+ CAST type datetime to timestamptz
+          drop default drop not null using zero-dates-to-null,
+      type date
+          drop not null using zero-dates-to-null
+
+ ALTER SCHEMA '7706_tacct' RENAME TO 'tacct'
+;

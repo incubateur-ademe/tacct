@@ -8,6 +8,8 @@
 
 ## 1. Contexte et objectif
 
+Pour plus de clarté, l'outil legacy sera intitulé "TACCT" et le nouvel outil sera nommé "Facili-TACCT", bien qu'aujourd'hui, le service Facili-TACCT n'existe plus et tout le service s'appelle TACCT.
+
 La table `user` (schéma `tacct`) contient des données personnelles. **Objectif** : protéger les utilisateurs **en cas de fuite des bases d'administration** (dump, accès en lecture à la base). Le chiffrement au niveau disque ne suffit pas (un dump resterait lisible) : on chiffre les colonnes sensibles au niveau applicatif, avec une clé secrète.
 
 **Champs chiffrés** : `email`, `firstname`, `lastname`, `username`, `authenticated_id`.
@@ -50,7 +52,7 @@ Un chiffrement fort (AES-GCM) utilise un **IV aléatoire** : le même clair prod
 
 - Clé symétrique secrète, **une par environnement** (`USER_ENCRYPTION_KEY`), **prod et preprod avec deux clés différentes** : une fuite de la clé preprod ne compromet pas la prod.
 - À partir de cette clé maître, deux sous-clés sont dérivées (HKDF) : une pour le chiffrement AES-GCM, une pour le HMAC des blind index.
-- **Modèle symétrique assumé** : la connexion et l'affichage nécessitant un déchiffrement, **les deux applications (Facili-TACCT et TACCT) détiennent la clé**. Ce n'est pas un modèle « seul l'admin déchiffre » (qui interdirait d'afficher nom/email). La clé est un secret applicatif géré hors du code.
+- **Modèle symétrique assumé** : la connexion et l'affichage nécessitant un déchiffrement, **les deux applications historiques (Facili-TACCT et TACCT) détiennent la clé**. Ce n'est pas un modèle « seul l'admin déchiffre » (qui interdirait d'afficher nom/email). La clé est un secret applicatif géré hors du code.
 
 ### 3.5 Schéma
 
