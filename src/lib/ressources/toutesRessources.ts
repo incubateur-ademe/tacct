@@ -353,7 +353,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
-    ordreCollection: 7
+    ordreCollection: 8
   },
   {
     id: 16,
@@ -369,7 +369,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
-    ordreCollection: 10
+    ordreCollection: 11
   },
   {
     id: 17,
@@ -385,7 +385,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 50,
-    ordreCollection: 11
+    ordreCollection: 12
   },
   {
     id: 18,
@@ -400,7 +400,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 8
+    ordreCollection: 9
   },
   {
     id: 19,
@@ -416,7 +416,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
-    ordreCollection: 9
+    ordreCollection: 10
   },
   {
     id: 20,
@@ -648,7 +648,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-11-25',
     ordre: 10,
-    ordreCollection: 3,
+    ordreCollection: 4,
     metadata: {
       title:
         'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
@@ -867,7 +867,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 110,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 45,
@@ -882,7 +882,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
-    ordreCollection: 6
+    ordreCollection: 7
   },
   {
     id: 46,
@@ -899,7 +899,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-05-06',
     ordre: 4,
-    ordreCollection: 4,
+    ordreCollection: 5,
     metadata: {
       title:
         'Financer vos trajectoires d’adaptation : quels leviers et partenaires ?',
@@ -926,6 +926,27 @@ export const toutesLesRessources: ToutesRessources[] = [
       title: 'Patch 4°C : comment intégrer la TRACC dans votre diagnostic ?',
       description:
         'Découvrez comment le patch 4°C peut vous aider à intégrer la trajectoire de référence pour l’adaptation au changement climatique (TRACC).'
+    }
+  },
+  {
+    id: 48,
+    type: 'Article',
+    titre: "Suivi-évaluation : retour d'expérience du Pays de la Déodatie",
+    slug: 'strategie-suivi-evaluation',
+    description:
+      "Comment savoir si une stratégie d'adaptation produit réellement les effets escomptés ? Le suivi-évaluation : une étape incontournable à anticiper.",
+    lien: '/ressources/articles/strategie-suivi-evaluation',
+    filtres: ['Article', "M'inspirer", "Retour d'expérience", 'Grand Est'],
+    collections: ['Bâtir la stratégie d’adaptation'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-06-17',
+    ordre: 1,
+    ordreCollection: 2,
+    metadata: {
+      title: "Suivi-évaluation : retour d'expérience du Pays de la Déodatie",
+      description:
+        "Comment savoir si une stratégie d'adaptation produit réellement les effets escomptés ? Le suivi-évaluation : une étape incontournable à anticiper."
     }
   }
 ];
