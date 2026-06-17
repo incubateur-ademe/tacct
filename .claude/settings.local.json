@@ -4,15 +4,20 @@
       "WebFetch(domain:data.geopf.fr)",
       "WebFetch(domain:cartes.gouv.fr)",
       "WebSearch",
-      "Bash(ls:*)",
+      "Bash(rtk ls:*)",
       "Bash(cat:*)",
       "Bash(cd:*)",
       "Bash(pwd:*)",
-      "Bash(grep:*)",
-      "Bash(find:*)",
+      "Bash(rtk find:*)",
       "Bash(rtk grep *)",
       "Bash(rtk tsc *)",
       "Bash(rtk lint *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./**/.env)",
+      "Bash(cat:*.env*)",
+      "Bash(rtk read:*.env*)"
     ]
   }
 }

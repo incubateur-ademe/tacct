@@ -32,9 +32,11 @@ export const BlocAleas = ({
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
 
-  const activeItems = patch4.some(item => item.niveaux_marins !== null)
-    ? patch4Indices(patch4[0])
-    : patch4Indices(patch4[0]).filter(item => item.key !== 'niveaux_marins');
+  const activeItems = patch4Indices(patch4[0]).filter(item => {
+    if (item.key === 'niveaux_marins') return patch4.some(p => p.niveaux_marins !== null);
+    if (item.key === 'feux_foret') return patch4.some(p => p.feux_foret !== null);
+    return true;
+  });
   const getInitialIndex = () => {
     if (selectedAleaKey) {
       const index = activeItems.findIndex(item => item.key === selectedAleaKey);
@@ -99,7 +101,6 @@ export const BlocAleas = ({
       libelle_geographique: item.libelle_geographique,
     };
   });
-
 
   return (
     <>
@@ -175,7 +176,7 @@ export const BlocAleas = ({
             return (
               <>
                 <AleaExplications key={`alea-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
-                {patch4.length > 1 ? <Patch4Maps coordonneesCommunes={coordonneesCommunes} patch4={filteredPatch4} selectedAnchor={key} /> : null}
+                {(patch4.length > 1) ? <Patch4Maps coordonneesCommunes={coordonneesCommunes} patch4={filteredPatch4} selectedAnchor={key} /> : null}
                 <AnalyseSensibilite key={`sensibilite-${key}`} item={itemProps} isMap={patch4.length > 1 ? true : false} />
                 {
                   (patch4.length > 1 || itemProps.value === "Aggravation forte" || itemProps.value === "Aggravation très forte") &&
