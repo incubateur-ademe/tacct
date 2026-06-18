@@ -19,7 +19,7 @@ export const DonneesIndisponiblesOutreMer = () => {
         Données indisponibles
       </H1>
       <Body color="#666666" style={{ maxWidth: 900, margin: "0 auto" }}>
-        Ces indicateurs ne sont pas disponibles pour votre territoire. Vous
+        Nos indicateurs ne sont pas disponibles pour votre territoire. Vous
         pouvez néanmoins accéder à notre rubrique “Patch 4° C” et consulter les
         tendanciels d’aggravation des aléas majeurs pour votre territoire.
       </Body>
