@@ -18,7 +18,9 @@ const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {
   ) {
     return (
       <div className="py-12">
-        <DonneesIndisponiblesOutreMer />;
+        <Suspense>
+          <DonneesIndisponiblesOutreMer />;
+        </Suspense>
       </div>
     );
   }
