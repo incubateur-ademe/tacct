@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
           lastname: encryptField(claims.usual_name ?? ''),
           encryption_version: 1,
           roles: JSON.stringify(['ROLE_USER']),
-          validated: true,
+          validated: false,
           validated_terms_of_use: true,
           commune_id: null,
           study_office_id: null,
