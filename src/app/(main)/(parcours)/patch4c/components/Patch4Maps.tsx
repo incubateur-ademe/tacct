@@ -44,7 +44,6 @@ export const Patch4Maps = (props: {
   const handleContainerRef = (ref: RefObject<HTMLDivElement | null>) => {
     mapContainerRef.current = ref.current;
   };
-
   return (
     <>
       <div ref={exportContainerRef}>

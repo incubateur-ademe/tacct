@@ -936,7 +936,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     description:
       "Comment savoir si une stratégie d'adaptation produit réellement les effets escomptés ? Le suivi-évaluation : une étape incontournable à anticiper.",
     lien: '/ressources/articles/strategie-suivi-evaluation',
-    filtres: ['Article', "M'inspirer", "Retour d'expérience", 'Grand Est'],
+    filtres: ['Article', "Retour d'expérience", "M'inspirer", 'Grand Est'],
     collections: ['Bâtir la stratégie d’adaptation'],
     tempsLecture: 6,
     image: ImageTuileArticle,
