@@ -26,7 +26,7 @@ const csp = {
         process.env.NODE_ENV === 'development' && 'ws:',
         process.env.NODE_ENV === 'development' && 'wss:'
     ],
-    'font-src': ["'self'", process.env.NODE_ENV === 'development' && 'data:'],
+    'font-src': ["'self'", 'data:', 'https://eu-assets.i.posthog.com'],
     'media-src': ["'self'"],
     'img-src': ['*', "'self'", 'data:', 'https:'], //REPLACE (done to display map)
     'script-src': [
