@@ -206,6 +206,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               tickRotation={window.width! < 600 ? -50 : undefined}
               graphMarginBottom={window.width! < 600 ? 180 : undefined}
               isMobile={window.width! < 600}
+              xMargins={window.width! < 600 ? 45 : 80}
             />
             <div style={{ position: "relative", top: "-40px" }}>
               <LegendCompColor
@@ -258,6 +259,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               tickRotation={window.width! < 600 ? -60 : undefined}
               graphMarginBottom={window.width! < 600 ? 160 : undefined}
               isMobile={window.width! < 600}
+              xMargins={window.width! < 600 ? 45 : 80}
             />
             <div style={{ position: "relative", top: "-70px" }}>
               <LegendCompColor
