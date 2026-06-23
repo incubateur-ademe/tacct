@@ -176,7 +176,7 @@ La déconnexion est gérée par Facili-TACCT (propriétaire de l'auth) : signOut
     - `firstname` = `given_name`
     - `lastname` = `usual_name`
     - `roles` = `["ROLE_USER"]`
-    - `validated` = `true`, `validated_terms_of_use` = `true`
+    - `validated` = `false`, `validated_terms_of_use` = `true`
     - `commune_id` / `study_office_id` = `null`
     - horodatages = maintenant
     - Les autres claims ProConnect (siret, etc.) sont ignorés (pas de colonne correspondante).
