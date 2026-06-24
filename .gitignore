@@ -54,3 +54,5 @@ next-env.d.ts
 
 # notion images (downloaded at build time)
 /public/notion-images
+
+.mcp*
