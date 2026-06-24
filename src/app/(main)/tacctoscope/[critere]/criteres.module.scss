@@ -1,0 +1,52 @@
+/* ===== CriterionView ===== */
+.criterionBannerOuter {
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 12px,
+        var(--boutons-primaire-2) 12px,
+        var(--boutons-primaire-2) 14px
+    );
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 364px;
+    //     height: 364px;
+    //     border-radius: 50%;
+    //     background-color: #D3EDEB;
+    //     top: 30%;
+    //     left: 70%;
+    //     z-index: 0;
+    // }
+    &::after {
+        content: '';
+        position: absolute;
+        width: 364px;
+        height: 364px;
+        border-radius: 50%;
+        background-color: white;
+        top: 15%;
+        left: 2%;
+        z-index: 0;
+    }
+}
+
+.criterionViewBody {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 792px;
+
+    @media screen and (max-width: 1280px) {
+        padding: 0 1.5rem;
+    }
+}
+
+.criterionViewBackLink {
+    align-self: center;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

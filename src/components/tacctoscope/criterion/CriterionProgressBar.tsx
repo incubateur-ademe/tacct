@@ -1,0 +1,41 @@
+import {
+  BoutonPrimaireClassic,
+  BoutonSecondaireClassic
+} from '@/design-system/base/Boutons';
+import { NewContainer } from '@/design-system/layout';
+import { CriterionSlug } from '@/lib/tacctoscope/types';
+import { ProgressDots } from '../shared/ProgressDots';
+import styles from './criterion.module.scss';
+
+interface Props {
+  answered: number;
+  total: number;
+  nextSlug: CriterionSlug | null;
+}
+
+export const CriterionProgressBar = ({ answered, total, nextSlug }: Props) => (
+  <div className={styles.criterionProgressBarOuter}>
+    <NewContainer
+      size="xl"
+      style={{ paddingTop: '1.25rem', paddingBottom: '1.25rem' }}
+    >
+      <div className={styles.criterionProgressBarInner}>
+        <ProgressDots filled={answered} total={total} />
+        <div className={styles.criterionProgressBarActions}>
+          {nextSlug && (
+            <BoutonSecondaireClassic
+              size="md"
+              link={`/tacctoscope/${nextSlug}`}
+              text="Critère suivant"
+            />
+          )}
+          <BoutonPrimaireClassic
+            size="md"
+            link="/tacctoscope/feuille-de-route"
+            text="Voir ma feuille de route"
+          />
+        </div>
+      </div>
+    </NewContainer>
+  </div>
+);

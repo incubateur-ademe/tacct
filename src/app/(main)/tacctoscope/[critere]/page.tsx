@@ -10,9 +10,9 @@ import {
   isCriterionSlug
 } from '@/lib/tacctoscope/keys';
 import { AnswerMap } from '@/lib/tacctoscope/types';
-import { CriterionView } from '@/components/tacctoscope/criterion/CriterionView';
 import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
+import { CriteresView } from './CriteresView';
 
 export const dynamic = 'force-dynamic';
 
@@ -49,7 +49,7 @@ const CriterionPage = async ({ params }: Params) => {
   }
 
   return (
-    <CriterionView
+    <CriteresView
       criterion={criterion}
       answers={answers}
       feedback={feedbacks[criterion.slug] ?? null}

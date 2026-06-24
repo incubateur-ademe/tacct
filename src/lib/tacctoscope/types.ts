@@ -19,6 +19,8 @@ export type CriterionSlug = (typeof CRITERION_SLUGS)[number];
 
 export type SectionKind = 'analyse' | 'enquete';
 
+export type ExampleKind = 'exemple' | 'contre-exemple';
+
 export interface Option {
   value: AnswerValue;
   label: string;
@@ -29,6 +31,7 @@ export interface Question {
   label: string;
   text: string;
   example: string;
+  exampleKind: ExampleKind;
   section: SectionKind;
 }
 

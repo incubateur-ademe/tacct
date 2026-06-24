@@ -1,4 +1,5 @@
-import styles from './ProgressDots.module.scss';
+import { Body } from '@/design-system/base/Textes';
+import styles from './shared.module.scss';
 
 interface Props {
   filled: number;
@@ -6,17 +7,24 @@ interface Props {
 }
 
 export const ProgressDots = ({ filled, total }: Props) => (
-  <div className={styles.progress}>
-    <ul className={styles.dots} aria-hidden="true">
+  <div className={styles.progressDotsWrapper}>
+    <ul className={styles.progressDotsList} aria-hidden="true">
       {Array.from({ length: total }, (_, index) => (
         <li
           key={index}
-          className={index < filled ? styles.dotFilled : styles.dot}
+          className={
+            index < filled ? styles.progressDotsDotFilled : styles.progressDotsDot
+          }
         />
       ))}
     </ul>
-    <span className={styles.label}>
+    <Body
+      htmlTag="span"
+      size="sm"
+      color="#666666"
+      style={{ whiteSpace: 'nowrap' }}
+    >
       {filled}/{total} réponses
-    </span>
+    </Body>
   </div>
 );

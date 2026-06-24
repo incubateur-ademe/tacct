@@ -25,6 +25,7 @@ const buildQuestions = (): Question[] =>
     label: LOREM_LABEL,
     text: LOREM_QUESTION,
     example: LOREM_EXAMPLE,
+    exampleKind: index % 2 === 0 ? 'exemple' : 'contre-exemple',
     section
   }));
 

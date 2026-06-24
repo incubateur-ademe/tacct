@@ -1,5 +1,6 @@
 'use client';
 
+import { Body } from '@/design-system/base/Textes';
 import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
 import { ANSWER_OPTIONS } from '@/lib/tacctoscope/content/options';
 import { buildQuestionKey } from '@/lib/tacctoscope/keys';
@@ -9,14 +10,15 @@ import { useState, useTransition } from 'react';
 import { AccordionShell, HeaderVariant } from '../shared/AccordionShell';
 import { RadioScale } from '../shared/RadioScale';
 import { StatusTag } from '../shared/StatusTag';
+import styles from './criterion.module.scss';
 import { ExampleCallout } from './ExampleCallout';
-import styles from './QuestionAccordion.module.scss';
 
 interface Props {
   slug: CriterionSlug;
   question: Question;
   number: number;
   initialValue: AnswerValue | null;
+  defaultOpen?: boolean;
   onChanged: (questionKey: string, answered: boolean) => void;
 }
 
@@ -25,6 +27,7 @@ export const QuestionAccordion = ({
   question,
   number,
   initialValue,
+  defaultOpen = false,
   onChanged
 }: Props) => {
   const questionKey = buildQuestionKey(slug, question.id);
@@ -60,27 +63,45 @@ export const QuestionAccordion = ({
     <AccordionShell
       title={
         <>
-          <span className={styles.number}>Q{number}</span>
-          <span>{question.label}</span>
+          <Body
+            htmlTag="span"
+            weight="bold"
+            color="#161616"
+            style={{ flexShrink: 0 }}
+          >
+            Q{number}
+          </Body>
+          <Body htmlTag="span" weight="bold" color="#161616">
+            {question.label}
+          </Body>
         </>
       }
       accent={question.section}
-      headerVariant={headerVariant}
+      variant={headerVariant}
+      defaultOpen={defaultOpen}
       headerTag={value ? <StatusTag value={value} /> : null}
     >
-      <div className={styles.body}>
-        <p className={styles.text}>{question.text}</p>
-        <ExampleCallout>{question.example}</ExampleCallout>
-        <p className={styles.prompt}>Retrouvez-vous ceci dans votre diagnostic ?</p>
+      <div className={styles.criterionQuestionBody}>
+        <Body size="md" color="#3d3d3d" style={{ lineHeight: 1.6 }}>
+          {question.text}
+        </Body>
+        <ExampleCallout kind={question.exampleKind}>
+          {question.example}
+        </ExampleCallout>
+        <Body size="sm" weight="medium" color="#161616">
+          Retrouvez-vous ceci dans votre diagnostic ?
+        </Body>
         <RadioScale
           options={ANSWER_OPTIONS}
           value={value}
           onSelect={handleSelect}
         />
         {error && (
-          <p className={styles.error} role="alert">
-            L’enregistrement a échoué, merci de réessayer.
-          </p>
+          <div role="alert">
+            <Body size="sm" color="#ce0041">
+              L’enregistrement a échoué, merci de réessayer.
+            </Body>
+          </div>
         )}
       </div>
     </AccordionShell>

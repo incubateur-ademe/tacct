@@ -1,0 +1,166 @@
+
+/* ===== CriterionBanner ===== */
+.criterionBannerWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.criterionBannerIcon {
+  width: 80px;
+  height: 80px;
+}
+
+/* ===== CriterionProgressBar ===== */
+.criterionProgressBarOuter {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #ffffff;
+  border-bottom: 1px solid #e7e5e5;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+.criterionProgressBarInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.criterionProgressBarActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ===== CriterionSection ===== */
+.criterionSectionWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.criterionSectionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ===== QuestionAccordion ===== */
+.criterionQuestionBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ===== ExampleCallout ===== */
+.criterionExampleCallout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+}
+
+.criterionExampleCalloutExemple {
+  background: rgba(227, 250, 249, 0.5);
+}
+
+.criterionExampleCalloutContre {
+  background: rgba(255, 226, 227, 0.5);
+}
+
+.criterionExampleCalloutTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ===== CriterionFeedback ===== */
+.criterionFeedbackWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.criterionFeedbackChoices {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* ===== HubGrid ===== */
+.hubGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 1.5rem;
+  }
+
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 575px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== CriterionCard ===== */
+.criterionCardLink {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 200px;
+  padding: 2rem;
+  border: 2px solid #e7e5e5;
+  border-radius: 4px;
+  background: #ffffff;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 18, 0.16);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: #038278;
+  }
+}
+
+.criterionCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.criterionCardIcon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.5rem;
+}
+
+.criterionCardFooter {
+  border-top: 1px solid #e7e5e5;
+  padding-top: 1rem;
+}

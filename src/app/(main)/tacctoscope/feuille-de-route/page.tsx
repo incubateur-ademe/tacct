@@ -1,11 +1,12 @@
 import { RoadmapCriterion } from '@/components/tacctoscope/roadmap/RoadmapCriterion';
+import { NewContainer } from '@/design-system/layout';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { buildRoadmap } from '@/lib/tacctoscope/roadmap';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
-import styles from './page.module.scss';
+import styles from './roadmap.module.scss';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,25 +20,33 @@ const FeuilleDeRoutePage = async () => {
   const roadmap = buildRoadmap(answers);
 
   return (
-    <div className={styles.page}>
-      <header className={styles.intro}>
-        <h1 className={styles.title}>Votre feuille de route personnalisée</h1>
-        <p className={styles.text}>
-          Retrouvez vos pistes d’amélioration, organisées par critère, au fil de
-          vos réponses.
-        </p>
-      </header>
-
-      <div className={styles.list}>
-        {roadmap.map((item) => (
-          <RoadmapCriterion key={item.slug} item={item} />
-        ))}
+    <>
+      <div className={styles.introOuter}>
+        <NewContainer size="xl">
+          <header className={styles.intro}>
+            <h1 className={styles.title}>Votre feuille de route personnalisée</h1>
+            <p className={styles.text}>
+              Retrouvez vos pistes d’amélioration, organisées par critère, au fil
+              de vos réponses.
+            </p>
+          </header>
+        </NewContainer>
       </div>
 
-      <Link href="/tacctoscope" className={styles.back}>
-        Retour aux critères
-      </Link>
-    </div>
+      <NewContainer size="xl">
+        <div className={styles.body}>
+          <div className={styles.list}>
+            {roadmap.map((item) => (
+              <RoadmapCriterion key={item.slug} item={item} />
+            ))}
+          </div>
+
+          <Link href="/tacctoscope" className={styles.back}>
+            Retour aux critères
+          </Link>
+        </div>
+      </NewContainer>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import { Criterion } from '@/lib/tacctoscope/types';
+import { RoadmapCard } from '../roadmap/RoadmapCard';
 import { CriterionCard } from './CriterionCard';
-import { RoadmapCard } from './RoadmapCard';
-import styles from './HubGrid.module.scss';
+import styles from './criterion.module.scss';
 
 export interface HubItem {
   criterion: Criterion;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const HubGrid = ({ items }: Props) => (
-  <div className={styles.grid}>
+  <div className={styles.hubGrid}>
     {items.map((item) => (
       <CriterionCard
         key={item.criterion.slug}

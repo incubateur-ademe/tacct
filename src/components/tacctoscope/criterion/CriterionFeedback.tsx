@@ -1,9 +1,14 @@
 'use client';
 
+import {
+  BoutonPrimaireClassic,
+  BoutonSecondaireClassic
+} from '@/design-system/base/Boutons';
+import { Body } from '@/design-system/base/Textes';
 import { saveCriterionFeedback } from '@/lib/queries/tacctoscope';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
-import styles from './CriterionFeedback.module.scss';
+import styles from './criterion.module.scss';
 
 interface Props {
   criterionKey: CriterionSlug;
@@ -26,25 +31,37 @@ export const CriterionFeedback = ({ criterionKey, initialValue }: Props) => {
   };
 
   return (
-    <div className={styles.feedback}>
-      <span className={styles.label}>Ce contenu correspond-il à vos besoins ?</span>
-      <div className={styles.choices}>
-        <button
-          type="button"
-          className={`${styles.choice} ${value === true ? styles.active : ''}`}
-          aria-pressed={value === true}
-          onClick={() => handleChoice(true)}
-        >
-          Oui
-        </button>
-        <button
-          type="button"
-          className={`${styles.choice} ${value === false ? styles.active : ''}`}
-          aria-pressed={value === false}
-          onClick={() => handleChoice(false)}
-        >
-          Non
-        </button>
+    <div className={styles.criterionFeedbackWrapper}>
+      <Body htmlTag="span" size="md" color="#161616">
+        Ce contenu correspond-il à vos besoins ?
+      </Body>
+      <div className={styles.criterionFeedbackChoices}>
+        {value === true ? (
+          <BoutonPrimaireClassic
+            size="sm"
+            text="Oui"
+            onClick={() => handleChoice(true)}
+          />
+        ) : (
+          <BoutonSecondaireClassic
+            size="sm"
+            text="Oui"
+            onClick={() => handleChoice(true)}
+          />
+        )}
+        {value === false ? (
+          <BoutonPrimaireClassic
+            size="sm"
+            text="Non"
+            onClick={() => handleChoice(false)}
+          />
+        ) : (
+          <BoutonSecondaireClassic
+            size="sm"
+            text="Non"
+            onClick={() => handleChoice(false)}
+          />
+        )}
       </div>
     </div>
   );

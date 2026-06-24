@@ -2,14 +2,20 @@
 
 import { SectionKind } from '@/lib/tacctoscope/types';
 import { ReactNode, useId, useState } from 'react';
-import styles from './AccordionShell.module.scss';
+import styles from './shared.module.scss';
 
 export type HeaderVariant = 'default' | 'green' | 'gray';
+
+const VARIANT_CLASS: Record<HeaderVariant, string> = {
+  default: styles.accordionShellVariantDefault,
+  green: styles.accordionShellVariantGreen,
+  gray: styles.accordionShellVariantGray
+};
 
 interface Props {
   title: ReactNode;
   accent?: SectionKind;
-  headerVariant?: HeaderVariant;
+  variant?: HeaderVariant;
   headerTag?: ReactNode;
   defaultOpen?: boolean;
   children: ReactNode;
@@ -17,7 +23,9 @@ interface Props {
 
 const ChevronIcon = ({ open }: { open: boolean }) => (
   <svg
-    className={`${styles.chevron} ${open ? styles.chevronOpen : ''}`}
+    className={`${styles.accordionShellChevron} ${
+      open ? styles.accordionShellChevronOpen : ''
+    }`}
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -37,7 +45,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 export const AccordionShell = ({
   title,
   accent = 'analyse',
-  headerVariant = 'default',
+  variant = 'default',
   headerTag,
   defaultOpen = false,
   children
@@ -47,21 +55,23 @@ export const AccordionShell = ({
 
   return (
     <div
-      className={`${styles.item} ${accent === 'enquete' ? styles.enquete : ''}`}
+      className={`${styles.accordionShellItem} ${VARIANT_CLASS[variant]} ${
+        accent === 'enquete' ? styles.accordionShellEnquete : ''
+      }`}
     >
       <button
         type="button"
-        className={`${styles.header} ${styles[headerVariant]}`}
+        className={styles.accordionShellHeader}
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className={styles.title}>{title}</span>
+        <span className={styles.accordionShellTitle}>{title}</span>
         {headerTag}
         <ChevronIcon open={open} />
       </button>
       {open && (
-        <div id={panelId} className={styles.panel}>
+        <div id={panelId} className={styles.accordionShellPanel}>
           {children}
         </div>
       )}

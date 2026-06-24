@@ -1,7 +1,8 @@
 'use client';
 
+import { Body } from '@/design-system/base/Textes';
 import { AnswerValue, Option } from '@/lib/tacctoscope/types';
-import styles from './RadioScale.module.scss';
+import styles from './shared.module.scss';
 
 interface Props {
   options: Option[];
@@ -10,7 +11,7 @@ interface Props {
 }
 
 export const RadioScale = ({ options, value, onSelect }: Props) => (
-  <div className={styles.scale} role="radiogroup">
+  <div className={styles.radioScaleWrapper} role="radiogroup">
     {options.map((option) => {
       const selected = option.value === value;
       return (
@@ -19,11 +20,20 @@ export const RadioScale = ({ options, value, onSelect }: Props) => (
           type="button"
           role="radio"
           aria-checked={selected}
-          className={`${styles.option} ${selected ? styles.selected : ''}`}
+          className={`${styles.radioScaleOption} ${
+            selected ? styles.radioScaleOptionSelected : ''
+          }`}
           onClick={() => onSelect(option.value)}
         >
-          <span className={styles.bullet} aria-hidden="true" />
-          <span className={styles.label}>{option.label}</span>
+          <span className={styles.radioScaleBullet} aria-hidden="true" />
+          <Body
+            htmlTag="span"
+            size="md"
+            weight="bold"
+            color={selected ? '#038278' : '#3d3d3d'}
+          >
+            {option.label}
+          </Body>
         </button>
       );
     })}

@@ -1,53 +1,45 @@
-import { ANSWER_STATUS, StatusIcon } from '@/lib/tacctoscope/status';
+import edit from '@/assets/icons/edit-inbox.svg';
+import star from '@/assets/icons/star.svg';
+import thumbUp from '@/assets/icons/thumb-up.svg';
+import { Body } from '@/design-system/base/Textes';
+import { ANSWER_STATUS } from '@/lib/tacctoscope/status';
 import { AnswerValue } from '@/lib/tacctoscope/types';
-import { ComponentType } from 'react';
-import styles from './StatusTag.module.scss';
+import Image, { StaticImageData } from 'next/image';
+import styles from './shared.module.scss';
 
-const StarIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-    <path d="M8 1.5 9.9 5.4l4.3.6-3.1 3 .7 4.3L8 11.3 4.2 13.3l.7-4.3-3.1-3 4.3-.6z" />
-  </svg>
-);
-
-const ThumbIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M4.5 7v6H2.5V7h2Zm0 0 3-5c.7 0 1.3.6 1.3 1.3V6h3.4c.7 0 1.2.6 1.1 1.3l-.9 4.4c-.1.6-.6 1-1.2 1H4.5"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const PencilIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M11 2.5 13.5 5 6 12.5l-3 .5.5-3L11 2.5Z"
-      stroke="currentColor"
-      strokeWidth="1.3"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const ICONS: Record<StatusIcon, ComponentType> = {
-  star: StarIcon,
-  thumb: ThumbIcon,
-  pencil: PencilIcon
-};
+const TAG_IMAGE: Partial<Record<AnswerValue, { src: StaticImageData; width: number }>> =
+  {
+    tres_satisfaisant: { src: star, width: 122 },
+    partiel: { src: edit, width: 131 },
+    absent: { src: edit, width: 131 }
+  };
 
 interface Props {
   value: AnswerValue;
 }
 
 export const StatusTag = ({ value }: Props) => {
-  const status = ANSWER_STATUS[value];
-  const Icon = ICONS[status.icon];
+  const label = ANSWER_STATUS[value].label;
+  const tag = TAG_IMAGE[value];
+
+  if (tag) {
+    return (
+      <Image
+        src={tag.src}
+        alt={label}
+        width={tag.width}
+        height={36}
+        className={styles.statusTagImage}
+      />
+    );
+  }
+
   return (
-    <span className={`${styles.tag} ${styles[status.variant]}`}>
-      <Icon />
-      {status.label.toUpperCase()}
+    <span className={styles.statusTagPill}>
+      <Image src={thumbUp} alt="" width={16} height={16} />
+      <Body htmlTag="span" weight="bold" color="#346c37">
+        {label.toUpperCase()}
+      </Body>
     </span>
   );
 };
