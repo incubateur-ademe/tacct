@@ -1,0 +1,17 @@
+.view {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.back {
+  align-self: center;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #038278;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

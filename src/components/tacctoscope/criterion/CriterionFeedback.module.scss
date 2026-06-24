@@ -1,0 +1,39 @@
+.feedback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.label {
+  font-size: 0.9375rem;
+  color: #161616;
+}
+
+.choices {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.choice {
+  min-width: 56px;
+  padding: 0.375rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #038278;
+  background: #ffffff;
+  color: #038278;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.active {
+  background: #038278;
+  color: #fafafa;
+}

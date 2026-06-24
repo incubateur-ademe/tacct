@@ -1,0 +1,24 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.green {
+  background: #e4ffe6;
+  border-color: #5aa65d;
+  color: #346c37;
+}
+
+.gray {
+  background: #e7e5e5;
+  border-color: #b3b3b3;
+  color: #4d4b4b;
+}
