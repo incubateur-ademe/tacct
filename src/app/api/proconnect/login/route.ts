@@ -4,17 +4,17 @@ import {
   getClientId,
   getDiscovery,
   getRedirectUri,
-  PROCONNECT_SCOPES
-} from '@/lib/auth/proconnect';
+  MON_COMPTE_ADEME_SCOPES
+} from '@/lib/auth/moncompteademe';
 
 export async function GET() {
   let discovery;
   try {
     discovery = await getDiscovery();
   } catch (err) {
-    console.error('[ProConnect login]', err);
+    console.error('[MonCompteAdeme login]', err);
     return NextResponse.json(
-      { error: 'Impossible de joindre le serveur ProConnect' },
+      { error: 'Impossible de joindre le serveur MonCompteAdeme' },
       { status: 502 }
     );
   }
@@ -26,7 +26,7 @@ export async function GET() {
   authUrl.searchParams.set('response_type', 'code');
   authUrl.searchParams.set('client_id', getClientId());
   authUrl.searchParams.set('redirect_uri', getRedirectUri());
-  authUrl.searchParams.set('scope', PROCONNECT_SCOPES);
+  authUrl.searchParams.set('scope', MON_COMPTE_ADEME_SCOPES);
   authUrl.searchParams.set('state', state);
   authUrl.searchParams.set('nonce', nonce);
 

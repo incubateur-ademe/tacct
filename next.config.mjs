@@ -45,6 +45,7 @@ const csp = {
     'form-action': [
         "'self'",
         'https://*.gouv.fr',
+        'https://*.ademe.fr',
         process.env.NEXT_PUBLIC_ENV !== 'production' &&
             'https://*.dev-agentconnect.fr'
     ],

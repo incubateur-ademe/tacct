@@ -3,8 +3,7 @@
 import MessageIcone from "@/assets/icons/message-3-icon-green.svg";
 import TacctConnexion from "@/assets/images/tacct-image-screenshot.png";
 import PasDeCompteImage from "@/assets/svg/home/etape1Image.svg";
-import { ProConnectButton } from "@/components/auth/ProConnectButton";
-import { BoutonSecondaireClassic } from "@/design-system/base/Boutons";
+import { BoutonPrimaireClassic, BoutonSecondaireClassic } from "@/design-system/base/Boutons";
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
@@ -50,7 +49,11 @@ export const MonCompteClient = () => {
               Retrouvez ici l’outil de saisie des données du territoire dans le cadre de votre démarche TACCT.
             </Body>
             <div style={{ marginTop: 24 }}>
-              <ProConnectButton />
+              <BoutonPrimaireClassic
+                size="lg"
+                text="Se connecter"
+                link="/api/proconnect/login"
+              />
             </div>
             <Image
               src={TacctConnexion}
