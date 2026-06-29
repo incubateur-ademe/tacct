@@ -67,20 +67,8 @@ export async function GET(request: NextRequest) {
     const sub = idClaims.sub;
     const email = idClaims.email ?? '';
 
-    console.log('[ProConnect callback] claims reçus', {
-      claim_keys: Object.keys(idClaims),
-      has_sub: Boolean(sub),
-      has_email: Boolean(email),
-      email_verified: idClaims.email_verified,
-      email_verified_type: typeof idClaims.email_verified
-    });
-
     let user = await prisma.user.findFirst({
       where: { authenticated_id_bidx: blindIndex(sub) }
-    });
-
-    console.log('[ProConnect callback] recherche par sub', {
-      found: Boolean(user)
     });
 
     const allowUnverifiedEmailLink = process.env.NEXT_PUBLIC_ENV === 'preprod';
@@ -88,9 +76,6 @@ export async function GET(request: NextRequest) {
     if (!user && email && (idClaims.email_verified || allowUnverifiedEmailLink)) {
       const existing = await prisma.user.findFirst({
         where: { email_bidx: blindIndex(email) }
-      });
-      console.log('[ProConnect callback] recherche par email (branche active)', {
-        found: Boolean(existing)
       });
       if (existing) {
         user = await prisma.user.update({
@@ -102,15 +87,9 @@ export async function GET(request: NextRequest) {
           }
         });
       }
-    } else if (!user) {
-      console.log('[ProConnect callback] branche email SAUTÉE', {
-        has_email: Boolean(email),
-        email_verified: idClaims.email_verified
-      });
     }
 
     if (!user) {
-      console.log('[ProConnect callback] aucun user résolu → tentative de create');
       const now = new Date();
       user = await prisma.user.create({
         data: {
@@ -132,12 +111,7 @@ export async function GET(request: NextRequest) {
           updated_at: now
         }
       });
-      console.log('[ProConnect callback] create réussi', { user_id: user.id });
     }
-
-    console.log('[ProConnect callback] user résolu → pose de session', {
-      user_id: user.id
-    });
 
     const sessionJwt = await encodeUserSession({
       sub: user.id,
@@ -157,15 +131,10 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (err) {
-    const prismaErr =
-      err && typeof err === 'object'
-        ? (err as { code?: string; meta?: unknown })
-        : null;
-    console.error('[ProConnect callback] échec', {
-      message: err instanceof Error ? err.message : String(err),
-      prisma_code: prismaErr?.code,
-      prisma_meta: prismaErr?.meta
-    });
+    console.error(
+      '[MonCompteAdeme callback] échec',
+      err instanceof Error ? err.message : String(err)
+    );
     return fail('callback_failed');
   }
 }
