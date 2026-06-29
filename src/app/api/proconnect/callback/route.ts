@@ -83,7 +83,9 @@ export async function GET(request: NextRequest) {
       found: Boolean(user)
     });
 
-    if (!user && email && idClaims.email_verified) {
+    const allowUnverifiedEmailLink = process.env.NEXT_PUBLIC_ENV === 'preprod';
+
+    if (!user && email && (idClaims.email_verified || allowUnverifiedEmailLink)) {
       const existing = await prisma.user.findFirst({
         where: { email_bidx: blindIndex(email) }
       });
