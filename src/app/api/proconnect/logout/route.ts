@@ -46,6 +46,11 @@ export async function GET(request: NextRequest) {
       getBaseUrl()
     );
     endSessionUrl.searchParams.set('state', randomBytes(16).toString('hex'));
+    console.log('[ProConnect logout] paramètres envoyés', {
+      end_session_endpoint: discovery.end_session_endpoint,
+      post_logout_redirect_uri: getBaseUrl(),
+      has_id_token_hint: Boolean(idToken)
+    });
     return clearSession(NextResponse.redirect(endSessionUrl.toString()));
   } catch {
     return toMonCompte();
