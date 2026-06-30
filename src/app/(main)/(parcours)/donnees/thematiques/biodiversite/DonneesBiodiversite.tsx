@@ -288,7 +288,7 @@ export const DonneesBiodiversite = ({
           <OzoneEtVegetation
             aot40={data.aot40}
             contoursCommunes={contoursCommunes}
-            coordonneesCommunes={coordonneesCommunes}
+            communesCodes={coordonneesCommunes?.codes ?? []}
           />
         </div>
       </section>

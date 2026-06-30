@@ -36,8 +36,8 @@ export const AssocierLesActeurs = () => {
         width={240}
         height={0}
         style={{ height: 'auto', maxWidth: '30%', alignSelf: 'center' }}
+        className={styles.associerLesActeursImage}
       />
-
     </div>
   )
 };

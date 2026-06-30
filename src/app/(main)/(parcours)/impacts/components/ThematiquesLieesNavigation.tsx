@@ -88,132 +88,183 @@ export const ThematiquesLieesNavigation = ({
     return () => window.removeEventListener('resize', handleResize);
   }, [thematiquesLiees.length]); // Recalculer si le nombre de thématiques change
 
-  return (
-    <div className={styles.thematiquesLieesContainer}>
-      {/* Partie gauche : Image de la roue */}
-      <div ref={leftSectionRef} className={styles.leftSection}>
-        <div className={styles.roueImageContainer}>
-          <Image
-            src={roueImage}
-            alt="Roue systémique"
-            className={styles.roueImage}
-            priority
-          />
-          {/* Bouton centré sur l'image de la roue */}
-          <div className={styles.retourButton}>
-            <BoutonPrimaireClassic
-              text="Retour aux thématiques"
-              size="md"
-              link={handleRedirection({
-                searchCode: code || '',
-                searchLibelle: libelle || '',
-                typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-                page: 'thematiques'
-              })}
-              style={{
-                width: 'fit-content'
-              }}
-            />
-          </div>
-        </div>
-        {/* Ligne de connexion vers le centre - maintenant dynamique */}
-        <div
-          className={`${styles.connectionLine} ${styles.leftToCenter}`}
-          style={{
-            width: `${lineCalculations.leftToCenter.width}px`,
-            transform: `rotate(${lineCalculations.leftToCenter.angle}deg)`
-          }}
-        />
-      </div>
+  const retourLink = handleRedirection({
+    searchCode: code || '',
+    searchLibelle: libelle || '',
+    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+    page: 'thematiques'
+  });
 
-      {/* Partie centrale : Bouton de la thématique principale */}
-      <div ref={centerSectionRef} className={styles.centerSection}>
-        <div
-          style={{
-            color: "var(--principales-vert)",
-            backgroundColor: "white",
-            border: `1px solid ${couleursBoutons.primaire[1]}`,
-            padding: '4px 12px',
-            width: "fit-content",
-            alignItems: 'center',
-            borderRadius: '60px',
-          }}
-        >
+  return (
+    <>
+      {/* Version mobile */}
+      <div className={styles.thematiquesLieesMobileContainer}>
+        <BoutonPrimaireClassic
+          text="← Retour aux thématiques"
+          size="sm"
+          link={retourLink}
+          style={{ width: 'fit-content', alignSelf: 'flex-start' }}
+        />
+        <div className={styles.thematiqueCouranteMobile}>
+          <span className={styles.thematiqueCouranteMobileLabel}>Thématique actuelle :</span>
           {thematique.label}
         </div>
-        {/* Conteneur pour les lignes vers la droite */}
         {thematiquesLiees.length > 0 && (
-          <div className={styles.rightConnectionLines}>
-            {lineCalculations.rightLines.map((lineData, index) => (
-              <div
-                key={`line-${index}`}
-                className={styles.rightConnectionLine}
-                style={{
-                  width: `${lineData.width}px`,
-                  transform: `rotate(${lineData.angle}deg)`,
-                  transformOrigin: 'left center',
-                  top: '0px',
-                  left: '0px',
-                  backgroundColor: 'var(--principales-vert)',
-                  height: '1px'
-                }}
-              />
-            ))}
+          <div className={styles.thematiquesLieesMobileList}>
+            <span className={styles.thematiqueCouranteMobileLabel}>Thématiques liées :</span>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'row', gap: '0.75rem', flexWrap: "wrap" }}>
+              {thematiquesLiees.map((lieeLabel, index) => {
+                const isDisabled = lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité" && lieeLabel !== "Santé";
+                const btn = (
+                  <li key={index}>
+                    <BoutonPrimaireClassic
+                      text={lieeLabel}
+                      size="sm"
+                      link={isDisabled ? undefined : handleRedirectionThematique({
+                        code, libelle,
+                        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                        page: 'donnees',
+                        thematique: lieeLabel,
+                        anchor: ""
+                      })}
+                      style={{ cursor: isDisabled ? 'default' : 'pointer' }}
+                      disabled={isDisabled}
+                    />
+                  </li>
+                );
+                return isDisabled ? (
+                  <HtmlTooltip key={`tooltip-mobile-${index}`} title={`La thématique "${lieeLabel}" n'est pas encore disponible.`} placement="top">
+                    {btn}
+                  </HtmlTooltip>
+                ) : btn;
+              })}
+            </ul>
           </div>
         )}
       </div>
 
-      {/* Partie droite : Thématiques liées */}
-      <ul ref={rightSectionRef} className={styles.rightSection} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {thematiquesLiees.length > 0 ? (
-          thematiquesLiees.map((lieeLabel, index) => {
-            const isDisabled = lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité";
-            const buttonElement = (
-              <li
-                key={`thematique-wrapper-${index}-${lieeLabel}`}
-                ref={(el) => {
-                  rightButtonsRef.current[index] = el;
+      {/* Version desktop */}
+      <div className={styles.thematiquesLieesContainer}>
+        {/* Partie gauche : Image de la roue */}
+        <div ref={leftSectionRef} className={styles.leftSection}>
+          <div className={styles.roueImageContainer}>
+            <Image
+              src={roueImage}
+              alt="Roue systémique"
+              className={styles.roueImage}
+              priority
+            />
+            {/* Bouton centré sur l'image de la roue */}
+            <div className={styles.retourButton}>
+              <BoutonPrimaireClassic
+                text="Retour aux thématiques"
+                size="md"
+                link={retourLink}
+                style={{
+                  width: 'fit-content'
                 }}
-              >
-                <BoutonPrimaireClassic
-                  text={lieeLabel}
-                  size="md"
-                  link={isDisabled ? undefined : handleRedirectionThematique({
-                    code: code,
-                    libelle: libelle,
-                    type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
-                    page: 'donnees',
-                    thematique: lieeLabel,
-                    anchor: ""
-                  })}
-                  style={{
-                    cursor: isDisabled ? 'default' : 'pointer',
-                  }}
-                  disabled={isDisabled}
-                />
-              </li>
-            );
+              />
+            </div>
+          </div>
+          {/* Ligne de connexion vers le centre - maintenant dynamique */}
+          <div
+            className={`${styles.connectionLine} ${styles.leftToCenter}`}
+            style={{
+              width: `${lineCalculations.leftToCenter.width}px`,
+              transform: `rotate(${lineCalculations.leftToCenter.angle}deg)`
+            }}
+          />
+        </div>
 
-            return isDisabled ? (
-              <HtmlTooltip
-                key={`tooltip-${index}`}
-                title={`La thématique "${lieeLabel}" n'est pas encore disponible.`}
-                placement="top"
-              >
-                {buttonElement}
-              </HtmlTooltip>
-            ) : buttonElement;
-          })
-        ) : (
-          <li style={{
-            padding: '1rem',
-            color: 'var(--gris-medium-dark)',
-            fontStyle: 'italic'
-          }}>
-            Aucune thématique liée
-          </li>
-        )}
-      </ul>
-    </div>
+        {/* Partie centrale : Bouton de la thématique principale */}
+        <div ref={centerSectionRef} className={styles.centerSection}>
+          <div
+            style={{
+              color: "var(--principales-vert)",
+              backgroundColor: "white",
+              border: `1px solid ${couleursBoutons.primaire[1]}`,
+              padding: '4px 12px',
+              width: "fit-content",
+              alignItems: 'center',
+              borderRadius: '60px',
+            }}
+          >
+            {thematique.label}
+          </div>
+          {/* Conteneur pour les lignes vers la droite */}
+          {thematiquesLiees.length > 0 && (
+            <div className={styles.rightConnectionLines}>
+              {lineCalculations.rightLines.map((lineData, index) => (
+                <div
+                  key={`line-${index}`}
+                  className={styles.rightConnectionLine}
+                  style={{
+                    width: `${lineData.width}px`,
+                    transform: `rotate(${lineData.angle}deg)`,
+                    transformOrigin: 'left center',
+                    top: '0px',
+                    left: '0px',
+                    backgroundColor: 'var(--principales-vert)',
+                    height: '1px'
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Partie droite : Thématiques liées */}
+        <ul ref={rightSectionRef} className={styles.rightSection} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          {thematiquesLiees.length > 0 ? (
+            thematiquesLiees.map((lieeLabel, index) => {
+              const isDisabled = lieeLabel !== "Aménagement" && lieeLabel !== "Eau" && lieeLabel !== "Biodiversité" && lieeLabel !== "Santé";
+              const buttonElement = (
+                <li
+                  key={`thematique-wrapper-${index}-${lieeLabel}`}
+                  ref={(el) => {
+                    rightButtonsRef.current[index] = el;
+                  }}
+                >
+                  <BoutonPrimaireClassic
+                    text={lieeLabel}
+                    size="md"
+                    link={isDisabled ? undefined : handleRedirectionThematique({
+                      code: code,
+                      libelle: libelle,
+                      type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                      page: 'donnees',
+                      thematique: lieeLabel,
+                      anchor: ""
+                    })}
+                    style={{
+                      cursor: isDisabled ? 'default' : 'pointer',
+                    }}
+                    disabled={isDisabled}
+                  />
+                </li>
+              );
+
+              return isDisabled ? (
+                <HtmlTooltip
+                  key={`tooltip-${index}`}
+                  title={`La thématique "${lieeLabel}" n'est pas encore disponible.`}
+                  placement="top"
+                >
+                  {buttonElement}
+                </HtmlTooltip>
+              ) : buttonElement;
+            })
+          ) : (
+            <li style={{
+              padding: '1rem',
+              color: 'var(--gris-medium-dark)',
+              fontStyle: 'italic'
+            }}>
+              Aucune thématique liée
+            </li>
+          )}
+        </ul>
+      </div>
+    </>
   );
 };

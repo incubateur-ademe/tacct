@@ -1,4 +1,2 @@
-export * from "./base/Box";
-export * from "./base/Icon";
-export * from "./layout";
-
+export * from './base/Box';
+export * from './layout';
