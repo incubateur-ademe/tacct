@@ -72,6 +72,7 @@ export const AnalyseSensibilite = ({
               src={ChatChercheur}
               alt="illustration chat chercheur"
               style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
+              className={styles.analyseSensibiliteImage}
             />
           </div>
         )
@@ -194,6 +195,7 @@ export const AnalyseSensibilite = ({
           text='Explorer les facteurs de sensibilité du territoire →'
           size='md'
           onClick={redirectionExplorerMesDonnees}
+          style={{ width: 'fit-content' }}
         />
       </div>
       {
