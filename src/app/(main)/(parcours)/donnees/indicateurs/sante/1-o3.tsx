@@ -16,14 +16,10 @@ import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
-const MapTilesO3 = lazy(() =>
-  import('@/components/maps/mapTilesO3').then((m) => ({
-    default: m.MapTilesO3
-  }))
-);
+const MapTilesO3 = lazy(() => import('@/components/maps/mapTilesO3').then(m => ({ default: m.MapTilesO3 })));
 
 export const SeuilsReglementairesO3 = ({
-  coordonneesCommunes
+  coordonneesCommunes,
 }: {
   coordonneesCommunes: {
     codes: string[];
@@ -55,12 +51,11 @@ export const SeuilsReglementairesO3 = ({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Consulter la carte de la qualité de l&apos;air sur le site de
-              l&apos;Ineris (nouvelle fenêtre)
+              Consulter la carte de la qualité de l&apos;air sur le site de l&apos;Ineris (nouvelle fenêtre)
             </a>
           </div>
         </div>
-        <div className="pr-5 pt-8">
+        <div className='pr-5 pt-8'>
           <ReadMoreFade maxHeight={100}>
             <O3Text />
           </ReadMoreFade>
@@ -94,25 +89,14 @@ export const SeuilsReglementairesO3 = ({
                     35,
                     '#C97189', // 35-39
                     40,
-                    '#B982B2' // >= 40
+                    '#B982B2'  // >= 40
                   ],
                   'fill-opacity': 0.7,
                   'fill-antialias': false
                 }}
                 legend={
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 8,
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <Body weight="bold">
-                      - Nombre de jours avec dépassement du seuil (moyenne sur 3
-                      ans) -
-                    </Body>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
+                    <Body weight='bold'>- Nombre de jours avec dépassement du seuil (moyenne sur 3 ans) -</Body>
                     <LegendCompColor legends={o3Legend} />
                   </div>
                 }
@@ -127,14 +111,14 @@ export const SeuilsReglementairesO3 = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source : INERIS, 2024 (consultée en janvier 2026)
+          Source : INERIS, 2026 (consultée en janvier 2026)
         </Body>
         <ExportPngMaplibreButton
           mapRef={mapRef}
           mapContainer={mapContainer}
           documentDiv=".legendWrapper"
           fileName={`Seuils_reglementaires_o3_${type}_${libelle}`}
-          anchor="Pollution-à-l’ozone"
+          anchor="Pollution-à-l'ozone"
           type={type}
           libelle={libelle}
           code={code}

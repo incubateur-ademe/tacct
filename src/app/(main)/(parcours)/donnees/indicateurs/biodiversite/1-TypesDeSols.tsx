@@ -19,9 +19,7 @@ import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 import { sumProperty } from '../fonctions';
 
-const MapTiles = lazy(() =>
-  import('@/components/maps/mapTiles').then((m) => ({ default: m.MapTiles }))
-);
+const MapTiles = lazy(() => import('@/components/maps/mapTiles').then(m => ({ default: m.MapTiles })));
 
 export const TypesDeSols = ({
   confortThermique,
@@ -54,18 +52,18 @@ export const TypesDeSols = ({
   // Parse la géométrie GeoJSON du contour du territoire
   const territoireContours = contoursCommunes
     ? [
-        {
-          type: 'Feature',
-          properties: {
-            epci: '',
-            libelle_epci: '',
-            libelle_geographique: libelle,
-            code_geographique: code,
-            coordinates: ''
-          },
-          geometry: JSON.parse(contoursCommunes.geometry)
-        }
-      ]
+      {
+        type: 'Feature',
+        properties: {
+          epci: '',
+          libelle_epci: '',
+          libelle_geographique: libelle,
+          code_geographique: code,
+          coordinates: ''
+        },
+        geometry: JSON.parse(contoursCommunes.geometry)
+      }
+    ]
     : [];
 
   const vegetalisationMapped = confortThermique.map(vegetalisationMapper);
@@ -114,7 +112,7 @@ export const TypesDeSols = ({
                 )}
                 <div className={styles.text}>
                   <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-                    {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de
+                    {foretPercent == Infinity ? 0 : Round(foretPercent, 1)} % de
                     votre territoire est recouvert par de la forêt ou des
                     espaces semi-naturels.
                   </Body>
@@ -139,8 +137,8 @@ export const TypesDeSols = ({
         </Body>
         <div className={styles.mapWrapper}>
           {confortThermique &&
-          confortThermique.length &&
-          coordonneesCommunes ? (
+            confortThermique.length &&
+            coordonneesCommunes ? (
             <Suspense fallback={<Loader />}>
               <MapTiles
                 ariaLabel="Carte des types de sols par commune sur votre territoire (CORINE Land Cover)"

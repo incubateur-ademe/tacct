@@ -1,42 +1,39 @@
 'use client';
-
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { ConsommationNAF } from '@/lib/postgres/models';
-import { GetConsommationNAF } from '@/lib/queries/databases/biodiversite';
-import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
+import { GetCommunesContours, GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
-import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
-import { LCZ } from '../../indicateurs/amenagement/2-LCZ';
+import { HauteurCanopee } from '../../indicateurs/foret/1-HauteurCanopee';
 
 interface Props {
   coordonneesCommunes: {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
-  consommationNAF: ConsommationNAF[];
+  contoursCommunes: { geometry: string } | null;
 }
 
-export const DonneesAmenagement = ({
-  coordonneesCommunes,
-  consommationNAF
-}: Props) => {
+export const DonneesForet = (
+  {
+    coordonneesCommunes,
+    contoursCommunes
+  }: Props) => {
   const searchParams = useSearchParams();
-  const thematique = searchParams.get('thematique') as 'Aménagement';
+  const thematique = searchParams.get('thematique') as 'Forêts';
+  const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const code = searchParams.get('code')!;
-  const ongletsMenu = sommaireThematiques[thematique];
   const [data, setData] = useState({
     coordonneesCommunes,
-    consommationNAF
+    contoursCommunes
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
+  const ongletsMenu = sommaireThematiques[thematique];
 
   useLayoutEffect(() => {
     if (isFirstRender) {
@@ -45,13 +42,13 @@ export const DonneesAmenagement = ({
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newConsommationNAF] = await Promise.all([
+      const [newCoordonneesCommunes, newContoursCommunes] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetConsommationNAF(code, libelle, type)
+        GetCommunesContours(code, libelle, type),
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        consommationNAF: newConsommationNAF
+        contoursCommunes: newContoursCommunes
       });
       setIsLoading(false);
     })();
@@ -63,22 +60,20 @@ export const DonneesAmenagement = ({
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        Votre territoire a été aménagé pour un climat révolu. Découvrez cet
-        héritage pour le réinventer, avant qu’il ne devienne un frein.
+        La forêt en France
       </H1>
       {/* Introduction */}
       <section>
         <Body size="lg">
-          Ces quelques indicateurs vous aideront à poser les bonnes questions,
+          Ces données vous aideront à poser les bonnes questions,
           le terrain vous donnera les vraies réponses.
         </Body>
-        <Body size="lg" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
-          À noter : Ces données représentent les informations les plus récentes
-          disponibles à l'échelle nationale.
+        <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+          À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
         </Body>
       </section>
 
-      {/* Section Aménagement */}
+      {/* Section Forêt */}
       <section className={styles.sectionType}>
         <H2
           style={{
@@ -93,36 +88,38 @@ export const DonneesAmenagement = ({
           {ongletsMenu.thematiquesLiees[0].icone}{' '}
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
-        {/* Sols imperméabilisés */}
+        {/* Hauteur de la canopée */}
         <div
-          id="Sols-imperméabilisés"
-          className={styles.indicateurWrapper}
-          style={{ borderBottom: '1px solid var(--gris-medium)' }}
+          id="Hauteur-de-la-canopée"
+          className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
             >
-              Destination des surfaces imperméabilisées
+              Hauteur de la canopée
             </H3>
           </div>
-          <ConsommationEspacesNAFAmenagement
-            consommationNAF={data.consommationNAF}
+          <HauteurCanopee
+            coordonneesCommunes={data.coordonneesCommunes}
+            contoursCommunes={data.contoursCommunes}
           />
         </div>
 
-        {/* État LCZ */}
-        <div id="LCZ" className={styles.indicateurMapWrapper}>
+        {/* Linéaire de haie */}
+        {/* <div id="Linéaire-de-haie" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
-            <H3
-              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
-            >
-              Cartographie des zones climatiques locales (LCZ)
+            <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+              Cartographie du linéaire de haie
             </H3>
           </div>
-          <LCZ coordonneesCommunes={data.coordonneesCommunes} />
-        </div>
+          <LineaireDeHaie
+            coordonneesCommunes={data.coordonneesCommunes}
+            contoursCommunes={data.contoursCommunes}
+          />
+        </div> */}
       </section>
+
     </div>
   );
 };
