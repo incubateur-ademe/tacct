@@ -91,7 +91,6 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
   // Only protect /sandbox/* routes
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
     const token: JWT | null = await getToken({ req } as MiddlewareTokenOptions);
-    console.log('Middleware token:', token);
     if (!token) {
       // Redirect unauthenticated users to the home page
       return NextResponse.redirect(new URL('/', req.url));

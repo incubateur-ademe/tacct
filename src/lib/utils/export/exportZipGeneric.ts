@@ -12,7 +12,11 @@ import { generateExportFilename } from './exportXlsx';
  * Évite que toPng reste bloqué indéfiniment (cas iOS Safari où l'onload
  * de l'image générée ne se déclenche jamais).
  */
-const withTimeout = <T>(promise: Promise<T>, ms: number, label: string): Promise<T> =>
+const withTimeout = <T>(
+  promise: Promise<T>,
+  ms: number,
+  label: string
+): Promise<T> =>
   Promise.race([
     promise,
     new Promise<never>((_, reject) =>
