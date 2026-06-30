@@ -14,10 +14,9 @@ import styles from './charts.module.scss';
 type NivoPieChartProps = {
   graphData: readonly {
     id: string;
-    count: number | null;
-    color: string;
-    value: number | null;
-}[];
+    label: string;
+    value: number;
+  }[];
   CenteredMetric?: ({ dataWithArc, centerX, centerY }: PieCustomLayerProps<DefaultRawDatum>) => ReactNode;
   colors?: OrdinalColorScaleConfig<Omit<ComputedDatum<{
     id: string;
@@ -44,7 +43,7 @@ const NivoPieChart = ({
   // filtrer les null ou undefined values
   const filteredGraphData = graphData.filter(item => item.value !== null && item.value !== undefined);
   const windowDimensions = useWindowDimensions();
-  const arcLabelsComponent = ({ datum, style }: Any) => {
+  const arcLabelsComponent = ({ datum, label, style }: Any) => {
     return (
       <animated.g style={style}>
         <animated.path

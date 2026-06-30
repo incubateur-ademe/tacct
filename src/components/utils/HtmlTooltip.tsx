@@ -1,3 +1,4 @@
+import { Any } from '@/lib/utils/types';
 import { styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
 import { ReactElement, ReactNode, useState } from 'react';
 
@@ -41,7 +42,7 @@ export const HtmlTooltipMousePosition = ({
   children,
   title
 }: {
-  children: ReactElement<any>;
+  children: ReactElement<Any>;
   title: ReactNode;
 }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });

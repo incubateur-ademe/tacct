@@ -69,7 +69,7 @@ export const EmploisEnExterieur = ({
               arrondi={1}
               ariaLabel="Pourcentage de l'emploi en extérieur"
             />
-            {sums.sumConstruction || sums.sumAgriculture ? (
+            {sums ? (
               <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                 Les métiers physiques en extérieur, comme ceux du BTP et de
                 l’agriculture, sont les plus exposés à la chaleur. Sur votre
@@ -104,7 +104,7 @@ export const EmploisEnExterieur = ({
                 type={type}
                 libelle={libelle}
                 code={code}
-                sheetName="Activités économiques"
+                sheetName="Activités-économiques"
               />
             }
             condition={sumAllCount > 0}

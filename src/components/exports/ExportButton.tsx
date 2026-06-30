@@ -75,7 +75,6 @@ export function ExportButton({
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     if (!data || data.length === 0) {
-      console.log('Aucune donnée à exporter');
       setIsExporting(false);
       return;
     }

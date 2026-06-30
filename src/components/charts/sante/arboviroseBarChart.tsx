@@ -19,10 +19,10 @@ export const ArboviroseBarChart = (
   }
 ) => {
   const graphData = arbovirose.map(data => ({
-      annee: data.annee,
-      'Cas importés': data.nb_cas_importes,
-      'Cas autochtones': data.nb_cas_autochtones
-    }));
+    annee: data.annee,
+    'Cas importés': data.nb_cas_importes,
+    'Cas autochtones': data.nb_cas_autochtones
+  }));
   const minValueXTicks = graphData[0]?.annee;
   const maxValueXTicks = graphData[graphData.length - 1]?.annee;
   const windowDimensions = useWindowDimensions();
@@ -51,9 +51,10 @@ export const ArboviroseBarChart = (
             groupMode="stacked"
             colors={arboviroseBarChartLegend.map(legend => legend.color)}
             graphMarginBottom={windowDimensions.width! < 1230 ? 120 : 100}
+            xMargins={windowDimensions.width! < 600 ? 40 : 80}
             tooltip={({ data }) => simpleBarChartTooltip({ data, legende: arboviroseBarChartLegend })}
           />
-          <div style={{ position: "relative", top: windowDimensions.width! < 1230 ? "-70px" : "-50px", margin: "0 1rem" }}>
+          <div style={{ position: "relative", top: windowDimensions.width! < 1230 ? "-60px" : "-50px", margin: "0 1rem" }}>
             <LegendCompColor
               legends={arboviroseBarChartLegend.map((legend, index) => ({
                 id: index,

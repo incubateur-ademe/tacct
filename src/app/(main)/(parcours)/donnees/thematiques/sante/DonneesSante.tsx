@@ -60,19 +60,18 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        En accentuant des fragilités existantes, le changement climatique exerce
-        une pression croissante sur la santé des populations. Quels facteurs se
-        combinent aujourd’hui sur votre territoire ?
+        En accentuant des fragilités existantes, le changement climatique exerce une
+        pression croissante sur la santé des populations. Quels facteurs se combinent aujourd’hui
+        sur votre territoire ?
       </H1>
       {/* Introduction */}
       <section>
         <Body size="lg">
-          Ces données vous aideront à poser les bonnes questions, le terrain
-          vous donnera les vraies réponses.
+          Ces données vous aideront à poser les bonnes questions,
+          le terrain vous donnera les vraies réponses.
         </Body>
-        <Body size="lg" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
-          À noter : Ces données représentent les informations les plus récentes
-          disponibles à l'échelle nationale.
+        <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+          À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
         </Body>
       </section>
 
@@ -93,7 +92,10 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         </H2>
 
         {/* Pollution à l’ozone */}
-        <div id="Pollution-à-l’ozone" className={styles.indicateurMapWrapper}>
+        <div
+          id="Pollution-à-l’ozone"
+          className={styles.indicateurMapWrapper}
+        >
           <div className={styles.h3Titles}>
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
@@ -130,11 +132,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         >
           <div className={styles.h3Titles}>
             <H3
-              style={{
-                color: 'var(--principales-vert)',
-                fontSize: '1.25rem',
-                padding: '0 2rem'
-              }}
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
             >
               Moustique tigre et arboviroses
             </H3>

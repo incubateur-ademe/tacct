@@ -1,8 +1,8 @@
 export const LightenDarkenColor = (color: string, percent: number) => {
 
-  var R = parseInt(color.substring(1,3),16);
-  var G = parseInt(color.substring(3,5),16);
-  var B = parseInt(color.substring(5,7),16);
+  let R = parseInt(color.substring(1,3),16);
+  let G = parseInt(color.substring(3,5),16);
+  let B = parseInt(color.substring(5,7),16);
 
   R = (R * (100 + percent) / 100);
   G = (G * (100 + percent) / 100);
@@ -16,9 +16,9 @@ export const LightenDarkenColor = (color: string, percent: number) => {
   G = Math.round(G)
   B = Math.round(B)
 
-  var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
-  var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
-  var BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
+  const RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
+  const GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
+  const BB = ((B.toString(16).length==1)?"0"+B.toString(16):B.toString(16));
 
   return "#"+RR+GG+BB;
 }

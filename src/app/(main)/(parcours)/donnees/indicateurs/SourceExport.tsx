@@ -40,7 +40,7 @@ export const SourceExport = ({
               gap: 0
             }}>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-              Source : {source}
+              Source : {source}.
             </Body>
             <Body size='sm' style={{ color: "var(--gris-dark)" }}>Export indisponible : données non référencées ou nulles.</Body>
           </div>

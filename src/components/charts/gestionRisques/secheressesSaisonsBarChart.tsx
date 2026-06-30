@@ -52,8 +52,10 @@ export const SecheressesSaisonsBarChart = (
               ).map(legend => legend.color)
             }
             groupMode="grouped"
-            graphMarginBottom={windowDimensions.width! < 1260 ? 120 : 100}
+            graphMarginBottom={windowDimensions.width! < 1260 ? 150 : 100}
+            isMobile={windowDimensions.width! < 600}
             tooltip={({ data }) => simpleBarChartTooltip({ data, legende: secheressesSaisonsChartLegend })}
+            tickRotation={windowDimensions.width! < 600 ? -45 : 0}
           />
           <div style={{ position: "relative", top: windowDimensions.width! < 1260 ? "-70px" : "-50px", margin: "0 1rem" }}>
             <LegendCompColor

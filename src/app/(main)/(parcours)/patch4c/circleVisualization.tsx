@@ -86,20 +86,20 @@ const CircleVisualization = ({
                     disableHoverListener
                     disableTouchListener
                   >
-                  <div
-                    className={styles.CircleIcon}
-                    style={{
-                      backgroundColor: getBackgroundColor(item.value),
-                      border: selectedAleaKey === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
-                    }}
-                  >
-                    <Image
-                      src={item.icon}
-                      alt=""
-                      width={34}
-                      height={34}
-                    />
-                  </div>
+                    <div
+                      className={styles.CircleIcon}
+                      style={{
+                        backgroundColor: getBackgroundColor(item.value),
+                        border: selectedAleaKey === item.key ? '1px solid black' : '1px solid #808080',
+                      }}
+                    >
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={34}
+                        height={34}
+                      />
+                    </div>
                   </HtmlTooltip>
                   {/* Label */}
                   <Body

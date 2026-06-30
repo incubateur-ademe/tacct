@@ -6,6 +6,7 @@ import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { mapTransformRequest } from './mapTransformRequest';
 import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
@@ -86,6 +87,12 @@ export const MapPatch4 = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
     });
     mapRef.current = map;
 

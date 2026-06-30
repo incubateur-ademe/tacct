@@ -31,7 +31,7 @@ export const SecheressesBarChart = (
     }));
 
   const windowDimensions = useWindowDimensions();
-
+  
   return (
     <div
       style={{
@@ -48,7 +48,7 @@ export const SecheressesBarChart = (
             indexBy="annee"
             showLegend={false}
             axisLeftLegend="Nombre de jours de restrictions"
-            bottomTickValues={graphData.map(data => data.annee)}
+            bottomTickValues={windowDimensions.width! < 600 ? ["2020", "2025"] : graphData.map(data => data.annee)}
             colors={secheressesBarChartLegend.map(legend => legend.color)}
             graphMarginBottom={windowDimensions.width! < 1230 ? 120 : 100}
             tooltip={({ data }) => simpleBarChartTooltip({ data, legende: secheressesBarChartLegend })}

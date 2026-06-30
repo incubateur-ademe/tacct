@@ -30,8 +30,8 @@ const EauCharts = (props: Props) => {
         style={{
           justifyContent:
             type !== 'departement' &&
-            type !== 'pnr' &&
-            datavizTab === 'Répartition'
+              type !== 'pnr' &&
+              datavizTab === 'Répartition'
               ? 'space-between'
               : 'flex-end'
         }}

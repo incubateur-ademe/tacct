@@ -29,25 +29,20 @@ export const ConsommationEspacesNAFAmenagement = (props: {
   const sumNaf =
     (type === 'commune'
       ? consommationNAF.filter((item) => item.code_geographique === code)[0]
-          ?.naf09art23
+        ?.naf09art23
       : consommationNAF.reduce(
-          (acc, item) => acc + (item.naf09art23 ?? 0),
-          0
-        )) ?? 0;
+        (acc, item) => acc + (item.naf09art23 ?? 0),
+        0
+      )) ?? 0;
 
   return (
     <>
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
-            <MicroNumberCircle
-              valeur={sumNaf / 10000}
-              arrondi={1}
-              unite="ha"
-              ariaLabel="Hectares d'espaces naturels, agricoles et forestiers consommés depuis 2009"
-            />
+            <MicroNumberCircle valeur={sumNaf / 10000} arrondi={1} unite="ha" ariaLabel="Hectares d'espaces naturels, agricoles et forestiers consommés depuis 2009" />
             <div className={styles.text}>
-              {sumNaf && sumNaf !== 0 ? (
+              {sumNaf !== null ? (
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                   Entre 2009 et 2023, votre territoire a consommé{' '}
                   <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces

@@ -2,18 +2,35 @@ import { CatnatTypes } from '@/app/(main)/types';
 import { BarChartCatnat } from '@/components/charts/gestionRisques/BarChartCatnat';
 import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
-import { MapCatnat } from '@/components/maps/mapCatnat';
 import RangeSlider from '@/components/Slider';
+import { Loader } from '@/components/ui/loader';
 import SubTabs from '@/components/ui/SubTabs';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
+import { lazy, Suspense } from 'react';
 import styles from './gestionRisquesCharts.module.scss';
+
+const MapCatnat = lazy(() => import('@/components/maps/mapCatnat').then(m => ({ default: m.MapCatnat })));
 
 type ArreteCatNatEnriched = ArreteCatNat & {
   annee_arrete: number;
 };
 type Props = {
-  catnatData: { code: string; name: string; catnat: any }[];
+  catnatData: {
+    code: string;
+    name: string;
+    catnat: {
+      sumCatnat: number;
+      indexName: string;
+      Inondations?: number | undefined;
+      'Gr\u00EAle / neige'?: number | undefined;
+      Sécheresse?: number | undefined;
+      'Cyclones / Temp\u00EAtes'?: number | undefined;
+      'Retrait-gonflement des argiles'?: number | undefined;
+      'Mouvements de terrain'?: number | undefined;
+      Avalanche?: number | undefined;
+    };
+  }[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   datavizTab: string;
   setDatavizTab: (value: string) => void;
@@ -100,11 +117,13 @@ const ArretesCatnatCharts = (props: Props) => {
               setValue={setTypeRisqueValue}
             />
           </div>
-          <MapCatnat
-            catnatData={catnatData}
-            coordonneesCommunes={coordonneesCommunes}
-            typeRisqueValue={typeRisqueValue}
-          />
+          <Suspense fallback={<Loader />}>
+            <MapCatnat
+              catnatData={catnatData}
+              coordonneesCommunes={coordonneesCommunes}
+              typeRisqueValue={typeRisqueValue}
+            />
+          </Suspense>
           <div
             className={styles.legend}
             style={{ width: 'auto', justifyContent: 'center' }}

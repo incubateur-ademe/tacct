@@ -44,7 +44,9 @@ export const MultiSheetExportButton = ({
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
-  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(
+    undefined
+  );
 
   useLayoutEffect(() => {
     if (buttonWrapperRef.current) {
@@ -110,7 +112,6 @@ export const MultiSheetExportButton = ({
       (sheet) => sheet.data && sheet.data.length > 0
     );
     if (!hasData) {
-      console.log('Aucune donnée à exporter');
       setIsExporting(false);
       return;
     }

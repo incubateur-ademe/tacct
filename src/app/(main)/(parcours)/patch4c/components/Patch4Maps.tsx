@@ -1,6 +1,7 @@
 "use client";
 
 import { ZipExportButton } from '@/components/exports/ZipExportButton';
+import { LegendBlockColor } from '@/components/maps/legends/legendBlocks';
 import { MapPatch4 } from "@/components/maps/mapPatch4";
 import { Body } from '@/design-system/base/Textes';
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
@@ -61,6 +62,12 @@ export const Patch4Maps = (props: {
         />
         <div className={styles.CursorVisualizationBarColorWrapper}>
           <CursorVisualization isMap={true} />
+        </div>
+        <div className={styles.legendContainer}>
+          <LegendBlockColor color="#FF1C64" value="Aggravation très forte" />
+          <LegendBlockColor color="#FFB181" value="Aggravation forte" />
+          <LegendBlockColor color="#FFEBB6" value="Aggravation modérée" />
+          <LegendBlockColor color="#ffffff" value="Pas d'évolution" />
         </div>
       </div>
       <div className={styles.exportShareContainer}>

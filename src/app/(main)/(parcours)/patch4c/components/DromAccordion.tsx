@@ -46,6 +46,7 @@ export const DromAccordion = ({
 }) => {
   const [openId, setOpenId] = useState<string | null>(null);
   const windowDimensions = useWindowDimensions();
+  const isMobile = !!windowDimensions.width && windowDimensions.width < 600;
   const dromTerritory =
     patch4[0]
       ? (DROM_TERRITORIES[patch4[0].code_geographique.substring(0, 3)] ?? null)
@@ -75,6 +76,8 @@ export const DromAccordion = ({
               padding: windowDimensions.width && windowDimensions.width < 768 ? "0 1.5rem" : "0 6rem",
             }}
           >
+            <div style={{ overflowX: isMobile ? "auto" : "visible" }}>
+            <div style={{ minWidth: isMobile ? "600px" : "auto" }}>
             <div
               style={{
                 display: "grid",
@@ -185,6 +188,8 @@ export const DromAccordion = ({
                 </div>
               </div>
             )}
+            </div>
+            </div>
 
             <p
               style={{

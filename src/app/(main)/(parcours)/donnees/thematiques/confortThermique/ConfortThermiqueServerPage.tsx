@@ -1,12 +1,15 @@
-import { SearchParams } from "@/app/(main)/types";
-import { TableCommuneModel } from "@/lib/postgres/models";
-import { GetConfortThermique } from "@/lib/queries/databases/inconfortThermique";
-import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
-import DonneesConfortThermique from "./DonneesConfortThermique";
+import { SearchParams } from '@/app/(main)/types';
+import { TableCommuneModel } from '@/lib/postgres/models';
+import { GetConfortThermique } from '@/lib/queries/databases/inconfortThermique';
+import {
+  GetCommunesContours,
+  GetCommunesCoordinates
+} from '@/lib/queries/postgis/cartographie';
+import DonneesConfortThermique from './DonneesConfortThermique';
 
 const ConfortThermiqueServerPage = async (props: {
-  searchParams: SearchParams
-  tableCommune: TableCommuneModel[]
+  searchParams: SearchParams;
+  tableCommune: TableCommuneModel[];
 }) => {
   const { code, libelle, type } = await props.searchParams;
   const coordonneesCommunes = await GetCommunesCoordinates(code, libelle, type);

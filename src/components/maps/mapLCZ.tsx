@@ -10,11 +10,12 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { Loader } from '../ui/loader';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { LczLegend, LczLegendOpacity70 } from './legends/datavizLegends';
 import { LegendCompColorLCZ } from './legends/legendComp';
 import styles from './maps.module.scss';
+import { mapTransformRequest } from './mapTransformRequest';
 import { CeremaFallbackError, handleCeremaFallback } from './subcomponents/ceremaLCZFallback';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 
 export const MapLCZ = ({
   coordonneesCommunes,
@@ -52,7 +53,13 @@ export const MapLCZ = ({
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       bounds: [
         [coordonneesCommunes.bbox.minLng, coordonneesCommunes.bbox.minLat],
         [coordonneesCommunes.bbox.maxLng, coordonneesCommunes.bbox.maxLat]
@@ -246,6 +253,7 @@ export const MapLCZ = ({
               war: 'Taux de surface en eau (%)',
             };
             // const identifier = props.identifier || '';
+            // eslint-disable-next-line react/prop-types
             const lcz = props.lcz || '';
             let content = `
               <h4 style='font-size:16px; margin:0 0 0.5rem;'>

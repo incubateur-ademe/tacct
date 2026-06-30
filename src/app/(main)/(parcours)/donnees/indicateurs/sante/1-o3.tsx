@@ -127,7 +127,7 @@ export const SeuilsReglementairesO3 = ({
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: 'var(--gris-dark)' }}>
-          Source : INERIS, 2024 (consultée en janvier 2026)
+          Source : INERIS, 2026 (consultée en janvier 2026)
         </Body>
         <ExportPngMaplibreButton
           mapRef={mapRef}

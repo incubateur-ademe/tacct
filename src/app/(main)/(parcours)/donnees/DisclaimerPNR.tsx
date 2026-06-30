@@ -32,12 +32,13 @@ export const DisclaimerPNR = () => {
         borderRadius: '1rem',
         color: '#201F1E',
         margin: '2rem 3rem',
+        marginTop: '2rem',
         '& .fr-container': {
           maxWidth: 'none'
         }
       })}
-      isClosable={true}
-      onClose={handleClose}
+      isClosable={true} 
+      onClose={handleClose} 
       title={'Attention :'}
       description={
         <>

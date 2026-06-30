@@ -156,6 +156,33 @@
     }
 }
 
+@media (max-width: 600px) {
+    .sectionType {
+        margin-top: 40px;
+        width: fit-content;
+        .indicateurWrapper {
+            padding: 2rem 1rem;
+        }
+        .diagnosticWrapper {
+            padding: 2rem;
+        }
+    }
+    .donneesNationalesWrapper {
+        flex-direction: column;
+        border-bottom: 2px solid var(--gris-medium-dark);
+        .leftData {
+            border-bottom: none;
+            border-right: none;
+            padding: 0 0 2rem 0;
+            width: 100%;
+        }
+        .rightData {
+            padding: 0;
+            width: 100%;
+        }
+    }
+}
+
 .prendreRDVWrapper {
     display: flex;
     flex-direction: row;
@@ -179,6 +206,36 @@
     padding: 2rem;
     position: relative;
     margin: 0 auto;
+}
+
+.thematiquesLieesMobileContainer {
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem 0;
+
+    .thematiqueCouranteMobileLabel {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--gris-medium-dark);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+        margin-right: 0.25rem;
+    }
+
+    .thematiqueCouranteMobile {
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        color: var(--principales-vert);
+    }
+
+    .thematiquesLieesMobileList {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .leftSection {
@@ -269,10 +326,25 @@
     gap: 0.5rem;
     padding: 2rem;
     border-radius: 1rem;
-    background-color: #D3EDEB;
+    background-color: #d3edeb;
     .texte {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .associerLesActeursImage {
+        display: none;
+    }
+    .thematiquesLieesNavigationMobile {
+        // display: none;
+    }
+    .thematiquesLieesContainer {
+        display: none;
+    }
+    .thematiquesLieesMobileContainer {
+        display: flex;
     }
 }

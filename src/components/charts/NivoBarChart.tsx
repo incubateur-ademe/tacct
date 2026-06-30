@@ -1,6 +1,7 @@
-'use client';
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { isIOS } from '@/lib/utils/browser';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
+import { wrapWords } from '@/lib/utils/string';
 import { Any } from '@/lib/utils/types';
 import {
   BarDatum,
@@ -33,6 +34,54 @@ const legendProps: BarLegendProps = {
   symbolSize: 20
 };
 
+const renderBottomTick = (
+  e: Any,
+  options: { isMobile?: boolean; tickRotation?: number; foreignObjectHeight?: number } = {}
+) => {
+  const { isMobile = false, tickRotation = 0, foreignObjectHeight } = options;
+
+  if (isIOS()) {
+    const lines = wrapWords(String(e.value));
+    return (
+      <g transform={tickRotation ? `translate(${e.x - 25},${e.y + 30})` : `translate(${e.x},${e.y})`} className="bottom-tick">
+        <text
+          textAnchor="middle"
+          transform={tickRotation ? `rotate(${tickRotation})` : undefined}
+          style={{ fontSize: 12, fontWeight: 400, fill: '#23282B' }}
+        >
+          {lines.map((line, i) => (
+            <tspan key={i} x={0} dy={i === 0 ? '1em' : '1.2em'}>
+              {line}
+            </tspan>
+          ))}
+        </text>
+      </g>
+    );
+  }
+
+  return (
+    <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
+      <foreignObject
+        x={-50}
+        y={0}
+        width={100}
+        height={foreignObjectHeight ?? (isMobile ? 160 : 45)}
+      >
+        <div style={{
+          maxWidth: '15ch',
+          wordBreak: 'keep-all',
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: 400,
+          margin: isMobile ? '2rem 0' : '0.5rem 0',
+          lineHeight: 'normal',
+          rotate: tickRotation ? `${tickRotation}deg` : undefined,
+        }}>{e.value}</div>
+      </foreignObject>
+    </g>
+  );
+};
+
 type NivoBarChartProps = {
   graphData: BarDatum[];
   keys: string[];
@@ -48,6 +97,9 @@ type NivoBarChartProps = {
   showLegend?: boolean;
   isBarLine?: boolean;
   graphMarginBottom?: number;
+  tickRotation?: number;
+  isMobile?: boolean;
+  xMargins?: number;
 };
 
 export const NivoBarChart = ({
@@ -64,13 +116,13 @@ export const NivoBarChart = ({
   groupMode = 'stacked',
   showLegend = true,
   isBarLine = false,
-  graphMarginBottom
+  graphMarginBottom,
+  isMobile = false,
+  tickRotation = 0,
+  xMargins = 80
 }: NivoBarChartProps) => {
   return (
-    <div
-      className="nivo-bar-chart-container"
-      style={{ width: '100%', height: '100%' }}
-    >
+    <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
       <ResponsiveBar
         data={graphData}
         keys={keys}
@@ -79,8 +131,8 @@ export const NivoBarChart = ({
         colors={colors}
         margin={
           isBarLine
-            ? { top: 40, right: 80, bottom: graphMarginBottom ?? 60, left: 80 }
-            : { top: 40, right: 80, bottom: graphMarginBottom ?? 100, left: 80 }
+            ? { top: 40, right: xMargins, bottom: graphMarginBottom ?? 60, left: xMargins }
+            : { top: 40, right: xMargins, bottom: graphMarginBottom ?? 100, left: xMargins }
         }
         groupMode={groupMode}
         padding={0.3}
@@ -98,27 +150,7 @@ export const NivoBarChart = ({
           legend: axisBottomLegend,
           legendOffset: 50,
           legendPosition: 'middle',
-          renderTick: (e: Any) => {
-            return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={45}>
-                  <div
-                    style={{
-                      maxWidth: '15ch',
-                      wordBreak: 'keep-all',
-                      textAlign: 'center',
-                      fontSize: 12,
-                      fontWeight: 400,
-                      margin: '0.5rem 0',
-                      lineHeight: 'normal'
-                    }}
-                  >
-                    {e.value}
-                  </div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { isMobile, tickRotation })
         }}
         gridYValues={5}
         axisLeft={{
@@ -155,25 +187,25 @@ export const NivoBarChart = ({
         legends={
           showLegend
             ? [
-                {
-                  ...legendProps,
-                  data: legendData,
-                  direction: 'row',
-                  anchor: 'bottom',
-                  translateX: 0,
-                  translateY: 80,
-                  itemsSpacing: 50
-                }
-              ]
+              {
+                ...legendProps,
+                data: legendData,
+                direction: "row",
+                anchor: "bottom",
+                translateX: 0,
+                translateY: 80,
+                itemsSpacing: 50,
+              }
+            ]
             : []
         }
         tooltip={tooltip}
         role="application"
-        // motionConfig={{
-        //   friction: 20,
-        //   mass: 2,
-        //   tension: 170
-        // }}
+      // motionConfig={{
+      //   friction: 20,
+      //   mass: 2,
+      //   tension: 170
+      // }}
       />
     </div>
   );
@@ -196,10 +228,7 @@ export const NivoBarChartRessourcesEau = ({
 }: NivoBarChartProps) => {
   const windowDimensions = useWindowDimensions();
   return (
-    <div
-      className="prelevement-eau-bar-chart-container"
-      style={{ width: '100%', height: '100%' }}
-    >
+    <div className="prelevement-eau-bar-chart-container" style={{ width: '100%', height: '100%' }}>
       <ResponsiveBar
         data={graphData}
         keys={keys}
@@ -209,23 +238,17 @@ export const NivoBarChartRessourcesEau = ({
         margin={
           showLegend
             ? {
-                top: 40,
-                right: 80,
-                bottom: legendData && legendData.length >= 4 ? 120 : 80,
-                left: 80
-              }
+              top: 40,
+              right: 80,
+              bottom: legendData && legendData.length >= 4 ? 120 : 80,
+              left: 80
+            }
             : {
-                top: 40,
-                right: 80,
-                bottom:
-                  graphMarginBottom ??
-                  (windowDimensions.width && windowDimensions.width > 1850
-                    ? 130
-                    : windowDimensions.width && windowDimensions.width > 1700
-                      ? 160
-                      : 220),
-                left: 80
-              }
+              top: 40,
+              right: 80,
+              bottom: graphMarginBottom ?? (windowDimensions.width! > 1850 ? 130 : windowDimensions.width! > 1700 ? 160 : 220),
+              left: 80
+            }
         }
         groupMode={groupMode}
         padding={0.3}
@@ -243,28 +266,7 @@ export const NivoBarChartRessourcesEau = ({
           legend: axisBottomLegend,
           legendOffset: 50,
           legendPosition: 'middle',
-          renderTick: (e: Any) => {
-            return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={40}>
-                  <div
-                    {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)}
-                    style={{
-                      maxWidth: '10ch',
-                      wordBreak: 'keep-all',
-                      textAlign: 'center',
-                      color: 'black',
-                      fontSize: 12,
-                      fontWeight: 400,
-                      margin: '0 auto'
-                    }}
-                  >
-                    {e.value}
-                  </div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { foreignObjectHeight: 40 })
         }}
         gridYValues={5}
         axisLeft={{
@@ -302,44 +304,44 @@ export const NivoBarChartRessourcesEau = ({
           showLegend && legendData
             ? legendData.length >= 4
               ? [
-                  // First row - first half of items
-                  {
-                    ...legendProps,
-                    data: legendData.slice(0, Math.ceil(legendData.length / 2)),
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 70,
-                    itemsSpacing: 40,
-                    itemWidth: 120,
-                    itemHeight: 25,
-                    symbolSize: 15
-                  },
-                  // Second row - second half of items
-                  {
-                    ...legendProps,
-                    data: legendData.slice(Math.ceil(legendData.length / 2)),
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 100,
-                    itemsSpacing: 40,
-                    itemWidth: 120,
-                    itemHeight: 25,
-                    symbolSize: 15
-                  }
-                ]
+                // First row - first half of items
+                {
+                  ...legendProps,
+                  data: legendData.slice(0, Math.ceil(legendData.length / 2)),
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 70,
+                  itemsSpacing: 40,
+                  itemWidth: 120,
+                  itemHeight: 25,
+                  symbolSize: 15,
+                },
+                // Second row - second half of items
+                {
+                  ...legendProps,
+                  data: legendData.slice(Math.ceil(legendData.length / 2)),
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 100,
+                  itemsSpacing: 40,
+                  itemWidth: 120,
+                  itemHeight: 25,
+                  symbolSize: 15,
+                }
+              ]
               : [
-                  {
-                    ...legendProps,
-                    data: legendData,
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 70,
-                    itemsSpacing: 50
-                  }
-                ]
+                {
+                  ...legendProps,
+                  data: legendData,
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 70,
+                  itemsSpacing: 50,
+                }
+              ]
             : []
         }
         tooltip={tooltip}
@@ -363,11 +365,9 @@ export const NivoBarChartCatnat = ({
   groupMode = 'stacked',
   showLegend = true
 }: NivoBarChartProps) => {
+  const windowDimensions = useWindowDimensions();
   return (
-    <div
-      className="nivo-bar-chart-container"
-      style={{ width: '100%', height: '100%' }}
-    >
+    <div className="nivo-bar-chart-container" style={{ width: '100%', height: '100%' }}>
       <ResponsiveBar
         data={graphData}
         keys={keys}
@@ -377,12 +377,17 @@ export const NivoBarChartCatnat = ({
         margin={
           showLegend
             ? {
-                top: 40,
-                right: 100,
-                bottom: legendData && legendData.length >= 4 ? 120 : 80,
-                left: 80
-              }
-            : { top: 40, right: 100, bottom: 150, left: 80 }
+              top: 40,
+              right: 100,
+              bottom: legendData && legendData.length >= 4 ? 120 : 80,
+              left: 80
+            }
+            : {
+              top: 40,
+              right: windowDimensions.width && windowDimensions.width < 600 ? 30 : 100,
+              bottom: windowDimensions.width && windowDimensions.width < 600 ? 250 : 150,
+              left: 80
+            }
         }
         groupMode={groupMode}
         padding={0.3}
@@ -398,28 +403,7 @@ export const NivoBarChartCatnat = ({
           tickSize: 0,
           tickPadding: 15,
           legend: axisBottomLegend,
-          renderTick: (e: Any) => {
-            return (
-              <g transform={`translate(${e.x},${e.y})`} className="bottom-tick">
-                <foreignObject x={-50} y={0} width={100} height={40}>
-                  <div
-                    {...({ xmlns: 'http://www.w3.org/1999/xhtml' } as Any)}
-                    style={{
-                      maxWidth: '10ch',
-                      wordBreak: 'keep-all',
-                      textAlign: 'center',
-                      color: 'black',
-                      fontSize: 12,
-                      fontWeight: 400,
-                      margin: '0 auto'
-                    }}
-                  >
-                    {e.value}
-                  </div>
-                </foreignObject>
-              </g>
-            );
-          }
+          renderTick: (e: Any) => renderBottomTick(e, { foreignObjectHeight: 40 })
         }}
         gridYValues={5}
         axisLeft={{
@@ -457,44 +441,44 @@ export const NivoBarChartCatnat = ({
           showLegend && legendData
             ? legendData.length >= 4
               ? [
-                  // First row - first half of items
-                  {
-                    ...legendProps,
-                    data: legendData.slice(0, Math.ceil(legendData.length / 2)),
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 70,
-                    itemsSpacing: 40,
-                    itemWidth: 120,
-                    itemHeight: 25,
-                    symbolSize: 15
-                  },
-                  // Second row - second half of items
-                  {
-                    ...legendProps,
-                    data: legendData.slice(Math.ceil(legendData.length / 2)),
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 100,
-                    itemsSpacing: 40,
-                    itemWidth: 120,
-                    itemHeight: 25,
-                    symbolSize: 15
-                  }
-                ]
+                // First row - first half of items
+                {
+                  ...legendProps,
+                  data: legendData.slice(0, Math.ceil(legendData.length / 2)),
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 70,
+                  itemsSpacing: 40,
+                  itemWidth: 120,
+                  itemHeight: 25,
+                  symbolSize: 15,
+                },
+                // Second row - second half of items
+                {
+                  ...legendProps,
+                  data: legendData.slice(Math.ceil(legendData.length / 2)),
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 100,
+                  itemsSpacing: 40,
+                  itemWidth: 120,
+                  itemHeight: 25,
+                  symbolSize: 15,
+                }
+              ]
               : [
-                  {
-                    ...legendProps,
-                    data: legendData,
-                    direction: 'row',
-                    anchor: 'bottom',
-                    translateX: 0,
-                    translateY: 70,
-                    itemsSpacing: 50
-                  }
-                ]
+                {
+                  ...legendProps,
+                  data: legendData,
+                  direction: "row",
+                  anchor: "bottom",
+                  translateX: 0,
+                  translateY: 70,
+                  itemsSpacing: 50,
+                }
+              ]
             : []
         }
         tooltip={tooltip}

@@ -8,10 +8,21 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';
 import { GraphDataNotFound } from '../graph-data-not-found';
+import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { colorsCatnat } from './legends/legendCatnat';
 import { CatnatTooltip } from './subcomponents/tooltips';
-import { AccessibleMapWrapper } from './AccessibleMapWrapper';
-import { Any } from '@/lib/utils/types';
+
+interface CatNatData {
+  sumCatnat: number;
+  indexName: string;
+  Inondations?: number | undefined;
+  'Gr\u00EAle / neige'?: number | undefined;
+  Sécheresse?: number | undefined;
+  'Cyclones / Temp\u00EAtes'?: number | undefined;
+  'Retrait-gonflement des argiles'?: number | undefined;
+  'Mouvements de terrain'?: number | undefined;
+  Avalanche?: number | undefined;
+};
 
 const getColor = (d: number, max: number, typeCatnat: string) => {
   const colorPalette = colorsCatnat[typeCatnat];
@@ -49,7 +60,11 @@ const getColor = (d: number, max: number, typeCatnat: string) => {
 };
 
 export const MapCatnat = (props: {
-  catnatData: { code: string; name: string; catnat: Any }[];
+  catnatData: {
+    code: string;
+    name: string;
+    catnat: CatNatData;
+  }[];
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   typeRisqueValue: CatnatTypes;
 }) => {
@@ -63,7 +78,7 @@ export const MapCatnat = (props: {
   const hoveredFeatureRef = useRef<string | null>(null);
 
   const catnatByCommune = useMemo(() => {
-    const map = new Map<string, Any>();
+    const map = new Map<string, CatNatData>();
     catnatData.forEach(item => {
       map.set(item.code, item.catnat);
     });
@@ -108,6 +123,10 @@ export const MapCatnat = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
 
@@ -188,7 +207,7 @@ export const MapCatnat = (props: {
           const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
           const catnat = catnatByCommune.get(code);
           if (catnat && communeName) {
-            const { ...restCatnat } = catnat;
+            const { indexName, sumCatnat, ...restCatnat } = catnat;
             const tooltipContent = CatnatTooltip(restCatnat, communeName);
             if (popupRef.current) {
               popupRef.current.remove();
@@ -252,7 +271,7 @@ export const MapCatnat = (props: {
             const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
             const catnat = catnatByCommune.get(code);
             if (catnat && communeName) {
-              const { ...restCatnat } = catnat;
+              const { indexName, sumCatnat, ...restCatnat } = catnat;
               const tooltipContent = CatnatTooltip(restCatnat, communeName);
               if (popupRef.current) popupRef.current.remove();
               popupRef.current = new maplibregl.Popup({
@@ -273,7 +292,7 @@ export const MapCatnat = (props: {
               const communeName = nameByCommune.get(code) || properties?.libelle_geographique || 'Commune inconnue';
               const catnat = catnatByCommune.get(code);
               if (catnat && communeName) {
-                const { ...restCatnat } = catnat;
+                const { indexName, sumCatnat, ...restCatnat } = catnat;
                 const tooltipContent = CatnatTooltip(restCatnat, communeName);
                 popupRef.current.remove();
                 popupRef.current = new maplibregl.Popup({

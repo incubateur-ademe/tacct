@@ -3,12 +3,14 @@ import { MicroNumberCircle, MicroPieChart } from '@/components/charts/MicroDatav
 import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
 import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body, H2 } from "@/design-system/base/Textes";
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { irrigable } from '@/lib/definitions';
 import { AssocierLesActeurs } from '../components/associerLesActeurs';
 import { ThematiquesLieesNavigation } from '../components/ThematiquesLieesNavigation';
 import styles from '../impacts.module.scss';
 
 export const DiagnostiquerImpactsAgriculture = () => {
+  const windows = useWindowDimensions();
   return (
     <>
       {/* Introduction */}
@@ -138,14 +140,16 @@ export const DiagnostiquerImpactsAgriculture = () => {
       </section>
       <SourcesSection tag="h2" thematique="agricultureImpact" />
       <section className={styles.sectionType}>
-        <div id="section4" className={styles.diagnosticWrapper}>
-          <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
-            Poursuivez votre exploration
-          </H2>
-          <Body>
-            Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
-          </Body>
-          <ThematiquesLieesNavigation thematiqueSelectionnee='Agriculture' />
+        <div className={styles.thematiquesLieesNavigationMobile}>
+          <div id="section4" className={styles.diagnosticWrapper}>
+            <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
+              Poursuivez votre exploration
+            </H2>
+            <Body style={{ paddingTop: windows && windows.width! < 600 ? '1rem' : '0rem' }}>
+              Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
+            </Body>
+            <ThematiquesLieesNavigation thematiqueSelectionnee='Agriculture' />
+          </div>
         </div>
       </section>
     </>

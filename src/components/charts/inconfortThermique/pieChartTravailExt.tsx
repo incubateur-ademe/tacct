@@ -18,37 +18,22 @@ type Props = {
   travailExterieurTerritoire: travailExtDto[];
 };
 
-export const PieChartTravailExt = ({
-  graphData,
-  travailExterieurTerritoire
-}: Props) => {
-  const sumAllCount = graphData.reduce(
-    (sum, item) => sum + (item.count || 0),
-    0
-  );
+export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Props) => {
+  const sumAllCount = graphData.reduce((sum, item) => sum + (item.count || 0), 0);
   return (
-    <div>
-      {sumAllCount > 0 ? (
+    <div >
+      {sumAllCount > 0 ?
         <NivoPieChart
           graphData={graphData}
-          colors={(graphData) =>
-            travailExterieurPieChartLegend.find(
-              (legend) => legend.value === graphData.label
-            )?.color!
-          }
-          tooltip={({ datum }) =>
-            simplePieChartCountTooltip({ datum, arrondi: 0 })
-          }
+          colors={(graphData) => travailExterieurPieChartLegend.find(legend => legend.value === graphData.label)?.color!}
+          tooltip={({ datum }) => simplePieChartCountTooltip({ datum, arrondi: 0 })}
         />
-      ) : (
-        <div className="p-1 flex flex-row justify-center">
-          <DataNotFoundForGraph
-            image={
-              travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData
-            }
-          />
-        </div>
-      )}
+        : (
+          <div className='p-1 flex flex-row justify-center'>
+            <DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} />
+          </div>
+        )
+      }
     </div>
   );
 };

@@ -106,7 +106,7 @@ export const ZipExportButton = ({
   };
 
   return (
-    <div className={styles.exportShareWrapper}>
+    <div className={`${styles.exportShareWrapper} ${styles.zipExportButtonHidden}`}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
       <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
         <BoutonPrimaireClassic

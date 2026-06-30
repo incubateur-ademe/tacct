@@ -188,7 +188,7 @@ export const GrandAge75 = ({
             <Loader />
           )}
           <SourceExport
-            anchor="Grand âge"
+            anchor="Grand-âge"
             exportComponent={
               <ExportButton
                 data={exportData}
