@@ -6,6 +6,7 @@ import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { mapTransformRequest } from './mapTransformRequest';
 import { Patch4Tooltip } from './subcomponents/tooltips';
 
 const getColorByAggravation = (value: number | null) => {
@@ -44,7 +45,6 @@ export const MapPatch4 = (props: {
   const valueByCommune = useRef<Map<string, number>>(new Map());
   const filteredCodes = communesCodes.filter(code => !listeArrondissements.includes(code));
   const alea = patch4[0] ? Object.keys(patch4[0]).find(key => key !== 'code_geographique' && key !== 'index' && key !== 'libelle_geographique') as 'feux_foret' | 'fortes_chaleurs' | 'fortes_precipitations' | 'niveaux_marins' | 'secheresse_sols' | undefined : undefined;
-
   // Mettre à jour les Maps à chaque changement de patch4
   useEffect(() => {
     nameByCommune.current = new Map(
@@ -76,17 +76,23 @@ export const MapPatch4 = (props: {
     return ['case', ...colorPairs, '#E5E5E5'] as ExpressionSpecification;
   }, [alea, patch4]);
 
+
   const colorExpressionRef = useRef(createColorExpression);
   colorExpressionRef.current = createColorExpression;
 
   const filteredCodesKey = useMemo(() => JSON.stringify(filteredCodes), [filteredCodes]);
-
   useEffect(() => {
     if (!mapContainer.current || filteredCodes.length === 0) return;
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
     });
     mapRef.current = map;
 

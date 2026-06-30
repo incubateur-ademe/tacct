@@ -6,6 +6,7 @@ import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import { mapTransformRequest } from './mapTransformRequest';
 
 export const MapErosionCotiere = (props: {
   erosionCotiere: ErosionCotiereDto[];
@@ -23,7 +24,13 @@ export const MapErosionCotiere = (props: {
     const map = new maplibregl.Map({
       container: mapContainer.current,
       style: mapStyles.desaturated,
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true },
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
 

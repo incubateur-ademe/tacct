@@ -90,7 +90,7 @@ export const AgricultureBioPieCharts = ({
   return (
     <>
       {partCertifiee && partEnConversion ? (
-        <div className="flex flex-row justify-center gap-20 p-12 bg-white">
+        <div className={styles.pieChartsRow}>
           <div className={styles.dataWrapper}>
             <Image src={surfaceCertifeeIcon} alt="" />
             <Body size="sm" style={{ marginBottom: '24px' }}>

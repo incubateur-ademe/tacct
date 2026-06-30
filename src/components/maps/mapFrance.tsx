@@ -50,8 +50,14 @@ export const MapJson = (props: {
       container: mapContainer.current,
       style: BLANK_STYLE,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
       interactive: true,
       scrollZoom: false,
+      dragPan: false,
+      dragRotate: false,
       bounds: [[-5.5, 41.2], [10.0, 51.5]],
       fitBoundsOptions: { padding: 0 }
     });

@@ -252,6 +252,12 @@
     gap: 0.5rem;
 }
 
+.zipExportButtonHidden {
+    @media (max-width: 599px) {
+        display: none;
+    }
+}
+
 // Barre de recherche
 .searchCompWrapper {
     display: flex;

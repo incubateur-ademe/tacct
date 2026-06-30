@@ -1,4 +1,5 @@
 "use client";
+import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
 import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
 import { allRadioOptions } from "@/components/searchbar/radioButtons";
@@ -48,28 +49,31 @@ const RechercherSonTerritoire = () => {
   }
 
   return (
-    <NewContainer size="md">
-      <div style={{ margin: '5rem 0' }}>
-        <H1
-          style={{
-            textAlign: 'center',
-            fontSize: '2rem',
-            marginBottom: "2rem",
-            lineHeight: '40px',
-          }}>
-          Commençons par localiser votre territoire pour personnaliser vos données
-        </H1>
-        <BarreDeRecherche
-          setSearchCode={setSearchCode}
-          setSearchLibelle={setSearchLibelle}
-          RechercherRedirection={handleRechercher}
-          typeTerritoire={typeTerritoire}
-          searchCode={searchCode}
-          searchLibelle={searchLibelle}
-          radioOptions={arrayOptions}
-        />
-      </div>
-    </NewContainer>
+    <>
+      <ScrollToTop />
+      <NewContainer size="md">
+        <div style={{ margin: '5rem 0' }}>
+          <H1
+            style={{
+              textAlign: 'center',
+              fontSize: '2rem',
+              marginBottom: "2rem",
+              lineHeight: '40px',
+            }}>
+            Commençons par localiser votre territoire pour personnaliser vos données
+          </H1>
+          <BarreDeRecherche
+            setSearchCode={setSearchCode}
+            setSearchLibelle={setSearchLibelle}
+            RechercherRedirection={handleRechercher}
+            typeTerritoire={typeTerritoire}
+            searchCode={searchCode}
+            searchLibelle={searchLibelle}
+            radioOptions={arrayOptions}
+          />
+        </div>
+      </NewContainer>
+    </>
   );
 }
 

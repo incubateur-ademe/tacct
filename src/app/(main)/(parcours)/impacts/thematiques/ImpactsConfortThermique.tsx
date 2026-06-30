@@ -3,11 +3,13 @@ import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { ScrollToSourceTag, SourcesSection } from '@/components/interactions/scrollToSource';
 import { Body, H2 } from "@/design-system/base/Textes";
 import MiddlePageTrigger from '@/hooks/MiddlePageTrigger';
+import useWindowDimensions from '@/hooks/windowDimensions';
 import { AssocierLesActeurs } from '../components/associerLesActeurs';
 import { ThematiquesLieesNavigation } from '../components/ThematiquesLieesNavigation';
 import styles from '../impacts.module.scss';
 
 export const DiagnostiquerImpactsConfortThermique = () => {
+  const windows = useWindowDimensions();
   return (
     <>
       {/* Introduction */}
@@ -138,7 +140,7 @@ export const DiagnostiquerImpactsConfortThermique = () => {
           <H2 style={{ color: "var(--principales-vert)", fontSize: '1.25rem', margin: 0 }}>
             Poursuivez votre exploration
           </H2>
-          <Body>
+          <Body style={{ paddingTop: windows && windows.width! < 600 ? '1rem' : '0rem' }}>
             Vous pouvez retourner à l’ensemble des thématiques ou bien explorer les thématiques liées à celle-ci.
           </Body>
           <ThematiquesLieesNavigation thematiqueSelectionnee='Confort thermique' />

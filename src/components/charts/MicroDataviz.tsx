@@ -24,7 +24,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { BoundsFromCollection } from "../maps/components/boundsFromCollection";
+import { BoundsFromCollection } from "../maps/subcomponents/boundsFromCollection";
 import styles from "./charts.module.scss";
 
 type MicroPieChartTypes = {
@@ -213,6 +213,7 @@ export const MicroCircleGrid = ({
         isNaN(Number(pourcentage)) ? null : (
           <div
             className={styles.microCircleGridWrapper}
+            role="img"
             aria-label={ariaLabel}
           >
             <Body weight="bold">{Round(pourcentage, arrondi)} %</Body>
@@ -270,6 +271,7 @@ export const MicroCircleGridMois = ({
         isNaN(Number(nombreJours)) ? null : (
           <div
             className={styles.microCircleGridWrapper}
+            role="img"
             aria-label={ariaLabel}
             style={{ width: "120px" }}
           >
@@ -366,7 +368,7 @@ export const MicroRemplissageTerritoire = (props: {
   ]);
   const geojsonObject = useMemo(() => {
     if (typeof window === 'undefined') return null;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const L = require('leaflet');
     return L.geoJSON(territoireContours as unknown as GeoJsonObject);
   }, [territoireContours]);
@@ -518,7 +520,7 @@ export const MicroChiffreTerritoire = (props: {
 
   const geojsonObject = useMemo(() => {
     if (typeof window === 'undefined') return null;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+
     const L = require('leaflet');
     return L.geoJSON(territoireContours as unknown as GeoJsonObject);
   }, [territoireContours]);

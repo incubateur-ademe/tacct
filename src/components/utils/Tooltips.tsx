@@ -4,7 +4,7 @@ import CalculatorIconGreen from '@/assets/icons/calculator_icon_green.svg';
 import { Body } from '@/design-system/base/Textes';
 import couleurs from '@/design-system/couleurs';
 import { Any } from '@/lib/utils/types';
-import { styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
+import { ClickAwayListener, styled, Tooltip, tooltipClasses, TooltipProps } from '@mui/material';
 import Image from 'next/image';
 import { ReactElement, ReactNode, useState } from 'react';
 import styles from './Tooltips.module.scss';
@@ -18,15 +18,14 @@ interface HtmlTooltipProps extends TooltipProps {
   fontWeight?: number | string;
 }
 
-interface TabTooltipProps {
-  tooltip: string;
-  titre: string;
-  selectedTab: string;
-}
-
 export const HtmlTooltip = styled(
   ({ className, fontWeight = 500, ...props }: HtmlTooltipProps) => (
-    <Tooltip {...props} classes={{ popper: className }} />
+    <Tooltip
+      {...props}
+      classes={{ popper: className }}
+      enterTouchDelay={0}
+      leaveTouchDelay={3000}
+    />
   )
 )<HtmlTooltipProps>(({ fontWeight = 500 }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
@@ -123,26 +122,36 @@ export const CustomTooltipNouveauParcours = ({
   title,
   texte = 'Méthode de calcul'
 }: Props) => {
+  const [open, setOpen] = useState(false);
   return (
-    <HtmlTooltip title={title}>
-      <button
-        type="button"
-        className={styles.tooltipTrigger}
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: '4px',
-          width: 'fit-content',
-          margin: '0.5em 0 0'
-        }}
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
+      <HtmlTooltip
+        title={title}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        disableTouchListener
       >
-        <Image src={CalculatorIconGreen} alt="" />
-        <Body htmlTag="span" weight='bold' style={{ color: couleurs.principales.vert }}>
-          {texte}
-        </Body>
-      </button>
-    </HtmlTooltip>
+        <button
+          type="button"
+          className={styles.tooltipTrigger}
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: '4px',
+            width: 'fit-content',
+            margin: '0.5em 0 0'
+          }}
+          onClick={() => setOpen(true)}
+        >
+          <Image src={CalculatorIconGreen} alt="" />
+          <Body htmlTag="span" weight='bold' style={{ color: couleurs.principales.vert }}>
+            {texte}
+          </Body>
+        </button>
+      </HtmlTooltip>
+    </ClickAwayListener>
   );
 };
 
@@ -153,12 +162,27 @@ export const DefinitionTooltip = ({
   children: string;
   title: ReactNode;
 }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <HtmlTooltip title={title} placement="top" fontWeight={400}>
-      <span tabIndex={0} style={{ borderBottom: '1px dashed #0063CB', cursor: 'help' }}>
-        {children}
-      </span>
-    </HtmlTooltip>
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
+      <HtmlTooltip
+        title={title}
+        placement="top"
+        fontWeight={400}
+        open={open}
+        onOpen={() => setOpen(true)}
+        onClose={() => setOpen(false)}
+        disableTouchListener
+      >
+        <span
+          tabIndex={0}
+          style={{ borderBottom: '1px dashed #0063CB', cursor: 'help' }}
+          onClick={() => setOpen(true)}
+        >
+          {children}
+        </span>
+      </HtmlTooltip>
+    </ClickAwayListener>
   );
 };
 

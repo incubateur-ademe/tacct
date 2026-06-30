@@ -299,52 +299,68 @@ export const ExportPngMaplibreButton = ({
         '.' + styles.exportIndicatorButton
       ) as HTMLElement;
       if (exportButton) exportButton.style.display = 'none';
-      // Trigger un render pour que le canvas soit prêt
-      mapRef.current.once('render', async () => {
-        try {
-          const mapCanvas = await html2canvas(mapContainer.current!, {
-            useCORS: true
-          });
-          const legendCanvas = await html2canvas(originalLegendDiv, {
-            useCORS: true
-          });
-          //Combinaison des deux canvases
-          const finalCanvas = document.createElement('canvas');
-          const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-          finalCanvas.width = mapCanvas.width - 16;
-          finalCanvas.height = mapCanvas.height + legendCanvas.height;
-          ctx.drawImage(mapCanvas, 0, 0);
-          ctx.drawImage(legendCanvas, 0, mapCanvas.height);
 
-          finalCanvas.toBlob((blob) => {
-            if (blob) {
-              const url = URL.createObjectURL(blob);
-              const link = document.createElement('a');
-              link.href = url;
-              link.download = fileName;
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              URL.revokeObjectURL(url);
-            }
-            navControls.forEach((control) => {
-              (control as HTMLElement).style.display = '';
+      const cleanup = () => {
+        navControls.forEach((control) => {
+          (control as HTMLElement).style.display = '';
+        });
+        if (exportButton) exportButton.style.display = '';
+      };
+
+      await new Promise<void>((resolve) => {
+        const safetyTimeout = setTimeout(() => {
+          cleanup();
+          resolve();
+        }, 7000);
+
+        mapRef.current!.once('render', async () => {
+          clearTimeout(safetyTimeout);
+          try {
+            // Capture native du canvas WebGL (rapide, fiable, non taché grâce
+            // au proxy) ; html2canvas seulement pour la légende.
+            const mapCanvas = mapRef.current!.getCanvas();
+            console.log('[export] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
+            const t0 = Date.now();
+            const legendCanvas = await Promise.race([
+              html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
+              new Promise<never>((_, reject) =>
+                setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
+              )
+            ]);
+            console.log('[export] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
+
+            const finalCanvas = document.createElement('canvas');
+            const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+            finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
+            finalCanvas.height = mapCanvas.height + legendCanvas.height;
+            ctx.drawImage(mapCanvas, 0, 0);
+            ctx.drawImage(legendCanvas, 0, mapCanvas.height);
+
+            finalCanvas.toBlob((blob) => {
+              if (blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = fileName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+              }
+              cleanup();
+              resolve();
             });
-            if (exportButton) exportButton.style.display = '';
-          });
-        } catch (error) {
-          console.error('Error capturing canvas:', error);
-          navControls.forEach((control) => {
-            (control as HTMLElement).style.display = '';
-          });
-          if (exportButton) exportButton.style.display = '';
-        } finally {
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 3000);
-        }
+          } catch (error) {
+            const e = error as Error;
+            console.error('Error capturing canvas:', e?.name, '|', e?.message, '|', e?.stack);
+            cleanup();
+            resolve();
+          }
+        });
+        mapRef.current!.triggerRepaint();
       });
-      mapRef.current.triggerRepaint();
+
+      setTimeout(() => setIsLoading(false), 3000);
     } else {
       console.log('Map or container not found');
       setIsLoading(false);
@@ -415,33 +431,48 @@ export async function generateMapPngBlob({
     if (exportButton) exportButton.style.display = 'none';
     // Wait for map to render
     return new Promise((resolve) => {
+      const restore = () => {
+        navControls.forEach((control) => {
+          (control as HTMLElement).style.display = '';
+        });
+        if (exportButton) exportButton.style.display = '';
+      };
+      // Garde-fou : si l'event 'render' ne se déclenche pas (cas iOS), on ne
+      // bloque pas indéfiniment l'export ZIP.
+      const safetyTimeout = setTimeout(() => {
+        restore();
+        resolve(null);
+      }, 8000);
+
       mapRef.current!.once('render', async () => {
+        clearTimeout(safetyTimeout);
         try {
-          const mapCanvas = await html2canvas(mapContainer.current!, {
-            useCORS: true
-          });
-          const legendCanvas = await html2canvas(originalLegendDiv, {
-            useCORS: true
-          });
+          // Capture native du canvas WebGL (rapide, fiable, non taché grâce au
+          // proxy same-origin) au lieu de html2canvas, trop lent sur iOS.
+          const mapCanvas = mapRef.current!.getCanvas();
+          console.log('[zip] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
+          const t0 = Date.now();
+          const legendCanvas = await Promise.race([
+            html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
+            new Promise<never>((_, reject) =>
+              setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
+            )
+          ]);
+          console.log('[zip] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
-          finalCanvas.width = mapCanvas.width - 16;
+          finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
           finalCanvas.height = mapCanvas.height + legendCanvas.height;
           ctx.drawImage(mapCanvas, 0, 0);
           ctx.drawImage(legendCanvas, 0, mapCanvas.height);
           finalCanvas.toBlob((blob) => {
-            navControls.forEach((control) => {
-              (control as HTMLElement).style.display = '';
-            });
-            if (exportButton) exportButton.style.display = '';
+            restore();
             resolve(blob);
           });
         } catch (error) {
-          console.error('generateMapPngBlob - error:', error);
-          navControls.forEach((control) => {
-            (control as HTMLElement).style.display = '';
-          });
-          if (exportButton) exportButton.style.display = '';
+          const e = error as Error;
+          console.error('generateMapPngBlob - error:', e?.name, '|', e?.message, '|', e?.stack);
+          restore();
           resolve(null);
         }
       });

@@ -7,6 +7,7 @@ import { Sum } from "@/lib/utils/reusableFunctions/sum";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { simpleBarChartTooltip } from "../ChartTooltips";
 import { NivoBarChart } from "../NivoBarChart";
+import styles from './biodiversiteCharts.module.scss';
 
 type GraphData = {
   "Surface certifiée agriculture biologique": number;
@@ -98,7 +99,7 @@ export const AgricultureBioBarChart = (
   }, [minValueXTicks, maxValueXTicks]);
 
   return (
-    <div style={{ height: "450px", minWidth: "450px", width: '100%', backgroundColor: "white" }}>
+    <div className={styles.barChartContainer}>
       <style>{`
         .nivo-bar-chart-container .bottom-tick {
           opacity: ${isTransitioning ? '0' : '1'};

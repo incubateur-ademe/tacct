@@ -21,3 +21,26 @@ export const slugify = (string: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
+
+/**
+ * Découpe un texte en lignes d'au plus `maxChars` caractères, sans couper les mots.
+ * Utilisé pour les labels d'axe rendus en <tspan> (notamment sur iOS, où
+ * foreignObject s'affiche mal).
+ */
+export const wrapWords = (text: string, maxChars = 14): string[] => {
+  const words = String(text).split(" ");
+  const lines: string[] = [];
+  let current = "";
+  for (const word of words) {
+    if (!current) {
+      current = word;
+    } else if (current.length + 1 + word.length <= maxChars) {
+      current += " " + word;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  }
+  if (current) lines.push(current);
+  return lines;
+};

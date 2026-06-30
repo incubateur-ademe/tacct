@@ -9,6 +9,7 @@ import { MapRGAExport } from "@/components/maps/mapRGAExport";
 import { MapTiles } from "@/components/maps/mapTiles";
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from "@/design-system/base/Textes";
+import useWindowDimensions from "@/hooks/windowDimensions";
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
@@ -141,6 +142,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const code = searchParams.get('code')!;
+  const window = useWindowDimensions();
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   // options de filtre pour les départements (plusieurs départements possibles pour un EPCI)
@@ -190,7 +192,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
       </div>
       {datavizTab === 'Comparaison' ? (
         <>
-          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
             <NivoBarChart
               colors={RgaRepartitionLegend.map(e => e.couleur)}
               graphData={repartitionRga as BarDatum[]}
@@ -201,6 +203,10 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               groupMode="grouped"
               tooltip={(data) => RgaRepartitionTooltip({ data, type })}
               bottomTickValues={repartitionRga.map(el => el.alea)}
+              tickRotation={window.width! < 600 ? -50 : undefined}
+              graphMarginBottom={window.width! < 600 ? 180 : undefined}
+              isMobile={window.width! < 600}
+              xMargins={window.width! < 600 ? 45 : 80}
             />
             <div style={{ position: "relative", top: "-40px" }}>
               <LegendCompColor
@@ -221,7 +227,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           </div>
           {
             multipleDepartements.length > 1 &&
-            <div style={{ minWidth: "450px", backgroundColor: "white", padding: "1em" }}>
+            <div className={styles.warningBox}>
               <div className='flex flex-row items-center justify-center'>
                 <Image
                   src={WarningIcon}
@@ -241,7 +247,7 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         </>
       ) : datavizTab === 'Répartition' ? (
         <>
-          <div className="rga-charts-wrapper" style={{ height: "500px", minWidth: "450px", backgroundColor: "white" }}>
+          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
             <NivoBarChart
               colors={RgaEvolutionLegend.map(e => e.couleur)}
               graphData={evolutionRga}
@@ -250,8 +256,12 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
               showLegend={false}
               axisLeftLegend="Nombre de logements"
               tooltip={RgaEvolutionTooltip}
+              tickRotation={window.width! < 600 ? -60 : undefined}
+              graphMarginBottom={window.width! < 600 ? 160 : undefined}
+              isMobile={window.width! < 600}
+              xMargins={window.width! < 600 ? 45 : 80}
             />
-            <div style={{ position: "relative", top: "-40px" }}>
+            <div style={{ position: "relative", top: "-70px" }}>
               <LegendCompColor
                 legends={RgaEvolutionLegend
                   .map((legend, index) => ({
@@ -292,9 +302,9 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
         exportMapRef={exportMapRef}
         exportMapContainer={exportMapContainer}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
-          left: 0,
+          left: '-9999px',
           width: '500px',
           height: '500px',
           opacity: 0,
