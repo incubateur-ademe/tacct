@@ -12,6 +12,9 @@ export const isCriterionSlug = (value: string): value is CriterionSlug =>
 export const getCriterionBySlug = (slug: string): Criterion | undefined =>
   CRITERIA.find((criterion) => criterion.slug === slug);
 
+export const isPublicCriterion = (slug: CriterionSlug): boolean =>
+  CRITERIA[0]?.slug === slug;
+
 const KNOWN_QUESTION_KEYS = new Set(
   CRITERIA.flatMap((criterion) =>
     criterion.questions.map((question) =>

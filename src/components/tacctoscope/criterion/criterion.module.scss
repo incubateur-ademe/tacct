@@ -164,3 +164,17 @@
   border-top: 1px solid #e7e5e5;
   padding-top: 1rem;
 }
+
+.criterionCardLocked {
+  cursor: default;
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.00) 70.58%, #ECFFFD 99.28%);
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.criterionCardLockFooter {
+  display: flex;
+  justify-content: flex-end;
+}

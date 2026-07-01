@@ -1,7 +1,8 @@
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import { Body } from '@/design-system/base/Textes';
 import { decodeUserSession, sessionCookieName } from '@/lib/auth/proconnect';
 import { prisma } from '@/lib/queries/db';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 const linkStyle: React.CSSProperties = {
   display: 'inline-block',
@@ -11,7 +12,7 @@ const linkStyle: React.CSSProperties = {
   fontWeight: 600
 };
 
-export default async function MonEspace() {
+const MonEspace = async () => {
   const cookieStore = await cookies();
   const raw = cookieStore.get(sessionCookieName())?.value;
   const session = raw ? await decodeUserSession(raw) : null;
@@ -19,7 +20,7 @@ export default async function MonEspace() {
 
   const user = await prisma.user.findUnique({
     where: { id: session.sub },
-    select: { firstname: true, lastname: true, email: true }
+    select: { firstname: true, lastname: true, email: true, validated: true }
   });
   if (!user) redirect('/mon-compte');
 
@@ -30,12 +31,21 @@ export default async function MonEspace() {
         Bonjour {user.firstname} {user.lastname}
       </p>
       <p>Connecté avec {user.email}</p>
+      <Body>
+          Statut du user : {user.validated ? 'validé' : 'non validé'}
+        </Body>
       <div style={{ display: 'flex', gap: 16, marginTop: 24, flexWrap: 'wrap' }}>
         <a
           href="/workspace-tacct"
           style={{ ...linkStyle, background: '#038278', color: '#fff' }}
         >
           Accéder à l’outil TACCT
+        </a>
+        <a
+          href="/tacctoscope"
+          style={{ ...linkStyle, background: '#038278', color: '#fff' }}
+        >
+          Accéder au TACCToscope
         </a>
         <a
           href="/api/proconnect/logout"
@@ -47,3 +57,5 @@ export default async function MonEspace() {
     </div>
   );
 }
+
+export default MonEspace;

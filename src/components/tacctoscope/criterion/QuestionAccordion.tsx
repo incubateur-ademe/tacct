@@ -4,6 +4,7 @@ import { Body } from '@/design-system/base/Textes';
 import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
 import { ANSWER_OPTIONS } from '@/lib/tacctoscope/content/options';
 import { buildQuestionKey } from '@/lib/tacctoscope/keys';
+import { deleteLocalAnswer, saveLocalAnswer } from '@/lib/tacctoscope/localAnswers';
 import { ANSWER_STATUS } from '@/lib/tacctoscope/status';
 import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
@@ -20,6 +21,7 @@ interface Props {
   initialValue: AnswerValue | null;
   defaultOpen?: boolean;
   onChanged: (questionKey: string, answered: boolean) => void;
+  isAuthenticated: boolean;
 }
 
 export const QuestionAccordion = ({
@@ -28,7 +30,8 @@ export const QuestionAccordion = ({
   number,
   initialValue,
   defaultOpen = false,
-  onChanged
+  onChanged,
+  isAuthenticated
 }: Props) => {
   const questionKey = buildQuestionKey(slug, question.id);
   const [value, setValue] = useState<AnswerValue | null>(initialValue);
@@ -41,6 +44,12 @@ export const QuestionAccordion = ({
     setValue(next);
     setError(false);
     onChanged(questionKey, next !== null);
+
+    if (!isAuthenticated) {
+      if (next === null) deleteLocalAnswer(questionKey);
+      else saveLocalAnswer(questionKey, next);
+      return;
+    }
 
     startTransition(async () => {
       const result =

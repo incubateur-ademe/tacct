@@ -16,6 +16,7 @@ interface Props {
   description: string;
   questions: SectionQuestion[];
   onChanged: (questionKey: string, answered: boolean) => void;
+  isAuthenticated: boolean;
 }
 
 export const CriterionSection = ({
@@ -23,7 +24,8 @@ export const CriterionSection = ({
   title,
   description,
   questions,
-  onChanged
+  onChanged,
+  isAuthenticated
 }: Props) => (
   <section className={styles.criterionSectionWrapper}>
     <H2
@@ -45,6 +47,7 @@ export const CriterionSection = ({
           initialValue={item.initialValue}
           defaultOpen={item.defaultOpen}
           onChanged={onChanged}
+          isAuthenticated={isAuthenticated}
         />
       ))}
     </div>

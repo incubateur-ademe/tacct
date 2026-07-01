@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-import { NextRequest, NextResponse } from 'next/server';
 import {
   encodeUserSession,
   getBaseUrl,
@@ -13,6 +11,8 @@ import {
 } from '@/lib/auth/proconnect';
 import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
+import { randomUUID } from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface TokenResponse {
   access_token?: string;

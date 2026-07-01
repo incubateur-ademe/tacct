@@ -7,6 +7,7 @@ export interface HubItem {
   criterion: Criterion;
   answered: number;
   total: number;
+  locked: boolean;
 }
 
 interface Props {
@@ -21,6 +22,7 @@ export const HubGrid = ({ items }: Props) => (
         criterion={item.criterion}
         answered={item.answered}
         total={item.total}
+        locked={item.locked}
       />
     ))}
     <RoadmapCard />

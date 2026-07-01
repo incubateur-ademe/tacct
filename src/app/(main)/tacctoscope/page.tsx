@@ -4,9 +4,9 @@ import { NewContainer } from '@/design-system/layout';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
+import { isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { getCriterionProgress } from '@/lib/tacctoscope/progress';
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 import styles from './tacctoscope.module.scss';
 
 export const dynamic = 'force-dynamic';
@@ -15,13 +15,17 @@ export const metadata: Metadata = { title: 'Le TACCToscope' };
 
 const TacctoscopePage = async () => {
   const user = await getCurrentUser();
-  if (!user) redirect('/mon-compte');
 
   const answers = await getUserAnswers();
 
   const items: HubItem[] = CRITERIA.map((criterion) => {
     const { answered, total } = getCriterionProgress(criterion, answers);
-    return { criterion, answered, total };
+    return {
+      criterion,
+      answered,
+      total,
+      locked: !user && !isPublicCriterion(criterion.slug)
+    };
   });
 
   return (

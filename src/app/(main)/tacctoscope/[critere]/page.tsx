@@ -7,7 +7,8 @@ import {
   buildQuestionKey,
   getCriterionBySlug,
   getNextCriterionSlug,
-  isCriterionSlug
+  isCriterionSlug,
+  isPublicCriterion
 } from '@/lib/tacctoscope/keys';
 import { AnswerMap } from '@/lib/tacctoscope/types';
 import { Metadata } from 'next';
@@ -28,13 +29,14 @@ export async function generateMetadata({
 
 const CriterionPage = async ({ params }: Params) => {
   const user = await getCurrentUser();
-  if (!user) redirect('/mon-compte');
 
   const { critere } = await params;
   if (!isCriterionSlug(critere)) notFound();
 
   const criterion = getCriterionBySlug(critere);
   if (!criterion) notFound();
+
+  if (!user && !isPublicCriterion(criterion.slug)) redirect('/mon-compte');
 
   const [allAnswers, feedbacks] = await Promise.all([
     getUserAnswers(),
@@ -54,6 +56,7 @@ const CriterionPage = async ({ params }: Params) => {
       answers={answers}
       feedback={feedbacks[criterion.slug] ?? null}
       nextSlug={getNextCriterionSlug(criterion.slug)}
+      isAuthenticated={!!user}
     />
   );
 };

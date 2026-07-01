@@ -7,6 +7,7 @@ import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/crit
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { buildQuestionKey } from '@/lib/tacctoscope/keys';
+import { getLocalAnswers, getLocalFeedbacks } from '@/lib/tacctoscope/localAnswers';
 import {
   AnswerMap,
   Criterion,
@@ -14,7 +15,7 @@ import {
   SectionKind
 } from '@/lib/tacctoscope/types';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './criteres.module.scss';
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
   answers: AnswerMap;
   feedback: boolean | null;
   nextSlug: CriterionSlug | null;
+  isAuthenticated: boolean;
 }
 
 const SECTION_META: Record<SectionKind, { title: string; description: string }> =
@@ -57,11 +59,31 @@ export const CriteresView = ({
   criterion,
   answers,
   feedback,
-  nextSlug
+  nextSlug,
+  isAuthenticated
 }: Props) => {
+  const [hydrated, setHydrated] = useState(isAuthenticated);
+  const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
+  const [currentFeedback, setCurrentFeedback] = useState<boolean | null>(feedback);
   const [answeredKeys, setAnsweredKeys] = useState<Set<string>>(
     () => new Set(Object.keys(answers))
   );
+
+  useEffect(() => {
+    if (isAuthenticated) return;
+
+    const storedAnswers = getLocalAnswers();
+    const scopedAnswers: AnswerMap = {};
+    for (const question of criterion.questions) {
+      const key = buildQuestionKey(criterion.slug, question.id);
+      if (storedAnswers[key] != null) scopedAnswers[key] = storedAnswers[key];
+    }
+
+    setCurrentAnswers(scopedAnswers);
+    setAnsweredKeys(new Set(Object.keys(scopedAnswers)));
+    setCurrentFeedback(getLocalFeedbacks()[criterion.slug] ?? null);
+    setHydrated(true);
+  }, [isAuthenticated, criterion]);
 
   const handleChanged = (questionKey: string, answered: boolean) =>
     setAnsweredKeys((current) => {
@@ -72,8 +94,10 @@ export const CriteresView = ({
       return next;
     });
 
-  const analyse = buildSectionQuestions(criterion, 'analyse', answers, true);
-  const enquete = buildSectionQuestions(criterion, 'enquete', answers, false);
+  if (!hydrated) return null;
+
+  const analyse = buildSectionQuestions(criterion, 'analyse', currentAnswers, true);
+  const enquete = buildSectionQuestions(criterion, 'enquete', currentAnswers, false);
 
   return (
     <>
@@ -90,7 +114,7 @@ export const CriteresView = ({
       <CriterionProgressBar
         answered={answeredKeys.size}
         total={criterion.questions.length}
-        nextSlug={nextSlug}
+        nextSlug={isAuthenticated ? nextSlug : null}
       />
 
       <NewContainer size="xl">
@@ -102,6 +126,7 @@ export const CriteresView = ({
               description={SECTION_META.analyse.description}
               questions={analyse}
               onChanged={handleChanged}
+              isAuthenticated={isAuthenticated}
             />
           )}
 
@@ -112,16 +137,24 @@ export const CriteresView = ({
               description={SECTION_META.enquete.description}
               questions={enquete}
               onChanged={handleChanged}
+              isAuthenticated={isAuthenticated}
             />
           )}
 
           <CriterionFeedback
             criterionKey={criterion.slug}
-            initialValue={feedback}
+            initialValue={currentFeedback}
+            isAuthenticated={isAuthenticated}
           />
 
-          <Link href="/tacctoscope" className={styles.criterionViewBackLink}>
-            <Body htmlTag="span" weight="medium" color="#038278">
+          <Link 
+          href="/tacctoscope" 
+          className={styles.criterionViewBackLink}
+          >
+            <Body htmlTag="span" weight="medium" color="#038278" aria-hidden="true">
+              ←
+            </Body>
+            <Body weight="medium" color="#038278">
               Retour aux critères
             </Body>
           </Link>

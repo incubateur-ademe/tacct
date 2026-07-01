@@ -43,10 +43,10 @@
 }
 
 .criterionViewBackLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     align-self: center;
     text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
+    background-image: none;
 }
