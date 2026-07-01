@@ -4,8 +4,8 @@
         -45deg,
         transparent,
         transparent 12px,
-        var(--boutons-primaire-2) 12px,
-        var(--boutons-primaire-2) 14px
+        rgba(211, 237, 235, 0.5) 12px,
+        rgba(211, 237, 235, 0.5) 14px
     );
     // &::before {
     //     content: '';
@@ -49,4 +49,10 @@
     align-self: center;
     text-decoration: none;
     background-image: none;
+}
+
+.breadcrumbWrapper {
+    :global(.fr-breadcrumb) {
+        margin: 1rem 0;
+    }
 }

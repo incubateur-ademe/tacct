@@ -37,7 +37,7 @@ export const StatusTag = ({ value }: Props) => {
   return (
     <span className={styles.statusTagPill}>
       <Image src={thumbUp} alt="" width={16} height={16} />
-      <Body htmlTag="span" weight="bold" color="#346c37">
+      <Body htmlTag="span" weight="bold" color="#346c37" size="sm">
         {label.toUpperCase()}
       </Body>
     </span>

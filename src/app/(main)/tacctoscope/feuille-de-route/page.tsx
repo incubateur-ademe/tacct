@@ -1,11 +1,12 @@
-import { RoadmapCriterion } from '@/components/tacctoscope/roadmap/RoadmapCriterion';
+import productLaunch from '@/assets/images/product-launch.png';
+import { ExportPdfButton } from '@/components/tacctoscope/roadmap/ExportPdfButton';
+import { FeuilleDeRouteView } from '@/components/tacctoscope/roadmap/FeuilleDeRouteView';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
-import { buildRoadmap } from '@/lib/tacctoscope/roadmap';
+import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import Image from 'next/image';
 import styles from './roadmap.module.scss';
 
 export const dynamic = 'force-dynamic';
@@ -14,38 +15,47 @@ export const metadata: Metadata = { title: 'Ma feuille de route - TACCToscope' }
 
 const FeuilleDeRoutePage = async () => {
   const user = await getCurrentUser();
-  if (!user) redirect('/mon-compte');
-
-  const answers = await getUserAnswers();
-  const roadmap = buildRoadmap(answers);
+  const answers = user ? await getUserAnswers() : {};
 
   return (
     <>
-      <div className={styles.introOuter}>
-        <NewContainer size="xl">
-          <header className={styles.intro}>
-            <h1 className={styles.title}>Votre feuille de route personnalisée</h1>
-            <p className={styles.text}>
-              Retrouvez vos pistes d’amélioration, organisées par critère, au fil
-              de vos réponses.
-            </p>
+      <NewContainer size="xl" style={{ padding: 0 }}>
+        <div className={styles.breadcrumbWrapper}>
+          <Breadcrumb
+            currentPageLabel="Feuille de route"
+            homeLinkProps={{ href: '/' }}
+            segments={[
+              { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
+              { label: 'TACCToscope', linkProps: { href: '/tacctoscope' } }
+            ]}
+          />
+        </div>
+      </NewContainer>
+
+      <div className={styles.bannerOuter}>
+        <NewContainer size="xl" style={{ padding: 0 }}>
+          <header className={styles.banner}>
+            <div className={styles.bannerText}>
+              <h1 className={styles.bannerTitle}>
+                Votre feuille de route pour améliorer votre diagnostic
+              </h1>
+              <p className={styles.bannerSubtitle}>
+                Voici l’ensemble des recommandations alimentées par vos réponses
+                dans chacun des 5 critères d’analyse. Améliorez votre diagnostic
+                de vulnérabilité à votre rythme !
+              </p>
+              <ExportPdfButton />
+            </div>
+            <Image
+              src={productLaunch}
+              alt=""
+              className={styles.bannerIllustration}
+            />
           </header>
         </NewContainer>
       </div>
 
-      <NewContainer size="xl">
-        <div className={styles.body}>
-          <div className={styles.list}>
-            {roadmap.map((item) => (
-              <RoadmapCriterion key={item.slug} item={item} />
-            ))}
-          </div>
-
-          <Link href="/tacctoscope" className={styles.back}>
-            Retour aux critères
-          </Link>
-        </div>
-      </NewContainer>
+      <FeuilleDeRouteView answers={answers} isAuthenticated={!!user} />
     </>
   );
 };

@@ -1,78 +1,31 @@
 /* ===== RoadmapCard ===== */
 .roadmapCardWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  min-height: 200px;
-  padding: 2rem;
-  border: 1px solid #89cac6;
-  border-radius: 4px;
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 8px,
-    #d3edeb 8px,
-    #d3edeb 10px
-  );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    min-height: 200px;
+    padding: 2rem;
+    border: 1px solid #89cac6;
+    border-radius: 4px;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 8px,
+        rgba(211, 237, 235, 0.5) 8px,
+        rgba(211, 237, 235, 0.5) 10px
+    );
 }
 
 .roadmapCardIllustration {
-  height: 96px;
-  width: auto;
-  align-self: center;
+    height: 96px;
+    width: auto;
+    align-self: center;
 }
 
 .roadmapCardContent {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* ===== RoadmapCriterion ===== */
-.roadmapCriterionCard {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem;
-  border: 1px solid #dddddd;
-  border-left: 4px solid #dddddd;
-  border-radius: 4px;
-  background: #ffffff;
-}
-
-.roadmapCriterionStateVide {
-  border-left-color: #e7e5e5;
-}
-
-.roadmapCriterionStatePartiel {
-  border-left-color: #f08a00;
-}
-
-.roadmapCriterionStateRempli {
-  border-left-color: #038278;
-}
-
-.roadmapCriterionHead {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.roadmapCriterionSuggestions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.roadmapCriterionSuggestion {
-  padding: 0.75rem 1rem;
-  background: #fafafa;
-  border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

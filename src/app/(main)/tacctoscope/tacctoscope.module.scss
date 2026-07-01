@@ -3,8 +3,8 @@
         -45deg,
         transparent,
         transparent 12px,
-        var(--boutons-primaire-2) 12px,
-        var(--boutons-primaire-2) 14px
+        rgba(211, 237, 235, 0.5) 12px,
+        rgba(211, 237, 235, 0.5) 14px
     );
     position: relative;
     overflow: hidden;
@@ -30,5 +30,14 @@
 
     @media screen and (max-width: 1280px) {
         padding: 0 1.5rem;
+    }
+}
+
+.breadcrumbWrapper {
+    :global(.fr-breadcrumb) {
+        margin: 1rem 0;
+    }
+    :global(.fr-breadcrumb-_S_2_) {
+        margin: 1rem 0;
     }
 }

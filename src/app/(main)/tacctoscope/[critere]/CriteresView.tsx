@@ -14,6 +14,7 @@ import {
   CriterionSlug,
   SectionKind
 } from '@/lib/tacctoscope/types';
+import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styles from './criteres.module.scss';
@@ -27,17 +28,17 @@ interface Props {
 }
 
 const SECTION_META: Record<SectionKind, { title: string; description: string }> =
-  {
-    analyse: {
-      title: 'Analyse de votre diagnostic',
-      description: 'Les réponses à ces questions sont à trouver dans le document existant.'
-    },
-    enquete: {
-      title: 'Enquête à mener',
-      description:
-        'Les réponses à ces questions sont à chercher hors du document final.'
-    }
-  };
+{
+  analyse: {
+    title: 'Analyse de votre diagnostic',
+    description: 'Les réponses à ces questions sont à trouver dans le document existant.'
+  },
+  enquete: {
+    title: 'Enquête à mener',
+    description:
+      'Les réponses à ces questions sont à chercher hors du document final.'
+  }
+};
 
 const buildSectionQuestions = (
   criterion: Criterion,
@@ -101,6 +102,18 @@ export const CriteresView = ({
 
   return (
     <>
+      <NewContainer size="xl" style={{ padding: 0, zIndex: 1, position: "relative" }}>
+        <div className={styles.breadcrumbWrapper}>
+          <Breadcrumb
+            currentPageLabel={criterion.title}
+            homeLinkProps={{ href: '/' }}
+            segments={[
+              { label: 'Boîte à outils', linkProps: { href: '/ressources' } },
+              { label: 'TACCToscope', linkProps: { href: '/tacctoscope' } }
+            ]}
+          />
+        </div>
+      </NewContainer>
       <div className={styles.criterionBannerOuter}>
         <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
           <CriterionBanner
@@ -147,9 +160,9 @@ export const CriteresView = ({
             isAuthenticated={isAuthenticated}
           />
 
-          <Link 
-          href="/tacctoscope" 
-          className={styles.criterionViewBackLink}
+          <Link
+            href="/tacctoscope"
+            className={styles.criterionViewBackLink}
           >
             <Body htmlTag="span" weight="medium" color="#038278" aria-hidden="true">
               ←

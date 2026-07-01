@@ -26,13 +26,13 @@ export const CriterionProgressBar = ({ answered, total, nextSlug }: Props) => (
             <BoutonSecondaireClassic
               size="md"
               link={`/tacctoscope/${nextSlug}`}
-              text="Critère suivant"
+              text="Critère suivant  🡢"
             />
           )}
           <BoutonPrimaireClassic
             size="md"
             link="/tacctoscope/feuille-de-route"
-            text="Voir ma feuille de route"
+            text="Voir ma feuille de route  🡥"
           />
         </div>
       </div>

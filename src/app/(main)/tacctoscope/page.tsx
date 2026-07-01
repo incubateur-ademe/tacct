@@ -6,6 +6,7 @@ import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { getCriterionProgress } from '@/lib/tacctoscope/progress';
+import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import styles from './tacctoscope.module.scss';
 
@@ -30,6 +31,15 @@ const TacctoscopePage = async () => {
 
   return (
     <>
+      <NewContainer size="xl" style={{ padding: 0 }}>
+        <div className={styles.breadcrumbWrapper}>
+          <Breadcrumb
+            currentPageLabel="TACCToscope"
+            homeLinkProps={{ href: '/' }}
+            segments={[{ label: 'Boîte à outils', linkProps: { href: '/ressources' } }]}
+          />
+        </div>
+      </NewContainer>
       <div className={styles.introOuter}>
         <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
           <header className={styles.intro}>
