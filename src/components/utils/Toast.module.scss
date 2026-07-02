@@ -1,0 +1,75 @@
+.wrapper {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  z-index: 1100;
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1rem;
+  animation: toastIn 0.25s ease;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: #038278;
+  box-shadow: 0 6px 9px rgba(0, 0, 18, 0.16);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+  padding: 0.25rem 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.icon {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+.text {
+  margin: 0;
+  font-family: Marianne;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  color: #fafafa;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: max-content;
+  font-family: Marianne;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #fafafa;
+  text-decoration: underline;
+  background-image: none;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

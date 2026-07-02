@@ -1,5 +1,7 @@
 import { H1, H2 } from '@/design-system/base/Textes';
 import { Container } from '@/design-system/server';
+import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
+import { isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { type Metadata } from 'next';
 import { sharedMetadata } from '../shared-metadata';
 
@@ -65,6 +67,28 @@ const PlanDuSite = () => (
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
           <a href="/ressources">Boîte à outils</a>
+          <ul style={{ listStyle: 'circle', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a href="/tacctoscope">Le TACCToscope</a>
+              <ul style={{ listStyle: 'square', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
+                {CRITERIA.map((criterion) => (
+                  <li key={criterion.slug} style={{ marginBottom: '0.5rem' }}>
+                    <a href={`/tacctoscope/${criterion.slug}`}>
+                      {criterion.title}
+                    </a>
+                    {!isPublicCriterion(criterion.slug) && (
+                      <em> (connexion requise)</em>
+                    )}
+                  </li>
+                ))}
+                <li style={{ marginBottom: '0.5rem' }}>
+                  <a href="/tacctoscope/feuille-de-route">
+                    Ma feuille de route
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
           <a
