@@ -19,7 +19,7 @@ const FeuilleDeRoutePage = async () => {
 
   return (
     <>
-      <NewContainer size="xl" style={{ padding: 0 }}>
+      <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
             currentPageLabel="Feuille de route"
@@ -33,7 +33,7 @@ const FeuilleDeRoutePage = async () => {
       </NewContainer>
 
       <div className={styles.bannerOuter}>
-        <NewContainer size="xl" style={{ padding: 0 }}>
+        <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
           <header className={styles.banner}>
             <div className={styles.bannerText}>
               <h1 className={styles.bannerTitle}>

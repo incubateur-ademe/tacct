@@ -12,9 +12,10 @@ export interface HubItem {
 
 interface Props {
   items: HubItem[];
+  isAuthenticated: boolean;
 }
 
-export const HubGrid = ({ items }: Props) => (
+export const HubGrid = ({ items, isAuthenticated }: Props) => (
   <div className={styles.hubGrid}>
     {items.map((item) => (
       <CriterionCard
@@ -23,6 +24,7 @@ export const HubGrid = ({ items }: Props) => (
         answered={item.answered}
         total={item.total}
         locked={item.locked}
+        isAuthenticated={isAuthenticated}
       />
     ))}
     <RoadmapCard />

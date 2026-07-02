@@ -1,10 +1,11 @@
 import padlockGreen from '@/assets/icons/padlock_green.svg';
 import { Body, H2 } from '@/design-system/base/Textes';
+import { buildQuestionKey } from '@/lib/tacctoscope/keys';
 import { Criterion } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CriterionProgress } from '../shared/CriterionProgress';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
-import { ProgressDots } from '../shared/ProgressDots';
 import styles from './criterion.module.scss';
 
 interface Props {
@@ -12,9 +13,16 @@ interface Props {
   answered: number;
   total: number;
   locked: boolean;
+  isAuthenticated: boolean;
 }
 
-export const CriterionCard = ({ criterion, answered, total, locked }: Props) => {
+export const CriterionCard = ({
+  criterion,
+  answered,
+  total,
+  locked,
+  isAuthenticated
+}: Props) => {
   const content = (
     <>
       <div className={styles.criterionCardContent}>
@@ -41,7 +49,14 @@ export const CriterionCard = ({ criterion, answered, total, locked }: Props) => 
         </div>
       ) : (
         <div className={styles.criterionCardFooter}>
-          <ProgressDots filled={answered} total={total} />
+          <CriterionProgress
+            questionKeys={criterion.questions.map((question) =>
+              buildQuestionKey(criterion.slug, question.id)
+            )}
+            serverAnswered={answered}
+            total={total}
+            isAuthenticated={isAuthenticated}
+          />
         </div>
       )}
     </>

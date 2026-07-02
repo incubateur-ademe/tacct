@@ -14,16 +14,16 @@ export const RoadmapCard = () => (
         color="#038278"
         style={{ fontSize: '1.125rem', lineHeight: '1.5rem', letterSpacing: 0 }}
       >
-        Votre feuille de route personnalisée
+        Feuille de route personnalisée
       </H2>
       <Body size="sm" color="#3d3d3d">
-        Retrouvez sur cette page vos pistes d’amélioration au fil de vos réponses.
+        Retrouvez vos pistes d’amélioration au fil de vos réponses.
       </Body>
     </div>
     <BoutonPrimaireClassic
       size="md"
       link="/tacctoscope/feuille-de-route"
-      text="Voir"
+      text="Voir votre feuille de route  🡥"
     />
   </div>
 );

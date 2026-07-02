@@ -1,4 +1,5 @@
 import { HubGrid, HubItem } from '@/components/tacctoscope/criterion/HubGrid';
+import { ResetAnswersButton } from '@/components/tacctoscope/criterion/ResetAnswersButton';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
@@ -72,7 +73,8 @@ const TacctoscopePage = async () => {
       </div>
 
       <NewContainer size="xl">
-        <HubGrid items={items} />
+        <HubGrid items={items} isAuthenticated={!!user} />
+        <ResetAnswersButton isAuthenticated={!!user} />
       </NewContainer>
     </>
   );

@@ -136,6 +136,31 @@
   }
 }
 
+.resetButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2.5rem auto 0;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  color: #038278;
+  font-family: Marianne;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    --hover-tint: transparent;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
 /* ===== CriterionCard ===== */
 .criterionCardLink {
   display: flex;
@@ -178,7 +203,7 @@
 
 .criterionCardLocked {
   cursor: default;
-  background: linear-gradient(134deg, rgba(255, 255, 255, 0.00) 70.58%, #ECFFFD 99.28%);
+  background: linear-gradient(134deg, rgba(255, 255, 255, 0.00) 60.58%, #ECFFFD 99.28%);
 
   &:hover {
     box-shadow: none;

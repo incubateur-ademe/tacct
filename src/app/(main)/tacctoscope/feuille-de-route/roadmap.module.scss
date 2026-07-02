@@ -5,476 +5,487 @@ $subtle: #666666;
 $border: #e7e5e5;
 $gray-light: #fafafa;
 $stripe: repeating-linear-gradient(
-  -45deg,
-  transparent,
-  transparent 12px,
-  rgba(211, 237, 235, 0.5) 12px,
-  rgba(211, 237, 235, 0.5) 14px
+    -45deg,
+    transparent,
+    transparent 12px,
+    rgba(211, 237, 235, 0.5) 12px,
+    rgba(211, 237, 235, 0.5) 14px
 );
 
 .breadcrumbWrapper {
-  :global(.fr-breadcrumb) {
-    margin: 1rem 0;
-  }
+    :global(.fr-breadcrumb) {
+        margin: 1rem 0;
+    }
 }
 
 /* ===== Bannière ===== */
 .bannerOuter {
-  padding: 0.5rem 0 2rem;
+    padding: 0.5rem 0 2rem;
+    background: $stripe;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background-color: rgb(255, 255, 255);
+        top: 25%;
+        left: 8%;
+        z-index: 0;
+    }
 }
 
 .banner {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  border-radius: 16px;
-  background: $stripe;
-  overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 16px;
+    overflow: hidden;
 
-  @media screen and (max-width: 1280px) {
-    margin: 0 1.5rem;
-  }
+    @media screen and (max-width: 1280px) {
+        margin: 0 1.5rem;
+    }
 
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .bannerText {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
 }
 
 .bannerTitle {
-  margin: 0;
-  font-family: Marianne;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 2rem;
-  color: $teal;
+    margin: 0;
+    font-family: Marianne;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: $teal;
 }
 
 .bannerSubtitle {
-  margin: 0;
-  max-width: 640px;
-  font-family: Marianne;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: $body;
+    margin: 0;
+    max-width: 640px;
+    font-family: Marianne;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $body;
 }
 
 .bannerIllustration {
-  width: 252px;
-  height: auto;
-  flex-shrink: 0;
+    width: 252px;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .exportButton {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem 0.5rem 0.75rem;
-  border: 1.6px solid $teal;
-  border-radius: 100px;
-  background: #ffffff;
-  color: $teal;
-  font-family: Marianne;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
+    border: 1.6px solid $teal;
+    border-radius: 100px;
+    background: #ffffff;
+    color: $teal;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
 
-  &:hover {
-    background: rgba(3, 130, 120, 0.06);
-  }
+    &:hover {
+        background: rgba(3, 130, 120, 0.06);
+    }
 }
 
 /* ===== Layout 2 colonnes ===== */
 .body {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
 
-  @media screen and (max-width: 992px) {
-    flex-direction: column;
-    gap: 0;
-  }
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+        gap: 0;
+    }
 
-  @media screen and (max-width: 1280px) {
-    padding: 1.5rem 1.5rem 0;
-  }
+    @media screen and (max-width: 1280px) {
+        padding: 1.5rem 1.5rem 0;
+    }
 }
 
 /* ===== Menu latéral ===== */
 .menu {
-  position: sticky;
-  top: 2rem;
-  width: 271px;
-  flex-shrink: 0;
-  padding: 1rem 0;
-  border-right: 1px solid $border;
+    position: sticky;
+    top: 2rem;
+    width: 271px;
+    flex-shrink: 0;
+    padding: 1rem 0;
+    border-right: 1px solid $border;
 
-  @media screen and (max-width: 992px) {
-    position: relative;
-    top: 0;
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid $border;
-  }
+    @media screen and (max-width: 992px) {
+        position: relative;
+        top: 0;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid $border;
+    }
 }
 
 .menuTitle {
-  margin: 0 0 0.5rem;
-  padding: 0 1rem;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  text-transform: uppercase;
-  color: $teal;
+    margin: 0 0 0.5rem;
+    padding: 0 1rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    color: $teal;
 }
 
 .menuList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .menuItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 100%;
-  text-align: left;
-  padding: 1rem 2rem 1rem 1rem;
-  border: none;
-  background: none;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 2rem 1rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
 
-  &:not(.menuItemLocked):hover {
-    background: $gray-light;
-  }
+    &:not(.menuItemLocked):hover {
+        background: $gray-light;
+    }
 }
 
 .menuItemIcon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
 }
 
 .menuItemLabelWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .menuItemLabel {
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  color: $title;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: $title;
 }
 
 .menuItemActive {
-  background: $gray-light;
-  border-right: 4px solid $teal;
+    background: $gray-light;
+    border-right: 4px solid $teal;
 
-  .menuItemLabel {
-    color: $teal;
-  }
+    .menuItemLabel {
+        color: $teal;
+    }
 }
 
 .menuItemLocked {
-  cursor: not-allowed;
+    cursor: not-allowed;
 
-  .menuItemLabel {
-    color: $subtle;
-  }
+    .menuItemLabel {
+        color: $subtle;
+    }
 }
 
 .menuItemLock {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25rem;
-  color: $subtle;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    color: $subtle;
 }
 
 /* ===== Contenu ===== */
 .content {
-  flex: 1;
-  min-width: 0;
-  padding: 0 2rem;
+    flex: 1;
+    min-width: 0;
+    padding: 0 2rem;
 
-  @media screen and (max-width: 992px) {
-    padding: 0;
-    width: 100%;
-  }
+    @media screen and (max-width: 992px) {
+        padding: 0;
+        width: 100%;
+    }
 }
 
 .section {
-  scroll-margin-top: 2rem;
-  padding-bottom: 3rem;
+    scroll-margin-top: 2rem;
+    padding-bottom: 3rem;
 }
 
 .sectionTitle {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 3rem 0 2rem;
-  padding: 2rem 1.5rem;
-  border-radius: 8px;
-  background: $stripe;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 3rem 0 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    background: $stripe;
 }
 
 .sectionTitleIcon {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
 }
 
 .sectionTitleText {
-  margin: 0;
-  font-family: Marianne;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 2rem;
-  color: $teal;
+    margin: 0;
+    font-family: Marianne;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: $teal;
 }
 
 /* ===== État vide ===== */
 .emptyState {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  min-height: 294px;
-  padding: 3rem 2rem;
-  background: $gray-light;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    min-height: 294px;
+    padding: 3rem 2rem;
+    background: $gray-light;
+    text-align: center;
 }
 
 .emptyStateTitle {
-  margin: 0;
-  font-family: Marianne;
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 2rem;
-  color: $subtle;
+    margin: 0;
+    font-family: Marianne;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 2rem;
+    color: $subtle;
 }
 
 .emptyStateText {
-  margin: 0;
-  max-width: 420px;
-  font-family: Marianne;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: $subtle;
+    margin: 0;
+    max-width: 420px;
+    font-family: Marianne;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $subtle;
 }
 
 .emptyStateButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.75rem 0.5rem 1rem;
-  border-radius: 100px;
-  background: $teal;
-  color: #fafafa;
-  font-family: Marianne;
-  font-size: 1rem;
-  font-weight: 500;
-  text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 1rem;
+    border-radius: 100px;
+    background: $teal;
+    color: #fafafa;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
 
-  &:hover {
-    background: #026c63;
-  }
+    &:hover {
+        background: #026c63;
+    }
 }
 
 /* ===== Bandeau recommandation partielle ===== */
 .partialBanner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 0.75rem 2rem;
-  background: #ffd1b4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 2rem;
+    background: #ffd1b4;
 }
 
 .partialBannerLeft {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .partialBannerTitle {
-  font-family: Marianne;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  color: #903700;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: #903700;
 }
 
 .partialBannerLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  color: #903700;
-  text-decoration: underline;
-  background-image: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: #903700;
+    text-decoration: underline;
+    background-image: none;
 }
 
 /* ===== Bloc de recommandation ===== */
 .recoCard {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.5rem;
-  border: 1px solid $border;
-  border-radius: 8px;
-  background: #ffffff;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    border: 1px solid $border;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
 }
 
 .recoTitle {
-  margin: 0;
-  padding: 2.5rem 2.5rem 0;
-  font-family: Marianne;
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.75rem;
-  color: $title;
+    margin: 0;
+    padding: 2.5rem 2.5rem 0;
+    font-family: Marianne;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+    color: $title;
 }
 
 .recoDescription {
-  margin: 0;
-  padding: 0.5rem 2.5rem 1.5rem;
-  font-family: Marianne;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: $body;
+    margin: 0;
+    padding: 0.5rem 2.5rem 1.5rem;
+    font-family: Marianne;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: $body;
 }
 
 .recoQuestionLink {
-  padding: 0 2.5rem 2.5rem;
+    padding: 0 2.5rem 2.5rem;
 }
 
 .questionLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Marianne;
-  font-size: 1rem;
-  font-weight: 500;
-  color: $teal;
-  text-decoration: none;
-  background-image: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $teal;
+    text-decoration: none;
+    background-image: none;
 }
 
 /* ===== Accordéon ressources ===== */
 .accordion {
-  border-top: 1px solid $border;
+    border-top: 1px solid $border;
 }
 
 .accordionLabel {
-  display: block;
-  text-align: left;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  text-transform: uppercase;
-  color: $subtle;
+    display: block;
+    text-align: left;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    color: $subtle;
 }
 
 .accordionContent {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .ressourcesWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .pourApprofondir {
-  margin: 0.5rem 0 1.5rem;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  text-transform: uppercase;
-  color: $subtle;
+    margin: 0.5rem 0 1.5rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    color: $subtle;
 }
 
 /* ===== Carte ressource ===== */
 .ressourceCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.75rem;
-  flex: 1 1 280px;
-  min-width: 240px;
-  min-height: 200px;
-  padding: 1.5rem;
-  border: 1px solid $border;
-  border-radius: 4px;
-  background: #ffffff;
-  text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex: 1 1 280px;
+    min-width: 240px;
+    min-height: 200px;
+    padding: 1.5rem;
+    border: 1px solid $border;
+    border-radius: 4px;
+    background: #ffffff;
+    text-decoration: none;
 
-  &:hover {
-    border-color: $teal;
-  }
+    &:hover {
+        border-color: $teal;
+    }
 }
 
 .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  width: max-content;
-  padding: 0.125rem 0.5rem;
-  border-radius: 16px;
-  font-family: Marianne;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: max-content;
+    padding: 0.125rem 0.5rem;
+    border-radius: 16px;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5rem;
 }
 
 .tagDonnees {
-  background: #f6f69b;
-  color: #5a5a10;
+    background: #f6f69b;
+    color: #5a5a10;
 }
 
 .tagRetourExperience {
-  background: #ffc9e4;
-  color: #971356;
+    background: #ffc9e4;
+    color: #971356;
 }
 
 .ressourceCardTitle {
-  font-family: Marianne;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5rem;
-  color: $teal;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: $teal;
 }
 
 .ressourceCardAction {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }

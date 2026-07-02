@@ -103,6 +103,22 @@ export const deleteAnswer = async (
   }
 };
 
+export const resetAllAnswers = async (): Promise<ActionResult> => {
+  const user = await getCurrentUser();
+  if (!user) return { ok: false };
+
+  try {
+    await prisma.tacctoscope_answer.deleteMany({ where: { user_id: user.id } });
+    await prisma.tacctoscope_criterion_feedback.deleteMany({
+      where: { user_id: user.id }
+    });
+    return { ok: true };
+  } catch (error) {
+    console.error('resetAllAnswers error', error);
+    return { ok: false };
+  }
+};
+
 export const saveCriterionFeedback = async (
   criterionKey: CriterionSlug,
   isUseful: boolean

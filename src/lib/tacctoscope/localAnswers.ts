@@ -33,6 +33,12 @@ export const deleteLocalAnswer = (questionKey: string): void => {
   writeJSON(ANSWERS_KEY, answers);
 };
 
+export const clearLocalTacctoscope = (): void => {
+  if (typeof window === 'undefined') return;
+  window.localStorage.removeItem(ANSWERS_KEY);
+  window.localStorage.removeItem(FEEDBACKS_KEY);
+};
+
 export const getLocalFeedbacks = (): FeedbackMap => readJSON(FEEDBACKS_KEY, {});
 
 export const saveLocalFeedback = (
