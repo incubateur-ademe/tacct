@@ -1,19 +1,17 @@
 'use client';
 
+import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
-import {
-  getRecommendation,
-  QuestionRecommendation
-} from '@/lib/tacctoscope/content/roadmapResources';
+import { getRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
 import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
-import { getCriterionProgress, GlobalState } from '@/lib/tacctoscope/progress';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
+import { getCriterionProgress, GlobalState } from '@/lib/tacctoscope/progress';
 import { AnswerMap } from '@/lib/tacctoscope/types';
 import { useEffect, useState } from 'react';
-import { RoadmapMenu, RoadmapMenuItem } from './RoadmapMenu';
-import { RoadmapSection } from './RoadmapSection';
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import { RoadmapEmptyState } from '../../../../components/tacctoscope/roadmap/RoadmapEmptyState';
+import { RoadmapMenu, RoadmapMenuItem } from '../../../../components/tacctoscope/roadmap/RoadmapMenu';
+import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
 const QUALIFYING = new Set(['absent', 'partiel', 'satisfaisant']);
 
@@ -57,28 +55,39 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
             currentAnswers[buildQuestionKey(criterion.slug, question.id)] ?? ''
           )
         )
-        .map((question) =>
-          getRecommendation(buildQuestionKey(criterion.slug, question.id))
-        )
-        .filter((reco): reco is QuestionRecommendation => reco !== null)
+        .map((question) => {
+          const recommendation = getRecommendation(
+            buildQuestionKey(criterion.slug, question.id)
+          );
+          return recommendation
+            ? { questionId: question.id, recommendation }
+            : null;
+        })
+        .filter((item): item is SectionRecommendation => item !== null)
     };
   });
+
+  const isEmpty = Object.keys(currentAnswers).length === 0;
 
   return (
     <NewContainer size="xl">
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
-          {sections.map((section) => (
-            <RoadmapSection
-              key={section.slug}
-              slug={section.slug}
-              title={section.title}
-              state={section.state}
-              missingCount={section.missingCount}
-              recommendations={section.recommendations}
-            />
-          ))}
+          {isEmpty ? (
+            <RoadmapEmptyState />
+          ) : (
+            sections.map((section) => (
+              <RoadmapSection
+                key={section.slug}
+                slug={section.slug}
+                title={section.title}
+                state={section.state}
+                missingCount={section.missingCount}
+                recommendations={section.recommendations}
+              />
+            ))
+          )}
         </div>
       </div>
     </NewContainer>

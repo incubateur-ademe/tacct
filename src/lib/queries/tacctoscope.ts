@@ -2,6 +2,7 @@
 
 import { randomUUID } from 'node:crypto';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
+import { encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
 import {
   isKnownCriterionKey,
@@ -11,8 +12,7 @@ import {
   ANSWER_VALUES,
   AnswerMap,
   AnswerValue,
-  CriterionSlug,
-  FeedbackMap
+  CriterionSlug
 } from '@/lib/tacctoscope/types';
 
 type ActionResult = { ok: boolean };
@@ -34,24 +34,6 @@ export const getUserAnswers = async (): Promise<AnswerMap> => {
     );
   } catch (error) {
     console.error('getUserAnswers error', error);
-    return {};
-  }
-};
-
-export const getUserFeedbacks = async (): Promise<FeedbackMap> => {
-  const user = await getCurrentUser();
-  if (!user) return {};
-
-  try {
-    const rows = await prisma.tacctoscope_criterion_feedback.findMany({
-      where: { user_id: user.id },
-      select: { criterion_key: true, is_useful: true }
-    });
-    return Object.fromEntries(
-      rows.map((row) => [row.criterion_key, row.is_useful])
-    );
-  } catch (error) {
-    console.error('getUserFeedbacks error', error);
     return {};
   }
 };
@@ -121,31 +103,55 @@ export const resetAllAnswers = async (): Promise<ActionResult> => {
 
 export const saveCriterionFeedback = async (
   criterionKey: CriterionSlug,
-  isUseful: boolean
+  input: { isUseful: boolean | null; comment: string | null }
 ): Promise<ActionResult> => {
   const user = await getCurrentUser();
   if (!user) return { ok: false };
   if (!isKnownCriterionKey(criterionKey)) return { ok: false };
 
+  const comment = input.comment?.trim() ? input.comment.trim() : null;
+  if (input.isUseful === null && !comment) return { ok: false };
+
   try {
-    await prisma.tacctoscope_criterion_feedback.upsert({
-      where: {
-        user_id_criterion_key: {
-          user_id: user.id,
-          criterion_key: criterionKey
-        }
-      },
-      update: { is_useful: isUseful, updated_at: new Date() },
-      create: {
+    await prisma.tacctoscope_criterion_feedback.create({
+      data: {
         id: randomUUID(),
         user_id: user.id,
         criterion_key: criterionKey,
-        is_useful: isUseful
+        is_useful: input.isUseful,
+        comment
       }
     });
     return { ok: true };
   } catch (error) {
     console.error('saveCriterionFeedback error', error);
+    return { ok: false };
+  }
+};
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export const saveRecontactOptIn = async (
+  email: string
+): Promise<ActionResult> => {
+  const user = await getCurrentUser();
+  if (!user) return { ok: false };
+
+  const trimmed = email.trim();
+  if (!EMAIL_REGEX.test(trimmed)) return { ok: false };
+
+  try {
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        wants_beta_features: true,
+        recontact_email: encryptField(trimmed),
+        updated_at: new Date()
+      }
+    });
+    return { ok: true };
+  } catch (error) {
+    console.error('saveRecontactOptIn error', error);
     return { ok: false };
   }
 };

@@ -30,7 +30,7 @@ $stripe: repeating-linear-gradient(
         border-radius: 50%;
         background-color: rgb(255, 255, 255);
         top: 25%;
-        left: 8%;
+        left: 15%;
         z-index: 0;
     }
 }
@@ -58,24 +58,6 @@ $stripe: repeating-linear-gradient(
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
-}
-
-.bannerTitle {
-    margin: 0;
-    font-family: Marianne;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 2rem;
-    color: $teal;
-}
-
-.bannerSubtitle {
-    margin: 0;
-    max-width: 640px;
-    font-family: Marianne;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: $body;
 }
 
 .bannerIllustration {
@@ -253,13 +235,10 @@ $stripe: repeating-linear-gradient(
     height: 64px;
 }
 
-.sectionTitleText {
-    margin: 0;
-    font-family: Marianne;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 2rem;
-    color: $teal;
+.sectionTitleContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 /* ===== État vide ===== */

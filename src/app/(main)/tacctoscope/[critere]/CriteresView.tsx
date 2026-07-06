@@ -4,10 +4,11 @@ import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBan
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
+import { SavePromptModal } from '@/components/tacctoscope/shared/Modales';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import { buildQuestionKey } from '@/lib/tacctoscope/keys';
-import { getLocalAnswers, getLocalFeedbacks } from '@/lib/tacctoscope/localAnswers';
+import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
+import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
 import {
   AnswerMap,
   Criterion,
@@ -22,9 +23,9 @@ import styles from './criteres.module.scss';
 interface Props {
   criterion: Criterion;
   answers: AnswerMap;
-  feedback: boolean | null;
   nextSlug: CriterionSlug | null;
   isAuthenticated: boolean;
+  userEmail: string;
 }
 
 const SECTION_META: Record<SectionKind, { title: string; description: string }> =
@@ -43,8 +44,7 @@ const SECTION_META: Record<SectionKind, { title: string; description: string }> 
 const buildSectionQuestions = (
   criterion: Criterion,
   kind: SectionKind,
-  answers: AnswerMap,
-  openFirst: boolean
+  answers: AnswerMap
 ): SectionQuestion[] =>
   criterion.questions
     .filter((question) => question.section === kind)
@@ -52,23 +52,37 @@ const buildSectionQuestions = (
       question,
       number: index + 1,
       initialValue:
-        answers[buildQuestionKey(criterion.slug, question.id)] ?? null,
-      defaultOpen: openFirst && index === 0
+        answers[buildQuestionKey(criterion.slug, question.id)] ?? null
     }));
 
 export const CriteresView = ({
   criterion,
   answers,
-  feedback,
   nextSlug,
-  isAuthenticated
+  isAuthenticated,
+  userEmail
 }: Props) => {
+  const orderedKeys = criterion.questions.map((question) =>
+    buildQuestionKey(criterion.slug, question.id)
+  );
+  const firstOpenKey = (answered: Set<string>) =>
+    orderedKeys.find((key) => !answered.has(key)) ?? orderedKeys[0] ?? null;
+
   const [hydrated, setHydrated] = useState(isAuthenticated);
   const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
-  const [currentFeedback, setCurrentFeedback] = useState<boolean | null>(feedback);
   const [answeredKeys, setAnsweredKeys] = useState<Set<string>>(
     () => new Set(Object.keys(answers))
   );
+  const [savePromptOpen, setSavePromptOpen] = useState(false);
+  const [openKey, setOpenKey] = useState<string | null>(() =>
+    isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
+  );
+
+  useEffect(() => {
+    if (!isAuthenticated && isPublicCriterion(criterion.slug)) {
+      setSavePromptOpen(true);
+    }
+  }, [isAuthenticated, criterion]);
 
   useEffect(() => {
     if (isAuthenticated) return;
@@ -80,11 +94,29 @@ export const CriteresView = ({
       if (storedAnswers[key] != null) scopedAnswers[key] = storedAnswers[key];
     }
 
+    const answeredSet = new Set(Object.keys(scopedAnswers));
     setCurrentAnswers(scopedAnswers);
-    setAnsweredKeys(new Set(Object.keys(scopedAnswers)));
-    setCurrentFeedback(getLocalFeedbacks()[criterion.slug] ?? null);
+    setAnsweredKeys(answeredSet);
+    setOpenKey(firstOpenKey(answeredSet));
     setHydrated(true);
   }, [isAuthenticated, criterion]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const target = criterion.questions.find(
+      (question) => `question-${criterion.slug}-${question.id}` === hash
+    );
+    if (!target) return;
+    setOpenKey(buildQuestionKey(criterion.slug, target.id));
+    requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: 'start' });
+    });
+  }, [hydrated, criterion]);
+
+  const handleToggle = (key: string) =>
+    setOpenKey((current) => (current === key ? null : key));
 
   const handleChanged = (questionKey: string, answered: boolean) =>
     setAnsweredKeys((current) => {
@@ -97,8 +129,8 @@ export const CriteresView = ({
 
   if (!hydrated) return null;
 
-  const analyse = buildSectionQuestions(criterion, 'analyse', currentAnswers, true);
-  const enquete = buildSectionQuestions(criterion, 'enquete', currentAnswers, false);
+  const analyse = buildSectionQuestions(criterion, 'analyse', currentAnswers);
+  const enquete = buildSectionQuestions(criterion, 'enquete', currentAnswers);
 
   return (
     <>
@@ -135,9 +167,12 @@ export const CriteresView = ({
           {analyse.length > 0 && (
             <CriterionSection
               slug={criterion.slug}
+              kind="analyse"
               title={SECTION_META.analyse.title}
               description={SECTION_META.analyse.description}
               questions={analyse}
+              openKey={openKey}
+              onToggle={handleToggle}
               onChanged={handleChanged}
               isAuthenticated={isAuthenticated}
             />
@@ -146,19 +181,23 @@ export const CriteresView = ({
           {enquete.length > 0 && (
             <CriterionSection
               slug={criterion.slug}
+              kind="enquete"
               title={SECTION_META.enquete.title}
               description={SECTION_META.enquete.description}
               questions={enquete}
+              openKey={openKey}
+              onToggle={handleToggle}
               onChanged={handleChanged}
               isAuthenticated={isAuthenticated}
             />
           )}
 
-          <CriterionFeedback
-            criterionKey={criterion.slug}
-            initialValue={currentFeedback}
-            isAuthenticated={isAuthenticated}
-          />
+          {isAuthenticated && (
+            <CriterionFeedback
+              criterionKey={criterion.slug}
+              userEmail={userEmail}
+            />
+          )}
 
           <Link
             href="/tacctoscope"
@@ -173,6 +212,14 @@ export const CriteresView = ({
           </Link>
         </div>
       </NewContainer>
+
+      <SavePromptModal
+        isOpen={savePromptOpen}
+        onClose={() => setSavePromptOpen(false)}
+        onConfirm={() => {
+          window.location.href = '/api/proconnect/login';
+        }}
+      />
     </>
   );
 };

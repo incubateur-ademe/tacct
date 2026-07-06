@@ -1,4 +1,5 @@
 import { Body } from '@/design-system/base/Textes';
+import { CompletedTag } from './CompletedTag';
 import styles from './shared.module.scss';
 
 interface Props {
@@ -6,8 +7,13 @@ interface Props {
   total: number;
 }
 
-export const ProgressDots = ({ filled, total }: Props) => (
-  <div className={styles.progressDotsWrapper}>
+export const ProgressDots = ({ filled, total }: Props) => {
+  if (total > 0 && filled >= total) {
+    return <CompletedTag />;
+  }
+
+  return (
+    <div className={styles.progressDotsWrapper}>
     <ul className={styles.progressDotsList} aria-hidden="true">
       {Array.from({ length: total }, (_, index) => (
         <li
@@ -27,4 +33,5 @@ export const ProgressDots = ({ filled, total }: Props) => (
       {filled}/{total} réponses
     </Body>
   </div>
-);
+  );
+};

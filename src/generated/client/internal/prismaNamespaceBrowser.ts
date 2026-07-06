@@ -1733,7 +1733,9 @@ export const UserScalarFieldEnum = {
   has_accepted_surveys: 'has_accepted_surveys',
   authenticated_id_bidx: 'authenticated_id_bidx',
   email_bidx: 'email_bidx',
-  encryption_version: 'encryption_version'
+  encryption_version: 'encryption_version',
+  wants_beta_features: 'wants_beta_features',
+  recontact_email: 'recontact_email'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1769,7 +1771,8 @@ export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
   criterion_key: 'criterion_key',
   is_useful: 'is_useful',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  comment: 'comment'
 } as const
 
 export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]

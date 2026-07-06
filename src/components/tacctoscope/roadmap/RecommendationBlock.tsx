@@ -15,12 +15,14 @@ const ReturnIcon = () => (
 
 interface Props {
   slug: CriterionSlug;
+  questionId: string;
   recommendation: QuestionRecommendation;
   defaultOpen?: boolean;
 }
 
 export const RecommendationBlock = ({
   slug,
+  questionId,
   recommendation,
   defaultOpen = false
 }: Props) => (
@@ -28,7 +30,10 @@ export const RecommendationBlock = ({
     <h3 className={styles.recoTitle}>{recommendation.title}</h3>
     <p className={styles.recoDescription}>{recommendation.description}</p>
     <div className={styles.recoQuestionLink}>
-      <Link href={`/tacctoscope/${slug}`} className={styles.questionLink}>
+      <Link
+        href={`/tacctoscope/${slug}#question-${slug}-${questionId}`}
+        className={styles.questionLink}
+      >
         <ReturnIcon />
         Revoir la question
       </Link>

@@ -133,3 +133,70 @@ export const ConfirmModal = ({
     {message}
   </Modal>
 );
+
+const LockIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <rect
+      x="4"
+      y="10"
+      width="16"
+      height="11"
+      rx="2"
+      stroke="#161616"
+      strokeWidth="1.6"
+    />
+    <path d="M8 10V7a4 4 0 018 0v3" stroke="#161616" strokeWidth="1.6" />
+    <circle cx="12" cy="15" r="1.5" fill="#161616" />
+  </svg>
+);
+
+interface UnlockModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+}
+
+export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) => (
+  <ConfirmModal
+    isOpen={isOpen}
+    title="Voulez-vous accéder à tous les contenus ?"
+    message="Inscrivez-vous ou connectez-vous pour poursuivre et sauvegarder votre travail pour la prochaine fois."
+    icon={<LockIcon />}
+    cancelLabel="Non, pas pour l’instant"
+    confirmLabel="Oui, se connecter ou créer un compte"
+    onClose={onClose}
+    onConfirm={onConfirm}
+  />
+);
+
+const SaveIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M7 19v-6h10v6h2V7.828L16.172 5H5v14h2zM4 3h13l4 4v13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm5 12v4h6v-4H9z"
+      fill="#161616"
+    />
+  </svg>
+);
+
+interface SavePromptModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+}
+
+export const SavePromptModal = ({
+  isOpen,
+  onClose,
+  onConfirm
+}: SavePromptModalProps) => (
+  <ConfirmModal
+    isOpen={isOpen}
+    title="Voulez-vous sauvegarder votre travail ?"
+    message="Si vous souhaitez enregistrer vos réponses, créez un compte ou connectez-vous."
+    icon={<SaveIcon />}
+    cancelLabel="Non, pas pour l’instant"
+    confirmLabel="Oui, se connecter ou créer un compte"
+    onClose={onClose}
+    onConfirm={onConfirm}
+  />
+);

@@ -11,7 +11,8 @@ const USER_ENCRYPTED_FIELDS = [
   'username',
   'firstname',
   'lastname',
-  'authenticated_id'
+  'authenticated_id',
+  'recontact_email'
 ] as const;
 
 function decryptUserRow(row: Record<string, unknown>): void {

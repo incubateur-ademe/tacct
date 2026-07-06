@@ -1,8 +1,5 @@
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
-import {
-  getUserAnswers,
-  getUserFeedbacks
-} from '@/lib/queries/tacctoscope';
+import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import {
   buildQuestionKey,
   getCriterionBySlug,
@@ -38,10 +35,7 @@ const CriterionPage = async ({ params }: Params) => {
 
   if (!user && !isPublicCriterion(criterion.slug)) redirect('/mon-compte');
 
-  const [allAnswers, feedbacks] = await Promise.all([
-    getUserAnswers(),
-    getUserFeedbacks()
-  ]);
+  const allAnswers = await getUserAnswers();
 
   const answers: AnswerMap = {};
   for (const question of criterion.questions) {
@@ -54,9 +48,9 @@ const CriterionPage = async ({ params }: Params) => {
     <CriteresView
       criterion={criterion}
       answers={answers}
-      feedback={feedbacks[criterion.slug] ?? null}
       nextSlug={getNextCriterionSlug(criterion.slug)}
       isAuthenticated={!!user}
+      userEmail={user?.email ?? ''}
     />
   );
 };

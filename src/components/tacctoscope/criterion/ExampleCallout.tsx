@@ -14,11 +14,10 @@ export const ExampleCallout = ({ kind, children }: Props) => {
   const isExemple = kind === 'exemple';
   return (
     <div
-      className={`${styles.criterionExampleCallout} ${
-        isExemple
+      className={`${styles.criterionExampleCallout} ${isExemple
           ? styles.criterionExampleCalloutExemple
           : styles.criterionExampleCalloutContre
-      }`}
+        }`}
     >
       <div className={styles.criterionExampleCalloutTitle}>
         <Image
@@ -31,7 +30,11 @@ export const ExampleCallout = ({ kind, children }: Props) => {
           {isExemple ? 'Exemple' : 'Contre-exemple'}
         </Body>
       </div>
-      <Body size="md" color="#3d3d3d" style={{ fontStyle: 'italic', lineHeight: 1.5 }}>
+      <Body
+        size="md"
+        color={isExemple ? '#3d3d3d' : '#CE0041'}
+        style={{ fontStyle: 'italic', lineHeight: 1.5 }}
+      >
         {children}
       </Body>
     </div>

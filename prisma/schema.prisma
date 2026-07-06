@@ -1886,6 +1886,8 @@ model user {
   authenticated_id_bidx          String?                          @unique
   email_bidx                     String?                          @unique
   encryption_version             Int                              @default(0)
+  wants_beta_features            Boolean                          @default(false)
+  recontact_email                String?
   tacctoscope_answer             tacctoscope_answer[]
   tacctoscope_criterion_feedback tacctoscope_criterion_feedback[]
   commune                        commune?                         @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
@@ -1932,12 +1934,12 @@ model tacctoscope_criterion_feedback {
   id            String   @id @db.Char(36)
   user_id       String   @db.Char(36)
   criterion_key String   @db.VarChar(255)
-  is_useful     Boolean
+  is_useful     Boolean?
   created_at    DateTime @default(now()) @db.Timestamptz(6)
   updated_at    DateTime @default(now()) @db.Timestamptz(6)
+  comment       String?
   user          user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "tacctoscope_criterion_feedback_user_fk")
 
-  @@unique([user_id, criterion_key], map: "tacctoscope_criterion_feedback_user_criterion_unique")
   @@index([user_id], map: "tacctoscope_criterion_feedback_user_idx")
   @@schema("tacct")
 }

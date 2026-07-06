@@ -18,6 +18,9 @@ interface Props {
   variant?: HeaderVariant;
   headerTag?: ReactNode;
   defaultOpen?: boolean;
+  id?: string;
+  open?: boolean;
+  onToggle?: () => void;
   children: ReactNode;
 }
 
@@ -48,13 +51,24 @@ export const AccordionShell = ({
   variant = 'default',
   headerTag,
   defaultOpen = false,
+  id,
+  open,
+  onToggle,
   children
 }: Props) => {
-  const [open, setOpen] = useState(defaultOpen);
+  const isControlled = open !== undefined;
+  const [internalOpen, setInternalOpen] = useState(defaultOpen);
+  const isOpen = isControlled ? open : internalOpen;
   const panelId = useId();
+
+  const toggle = () => {
+    if (isControlled) onToggle?.();
+    else setInternalOpen((value) => !value);
+  };
 
   return (
     <div
+      id={id}
       className={`${styles.accordionShellItem} ${VARIANT_CLASS[variant]} ${
         accent === 'enquete' ? styles.accordionShellEnquete : ''
       }`}
@@ -62,15 +76,15 @@ export const AccordionShell = ({
       <button
         type="button"
         className={styles.accordionShellHeader}
-        aria-expanded={open}
+        aria-expanded={isOpen}
         aria-controls={panelId}
-        onClick={() => setOpen((value) => !value)}
+        onClick={toggle}
       >
         <span className={styles.accordionShellTitle}>{title}</span>
         {headerTag}
-        <ChevronIcon open={open} />
+        <ChevronIcon open={isOpen} />
       </button>
-      {open && (
+      {isOpen && (
         <div id={panelId} className={styles.accordionShellPanel}>
           {children}
         </div>

@@ -33,6 +33,8 @@ export interface Question {
   example: string;
   exampleKind: ExampleKind;
   section: SectionKind;
+  minHint?: string;
+  maxHint?: string;
 }
 
 export interface Criterion {

@@ -19,7 +19,8 @@ interface Props {
   question: Question;
   number: number;
   initialValue: AnswerValue | null;
-  defaultOpen?: boolean;
+  openKey: string | null;
+  onToggle: (questionKey: string) => void;
   onChanged: (questionKey: string, answered: boolean) => void;
   isAuthenticated: boolean;
 }
@@ -29,7 +30,8 @@ export const QuestionAccordion = ({
   question,
   number,
   initialValue,
-  defaultOpen = false,
+  openKey,
+  onToggle,
   onChanged,
   isAuthenticated
 }: Props) => {
@@ -87,7 +89,9 @@ export const QuestionAccordion = ({
       }
       accent={question.section}
       variant={headerVariant}
-      defaultOpen={defaultOpen}
+      id={`question-${slug}-${question.id}`}
+      open={openKey === questionKey}
+      onToggle={() => onToggle(questionKey)}
       headerTag={value ? <StatusTag value={value} /> : null}
     >
       <div className={styles.criterionQuestionBody}>
@@ -104,6 +108,8 @@ export const QuestionAccordion = ({
           options={ANSWER_OPTIONS}
           value={value}
           onSelect={handleSelect}
+          minHint={question.minHint}
+          maxHint={question.maxHint}
         />
         {error && (
           <div role="alert">

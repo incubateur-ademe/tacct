@@ -31,6 +31,7 @@ export type Tacctoscope_criterion_feedbackMinAggregateOutputType = {
   is_useful: boolean | null
   created_at: Date | null
   updated_at: Date | null
+  comment: string | null
 }
 
 export type Tacctoscope_criterion_feedbackMaxAggregateOutputType = {
@@ -40,6 +41,7 @@ export type Tacctoscope_criterion_feedbackMaxAggregateOutputType = {
   is_useful: boolean | null
   created_at: Date | null
   updated_at: Date | null
+  comment: string | null
 }
 
 export type Tacctoscope_criterion_feedbackCountAggregateOutputType = {
@@ -49,6 +51,7 @@ export type Tacctoscope_criterion_feedbackCountAggregateOutputType = {
   is_useful: number
   created_at: number
   updated_at: number
+  comment: number
   _all: number
 }
 
@@ -60,6 +63,7 @@ export type Tacctoscope_criterion_feedbackMinAggregateInputType = {
   is_useful?: true
   created_at?: true
   updated_at?: true
+  comment?: true
 }
 
 export type Tacctoscope_criterion_feedbackMaxAggregateInputType = {
@@ -69,6 +73,7 @@ export type Tacctoscope_criterion_feedbackMaxAggregateInputType = {
   is_useful?: true
   created_at?: true
   updated_at?: true
+  comment?: true
 }
 
 export type Tacctoscope_criterion_feedbackCountAggregateInputType = {
@@ -78,6 +83,7 @@ export type Tacctoscope_criterion_feedbackCountAggregateInputType = {
   is_useful?: true
   created_at?: true
   updated_at?: true
+  comment?: true
   _all?: true
 }
 
@@ -157,9 +163,10 @@ export type Tacctoscope_criterion_feedbackGroupByOutputType = {
   id: string
   user_id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful: boolean | null
   created_at: Date
   updated_at: Date
+  comment: string | null
   _count: Tacctoscope_criterion_feedbackCountAggregateOutputType | null
   _min: Tacctoscope_criterion_feedbackMinAggregateOutputType | null
   _max: Tacctoscope_criterion_feedbackMaxAggregateOutputType | null
@@ -187,9 +194,10 @@ export type tacctoscope_criterion_feedbackWhereInput = {
   id?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
   user_id?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
   criterion_key?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
-  is_useful?: Prisma.BoolFilter<"tacctoscope_criterion_feedback"> | boolean
+  is_useful?: Prisma.BoolNullableFilter<"tacctoscope_criterion_feedback"> | boolean | null
   created_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
+  comment?: Prisma.StringNullableFilter<"tacctoscope_criterion_feedback"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
 }
 
@@ -197,33 +205,35 @@ export type tacctoscope_criterion_feedbackOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   criterion_key?: Prisma.SortOrder
-  is_useful?: Prisma.SortOrder
+  is_useful?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  comment?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.userOrderByWithRelationInput
 }
 
 export type tacctoscope_criterion_feedbackWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  user_id_criterion_key?: Prisma.tacctoscope_criterion_feedbackUser_idCriterion_keyCompoundUniqueInput
   AND?: Prisma.tacctoscope_criterion_feedbackWhereInput | Prisma.tacctoscope_criterion_feedbackWhereInput[]
   OR?: Prisma.tacctoscope_criterion_feedbackWhereInput[]
   NOT?: Prisma.tacctoscope_criterion_feedbackWhereInput | Prisma.tacctoscope_criterion_feedbackWhereInput[]
   user_id?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
   criterion_key?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
-  is_useful?: Prisma.BoolFilter<"tacctoscope_criterion_feedback"> | boolean
+  is_useful?: Prisma.BoolNullableFilter<"tacctoscope_criterion_feedback"> | boolean | null
   created_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
+  comment?: Prisma.StringNullableFilter<"tacctoscope_criterion_feedback"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
-}, "id" | "user_id_criterion_key">
+}, "id">
 
 export type tacctoscope_criterion_feedbackOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
   criterion_key?: Prisma.SortOrder
-  is_useful?: Prisma.SortOrder
+  is_useful?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  comment?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.tacctoscope_criterion_feedbackCountOrderByAggregateInput
   _max?: Prisma.tacctoscope_criterion_feedbackMaxOrderByAggregateInput
   _min?: Prisma.tacctoscope_criterion_feedbackMinOrderByAggregateInput
@@ -236,17 +246,19 @@ export type tacctoscope_criterion_feedbackScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"tacctoscope_criterion_feedback"> | string
   user_id?: Prisma.StringWithAggregatesFilter<"tacctoscope_criterion_feedback"> | string
   criterion_key?: Prisma.StringWithAggregatesFilter<"tacctoscope_criterion_feedback"> | string
-  is_useful?: Prisma.BoolWithAggregatesFilter<"tacctoscope_criterion_feedback"> | boolean
+  is_useful?: Prisma.BoolNullableWithAggregatesFilter<"tacctoscope_criterion_feedback"> | boolean | null
   created_at?: Prisma.DateTimeWithAggregatesFilter<"tacctoscope_criterion_feedback"> | Date | string
   updated_at?: Prisma.DateTimeWithAggregatesFilter<"tacctoscope_criterion_feedback"> | Date | string
+  comment?: Prisma.StringNullableWithAggregatesFilter<"tacctoscope_criterion_feedback"> | string | null
 }
 
 export type tacctoscope_criterion_feedbackCreateInput = {
   id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
   user: Prisma.userCreateNestedOneWithoutTacctoscope_criterion_feedbackInput
 }
 
@@ -254,17 +266,19 @@ export type tacctoscope_criterion_feedbackUncheckedCreateInput = {
   id: string
   user_id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
 }
 
 export type tacctoscope_criterion_feedbackUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.userUpdateOneRequiredWithoutTacctoscope_criterion_feedbackNestedInput
 }
 
@@ -272,35 +286,39 @@ export type tacctoscope_criterion_feedbackUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type tacctoscope_criterion_feedbackCreateManyInput = {
   id: string
   user_id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
 }
 
 export type tacctoscope_criterion_feedbackUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type tacctoscope_criterion_feedbackUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type Tacctoscope_criterion_feedbackListRelationFilter = {
@@ -313,11 +331,6 @@ export type tacctoscope_criterion_feedbackOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type tacctoscope_criterion_feedbackUser_idCriterion_keyCompoundUniqueInput = {
-  user_id: string
-  criterion_key: string
-}
-
 export type tacctoscope_criterion_feedbackCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   user_id?: Prisma.SortOrder
@@ -325,6 +338,7 @@ export type tacctoscope_criterion_feedbackCountOrderByAggregateInput = {
   is_useful?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  comment?: Prisma.SortOrder
 }
 
 export type tacctoscope_criterion_feedbackMaxOrderByAggregateInput = {
@@ -334,6 +348,7 @@ export type tacctoscope_criterion_feedbackMaxOrderByAggregateInput = {
   is_useful?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  comment?: Prisma.SortOrder
 }
 
 export type tacctoscope_criterion_feedbackMinOrderByAggregateInput = {
@@ -343,6 +358,7 @@ export type tacctoscope_criterion_feedbackMinOrderByAggregateInput = {
   is_useful?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
   updated_at?: Prisma.SortOrder
+  comment?: Prisma.SortOrder
 }
 
 export type tacctoscope_criterion_feedbackCreateNestedManyWithoutUserInput = {
@@ -390,17 +406,19 @@ export type tacctoscope_criterion_feedbackUncheckedUpdateManyWithoutUserNestedIn
 export type tacctoscope_criterion_feedbackCreateWithoutUserInput = {
   id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
 }
 
 export type tacctoscope_criterion_feedbackUncheckedCreateWithoutUserInput = {
   id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
 }
 
 export type tacctoscope_criterion_feedbackCreateOrConnectWithoutUserInput = {
@@ -436,41 +454,46 @@ export type tacctoscope_criterion_feedbackScalarWhereInput = {
   id?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
   user_id?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
   criterion_key?: Prisma.StringFilter<"tacctoscope_criterion_feedback"> | string
-  is_useful?: Prisma.BoolFilter<"tacctoscope_criterion_feedback"> | boolean
+  is_useful?: Prisma.BoolNullableFilter<"tacctoscope_criterion_feedback"> | boolean | null
   created_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
   updated_at?: Prisma.DateTimeFilter<"tacctoscope_criterion_feedback"> | Date | string
+  comment?: Prisma.StringNullableFilter<"tacctoscope_criterion_feedback"> | string | null
 }
 
 export type tacctoscope_criterion_feedbackCreateManyUserInput = {
   id: string
   criterion_key: string
-  is_useful: boolean
+  is_useful?: boolean | null
   created_at?: Date | string
   updated_at?: Date | string
+  comment?: string | null
 }
 
 export type tacctoscope_criterion_feedbackUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type tacctoscope_criterion_feedbackUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type tacctoscope_criterion_feedbackUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   criterion_key?: Prisma.StringFieldUpdateOperationsInput | string
-  is_useful?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  is_useful?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  comment?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -482,6 +505,7 @@ export type tacctoscope_criterion_feedbackSelect<ExtArgs extends runtime.Types.E
   is_useful?: boolean
   created_at?: boolean
   updated_at?: boolean
+  comment?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tacctoscope_criterion_feedback"]>
 
@@ -492,6 +516,7 @@ export type tacctoscope_criterion_feedbackSelectCreateManyAndReturn<ExtArgs exte
   is_useful?: boolean
   created_at?: boolean
   updated_at?: boolean
+  comment?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tacctoscope_criterion_feedback"]>
 
@@ -502,6 +527,7 @@ export type tacctoscope_criterion_feedbackSelectUpdateManyAndReturn<ExtArgs exte
   is_useful?: boolean
   created_at?: boolean
   updated_at?: boolean
+  comment?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tacctoscope_criterion_feedback"]>
 
@@ -512,9 +538,10 @@ export type tacctoscope_criterion_feedbackSelectScalar = {
   is_useful?: boolean
   created_at?: boolean
   updated_at?: boolean
+  comment?: boolean
 }
 
-export type tacctoscope_criterion_feedbackOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "criterion_key" | "is_useful" | "created_at" | "updated_at", ExtArgs["result"]["tacctoscope_criterion_feedback"]>
+export type tacctoscope_criterion_feedbackOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "criterion_key" | "is_useful" | "created_at" | "updated_at" | "comment", ExtArgs["result"]["tacctoscope_criterion_feedback"]>
 export type tacctoscope_criterion_feedbackInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
 }
@@ -534,9 +561,10 @@ export type $tacctoscope_criterion_feedbackPayload<ExtArgs extends runtime.Types
     id: string
     user_id: string
     criterion_key: string
-    is_useful: boolean
+    is_useful: boolean | null
     created_at: Date
     updated_at: Date
+    comment: string | null
   }, ExtArgs["result"]["tacctoscope_criterion_feedback"]>
   composites: {}
 }
@@ -967,6 +995,7 @@ export interface tacctoscope_criterion_feedbackFieldRefs {
   readonly is_useful: Prisma.FieldRef<"tacctoscope_criterion_feedback", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"tacctoscope_criterion_feedback", 'DateTime'>
   readonly updated_at: Prisma.FieldRef<"tacctoscope_criterion_feedback", 'DateTime'>
+  readonly comment: Prisma.FieldRef<"tacctoscope_criterion_feedback", 'String'>
 }
     
 

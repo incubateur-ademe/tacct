@@ -1,6 +1,7 @@
+import { FeuilleDeRouteView } from '@/app/(main)/tacctoscope/feuille-de-route/FeuilleDeRouteView';
 import productLaunch from '@/assets/images/product-launch.png';
 import { ExportPdfButton } from '@/components/tacctoscope/roadmap/ExportPdfButton';
-import { FeuilleDeRouteView } from '@/components/tacctoscope/roadmap/FeuilleDeRouteView';
+import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
@@ -36,14 +37,30 @@ const FeuilleDeRoutePage = async () => {
         <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
           <header className={styles.banner}>
             <div className={styles.bannerText}>
-              <h1 className={styles.bannerTitle}>
+              <H1
+                color="#038278"
+                style={{
+                  fontSize: '1.5rem',
+                  lineHeight: '2rem',
+                  letterSpacing: 'normal',
+                  margin: 0
+                }}
+              >
                 Votre feuille de route pour améliorer votre diagnostic
-              </h1>
-              <p className={styles.bannerSubtitle}>
+              </H1>
+              <Body
+                size="md"
+                color="#3d3d3d"
+                style={{
+                  maxWidth: 640,
+                  lineHeight: '1.5rem',
+                  letterSpacing: 'normal'
+                }}
+              >
                 Voici l’ensemble des recommandations alimentées par vos réponses
                 dans chacun des 5 critères d’analyse. Améliorez votre diagnostic
                 de vulnérabilité à votre rythme !
-              </p>
+              </Body>
               <ExportPdfButton />
             </div>
             <Image

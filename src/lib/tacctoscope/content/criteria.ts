@@ -1,4 +1,10 @@
-import { Criterion, CriterionSlug, Question, SectionKind } from '../types';
+import { Criterion, CRITERION_SLUGS, CriterionSlug, Question } from '../types';
+
+/**
+ * Contenu réel des critères et de leurs questions.
+ * Les constantes LOREM_* sont des placeholders : remplace-les par le contenu
+ * réel, question par question (label, text, example, minHint, maxHint...).
+ */
 
 const LOREM_LABEL = 'Lorem ipsum dolor sit amet consectetur';
 
@@ -11,37 +17,250 @@ const LOREM_EXAMPLE =
 const LOREM_CHAPEAU =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod ?';
 
-const SECTION_LAYOUT: SectionKind[] = [
-  'analyse',
-  'analyse',
-  'analyse',
-  'enquete',
-  'enquete'
-];
+interface CriterionContent {
+  title: string;
+  chapeau: string;
+  questions: Question[];
+}
 
-const buildQuestions = (): Question[] =>
-  SECTION_LAYOUT.map((section, index) => ({
-    id: `q${index + 1}`,
-    label: LOREM_LABEL,
-    text: LOREM_QUESTION,
-    example: LOREM_EXAMPLE,
-    exampleKind: index % 2 === 0 ? 'exemple' : 'contre-exemple',
-    section
-  }));
-
-const TITLES: Record<CriterionSlug, string> = {
-  'donnees-climatiques': 'Données climatiques',
-  'donnees-socio-economiques': 'Données socio-économiques',
-  'dialogue-et-partage': 'Dialogue et partage',
-  'priorisation-des-impacts': 'Priorisation des impacts',
-  'problematisation-et-conclusion': 'Problématisation et conclusion'
+const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
+  'donnees-climatiques': {
+    title: 'Données climatiques',
+    chapeau: LOREM_CHAPEAU,
+    questions: [
+      {
+        id: 'q1',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: 'Question test avec des indications sous les radio buttons',
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE,
+        minHint:
+          'Les sources climatiques ne sont pas citées ou restent très vagues',
+        maxHint:
+          'Toutes nos sources climatiques sont citées avec références complètes'
+      },
+      {
+        id: 'q2',
+        section: 'analyse',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q3',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q4',
+        section: 'enquete',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q5',
+        section: 'enquete',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      }
+    ]
+  },
+  'donnees-socio-economiques': {
+    title: 'Données socio-économiques',
+    chapeau: LOREM_CHAPEAU,
+    questions: [
+      {
+        id: 'q1',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q2',
+        section: 'analyse',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q3',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q4',
+        section: 'enquete',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q5',
+        section: 'enquete',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      }
+    ]
+  },
+  'dialogue-et-partage': {
+    title: 'Dialogue et partage',
+    chapeau: LOREM_CHAPEAU,
+    questions: [
+      {
+        id: 'q1',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q2',
+        section: 'analyse',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q3',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q4',
+        section: 'enquete',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q5',
+        section: 'enquete',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      }
+    ]
+  },
+  'priorisation-des-impacts': {
+    title: 'Priorisation des impacts',
+    chapeau: LOREM_CHAPEAU,
+    questions: [
+      {
+        id: 'q1',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q2',
+        section: 'analyse',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q3',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q4',
+        section: 'enquete',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q5',
+        section: 'enquete',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      }
+    ]
+  },
+  'problematisation-et-conclusion': {
+    title: 'Problématisation et conclusion',
+    chapeau: LOREM_CHAPEAU,
+    questions: [
+      {
+        id: 'q1',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q2',
+        section: 'analyse',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q3',
+        section: 'analyse',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q4',
+        section: 'enquete',
+        exampleKind: 'contre-exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      },
+      {
+        id: 'q5',
+        section: 'enquete',
+        exampleKind: 'exemple',
+        label: LOREM_LABEL,
+        text: LOREM_QUESTION,
+        example: LOREM_EXAMPLE
+      }
+    ]
+  }
 };
 
-export const CRITERIA: Criterion[] = (
-  Object.keys(TITLES) as CriterionSlug[]
-).map((slug) => ({
+export const CRITERIA: Criterion[] = CRITERION_SLUGS.map((slug) => ({
   slug,
-  title: TITLES[slug],
-  chapeau: LOREM_CHAPEAU,
-  questions: buildQuestions()
+  ...CRITERIA_CONTENT[slug]
 }));
