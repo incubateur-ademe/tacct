@@ -5,6 +5,7 @@ import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionF
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
 import { SavePromptModal } from '@/components/tacctoscope/shared/Modales';
+import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
@@ -27,6 +28,17 @@ interface Props {
   isAuthenticated: boolean;
   userEmail: string;
 }
+
+const BulbIcon = () => (
+  <svg width="16" height="21" viewBox="0 0 16 21" fill="none" aria-hidden="true">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M5.97331 15.999H7.00031V10.999H9.00031V15.999H10.0273C10.1593 14.797 10.7723 13.805 11.7673 12.722C11.8803 12.6 12.5993 11.855 12.6843 11.749C14.6479 9.29586 14.3862 5.74328 12.0844 3.6043C9.78261 1.46532 6.2204 1.46456 3.91767 3.60255C1.61493 5.74055 1.35176 9.29302 3.31431 11.747C3.40031 11.854 4.12131 12.6 4.23231 12.721C5.22831 13.805 5.84131 14.797 5.97331 15.999ZM6.00031 17.999V18.999H10.0003V17.999H6.00031ZM1.75431 12.999C-0.864118 9.72751 -0.514455 4.98985 2.55589 2.13822C5.62623 -0.713411 10.3768 -0.71265 13.4462 2.13996C16.5156 4.99258 16.8638 9.73034 14.2443 13.001C13.6243 13.773 12.0003 14.999 12.0003 16.499V18.999C12.0003 20.1036 11.1049 20.999 10.0003 20.999H6.00031C4.89574 20.999 4.00031 20.1036 4.00031 18.999V16.499C4.00031 14.999 2.37531 13.773 1.75431 12.999Z"
+      fill="#FAFAFA"
+    />
+  </svg>
+);
 
 const SECTION_META: Record<SectionKind, { title: string; description: string }> =
 {
@@ -77,6 +89,13 @@ export const CriteresView = ({
   const [openKey, setOpenKey] = useState<string | null>(() =>
     isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
   );
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastKey, setToastKey] = useState(0);
+
+  const showRecoToast = () => {
+    setToastOpen(true);
+    setToastKey((key) => key + 1);
+  };
 
   useEffect(() => {
     if (!isAuthenticated && isPublicCriterion(criterion.slug)) {
@@ -174,6 +193,7 @@ export const CriteresView = ({
               openKey={openKey}
               onToggle={handleToggle}
               onChanged={handleChanged}
+              onRecommendationAdded={showRecoToast}
               isAuthenticated={isAuthenticated}
             />
           )}
@@ -188,6 +208,7 @@ export const CriteresView = ({
               openKey={openKey}
               onToggle={handleToggle}
               onChanged={handleChanged}
+              onRecommendationAdded={showRecoToast}
               isAuthenticated={isAuthenticated}
             />
           )}
@@ -219,6 +240,16 @@ export const CriteresView = ({
         onConfirm={() => {
           window.location.href = '/api/proconnect/login';
         }}
+      />
+
+      <Toast
+        key={toastKey}
+        open={toastOpen}
+        onClose={() => setToastOpen(false)}
+        icon={<BulbIcon />}
+        text="Une piste d’amélioration ajoutée à vos recommandations !"
+        link="/tacctoscope/feuille-de-route"
+        linkText="Voir la feuille de route"
       />
     </>
   );

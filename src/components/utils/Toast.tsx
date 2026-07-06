@@ -14,6 +14,15 @@ const ArrowRightUpIcon = () => (
   </svg>
 );
 
+const CloseIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path
+      d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12 5.636 7.05 7.05 5.636z"
+      fill="#fafafa"
+    />
+  </svg>
+);
+
 interface ToastProps {
   open: boolean;
   onClose: () => void;
@@ -65,6 +74,14 @@ export const Toast = ({
             </Link>
           )}
         </div>
+        <button
+          type="button"
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Fermer"
+        >
+          <CloseIcon />
+        </button>
       </div>
     </div>,
     document.body

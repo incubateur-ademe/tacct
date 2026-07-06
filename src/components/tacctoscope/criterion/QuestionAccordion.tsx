@@ -22,6 +22,7 @@ interface Props {
   openKey: string | null;
   onToggle: (questionKey: string) => void;
   onChanged: (questionKey: string, answered: boolean) => void;
+  onRecommendationAdded: () => void;
   isAuthenticated: boolean;
 }
 
@@ -33,6 +34,7 @@ export const QuestionAccordion = ({
   openKey,
   onToggle,
   onChanged,
+  onRecommendationAdded,
   isAuthenticated
 }: Props) => {
   const questionKey = buildQuestionKey(slug, question.id);
@@ -46,6 +48,10 @@ export const QuestionAccordion = ({
     setValue(next);
     setError(false);
     onChanged(questionKey, next !== null);
+
+    if (next !== null && next !== 'tres_satisfaisant') {
+      onRecommendationAdded();
+    }
 
     if (!isAuthenticated) {
       if (next === null) deleteLocalAnswer(questionKey);

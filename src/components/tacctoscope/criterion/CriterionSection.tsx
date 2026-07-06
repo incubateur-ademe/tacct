@@ -34,6 +34,7 @@ interface Props {
   openKey: string | null;
   onToggle: (questionKey: string) => void;
   onChanged: (questionKey: string, answered: boolean) => void;
+  onRecommendationAdded: () => void;
   isAuthenticated: boolean;
 }
 
@@ -46,6 +47,7 @@ export const CriterionSection = ({
   openKey,
   onToggle,
   onChanged,
+  onRecommendationAdded,
   isAuthenticated
 }: Props) => (
   <section className={styles.criterionSectionWrapper}>
@@ -79,6 +81,7 @@ export const CriterionSection = ({
           openKey={openKey}
           onToggle={onToggle}
           onChanged={onChanged}
+          onRecommendationAdded={onRecommendationAdded}
           isAuthenticated={isAuthenticated}
         />
       ))}
