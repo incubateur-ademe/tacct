@@ -1,18 +1,18 @@
+import { randomUUID } from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   encodeUserSession,
   getBaseUrl,
   getClientId,
+  getClientSecret,
   getDiscovery,
   getRedirectUri,
   sessionCookieName,
   USERS_SESSION_MAX_AGE,
-  verifyIdToken,
-  verifyUserinfo
-} from '@/lib/auth/proconnect';
+  verifyIdToken
+} from '@/lib/auth/moncompteademe';
 import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
-import { randomUUID } from 'crypto';
-import { NextRequest, NextResponse } from 'next/server';
 
 interface TokenResponse {
   access_token?: string;
@@ -51,11 +51,11 @@ export async function GET(request: NextRequest) {
         code,
         redirect_uri: getRedirectUri(),
         client_id: getClientId(),
-        client_secret: process.env.PROCONNECT_CLIENT_SECRET ?? ''
+        client_secret: getClientSecret()
       })
     });
     const tokens = (await tokenRes.json()) as TokenResponse;
-    if (tokens.error || !tokens.id_token || !tokens.access_token) {
+    if (tokens.error || !tokens.id_token) {
       return fail(tokens.error ?? 'token_exchange_failed');
     }
 
@@ -64,21 +64,33 @@ export async function GET(request: NextRequest) {
       return fail('invalid_nonce');
     }
 
-    const userinfoRes = await fetch(discovery.userinfo_endpoint, {
-      headers: { Authorization: `Bearer ${tokens.access_token}` }
-    });
-    const claims = await verifyUserinfo(await userinfoRes.text());
-    if (claims.sub !== idClaims.sub) {
-      return fail('sub_mismatch');
-    }
-
     const sub = idClaims.sub;
+    const email = idClaims.email ?? '';
+
     let user = await prisma.user.findFirst({
       where: { authenticated_id_bidx: blindIndex(sub) }
     });
+
+    const allowUnverifiedEmailLink = process.env.NEXT_PUBLIC_ENV === 'preprod';
+
+    if (!user && email && (idClaims.email_verified || allowUnverifiedEmailLink)) {
+      const existing = await prisma.user.findFirst({
+        where: { email_bidx: blindIndex(email) }
+      });
+      if (existing) {
+        user = await prisma.user.update({
+          where: { id: existing.id },
+          data: {
+            authenticated_id: encryptField(sub),
+            authenticated_id_bidx: blindIndex(sub),
+            updated_at: new Date()
+          }
+        });
+      }
+    }
+
     if (!user) {
       const now = new Date();
-      const email = claims.email ?? '';
       user = await prisma.user.create({
         data: {
           id: randomUUID(),
@@ -87,8 +99,8 @@ export async function GET(request: NextRequest) {
           email: encryptField(email),
           email_bidx: blindIndex(email),
           username: encryptField(email),
-          firstname: encryptField(claims.given_name ?? ''),
-          lastname: encryptField(claims.usual_name ?? ''),
+          firstname: encryptField(idClaims.given_name ?? ''),
+          lastname: encryptField(idClaims.family_name ?? ''),
           encryption_version: 1,
           roles: JSON.stringify(['ROLE_USER']),
           validated: false,
@@ -119,7 +131,10 @@ export async function GET(request: NextRequest) {
 
     return response;
   } catch (err) {
-    console.error('[ProConnect callback]', err);
+    console.error(
+      '[MonCompteAdeme callback] échec',
+      err instanceof Error ? err.message : String(err)
+    );
     return fail('callback_failed');
   }
 }

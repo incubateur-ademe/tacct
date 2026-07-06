@@ -5,7 +5,7 @@ import {
   getBaseUrl,
   getDiscovery,
   sessionCookieName
-} from '@/lib/auth/proconnect';
+} from '@/lib/auth/moncompteademe';
 
 export async function GET(request: NextRequest) {
   const cookieName = sessionCookieName();
@@ -43,9 +43,14 @@ export async function GET(request: NextRequest) {
     endSessionUrl.searchParams.set('id_token_hint', idToken);
     endSessionUrl.searchParams.set(
       'post_logout_redirect_uri',
-      `${getBaseUrl()}/mon-compte`
+      getBaseUrl()
     );
     endSessionUrl.searchParams.set('state', randomBytes(16).toString('hex'));
+    console.log('[ProConnect logout] paramètres envoyés', {
+      end_session_endpoint: discovery.end_session_endpoint,
+      post_logout_redirect_uri: getBaseUrl(),
+      has_id_token_hint: Boolean(idToken)
+    });
     return clearSession(NextResponse.redirect(endSessionUrl.toString()));
   } catch {
     return toMonCompte();
