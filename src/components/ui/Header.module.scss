@@ -1,0 +1,56 @@
+.accountWrapper {
+    position: relative;
+}
+
+.accountButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.accountBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 600;
+}
+
+.accountMenu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 601;
+    min-width: 240px;
+    background: #ffffff;
+    border: 1px solid #e7e5e5;
+    // border-radius: 4px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 18, 0.16);
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.accountMenuItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 4px;
+    color: #161616;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: Marianne;
+    font-size: 1rem;
+    white-space: nowrap;
+
+    &:hover {
+        background: #e7e5e5;
+    }
+}

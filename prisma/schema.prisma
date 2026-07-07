@@ -1868,27 +1868,31 @@ model token {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model user {
-  id                     String        @id(map: "idx_16589_primary") @db.Char(36)
-  study_office_id        String?       @db.Char(36)
-  commune_id             String?       @db.VarChar(255)
-  email                  String
-  username               String
-  firstname              String
-  lastname               String
-  validated              Boolean       @default(false)
-  validated_terms_of_use Boolean       @default(true)
-  authenticated_id       String?
-  access_token           String?
-  roles                  String
-  created_at             DateTime      @db.Timestamptz(6)
-  updated_at             DateTime      @db.Timestamptz(6)
-  has_accepted_surveys   Boolean?
-  authenticated_id_bidx  String?       @unique
-  email_bidx             String?       @unique
-  encryption_version     Int           @default(0)
-  commune                commune?      @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
-  study_office           study_office? @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
-  user_study             user_study[]
+  id                             String                           @id(map: "idx_16589_primary") @db.Char(36)
+  study_office_id                String?                          @db.Char(36)
+  commune_id                     String?                          @db.VarChar(255)
+  email                          String
+  username                       String
+  firstname                      String
+  lastname                       String
+  validated                      Boolean                          @default(false)
+  validated_terms_of_use         Boolean                          @default(true)
+  authenticated_id               String?
+  access_token                   String?
+  roles                          String
+  created_at                     DateTime                         @db.Timestamptz(6)
+  updated_at                     DateTime                         @db.Timestamptz(6)
+  has_accepted_surveys           Boolean?
+  authenticated_id_bidx          String?                          @unique
+  email_bidx                     String?                          @unique
+  encryption_version             Int                              @default(0)
+  wants_beta_features            Boolean                          @default(false)
+  recontact_email                String?
+  tacctoscope_answer             tacctoscope_answer[]
+  tacctoscope_criterion_feedback tacctoscope_criterion_feedback[]
+  commune                        commune?                         @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
+  study_office                   study_office?                    @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
+  user_study                     user_study[]
 
   @@index([commune_id], map: "idx_16589_idx_8d93d649131a4f72")
   @@index([study_office_id], map: "idx_16589_idx_8d93d6496b6770b5")
@@ -1908,5 +1912,34 @@ model user_study {
 
   @@index([user_id], map: "idx_16596_idx_4bd6c11a76ed395")
   @@index([study_id], map: "idx_16596_idx_4bd6c11e7b003e9")
+  @@schema("tacct")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model tacctoscope_answer {
+  id           String   @id @db.Char(36)
+  user_id      String   @db.Char(36)
+  question_key String   @db.VarChar(255)
+  value        String   @db.VarChar(30)
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime @default(now()) @db.Timestamptz(6)
+  user         user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "tacctoscope_answer_user_fk")
+
+  @@unique([user_id, question_key], map: "tacctoscope_answer_user_question_unique")
+  @@index([user_id], map: "tacctoscope_answer_user_idx")
+  @@schema("tacct")
+}
+
+model tacctoscope_criterion_feedback {
+  id            String   @id @db.Char(36)
+  user_id       String   @db.Char(36)
+  criterion_key String   @db.VarChar(255)
+  is_useful     Boolean?
+  created_at    DateTime @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime @default(now()) @db.Timestamptz(6)
+  comment       String?
+  user          user     @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "tacctoscope_criterion_feedback_user_fk")
+
+  @@index([user_id], map: "tacctoscope_criterion_feedback_user_idx")
   @@schema("tacct")
 }

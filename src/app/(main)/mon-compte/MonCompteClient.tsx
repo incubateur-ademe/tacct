@@ -51,7 +51,7 @@ export const MonCompteClient = () => {
             <div style={{ marginTop: 24 }}>
               <BoutonPrimaireClassic
                 size="lg"
-                text="Se connecter"
+                text="Se connecter  →"
                 link="/api/proconnect/login"
               />
             </div>

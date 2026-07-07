@@ -134,7 +134,9 @@ export const ModelName = {
   thematic: 'thematic',
   token: 'token',
   user: 'user',
-  user_study: 'user_study'
+  user_study: 'user_study',
+  tacctoscope_answer: 'tacctoscope_answer',
+  tacctoscope_criterion_feedback: 'tacctoscope_criterion_feedback'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1731,7 +1733,9 @@ export const UserScalarFieldEnum = {
   has_accepted_surveys: 'has_accepted_surveys',
   authenticated_id_bidx: 'authenticated_id_bidx',
   email_bidx: 'email_bidx',
-  encryption_version: 'encryption_version'
+  encryption_version: 'encryption_version',
+  wants_beta_features: 'wants_beta_features',
+  recontact_email: 'recontact_email'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1747,6 +1751,31 @@ export const User_studyScalarFieldEnum = {
 } as const
 
 export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
+
+
+export const Tacctoscope_answerScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  question_key: 'question_key',
+  value: 'value',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
+
+
+export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  criterion_key: 'criterion_key',
+  is_useful: 'is_useful',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  comment: 'comment'
+} as const
+
+export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -1,0 +1,247 @@
+/* ===== AccordionShell ===== */
+.accordionShellItem {
+    position: relative;
+    border: 1px solid #e7e5e5;
+    overflow: hidden;
+    scroll-margin-top: 6rem;
+    transition: background 0.2s ease;
+}
+
+.accordionShellVariantDefault {
+    background: #ffffff;
+}
+
+.accordionShellVariantGreen {
+    background: #e4ffe6;
+}
+
+.accordionShellVariantGray {
+    background: #e7e5e5;
+}
+
+.accordionShellEnquete::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 8px;
+    background: #971356;
+}
+
+.accordionShellHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 84px;
+    padding: 1.5rem 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+    --hover-tint: transparent;
+    --active-tint: transparent;
+    &:focus-visible {
+        outline: 6px solid #038278;
+        outline-offset: -6px;
+    }
+}
+
+.accordionShellVariantDefault .accordionShellHeader:hover {
+    --hover-tint: #e7e5e5;
+}
+
+.accordionShellVariantGreen .accordionShellHeader:hover {
+    --hover-tint: #cbf7ce;
+}
+
+.accordionShellVariantGray .accordionShellHeader:hover {
+    // background-color: #b3b3b3;
+    --hover-tint: #b3b3b3;
+}
+
+.accordionShellTitle {
+    flex: 1;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.accordionShellChevron {
+    flex-shrink: 0;
+    color: #161616;
+    transition: transform 0.2s ease;
+}
+
+.accordionShellChevronOpen {
+    transform: rotate(180deg);
+}
+
+.accordionShellPanel {
+    padding: 2rem 2rem 1.5rem;
+    border-top: 1px solid #e7e5e5;
+}
+
+.accordionShellVariantGray .accordionShellPanel {
+    border-top-color: #b3b3b3;
+}
+
+/* ===== ProgressDots ===== */
+.progressDotsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.completedTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 24px;
+    background: #e3faf9;
+    color: #095d55;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    white-space: nowrap;
+}
+
+.progressDotsList {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.progressDotsDot,
+.progressDotsDotFilled {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e7e5e5;
+}
+
+.progressDotsDotFilled {
+    background: #038278;
+}
+
+/* ===== RadioScale ===== */
+.radioScaleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radioScaleWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.radioScaleHints {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.radioScaleHint {
+    flex: 0 1 306px;
+    max-width: 306px;
+    font-family: Marianne;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #666666;
+}
+
+.radioScaleHintEnd {
+    text-align: right;
+}
+
+.radioScaleWrapper::before {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 2px;
+    background: #89cac6;
+    z-index: 0;
+}
+
+.radioScaleOption {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    --hover-tint: transparent;
+    --active-tint: transparent;
+}
+
+.radioScaleOption:hover,
+.radioScaleOption:focus,
+.radioScaleOption:active {
+    background: transparent;
+    background-color: transparent;
+    background-image: none;
+}
+
+.radioScaleBullet {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #89cac6;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.radioScaleOption:hover .radioScaleBullet {
+    border-color: #038278;
+}
+
+.radioScaleOptionSelected .radioScaleBullet {
+    border-color: #038278;
+}
+
+.radioScaleOptionSelected .radioScaleBullet::after {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background: #038278;
+}
+
+/* ===== StatusTag ===== */
+.statusTagImage {
+    display: block;
+    height: 36px;
+    width: auto;
+}
+
+.statusTagPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    border: 2px solid #5aa65d;
+    background: #e4ffe6;
+    white-space: nowrap;
+}

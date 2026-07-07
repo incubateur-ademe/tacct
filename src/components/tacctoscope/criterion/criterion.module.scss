@@ -1,0 +1,357 @@
+/* ===== CriterionBanner ===== */
+.criterionBannerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @media screen and (max-width: 1280px) {
+        padding: 0 1.5rem;
+    }
+}
+
+.criterionBannerIcon {
+    width: 80px;
+    height: 80px;
+}
+
+/* ===== CriterionProgressBar ===== */
+.criterionProgressBarOuter {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #ffffff;
+    border-bottom: 1px solid #e7e5e5;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+}
+
+.criterionProgressBarInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 1280px) {
+        padding: 0 1.5rem;
+    }
+}
+
+.criterionProgressBarActions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ===== CriterionSection ===== */
+.criterionSectionWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.criterionSectionHeader {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0 4rem;
+}
+
+.criterionSectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.criterionSectionIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.criterionSectionList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ===== QuestionAccordion ===== */
+.criterionQuestionBody {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* ===== ExampleCallout ===== */
+.criterionExampleCallout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+}
+
+.criterionExampleCalloutExemple {
+    background: rgba(227, 250, 249, 0.5);
+}
+
+.criterionExampleCalloutContre {
+    background: rgba(255, 226, 227, 0.5);
+}
+
+.criterionExampleCalloutTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== CriterionFeedback ===== */
+.feedback {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid #e7e5e5;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.feedbackHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.feedbackQuestion {
+    flex: 1;
+    min-width: 0;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: #3d3d3d;
+}
+
+.feedbackChoices {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feedbackCommentLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    align-self: flex-start;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #038278;
+    // text-decoration: underline;
+}
+
+.feedbackExpand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.feedbackTextarea {
+    width: 100%;
+    min-height: 96px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e7e5e5;
+    border-radius: 8px;
+    background: #ffffff;
+    font-family: Marianne;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #161616;
+    resize: none;
+    overflow-y: auto;
+
+    &::placeholder {
+        color: #666666;
+    }
+
+    &:focus-visible {
+        outline: 2px solid #038278;
+        outline-offset: -1px;
+    }
+}
+
+.feedbackSubmitRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.feedbackThanks {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Marianne;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: #3d3d3d;
+}
+
+.feedbackCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: #3d3d3d;
+    cursor: pointer;
+}
+
+.feedbackCheckbox input {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: #038278;
+}
+
+.feedbackEmailRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feedbackEmailInput {
+    flex: 1;
+    min-width: 0;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #e7e5e5;
+    border-radius: 4px;
+    background: #ffffff;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    color: #3d3d3d;
+
+    &:focus-visible {
+        outline: 2px solid #038278;
+        outline-offset: -1px;
+    }
+}
+
+/* ===== HubGrid ===== */
+.hubGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @media screen and (max-width: 1280px) {
+        padding: 0 1.5rem;
+    }
+
+    @media screen and (max-width: 991px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.resetButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2.5rem auto 0;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    color: #038278;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        --hover-tint: transparent;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: default;
+        text-decoration: none;
+    }
+}
+
+/* ===== CriterionCard ===== */
+.criterionCardLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+    min-height: 200px;
+    padding: 2rem;
+    border: 1px solid #e7e5e5;
+    background: #ffffff;
+    text-decoration: none;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    appearance: none;
+    --hover-tint: transparent;
+    --active-tint: transparent;
+    transition:
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+    border-radius: 4px;
+
+    &:hover {
+        box-shadow:
+            0 6px 18px 0 rgba(0, 0, 18, 0.16),
+            inset 0 0 0 1px #e7e5e5;
+    }
+
+    &:focus-visible {
+        outline: none;
+        // border-color: #038278;
+        outline: 6px solid #038278;
+    }
+}
+
+.criterionCardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.criterionCardIcon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.5rem;
+}
+
+.criterionCardFooter {
+    border-top: 1px solid #e7e5e5;
+    padding-top: 1rem;
+}
+
+.criterionCardLocked {
+    background: linear-gradient(
+        134deg,
+        rgba(255, 255, 255, 0) 60.58%,
+        #ecfffd 99.28%
+    );
+}
+
+.criterionCardLockFooter {
+    display: flex;
+    justify-content: flex-end;
+}
