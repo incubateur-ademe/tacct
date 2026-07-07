@@ -1,5 +1,6 @@
 /* ===== AccordionShell ===== */
 .accordionShellItem {
+    position: relative;
     border: 1px solid #e7e5e5;
     overflow: hidden;
     scroll-margin-top: 6rem;
@@ -18,8 +19,14 @@
     background: #e7e5e5;
 }
 
-.accordionShellEnquete {
-    border-left: 4px solid #971356;
+.accordionShellEnquete::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 8px;
+    background: #971356;
 }
 
 .accordionShellHeader {
@@ -36,6 +43,10 @@
     transition: background 0.2s ease;
     --hover-tint: transparent;
     --active-tint: transparent;
+    &:focus-visible {
+        outline: 6px solid #038278;
+        outline-offset: -6px;
+    }
 }
 
 .accordionShellVariantDefault .accordionShellHeader:hover {
