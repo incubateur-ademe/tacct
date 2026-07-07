@@ -1,5 +1,5 @@
-import { CRITERIA } from './criteria';
 import { buildQuestionKey } from '../keys';
+import { CRITERIA } from './criteria';
 
 export type RoadmapResourceTag = 'donnees' | 'retour-experience';
 
@@ -19,7 +19,7 @@ export interface QuestionRecommendation {
 const LOREM_RECO_TITLE = 'Citer les sources climatiques';
 
 const LOREM_RECO_DESCRIPTION =
-  'À l’avenir, n’oubliez pas de compléter les sources : nom de la plateforme, le jeu de données ou le modèle utilisé (si possible daté : TRACC 2023).';
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
 const LOREM_RESSOURCES: RoadmapResource[] = [
   {

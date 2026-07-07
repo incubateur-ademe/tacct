@@ -1,15 +1,7 @@
-import { CriterionSlug } from '@/lib/tacctoscope/types';
-import Link from 'next/link';
 import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
-
-const ArrowRightIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2h12.172z"
-      fill="#fafafa"
-    />
-  </svg>
-);
+import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { Body } from '@/design-system/base/Textes';
+import { CriterionSlug } from '@/lib/tacctoscope/types';
 
 interface Props {
   slug: CriterionSlug;
@@ -18,13 +10,16 @@ interface Props {
 
 export const CriterionEmptyState = ({ slug, title }: Props) => (
   <div className={styles.emptyState}>
-    <p className={styles.emptyStateTitle}>Ce critère est vide pour le moment</p>
-    <p className={styles.emptyStateText}>
+    <Body weight="bold" size="xl" color="#666666" style={{ lineHeight: '2rem', letterSpacing: 'normal' }}>
+      Ce critère est vide pour le moment
+    </Body>
+    <Body size="md" color="#666666" style={{ lineHeight: '1.5rem', letterSpacing: 'normal', maxWidth: 420 }}>
       Répondez aux questions pour voir apparaître vos pistes d’amélioration ici
-    </p>
-    <Link href={`/tacctoscope/${slug}`} className={styles.emptyStateButton}>
-      Commencer “{title}”
-      <ArrowRightIcon />
-    </Link>
+    </Body>
+    <BoutonPrimaireClassic
+      link={`/tacctoscope/${slug}`}
+      text={`Commencer “${title}” →`}
+      size="md"
+    />
   </div>
 );

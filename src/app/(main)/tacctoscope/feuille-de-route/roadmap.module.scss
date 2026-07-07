@@ -427,9 +427,18 @@ $stripe: repeating-linear-gradient(
     border-radius: 4px;
     background: #ffffff;
     text-decoration: none;
+    background-image: none;
+    &::after {
+        content: none;
+    }
 
     &:hover {
         border-color: $teal;
+    }
+
+    &:focus {
+        outline: 6px solid $teal;
+        outline-offset: -6px;
     }
 }
 
