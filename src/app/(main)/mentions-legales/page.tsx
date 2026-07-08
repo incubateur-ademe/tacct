@@ -1,5 +1,23 @@
 import { fr } from '@codegouvfr/react-dsfr';
 import { LegalNotice } from '@incubateur-ademe/legal-pages-react/LegalNotice';
+import { type Metadata } from 'next';
+import { sharedMetadata } from '../shared-metadata';
+
+const title = 'Mentions légales';
+const url = '/mentions-legales';
+
+export const metadata: Metadata = {
+  ...sharedMetadata,
+  title,
+  openGraph: {
+    ...sharedMetadata.openGraph,
+    title,
+    url
+  },
+  alternates: {
+    canonical: url
+  }
+};
 
 const LegalNoticePage = () => {
   return (

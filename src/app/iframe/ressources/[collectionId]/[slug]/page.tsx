@@ -40,12 +40,14 @@ export const generateMetadata = async (
   const { slug } = await params;
   const article = toutesLesRessources.find(a => a.slug === slug);
   if (!article) return {};
+  const title = article.metadata?.title || article.titre;
+  const description = article.metadata?.description || article.description;
   return {
-    title: article.metadata?.title,
-    description: article.metadata?.description,
+    title,
+    description,
     openGraph: {
-      title: article.metadata?.title,
-      description: article.metadata?.description,
+      title,
+      description,
     },
   };
 }

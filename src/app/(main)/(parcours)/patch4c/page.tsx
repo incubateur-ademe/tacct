@@ -9,7 +9,7 @@ import { Patch4Analyse } from './Patch4Analyse';
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const { libelle } = await searchParams;
   return {
-    title: { absolute: libelle ? `Patch 4° C - ${libelle}` : 'Patch 4° C' }
+    title: { absolute: libelle ? `Patch 4°C - ${libelle}` : 'Patch 4°C' }
   };
 }
 

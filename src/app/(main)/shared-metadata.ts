@@ -4,13 +4,16 @@ import { type Metadata } from 'next';
 const description =
   'Assurez une compréhension partagée du diagnostic de vulnérabilité de votre territoire avec TACCT et favoriser le dialogue sur des problématiques clairement identifiées.';
 
+const siteShortName = 'TACCT';
+const homeTitle = "TACCT - Réussir la démarche d'adaptation de votre territoire";
+
 const isProduction = process.env.NEXT_PUBLIC_ENV === 'production';
 
 export const sharedMetadata: Metadata = {
   description,
   title: {
-    template: `${config.name} - %s`,
-    default: config.name
+    template: `${siteShortName} - %s`,
+    default: homeTitle
   },
   robots: isProduction
     ? undefined

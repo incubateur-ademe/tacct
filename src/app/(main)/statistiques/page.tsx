@@ -1,7 +1,25 @@
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import jwt from 'jsonwebtoken';
+import { type Metadata } from 'next';
 import styles from './statistiques.module.scss';
+import { sharedMetadata } from '../shared-metadata';
+
+const title = 'Statistiques';
+const url = '/statistiques';
+
+export const metadata: Metadata = {
+  ...sharedMetadata,
+  title,
+  openGraph: {
+    ...sharedMetadata.openGraph,
+    title,
+    url
+  },
+  alternates: {
+    canonical: url
+  }
+};
 
 const generateMetabaseUrl = (dashboardId: number): string => {
   const METABASE_URL = process.env.METABASE_URL!;

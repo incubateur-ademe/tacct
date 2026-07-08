@@ -8,11 +8,14 @@ import BudgetContent from '../../../../content/budget.mdx';
 import { Container } from '../../../design-system/server';
 import { sharedMetadata } from '../shared-metadata';
 
+const title = 'Budget';
 const url = '/budget';
 export const metadata: Metadata = {
   ...sharedMetadata,
+  title,
   openGraph: {
     ...sharedMetadata.openGraph,
+    title,
     url
   },
   alternates: {
