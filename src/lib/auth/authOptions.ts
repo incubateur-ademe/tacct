@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import NextAuth, { NextAuthConfig } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { statsSessionCookieName } from './statsSessionCookie';
 import { prisma } from '../queries/db';
 
 export const authConfig: NextAuthConfig = {
@@ -13,10 +14,7 @@ export const authConfig: NextAuthConfig = {
   },
   cookies: {
     sessionToken: {
-      name:
-        process.env.NODE_ENV === 'production'
-          ? '__Secure-authjs.stats-session-token'
-          : 'authjs.stats-session-token',
+      name: statsSessionCookieName(),
       options: {
         httpOnly: true,
         sameSite: 'lax',

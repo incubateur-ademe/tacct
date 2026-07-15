@@ -2,6 +2,7 @@ import type { JWT } from 'next-auth/jwt';
 import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import { statsSessionCookieName } from './lib/auth/statsSessionCookie';
 
 /**
  * Protection contre les open redirects : bloque toutes les redirections externes
@@ -88,7 +89,8 @@ export async function proxy(req: NextRequest): Promise<NextResponse> {
   if (req.nextUrl.pathname.startsWith('/sandbox/')) {
     const token: JWT | null = await getToken({
       req,
-      secret: process.env.NEXTAUTH_SECRET
+      secret: process.env.NEXTAUTH_SECRET,
+      cookieName: statsSessionCookieName()
     });
     if (!token) {
       // Redirect unauthenticated users to the home page
