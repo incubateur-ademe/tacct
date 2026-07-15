@@ -1,3 +1,47 @@
+.navWithSearch {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 72px;
+    gap: 24px;
+
+    :global(.fr-nav) {
+        flex-shrink: 0;
+    }
+
+    :global(.fr-nav__list) {
+        height: 100%;
+    }
+
+    :global(.fr-nav__link),
+    :global(.fr-nav__btn) {
+        white-space: nowrap;
+    }
+
+    :global(.fr-nav__item) {
+        margin-left: 0 !important;
+    }
+
+    :global(.fr-menu__list) {
+        list-style: none;
+    }
+
+    :global(.fr-nav__btn[aria-expanded='true']) {
+        background-color: transparent !important;
+    }
+
+    :global(.fr-nav__btn[aria-expanded='true']:not([aria-current])) {
+        color: inherit !important;
+    }
+}
+
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
 .accountWrapper {
     position: relative;
 }
