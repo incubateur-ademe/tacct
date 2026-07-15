@@ -1,5 +1,3 @@
-import { randomUUID } from 'crypto';
-import { NextRequest, NextResponse } from 'next/server';
 import {
   encodeUserSession,
   getBaseUrl,
@@ -13,6 +11,8 @@ import {
 } from '@/lib/auth/moncompteademe';
 import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
+import { randomUUID } from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 
 interface TokenResponse {
   access_token?: string;
@@ -71,9 +71,15 @@ export async function GET(request: NextRequest) {
       where: { authenticated_id_bidx: blindIndex(sub) }
     });
 
-    const allowUnverifiedEmailLink = process.env.NEXT_PUBLIC_ENV === 'preprod';
+    const allowUnverifiedEmailLink =
+      process.env.NEXT_PUBLIC_ENV === 'preprod' ||
+      process.env.NEXT_PUBLIC_ENV === 'development';
 
-    if (!user && email && (idClaims.email_verified || allowUnverifiedEmailLink)) {
+    if (
+      !user &&
+      email &&
+      (idClaims.email_verified || allowUnverifiedEmailLink)
+    ) {
       const existing = await prisma.user.findFirst({
         where: { email_bidx: blindIndex(email) }
       });
@@ -118,7 +124,9 @@ export async function GET(request: NextRequest) {
       id_token: tokens.id_token
     });
 
-    const response = NextResponse.redirect(`${getBaseUrl()}/mon-espace`);
+    const response = NextResponse.redirect(
+      `${getBaseUrl()}/mon-espace?login=success`
+    );
     response.cookies.set(sessionCookieName(), sessionJwt, {
       httpOnly: true,
       sameSite: 'lax',

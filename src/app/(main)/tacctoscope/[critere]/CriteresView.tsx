@@ -181,7 +181,7 @@ export const CriteresView = ({
         nextSlug={isAuthenticated ? nextSlug : null}
       />
 
-      <NewContainer size="xl">
+      <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
         <div className={styles.criterionViewBody}>
           {analyse.length > 0 && (
             <CriterionSection

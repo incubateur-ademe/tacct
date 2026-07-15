@@ -4,9 +4,8 @@
     top: 2rem;
     transform: translateX(-50%);
     z-index: 1100;
-    width: 100%;
-    max-width: 720px;
-    padding: 0 1rem;
+    width: fit-content;
+    max-width: min(720px, calc(100% - 2rem));
     animation: toastIn 0.25s ease;
 }
 
@@ -14,7 +13,6 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    width: 100%;
     padding: 1.25rem 1.5rem;
     background: #038278;
     box-shadow: 0 6px 9px rgba(0, 0, 18, 0.16);

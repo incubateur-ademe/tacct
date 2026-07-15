@@ -165,12 +165,18 @@ export const CriterionFeedback = ({ criterionKey, userEmail }: Props) => {
                   size="md"
                   text="Oui"
                   onClick={() => openVote(true)}
+                  style={{
+                    border: "1.6px solid #038278"
+                  }}
                 />
               ) : (
                 <BoutonSecondaireClassic
                   size="md"
                   text="Oui"
                   onClick={() => openVote(true)}
+                  style={{
+                    border: "1.6px solid #038278"
+                  }}
                 />
               )}
               {vote === false ? (
@@ -178,12 +184,18 @@ export const CriterionFeedback = ({ criterionKey, userEmail }: Props) => {
                   size="md"
                   text="Non"
                   onClick={() => openVote(false)}
+                  style={{
+                    border: "1.6px solid #038278"
+                  }}
                 />
               ) : (
                 <BoutonSecondaireClassic
                   size="md"
                   text="Non"
                   onClick={() => openVote(false)}
+                  style={{
+                    border: "1.6px solid #038278"
+                  }}
                 />
               )}
             </div>

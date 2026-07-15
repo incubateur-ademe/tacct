@@ -1,13 +1,12 @@
+import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Link from 'next/link';
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 
-const WarningIcon = () => (
+const InfoIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M12 2l10 18H2L12 2zm0 4.126L5.44 18h13.12L12 6.126zM11 15h2v2h-2v-2zm0-6h2v5h-2V9z"
-      fill="#903700"
-    />
+    <rect x="2" y="2" width="20" height="20" rx="6" fill="#903700" />
+    <rect x="11" y="10" width="2" height="7" fill="#FFD1B4" />
+    <rect x="11" y="6" width="2" height="2" fill="#FFD1B4" />
   </svg>
 );
 
@@ -28,7 +27,7 @@ interface Props {
 export const PartialRecommendationBanner = ({ slug, missingCount }: Props) => (
   <div className={styles.partialBanner}>
     <div className={styles.partialBannerLeft}>
-      <WarningIcon />
+      <InfoIcon />
       <span className={styles.partialBannerTitle}>Recommandation partielle</span>
     </div>
     <Link href={`/tacctoscope/${slug}`} className={styles.partialBannerLink}>
