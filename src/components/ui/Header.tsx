@@ -155,12 +155,12 @@ const HeaderComp = () => {
     thematique: lastTerritory?.thematique
   });
 
-  const wide = !!windowDimensions.width && windowDimensions.width > 700;
+  const wide = !!windowDimensions.width && windowDimensions.width > 768;
 
   const territorySearchItems =
     displayType &&
       params !== '/' &&
-      !(windowDimensions.width && windowDimensions.width < 700)
+      !(windowDimensions.width && windowDimensions.width < 768)
       ? [
         <HeaderRechercheTerritoire
           key="recherche-territoire"

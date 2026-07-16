@@ -21,7 +21,7 @@ export const accountItemComp = (
   const posthog = usePostHog();
   const router = useRouter();
   const windowDimensions = useWindowDimensions();
-  const wide = !!windowDimensions.width && windowDimensions.width > 700;
+  const wide = !!windowDimensions.width && windowDimensions.width > 768;
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
 
   return (
@@ -45,7 +45,7 @@ export const accountItemComp = (
               <Body
                 style={{ marginLeft: '0.5rem', color: 'var(--principales-vert)' }}
               >
-                {`${user.firstname} ${user.lastname}`}
+                {`${user.firstname} ${user.lastname}`}
               </Body>
             )}
           </button>
