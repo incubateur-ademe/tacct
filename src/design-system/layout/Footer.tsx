@@ -104,13 +104,18 @@ export default function AppFooter() {
               </a>
             </li>
             <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="/accessibilite">
-                Accessibilité : non conforme
+              <a className="fr-footer__bottom-link" href="/ressources/faq">
+                Questions fréquentes
               </a>
             </li>
             <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="/plan-du-site">
-                Plan du site
+              <a className="fr-footer__bottom-link" href="/statistiques">
+                Statistiques
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/accessibilite">
+                Accessibilité : non conforme
               </a>
             </li>
             <li className="fr-footer__bottom-item">
@@ -129,8 +134,8 @@ export default function AppFooter() {
               </a>
             </li>
             <li className="fr-footer__bottom-item">
-              <a className="fr-footer__bottom-link" href="/statistiques">
-                Statistiques
+              <a className="fr-footer__bottom-link" href="/plan-du-site">
+                Plan du site
               </a>
             </li>
             {/* <li className="fr-footer__bottom-item">
