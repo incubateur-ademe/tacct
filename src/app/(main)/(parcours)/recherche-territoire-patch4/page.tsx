@@ -1,5 +1,5 @@
 "use client";
-import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
+import { BarreDeRechercheSansFiltre } from "@/components/searchbar/BarreDeRechercheSansFiltre";
 import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
 import { allRadioOptions } from "@/components/searchbar/radioButtons";
 import { Loader } from "@/components/ui/loader";
@@ -60,15 +60,9 @@ const RechercherSonTerritoire = () => {
           }}>
           Commençons par localiser votre territoire pour personnaliser vos données
         </H1>
-        <BarreDeRecherche
-          setSearchCode={setSearchCode}
-          setSearchLibelle={setSearchLibelle}
-          RechercherRedirection={handleRechercher}
-          typeTerritoire={typeTerritoire}
-          searchCode={searchCode}
-          searchLibelle={searchLibelle}
-          radioOptions={radioButtonsOptions}
-        />
+        <div style={{ marginTop: '2.5rem' }}>
+          <BarreDeRechercheSansFiltre />
+        </div>
       </div>
     </NewContainer>
   );

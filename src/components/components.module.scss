@@ -7,6 +7,7 @@
     border-radius: 30px;
     border: 1px solid var(--gris-medium);
     min-height: 50px;
+    min-width: 0;
     padding: 0;
     transition: all 0.5s ease-in-out;
     max-width: 640px;
@@ -19,10 +20,11 @@
         display: flex;
         flex-direction: row;
         width: inherit;
+        min-width: 0;
         align-items: center;
         justify-content: space-between;
         height: inherit;
-        gap: 20px;
+        gap: 0.75rem;
     }
 }
 

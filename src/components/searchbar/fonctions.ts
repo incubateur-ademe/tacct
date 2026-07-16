@@ -16,6 +16,24 @@ export const ReplaceSearchEpci = (libelleEpci: string) => {
     .replace('CU ', 'Communauté urbaine ');
 };
 
+export const libellesTypeTerritoire: Record<TerritoireType, string> = {
+  epci: 'EPCI',
+  commune: 'Commune',
+  petr: 'PETR',
+  pnr: 'PNR',
+  departement: 'Département'
+};
+
+export const getLibelleTerritoireAvecCode = (option: {
+  territoireType: TerritoireType;
+  searchLibelle: string;
+  searchCode: string;
+}) => {
+  return option.territoireType === 'commune' && option.searchCode.length !== 0
+    ? `${ReplaceDisplayEpci(option.searchLibelle)} (${option.searchCode})`
+    : ReplaceDisplayEpci(option.searchLibelle);
+};
+
 export const handleRechercheRedirection = ({
   searchCode,
   searchLibelle,

@@ -7,15 +7,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../components.module.scss';
-import { handleRechercheRedirection, ReplaceDisplayEpci, ReplaceSearchEpci } from './fonctions';
-
-const libellesTypeTerritoire: Record<TerritoireType, string> = {
-  epci: 'EPCI',
-  commune: 'Commune',
-  petr: 'PETR',
-  pnr: 'PNR',
-  departement: 'Département'
-};
+import { getLibelleTerritoireAvecCode, handleRechercheRedirection, ReplaceSearchEpci } from './fonctions';
+import { RenderOptionSansFiltre } from './renderOptionSansFiltre';
 
 export const BarreDeRechercheSansFiltre = () => {
   const router = useRouter();
@@ -113,34 +106,18 @@ export const BarreDeRechercheSansFiltre = () => {
               setIsOpen(false);
             }
           }}
-          getOptionLabel={(option) => {
-            if (!option) return '';
-            return option.territoireType === 'commune' && option.searchCode?.length !== 0
-              ? `${ReplaceDisplayEpci(option.searchLibelle)} (${option.searchCode})`
-              : option.searchLibelle;
-          }}
+          getOptionLabel={(option) => (option ? getLibelleTerritoireAvecCode(option) : '')}
           onKeyDown={(e) => {
             if (e.code === 'Enter') {
               handleRechercher();
             }
           }}
           renderOption={(props, option) => (
-            <li
-              {...props}
+            <RenderOptionSansFiltre
               key={option.searchLibelle + option.searchCode}
-              style={{ borderBottom: '1px solid var(--gris-medium)' }}
-            >
-              <p style={{ margin: 0, fontSize: '14px' }}>
-                {ReplaceDisplayEpci(option.searchLibelle)}
-                {option.territoireType === 'commune' && option.searchCode?.length !== 0
-                  ? ` - ${option.searchCode}`
-                  : ''}
-                {' '}
-                <span style={{ color: nuancesGris.dark }}>
-                  ({libellesTypeTerritoire[option.territoireType]})
-                </span>
-              </p>
-            </li>
+              props={props}
+              option={option}
+            />
           )}
           renderInput={(params) => (
             <div
@@ -149,6 +126,7 @@ export const BarreDeRechercheSansFiltre = () => {
             >
               <input
                 {...params.inputProps}
+                aria-label="Rechercher un territoire"
                 placeholder="Entrez un EPCI, un département, PETR, PNR ou une commune"
                 style={{
                   width: '100%',
@@ -160,8 +138,8 @@ export const BarreDeRechercheSansFiltre = () => {
                   color: couleursPrincipales.vert,
                   backgroundColor: 'white',
                   outline: 'none',
-                  fontStyle: "italic",
-                  fontWeight: 200
+                  // fontStyle: "italic",
+                  fontWeight: 400
                 }}
               />
               {(inputValue.length > 0 || selectedTerritoire !== null) && (
@@ -195,9 +173,14 @@ export const BarreDeRechercheSansFiltre = () => {
           slotProps={{
             popper: {
               sx: {
+                '&[data-popper-placement*="bottom"] .MuiPaper-root': {
+                  transform: 'translateY(14px)',
+                },
+                '&[data-popper-placement*="top"] .MuiPaper-root': {
+                  transform: 'translateY(-14px)',
+                },
                 '& .MuiPaper-root': {
                   borderRadius: '1rem',
-                  transform: 'translateY(14px)',
                   padding: '0.5rem 0.2rem 0.5rem 0.5rem',
                   boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);'
                 },
