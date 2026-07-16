@@ -1,4 +1,7 @@
-import { CollectivitesSearchbar } from '../postgres/models';
+import {
+  CollectivitesSearchbar,
+  CollectivitesSearchbarWithType
+} from '../postgres/models';
 import { prisma as PrismaPostgres } from './db';
 
 export const PNR = async (variableCollectivite: string) => {
@@ -230,6 +233,96 @@ export const Departement = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
       )
       ORDER BY index ASC LIMIT 20;
+    `;
+  return value;
+};
+
+// Recherche tous types de territoires confondus, sur search_libelle uniquement.
+// Communes : uniquement en début du libellé complet (comme Commune()).
+// Autres types : en début de mot, comme avant (espace/tiret/apostrophe).
+export const AllTerritoires = async (variableCollectivite: string) => {
+  const exactPattern = variableCollectivite;
+
+  const communeStartPattern = variableCollectivite + '%';
+  const communeStartPatternDash = variableCollectivite.replace(/ /g, '-') + '%';
+  const communeStartPatternComma = variableCollectivite.replace(/ /g, ', ') + '%';
+
+  const searchPattern = variableCollectivite + '%';
+  const searchPatternSpace = '% ' + variableCollectivite + '%';
+  const searchPatternDash = '%-' + variableCollectivite + '%';
+  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
+  const searchPatternSpaceReplace =
+    '% ' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternDashReplace =
+    '%-' + variableCollectivite.replace(' ', '-') + '%';
+  const searchPatternSpaceComma =
+    '% ' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternDashComma =
+    '%-' + variableCollectivite.replace(' ', ', ') + '%';
+
+  const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbarWithType[]>`
+    SELECT
+    search_code,
+    search_libelle,
+    epci,
+    libelle_epci,
+    libelle_geographique,
+    code_geographique,
+    departement,
+    libelle_departement,
+    region,
+    ept,
+    libelle_petr,
+    libelle_pnr,
+    code_pnr,
+    CASE
+      WHEN code_geographique IS NOT NULL THEN 'commune'
+      WHEN libelle_pnr IS NOT NULL THEN 'pnr'
+      WHEN libelle_petr IS NOT NULL THEN 'petr'
+      WHEN libelle_epci IS NOT NULL OR ept IS NOT NULL THEN 'epci'
+      ELSE 'departement'
+    END AS territoire_type
+    FROM databases_v2."collectivites_searchbar" WHERE
+      (
+        (
+          code_geographique IS NOT NULL
+          AND (
+            unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPattern})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPatternDash})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPatternComma})
+            OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${communeStartPattern})
+          )
+        )
+        OR
+        (
+          code_geographique IS NULL
+          AND (
+            libelle_pnr IS NOT NULL
+            OR libelle_petr IS NOT NULL
+            OR libelle_epci IS NOT NULL
+            OR ept IS NOT NULL
+            OR departement IS NOT NULL
+          )
+          AND (
+            unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+          )
+        )
+      )
+      ORDER BY
+        CASE
+          WHEN unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${exactPattern}) THEN 0
+          WHEN unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern}) THEN 1
+          ELSE 2
+        END,
+        search_libelle ASC
+      LIMIT 40;
     `;
   return value;
 };

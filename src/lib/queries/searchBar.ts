@@ -1,7 +1,17 @@
 'use server';
 
-import { CollectivitesSearchbar } from '../postgres/models';
-import { Commune, Departement, EPCI, PETR, PNR } from './territoiresQueries';
+import {
+  CollectivitesSearchbar,
+  CollectivitesSearchbarWithType
+} from '../postgres/models';
+import {
+  AllTerritoires,
+  Commune,
+  Departement,
+  EPCI,
+  PETR,
+  PNR
+} from './territoiresQueries';
 
 export const GetCollectivite = async (
   typeTerritoire: string | undefined,
@@ -49,6 +59,26 @@ export const GetCollectivite = async (
           }
         ];
       }
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  })();
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
+// Recherche tous types de territoires confondus (sans filtre par type)
+export const GetAllTerritoires = async (
+  collectivite: string
+): Promise<CollectivitesSearchbarWithType[]> => {
+  const timeoutPromise = new Promise<[]>((resolve) =>
+    setTimeout(() => {
+      resolve([]);
+    }, 1000)
+  );
+  const dbQuery = (async () => {
+    try {
+      return await AllTerritoires(collectivite);
     } catch (error) {
       console.error(error);
       return [];

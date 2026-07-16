@@ -379,6 +379,10 @@ export type CollectivitesSearchbar = {
   libelle_departement: string | null;
 };
 
+export type CollectivitesSearchbarWithType = CollectivitesSearchbar & {
+  territoire_type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+};
+
 export type CarteCommunes = {
   code_geographique: string;
   coordinates: string;

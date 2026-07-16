@@ -160,14 +160,6 @@
     gap: 0.5rem;
 }
 
-.searchbarWrapper {
-    display: flex;
-    width: 100%;
-    height: 42px;
-    gap: 0.5rem;
-    align-items: flex-end;
-}
-
 .activeSearchbarButton {
     display: block;
     background-color: #0063cb;
@@ -271,6 +263,18 @@
     height: 3rem;
     gap: 0.5rem;
     align-items: flex-end;
+}
+
+.searchbarWrapperSansFiltre {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    gap: 0.5rem;
+    align-items: center;
+    @media (max-width: 600px) {
+        flex-direction: column;
+        align-items: flex-end;
+    }
 }
 
 .activeSearchbarButton {

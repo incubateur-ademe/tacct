@@ -44,6 +44,12 @@ type SearchInputOptionsProps = {
   option: SearchInputOptions;
 };
 
+type TerritoireType = 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+
+type SearchInputOptionsSansFiltre = SearchInputOptions & {
+  territoireType: TerritoireType;
+};
+
 type SearchInputTagProps = {
   params: AutocompleteRenderInputParams;
   className?: string;

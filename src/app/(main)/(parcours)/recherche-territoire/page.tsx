@@ -1,6 +1,7 @@
 "use client";
 import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
+import { BarreDeRechercheSansFiltre } from "@/components/searchbar/BarreDeRechercheSansFiltre";
 import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
 import { allRadioOptions } from "@/components/searchbar/radioButtons";
 import { Loader } from "@/components/ui/loader";
@@ -71,6 +72,10 @@ const RechercherSonTerritoire = () => {
             searchLibelle={searchLibelle}
             radioOptions={arrayOptions}
           />
+
+          <div style={{ marginTop: '3rem' }}>
+            <BarreDeRechercheSansFiltre />
+          </div>
         </div>
       </NewContainer>
     </>
