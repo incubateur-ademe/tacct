@@ -10,7 +10,11 @@ import styles from '../components.module.scss';
 import { getLibelleTerritoireAvecCode, handleRechercheRedirection, ReplaceSearchEpci } from './fonctions';
 import { RenderOptionSansFiltre } from './renderOptionSansFiltre';
 
-export const BarreDeRechercheSansFiltre = () => {
+export const BarreDeRechercheSansFiltre = ({
+  page = 'thematiques'
+}: {
+  page?: string;
+} = {}) => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState<SearchInputOptionsSansFiltre[]>([]);
@@ -64,7 +68,7 @@ export const BarreDeRechercheSansFiltre = () => {
       searchLibelle: selectedTerritoire.searchLibelle,
       typeTerritoire: selectedTerritoire.territoireType,
       router,
-      page: 'thematiques'
+      page
     });
   };
 
