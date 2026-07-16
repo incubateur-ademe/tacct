@@ -161,7 +161,7 @@ export const BarreDeRechercheSansFiltre = () => {
                   backgroundColor: 'white',
                   outline: 'none',
                   fontStyle: "italic",
-                  fontWeight: 400
+                  fontWeight: 200
                 }}
               />
               {(inputValue.length > 0 || selectedTerritoire !== null) && (

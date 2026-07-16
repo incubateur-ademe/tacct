@@ -1,6 +1,7 @@
 import ConnexionIcon from '@/assets/icons/connexion_compte_icon_black.svg';
 import { Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 import { usePostHog } from 'posthog-js/react';
 import { couleursBoutons, nuancesGris } from "../couleurs";
 import { Body } from "./Textes";
@@ -29,6 +30,7 @@ export const BoutonPrimaireClassic = ({
   thematique?: string;
 }) => {
   const posthog = usePostHog();
+  const router = useRouter();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? nuancesGris.dark : "white",
@@ -59,7 +61,11 @@ export const BoutonPrimaireClassic = ({
       );
     }
     if (link && !onClick) {
-      window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
+      if (rel?.includes('noopener')) {
+        window.open(link, '_blank');
+      } else {
+        router.push(link);
+      }
     }
     if (onClick) {
       onClick(e);
@@ -145,6 +151,7 @@ export const BoutonSecondaireClassic = ({
   posthogEventName?: string;
 }) => {
   const posthog = usePostHog();
+  const router = useRouter();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
@@ -175,7 +182,11 @@ export const BoutonSecondaireClassic = ({
       );
     }
     if (link && !onClick) {
-      window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
+      if (rel?.includes('noopener')) {
+        window.open(link, '_blank');
+      } else {
+        router.push(link);
+      }
     }
     if (onClick) {
       onClick(e);
