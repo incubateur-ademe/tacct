@@ -2,7 +2,7 @@
 
 import { nuancesGris } from "@/design-system/couleurs";
 import { Box } from "@mui/material";
-import { libellesTypeTerritoire, ReplaceDisplayEpci } from "./fonctions";
+import { getLibelleTypeTerritoire, ReplaceDisplayEpci } from "./fonctions";
 
 export const RenderOptionSansFiltre = ({
   props,
@@ -29,7 +29,7 @@ export const RenderOptionSansFiltre = ({
           : ''}
         {' '}
         <span style={{ color: nuancesGris.dark }}>
-          ({libellesTypeTerritoire[option.territoireType]})
+          ({getLibelleTypeTerritoire(option)})
         </span>
       </p>
     </Box>

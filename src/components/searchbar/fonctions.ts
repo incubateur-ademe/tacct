@@ -17,11 +17,21 @@ export const ReplaceSearchEpci = (libelleEpci: string) => {
 };
 
 export const libellesTypeTerritoire: Record<TerritoireType, string> = {
-  epci: 'EPCI',
+  epci: 'Intercommunalité',
   commune: 'Commune',
   petr: 'PETR',
   pnr: 'PNR',
   departement: 'Département'
+};
+
+export const getLibelleTypeTerritoire = (option: {
+  territoireType: TerritoireType;
+  searchLibelle: string;
+}) => {
+  if (option.territoireType === 'epci' && eptRegex.test(option.searchLibelle)) {
+    return 'EPT';
+  }
+  return libellesTypeTerritoire[option.territoireType];
 };
 
 export const getLibelleTerritoireAvecCode = (option: {

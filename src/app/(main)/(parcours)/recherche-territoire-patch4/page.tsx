@@ -2,7 +2,7 @@
 import { BarreDeRechercheSansFiltre } from "@/components/searchbar/BarreDeRechercheSansFiltre";
 import { getLastTerritory } from "@/components/searchbar/fonctions";
 import { Loader } from "@/components/ui/loader";
-import { H1 } from "@/design-system/base/Textes";
+import { Body, H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ const RechercherSonTerritoire = () => {
 
   return (
     <NewContainer size="md">
-      <div style={{ margin: '5rem 0' }}>
+      <div style={{ margin: '5rem 0', padding: '0 1rem' }}>
         <H1
           style={{
             textAlign: 'center',
@@ -42,6 +42,12 @@ const RechercherSonTerritoire = () => {
           }}>
           Commençons par localiser votre territoire pour personnaliser vos données
         </H1>
+        <Body
+          size="lg"
+          style={{ textAlign: 'center', color: '#666666' }}
+        >
+          Recherchez parmi les communes, EPCI, EPT, PNR, PETR et départements
+        </Body>
         <div style={{ marginTop: '2.5rem' }}>
           <BarreDeRechercheSansFiltre page="patch4c" />
         </div>

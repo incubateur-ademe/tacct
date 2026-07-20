@@ -31,9 +31,24 @@ export const BarreDeRechercheSansFiltre = ({
           t.searchCode === value.searchCode
       )
   );
-  const territoires = filteredTerritoires.toSorted((a, b) =>
-    a.searchLibelle.localeCompare(b.searchLibelle)
-  );
+  const ordreTypeTerritoire: Record<TerritoireType, number> = {
+    commune: 0,
+    epci: 1,
+    pnr: 2,
+    petr: 3,
+    departement: 4
+  };
+  const inputNormalise = inputValue.trim().toLowerCase();
+  const territoires = filteredTerritoires.toSorted((a, b) => {
+    const aExact = a.searchLibelle.toLowerCase() === inputNormalise;
+    const bExact = b.searchLibelle.toLowerCase() === inputNormalise;
+    if (aExact !== bExact) return aExact ? -1 : 1;
+    const ordreType =
+      ordreTypeTerritoire[a.territoireType] -
+      ordreTypeTerritoire[b.territoireType];
+    if (ordreType !== 0) return ordreType;
+    return a.searchLibelle.localeCompare(b.searchLibelle);
+  });
 
   const fetchTerritoires = async (value: string) => {
     setIsLoading(true);
@@ -131,7 +146,7 @@ export const BarreDeRechercheSansFiltre = ({
               <input
                 {...params.inputProps}
                 aria-label="Rechercher un territoire"
-                placeholder="Entrez un EPCI, un département, PETR, PNR ou une commune"
+                placeholder="Saisissez votre territoire"
                 style={{
                   width: '100%',
                   height: '3rem',
