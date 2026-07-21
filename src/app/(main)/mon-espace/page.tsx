@@ -1,16 +1,44 @@
-import { Body } from '@/design-system/base/Textes';
+import { AncienEspaceCard } from '@/components/mon-espace/AncienEspaceCard';
+import { CommunauteCards } from '@/components/mon-espace/CommunauteCards';
+import { EspaceMenu, EspaceMenuItem } from '@/components/mon-espace/EspaceMenu';
+import { HautDePage } from '@/components/mon-espace/HautDePage';
+import { ProfilCard } from '@/components/mon-espace/ProfilCard';
+import { SuggestionsBanner } from '@/components/mon-espace/SuggestionsBanner';
+import { TacctoscopeCard } from '@/components/mon-espace/TacctoscopeCard';
+import { SousTitre1 } from '@/design-system/base/Textes';
+import { NewContainer } from '@/design-system/layout';
 import { decodeUserSession, sessionCookieName } from '@/lib/auth/proconnect';
 import { prisma } from '@/lib/queries/db';
+import { getUserAnswers } from '@/lib/queries/tacctoscope';
+import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
+import { getAllProgress } from '@/lib/tacctoscope/progress';
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import styles from './monEspace.module.scss';
 
-const linkStyle: React.CSSProperties = {
-  display: 'inline-block',
-  padding: '10px 20px',
-  borderRadius: 4,
-  textDecoration: 'none',
-  fontWeight: 600
-};
+export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = { title: 'Mon espace' };
+
+const MENU_ITEMS: EspaceMenuItem[] = [
+  { anchor: 'profil', label: 'Profil' },
+  { anchor: 'outils', label: 'Outils' },
+  { anchor: 'communaute', label: 'Communauté' },
+  { anchor: 'suggestions', label: 'Suggestions' }
+];
+
+const TitreSection = ({ children }: { children: string }) => (
+  <div className={styles.sectionTitle}>
+    <SousTitre1
+      htmlTag="h2"
+      color="#666666"
+      style={{ fontWeight: 700, lineHeight: '2rem' }}
+    >
+      {children}
+    </SousTitre1>
+  </div>
+);
 
 const MonEspace = async () => {
   const cookieStore = await cookies();
@@ -24,38 +52,55 @@ const MonEspace = async () => {
   });
   if (!user) redirect('/mon-compte');
 
+  const answers = await getUserAnswers();
+  const progress = getAllProgress(answers);
+  const completed = progress.filter(
+    (criterion) => criterion.total > 0 && criterion.answered === criterion.total
+  ).length;
+  const started = progress.filter((criterion) => criterion.answered > 0).length;
+
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '3rem 1.5rem' }}>
-      <h1>Mon espace</h1>
-      <p style={{ fontSize: '1.25rem' }}>
-        Bonjour {user.firstname} {user.lastname}
-      </p>
-      <p>Connecté avec {user.email}</p>
-      <Body>
-          Statut du user : {user.validated ? 'validé' : 'non validé'}
-        </Body>
-      <div style={{ display: 'flex', gap: 16, marginTop: 24, flexWrap: 'wrap' }}>
-        <a
-          href="/workspace-tacct"
-          style={{ ...linkStyle, background: '#038278', color: '#fff' }}
-        >
-          Accéder à l’outil TACCT
-        </a>
-        <a
-          href="/tacctoscope"
-          style={{ ...linkStyle, background: '#038278', color: '#fff' }}
-        >
-          Accéder au TACCToscope
-        </a>
-        <a
-          href="/api/proconnect/logout"
-          style={{ ...linkStyle, background: '#f0f0f0', color: '#161616' }}
-        >
-          Se déconnecter
-        </a>
+    <NewContainer size="xl">
+      <div className={styles.body}>
+        <EspaceMenu items={MENU_ITEMS} />
+
+        <div className={styles.content}>
+          <section id="profil" aria-label="Profil" className={styles.section}>
+            <ProfilCard
+              firstname={user.firstname}
+              lastname={user.lastname}
+              email={user.email}
+            />
+          </section>
+
+          <section id="outils" className={styles.section}>
+            <TitreSection>Outils</TitreSection>
+            <div className={styles.sectionInner}>
+              <TacctoscopeCard
+                hasAnswers={started > 0}
+                completed={completed}
+                started={started}
+                total={CRITERIA.length}
+              />
+              {user.validated && <AncienEspaceCard />}
+            </div>
+          </section>
+
+          <section id="communaute" className={styles.section}>
+            <TitreSection>Communauté adaptation</TitreSection>
+            <CommunauteCards />
+          </section>
+
+          <section id="suggestions" className={styles.section}>
+            <TitreSection>Suggestions</TitreSection>
+            <SuggestionsBanner />
+          </section>
+
+          <HautDePage />
+        </div>
       </div>
-    </div>
+    </NewContainer>
   );
-}
+};
 
 export default MonEspace;

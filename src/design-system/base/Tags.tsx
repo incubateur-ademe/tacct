@@ -34,7 +34,7 @@ export const TagsSimples = ({
         alignItems: 'center',
         backgroundColor: couleur,
         borderRadius: '16px',
-        padding: taille === 'small' ? '4px 4px 4px 8px' : '8px 16px',
+        padding: taille === 'small' ? '4px 8px 4px 8px' : '8px 16px',
         fontSize: taille === 'small' ? '14px' : '16px',
         fontWeight: 500,
         color: couleurTexte,

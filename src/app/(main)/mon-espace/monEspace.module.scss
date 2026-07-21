@@ -1,0 +1,440 @@
+$teal: #038278;
+$border: #e7e5e5;
+$border-title: #dddddd;
+$gray-light: #fafafa;
+$tag-bg: #e3faf9;
+$cta2: #d3edeb;
+$stripe: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 12px,
+    rgba(211, 237, 235, 0.5) 12px,
+    rgba(211, 237, 235, 0.5) 14px
+);
+
+/* ===== Structure ===== */
+.body {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+
+    @media screen and (max-width: 1280px) {
+        padding: 0 1.5rem;
+    }
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+    }
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.section {
+    padding-bottom: 2rem;
+    scroll-margin-top: 2rem;
+}
+
+.sectionInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== Menu ancre ===== */
+.menu {
+    position: sticky;
+    top: 3rem;
+    width: 172px;
+    flex-shrink: 0;
+    border-right: 1px solid $border;
+
+    @media screen and (max-width: 992px) {
+        position: relative;
+        top: 0;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid $border;
+    }
+}
+
+.menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin: 0;
+        padding: 0;
+    }
+
+    @media screen and (max-width: 992px) {
+        display: flex;
+        overflow-x: auto;
+    }
+}
+
+.menuItem {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $gray-light;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: -2px;
+    }
+
+    @media screen and (max-width: 992px) {
+        white-space: nowrap;
+        width: auto;
+    }
+}
+
+.menuItemActive {
+    background-color: $gray-light;
+    border-right: 4px solid $teal;
+
+    @media screen and (max-width: 992px) {
+        border-right: none;
+        border-bottom: 4px solid $teal;
+    }
+}
+
+/* ===== Titre de section ===== */
+.sectionTitle {
+    margin-bottom: 1.5rem;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 3rem;
+        margin-top: 1rem;
+        border-bottom: 1px solid $border-title;
+    }
+}
+
+/* ===== Carte profil ===== */
+.profil {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $border;
+    background: $stripe;
+    padding: 1.5rem 1.5rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    min-height: 188px;
+}
+
+.profilCircle {
+    position: absolute;
+    width: 364px;
+    height: 364px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    z-index: 0;
+
+    &:first-of-type {
+        top: -110px;
+        left: -60px;
+    }
+    &:last-of-type {
+        bottom: -220px;
+        right: -180px;
+        background-color: $cta2;
+    }
+}
+
+.profilAvatar {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.profilTexte {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+/* ===== Carte TACCToscope ===== */
+.tacctoscope {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $border;
+    background: $stripe;
+    padding: 2rem;
+}
+
+.tacctoscopeCircle {
+    position: absolute;
+    width: 412px;
+    height: 412px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    top: -1px;
+    left: 15%;
+    z-index: 0;
+}
+
+.tacctoscopeContenu {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}
+
+.tacctoscopeTexte {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tacctoscopeIllustration {
+    flex-shrink: 0;
+    width: 180px;
+    height: auto;
+}
+
+.blocTitre {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.boutonsGroupe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* ===== Progression ===== */
+.progression {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 456px;
+}
+
+.progressionBarre {
+    height: 8px;
+    border-radius: 100px;
+    background-color: $cta2;
+    overflow: hidden;
+}
+
+.progressionJauge {
+    height: 100%;
+    border-radius: 100px;
+    background-color: $teal;
+}
+
+/* ===== Carte ancien espace TACCT ===== */
+.ancienEspace {
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 2rem;
+    display: flex;
+    gap: 6rem;
+    align-items: flex-start;
+    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.ancienEspaceTexte {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.ancienEspaceImage {
+    flex-shrink: 0;
+    width: 166px;
+    display: flex;
+    justify-content: center;
+
+    img {
+        width: 244px;
+        max-width: none;
+        height: auto;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        justify-content: flex-start;
+
+        img {
+            width: 100%;
+            max-width: 244px;
+        }
+    }
+}
+
+/* ===== Communauté ===== */
+.communaute {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.carteCommunaute {
+    border: 1px solid $border;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.carteRejoindre {
+    background-color: $cta2;
+    padding: 2rem 4rem 3rem;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem 1.5rem;
+    }
+}
+
+.carteSession {
+    background-color: #ffffff;
+    padding: 2rem 2rem 0;
+    gap: 2.5rem;
+    justify-content: center;
+}
+
+.carteCommunauteEntete {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+}
+
+.avantages {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.avantage {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    text-align: left;
+}
+
+.avantageIcone {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background-color: $tag-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sessionIllustration {
+    // height: 176px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ===== Suggestions ===== */
+.suggestions {
+    background-color: $gray-light;
+    border: 1px solid $border;
+    border-radius: 4px;
+    padding: 1.5rem 2rem;
+    min-height: 84px;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}
+
+.suggestionsTexte {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* ===== Haut de page ===== */
+.hautDePage {
+    display: flex;
+    justify-content: center;
+}
+
+.hautDePageBouton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border: none;
+    background: none;
+    border-radius: 100px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $cta2;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
+}
