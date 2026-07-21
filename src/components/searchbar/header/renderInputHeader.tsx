@@ -4,18 +4,16 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
   const {
     params,
     className,
-    typeTerritoire,
     setInputValue,
     setSearchCode,
     setSearchLibelle,
   } = props;
   return (
-    <div ref={params.InputProps.ref}>
+    <div ref={params.InputProps.ref} style={{ minWidth: 0 }}>
       <input
         {...params.inputProps}
         className={cx(params.inputProps.className, className)}
-        placeholder={'Sélectionnez votre territoire'}
-        disabled={!typeTerritoire}
+        placeholder={'Saisissez votre territoire'}
         style={{
           borderRadius: '30px',
           padding: '0 2rem 0 0.75rem',
@@ -25,7 +23,8 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
           fontWeight: 400,
           color: '#000000',
           maxHeight: "none",
-          cursor: "pointer"
+          cursor: "pointer",
+          minWidth: 0
         }}
       />
       {params.InputProps.endAdornment && (

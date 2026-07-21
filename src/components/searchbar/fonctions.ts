@@ -1,3 +1,4 @@
+"use client";
 import { eptRegex } from '@/lib/utils/regex';
 import { useRouter } from 'next/navigation';
 
@@ -13,6 +14,70 @@ export const ReplaceSearchEpci = (libelleEpci: string) => {
     .replace('CA ', "Communauté d'agglomération ")
     .replace('CC ', 'Communauté de communes ')
     .replace('CU ', 'Communauté urbaine ');
+};
+
+export const libellesTypeTerritoire: Record<TerritoireType, string> = {
+  epci: 'Intercommunalité',
+  commune: 'Commune',
+  petr: 'PETR',
+  pnr: 'PNR',
+  departement: 'Département'
+};
+
+export const getLibelleTypeTerritoire = (option: {
+  territoireType: TerritoireType;
+  searchLibelle: string;
+}) => {
+  if (option.territoireType === 'epci' && eptRegex.test(option.searchLibelle)) {
+    return 'EPT';
+  }
+  return libellesTypeTerritoire[option.territoireType];
+};
+
+export const getLibelleTerritoireAvecCode = (option: {
+  territoireType: TerritoireType;
+  searchLibelle: string;
+  searchCode: string;
+}) => {
+  return option.territoireType === 'commune' && option.searchCode.length !== 0
+    ? `${ReplaceDisplayEpci(option.searchLibelle)} (${option.searchCode})`
+    : ReplaceDisplayEpci(option.searchLibelle);
+};
+
+const ordreTypeTerritoire: Record<TerritoireType, number> = {
+  commune: 0,
+  epci: 1,
+  pnr: 2,
+  petr: 3,
+  departement: 4
+};
+
+/** Dédoublonne puis trie : correspondance exacte, puis type, puis alphabétique. */
+export const preparerOptionsTerritoires = (
+  options: SearchInputOptionsSansFiltre[],
+  inputValue: string
+): SearchInputOptionsSansFiltre[] => {
+  const sansDoublon = options.filter(
+    (value, index, self) =>
+      index ===
+      self.findIndex(
+        (t) =>
+          t.searchLibelle === value.searchLibelle &&
+          t.searchCode === value.searchCode
+      )
+  );
+  const inputNormalise = inputValue.trim().toLowerCase();
+
+  return sansDoublon.toSorted((a, b) => {
+    const aExact = a.searchLibelle.toLowerCase() === inputNormalise;
+    const bExact = b.searchLibelle.toLowerCase() === inputNormalise;
+    if (aExact !== bExact) return aExact ? -1 : 1;
+    const ordreType =
+      ordreTypeTerritoire[a.territoireType] -
+      ordreTypeTerritoire[b.territoireType];
+    if (ordreType !== 0) return ordreType;
+    return a.searchLibelle.localeCompare(b.searchLibelle);
+  });
 };
 
 export const handleRechercheRedirection = ({
@@ -33,7 +98,10 @@ export const handleRechercheRedirection = ({
     const territoryData = {
       code: searchCode,
       libelle: searchLibelle,
-      type: typeTerritoire
+      type:
+        typeTerritoire === 'epci' && eptRegex.test(searchLibelle)
+          ? 'ept'
+          : typeTerritoire
     };
     sessionStorage.setItem(
       'dernierTerritoireRecherché',
