@@ -1,20 +1,14 @@
 "use client";
-import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
-import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
-import { allRadioOptions } from "@/components/searchbar/radioButtons";
+import { BarreDeRechercheSansFiltre } from "@/components/searchbar/BarreDeRechercheSansFiltre";
+import { getLastTerritory } from "@/components/searchbar/fonctions";
 import { Loader } from "@/components/ui/loader";
-import { H1 } from "@/design-system/base/Textes";
+import { Body, H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const RechercherSonTerritoire = () => {
   const router = useRouter();
-  const [searchCode, setSearchCode] = useState<string>('');
-  const [searchLibelle, setSearchLibelle] = useState<string>('');
-  const [typeTerritoire, setTypeTerritoire] = useState<
-    'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
-  >('epci');
   const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
@@ -31,18 +25,6 @@ const RechercherSonTerritoire = () => {
       setIsChecking(false);
     }
   }, [router]);
-  const handleRechercher = () => handleRechercheRedirection({
-    searchCode,
-    searchLibelle,
-    typeTerritoire,
-    router,
-    page: "patch4c"
-  });
-  const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
-    setTypeTerritoire(territoire);
-    setSearchLibelle('');
-  };
-  const radioButtonsOptions = [allRadioOptions(typeTerritoire, handleRadioChange)];
 
   if (isChecking) {
     return <div style={{ display: "flex", justifyContent: "center" }}><Loader /></div>;
@@ -50,7 +32,7 @@ const RechercherSonTerritoire = () => {
 
   return (
     <NewContainer size="md">
-      <div style={{ margin: '5rem 0' }}>
+      <div style={{ margin: '5rem 0', padding: '0 1rem' }}>
         <H1
           style={{
             textAlign: 'center',
@@ -60,15 +42,15 @@ const RechercherSonTerritoire = () => {
           }}>
           Commençons par localiser votre territoire pour personnaliser vos données
         </H1>
-        <BarreDeRecherche
-          setSearchCode={setSearchCode}
-          setSearchLibelle={setSearchLibelle}
-          RechercherRedirection={handleRechercher}
-          typeTerritoire={typeTerritoire}
-          searchCode={searchCode}
-          searchLibelle={searchLibelle}
-          radioOptions={radioButtonsOptions}
-        />
+        <Body
+          size="lg"
+          style={{ textAlign: 'center', color: '#666666' }}
+        >
+          Recherchez parmi les communes, EPCI, EPT, PNR, PETR et départements
+        </Body>
+        <div style={{ marginTop: '2.5rem' }}>
+          <BarreDeRechercheSansFiltre page="patch4c" />
+        </div>
       </div>
     </NewContainer>
   );
