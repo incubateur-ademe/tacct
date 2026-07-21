@@ -73,8 +73,9 @@ export const TacctoscopeCard = ({
                 : 'Vous révisez un diagnostic de vulnérabilité ? Ne repartez pas de zéro ! Notre outil interactif vous guide pour un retravail ciblé et méthodique.'}
             </Body>
           </div>
+          {/* TODO MIGRATION */}
 
-          {hasAnswers && (
+          {/* {hasAnswers && (
             <div className={styles.progression}>
               <Body weight="medium" color="#038278">
                 {libelle}
@@ -93,8 +94,7 @@ export const TacctoscopeCard = ({
                 />
               </div>
             </div>
-          )}
-          {/* TODO MIGRATION */}
+          )} */}
           {/* <div className={styles.boutonsGroupe}>
             <BoutonPrimaireClassic
               size="md"
