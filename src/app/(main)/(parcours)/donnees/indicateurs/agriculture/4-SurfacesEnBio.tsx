@@ -75,11 +75,12 @@ export const SurfacesEnBio = (props: {
             {agricultureBio.length ?
               <>
                 {
-                  (type === "departement" || type === "pnr" || type === "epci" || type === "petr") ? (
+                  (type === "departement" || type === "pnr" || type === "epci" || type === "petr" || type === "ept") ? (
                     <>
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                         Sur votre territoire, {numberWithSpacesRegex(nombreExploitations)} exploitations sont en
                         agriculture biologique ou en conversion ({Round(surfaceAgriBio, 0)} hectares).
+                        {type === "ept" && " (Attention, cette donnée n'existe qu'à l'échelle de la Métropole du Grand Paris, dont dépend votre EPT.)"}
                       </Body>
                       {
                         territoiresPartiellementCouverts && (

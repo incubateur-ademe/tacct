@@ -4,7 +4,7 @@ import { GetAllTerritoires } from '@/lib/queries/searchBar';
 import Autocomplete from '@mui/material/Autocomplete';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { getLibelleTerritoireAvecCode, handleChangementTerritoireRedirection, ReplaceSearchEpci } from '../fonctions';
+import { getLibelleTerritoireAvecCode, handleChangementTerritoireRedirection, preparerOptionsTerritoires, ReplaceSearchEpci } from '../fonctions';
 import { RenderOptionSansFiltre } from '../renderOptionSansFiltre';
 import { RenderInputHeader } from './renderInputHeader';
 
@@ -52,18 +52,7 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       setInputValue('');
     }
   }, [searchLibelle, searchCode, typeTerritoire]);
-  const filteredCollectivite = options.filter(
-    (value, index, self) =>
-      index ===
-      self.findIndex(
-        (t) =>
-          t.searchLibelle === value.searchLibelle &&
-          t.searchCode === value.searchCode
-      )
-  );
-  const collectivites = filteredCollectivite.toSorted((a, b) =>
-    a.searchLibelle.localeCompare(b.searchLibelle)
-  );
+  const collectivites = preparerOptionsTerritoires(options, inputValue);
 
   const fetchTerritoires = async (value: string) => {
     const result = await GetAllTerritoires(value);

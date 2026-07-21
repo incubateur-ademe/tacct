@@ -218,7 +218,7 @@ export const GetCommunesCoordinates = async (
             ST_XMax(ST_Extent(geometry)) as maxLng,
             ST_YMax(ST_Extent(geometry)) as maxLat
           FROM postgis_v2."communes_drom"
-          WHERE epci='200054781'
+          WHERE ept IS NOT NULL AND ept = ${libelle}
         `;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
         result = await prisma.$queryRaw<
@@ -536,7 +536,7 @@ export const GetCommunesContours = async (
             ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
           ) as geometry
           FROM postgis_v2."communes_drom"
-          WHERE epci='200054781'
+          WHERE ept IS NOT NULL AND ept = ${libelle}
         `;
       } else if (type === 'epci' && !eptRegex.test(libelle)) {
         result = await prisma.$queryRaw<Array<{ geometry: string }>>`

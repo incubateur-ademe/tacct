@@ -98,12 +98,13 @@ export const TypesDeCulture = (props: {
                           la surface agricole utile. (Attention, ces détails sur les types de cultures sont ceux de votre EPCI).
                         </Body>
                       </>
-                    ) : (type === "epci" || type === "petr") && maxCategory.count !== null && Number(sau) !== 0 ? (
+                    ) : (type === "epci" || type === "petr" || type === "ept") && maxCategory.count !== null && Number(sau) !== 0 ? (
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                         Sur votre territoire, le type de surface prédominant est constitué de {maxCategory.id.toLowerCase()},
                         couvrant <b>{numberWithSpacesRegex(maxCategory.count)} hectares</b>, ce qui
                         représente <b>{Round((maxCategory.count / sau!) * 100, 1)} %</b> de
                         la surface agricole utile.
+                        {type === "ept" && " (Attention, cette donnée n'existe qu'à l'échelle de la Métropole du Grand Paris, dont dépend votre EPT.)"}
                       </Body>
                     )
                       : null

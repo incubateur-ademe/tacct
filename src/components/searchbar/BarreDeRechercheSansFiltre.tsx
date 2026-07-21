@@ -7,7 +7,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '../components.module.scss';
-import { getLibelleTerritoireAvecCode, handleRechercheRedirection, ReplaceSearchEpci } from './fonctions';
+import { getLibelleTerritoireAvecCode, handleRechercheRedirection, preparerOptionsTerritoires, ReplaceSearchEpci } from './fonctions';
 import { RenderOptionSansFiltre } from './renderOptionSansFiltre';
 
 export const BarreDeRechercheSansFiltre = ({
@@ -22,33 +22,7 @@ export const BarreDeRechercheSansFiltre = ({
   const [selectedTerritoire, setSelectedTerritoire] = useState<SearchInputOptionsSansFiltre | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  const filteredTerritoires = options.filter(
-    (value, index, self) =>
-      index ===
-      self.findIndex(
-        (t) =>
-          t.searchLibelle === value.searchLibelle &&
-          t.searchCode === value.searchCode
-      )
-  );
-  const ordreTypeTerritoire: Record<TerritoireType, number> = {
-    commune: 0,
-    epci: 1,
-    pnr: 2,
-    petr: 3,
-    departement: 4
-  };
-  const inputNormalise = inputValue.trim().toLowerCase();
-  const territoires = filteredTerritoires.toSorted((a, b) => {
-    const aExact = a.searchLibelle.toLowerCase() === inputNormalise;
-    const bExact = b.searchLibelle.toLowerCase() === inputNormalise;
-    if (aExact !== bExact) return aExact ? -1 : 1;
-    const ordreType =
-      ordreTypeTerritoire[a.territoireType] -
-      ordreTypeTerritoire[b.territoireType];
-    if (ordreType !== 0) return ordreType;
-    return a.searchLibelle.localeCompare(b.searchLibelle);
-  });
+  const territoires = preparerOptionsTerritoires(options, inputValue);
 
   const fetchTerritoires = async (value: string) => {
     setIsLoading(true);
