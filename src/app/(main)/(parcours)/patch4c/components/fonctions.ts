@@ -27,7 +27,7 @@ export const patch4Indices = (patch4: Patch4) => [
       'Inconfort thermique'
     ],
     themesSansAggravation: null,
-        themesSansAggravationEpciCommunes: null,
+    themesSansAggravationEpciCommunes: null,
     actions: [
       {
         title:
@@ -38,6 +38,11 @@ export const patch4Indices = (patch4: Patch4) => [
       {
         title: 'Plus fraîche ma ville',
         link: 'https://plusfraichemaville.fr/fiche-solution',
+        image: null
+      },
+      {
+        titre: 'Plus frais au travail',
+        link: 'https://plusfraisautravail.beta.gouv.fr/',
         image: null
       }
     ]
