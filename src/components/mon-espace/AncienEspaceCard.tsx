@@ -6,7 +6,7 @@ import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { Body, H3 } from '@/design-system/base/Textes';
 import Image from 'next/image';
 
-export const AncienEspaceCard = () => (
+export const AncienEspaceCard = ({ validated }: { validated: boolean }) => (
   <div className={styles.ancienEspace}>
     <div className={styles.ancienEspaceTexte}>
       <H3
@@ -18,20 +18,34 @@ export const AncienEspaceCard = () => (
           margin: 0
         }}
       >
-        Votre ancien espace TACCT
+        {validated ? 'Votre ancien espace TACCT' : 'Le service TACCT'}
       </H3>
       <Body color="#3d3d3d">
-        Retrouvez ici l’outil de saisie des données du territoire dans le cadre
-        de votre démarche TACCT.
+        {validated
+          ? 'Retrouvez ici l’outil de saisie des données du territoire dans le cadre de votre démarche TACCT.'
+          : 'Commencez votre démarche d’adaptation à votre rythme'}
       </Body>
-      <BoutonSecondaireClassic
-        size="md"
-        link="/workspace-tacct"
-        text="Accéder à ma saisie  🡢"
-      />
+      {validated ? (
+        <BoutonSecondaireClassic
+          size="md"
+          link="/workspace-tacct"
+          rel="noopener noreferrer"
+          text="Accéder à ma saisie  🡢"
+        />
+      ) : (
+        <BoutonSecondaireClassic
+          size="md"
+          link="https://tally.so/r/n0LrEZ"
+          rel="noopener noreferrer"
+          text="M’inscrire à une session d’accueil  🡢"
+        />
+      )}
     </div>
-    <div className={styles.ancienEspaceImage}>
-      <Image src={captureTacct} alt="" width={244} height={137} />
-    </div>
+    {
+      validated &&
+      <div className={styles.ancienEspaceImage}>
+        <Image src={captureTacct} alt="" width={244} height={137} />
+      </div>
+    }
   </div>
 );

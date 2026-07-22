@@ -92,6 +92,40 @@ for (const [libelle, clause, valeur] of strategies) {
             created_at: r.created_at,
             updated_at: r.updated_at
         });
+
+        // Études associées via la table de jointure user_study (non chiffrées)
+        const { rows: etudes } = await pool.query(
+            `SELECT s.id, s.territory_name, s.year, s.commune_id,
+                    s.observed_exposure_valid, s.sensibility_valid,
+                    s.exposition_future_valid, s.strategy_construction_valid,
+                    us.head_study, s.created_at, s.updated_at
+             FROM tacct.user_study us
+             JOIN tacct.study s ON s.id = us.study_id
+             WHERE us.user_id = $1
+             ORDER BY s.created_at`,
+            [r.id]
+        );
+
+        if (etudes.length === 0) {
+            console.log('\nAucune étude associée.');
+        } else {
+            console.log(`\n${etudes.length} étude(s) associée(s) :`);
+            for (const e of etudes) {
+                console.log({
+                    id: e.id,
+                    territory_name: e.territory_name,
+                    year: Number(e.year),
+                    commune_id: e.commune_id,
+                    head_study: e.head_study,
+                    observed_exposure_valid: e.observed_exposure_valid,
+                    sensibility_valid: e.sensibility_valid,
+                    exposition_future_valid: e.exposition_future_valid,
+                    strategy_construction_valid: e.strategy_construction_valid,
+                    created_at: e.created_at,
+                    updated_at: e.updated_at
+                });
+            }
+        }
     }
     break;
 }

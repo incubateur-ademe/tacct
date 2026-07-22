@@ -82,7 +82,7 @@ const MonEspace = async () => {
                 started={started}
                 total={CRITERIA.length}
               />
-              {user.validated && <AncienEspaceCard />}
+              <AncienEspaceCard validated={user.validated} />
             </div>
           </section>
 
