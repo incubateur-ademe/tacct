@@ -41,7 +41,7 @@ export const patch4Indices = (patch4: Patch4) => [
         image: null
       },
       {
-        titre: 'Plus frais au travail',
+        title: 'Plus frais au travail',
         link: 'https://plusfraisautravail.beta.gouv.fr/',
         image: null
       }
