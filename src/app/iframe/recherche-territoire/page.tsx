@@ -68,7 +68,7 @@ const RechercherSonTerritoire = () => {
           size="lg"
           style={{ textAlign: 'center', color: '#666666' }}
         >
-          Saisir une communes, un EPCI/EPT, un PNR, un PETR ou un département
+          Saisir une commune, un EPCI/EPT, un PNR, un PETR ou un département
         </Body>
         <BarreDeRecherche
           setSearchCode={setSearchCode}
