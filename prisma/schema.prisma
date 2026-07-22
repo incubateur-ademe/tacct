@@ -1280,16 +1280,14 @@ model command_process {
 }
 
 model commune {
-  id                              String                            @id(map: "idx_16410_primary") @db.VarChar(255)
-  department_id                   String?                           @db.VarChar(255)
-  label                           String                            @db.VarChar(255)
-  postal_code                     String?                           @db.VarChar(255)
-  department                      department?                       @relation(fields: [department_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e2e2d1eeae80f5df")
-  natural_disaster                natural_disaster[]
-  natural_disaster_search_commune natural_disaster_search_commune[]
-  study                           study[]
-  study_office                    study_office[]
-  user                            user[]
+  id            String         @id(map: "idx_16410_primary") @db.VarChar(255)
+  department_id String?        @db.VarChar(255)
+  label         String         @db.VarChar(255)
+  postal_code   String?        @db.VarChar(255)
+  department    department?    @relation(fields: [department_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e2e2d1eeae80f5df")
+  study         study[]
+  study_office  study_office[]
+  user          user[]
 
   @@index([department_id], map: "idx_16410_idx_e2e2d1eeae80f5df")
   @@schema("tacct")
@@ -1608,51 +1606,6 @@ model messenger_messages {
   @@schema("tacct")
 }
 
-model natural_disaster {
-  id                String   @id(map: "idx_16509_primary") @db.VarChar(255)
-  commune_id        String?  @db.VarChar(255)
-  risk_number       BigInt
-  risk_label        String   @db.VarChar(255)
-  tacct_risk_number BigInt?
-  tacct_risk_label  String?  @db.VarChar(255)
-  start_date        DateTime @db.Date
-  end_date          DateTime @db.Date
-  season            String   @db.VarChar(255)
-  created_at        DateTime @db.Timestamptz(6)
-  updated_at        DateTime @db.Timestamptz(6)
-  commune           commune? @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8a26a798131a4f72")
-
-  @@index([commune_id], map: "idx_16509_idx_8a26a798131a4f72")
-  @@schema("tacct")
-}
-
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-model natural_disaster_search {
-  id                              String                            @id(map: "idx_16514_primary") @db.Char(36)
-  study_id                        String                            @unique(map: "idx_16514_uniq_5998a9d2e7b003e9") @db.Char(36)
-  start_year                      BigInt?
-  end_year                        BigInt?
-  created_at                      DateTime                          @db.Timestamptz(6)
-  updated_at                      DateTime                          @db.Timestamptz(6)
-  study                           study                             @relation(fields: [study_id], references: [id], onUpdate: Restrict, map: "fk_5998a9d2e7b003e9")
-  natural_disaster_search_commune natural_disaster_search_commune[]
-
-  @@schema("tacct")
-}
-
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
-model natural_disaster_search_commune {
-  natural_disaster_search_id String                  @db.Char(36)
-  commune_id                 String                  @db.VarChar(255)
-  commune                    commune                 @relation(fields: [commune_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_c497eedb131a4f72")
-  natural_disaster_search    natural_disaster_search @relation(fields: [natural_disaster_search_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_c497eedb695d38e1")
-
-  @@id([natural_disaster_search_id, commune_id], map: "idx_16517_primary")
-  @@index([commune_id], map: "idx_16517_idx_c497eedb131a4f72")
-  @@index([natural_disaster_search_id], map: "idx_16517_idx_c497eedb695d38e1")
-  @@schema("tacct")
-}
-
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model observed_exposure {
   id                       String                     @id(map: "idx_16520_primary") @db.Char(36)
@@ -1810,20 +1763,19 @@ model skill_territory {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model study {
-  id                          String                   @id(map: "idx_16565_primary") @db.Char(36)
-  commune_id                  String?                  @db.VarChar(255)
+  id                          String              @id(map: "idx_16565_primary") @db.Char(36)
+  commune_id                  String?             @db.VarChar(255)
   year                        BigInt
-  territory_name              String                   @db.VarChar(255)
-  observed_exposure_valid     String                   @default("in-progress") @db.VarChar(255)
-  sensibility_valid           String                   @default("in-progress") @db.VarChar(255)
-  exposition_future_valid     String                   @default("in-progress") @db.VarChar(255)
-  created_at                  DateTime                 @db.Timestamptz(6)
-  updated_at                  DateTime                 @db.Timestamptz(6)
-  strategy_construction_valid String                   @default("incomplete") @db.VarChar(255)
+  territory_name              String              @db.VarChar(255)
+  observed_exposure_valid     String              @default("in-progress") @db.VarChar(255)
+  sensibility_valid           String              @default("in-progress") @db.VarChar(255)
+  exposition_future_valid     String              @default("in-progress") @db.VarChar(255)
+  created_at                  DateTime            @db.Timestamptz(6)
+  updated_at                  DateTime            @db.Timestamptz(6)
+  strategy_construction_valid String              @default("incomplete") @db.VarChar(255)
   impact_theme                impact_theme[]
-  natural_disaster_search     natural_disaster_search?
   observed_exposure           observed_exposure[]
-  commune                     commune?                 @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e67f9749131a4f72")
+  commune                     commune?            @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_e67f9749131a4f72")
   user_study                  user_study[]
 
   @@index([commune_id], map: "idx_16565_idx_e67f9749131a4f72")

@@ -175,8 +175,6 @@ export type communeWhereInput = {
   label?: Prisma.StringFilter<"commune"> | string
   postal_code?: Prisma.StringNullableFilter<"commune"> | string | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.departmentWhereInput> | null
-  natural_disaster?: Prisma.Natural_disasterListRelationFilter
-  natural_disaster_search_commune?: Prisma.Natural_disaster_search_communeListRelationFilter
   study?: Prisma.StudyListRelationFilter
   study_office?: Prisma.Study_officeListRelationFilter
   user?: Prisma.UserListRelationFilter
@@ -188,8 +186,6 @@ export type communeOrderByWithRelationInput = {
   label?: Prisma.SortOrder
   postal_code?: Prisma.SortOrderInput | Prisma.SortOrder
   department?: Prisma.departmentOrderByWithRelationInput
-  natural_disaster?: Prisma.natural_disasterOrderByRelationAggregateInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeOrderByRelationAggregateInput
   study?: Prisma.studyOrderByRelationAggregateInput
   study_office?: Prisma.study_officeOrderByRelationAggregateInput
   user?: Prisma.userOrderByRelationAggregateInput
@@ -204,8 +200,6 @@ export type communeWhereUniqueInput = Prisma.AtLeast<{
   label?: Prisma.StringFilter<"commune"> | string
   postal_code?: Prisma.StringNullableFilter<"commune"> | string | null
   department?: Prisma.XOR<Prisma.DepartmentNullableScalarRelationFilter, Prisma.departmentWhereInput> | null
-  natural_disaster?: Prisma.Natural_disasterListRelationFilter
-  natural_disaster_search_commune?: Prisma.Natural_disaster_search_communeListRelationFilter
   study?: Prisma.StudyListRelationFilter
   study_office?: Prisma.Study_officeListRelationFilter
   user?: Prisma.UserListRelationFilter
@@ -236,8 +230,6 @@ export type communeCreateInput = {
   label: string
   postal_code?: string | null
   department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
   user?: Prisma.userCreateNestedManyWithoutCommuneInput
@@ -248,8 +240,6 @@ export type communeUncheckedCreateInput = {
   department_id?: string | null
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
   user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
@@ -260,8 +250,6 @@ export type communeUpdateInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUpdateManyWithoutCommuneNestedInput
@@ -272,8 +260,6 @@ export type communeUncheckedUpdateInput = {
   department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
@@ -335,11 +321,6 @@ export type CommuneNullableScalarRelationFilter = {
   isNot?: Prisma.communeWhereInput | null
 }
 
-export type CommuneScalarRelationFilter = {
-  is?: Prisma.communeWhereInput
-  isNot?: Prisma.communeWhereInput
-}
-
 export type communeCreateNestedManyWithoutDepartmentInput = {
   create?: Prisma.XOR<Prisma.communeCreateWithoutDepartmentInput, Prisma.communeUncheckedCreateWithoutDepartmentInput> | Prisma.communeCreateWithoutDepartmentInput[] | Prisma.communeUncheckedCreateWithoutDepartmentInput[]
   connectOrCreate?: Prisma.communeCreateOrConnectWithoutDepartmentInput | Prisma.communeCreateOrConnectWithoutDepartmentInput[]
@@ -380,36 +361,6 @@ export type communeUncheckedUpdateManyWithoutDepartmentNestedInput = {
   update?: Prisma.communeUpdateWithWhereUniqueWithoutDepartmentInput | Prisma.communeUpdateWithWhereUniqueWithoutDepartmentInput[]
   updateMany?: Prisma.communeUpdateManyWithWhereWithoutDepartmentInput | Prisma.communeUpdateManyWithWhereWithoutDepartmentInput[]
   deleteMany?: Prisma.communeScalarWhereInput | Prisma.communeScalarWhereInput[]
-}
-
-export type communeCreateNestedOneWithoutNatural_disasterInput = {
-  create?: Prisma.XOR<Prisma.communeCreateWithoutNatural_disasterInput, Prisma.communeUncheckedCreateWithoutNatural_disasterInput>
-  connectOrCreate?: Prisma.communeCreateOrConnectWithoutNatural_disasterInput
-  connect?: Prisma.communeWhereUniqueInput
-}
-
-export type communeUpdateOneWithoutNatural_disasterNestedInput = {
-  create?: Prisma.XOR<Prisma.communeCreateWithoutNatural_disasterInput, Prisma.communeUncheckedCreateWithoutNatural_disasterInput>
-  connectOrCreate?: Prisma.communeCreateOrConnectWithoutNatural_disasterInput
-  upsert?: Prisma.communeUpsertWithoutNatural_disasterInput
-  disconnect?: Prisma.communeWhereInput | boolean
-  delete?: Prisma.communeWhereInput | boolean
-  connect?: Prisma.communeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.communeUpdateToOneWithWhereWithoutNatural_disasterInput, Prisma.communeUpdateWithoutNatural_disasterInput>, Prisma.communeUncheckedUpdateWithoutNatural_disasterInput>
-}
-
-export type communeCreateNestedOneWithoutNatural_disaster_search_communeInput = {
-  create?: Prisma.XOR<Prisma.communeCreateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedCreateWithoutNatural_disaster_search_communeInput>
-  connectOrCreate?: Prisma.communeCreateOrConnectWithoutNatural_disaster_search_communeInput
-  connect?: Prisma.communeWhereUniqueInput
-}
-
-export type communeUpdateOneRequiredWithoutNatural_disaster_search_communeNestedInput = {
-  create?: Prisma.XOR<Prisma.communeCreateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedCreateWithoutNatural_disaster_search_communeInput>
-  connectOrCreate?: Prisma.communeCreateOrConnectWithoutNatural_disaster_search_communeInput
-  upsert?: Prisma.communeUpsertWithoutNatural_disaster_search_communeInput
-  connect?: Prisma.communeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.communeUpdateToOneWithWhereWithoutNatural_disaster_search_communeInput, Prisma.communeUpdateWithoutNatural_disaster_search_communeInput>, Prisma.communeUncheckedUpdateWithoutNatural_disaster_search_communeInput>
 }
 
 export type communeCreateNestedOneWithoutStudyInput = {
@@ -464,8 +415,6 @@ export type communeCreateWithoutDepartmentInput = {
   id: string
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
   user?: Prisma.userCreateNestedManyWithoutCommuneInput
@@ -475,8 +424,6 @@ export type communeUncheckedCreateWithoutDepartmentInput = {
   id: string
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
   user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
@@ -518,133 +465,11 @@ export type communeScalarWhereInput = {
   postal_code?: Prisma.StringNullableFilter<"commune"> | string | null
 }
 
-export type communeCreateWithoutNatural_disasterInput = {
-  id: string
-  label: string
-  postal_code?: string | null
-  department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
-  study?: Prisma.studyCreateNestedManyWithoutCommuneInput
-  study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
-  user?: Prisma.userCreateNestedManyWithoutCommuneInput
-}
-
-export type communeUncheckedCreateWithoutNatural_disasterInput = {
-  id: string
-  department_id?: string | null
-  label: string
-  postal_code?: string | null
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
-  study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
-  study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
-  user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
-}
-
-export type communeCreateOrConnectWithoutNatural_disasterInput = {
-  where: Prisma.communeWhereUniqueInput
-  create: Prisma.XOR<Prisma.communeCreateWithoutNatural_disasterInput, Prisma.communeUncheckedCreateWithoutNatural_disasterInput>
-}
-
-export type communeUpsertWithoutNatural_disasterInput = {
-  update: Prisma.XOR<Prisma.communeUpdateWithoutNatural_disasterInput, Prisma.communeUncheckedUpdateWithoutNatural_disasterInput>
-  create: Prisma.XOR<Prisma.communeCreateWithoutNatural_disasterInput, Prisma.communeUncheckedCreateWithoutNatural_disasterInput>
-  where?: Prisma.communeWhereInput
-}
-
-export type communeUpdateToOneWithWhereWithoutNatural_disasterInput = {
-  where?: Prisma.communeWhereInput
-  data: Prisma.XOR<Prisma.communeUpdateWithoutNatural_disasterInput, Prisma.communeUncheckedUpdateWithoutNatural_disasterInput>
-}
-
-export type communeUpdateWithoutNatural_disasterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
-  study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
-  study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
-  user?: Prisma.userUpdateManyWithoutCommuneNestedInput
-}
-
-export type communeUncheckedUpdateWithoutNatural_disasterInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
-  study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
-  study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
-  user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
-}
-
-export type communeCreateWithoutNatural_disaster_search_communeInput = {
-  id: string
-  label: string
-  postal_code?: string | null
-  department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  study?: Prisma.studyCreateNestedManyWithoutCommuneInput
-  study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
-  user?: Prisma.userCreateNestedManyWithoutCommuneInput
-}
-
-export type communeUncheckedCreateWithoutNatural_disaster_search_communeInput = {
-  id: string
-  department_id?: string | null
-  label: string
-  postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
-  study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
-  user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
-}
-
-export type communeCreateOrConnectWithoutNatural_disaster_search_communeInput = {
-  where: Prisma.communeWhereUniqueInput
-  create: Prisma.XOR<Prisma.communeCreateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedCreateWithoutNatural_disaster_search_communeInput>
-}
-
-export type communeUpsertWithoutNatural_disaster_search_communeInput = {
-  update: Prisma.XOR<Prisma.communeUpdateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedUpdateWithoutNatural_disaster_search_communeInput>
-  create: Prisma.XOR<Prisma.communeCreateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedCreateWithoutNatural_disaster_search_communeInput>
-  where?: Prisma.communeWhereInput
-}
-
-export type communeUpdateToOneWithWhereWithoutNatural_disaster_search_communeInput = {
-  where?: Prisma.communeWhereInput
-  data: Prisma.XOR<Prisma.communeUpdateWithoutNatural_disaster_search_communeInput, Prisma.communeUncheckedUpdateWithoutNatural_disaster_search_communeInput>
-}
-
-export type communeUpdateWithoutNatural_disaster_search_communeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
-  study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
-  user?: Prisma.userUpdateManyWithoutCommuneNestedInput
-}
-
-export type communeUncheckedUpdateWithoutNatural_disaster_search_communeInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  label?: Prisma.StringFieldUpdateOperationsInput | string
-  postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
-  study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
-  user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
-}
-
 export type communeCreateWithoutStudyInput = {
   id: string
   label: string
   postal_code?: string | null
   department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
   user?: Prisma.userCreateNestedManyWithoutCommuneInput
 }
@@ -654,8 +479,6 @@ export type communeUncheckedCreateWithoutStudyInput = {
   department_id?: string | null
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
   user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
 }
@@ -681,8 +504,6 @@ export type communeUpdateWithoutStudyInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUpdateManyWithoutCommuneNestedInput
 }
@@ -692,8 +513,6 @@ export type communeUncheckedUpdateWithoutStudyInput = {
   department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
 }
@@ -703,8 +522,6 @@ export type communeCreateWithoutStudy_officeInput = {
   label: string
   postal_code?: string | null
   department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyCreateNestedManyWithoutCommuneInput
   user?: Prisma.userCreateNestedManyWithoutCommuneInput
 }
@@ -714,8 +531,6 @@ export type communeUncheckedCreateWithoutStudy_officeInput = {
   department_id?: string | null
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
   user?: Prisma.userUncheckedCreateNestedManyWithoutCommuneInput
 }
@@ -741,8 +556,6 @@ export type communeUpdateWithoutStudy_officeInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUpdateManyWithoutCommuneNestedInput
 }
@@ -752,8 +565,6 @@ export type communeUncheckedUpdateWithoutStudy_officeInput = {
   department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
 }
@@ -763,8 +574,6 @@ export type communeCreateWithoutUserInput = {
   label: string
   postal_code?: string | null
   department?: Prisma.departmentCreateNestedOneWithoutCommuneInput
-  natural_disaster?: Prisma.natural_disasterCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeCreateNestedManyWithoutCommuneInput
 }
@@ -774,8 +583,6 @@ export type communeUncheckedCreateWithoutUserInput = {
   department_id?: string | null
   label: string
   postal_code?: string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedCreateNestedManyWithoutCommuneInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedCreateNestedManyWithoutCommuneInput
   study?: Prisma.studyUncheckedCreateNestedManyWithoutCommuneInput
   study_office?: Prisma.study_officeUncheckedCreateNestedManyWithoutCommuneInput
 }
@@ -801,8 +608,6 @@ export type communeUpdateWithoutUserInput = {
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   department?: Prisma.departmentUpdateOneWithoutCommuneNestedInput
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
 }
@@ -812,8 +617,6 @@ export type communeUncheckedUpdateWithoutUserInput = {
   department_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
 }
@@ -828,8 +631,6 @@ export type communeUpdateWithoutDepartmentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUpdateManyWithoutCommuneNestedInput
@@ -839,8 +640,6 @@ export type communeUncheckedUpdateWithoutDepartmentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   label?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  natural_disaster?: Prisma.natural_disasterUncheckedUpdateManyWithoutCommuneNestedInput
-  natural_disaster_search_commune?: Prisma.natural_disaster_search_communeUncheckedUpdateManyWithoutCommuneNestedInput
   study?: Prisma.studyUncheckedUpdateManyWithoutCommuneNestedInput
   study_office?: Prisma.study_officeUncheckedUpdateManyWithoutCommuneNestedInput
   user?: Prisma.userUncheckedUpdateManyWithoutCommuneNestedInput
@@ -858,16 +657,12 @@ export type communeUncheckedUpdateManyWithoutDepartmentInput = {
  */
 
 export type CommuneCountOutputType = {
-  natural_disaster: number
-  natural_disaster_search_commune: number
   study: number
   study_office: number
   user: number
 }
 
 export type CommuneCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  natural_disaster?: boolean | CommuneCountOutputTypeCountNatural_disasterArgs
-  natural_disaster_search_commune?: boolean | CommuneCountOutputTypeCountNatural_disaster_search_communeArgs
   study?: boolean | CommuneCountOutputTypeCountStudyArgs
   study_office?: boolean | CommuneCountOutputTypeCountStudy_officeArgs
   user?: boolean | CommuneCountOutputTypeCountUserArgs
@@ -881,20 +676,6 @@ export type CommuneCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exte
    * Select specific fields to fetch from the CommuneCountOutputType
    */
   select?: Prisma.CommuneCountOutputTypeSelect<ExtArgs> | null
-}
-
-/**
- * CommuneCountOutputType without action
- */
-export type CommuneCountOutputTypeCountNatural_disasterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.natural_disasterWhereInput
-}
-
-/**
- * CommuneCountOutputType without action
- */
-export type CommuneCountOutputTypeCountNatural_disaster_search_communeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.natural_disaster_search_communeWhereInput
 }
 
 /**
@@ -925,8 +706,6 @@ export type communeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   label?: boolean
   postal_code?: boolean
   department?: boolean | Prisma.commune$departmentArgs<ExtArgs>
-  natural_disaster?: boolean | Prisma.commune$natural_disasterArgs<ExtArgs>
-  natural_disaster_search_commune?: boolean | Prisma.commune$natural_disaster_search_communeArgs<ExtArgs>
   study?: boolean | Prisma.commune$studyArgs<ExtArgs>
   study_office?: boolean | Prisma.commune$study_officeArgs<ExtArgs>
   user?: boolean | Prisma.commune$userArgs<ExtArgs>
@@ -959,8 +738,6 @@ export type communeSelectScalar = {
 export type communeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "department_id" | "label" | "postal_code", ExtArgs["result"]["commune"]>
 export type communeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   department?: boolean | Prisma.commune$departmentArgs<ExtArgs>
-  natural_disaster?: boolean | Prisma.commune$natural_disasterArgs<ExtArgs>
-  natural_disaster_search_commune?: boolean | Prisma.commune$natural_disaster_search_communeArgs<ExtArgs>
   study?: boolean | Prisma.commune$studyArgs<ExtArgs>
   study_office?: boolean | Prisma.commune$study_officeArgs<ExtArgs>
   user?: boolean | Prisma.commune$userArgs<ExtArgs>
@@ -977,8 +754,6 @@ export type $communePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "commune"
   objects: {
     department: Prisma.$departmentPayload<ExtArgs> | null
-    natural_disaster: Prisma.$natural_disasterPayload<ExtArgs>[]
-    natural_disaster_search_commune: Prisma.$natural_disaster_search_communePayload<ExtArgs>[]
     study: Prisma.$studyPayload<ExtArgs>[]
     study_office: Prisma.$study_officePayload<ExtArgs>[]
     user: Prisma.$userPayload<ExtArgs>[]
@@ -1383,8 +1158,6 @@ readonly fields: communeFieldRefs;
 export interface Prisma__communeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   department<T extends Prisma.commune$departmentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$departmentArgs<ExtArgs>>): Prisma.Prisma__departmentClient<runtime.Types.Result.GetResult<Prisma.$departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  natural_disaster<T extends Prisma.commune$natural_disasterArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$natural_disasterArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$natural_disasterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  natural_disaster_search_commune<T extends Prisma.commune$natural_disaster_search_communeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$natural_disaster_search_communeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$natural_disaster_search_communePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   study<T extends Prisma.commune$studyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$studyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   study_office<T extends Prisma.commune$study_officeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$study_officeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$study_officePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.commune$userArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.commune$userArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1833,54 +1606,6 @@ export type commune$departmentArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.departmentInclude<ExtArgs> | null
   where?: Prisma.departmentWhereInput
-}
-
-/**
- * commune.natural_disaster
- */
-export type commune$natural_disasterArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the natural_disaster
-   */
-  select?: Prisma.natural_disasterSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the natural_disaster
-   */
-  omit?: Prisma.natural_disasterOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.natural_disasterInclude<ExtArgs> | null
-  where?: Prisma.natural_disasterWhereInput
-  orderBy?: Prisma.natural_disasterOrderByWithRelationInput | Prisma.natural_disasterOrderByWithRelationInput[]
-  cursor?: Prisma.natural_disasterWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.Natural_disasterScalarFieldEnum | Prisma.Natural_disasterScalarFieldEnum[]
-}
-
-/**
- * commune.natural_disaster_search_commune
- */
-export type commune$natural_disaster_search_communeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the natural_disaster_search_commune
-   */
-  select?: Prisma.natural_disaster_search_communeSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the natural_disaster_search_commune
-   */
-  omit?: Prisma.natural_disaster_search_communeOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.natural_disaster_search_communeInclude<ExtArgs> | null
-  where?: Prisma.natural_disaster_search_communeWhereInput
-  orderBy?: Prisma.natural_disaster_search_communeOrderByWithRelationInput | Prisma.natural_disaster_search_communeOrderByWithRelationInput[]
-  cursor?: Prisma.natural_disaster_search_communeWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.Natural_disaster_search_communeScalarFieldEnum | Prisma.Natural_disaster_search_communeScalarFieldEnum[]
 }
 
 /**

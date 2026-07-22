@@ -257,7 +257,6 @@ export type studyWhereInput = {
   updated_at?: Prisma.DateTimeFilter<"study"> | Date | string
   strategy_construction_valid?: Prisma.StringFilter<"study"> | string
   impact_theme?: Prisma.Impact_themeListRelationFilter
-  natural_disaster_search?: Prisma.XOR<Prisma.Natural_disaster_searchNullableScalarRelationFilter, Prisma.natural_disaster_searchWhereInput> | null
   observed_exposure?: Prisma.Observed_exposureListRelationFilter
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   user_study?: Prisma.User_studyListRelationFilter
@@ -275,7 +274,6 @@ export type studyOrderByWithRelationInput = {
   updated_at?: Prisma.SortOrder
   strategy_construction_valid?: Prisma.SortOrder
   impact_theme?: Prisma.impact_themeOrderByRelationAggregateInput
-  natural_disaster_search?: Prisma.natural_disaster_searchOrderByWithRelationInput
   observed_exposure?: Prisma.observed_exposureOrderByRelationAggregateInput
   commune?: Prisma.communeOrderByWithRelationInput
   user_study?: Prisma.user_studyOrderByRelationAggregateInput
@@ -296,7 +294,6 @@ export type studyWhereUniqueInput = Prisma.AtLeast<{
   updated_at?: Prisma.DateTimeFilter<"study"> | Date | string
   strategy_construction_valid?: Prisma.StringFilter<"study"> | string
   impact_theme?: Prisma.Impact_themeListRelationFilter
-  natural_disaster_search?: Prisma.XOR<Prisma.Natural_disaster_searchNullableScalarRelationFilter, Prisma.natural_disaster_searchWhereInput> | null
   observed_exposure?: Prisma.Observed_exposureListRelationFilter
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   user_study?: Prisma.User_studyListRelationFilter
@@ -347,7 +344,6 @@ export type studyCreateInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureCreateNestedManyWithoutStudyInput
   commune?: Prisma.communeCreateNestedOneWithoutStudyInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutStudyInput
@@ -365,7 +361,6 @@ export type studyUncheckedCreateInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeUncheckedCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureUncheckedCreateNestedManyWithoutStudyInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutStudyInput
 }
@@ -381,7 +376,6 @@ export type studyUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUpdateManyWithoutStudyNestedInput
   commune?: Prisma.communeUpdateOneWithoutStudyNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutStudyNestedInput
@@ -399,7 +393,6 @@ export type studyUncheckedUpdateInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUncheckedUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUncheckedUpdateManyWithoutStudyNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutStudyNestedInput
 }
@@ -455,11 +448,6 @@ export type studyOrderByRelationAggregateInput = {
 export type StudyNullableScalarRelationFilter = {
   is?: Prisma.studyWhereInput | null
   isNot?: Prisma.studyWhereInput | null
-}
-
-export type StudyScalarRelationFilter = {
-  is?: Prisma.studyWhereInput
-  isNot?: Prisma.studyWhereInput
 }
 
 export type studyCountOrderByAggregateInput = {
@@ -567,20 +555,6 @@ export type studyUpdateOneWithoutImpact_themeNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.studyUpdateToOneWithWhereWithoutImpact_themeInput, Prisma.studyUpdateWithoutImpact_themeInput>, Prisma.studyUncheckedUpdateWithoutImpact_themeInput>
 }
 
-export type studyCreateNestedOneWithoutNatural_disaster_searchInput = {
-  create?: Prisma.XOR<Prisma.studyCreateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedCreateWithoutNatural_disaster_searchInput>
-  connectOrCreate?: Prisma.studyCreateOrConnectWithoutNatural_disaster_searchInput
-  connect?: Prisma.studyWhereUniqueInput
-}
-
-export type studyUpdateOneRequiredWithoutNatural_disaster_searchNestedInput = {
-  create?: Prisma.XOR<Prisma.studyCreateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedCreateWithoutNatural_disaster_searchInput>
-  connectOrCreate?: Prisma.studyCreateOrConnectWithoutNatural_disaster_searchInput
-  upsert?: Prisma.studyUpsertWithoutNatural_disaster_searchInput
-  connect?: Prisma.studyWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.studyUpdateToOneWithWhereWithoutNatural_disaster_searchInput, Prisma.studyUpdateWithoutNatural_disaster_searchInput>, Prisma.studyUncheckedUpdateWithoutNatural_disaster_searchInput>
-}
-
 export type studyCreateNestedOneWithoutObserved_exposureInput = {
   create?: Prisma.XOR<Prisma.studyCreateWithoutObserved_exposureInput, Prisma.studyUncheckedCreateWithoutObserved_exposureInput>
   connectOrCreate?: Prisma.studyCreateOrConnectWithoutObserved_exposureInput
@@ -624,7 +598,6 @@ export type studyCreateWithoutCommuneInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureCreateNestedManyWithoutStudyInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutStudyInput
 }
@@ -640,7 +613,6 @@ export type studyUncheckedCreateWithoutCommuneInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeUncheckedCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureUncheckedCreateNestedManyWithoutStudyInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutStudyInput
 }
@@ -697,7 +669,6 @@ export type studyCreateWithoutImpact_themeInput = {
   created_at: Date | string
   updated_at: Date | string
   strategy_construction_valid?: string
-  natural_disaster_search?: Prisma.natural_disaster_searchCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureCreateNestedManyWithoutStudyInput
   commune?: Prisma.communeCreateNestedOneWithoutStudyInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutStudyInput
@@ -714,7 +685,6 @@ export type studyUncheckedCreateWithoutImpact_themeInput = {
   created_at: Date | string
   updated_at: Date | string
   strategy_construction_valid?: string
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureUncheckedCreateNestedManyWithoutStudyInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutStudyInput
 }
@@ -745,7 +715,6 @@ export type studyUpdateWithoutImpact_themeInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  natural_disaster_search?: Prisma.natural_disaster_searchUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUpdateManyWithoutStudyNestedInput
   commune?: Prisma.communeUpdateOneWithoutStudyNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutStudyNestedInput
@@ -762,87 +731,6 @@ export type studyUncheckedUpdateWithoutImpact_themeInput = {
   created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedUpdateOneWithoutStudyNestedInput
-  observed_exposure?: Prisma.observed_exposureUncheckedUpdateManyWithoutStudyNestedInput
-  user_study?: Prisma.user_studyUncheckedUpdateManyWithoutStudyNestedInput
-}
-
-export type studyCreateWithoutNatural_disaster_searchInput = {
-  id: string
-  year: bigint | number
-  territory_name: string
-  observed_exposure_valid?: string
-  sensibility_valid?: string
-  exposition_future_valid?: string
-  created_at: Date | string
-  updated_at: Date | string
-  strategy_construction_valid?: string
-  impact_theme?: Prisma.impact_themeCreateNestedManyWithoutStudyInput
-  observed_exposure?: Prisma.observed_exposureCreateNestedManyWithoutStudyInput
-  commune?: Prisma.communeCreateNestedOneWithoutStudyInput
-  user_study?: Prisma.user_studyCreateNestedManyWithoutStudyInput
-}
-
-export type studyUncheckedCreateWithoutNatural_disaster_searchInput = {
-  id: string
-  commune_id?: string | null
-  year: bigint | number
-  territory_name: string
-  observed_exposure_valid?: string
-  sensibility_valid?: string
-  exposition_future_valid?: string
-  created_at: Date | string
-  updated_at: Date | string
-  strategy_construction_valid?: string
-  impact_theme?: Prisma.impact_themeUncheckedCreateNestedManyWithoutStudyInput
-  observed_exposure?: Prisma.observed_exposureUncheckedCreateNestedManyWithoutStudyInput
-  user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutStudyInput
-}
-
-export type studyCreateOrConnectWithoutNatural_disaster_searchInput = {
-  where: Prisma.studyWhereUniqueInput
-  create: Prisma.XOR<Prisma.studyCreateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedCreateWithoutNatural_disaster_searchInput>
-}
-
-export type studyUpsertWithoutNatural_disaster_searchInput = {
-  update: Prisma.XOR<Prisma.studyUpdateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedUpdateWithoutNatural_disaster_searchInput>
-  create: Prisma.XOR<Prisma.studyCreateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedCreateWithoutNatural_disaster_searchInput>
-  where?: Prisma.studyWhereInput
-}
-
-export type studyUpdateToOneWithWhereWithoutNatural_disaster_searchInput = {
-  where?: Prisma.studyWhereInput
-  data: Prisma.XOR<Prisma.studyUpdateWithoutNatural_disaster_searchInput, Prisma.studyUncheckedUpdateWithoutNatural_disaster_searchInput>
-}
-
-export type studyUpdateWithoutNatural_disaster_searchInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  year?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  territory_name?: Prisma.StringFieldUpdateOperationsInput | string
-  observed_exposure_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  sensibility_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  exposition_future_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  impact_theme?: Prisma.impact_themeUpdateManyWithoutStudyNestedInput
-  observed_exposure?: Prisma.observed_exposureUpdateManyWithoutStudyNestedInput
-  commune?: Prisma.communeUpdateOneWithoutStudyNestedInput
-  user_study?: Prisma.user_studyUpdateManyWithoutStudyNestedInput
-}
-
-export type studyUncheckedUpdateWithoutNatural_disaster_searchInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  commune_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  year?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  territory_name?: Prisma.StringFieldUpdateOperationsInput | string
-  observed_exposure_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  sensibility_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  exposition_future_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
-  impact_theme?: Prisma.impact_themeUncheckedUpdateManyWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUncheckedUpdateManyWithoutStudyNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutStudyNestedInput
 }
@@ -858,7 +746,6 @@ export type studyCreateWithoutObserved_exposureInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchCreateNestedOneWithoutStudyInput
   commune?: Prisma.communeCreateNestedOneWithoutStudyInput
   user_study?: Prisma.user_studyCreateNestedManyWithoutStudyInput
 }
@@ -875,7 +762,6 @@ export type studyUncheckedCreateWithoutObserved_exposureInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeUncheckedCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedCreateNestedOneWithoutStudyInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutStudyInput
 }
 
@@ -906,7 +792,6 @@ export type studyUpdateWithoutObserved_exposureInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUpdateOneWithoutStudyNestedInput
   commune?: Prisma.communeUpdateOneWithoutStudyNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutStudyNestedInput
 }
@@ -923,7 +808,6 @@ export type studyUncheckedUpdateWithoutObserved_exposureInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUncheckedUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedUpdateOneWithoutStudyNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutStudyNestedInput
 }
 
@@ -938,7 +822,6 @@ export type studyCreateWithoutUser_studyInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureCreateNestedManyWithoutStudyInput
   commune?: Prisma.communeCreateNestedOneWithoutStudyInput
 }
@@ -955,7 +838,6 @@ export type studyUncheckedCreateWithoutUser_studyInput = {
   updated_at: Date | string
   strategy_construction_valid?: string
   impact_theme?: Prisma.impact_themeUncheckedCreateNestedManyWithoutStudyInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedCreateNestedOneWithoutStudyInput
   observed_exposure?: Prisma.observed_exposureUncheckedCreateNestedManyWithoutStudyInput
 }
 
@@ -986,7 +868,6 @@ export type studyUpdateWithoutUser_studyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUpdateManyWithoutStudyNestedInput
   commune?: Prisma.communeUpdateOneWithoutStudyNestedInput
 }
@@ -1003,7 +884,6 @@ export type studyUncheckedUpdateWithoutUser_studyInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUncheckedUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUncheckedUpdateManyWithoutStudyNestedInput
 }
 
@@ -1030,7 +910,6 @@ export type studyUpdateWithoutCommuneInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUpdateManyWithoutStudyNestedInput
   user_study?: Prisma.user_studyUpdateManyWithoutStudyNestedInput
 }
@@ -1046,7 +925,6 @@ export type studyUncheckedUpdateWithoutCommuneInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   strategy_construction_valid?: Prisma.StringFieldUpdateOperationsInput | string
   impact_theme?: Prisma.impact_themeUncheckedUpdateManyWithoutStudyNestedInput
-  natural_disaster_search?: Prisma.natural_disaster_searchUncheckedUpdateOneWithoutStudyNestedInput
   observed_exposure?: Prisma.observed_exposureUncheckedUpdateManyWithoutStudyNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutStudyNestedInput
 }
@@ -1124,7 +1002,6 @@ export type studySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   updated_at?: boolean
   strategy_construction_valid?: boolean
   impact_theme?: boolean | Prisma.study$impact_themeArgs<ExtArgs>
-  natural_disaster_search?: boolean | Prisma.study$natural_disaster_searchArgs<ExtArgs>
   observed_exposure?: boolean | Prisma.study$observed_exposureArgs<ExtArgs>
   commune?: boolean | Prisma.study$communeArgs<ExtArgs>
   user_study?: boolean | Prisma.study$user_studyArgs<ExtArgs>
@@ -1175,7 +1052,6 @@ export type studySelectScalar = {
 export type studyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "commune_id" | "year" | "territory_name" | "observed_exposure_valid" | "sensibility_valid" | "exposition_future_valid" | "created_at" | "updated_at" | "strategy_construction_valid", ExtArgs["result"]["study"]>
 export type studyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   impact_theme?: boolean | Prisma.study$impact_themeArgs<ExtArgs>
-  natural_disaster_search?: boolean | Prisma.study$natural_disaster_searchArgs<ExtArgs>
   observed_exposure?: boolean | Prisma.study$observed_exposureArgs<ExtArgs>
   commune?: boolean | Prisma.study$communeArgs<ExtArgs>
   user_study?: boolean | Prisma.study$user_studyArgs<ExtArgs>
@@ -1192,7 +1068,6 @@ export type $studyPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   name: "study"
   objects: {
     impact_theme: Prisma.$impact_themePayload<ExtArgs>[]
-    natural_disaster_search: Prisma.$natural_disaster_searchPayload<ExtArgs> | null
     observed_exposure: Prisma.$observed_exposurePayload<ExtArgs>[]
     commune: Prisma.$communePayload<ExtArgs> | null
     user_study: Prisma.$user_studyPayload<ExtArgs>[]
@@ -1603,7 +1478,6 @@ readonly fields: studyFieldRefs;
 export interface Prisma__studyClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   impact_theme<T extends Prisma.study$impact_themeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.study$impact_themeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$impact_themePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  natural_disaster_search<T extends Prisma.study$natural_disaster_searchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.study$natural_disaster_searchArgs<ExtArgs>>): Prisma.Prisma__natural_disaster_searchClient<runtime.Types.Result.GetResult<Prisma.$natural_disaster_searchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   observed_exposure<T extends Prisma.study$observed_exposureArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.study$observed_exposureArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$observed_exposurePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   commune<T extends Prisma.study$communeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.study$communeArgs<ExtArgs>>): Prisma.Prisma__communeClient<runtime.Types.Result.GetResult<Prisma.$communePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   user_study<T extends Prisma.study$user_studyArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.study$user_studyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$user_studyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2063,25 +1937,6 @@ export type study$impact_themeArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.Impact_themeScalarFieldEnum | Prisma.Impact_themeScalarFieldEnum[]
-}
-
-/**
- * study.natural_disaster_search
- */
-export type study$natural_disaster_searchArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the natural_disaster_search
-   */
-  select?: Prisma.natural_disaster_searchSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the natural_disaster_search
-   */
-  omit?: Prisma.natural_disaster_searchOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.natural_disaster_searchInclude<ExtArgs> | null
-  where?: Prisma.natural_disaster_searchWhereInput
 }
 
 /**

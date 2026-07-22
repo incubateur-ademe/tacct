@@ -116,9 +116,6 @@ export const ModelName = {
   impact_trajectory: 'impact_trajectory',
   impact_trajectory_impact_action: 'impact_trajectory_impact_action',
   messenger_messages: 'messenger_messages',
-  natural_disaster: 'natural_disaster',
-  natural_disaster_search: 'natural_disaster_search',
-  natural_disaster_search_commune: 'natural_disaster_search_commune',
   observed_exposure: 'observed_exposure',
   observed_exposure_impact: 'observed_exposure_impact',
   old_region: 'old_region',
@@ -1504,43 +1501,6 @@ export const Messenger_messagesScalarFieldEnum = {
 } as const
 
 export type Messenger_messagesScalarFieldEnum = (typeof Messenger_messagesScalarFieldEnum)[keyof typeof Messenger_messagesScalarFieldEnum]
-
-
-export const Natural_disasterScalarFieldEnum = {
-  id: 'id',
-  commune_id: 'commune_id',
-  risk_number: 'risk_number',
-  risk_label: 'risk_label',
-  tacct_risk_number: 'tacct_risk_number',
-  tacct_risk_label: 'tacct_risk_label',
-  start_date: 'start_date',
-  end_date: 'end_date',
-  season: 'season',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type Natural_disasterScalarFieldEnum = (typeof Natural_disasterScalarFieldEnum)[keyof typeof Natural_disasterScalarFieldEnum]
-
-
-export const Natural_disaster_searchScalarFieldEnum = {
-  id: 'id',
-  study_id: 'study_id',
-  start_year: 'start_year',
-  end_year: 'end_year',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-} as const
-
-export type Natural_disaster_searchScalarFieldEnum = (typeof Natural_disaster_searchScalarFieldEnum)[keyof typeof Natural_disaster_searchScalarFieldEnum]
-
-
-export const Natural_disaster_search_communeScalarFieldEnum = {
-  natural_disaster_search_id: 'natural_disaster_search_id',
-  commune_id: 'commune_id'
-} as const
-
-export type Natural_disaster_search_communeScalarFieldEnum = (typeof Natural_disaster_search_communeScalarFieldEnum)[keyof typeof Natural_disaster_search_communeScalarFieldEnum]
 
 
 export const Observed_exposureScalarFieldEnum = {
