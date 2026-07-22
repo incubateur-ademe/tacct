@@ -120,7 +120,7 @@ export const BarreDeRechercheSansFiltre = ({
               <input
                 {...params.inputProps}
                 aria-label="Rechercher un territoire"
-                placeholder="Saisissez votre territoire"
+                placeholder="Saisir un territoire"
                 style={{
                   width: '100%',
                   height: '3rem',

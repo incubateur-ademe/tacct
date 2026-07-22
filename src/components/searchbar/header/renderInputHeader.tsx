@@ -13,7 +13,7 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
       <input
         {...params.inputProps}
         className={cx(params.inputProps.className, className)}
-        placeholder={'Saisissez votre territoire'}
+        placeholder={'Saisir un territoire'}
         style={{
           borderRadius: '30px',
           padding: '0 2rem 0 0.75rem',

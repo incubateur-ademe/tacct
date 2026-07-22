@@ -40,13 +40,13 @@ const RechercherSonTerritoire = () => {
             marginBottom: "2rem",
             lineHeight: '40px',
           }}>
-          Commençons par localiser votre territoire pour personnaliser vos données
+          Explorer les données de mon territoire
         </H1>
         <Body
           size="lg"
           style={{ textAlign: 'center', color: '#666666' }}
         >
-          Recherchez parmi les communes, EPCI, EPT, PNR, PETR et départements
+          Saisir une communes, un EPCI/EPT, un PNR, un PETR ou un département
         </Body>
         <div style={{ marginTop: '2.5rem' }}>
           <BarreDeRechercheSansFiltre page="patch4c" />

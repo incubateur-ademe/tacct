@@ -3,7 +3,7 @@ import { BarreDeRecherche } from "@/components/searchbar/BarreDeRecherche";
 import { getLastTerritory, handleRechercheRedirection } from "@/components/searchbar/fonctions";
 import { allRadioOptions } from "@/components/searchbar/radioButtons";
 import { Loader } from "@/components/ui/loader";
-import { H1 } from "@/design-system/base/Textes";
+import { Body, H1 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -58,8 +58,14 @@ const RechercherSonTerritoire = () => {
             marginBottom: "2rem",
             lineHeight: '40px',
           }}>
-          Commençons par localiser votre territoire pour personnaliser vos données
+          Explorer les données de mon territoire
         </H1>
+        <Body
+          size="lg"
+          style={{ textAlign: 'center', color: '#666666' }}
+        >
+          Saisir une communes, un EPCI/EPT, un PNR, un PETR ou un département
+        </Body>
         <BarreDeRecherche
           setSearchCode={setSearchCode}
           setSearchLibelle={setSearchLibelle}

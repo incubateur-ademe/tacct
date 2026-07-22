@@ -28,7 +28,7 @@ export const RenderOptionSansFiltre = ({
           ? ` - ${option.searchCode}`
           : ''}
         {' '}
-        <span style={{ color: nuancesGris.dark }}>
+        <span style={{ color: nuancesGris.mediumDark }}>
           ({getLibelleTypeTerritoire(option)})
         </span>
       </p>
