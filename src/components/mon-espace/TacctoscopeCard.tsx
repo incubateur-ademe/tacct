@@ -99,14 +99,14 @@ export const TacctoscopeCard = ({
               size="md"
               link="/tacctoscope"
               text={
-                hasAnswers ? 'Continuer l’analyse  🡢' : 'Commencer l’analyse  🡢'
+                hasAnswers ? 'Continuer l’analyse  →' : 'Commencer l’analyse  →'
               }
             />
             {hasAnswers && (
               <BoutonSecondaireClassic
                 size="md"
                 link="/tacctoscope/feuille-de-route"
-                text="Voir ma feuille de route  🡢"
+                text="Voir ma feuille de route  →"
               />
             )}
           </div> */}
