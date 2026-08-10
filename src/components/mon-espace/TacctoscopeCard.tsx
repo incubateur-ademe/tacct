@@ -64,12 +64,10 @@ export const TacctoscopeCard = ({
                 margin: 0
               }}
             >
-              Le TACCToscope : analyse de diagnostic existant
+              Le TACCToscope : analysez votre diagnostic de vulnérabilité
             </H3>
             <Body color="#3d3d3d">
-              {hasAnswers
-                ? 'Relecture ciblée et méthodique de votre diagnostic de vulnérabilité'
-                : 'Vous révisez un diagnostic de vulnérabilité ? Ne repartez pas de zéro ! Notre outil interactif vous guide pour un retravail ciblé et méthodique.'}
+              Vous révisez un diagnostic de vulnérabilité ? Ne repartez pas de zéro ! Notre outil interactif vous guide pour un retravail ciblé et méthodique.
             </Body>
           </div>
           {/* TODO MIGRATION */}

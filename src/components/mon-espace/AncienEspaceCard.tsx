@@ -31,7 +31,7 @@ export const AncienEspaceCard = ({ validated }: { validated: boolean }) => (
           size="md"
           link="/workspace-tacct"
           rel="noopener noreferrer"
-          text="Accéder à ma saisie  →"
+          text="Accéder à mon espace  →"
         />
       ) : (
         <BoutonSecondaireClassic
