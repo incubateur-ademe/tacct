@@ -354,6 +354,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2024-09-25',
     ordre: 20,
     ordreCollection: 8
+    ordreCollection: 8
   },
   {
     id: 16,
@@ -369,6 +370,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 40,
+    ordreCollection: 11
     ordreCollection: 11
   },
   {
@@ -386,6 +388,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2024-09-25',
     ordre: 50,
     ordreCollection: 12
+    ordreCollection: 12
   },
   {
     id: 18,
@@ -400,6 +403,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
+    ordreCollection: 9
     ordreCollection: 9
   },
   {
@@ -416,6 +420,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
+    ordreCollection: 10
     ordreCollection: 10
   },
   {
@@ -649,6 +654,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2025-11-25',
     ordre: 10,
     ordreCollection: 4,
+    ordreCollection: 4,
     metadata: {
       title:
         'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
@@ -868,6 +874,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2026-04-14',
     ordre: 110,
     ordreCollection: 6
+    ordreCollection: 6
   },
   {
     id: 45,
@@ -882,6 +889,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
+    ordreCollection: 7
     ordreCollection: 7
   },
   {
@@ -899,6 +907,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-05-06',
     ordre: 4,
+    ordreCollection: 5,
     ordreCollection: 5,
     metadata: {
       title:

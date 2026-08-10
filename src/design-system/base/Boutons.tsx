@@ -1,83 +1,10 @@
 import ConnexionIcon from '@/assets/icons/connexion_compte_icon_black.svg';
 import { Button } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/navigation";
 import { usePostHog } from 'posthog-js/react';
 import { couleursBoutons, nuancesGris } from "../couleurs";
 import { Body } from "./Textes";
-
-export const BoutonPrimaire = ({
-  link,
-  text,
-  rel,
-  size,
-  disabled = false,
-  onClick,
-  icone,
-  style
-}: {
-  link?: string;
-  text: string;
-  size: 'sm' | 'md' | 'lg';
-  rel?: string;
-  disabled?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  icone?: StaticImageData;
-  style?: React.CSSProperties;
-}) => {
-  return (
-    <Button
-      key="0"
-      variant="outlined"
-      href={link}
-      onClick={onClick}
-      rel={rel}
-      disabled={disabled}
-      sx={{
-        textTransform: 'none',
-        color: disabled ? `${nuancesGris.dark} !important` : "white",
-        backgroundColor: disabled ? nuancesGris.light : couleursBoutons.primaire[1],
-        borderRadius: '60px',
-        height: size === 'sm' ? '32px' : size === 'md' ? '40px' : '48px',
-        border: disabled ? `1px solid ${nuancesGris.light} !important` : `1px solid ${couleursBoutons.primaire[1]}`,
-        padding: '4px 20px',
-        fontWeight: 500,
-        fontFamily: 'Marianne',
-        fontSize: size === 'sm' ? '14px' : size === 'md' ? '16px' : '18px',
-        width: 'fit-content',
-        alignItems: 'center',
-        backgroundImage: 'none',
-        '&:hover': {
-          backgroundColor: `${couleursBoutons.primaire[3]} !important`,
-        },
-        '&:focus': {
-          outline: 'none',
-          border: `1px solid ${couleursBoutons.primaire[1]}`,
-          boxShadow: `
-            0 0 0 2px white,
-            0 0 0 4px ${couleursBoutons.primaire[1]}
-          `,
-          backgroundColor: `${couleursBoutons.primaire[3]} !important`
-        },
-        ...style,
-      }}
-    >
-      <div className="flex items-center justify-center">
-        {
-          icone && (
-            <Image
-            src={icone}
-            alt=""
-            style={{ marginRight: '8px' }}
-            width={16}
-            height={16}
-            />
-          )
-        }
-        {text}
-      </div>
-    </Button>
-  );
-}
 
 export const BoutonPrimaireClassic = ({
   link,
@@ -103,6 +30,7 @@ export const BoutonPrimaireClassic = ({
   thematique?: string;
 }) => {
   const posthog = usePostHog();
+  const router = useRouter();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? nuancesGris.dark : "white",
@@ -133,7 +61,11 @@ export const BoutonPrimaireClassic = ({
       );
     }
     if (link && !onClick) {
-      window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
+      if (rel?.includes('noopener')) {
+        window.open(link, '_blank');
+      } else {
+        router.push(link);
+      }
     }
     if (onClick) {
       onClick(e);
@@ -179,7 +111,7 @@ export const BoutonPrimaireClassic = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div className="flex items-center justify-center">
+      <span className="flex items-center justify-center">
         {
           icone && (
             <Image
@@ -192,7 +124,7 @@ export const BoutonPrimaireClassic = ({
           )
         }
         {text}
-      </div>
+      </span>
     </button>
   );
 }
@@ -219,6 +151,7 @@ export const BoutonSecondaireClassic = ({
   posthogEventName?: string;
 }) => {
   const posthog = usePostHog();
+  const router = useRouter();
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
@@ -249,7 +182,11 @@ export const BoutonSecondaireClassic = ({
       );
     }
     if (link && !onClick) {
-      window.open(link, rel?.includes('noopener') ? '_blank' : '_self');
+      if (rel?.includes('noopener')) {
+        window.open(link, '_blank');
+      } else {
+        router.push(link);
+      }
     }
     if (onClick) {
       onClick(e);
@@ -295,7 +232,7 @@ export const BoutonSecondaireClassic = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div className="flex items-center justify-center">
+      <span className="flex items-center justify-center">
         {
           icone && (
             <Image
@@ -308,7 +245,7 @@ export const BoutonSecondaireClassic = ({
           )
         }
         {text}
-      </div>
+      </span>
     </button>
   );
 }

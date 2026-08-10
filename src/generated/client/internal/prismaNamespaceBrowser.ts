@@ -78,7 +78,54 @@ export const ModelName = {
   inondations_par_debordement: 'inondations_par_debordement',
   arbovirose: 'arbovirose',
   feux_foret: 'feux_foret',
-  aot_40_new: 'aot_40_new'
+  aot_40_new: 'aot_40_new',
+  climate: 'climate',
+  climate_hazard: 'climate_hazard',
+  climate_hazard_category: 'climate_hazard_category',
+  climate_hazard_category_department: 'climate_hazard_category_department',
+  command_migration: 'command_migration',
+  command_process: 'command_process',
+  commune: 'commune',
+  config: 'config',
+  department: 'department',
+  doctrine_migration_versions: 'doctrine_migration_versions',
+  domain: 'domain',
+  file: 'file',
+  future_climate: 'future_climate',
+  future_exposure: 'future_exposure',
+  impact: 'impact',
+  impact_action: 'impact_action',
+  impact_action_review: 'impact_action_review',
+  impact_climate_hazard: 'impact_climate_hazard',
+  impact_competence: 'impact_competence',
+  impact_level: 'impact_level',
+  impact_review_criteria: 'impact_review_criteria',
+  impact_strategy: 'impact_strategy',
+  impact_theme: 'impact_theme',
+  impact_trajectory: 'impact_trajectory',
+  impact_trajectory_impact_action: 'impact_trajectory_impact_action',
+  messenger_messages: 'messenger_messages',
+  natural_disaster: 'natural_disaster',
+  natural_disaster_search: 'natural_disaster_search',
+  natural_disaster_search_commune: 'natural_disaster_search_commune',
+  observed_exposure: 'observed_exposure',
+  observed_exposure_impact: 'observed_exposure_impact',
+  old_region: 'old_region',
+  page: 'page',
+  page_info: 'page_info',
+  project_sheet_detail: 'project_sheet_detail',
+  project_sheet_detail_relation: 'project_sheet_detail_relation',
+  project_sheet_question: 'project_sheet_question',
+  region: 'region',
+  skill_territory: 'skill_territory',
+  study: 'study',
+  study_office: 'study_office',
+  tacctoscope_answer: 'tacctoscope_answer',
+  tacctoscope_criterion_feedback: 'tacctoscope_criterion_feedback',
+  thematic: 'thematic',
+  token: 'token',
+  user: 'user',
+  user_study: 'user_study'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -951,6 +998,603 @@ export const Aot_40_newScalarFieldEnum = {
 } as const
 
 export type Aot_40_newScalarFieldEnum = (typeof Aot_40_newScalarFieldEnum)[keyof typeof Aot_40_newScalarFieldEnum]
+
+
+export const ClimateScalarFieldEnum = {
+  id: 'id',
+  region_id: 'region_id',
+  temperature_evolution: 'temperature_evolution',
+  level_precipitation_first: 'level_precipitation_first',
+  level_precipitation_second: 'level_precipitation_second',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ClimateScalarFieldEnum = (typeof ClimateScalarFieldEnum)[keyof typeof ClimateScalarFieldEnum]
+
+
+export const Climate_hazardScalarFieldEnum = {
+  id: 'id',
+  climate_hazard_category_id: 'climate_hazard_category_id',
+  name: 'name',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Climate_hazardScalarFieldEnum = (typeof Climate_hazardScalarFieldEnum)[keyof typeof Climate_hazardScalarFieldEnum]
+
+
+export const Climate_hazard_categoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  icon: 'icon',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Climate_hazard_categoryScalarFieldEnum = (typeof Climate_hazard_categoryScalarFieldEnum)[keyof typeof Climate_hazard_categoryScalarFieldEnum]
+
+
+export const Climate_hazard_category_departmentScalarFieldEnum = {
+  climate_hazard_category_id: 'climate_hazard_category_id',
+  department_id: 'department_id'
+} as const
+
+export type Climate_hazard_category_departmentScalarFieldEnum = (typeof Climate_hazard_category_departmentScalarFieldEnum)[keyof typeof Climate_hazard_category_departmentScalarFieldEnum]
+
+
+export const Command_migrationScalarFieldEnum = {
+  id: 'id',
+  command: 'command',
+  description: 'description',
+  executed_at: 'executed_at',
+  execution_time: 'execution_time'
+} as const
+
+export type Command_migrationScalarFieldEnum = (typeof Command_migrationScalarFieldEnum)[keyof typeof Command_migrationScalarFieldEnum]
+
+
+export const Command_processScalarFieldEnum = {
+  id: 'id',
+  pid: 'pid',
+  command: 'command',
+  started_at: 'started_at',
+  ended_at: 'ended_at'
+} as const
+
+export type Command_processScalarFieldEnum = (typeof Command_processScalarFieldEnum)[keyof typeof Command_processScalarFieldEnum]
+
+
+export const CommuneScalarFieldEnum = {
+  id: 'id',
+  department_id: 'department_id',
+  label: 'label',
+  postal_code: 'postal_code'
+} as const
+
+export type CommuneScalarFieldEnum = (typeof CommuneScalarFieldEnum)[keyof typeof CommuneScalarFieldEnum]
+
+
+export const ConfigScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  label: 'label',
+  value: 'value',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ConfigScalarFieldEnum = (typeof ConfigScalarFieldEnum)[keyof typeof ConfigScalarFieldEnum]
+
+
+export const DepartmentScalarFieldEnum = {
+  id: 'id',
+  region_id: 'region_id',
+  old_region_id: 'old_region_id',
+  label: 'label'
+} as const
+
+export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
+
+
+export const Doctrine_migration_versionsScalarFieldEnum = {
+  version: 'version',
+  executed_at: 'executed_at',
+  execution_time: 'execution_time'
+} as const
+
+export type Doctrine_migration_versionsScalarFieldEnum = (typeof Doctrine_migration_versionsScalarFieldEnum)[keyof typeof Doctrine_migration_versionsScalarFieldEnum]
+
+
+export const DomainScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  icon: 'icon',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type DomainScalarFieldEnum = (typeof DomainScalarFieldEnum)[keyof typeof DomainScalarFieldEnum]
+
+
+export const FileScalarFieldEnum = {
+  id: 'id',
+  file_name: 'file_name',
+  original_name: 'original_name',
+  type: 'type',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type FileScalarFieldEnum = (typeof FileScalarFieldEnum)[keyof typeof FileScalarFieldEnum]
+
+
+export const Future_climateScalarFieldEnum = {
+  id: 'id',
+  old_region_id: 'old_region_id',
+  indice: 'indice',
+  unit: 'unit',
+  season: 'season',
+  scenario: 'scenario',
+  year: 'year',
+  period: 'period',
+  min_value: 'min_value',
+  max_value: 'max_value',
+  average_value: 'average_value',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Future_climateScalarFieldEnum = (typeof Future_climateScalarFieldEnum)[keyof typeof Future_climateScalarFieldEnum]
+
+
+export const Future_exposureScalarFieldEnum = {
+  id: 'id',
+  observed_exposure_id: 'observed_exposure_id',
+  trends: 'trends',
+  exposure: 'exposure',
+  justification: 'justification',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Future_exposureScalarFieldEnum = (typeof Future_exposureScalarFieldEnum)[keyof typeof Future_exposureScalarFieldEnum]
+
+
+export const ImpactScalarFieldEnum = {
+  id: 'id',
+  impact_theme_id: 'impact_theme_id',
+  primary_exposure_id: 'primary_exposure_id',
+  description: 'description',
+  sensitivity: 'sensitivity',
+  justification: 'justification',
+  observed_impact: 'observed_impact',
+  action_plan: 'action_plan',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  revoked_diagnostic: 'revoked_diagnostic',
+  strategy_studied: 'strategy_studied',
+  impact_level_id: 'impact_level_id'
+} as const
+
+export type ImpactScalarFieldEnum = (typeof ImpactScalarFieldEnum)[keyof typeof ImpactScalarFieldEnum]
+
+
+export const Impact_actionScalarFieldEnum = {
+  id: 'id',
+  intitule: 'intitule',
+  type_approche: 'type_approche',
+  description: 'description',
+  type_action: 'type_action',
+  finalite1: 'finalite1',
+  finalite2: 'finalite2',
+  finalite3: 'finalite3',
+  anticipe1: 'anticipe1',
+  anticipe2: 'anticipe2',
+  incompatibles: 'incompatibles',
+  impact_id: 'impact_id',
+  impact_strategy_id: 'impact_strategy_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_actionScalarFieldEnum = (typeof Impact_actionScalarFieldEnum)[keyof typeof Impact_actionScalarFieldEnum]
+
+
+export const Impact_action_reviewScalarFieldEnum = {
+  id: 'id',
+  impact_action_id: 'impact_action_id',
+  rank: 'rank',
+  value: 'value',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_action_reviewScalarFieldEnum = (typeof Impact_action_reviewScalarFieldEnum)[keyof typeof Impact_action_reviewScalarFieldEnum]
+
+
+export const Impact_climate_hazardScalarFieldEnum = {
+  id: 'id',
+  impact_id: 'impact_id',
+  type: 'type',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_climate_hazardScalarFieldEnum = (typeof Impact_climate_hazardScalarFieldEnum)[keyof typeof Impact_climate_hazardScalarFieldEnum]
+
+
+export const Impact_competenceScalarFieldEnum = {
+  id: 'id',
+  impact_id: 'impact_id',
+  skill_territory_id: 'skill_territory_id',
+  other_organization: 'other_organization',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_competenceScalarFieldEnum = (typeof Impact_competenceScalarFieldEnum)[keyof typeof Impact_competenceScalarFieldEnum]
+
+
+export const Impact_levelScalarFieldEnum = {
+  id: 'id',
+  indicateur_suivi: 'indicateur_suivi',
+  description1: 'description1',
+  description2: 'description2',
+  description3: 'description3',
+  finalite1: 'finalite1',
+  finalite2: 'finalite2',
+  finalite3: 'finalite3',
+  seuil1: 'seuil1',
+  seuil2: 'seuil2'
+} as const
+
+export type Impact_levelScalarFieldEnum = (typeof Impact_levelScalarFieldEnum)[keyof typeof Impact_levelScalarFieldEnum]
+
+
+export const Impact_review_criteriaScalarFieldEnum = {
+  id: 'id',
+  impact_id: 'impact_id',
+  impact_strategy_id: 'impact_strategy_id',
+  name: 'name',
+  weighting: 'weighting',
+  rank: 'rank',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_review_criteriaScalarFieldEnum = (typeof Impact_review_criteriaScalarFieldEnum)[keyof typeof Impact_review_criteriaScalarFieldEnum]
+
+
+export const Impact_strategyScalarFieldEnum = {
+  id: 'id',
+  impact_theme_id: 'impact_theme_id',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  impact_level_id: 'impact_level_id'
+} as const
+
+export type Impact_strategyScalarFieldEnum = (typeof Impact_strategyScalarFieldEnum)[keyof typeof Impact_strategyScalarFieldEnum]
+
+
+export const Impact_themeScalarFieldEnum = {
+  id: 'id',
+  study_id: 'study_id',
+  thematic_id: 'thematic_id',
+  name: 'name',
+  justification: 'justification',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Impact_themeScalarFieldEnum = (typeof Impact_themeScalarFieldEnum)[keyof typeof Impact_themeScalarFieldEnum]
+
+
+export const Impact_trajectoryScalarFieldEnum = {
+  id: 'id',
+  impact_id: 'impact_id',
+  impact_strategy_id: 'impact_strategy_id',
+  name: 'name',
+  created_at: 'created_at'
+} as const
+
+export type Impact_trajectoryScalarFieldEnum = (typeof Impact_trajectoryScalarFieldEnum)[keyof typeof Impact_trajectoryScalarFieldEnum]
+
+
+export const Impact_trajectory_impact_actionScalarFieldEnum = {
+  id: 'id',
+  trajectory_id: 'trajectory_id',
+  action_id: 'action_id',
+  created_at: 'created_at'
+} as const
+
+export type Impact_trajectory_impact_actionScalarFieldEnum = (typeof Impact_trajectory_impact_actionScalarFieldEnum)[keyof typeof Impact_trajectory_impact_actionScalarFieldEnum]
+
+
+export const Messenger_messagesScalarFieldEnum = {
+  id: 'id',
+  body: 'body',
+  headers: 'headers',
+  queue_name: 'queue_name',
+  created_at: 'created_at',
+  available_at: 'available_at',
+  delivered_at: 'delivered_at'
+} as const
+
+export type Messenger_messagesScalarFieldEnum = (typeof Messenger_messagesScalarFieldEnum)[keyof typeof Messenger_messagesScalarFieldEnum]
+
+
+export const Natural_disasterScalarFieldEnum = {
+  id: 'id',
+  commune_id: 'commune_id',
+  risk_number: 'risk_number',
+  risk_label: 'risk_label',
+  tacct_risk_number: 'tacct_risk_number',
+  tacct_risk_label: 'tacct_risk_label',
+  start_date: 'start_date',
+  end_date: 'end_date',
+  season: 'season',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Natural_disasterScalarFieldEnum = (typeof Natural_disasterScalarFieldEnum)[keyof typeof Natural_disasterScalarFieldEnum]
+
+
+export const Natural_disaster_searchScalarFieldEnum = {
+  id: 'id',
+  study_id: 'study_id',
+  start_year: 'start_year',
+  end_year: 'end_year',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Natural_disaster_searchScalarFieldEnum = (typeof Natural_disaster_searchScalarFieldEnum)[keyof typeof Natural_disaster_searchScalarFieldEnum]
+
+
+export const Natural_disaster_search_communeScalarFieldEnum = {
+  natural_disaster_search_id: 'natural_disaster_search_id',
+  commune_id: 'commune_id'
+} as const
+
+export type Natural_disaster_search_communeScalarFieldEnum = (typeof Natural_disaster_search_communeScalarFieldEnum)[keyof typeof Natural_disaster_search_communeScalarFieldEnum]
+
+
+export const Observed_exposureScalarFieldEnum = {
+  id: 'id',
+  study_id: 'study_id',
+  climate_hazard_id: 'climate_hazard_id',
+  climate_hazard_custom: 'climate_hazard_custom',
+  climate_features: 'climate_features',
+  trends: 'trends',
+  sources: 'sources',
+  exposure: 'exposure',
+  justification: 'justification',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Observed_exposureScalarFieldEnum = (typeof Observed_exposureScalarFieldEnum)[keyof typeof Observed_exposureScalarFieldEnum]
+
+
+export const Observed_exposure_impactScalarFieldEnum = {
+  impact_id: 'impact_id',
+  observed_exposure_id: 'observed_exposure_id'
+} as const
+
+export type Observed_exposure_impactScalarFieldEnum = (typeof Observed_exposure_impactScalarFieldEnum)[keyof typeof Observed_exposure_impactScalarFieldEnum]
+
+
+export const Old_regionScalarFieldEnum = {
+  id: 'id',
+  label: 'label'
+} as const
+
+export type Old_regionScalarFieldEnum = (typeof Old_regionScalarFieldEnum)[keyof typeof Old_regionScalarFieldEnum]
+
+
+export const PageScalarFieldEnum = {
+  id: 'id',
+  page_info_id: 'page_info_id',
+  name: 'name',
+  rank: 'rank',
+  page_type: 'page_type',
+  content: 'content',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  slug: 'slug'
+} as const
+
+export type PageScalarFieldEnum = (typeof PageScalarFieldEnum)[keyof typeof PageScalarFieldEnum]
+
+
+export const Page_infoScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  title: 'title',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Page_infoScalarFieldEnum = (typeof Page_infoScalarFieldEnum)[keyof typeof Page_infoScalarFieldEnum]
+
+
+export const Project_sheet_detailScalarFieldEnum = {
+  id: 'id',
+  image_id: 'image_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  image_alt: 'image_alt',
+  image_credit: 'image_credit',
+  abstract: 'abstract',
+  activity_type: 'activity_type',
+  area_type: 'area_type',
+  expected_effects: 'expected_effects',
+  consequences: 'consequences',
+  slug: 'slug',
+  resources: 'resources',
+  domain_id: 'domain_id'
+} as const
+
+export type Project_sheet_detailScalarFieldEnum = (typeof Project_sheet_detailScalarFieldEnum)[keyof typeof Project_sheet_detailScalarFieldEnum]
+
+
+export const Project_sheet_detail_relationScalarFieldEnum = {
+  project_sheet_detail_parent: 'project_sheet_detail_parent',
+  project_sheet_detail_child: 'project_sheet_detail_child'
+} as const
+
+export type Project_sheet_detail_relationScalarFieldEnum = (typeof Project_sheet_detail_relationScalarFieldEnum)[keyof typeof Project_sheet_detail_relationScalarFieldEnum]
+
+
+export const Project_sheet_questionScalarFieldEnum = {
+  id: 'id',
+  project_sheet_detail_id: 'project_sheet_detail_id',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  name: 'name',
+  diagnosis: 'diagnosis',
+  strategy: 'strategy',
+  review: 'review',
+  highlighted: 'highlighted',
+  thematic: 'thematic'
+} as const
+
+export type Project_sheet_questionScalarFieldEnum = (typeof Project_sheet_questionScalarFieldEnum)[keyof typeof Project_sheet_questionScalarFieldEnum]
+
+
+export const RegionScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  location: 'location',
+  count_communities: 'count_communities'
+} as const
+
+export type RegionScalarFieldEnum = (typeof RegionScalarFieldEnum)[keyof typeof RegionScalarFieldEnum]
+
+
+export const Skill_territoryScalarFieldEnum = {
+  id: 'id',
+  label: 'label',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Skill_territoryScalarFieldEnum = (typeof Skill_territoryScalarFieldEnum)[keyof typeof Skill_territoryScalarFieldEnum]
+
+
+export const StudyScalarFieldEnum = {
+  id: 'id',
+  commune_id: 'commune_id',
+  year: 'year',
+  territory_name: 'territory_name',
+  observed_exposure_valid: 'observed_exposure_valid',
+  sensibility_valid: 'sensibility_valid',
+  exposition_future_valid: 'exposition_future_valid',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  strategy_construction_valid: 'strategy_construction_valid'
+} as const
+
+export type StudyScalarFieldEnum = (typeof StudyScalarFieldEnum)[keyof typeof StudyScalarFieldEnum]
+
+
+export const Study_officeScalarFieldEnum = {
+  id: 'id',
+  commune_id: 'commune_id',
+  name: 'name',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Study_officeScalarFieldEnum = (typeof Study_officeScalarFieldEnum)[keyof typeof Study_officeScalarFieldEnum]
+
+
+export const Tacctoscope_answerScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  question_key: 'question_key',
+  value: 'value',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
+
+
+export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  criterion_key: 'criterion_key',
+  is_useful: 'is_useful',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  comment: 'comment'
+} as const
+
+export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]
+
+
+export const ThematicScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  icon: 'icon',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type ThematicScalarFieldEnum = (typeof ThematicScalarFieldEnum)[keyof typeof ThematicScalarFieldEnum]
+
+
+export const TokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  study_office_id: 'study_office_id',
+  commune_id: 'commune_id',
+  email: 'email',
+  username: 'username',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  validated: 'validated',
+  validated_terms_of_use: 'validated_terms_of_use',
+  authenticated_id: 'authenticated_id',
+  access_token: 'access_token',
+  roles: 'roles',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  has_accepted_surveys: 'has_accepted_surveys',
+  authenticated_id_bidx: 'authenticated_id_bidx',
+  email_bidx: 'email_bidx',
+  encryption_version: 'encryption_version',
+  wants_beta_features: 'wants_beta_features',
+  recontact_email: 'recontact_email'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const User_studyScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  study_id: 'study_id',
+  head_study: 'head_study',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+} as const
+
+export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
 
 
 export const SortOrder = {

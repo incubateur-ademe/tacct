@@ -3,8 +3,6 @@ import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { SearchParams } from '../../types';
-
-export const metadata: Metadata = { title: 'Explorer les données' };
 import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
@@ -13,6 +11,14 @@ import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortTh
 import EauServerPage from './thematiques/eau/EauServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
+
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { libelle, thematique } = await searchParams;
+  const title = thematique && libelle
+    ? `${thematique} - données ${libelle}`
+    : thematique ?? 'Explorer les données';
+  return { title: { absolute: title } };
+}
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;

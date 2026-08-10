@@ -9,18 +9,14 @@ import { handleChangementTerritoireRedirection } from "../fonctions";
 
 export const BoutonRechercherHeader = ({
   searchLibelle,
-  setIsNewTypeChosen,
   setIsTerritoryChanging,
-  setIsTypeChanging,
   searchCode,
   typeTerritoire,
 }: {
   searchLibelle: string;
-  setIsNewTypeChosen: (value: boolean) => void;
   setIsTerritoryChanging: (value: boolean) => void;
-  setIsTypeChanging: (value: boolean) => void;
   searchCode: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: TerritoireType;
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -40,17 +36,18 @@ export const BoutonRechercherHeader = ({
             backgroundColor: couleursPrincipales.vert,
             borderRadius: '30px',
             padding: '4px',
+            flexShrink: 0,
           }}
         />
       </HtmlTooltip>
     ) : (
       <button
         aria-label="Rechercher ce territoire"
+        onMouseDown={(e) => e.preventDefault()}
         onClick={() => {
           if (searchLibelle === '') return;
-          setIsNewTypeChosen(false);
+          (document.activeElement as HTMLElement | null)?.blur();
           setIsTerritoryChanging(false);
-          setIsTypeChanging(false);
           handleChangementTerritoireRedirection({
             searchCode,
             searchLibelle,
@@ -67,6 +64,7 @@ export const BoutonRechercherHeader = ({
           cursor: 'pointer',
           display: 'inline-flex',
           alignItems: 'center',
+          flexShrink: 0,
         }}
       >
         <Image

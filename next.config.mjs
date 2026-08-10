@@ -32,7 +32,13 @@ const csp = {
     'object-src': ["'self'", 'data:'],
     'frame-ancestors': ['https://metabase.tacct.ademe.fr'],
     'base-uri': ["'self'", 'https://*.gouv.fr'],
-    'form-action': ["'self'", 'https://*.gouv.fr'],
+    'form-action': [
+        "'self'",
+        'https://*.gouv.fr',
+        'https://*.ademe.fr',
+        process.env.NEXT_PUBLIC_ENV !== 'production' &&
+            'https://*.dev-agentconnect.fr'
+    ],
     'block-all-mixed-content': [],
     'upgrade-insecure-requests': [],
     'frame-src': [
@@ -153,6 +159,22 @@ const config = {
             { source: '/statistiques', headers: statsHeaders },
             { source: '/sandbox/stats', headers: statsHeaders }
         ];
+    },
+    async rewrites() {
+        if (
+            process.env.NEXT_PUBLIC_ENV === 'production' ||
+            !process.env.TACCT_APP_URL
+        ) {
+            return [];
+        }
+        return {
+            beforeFiles: [
+                {
+                    source: '/workspace-tacct/:path*',
+                    destination: `${process.env.TACCT_APP_URL}/workspace-tacct/:path*`
+                }
+            ]
+        };
     },
     async redirects() {
         return [

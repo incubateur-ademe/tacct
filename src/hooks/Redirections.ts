@@ -20,14 +20,15 @@ export const handleRedirection = ({
   page: string;
   thematique?: string;
 }) => {
-  const thematiqueParam = thematique ? `&thematique=${thematique}` : '';
+  const thematiqueParam = thematique ? `&thematique=${encodeURIComponent(thematique)}` : '';
+  const encodedLibelle = encodeURIComponent(searchLibelle);
 
   if (typeTerritoire === 'epci' && eptRegex.test(searchLibelle)) {
-    return `/${page}?code=200054781&libelle=${searchLibelle}&type=ept${thematiqueParam}`;
+    return `/${page}?code=200054781&libelle=${encodedLibelle}&type=ept${thematiqueParam}`;
   } else if (searchCode && searchCode.length !== 0) {
-    return `/${page}?code=${searchCode}&libelle=${searchLibelle}&type=${typeTerritoire}${thematiqueParam}`;
+    return `/${page}?code=${searchCode}&libelle=${encodedLibelle}&type=${typeTerritoire}${thematiqueParam}`;
   } else if (!searchCode && searchLibelle.length !== 0) {
-    return `/${page}?libelle=${searchLibelle}&type=${typeTerritoire}${thematiqueParam}`;
+    return `/${page}?libelle=${encodedLibelle}&type=${typeTerritoire}${thematiqueParam}`;
   } else return `/${page}`;
 };
 
@@ -46,11 +47,14 @@ export const handleRedirectionThematique = ({
   thematique: string;
   anchor: string;
 }) => {
+  const encodedLibelle = encodeURIComponent(libelle);
+  const encodedThematique = encodeURIComponent(thematique);
+
   if (type === 'epci' && eptRegex.test(libelle)) {
-    return `/${page}?code=200054781&libelle=${libelle}&type=ept&thematique=${thematique}#${anchor}`;
+    return `/${page}?code=200054781&libelle=${encodedLibelle}&type=ept&thematique=${encodedThematique}#${anchor}`;
   } else if (code && code.length !== 0) {
-    return `/${page}?code=${code}&libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
+    return `/${page}?code=${code}&libelle=${encodedLibelle}&type=${type}&thematique=${encodedThematique}#${anchor}`;
   } else if (!code && libelle.length !== 0) {
-    return `/${page}?libelle=${libelle}&type=${type}&thematique=${thematique}#${anchor}`;
+    return `/${page}?libelle=${encodedLibelle}&type=${type}&thematique=${encodedThematique}#${anchor}`;
   } else return `/${page}`;
 };

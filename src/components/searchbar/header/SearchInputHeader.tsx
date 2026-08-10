@@ -1,11 +1,11 @@
 'use client';
 
-import { GetCollectivite } from '@/lib/queries/searchBar';
+import { GetAllTerritoires } from '@/lib/queries/searchBar';
 import Autocomplete from '@mui/material/Autocomplete';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { handleChangementTerritoireRedirection, ReplaceDisplayEpci, ReplaceSearchEpci } from '../fonctions';
-import { RenderOption } from '../renderOption';
+import { getLibelleTerritoireAvecCode, handleChangementTerritoireRedirection, preparerOptionsTerritoires, ReplaceSearchEpci } from '../fonctions';
+import { RenderOptionSansFiltre } from '../renderOptionSansFiltre';
 import { RenderInputHeader } from './renderInputHeader';
 
 export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
@@ -13,83 +13,77 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
     className,
     id,
     typeTerritoire,
+    setTypeTerritoire,
     setSearchCode,
     setSearchLibelle,
     searchCode,
     searchLibelle,
-    setIsTypeChanging,
     isTerritoryChanging,
     setIsTerritoryChanging,
-    setIsNewTypeChosen,
-    focusAutocomplete,
   } = props;
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
   const thematique = params.get('thematique') || undefined;
   const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState<SearchInputOptions[]>([]);
-  const [value, setValue] = useState<SearchInputOptions | null>(null);
+  const [options, setOptions] = useState<SearchInputOptionsSansFiltre[]>([]);
+  const [value, setValue] = useState<SearchInputOptionsSansFiltre | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const isEnterPressedRef = useRef(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const buildValueFromProps = (): SearchInputOptionsSansFiltre | null => {
+    if (!searchLibelle) return null;
+    return {
+      searchLibelle,
+      searchCode: searchCode || '',
+      codeCommune: '',
+      codeEpci: '',
+      ept: '',
+      libellePetr: '',
+      libellePnr: '',
+      codePnr: '',
+      territoireType: typeTerritoire
+    };
+  };
 
   useEffect(() => {
     if (searchLibelle) {
-      const val = { searchLibelle, searchCode: searchCode || '', codeCommune: '', codeEpci: '', ept: '', libellePetr: '', libellePnr: '', codePnr: '' };
-      setValue(val);
+      setValue(buildValueFromProps());
       setInputValue('');
     }
-  }, [searchLibelle, searchCode]);
-  const filteredCollectivite = options.filter(
-    (value, index, self) =>
-      index ===
-      self.findIndex(
-        (t) =>
-          t.searchLibelle === value.searchLibelle &&
-          t.searchCode === value.searchCode
-      )
-  );
-  const collectivites = [
-    ...filteredCollectivite.toSorted((a, b) =>
-      a.searchLibelle.localeCompare(b.searchLibelle)
-    )
-  ];
+  }, [searchLibelle, searchCode, typeTerritoire]);
+  const collectivites = preparerOptionsTerritoires(options, inputValue);
 
-  useEffect(() => {
-    void (async () => {
-      setIsLoading(true);
-      const getCollectivite = await GetCollectivite(typeTerritoire, inputValue);
-      setOptions(
-        getCollectivite.map((el) => ({
-          searchLibelle: el.search_libelle,
-          searchCode: el.search_code ?? '',
-          codeCommune: el.code_geographique ?? '',
-          codeEpci: el.epci ?? '',
-          ept: el.ept ?? '',
-          libellePetr: el.libelle_petr ?? '',
-          libellePnr: el.libelle_pnr ?? '',
-          codePnr: el.code_pnr ?? ''
-        }))
-      );
-      setIsLoading(false);
-    })();
-    setSearchCode(searchCode);
-  }, [inputValue, typeTerritoire]);
+  const fetchTerritoires = async (value: string) => {
+    const result = await GetAllTerritoires(value);
+    setOptions(
+      result.map((el) => ({
+        searchLibelle: el.search_libelle,
+        searchCode: el.search_code ?? '',
+        codeCommune: el.code_geographique ?? '',
+        codeEpci: el.epci ?? '',
+        ept: el.ept ?? '',
+        libellePetr: el.libelle_petr ?? '',
+        libellePnr: el.libelle_pnr ?? '',
+        codePnr: el.code_pnr ?? '',
+        territoireType: el.territoire_type
+      }))
+    );
+  };
 
-  useEffect(() => {
-    if (focusAutocomplete) {
-      setValue(null);
-      setInputValue('');
-      setSearchCode('');
-      setSearchLibelle('');
-      setOptions([]);
-      setTimeout(() => {
-        const input = document.getElementById(id);
-        if (input) (input as HTMLInputElement).focus();
-      }, 100);
-    }
-  }, [focusAutocomplete, id]);
+  const submitRedirection = (newValue: SearchInputOptionsSansFiltre) => {
+    setIsTerritoryChanging(false);
+    const input = document.getElementById(id);
+    if (input) (input as HTMLInputElement).blur();
+    handleChangementTerritoireRedirection({
+      searchCode: newValue.searchCode ?? '',
+      searchLibelle: newValue.searchLibelle ?? '',
+      typeTerritoire: newValue.territoireType,
+      router,
+      page: pathname.split('/')[1] || '',
+      thematique
+    });
+  };
 
   return (
     <Autocomplete
@@ -98,21 +92,28 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       filterOptions={(x) => x}
       options={collectivites}
       value={value}
-      loading={isLoading} loadingText="Chargement..."
+      loadingText="Chargement..."
       noOptionsText="Aucun territoire trouvé"
       open={isOpen}
-      onOpen={() => {
+      onOpen={(event) => {
+        if (event?.type !== 'mousedown' && isTerritoryChanging) return;
         setValue(null);
         setIsTerritoryChanging(true);
-        setIsTypeChanging(false);
         const input = document.getElementById(id);
         if (input) (input as HTMLInputElement).focus();
-        if (isTerritoryChanging) {
-          setIsOpen(true);
-        } else setTimeout(() => { setIsOpen(true); }, 500);
+        if (inputValue.length > 0) setIsOpen(true);
       }}
       onClose={() => setIsOpen(false)}
-      onChange={(event, newValue: SearchInputOptions | null) => {
+      onBlur={() => {
+        if (value === null) {
+          setValue(buildValueFromProps());
+          setInputValue('');
+          setOptions([]);
+          setIsOpen(false);
+          setIsTerritoryChanging(false);
+        }
+      }}
+      onChange={(event, newValue: SearchInputOptionsSansFiltre | null) => {
         if (newValue === null) {
           setIsTerritoryChanging(true);
         }
@@ -120,53 +121,48 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         setOptions(newValue ? [newValue, ...options] : options);
         setSearchCode(newValue?.searchCode ?? '');
         setSearchLibelle(newValue?.searchLibelle ?? '');
+        if (newValue) {
+          setTypeTerritoire(newValue.territoireType);
+        }
 
-        // Si Enter a été pressé et qu'une valeur a été sélectionnée
         if (isEnterPressedRef.current && newValue !== null) {
           isEnterPressedRef.current = false;
-          setIsNewTypeChosen(false);
-          setIsTerritoryChanging(false);
-          setIsTypeChanging(false);
-          const input = document.getElementById(id);
-          if (input) (input as HTMLInputElement).blur();
-          handleChangementTerritoireRedirection({
-            searchCode: newValue.searchCode ?? '',
-            searchLibelle: newValue.searchLibelle ?? '',
-            typeTerritoire,
-            router,
-            page: pathname.split('/')[1] || '',
-            thematique
-          })
-          return;
-        }
-
-        if (newValue !== null) {
-          const input = document.getElementById(id);
-          if (input) (input as HTMLInputElement).blur();
+          submitRedirection(newValue);
         }
       }}
-      onInputChange={(event, newInputValue) => {
-        setInputValue(ReplaceSearchEpci(newInputValue));
+      onInputChange={(event, newInputValue, reason) => {
+        const nextValue = ReplaceSearchEpci(newInputValue);
+        setInputValue(nextValue);
+        if (reason === 'input') {
+          if (nextValue.length === 0) {
+            setOptions([]);
+            setIsOpen(false);
+          } else {
+            setIsOpen(true);
+            void fetchTerritoires(nextValue);
+          }
+        } else {
+          setIsOpen(false);
+        }
       }}
-      getOptionLabel={(option) => {
-        if (!option) return '';
-        return option.searchCode?.length !== 0
-          ? `${ReplaceDisplayEpci(option.searchLibelle)} - ${option.searchCode}`
-          : `${option.searchLibelle}`;
-      }}
+      getOptionLabel={(option) => (option ? getLibelleTerritoireAvecCode(option) : '')}
       onKeyDown={(e) => {
         if (e.code === 'Enter') {
           e.preventDefault();
-          isEnterPressedRef.current = true;
+          if (value !== null) {
+            submitRedirection(value);
+          } else {
+            isEnterPressedRef.current = true;
+          }
         }
       }}
-      renderOption={(props, option) =>
-        <RenderOption
+      renderOption={(props, option) => (
+        <RenderOptionSansFiltre
+          key={option.searchLibelle + option.searchCode}
           props={props}
           option={option}
-          key={option.searchLibelle + option.searchCode}
         />
-      }
+      )}
       renderInput={(params) =>
         <RenderInputHeader
           className={className}
@@ -174,7 +170,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
           setSearchCode={setSearchCode}
           setSearchLibelle={setSearchLibelle}
           params={params}
-          typeTerritoire={typeTerritoire}
         />
       }
       fullWidth
@@ -184,9 +179,14 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
       slotProps={{
         popper: {
           sx: {
+            '&[data-popper-placement*="bottom"] .MuiPaper-root': {
+              transform: 'translateY(14px)',
+            },
+            '&[data-popper-placement*="top"] .MuiPaper-root': {
+              transform: 'translateY(-14px)',
+            },
             '& .MuiPaper-root': {
               borderRadius: '1rem',
-              transform: 'translateY(14px)',
               padding: '0.5rem 0.2rem 0.5rem 0.5rem',
               width: "448px !important",
               boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);'
