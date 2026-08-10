@@ -272,7 +272,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 50,
-    ordreCollection: 2,
+    ordreCollection: 3,
     metadata: {
       title: 'Lever les freins d’une mobilisation difficile',
       description:
@@ -294,7 +294,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 40,
-    ordreCollection: 3,
+    ordreCollection: 4,
     metadata: {
       title:
         'Sensibiliser : les ateliers de l’adaptation au changement climatique (AdACC)',
@@ -316,7 +316,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2024-09-20',
     ordre: 30,
-    ordreCollection: 4,
+    ordreCollection: 5,
     metadata: {
       title: 'ClimaSTORY, une cartographie pour sensibiliser',
       description:
@@ -337,7 +337,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 60,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 15,
@@ -353,7 +353,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 20,
-    ordreCollection: 8
     ordreCollection: 8
   },
   {
@@ -371,7 +370,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2025-07-25',
     ordre: 40,
     ordreCollection: 11
-    ordreCollection: 11
   },
   {
     id: 17,
@@ -388,7 +386,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2024-09-25',
     ordre: 50,
     ordreCollection: 12
-    ordreCollection: 12
   },
   {
     id: 18,
@@ -403,7 +400,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 100,
-    ordreCollection: 9
     ordreCollection: 9
   },
   {
@@ -420,7 +416,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2025-07-25',
     ordre: 50,
-    ordreCollection: 10
     ordreCollection: 10
   },
   {
@@ -654,7 +649,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2025-11-25',
     ordre: 10,
     ordreCollection: 4,
-    ordreCollection: 4,
     metadata: {
       title:
         'De la gestion du risque à l’adaptation : le cas de la relocalisation de Miquelon',
@@ -677,7 +671,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-11-04',
     ordre: 10,
-    ordreCollection: 1,
+    ordreCollection: 2,
     metadata: {
       title:
         'Comment mobiliser en interne et en externe autour du diagnostic de vulnérabilité ?',
@@ -874,7 +868,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     date: '2026-04-14',
     ordre: 110,
     ordreCollection: 6
-    ordreCollection: 6
   },
   {
     id: 45,
@@ -889,7 +882,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 120,
-    ordreCollection: 7
     ordreCollection: 7
   },
   {
@@ -907,7 +899,6 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-05-06',
     ordre: 4,
-    ordreCollection: 5,
     ordreCollection: 5,
     metadata: {
       title:
@@ -973,7 +964,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2026-08-10',
     ordre: 70,
-    ordreCollection: 6,
+    ordreCollection: 1,
     metadata: {
       title:
         'Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité',
