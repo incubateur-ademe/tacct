@@ -162,8 +162,6 @@ const config = {
     },
     async rewrites() {
         // Proxy vers l'app legacy (outil de saisie), monté sous /workspace-tacct.
-        // TACCT_APP_URL doit être disponible à l'heure du BUILD : rewrites() est
-        // évalué à ce moment-là et le résultat est figé dans la sortie standalone.
         if (!process.env.TACCT_APP_URL) {
             return [];
         }
