@@ -7,20 +7,58 @@ import { BoutonPrimaireClassic, BoutonSecondaireClassic } from "@/design-system/
 import { Body, H2 } from "@/design-system/base/Textes";
 import { NewContainer } from "@/design-system/layout";
 import Breadcrumb from "@codegouvfr/react-dsfr/Breadcrumb";
+import Notice from "@codegouvfr/react-dsfr/Notice";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useStyles } from "tss-react/dsfr";
 import { MaintenanceNotice } from '../MaintenanceNotice';
 import styles from './moncompte.module.scss';
 
+// Notice ponctuelle : maintenance du 10 août 2026, 17h-18h.
+// Affichée uniquement ce jour-là. À supprimer une fois la date passée.
+const NOTICE_KEY = 'notice-maintenance-2026-08-10-fermee';
+const NOTICE_START = new Date('2026-08-10T00:00:00');
+const NOTICE_END = new Date('2026-08-10T23:59:59');
+
 export const MonCompteClient = () => {
+  const { css } = useStyles();
   const [error, setError] = useState<string | null>(null);
+  const [noticeClosed, setNoticeClosed] = useState(true);
+  const isWithinNoticePeriod =
+    Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
+
   useEffect(() => {
     setError(new URLSearchParams(window.location.search).get('error'));
+    setNoticeClosed(localStorage.getItem(NOTICE_KEY) === 'true');
   }, []);
+
+  const handleCloseNotice = () => {
+    localStorage.setItem(NOTICE_KEY, 'true');
+    setNoticeClosed(true);
+  };
+
   return (
     <>
       <MaintenanceNotice />
+      {isWithinNoticePeriod && !noticeClosed && (
+        <Notice
+          className={css({
+            backgroundColor: '#FFD1B4',
+            color: '#903700'
+          })}
+          isClosable={true}
+          onClose={handleCloseNotice}
+          title={'Interruption de service :'}
+          description={
+            <>
+              suite à une maintenance technique programmée, l’accès à l’espace
+              outil de saisie sera impossible ce jour de 17h à 18h. Veuillez nous
+              excuser pour la gêne occasionnée.
+            </>
+          }
+        />
+      )}
       <NewContainer size="xl" style={{ padding: 0 }}>
         <Breadcrumb
           currentPageLabel={"Mon compte"}
