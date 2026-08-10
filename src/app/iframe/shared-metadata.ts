@@ -7,6 +7,7 @@ const isProduction = process.env.NEXT_PUBLIC_ENV === 'production';
 
 export const sharedMetadata: Metadata = {
   description,
+  title: 'TACCT',
   robots: isProduction
     ? undefined
     : {
@@ -22,7 +23,7 @@ export const sharedMetadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     countryName: 'France',
-    siteName: 'TACCT - adaptez votre territoire au changement climatique'
+    siteName: "TACCT - Réussir la démarche d'adaptation de votre territoire"
     // images: [
     //   {
     //     url: new URL(``, config.host),

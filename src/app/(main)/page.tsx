@@ -1,9 +1,9 @@
 'use client';
 
-import Notice from '@codegouvfr/react-dsfr/Notice';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useStyles } from 'tss-react/dsfr';
+// import Notice from '@codegouvfr/react-dsfr/Notice';
+// import Link from 'next/link';
+import { useEffect } from 'react';
+// import { useStyles } from 'tss-react/dsfr';
 import { DemarcheBloc } from './(home)/DemarcheBloc';
 import { HeroBloc } from './(home)/HeroBloc';
 import { HeroBlocMobile } from './(home)/HeroBlocMobile';
@@ -12,31 +12,37 @@ import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
-const NOTICE_KEY = 'notice-tacct-evolution-fermee';
-const NOTICE_START = new Date('2026-05-06');
-const NOTICE_END = new Date('2026-05-22T23:59:59');
+// Notice temporaire de la page d'accueil — désactivée.
+// Pour la réactiver : décommenter les imports ci-dessus, le bloc d'état et le
+// handler dans le composant, puis le JSX dans le return.
+// Penser à mettre à jour NOTICE_START / NOTICE_END, et à changer NOTICE_KEY
+// pour que les utilisateurs ayant fermé la notice précédente revoient la
+// nouvelle.
+// const NOTICE_KEY = 'notice-tacct-evolution-fermee';
+// const NOTICE_START = new Date('2026-05-06');
+// const NOTICE_END = new Date('2026-05-22T23:59:59');
 
 const Home = () => {
-  const { css } = useStyles();
-  const [noticeClosed, setNoticeClosed] = useState(true);
-  const isWithinNoticePeriod =
-    Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
+  // const { css } = useStyles();
+  // const [noticeClosed, setNoticeClosed] = useState(true);
+  // const isWithinNoticePeriod =
+  //   Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       sessionStorage.removeItem('dernierTerritoireRecherché');
-      setNoticeClosed(localStorage.getItem(NOTICE_KEY) === 'true');
+      // setNoticeClosed(localStorage.getItem(NOTICE_KEY) === 'true');
     }
   }, []);
 
-  const handleCloseNotice = () => {
-    localStorage.setItem(NOTICE_KEY, 'true');
-    setNoticeClosed(true);
-  };
+  // const handleCloseNotice = () => {
+  //   localStorage.setItem(NOTICE_KEY, 'true');
+  //   setNoticeClosed(true);
+  // };
 
   return (
     <div>
-      {isWithinNoticePeriod && !noticeClosed && (
+      {/* {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
             backgroundColor: 'var(--gris-medium)',
@@ -54,7 +60,7 @@ const Home = () => {
               >
                 comment intégrer la TRACC dans votre diagnostic
               </Link>
-               ! Et pour les Outre-mers, consultez votre{' '}
+               ! Et pour les Outre-mers, consultez votre{' '}
               <Link
                 href="https://tacct.ademe.fr/recherche-territoire-patch4"
                 target="_blank"
@@ -78,14 +84,14 @@ const Home = () => {
                 financement de votre démarche d’adaptation
               </Link>
               .<br></br>
-              Une question, un retour ?{' '}
+              Une question, un retour ?{' '}
               <Link href="https://tally.so/r/mJGELz" target="_blank">
                 Contactez-nous !
               </Link>
             </>
           }
         />
-      )}
+      )} */}
       <div className={styles.heroBlocDesktopOnly}>
         <HeroBloc />
       </div>

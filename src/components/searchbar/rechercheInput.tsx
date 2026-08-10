@@ -111,9 +111,14 @@ export const RechercheInput = ((props: SearchInputProps) => {
       slotProps={{
         popper: {
           sx: {
+            '&[data-popper-placement*="bottom"] .MuiPaper-root': {
+              transform: 'translateY(14px)',
+            },
+            '&[data-popper-placement*="top"] .MuiPaper-root': {
+              transform: 'translateY(-14px)',
+            },
             '& .MuiPaper-root': {
               borderRadius: '1rem !important',
-              transform: 'translateY(14px)',
               padding: '0.5rem 0.2rem 0.5rem 0.5rem',
               boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);'
             },

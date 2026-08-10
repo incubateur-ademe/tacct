@@ -21,7 +21,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const thematique = searchParams.get('thematique') as "Confort thermique" | "Gestion des risques" | "Aménagement" | "Eau" | "Biodiversité" | "Agriculture";
-  const [topPosition, setTopPosition] = useState<number>(173);
+  const [topPosition, setTopPosition] = useState<number>(190);
   const [navigationHeight, setNavigationHeight] = useState<number>(0);
   const [openEtape1, setOpenEtape1] = useState<boolean>(params === "/donnees" ? true : false);
   const [openEtape2, setOpenEtape2] = useState<boolean>(params === "/impacts" ? true : false);
@@ -73,7 +73,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     if (ongletsMenuEtape1 === undefined) return;
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const headerHeight = 173;
+      const headerHeight = 190;
       const footerHeight = 330;
       const documentHeight = document.documentElement.scrollHeight;
       const windowHeight = window.innerHeight;

@@ -5,10 +5,13 @@ import { Metadata } from "next";
 import { BlocTitre } from './components/blocTitre';
 import { Patch4Analyse } from './Patch4Analyse';
 
-export const metadata: Metadata = {
-  title: 'Patch4°C',
-  description: 'Patch4°C'
-};
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { libelle } = await searchParams;
+  return {
+    title: { absolute: libelle ? `Patch 4°C - ${libelle}` : 'Patch 4°C' },
+    description: 'Patch4°C'
+  };
+}
 
 const Patch4C = async (props: { searchParams: SearchParams }) => {
   const { code, type, libelle } = await props.searchParams;

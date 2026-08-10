@@ -45,17 +45,13 @@ export const TacctoscopeCard = ({
                 }
               />
             )} */}
-            {!hasAnswers && (
-              <TagsSimples
-                texte="BIENTÔT DISPONIBLE "
-                couleur="#E3FAF9"
-                couleurTexte="var(--boutons-primaire-3)"
-                taille="small"
-                icone={
-                  <Image src={sparklingIcon} alt="" width={12} height={12} />
-                }
-              />
-            )}
+            <TagsSimples
+              texte="BIENTÔT DISPONIBLE "
+              couleur="#E3FAF9"
+              couleurTexte="var(--boutons-primaire-3)"
+              taille="small"
+              icone={<Image src={sparklingIcon} alt="" width={12} height={12} />}
+            />
             <H3
               color="#038278"
               style={{

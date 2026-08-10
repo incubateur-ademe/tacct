@@ -7,6 +7,15 @@ import GestionRisquesServerPage from '@/app/(main)/(parcours)/donnees/thematique
 import { SearchParams } from '@/app/(main)/types';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { libelle, thematique } = await searchParams;
+  const title = thematique && libelle
+    ? `${thematique} - données ${libelle}`
+    : thematique ?? 'Explorer les données';
+  return { title: { absolute: title } };
+}
 
 const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;

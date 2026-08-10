@@ -13,7 +13,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { libelle } = await searchParams;
   return {
-    title: { absolute: libelle ? `Patch 4° C - ${libelle}` : 'Patch 4° C' }
+    title: { absolute: libelle ? `Patch 4°C - ${libelle}` : 'Patch 4°C' }
   };
 }
 

@@ -72,6 +72,7 @@ export async function GET(request: NextRequest) {
     });
 
     const allowUnverifiedEmailLink =
+      process.env.NEXT_PUBLIC_ENV === 'production' || // TODO A enlever après vérification de MEP
       process.env.NEXT_PUBLIC_ENV === 'preprod' ||
       process.env.NEXT_PUBLIC_ENV === 'development';
 

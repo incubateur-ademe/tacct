@@ -1,5 +1,4 @@
 import { AncienEspaceCard } from '@/components/mon-espace/AncienEspaceCard';
-import { CommunauteCards } from '@/components/mon-espace/CommunauteCards';
 import { EspaceMenu, EspaceMenuItem } from '@/components/mon-espace/EspaceMenu';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { ProfilCard } from '@/components/mon-espace/ProfilCard';
@@ -24,7 +23,7 @@ export const metadata: Metadata = { title: 'Mon espace' };
 const MENU_ITEMS: EspaceMenuItem[] = [
   { anchor: 'profil', label: 'Profil' },
   { anchor: 'outils', label: 'Outils' },
-  { anchor: 'communaute', label: 'Communauté' },
+  // { anchor: 'communaute', label: 'Communauté' },
   { anchor: 'suggestions', label: 'Suggestions' }
 ];
 
@@ -82,14 +81,14 @@ const MonEspace = async () => {
                 started={started}
                 total={CRITERIA.length}
               />
-              {user.validated && <AncienEspaceCard />}
+              <AncienEspaceCard validated={user.validated} />
             </div>
           </section>
 
-          <section id="communaute" className={styles.section}>
+          {/* <section id="communaute" className={styles.section}>
             <TitreSection>Communauté adaptation</TitreSection>
             <CommunauteCards />
-          </section>
+          </section> */}
 
           <section id="suggestions" className={styles.section}>
             <TitreSection>Suggestions</TitreSection>

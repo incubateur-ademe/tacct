@@ -2,8 +2,17 @@ import { SearchParams } from '@/app/(main)/types';
 import { ErrorDisplay } from '@/app/ErrorDisplay';
 import { ClientOnly } from '@/components/utils/ClientOnly';
 import { H1 } from '@/design-system/base/Textes';
+import type { Metadata } from 'next';
 import styles from '../donnees/explorerDonnees.module.scss';
 import { DiagnostiquerImpactsConfortThermique } from './thematiques/confortThermique/ImpactsConfortThermique';
+
+export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
+  const { libelle, thematique } = await searchParams;
+  const title = thematique && libelle
+    ? `${thematique} - impacts ${libelle}`
+    : thematique ?? 'Impacts';
+  return { title: { absolute: title } };
+}
 
 const ImpactsTerritoirePage = async (props: { searchParams: SearchParams }) => {
   const { code, libelle, type, thematique } = await props.searchParams;
