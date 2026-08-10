@@ -157,7 +157,25 @@ const config = {
                 ]
             },
             { source: '/statistiques', headers: statsHeaders },
-            { source: '/sandbox/stats', headers: statsHeaders }
+            { source: '/sandbox/stats', headers: statsHeaders },
+            // Désindexation de l'app legacy proxifiée sous /workspace-tacct.
+            // On utilise X-Robots-Tag et NON un Disallow dans robots.txt : un
+            // Disallow empêche le crawl, donc Google ne verrait jamais la
+            // directive noindex et pourrait laisser les URLs dans l'index.
+            // Les deux motifs sont nécessaires : ':path*' ne couvre pas de
+            // façon fiable le chemin nu sans segment.
+            {
+                source: '/workspace-tacct',
+                headers: [
+                    { key: 'X-Robots-Tag', value: 'noindex, nofollow' }
+                ]
+            },
+            {
+                source: '/workspace-tacct/:path*',
+                headers: [
+                    { key: 'X-Robots-Tag', value: 'noindex, nofollow' }
+                ]
+            }
         ];
     },
     async rewrites() {
