@@ -6,7 +6,7 @@ import { useStyles } from 'tss-react/dsfr';
 import { DemarcheBloc } from './(home)/DemarcheBloc';
 import { HeroBloc } from './(home)/HeroBloc';
 import { HeroBlocMobile } from './(home)/HeroBlocMobile';
-import styles from "./(home)/home.module.scss";
+import styles from './(home)/home.module.scss';
 import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
@@ -18,7 +18,8 @@ const NOTICE_END = new Date('2026-09-10T23:59:59');
 const Home = () => {
   const { css } = useStyles();
   const [noticeClosed, setNoticeClosed] = useState(true);
-  const isWithinNoticePeriod = Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
+  const isWithinNoticePeriod =
+    Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,29 +38,35 @@ const Home = () => {
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
-            backgroundColor: '#FFD1B4',
-            color: "#903700"
+            backgroundColor: 'var(--gris-medium)',
+            color: 'black'
           })}
           isClosable={true}
           onClose={handleCloseNotice}
-          title={"Nouveauté !"}
+          title={'Nouveauté !'}
           description={
             <>
               <br></br>Vous réalisez votre diagnostic de vulnérabilité ? Les
-              bases de données ne révèlent pas tout :{" "}
+              bases de données ne révèlent pas tout :{' '}
               <a
                 href="/ressources/associer-parties-prenantes/entretien-adaptation"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                découvrez nos conseils pour mener des entretiens de terrain efficaces
-              </a> !
+                découvrez nos conseils pour mener des entretiens de terrain
+                efficaces
+              </a>
+               !
             </>
           }
         />
       )}
-      <div className={styles.heroBlocDesktopOnly}><HeroBloc /></div>
-      <div className={styles.heroBlocMobileOnly}><HeroBlocMobile /></div>
+      <div className={styles.heroBlocDesktopOnly}>
+        <HeroBloc />
+      </div>
+      <div className={styles.heroBlocMobileOnly}>
+        <HeroBlocMobile />
+      </div>
       <TacctBloc />
       <DemarcheBloc />
       <PatchEtRessourcesBloc />
