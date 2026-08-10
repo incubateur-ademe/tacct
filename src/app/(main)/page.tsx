@@ -12,8 +12,8 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
-const NOTICE_START = new Date('2026-03-26');
-const NOTICE_END = new Date('2026-04-07T23:59:59');
+const NOTICE_START = new Date('2026-08-10');
+const NOTICE_END = new Date('2026-09-10T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
@@ -42,12 +42,18 @@ const Home = () => {
           })}
           isClosable={true}
           onClose={handleCloseNotice}
-          title={"Le service TACCT évolue !"}
+          title={"Nouveauté !"}
           description={
             <>
-              <br></br>Pour vous proposer une expérience simplifiée, les plateformes
-              TACCT et Facili-TACCT sont désormais regroupées sous une seule
-              adresse, tacct.ademe.fr, et un seul nom, TACCT.
+              <br></br>Vous réalisez votre diagnostic de vulnérabilité ? Les
+              bases de données ne révèlent pas tout :{" "}
+              <a
+                href="/ressources/associer-parties-prenantes/entretien-adaptation"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                découvrez nos conseils pour mener des entretiens de terrain efficaces
+              </a> !
             </>
           }
         />

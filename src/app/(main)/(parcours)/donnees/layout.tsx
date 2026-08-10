@@ -13,7 +13,7 @@ const ExplorerTerritoireLayout = ({ children }: PropsWithChildren) => {
   if (code && (code.startsWith("987") || code.startsWith("988") || code.startsWith("978") || code.startsWith("977"))) {
     return (
       <div className="py-12">
-        <DonneesIndisponiblesOutreMer />;
+        <DonneesIndisponiblesOutreMer />
       </div>
     );
   }

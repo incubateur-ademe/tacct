@@ -10,7 +10,6 @@ const ScrollToHash = ({
   useEffect(() => {
     const scrollToHash = () => {
       if (window.location.hash) {
-        console.log('Scrolling to hash:', window.location.hash);
         const element = document.getElementById(decodeURIComponent(window.location.hash.substring(1)));
         if (element) {
           // Attendre que les images et graphiques soient chargés

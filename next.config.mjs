@@ -117,7 +117,7 @@ const config = {
     },
     serverExternalPackages: [
         'require-in-the-middle',
-        'imporin-the-middle',
+        'import-in-the-middle',
         '@prisma/client'
     ],
     output: 'standalone',

@@ -25,7 +25,7 @@ const PlanDuSite = () => (
   <Container my="4w">
     <H1>Plan du site</H1>
     <p style={{ marginBottom: '2.5rem', maxWidth: '52rem' }}>
-      Cette page liste les pages principales de Facili-TACCT. Certaines pages
+      Cette page liste les pages principales de TACCT. Certaines pages
       ne sont accessibles qu&apos;après avoir sélectionné un territoire via le
       moteur de recherche : elles sont signalées ci-dessous par la mention
       <em> « territoire requis »</em>.

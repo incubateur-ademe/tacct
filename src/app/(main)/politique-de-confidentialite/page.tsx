@@ -29,7 +29,7 @@ const PrivacyPolicyPage = () => {
         <PrivacyPolicy
           includeBetaGouv
           cookieConsentButton={<CookieConsentButton />}
-          siteName="Facilit-TACCT"
+          siteName="TACCT"
           cookies={[]}
           thirdParties={[
             {
