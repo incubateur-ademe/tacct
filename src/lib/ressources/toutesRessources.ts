@@ -948,5 +948,28 @@ export const toutesLesRessources: ToutesRessources[] = [
       description:
         "Comment savoir si une stratégie d'adaptation produit réellement les effets escomptés ? Le suivi-évaluation : une étape incontournable à anticiper."
     }
+  },
+  {
+    id: 49,
+    type: 'Article',
+    titre:
+      'Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité',
+    slug: 'entretien-adaptation',
+    description:
+      'Les bases de données ne révèlent pas tout : elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain.',
+    lien: '/ressources/articles/entretien-adaptation',
+    filtres: ['Article', 'Agir'],
+    collections: ['Associer les parties prenantes'],
+    tempsLecture: 6,
+    image: ImageTuileArticle,
+    date: '2026-08-10',
+    ordre: 70,
+    ordreCollection: 6,
+    metadata: {
+      title:
+        'Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité',
+      description:
+        'Les bases de données ne révèlent pas tout 255: elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain.'
+    }
   }
 ];
