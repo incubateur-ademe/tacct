@@ -65,6 +65,9 @@ export const MonCompteClient = () => {
           homeLinkProps={{ href: '/' }}
           segments={[]}
         />
+        {/* Titre principal de la page, non affiché (le design n'en prévoit
+            pas) mais nécessaire à la hiérarchie des titres — RGAA 9.1. */}
+        <h1 className="fr-sr-only">Mon compte</h1>
         {error && (
           <div
             role="alert"

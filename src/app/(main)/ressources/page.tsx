@@ -8,7 +8,7 @@ import { ModaleToutesCollections } from './blocs/ModaleToutesCollections';
 import styles from './ressources.module.scss';
 
 export const metadata: Metadata = {
-  title: 'Ressources',
+  title: 'Boîte à outils',
   description: 'Catalogue de ressources TACCT à destination des collectivités',
 };
 

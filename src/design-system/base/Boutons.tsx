@@ -16,7 +16,8 @@ export const BoutonPrimaireClassic = ({
   icone,
   style,
   posthogEventName,
-  thematique
+  thematique,
+  ariaPressed
 }: {
   link?: string;
   text: string;
@@ -28,6 +29,8 @@ export const BoutonPrimaireClassic = ({
   style?: React.CSSProperties;
   posthogEventName?: string;
   thematique?: string;
+  /** Restitue l'état sélectionné aux technologies d'assistance (RGAA 7.1). */
+  ariaPressed?: boolean;
 }) => {
   const posthog = usePostHog();
   const router = useRouter();
@@ -103,9 +106,11 @@ export const BoutonPrimaireClassic = ({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       disabled={disabled}
       style={buttonStyle}
+      aria-pressed={ariaPressed}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}
@@ -138,7 +143,8 @@ export const BoutonSecondaireClassic = ({
   onClick,
   icone,
   style,
-  posthogEventName
+  posthogEventName,
+  ariaPressed
 }: {
   link?: string;
   text: string;
@@ -149,6 +155,8 @@ export const BoutonSecondaireClassic = ({
   icone?: StaticImageData;
   style?: React.CSSProperties;
   posthogEventName?: string;
+  /** Restitue l'état sélectionné aux technologies d'assistance (RGAA 7.1). */
+  ariaPressed?: boolean;
 }) => {
   const posthog = usePostHog();
   const router = useRouter();
@@ -224,9 +232,11 @@ export const BoutonSecondaireClassic = ({
 
   return (
     <button
+      type="button"
       onClick={handleClick}
       disabled={disabled}
       style={buttonStyle}
+      aria-pressed={ariaPressed}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onFocus={handleFocus}

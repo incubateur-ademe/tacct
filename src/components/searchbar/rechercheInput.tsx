@@ -61,6 +61,9 @@ export const RechercheInput = ((props: SearchInputProps) => {
       id={id}
       autoHighlight
       fullWidth
+      // Équivalent clavier de la croix d'effacement : MUI rend le
+      // `clearIndicator` avec tabIndex=-1 (RGAA 7.3).
+      clearOnEscape
       loading={isLoading}
       filterOptions={(x) => x}
       options={collectivites}

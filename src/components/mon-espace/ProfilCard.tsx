@@ -34,6 +34,8 @@ export const ProfilCard = ({ firstname, lastname, email }: Props) => {
             wordBreak: 'break-word'
           }}
         >
+          {/* Rend le titre de page explicite sans changer l'affichage (RGAA 9.1). */}
+          <span className="fr-sr-only">Mon espace — </span>
           {firstname}
           {initiale ? ` ${initiale}.` : ''}
         </H1>

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Header.module.scss';
 
 export const accountItemComp = (
@@ -23,6 +23,19 @@ export const accountItemComp = (
   const windowDimensions = useWindowDimensions();
   const wide = !!windowDimensions.width && windowDimensions.width > 768;
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
+  const accountButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Échap ferme le menu et rend le focus au bouton déclencheur (RGAA 7.3).
+  useEffect(() => {
+    if (!accountMenuOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setAccountMenuOpen(false);
+      accountButtonRef.current?.focus();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [accountMenuOpen]);
 
   return (
     user ?
@@ -30,8 +43,9 @@ export const accountItemComp = (
         <div key="account-name" className={styles.accountWrapper}>
           <button
             type="button"
+            ref={accountButtonRef}
             className={styles.accountButton}
-            aria-haspopup="menu"
+            aria-haspopup="true"
             aria-expanded={accountMenuOpen}
             onClick={() => setAccountMenuOpen((value) => !value)}
           >
@@ -56,10 +70,9 @@ export const accountItemComp = (
                 onClick={() => setAccountMenuOpen(false)}
                 aria-hidden="true"
               />
-              <div className={styles.accountMenu} role="menu">
+              <div className={styles.accountMenu}>
                 <Link
                   href="/mon-espace"
-                  role="menuitem"
                   className={styles.accountMenuItem}
                   onClick={() => setAccountMenuOpen(false)}
                 >
@@ -68,7 +81,6 @@ export const accountItemComp = (
                 </Link>
                 <a
                   href="/api/proconnect/logout"
-                  role="menuitem"
                   className={styles.accountMenuItem}
                   onClick={() => setAccountMenuOpen(false)}
                 >
@@ -93,13 +105,14 @@ export const accountItemComp = (
         </div>
       ) : (
         <button
+          type="button"
           className="flex flex-row items-center"
           onClick={() => {
             posthog.capture('click_bouton_mon_compte_header', { date: new Date() });
             router.push('/mon-compte');
           }}
           key="mon-compte-header"
-          aria-label="Mon compte"
+          aria-label="Se connecter"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

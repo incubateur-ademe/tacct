@@ -1,6 +1,7 @@
 import { Block, BlockType } from '@/app/(main)/types';
 import ZoomOnClick from '@/components/utils/ZoomOnClick';
 import { Body, H2, H3 } from '@/design-system/base/Textes';
+import type { CSSProperties } from 'react';
 import { getBlocks } from '../queries/notion/notion';
 import { normalizeText } from '../utils/reusableFunctions/NormalizeTexts';
 import { groupAndRenderBlocks } from './bulletListContent';
@@ -184,10 +185,22 @@ export const renderBlock = async (el: Block, i: number) => {
           <Text text={richText} />
         </div>
       );
-    case 'table':
+    case 'table': {
       const tableRows = el.has_children
         ? ((await getBlocks(el.id)) as Block[])
         : [];
+      // La première ligne est déjà présentée comme un en-tête (fond gris +
+      // gras) : on aligne la sémantique sur le rendu (RGAA 5.6 / 5.7).
+      // `text-align: left` reproduit exactement le rendu précédent en <td>,
+      // les <th> étant centrés par défaut.
+      const [tableHeaderRow, ...tableBodyRows] = tableRows;
+      const tableHasRowHeader = el.table?.has_row_header ?? false;
+      const tableCellStyle: CSSProperties = {
+        border: '1px solid #ddd',
+        padding: '0.75rem',
+        fontSize: '14px',
+        textAlign: 'left'
+      };
       return (
         <div key={i} style={{ margin: '2rem 0', overflowX: 'auto' }}>
           <table
@@ -197,31 +210,49 @@ export const renderBlock = async (el: Block, i: number) => {
               border: '1px solid #ddd'
             }}
           >
-            <tbody>
-              {tableRows.map((row, rowIdx) => (
-                <tr
-                  key={rowIdx}
-                  style={rowIdx === 0 ? { backgroundColor: '#f6f6f6' } : {}}
-                >
-                  {row.table_row?.cells?.map((cell, cellIdx) => (
-                    <td
+            {tableHeaderRow && (
+              <thead>
+                <tr style={{ backgroundColor: '#f6f6f6' }}>
+                  {tableHeaderRow.table_row?.cells?.map((cell, cellIdx) => (
+                    <th
                       key={cellIdx}
-                      style={{
-                        border: '1px solid #ddd',
-                        padding: '0.75rem',
-                        fontSize: '14px',
-                        fontWeight: rowIdx === 0 ? 'bold' : 'normal'
-                      }}
+                      scope="col"
+                      style={{ ...tableCellStyle, fontWeight: 'bold' }}
                     >
                       <Text text={cell} />
-                    </td>
+                    </th>
                   ))}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {tableBodyRows.map((row, rowIdx) => (
+                <tr key={rowIdx}>
+                  {row.table_row?.cells?.map((cell, cellIdx) =>
+                    tableHasRowHeader && cellIdx === 0 ? (
+                      <th
+                        key={cellIdx}
+                        scope="row"
+                        style={{ ...tableCellStyle, fontWeight: 'normal' }}
+                      >
+                        <Text text={cell} />
+                      </th>
+                    ) : (
+                      <td
+                        key={cellIdx}
+                        style={{ ...tableCellStyle, fontWeight: 'normal' }}
+                      >
+                        <Text text={cell} />
+                      </td>
+                    )
+                  )}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       );
+    }
     case 'table_row':
       return null;
     default:

@@ -78,6 +78,12 @@ const HeaderRechercheTerritoire = (props:
                   '&:focus': {
                     outline: 'none',
                   },
+                  // Le focus reste invisible à la souris (rendu inchangé) mais
+                  // devient visible au clavier — RGAA 10.7.
+                  '&:focus-visible': {
+                    outline: '2px solid var(--principales-vert)',
+                    outlineOffset: '2px',
+                  },
                   '&::placeholder': {
                     color: 'var(--gris-medium-dark)',
                   }

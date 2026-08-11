@@ -8,7 +8,7 @@ import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
 
 export const MenuMobileDrawer = () => {
@@ -26,6 +26,8 @@ export const MenuMobileDrawer = () => {
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const fabRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const ongletsMenuEtape1 = sommaireThematiques[thematique];
   const ongletsMenuEtape2 = sommaireImpacts[thematique];
@@ -88,6 +90,20 @@ export const MenuMobileDrawer = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
+  // Ouverture : le focus entre dans le tiroir. Échap ferme et rend le focus au
+  // déclencheur (RGAA 7.3 / 12.9 — le tiroir se déclare `aria-modal`).
+  useEffect(() => {
+    if (!isOpen) return;
+    closeButtonRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setIsOpen(false);
+      fabRef.current?.focus();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
   if (!ongletsMenuEtape1) return null;
 
   const toAnchorId = (s: string) => s.replace(/\s+/g, '-');
@@ -129,8 +145,11 @@ export const MenuMobileDrawer = () => {
   return (
     <>
       <button
+        type="button"
+        ref={fabRef}
         onClick={() => setIsOpen(true)}
         className={styles.menuMobileFab}
+        aria-expanded={isOpen}
         aria-label="Ouvrir la navigation"
       >
         <span aria-hidden="true">☰</span>
@@ -162,7 +181,12 @@ export const MenuMobileDrawer = () => {
               <Body size='sm' weight='bold'>Retour aux thématiques</Body>
             </a>
             <button
-              onClick={() => setIsOpen(false)}
+              type="button"
+              ref={closeButtonRef}
+              onClick={() => {
+                setIsOpen(false);
+                fabRef.current?.focus();
+              }}
               className={styles.menuMobileClose}
               aria-label="Fermer la navigation"
             >

@@ -32,6 +32,52 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
     onChange?.(annees[i]);
   };
 
+  // Le curseur porte `role="slider"` : il doit être opérable au clavier
+  // (RGAA 7.1 / 7.3, pattern WAI-ARIA « slider »).
+  const thumbRef = useRef<HTMLDivElement>(null);
+  const shouldRefocusThumb = useRef(false);
+
+  // Le `tabIndex` suit l'année sélectionnée : après un déplacement au clavier,
+  // le focus doit être rendu au nouveau curseur, sinon il retombe sur le body.
+  useEffect(() => {
+    if (!shouldRefocusThumb.current) return;
+    shouldRefocusThumb.current = false;
+    thumbRef.current?.focus();
+  }, [selectedIndex]);
+
+  const handleThumbKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const dernierIndex = annees.length - 1;
+    let nouvelIndex: number;
+    switch (e.key) {
+      case 'ArrowLeft':
+      case 'ArrowDown':
+        nouvelIndex = Math.max(0, selectedIndex - 1);
+        break;
+      case 'ArrowRight':
+      case 'ArrowUp':
+        nouvelIndex = Math.min(dernierIndex, selectedIndex + 1);
+        break;
+      case 'PageDown':
+        nouvelIndex = Math.max(0, selectedIndex - 5);
+        break;
+      case 'PageUp':
+        nouvelIndex = Math.min(dernierIndex, selectedIndex + 5);
+        break;
+      case 'Home':
+        nouvelIndex = 0;
+        break;
+      case 'End':
+        nouvelIndex = dernierIndex;
+        break;
+      default:
+        return;
+    }
+    e.preventDefault();
+    if (nouvelIndex === selectedIndex) return;
+    shouldRefocusThumb.current = true;
+    handleSelect(nouvelIndex);
+  };
+
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
       if (!isDragging.current) return;
@@ -84,13 +130,16 @@ export const SliderAnnees = ({ anneeDebut, anneeFin, anneeInitiale, onChange }: 
           return (
             <div
               key={annee}
+              ref={isSelected ? thumbRef : undefined}
               onMouseDown={(e) => { e.preventDefault(); isDragging.current = true; handleSelect(i); }}
               onTouchStart={(e) => { e.preventDefault(); isDragging.current = true; handleSelect(i); }}
+              onKeyDown={isSelected ? handleThumbKeyDown : undefined}
               role={isSelected ? "slider" : undefined}
               tabIndex={isSelected ? 0 : undefined}
               aria-valuemin={isSelected ? anneeDebut : undefined}
               aria-valuemax={isSelected ? anneeFin : undefined}
               aria-valuenow={isSelected ? annee : undefined}
+              aria-valuetext={isSelected ? `Année ${annee}` : undefined}
               aria-label={isSelected ? "Année sélectionnée" : undefined}
               style={{
                 position: 'absolute',

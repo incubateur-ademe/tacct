@@ -158,7 +158,7 @@ const PrelevementEauProgressBarsPNR = ({
       <div className={styles.filtreEauWrapper}>
         <input
           type="checkbox"
-          id="filter-energie"
+          id="filter-energie-progress-bar-pnr"
           checked={filterEnergie}
           onChange={(e) => setFilterEnergie(e.target.checked)}
           style={{
@@ -168,7 +168,7 @@ const PrelevementEauProgressBarsPNR = ({
             accentColor: 'var(--principales-vert)'
           }}
         />
-        <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
+        <label htmlFor="filter-energie-progress-bar-pnr" style={{ cursor: 'pointer' }}>
           <Body size="sm" style={{ color: 'var(--gris-medium-dark)' }}>
             Filtrer les prélèvements en eau pour l&apos;énergie
           </Body>

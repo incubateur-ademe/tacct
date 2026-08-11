@@ -142,6 +142,7 @@ const SubTabs = ({
             text={element!}
             icone={element ? tabsWithIcons(tabIcons, element, selectedSubTab) : undefined}
             style={{ fontWeight: 400 }}
+            ariaPressed={isSelected}
           />
         );
       })}

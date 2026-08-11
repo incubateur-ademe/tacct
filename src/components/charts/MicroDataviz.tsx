@@ -308,7 +308,7 @@ export const MicroCube = ({
             <Body weight="bold">{Round(valeur, arrondi)} {unite}</Body>
             <Image
               src={CubeIcon}
-              alt="Cube représentant une valeur"
+              alt=""
               width={80}
               height={80}
             />
@@ -706,7 +706,7 @@ export const WaterDropNumber = ({
       }}>
         <Image
           src={WaterDropIcon}
-          alt="Goutte d'eau"
+          alt=""
           width={100}
           height={120}
         />

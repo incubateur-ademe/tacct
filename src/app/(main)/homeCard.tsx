@@ -16,7 +16,7 @@ export const HomeCard = ({
     <div className={styles.homeCard}>
       <Image
         src={icone}
-        alt="image-cartographie"
+        alt=""
         className={styles.homeCardImage}
       />
       <h4>{titre}</h4>

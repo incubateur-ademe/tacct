@@ -70,7 +70,7 @@ export const AnalyseSensibilite = ({
             </div>
             <Image
               src={ChatChercheur}
-              alt="illustration chat chercheur"
+              alt=""
               style={{ height: 'auto', width: 'auto', maxHeight: 104 }}
             />
           </div>
