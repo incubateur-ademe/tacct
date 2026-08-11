@@ -1,0 +1,48 @@
+# Pile JETABLE pour préparer la migration du dump legacy MySQL → Postgres chiffré.
+# Ne touche JAMAIS les vraies bases. Tout est éphémère : `docker compose down -v`
+# efface conteneurs + données.
+#
+# - mariadb  : reçoit le dump legacy (mysqldump MariaDB 10.4).
+# - postgres : cible de la conversion (schéma `tacct`), exposé sur l'hôte:55432
+#              pour que psql/node (backfill, export) tournent depuis l'hôte.
+# - pgloader : one-shot (profil `tools`), lancé via `docker compose run --rm pgloader`.
+
+services:
+  mariadb:
+    image: mariadb:10.4
+    command: ['--max-allowed-packet=512M']
+    environment:
+      MARIADB_ROOT_PASSWORD: prep
+      MARIADB_DATABASE: '7706_tacct'
+      MARIADB_USER: prep
+      MARIADB_PASSWORD: prep
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 -uprep -pprep --silent']
+      interval: 5s
+      timeout: 5s
+      retries: 40
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: prep
+      POSTGRES_DB: tacct_prep
+    ports:
+      - '55432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d tacct_prep']
+      interval: 5s
+      timeout: 5s
+      retries: 40
+
+  pgloader:
+    image: dimitri/pgloader:latest
+    profiles: ['tools']
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./pgloader.load:/load/pgloader.load:ro
+    command: ['pgloader', '--verbose', '/load/pgloader.load']

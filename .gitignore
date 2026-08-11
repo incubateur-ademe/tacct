@@ -48,6 +48,14 @@ next-env.d.ts
 # local db
 /db-dump/facili-tacct-postgis-databases.sql
 
+# dumps & sauvegardes du réimport tacct (données personnelles en clair — ne jamais committer)
+/prod-tacct_*.sql
+/sauvegarde-tacct-avant-reimport-*.dump
+scripts/reimport-dump-2026-08/tacct_new.sql
+scripts/reimport-dump-2026-08/sql/fix-conformite-prep.sql
+# généré depuis le dump : embarque les UUID des comptes de prod
+scripts/reimport-dump-2026-08/sql/00-verification-tacctoscope.sql
+
 #certificates
 *.crt
 *.key
