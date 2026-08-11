@@ -17,7 +17,18 @@ export const PHProvider = ({ children }: { children: ReactNode }) => {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
         api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
         persistence: consent === 'all' ? 'localStorage+cookie' : 'memory',
+        // Les $pageview sont capturés manuellement (PostHogPageView.tsx) pour
+        // suivre les navigations client de l'App Router. `capture_pageleave`
+        // vaut par défaut 'if_capture_pageview' : sans ce `true` explicite, il
+        // est désactivé en même temps que la capture automatique, et PostHog
+        // ne peut plus calculer taux de rebond ni durée de session.
         capture_pageview: false,
+        capture_pageleave: true,
+        // Les profils Person ne sont créés qu'avec le consentement complet :
+        // c'est ce qui alimente les analyses par personne (dashboard « Cycle
+        // de vie »). Sans consentement, la persistance est en mémoire, donc un
+        // profil serait recréé à chaque chargement de page.
+        person_profiles: consent === 'all' ? 'always' : 'identified_only',
         disable_session_recording: navigateurExclu || consent !== 'all',
         capture_heatmaps: !navigateurExclu && consent === 'all',
         opt_out_capturing_by_default: navigateurExclu,
