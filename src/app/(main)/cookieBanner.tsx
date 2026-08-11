@@ -26,6 +26,7 @@ export const CookieBanner = () => {
       if (consentGiven === 'all') {
         posthog.set_config({
           persistence: 'localStorage+cookie',
+          person_profiles: 'always',
           disable_session_recording: false,
           capture_heatmaps: true
         });
@@ -33,6 +34,7 @@ export const CookieBanner = () => {
       } else {
         posthog.set_config({
           persistence: 'memory',
+          person_profiles: 'identified_only',
           disable_session_recording: true,
           capture_heatmaps: false
         });
