@@ -120,6 +120,14 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Après validation du nonce et de l'id_token : couvre les trois branches
+    // ci-dessus. `updated_at` n'est volontairement pas touché, il marque les
+    // modifications du compte et non les connexions.
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { last_login_at: new Date() }
+    });
+
     const sessionJwt = await encodeUserSession({
       sub: user.id,
       id_token: tokens.id_token

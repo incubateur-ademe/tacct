@@ -1682,6 +1682,7 @@ model user {
   encryption_version             Int                              @default(0)
   wants_beta_features            Boolean                          @default(false)
   recontact_email                String?
+  last_login_at                  DateTime?                        @db.Timestamptz(6)
   tacctoscope_answer             tacctoscope_answer[]
   tacctoscope_criterion_feedback tacctoscope_criterion_feedback[]
   commune                        commune?                         @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")

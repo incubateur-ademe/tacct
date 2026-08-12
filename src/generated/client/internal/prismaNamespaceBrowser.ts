@@ -1579,7 +1579,8 @@ export const UserScalarFieldEnum = {
   email_bidx: 'email_bidx',
   encryption_version: 'encryption_version',
   wants_beta_features: 'wants_beta_features',
-  recontact_email: 'recontact_email'
+  recontact_email: 'recontact_email',
+  last_login_at: 'last_login_at'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
