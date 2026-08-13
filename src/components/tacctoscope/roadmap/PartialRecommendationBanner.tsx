@@ -22,15 +22,27 @@ const ArrowRightSmall = () => (
 interface Props {
   slug: CriterionSlug;
   missingCount: number;
+  firstMissingId: string | null;
 }
 
-export const PartialRecommendationBanner = ({ slug, missingCount }: Props) => (
+export const PartialRecommendationBanner = ({
+  slug,
+  missingCount,
+  firstMissingId
+}: Props) => (
   <div className={styles.partialBanner}>
     <div className={styles.partialBannerLeft}>
       <InfoIcon />
       <span className={styles.partialBannerTitle}>Recommandation partielle</span>
     </div>
-    <Link href={`/tacctoscope/${slug}`} className={styles.partialBannerLink}>
+    <Link
+      href={
+        firstMissingId
+          ? `/tacctoscope/${slug}#question-${slug}-${firstMissingId}`
+          : `/tacctoscope/${slug}`
+      }
+      className={styles.partialBannerLink}
+    >
       {missingCount === 1
         ? 'Renseigner la question manquante'
         : `Renseigner les ${missingCount} questions manquantes`}

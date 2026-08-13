@@ -59,7 +59,10 @@ export const CriterionCard = ({
         >
           {criterion.title}
         </H2>
-        <Body size="sm" color="#3d3d3d">
+        <Body
+          size="sm"
+          color="#3d3d3d"
+          style={{ letterSpacing: 0, lineHeight: "22px" }}>
           {criterion.chapeau}
         </Body>
       </div>
@@ -100,7 +103,7 @@ export const CriterionCard = ({
     <Link
       href={`/tacctoscope/${criterion.slug}`}
       className={styles.criterionCardLink}
-      style={{ borderLeft: filled > 0 ? '4px solid #89CAC6' : undefined }}
+      style={{ borderLeft: filled > 0 ? '6px solid #89CAC6' : undefined }}
     >
       {content}
     </Link>

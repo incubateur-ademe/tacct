@@ -4,6 +4,7 @@ import cadenas from '@/assets/svg/custom/cadenas.svg';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { UnlockModal } from '../shared/Modales';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
 import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 
@@ -19,6 +20,7 @@ interface Props {
 
 export const RoadmapMenu = ({ items }: Props) => {
   const [activeSlug, setActiveSlug] = useState<string>('');
+  const [unlockOpen, setUnlockOpen] = useState(false);
   const anchors = items.filter((item) => !item.locked).map((item) => item.slug);
 
   useEffect(() => {
@@ -47,40 +49,52 @@ export const RoadmapMenu = ({ items }: Props) => {
   };
 
   return (
-    <nav className={styles.menu}>
-      <p className={styles.menuTitle}>Critères</p>
-      <ul className={styles.menuList}>
-        {items.map((item) => {
-          const isActive = !item.locked && activeSlug === item.slug;
-          return (
-            <li key={item.slug}>
-              <button
-                type="button"
-                disabled={item.locked}
-                onClick={() => !item.locked && scrollTo(item.slug)}
-                className={`${styles.menuItem} ${isActive ? styles.menuItemActive : ''} ${item.locked ? styles.menuItemLocked : ''}`}
-              >
-                <Image
-                  src={CRITERION_ICONS[item.slug]}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className={styles.menuItemIcon}
-                />
-                <span className={styles.menuItemLabelWrapper}>
-                  <span className={styles.menuItemLabel}>{item.title}</span>
-                  {item.locked && (
-                    <span className={styles.menuItemLock}>
-                      <Image src={cadenas} alt="" width={16} height={16} />
-                      Connexion requise
-                    </span>
-                  )}
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <>
+      <nav className={styles.menu}>
+        <p className={styles.menuTitle}>Critères</p>
+        <ul className={styles.menuList}>
+          {items.map((item) => {
+            const isActive = !item.locked && activeSlug === item.slug;
+            return (
+              <li key={item.slug}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    item.locked ? setUnlockOpen(true) : scrollTo(item.slug)
+                  }
+                  className={`${styles.menuItem} ${isActive ? styles.menuItemActive : ''} ${item.locked ? styles.menuItemLocked : ''}`}
+                >
+                  <Image
+                    src={CRITERION_ICONS[item.slug]}
+                    alt=""
+                    width={48}
+                    height={48}
+                    className={styles.menuItemIcon}
+                  />
+                  <span className={styles.menuItemLabelWrapper}>
+                    <span className={styles.menuItemLabel}>{item.title}</span>
+                    {item.locked && (
+                      <span className={styles.menuItemLock}>
+                        <Image src={cadenas} alt="" width={16} height={16} />
+                        Connexion requise
+                      </span>
+                    )}
+                  </span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <UnlockModal
+        isOpen={unlockOpen}
+        onClose={() => setUnlockOpen(false)}
+        onConfirm={() => {
+          const returnTo = encodeURIComponent(window.location.pathname);
+          window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
+        }}
+      />
+    </>
   );
 };

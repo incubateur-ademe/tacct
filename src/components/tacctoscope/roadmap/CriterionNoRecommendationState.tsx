@@ -5,27 +5,20 @@ import { CriterionSlug } from '@/lib/tacctoscope/types';
 
 interface Props {
   slug: CriterionSlug;
-  title: string;
 }
 
-export const CriterionEmptyState = ({ slug, title }: Props) => (
+export const CriterionNoRecommendationState = ({ slug }: Props) => (
   <div className={styles.emptyState}>
-    <Body
-      weight="bold"
-      size="xl"
-      color="#666666">
-      Ce critère est vide pour le moment
+    <Body weight="bold" size="xl" color="#666666">
+      Aucune recommandation pour ce critère
     </Body>
-    <Body
-      size="md"
-      color="#666666"
-      style={{ lineHeight: '1.5rem', paddingBottom: "1.5rem" }}
-    >
-      Répondez aux questions pour voir apparaître vos pistes d’amélioration ici
+    <Body size="md" color="#666666" style={{ paddingBottom: "1.5rem" }}>
+      Complétez le questionnaire pour voir apparaître vos pistes d’amélioration
+      ici
     </Body>
     <BoutonPrimaireClassic
       link={`/tacctoscope/${slug}`}
-      text={`Commencer “${title}” →`}
+      text="Répondre aux questions  →"
       size="md"
     />
   </div>

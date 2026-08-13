@@ -44,7 +44,8 @@ export const CustomAccordion = (
         "& .fr-accordion__btn": {
           color: "#161616",
           fontWeight: 400,
-          padding: "2rem 2rem"
+          padding: "2rem 2rem",
+          "--hover-tint": "#F6F6F6"
         },
         "& .fr-accordion__btn::after": {
           maskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z'/%3E%3C/svg%3E")`,
@@ -60,7 +61,7 @@ export const CustomAccordion = (
           backgroundColor: "#FAFAFA",
           fontWeight: "bold",
           "&:hover": {
-            backgroundColor: "#FAFAFA",
+            backgroundColor: "#F6F6F6",
           },
         },
         "& .fr-accordion__btn[aria-expanded='true']::after": {

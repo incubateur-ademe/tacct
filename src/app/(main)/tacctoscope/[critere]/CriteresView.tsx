@@ -86,6 +86,7 @@ export const CriteresView = ({
     () => new Set(Object.keys(answers))
   );
   const [savePromptOpen, setSavePromptOpen] = useState(false);
+  const [completionPrompted, setCompletionPrompted] = useState(false);
   const [openKey, setOpenKey] = useState<string | null>(() =>
     isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
   );
@@ -102,6 +103,24 @@ export const CriteresView = ({
       setSavePromptOpen(true);
     }
   }, [isAuthenticated, criterion]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+    if (isAuthenticated || !isPublicCriterion(criterion.slug)) return;
+    if (answeredKeys.size < criterion.questions.length) {
+      setCompletionPrompted(false);
+      return;
+    }
+    if (completionPrompted) return;
+    setCompletionPrompted(true);
+    setSavePromptOpen(true);
+  }, [
+    hydrated,
+    completionPrompted,
+    isAuthenticated,
+    criterion,
+    answeredKeys
+  ]);
 
   useEffect(() => {
     if (isAuthenticated) return;
@@ -176,6 +195,7 @@ export const CriteresView = ({
       </div>
 
       <CriterionProgressBar
+        slug={criterion.slug}
         answered={answeredKeys.size}
         total={criterion.questions.length}
         nextSlug={isAuthenticated ? nextSlug : null}
@@ -238,7 +258,8 @@ export const CriteresView = ({
         isOpen={savePromptOpen}
         onClose={() => setSavePromptOpen(false)}
         onConfirm={() => {
-          window.location.href = '/api/proconnect/login';
+          const returnTo = encodeURIComponent(`/tacctoscope/${criterion.slug}`);
+          window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
         }}
       />
 

@@ -47,12 +47,13 @@ export const ResetAnswersButton = ({ isAuthenticated }: Props) => {
 
       <ConfirmModal
         isOpen={isOpen}
-        title="Réinitialiser toutes les réponses ?"
+        title="Réinitialiser toutes les réponses ?"
         message="Toutes vos réponses seront effacées. Cette action est irréversible."
         icon={<ResetIcon />}
         confirmLabel="Réinitialiser"
         cancelLabel="Annuler"
         pending={pending}
+        compactFooter
         onConfirm={handleReset}
         onClose={() => !pending && setIsOpen(false)}
       />

@@ -5,6 +5,8 @@ import {
   getClientSecret,
   getDiscovery,
   getRedirectUri,
+  RETURN_TO_COOKIE,
+  sanitizeReturnTo,
   sessionCookieName,
   USERS_SESSION_MAX_AGE,
   verifyIdToken
@@ -26,10 +28,13 @@ export async function GET(request: NextRequest) {
   const state = searchParams.get('state');
   const oidcError = searchParams.get('error');
 
-  const fail = (reason: string) =>
-    NextResponse.redirect(
+  const fail = (reason: string) => {
+    const response = NextResponse.redirect(
       `${getBaseUrl()}/mon-compte?error=${encodeURIComponent(reason)}`
     );
+    response.cookies.delete(RETURN_TO_COOKIE);
+    return response;
+  };
 
   if (oidcError) return fail(oidcError);
 
@@ -130,9 +135,13 @@ export async function GET(request: NextRequest) {
       id_token: tokens.id_token
     });
 
-    const response = NextResponse.redirect(
-      `${getBaseUrl()}/mon-espace?login=success`
-    );
+    const returnTo =
+      sanitizeReturnTo(request.cookies.get(RETURN_TO_COOKIE)?.value ?? null) ??
+      '/mon-espace';
+    const destination = new URL(returnTo, getBaseUrl());
+    destination.searchParams.set('login', 'success');
+
+    const response = NextResponse.redirect(destination.toString());
     response.cookies.set(sessionCookieName(), sessionJwt, {
       httpOnly: true,
       sameSite: 'lax',
@@ -142,6 +151,7 @@ export async function GET(request: NextRequest) {
     });
     response.cookies.delete('pc_state');
     response.cookies.delete('pc_nonce');
+    response.cookies.delete(RETURN_TO_COOKIE);
 
     return response;
   } catch (err) {

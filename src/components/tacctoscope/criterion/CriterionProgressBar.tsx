@@ -8,12 +8,18 @@ import { ProgressDots } from '../shared/ProgressDots';
 import styles from './criterion.module.scss';
 
 interface Props {
+  slug: CriterionSlug;
   answered: number;
   total: number;
   nextSlug: CriterionSlug | null;
 }
 
-export const CriterionProgressBar = ({ answered, total, nextSlug }: Props) => (
+export const CriterionProgressBar = ({
+  slug,
+  answered,
+  total,
+  nextSlug
+}: Props) => (
   <div className={styles.criterionProgressBarOuter}>
     <NewContainer
       size="xl"
@@ -31,8 +37,8 @@ export const CriterionProgressBar = ({ answered, total, nextSlug }: Props) => (
           )}
           <BoutonPrimaireClassic
             size="md"
-            link="/tacctoscope/feuille-de-route"
-            text="Voir ma feuille de route  🡥"
+            link={`/tacctoscope/feuille-de-route#${slug}`}
+            text="Voir ma feuille de route  🡭"
           />
         </div>
       </div>

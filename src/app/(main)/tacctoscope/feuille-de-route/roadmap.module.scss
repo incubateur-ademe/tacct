@@ -7,9 +7,9 @@ $gray-light: #fafafa;
 $stripe: repeating-linear-gradient(
     -45deg,
     transparent,
-    transparent 12px,
-    rgba(211, 237, 235, 0.5) 12px,
-    rgba(211, 237, 235, 0.5) 14px
+    transparent 6px,
+    rgba(211, 237, 235, 0.5) 6px,
+    rgba(211, 237, 235, 0.5) 8px
 );
 
 .breadcrumbWrapper {
@@ -22,6 +22,9 @@ $stripe: repeating-linear-gradient(
 .bannerOuter {
     padding: 0.5rem 0 2rem;
     background: $stripe;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
     &::after {
         content: '';
         position: absolute;
@@ -91,7 +94,6 @@ $stripe: repeating-linear-gradient(
 .body {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
 
     @media screen and (max-width: 992px) {
         flex-direction: column;
@@ -110,7 +112,6 @@ $stripe: repeating-linear-gradient(
     width: 271px;
     flex-shrink: 0;
     padding: 1rem 0;
-    border-right: 1px solid $border;
 
     @media screen and (max-width: 992px) {
         position: relative;
@@ -184,10 +185,12 @@ $stripe: repeating-linear-gradient(
 }
 
 .menuItemLocked {
-    cursor: not-allowed;
-
     .menuItemLabel {
         color: $subtle;
+    }
+
+    .menuItemIcon {
+        opacity: 0.5;
     }
 }
 
@@ -247,7 +250,6 @@ $stripe: repeating-linear-gradient(
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
     min-height: 294px;
     padding: 3rem 2rem;
     background: $gray-light;
@@ -288,6 +290,19 @@ $stripe: repeating-linear-gradient(
     &:hover {
         background: #026c63;
     }
+}
+
+/* ===== Critère sans piste d'amélioration, entièrement très satisfaisant ===== */
+.strengthState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 240px;
+    padding: 3rem 2rem;
+    background: #e4ffe6;
+    text-align: center;
 }
 
 /* ===== Bandeau recommandation partielle ===== */
@@ -420,7 +435,7 @@ $stripe: repeating-linear-gradient(
     justify-content: space-between;
     gap: 0.75rem;
     flex: 1 1 280px;
-    min-width: 240px;
+    max-width: 240px;
     min-height: 200px;
     padding: 1.5rem;
     border: 1px solid $border;

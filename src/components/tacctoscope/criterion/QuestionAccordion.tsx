@@ -107,23 +107,25 @@ export const QuestionAccordion = ({
         <ExampleCallout kind={question.exampleKind}>
           {question.example}
         </ExampleCallout>
-        <Body size="sm" weight="medium" color="#161616">
-          Retrouvez-vous ceci dans votre diagnostic ?
-        </Body>
-        <RadioScale
-          options={ANSWER_OPTIONS}
-          value={value}
-          onSelect={handleSelect}
-          minHint={question.minHint}
-          maxHint={question.maxHint}
-        />
-        {error && (
-          <div role="alert">
-            <Body size="sm" color="#ce0041">
-              L’enregistrement a échoué, merci de réessayer.
-            </Body>
-          </div>
-        )}
+        <div className={styles.criterionQuestionBodyInside}>
+          <Body size="md" weight="bold" color="#3D3D3D" style={{ paddingBottom: "1rem" }}>
+            Retrouvez-vous ceci dans votre diagnostic ?
+          </Body>
+          <RadioScale
+            options={ANSWER_OPTIONS}
+            value={value}
+            onSelect={handleSelect}
+            minHint={question.minHint}
+            maxHint={question.maxHint}
+          />
+          {error && (
+            <div role="alert">
+              <Body size="sm" color="#ce0041">
+                L’enregistrement a échoué, merci de réessayer.
+              </Body>
+            </div>
+          )}
+        </div>
       </div>
     </AccordionShell>
   );

@@ -30,7 +30,14 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
     setHydrated(true);
   }, [isAuthenticated]);
 
-  if (!hydrated) return null;
+  useEffect(() => {
+    if (!hydrated) return;
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ block: 'start' });
+    });
+  }, [hydrated]);
 
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
     slug: criterion.slug,
@@ -44,11 +51,16 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
     const { answered, total } = getCriterionProgress(criterion, currentAnswers);
     const state: GlobalState =
       answered === 0 ? 'vide' : answered < total ? 'partiel' : 'rempli';
+    const firstMissing = criterion.questions.find(
+      (question) =>
+        currentAnswers[buildQuestionKey(criterion.slug, question.id)] == null
+    );
     return {
       slug: criterion.slug,
       title: criterion.title,
       state,
       missingCount: total - answered,
+      firstMissingId: firstMissing ? firstMissing.id : null,
       recommendations: criterion.questions
         .filter((question) =>
           QUALIFYING.has(
@@ -74,7 +86,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
-          {isEmpty ? (
+          {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />
           ) : (
             sections.map((section) => (
@@ -84,6 +96,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
                 title={section.title}
                 state={section.state}
                 missingCount={section.missingCount}
+                firstMissingId={section.firstMissingId}
                 recommendations={section.recommendations}
               />
             ))

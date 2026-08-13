@@ -5,6 +5,8 @@ import { GlobalState } from '@/lib/tacctoscope/progress';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
 import { CriterionEmptyState } from '../../../../components/tacctoscope/roadmap/CriterionEmptyState';
+import { CriterionNoRecommendationState } from '../../../../components/tacctoscope/roadmap/CriterionNoRecommendationState';
+import { CriterionStrengthState } from '../../../../components/tacctoscope/roadmap/CriterionStrengthState';
 import { PartialRecommendationBanner } from '../../../../components/tacctoscope/roadmap/PartialRecommendationBanner';
 import { RecommendationBlock } from '../../../../components/tacctoscope/roadmap/RecommendationBlock';
 import { CRITERION_ICONS } from '../../../../components/tacctoscope/shared/criterionIcons';
@@ -19,6 +21,7 @@ interface Props {
   title: string;
   state: GlobalState;
   missingCount: number;
+  firstMissingId: string | null;
   recommendations: SectionRecommendation[];
 }
 
@@ -27,6 +30,7 @@ export const RoadmapSection = ({
   title,
   state,
   missingCount,
+  firstMissingId,
   recommendations
 }: Props) => (
   <section id={slug} className={styles.section}>
@@ -59,10 +63,20 @@ export const RoadmapSection = ({
 
     {state === 'vide' ? (
       <CriterionEmptyState slug={slug} title={title} />
+    ) : recommendations.length === 0 ? (
+      state === 'rempli' ? (
+        <CriterionStrengthState slug={slug} />
+      ) : (
+        <CriterionNoRecommendationState slug={slug} />
+      )
     ) : (
       <>
         {state === 'partiel' && (
-          <PartialRecommendationBanner slug={slug} missingCount={missingCount} />
+          <PartialRecommendationBanner
+            slug={slug}
+            missingCount={missingCount}
+            firstMissingId={firstMissingId}
+          />
         )}
         {recommendations.map((item, index) => (
           <RecommendationBlock

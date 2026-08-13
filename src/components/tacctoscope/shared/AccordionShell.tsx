@@ -26,9 +26,8 @@ interface Props {
 
 const ChevronIcon = ({ open }: { open: boolean }) => (
   <svg
-    className={`${styles.accordionShellChevron} ${
-      open ? styles.accordionShellChevronOpen : ''
-    }`}
+    className={`${styles.accordionShellChevron} ${open ? styles.accordionShellChevronOpen : ''
+      }`}
     width="24"
     height="24"
     viewBox="0 0 24 24"
@@ -38,7 +37,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
     <path
       d="m7 10 5 5 5-5"
       stroke="currentColor"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
@@ -69,9 +68,8 @@ export const AccordionShell = ({
   return (
     <div
       id={id}
-      className={`${styles.accordionShellItem} ${VARIANT_CLASS[variant]} ${
-        accent === 'enquete' ? styles.accordionShellEnquete : ''
-      }`}
+      className={`${styles.accordionShellItem} ${VARIANT_CLASS[variant]} ${accent === 'enquete' ? styles.accordionShellEnquete : ''
+        }`}
     >
       <button
         type="button"

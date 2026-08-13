@@ -75,3 +75,7 @@
     min-width: 0;
   }
 }
+
+.footer.footerCompact > * {
+  flex: 0 0 auto;
+}

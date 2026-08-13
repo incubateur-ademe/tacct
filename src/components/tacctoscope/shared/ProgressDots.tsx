@@ -28,7 +28,7 @@ export const ProgressDots = ({ filled, total }: Props) => {
         htmlTag="span"
         size="sm"
         color="#3D3D3D"
-        style={{ whiteSpace: 'nowrap' }}
+        style={{ whiteSpace: 'nowrap', fontWeight: 500 }}
       >
         {filled}/{total} réponses
       </Body>

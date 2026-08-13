@@ -59,7 +59,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .criterionSectionIcon {
@@ -74,7 +74,7 @@
 .criterionSectionList {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1.5rem;
 }
 
 /* ===== QuestionAccordion ===== */
@@ -84,17 +84,26 @@
     gap: 1.25rem;
 }
 
+.criterionQuestionBodyInside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    border-top: 1px solid #e7e5e5;
+    padding: 2rem 0;
+}
+
 /* ===== ExampleCallout ===== */
 .criterionExampleCallout {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 4px;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
 }
 
 .criterionExampleCalloutExemple {
     background: rgba(227, 250, 249, 0.5);
+    margin-bottom: 0.75rem;
 }
 
 .criterionExampleCalloutContre {
@@ -249,7 +258,8 @@
 .hubGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    column-gap: 2.5rem;
+    row-gap: 2rem;
 
     @media screen and (max-width: 1280px) {
         padding: 0 1.5rem;
@@ -296,7 +306,7 @@
     justify-content: space-between;
     gap: 1.5rem;
     width: 100%;
-    min-height: 200px;
+    min-height: 328px;
     padding: 2rem;
     border: 1px solid #e7e5e5;
     background: #ffffff;

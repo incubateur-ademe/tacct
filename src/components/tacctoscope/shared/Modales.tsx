@@ -24,6 +24,7 @@ interface ModalProps {
   icon?: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
+  compactFooter?: boolean;
 }
 
 export const Modal = ({
@@ -32,7 +33,8 @@ export const Modal = ({
   title,
   icon,
   children,
-  footer
+  footer,
+  compactFooter = false
 }: ModalProps) => {
   const [mounted, setMounted] = useState(false);
 
@@ -44,10 +46,19 @@ export const Modal = ({
       if (event.key === 'Escape') onClose();
     };
     document.addEventListener('keydown', onKeyDown);
+
+    // Compense la barre de défilement masquée, sinon le contenu centré se décale.
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const previousPaddingRight = document.body.style.paddingRight;
     document.body.style.overflow = 'hidden';
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       document.body.style.overflow = '';
+      document.body.style.paddingRight = previousPaddingRight;
     };
   }, [isOpen, onClose]);
 
@@ -78,7 +89,13 @@ export const Modal = ({
 
         <div className={styles.body}>{children}</div>
 
-        {footer && <div className={styles.footer}>{footer}</div>}
+        {footer && (
+          <div
+            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''}`}
+          >
+            {footer}
+          </div>
+        )}
       </div>
     </div>,
     document.body
@@ -93,6 +110,7 @@ interface ConfirmModalProps {
   confirmLabel?: string;
   cancelLabel?: string;
   pending?: boolean;
+  compactFooter?: boolean;
   onConfirm: () => void;
   onClose: () => void;
 }
@@ -105,6 +123,7 @@ export const ConfirmModal = ({
   confirmLabel = 'Confirmer',
   cancelLabel = 'Annuler',
   pending = false,
+  compactFooter = false,
   onConfirm,
   onClose
 }: ConfirmModalProps) => (
@@ -113,6 +132,7 @@ export const ConfirmModal = ({
     onClose={onClose}
     title={title}
     icon={icon}
+    compactFooter={compactFooter}
     footer={
       <>
         <BoutonSecondaireClassic
@@ -120,6 +140,7 @@ export const ConfirmModal = ({
           text={cancelLabel}
           onClick={onClose}
           disabled={pending}
+          style={{ whiteSpace: 'pre-line' }}
         />
         <BoutonPrimaireClassic
           size="md"
@@ -162,7 +183,7 @@ export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) =>
     title="Voulez-vous accéder à tous les contenus ?"
     message="Inscrivez-vous ou connectez-vous pour poursuivre et sauvegarder votre travail pour la prochaine fois."
     icon={<LockIcon />}
-    cancelLabel="Non, pas pour l’instant"
+    cancelLabel={'Non, pas pour\nl’instant'}
     confirmLabel="Oui, se connecter ou créer un compte"
     onClose={onClose}
     onConfirm={onConfirm}
@@ -194,7 +215,7 @@ export const SavePromptModal = ({
     title="Voulez-vous sauvegarder votre travail ?"
     message="Si vous souhaitez enregistrer vos réponses, créez un compte ou connectez-vous."
     icon={<SaveIcon />}
-    cancelLabel="Non, pas pour l’instant"
+    cancelLabel={'Non, pas pour\nl’instant'}
     confirmLabel="Oui, se connecter ou créer un compte"
     onClose={onClose}
     onConfirm={onConfirm}

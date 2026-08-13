@@ -19,7 +19,7 @@ const FeuilleDeRoutePage = async () => {
   const answers = user ? await getUserAnswers() : {};
 
   return (
-    <>
+    <div style={{ paddingBottom: "90px" }}>
       <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
@@ -73,7 +73,7 @@ const FeuilleDeRoutePage = async () => {
       </div>
 
       <FeuilleDeRouteView answers={answers} isAuthenticated={!!user} />
-    </>
+    </div>
   );
 };
 
