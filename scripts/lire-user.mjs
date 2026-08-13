@@ -7,12 +7,16 @@ import { Pool } from 'pg';
 //   - un email          → recherche par blind index email_bidx
 //   - un user.id        → recherche directe (colonne en clair)
 //   - un sub ProConnect → recherche par blind index authenticated_id_bidx
-//   node scripts/lire-user.mjs <email | id | sub>
+//   - un fragment       → à défaut de correspondance exacte, recherche partielle sur
+//                         email/nom/prénom (déchiffrement en mémoire de tous les comptes)
+//   node scripts/lire-user.mjs <email | id | sub | fragment>
 
 const identifiant = process.argv[2]; // valeur EXACTE (casse + espaces compris)
 
 if (!identifiant) {
-    console.error('Usage : node scripts/lire-user.mjs <email | id | sub>');
+    console.error(
+        'Usage : node scripts/lire-user.mjs <email | id | sub | fragment>'
+    );
     process.exit(1);
 }
 
@@ -45,7 +49,7 @@ const pool = new Pool({
 
 const COLONNES = `id, email, username, firstname, lastname, authenticated_id,
                   validated, validated_terms_of_use, roles, commune_id,
-                  study_office_id, encryption_version, created_at, updated_at`;
+                  study_office_id, encryption_version, created_at, updated_at, last_login_at`;
 
 const estUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
     identifiant
@@ -64,6 +68,61 @@ const strategies = identifiant.includes('@')
             ['sub ProConnect (authenticated_id_bidx)', 'authenticated_id_bidx = $1', bidx(identifiant)]
         ];
 
+const afficherUtilisateur = async (r) => {
+    console.log({
+        id: r.id,
+        email: decrypt(r.email),
+        username: decrypt(r.username),
+        firstname: decrypt(r.firstname),
+        lastname: decrypt(r.lastname),
+        authenticated_id: decrypt(r.authenticated_id),
+        validated: r.validated,
+        validated_terms_of_use: r.validated_terms_of_use,
+        roles: r.roles,
+        commune_id: r.commune_id,
+        study_office_id: r.study_office_id,
+        encryption_version: r.encryption_version,
+        created_at: r.created_at,
+        updated_at: r.updated_at,
+        last_login_at: r.last_login_at
+    });
+
+    // Études associées via la table de jointure user_study (non chiffrées)
+    const { rows: etudes } = await pool.query(
+        `SELECT s.id, s.territory_name, s.year, s.commune_id,
+                s.observed_exposure_valid, s.sensibility_valid,
+                s.exposition_future_valid, s.strategy_construction_valid,
+                us.head_study, s.created_at, s.updated_at
+         FROM tacct.user_study us
+         JOIN tacct.study s ON s.id = us.study_id
+         WHERE us.user_id = $1
+         ORDER BY s.created_at`,
+        [r.id]
+    );
+
+    if (etudes.length === 0) {
+        console.log('\nAucune étude associée.');
+    } else {
+        console.log(`\n${etudes.length} étude(s) associée(s) :`);
+        for (const e of etudes) {
+            console.log({
+                id: e.id,
+                territory_name: e.territory_name,
+                year: Number(e.year),
+                commune_id: e.commune_id,
+                head_study: e.head_study,
+                observed_exposure_valid: e.observed_exposure_valid,
+                sensibility_valid: e.sensibility_valid,
+                exposition_future_valid: e.exposition_future_valid,
+                strategy_construction_valid: e.strategy_construction_valid,
+                created_at: e.created_at,
+                updated_at: e.updated_at,
+                last_login_at: e.last_login_at
+            });
+        }
+    }
+};
+
 let trouve = false;
 
 for (const [libelle, clause, valeur] of strategies) {
@@ -75,66 +134,37 @@ for (const [libelle, clause, valeur] of strategies) {
 
     trouve = true;
     console.log(`Trouvé via ${libelle}\n`);
-    for (const r of rows) {
-        console.log({
-            id: r.id,
-            email: decrypt(r.email),
-            username: decrypt(r.username),
-            firstname: decrypt(r.firstname),
-            lastname: decrypt(r.lastname),
-            authenticated_id: decrypt(r.authenticated_id),
-            validated: r.validated,
-            validated_terms_of_use: r.validated_terms_of_use,
-            roles: r.roles,
-            commune_id: r.commune_id,
-            study_office_id: r.study_office_id,
-            encryption_version: r.encryption_version,
-            created_at: r.created_at,
-            updated_at: r.updated_at
-        });
+    for (const r of rows) await afficherUtilisateur(r);
+    break;
+}
 
-        // Études associées via la table de jointure user_study (non chiffrées)
-        const { rows: etudes } = await pool.query(
-            `SELECT s.id, s.territory_name, s.year, s.commune_id,
-                    s.observed_exposure_valid, s.sensibility_valid,
-                    s.exposition_future_valid, s.strategy_construction_valid,
-                    us.head_study, s.created_at, s.updated_at
-             FROM tacct.user_study us
-             JOIN tacct.study s ON s.id = us.study_id
-             WHERE us.user_id = $1
-             ORDER BY s.created_at`,
-            [r.id]
+// Repli : les colonnes étant chiffrées (AES-GCM), aucun LIKE n'est possible en SQL.
+// On déchiffre tous les comptes en mémoire pour filtrer sur un fragment.
+if (!trouve && !estUuid) {
+    const fragment = identifiant.toLowerCase();
+    const contient = (v) => (decrypt(v) ?? '').toLowerCase().includes(fragment);
+    const { rows } = await pool.query(`SELECT ${COLONNES} FROM tacct."user"`);
+    const correspondances = rows.filter(
+        (r) => contient(r.email) || contient(r.lastname) || contient(r.firstname)
+    );
+
+    if (correspondances.length > 0) {
+        trouve = true;
+        console.log(
+            `${correspondances.length} compte(s) dont l'email, le nom ou le prénom contient « ${identifiant} »\n`
         );
-
-        if (etudes.length === 0) {
-            console.log('\nAucune étude associée.');
-        } else {
-            console.log(`\n${etudes.length} étude(s) associée(s) :`);
-            for (const e of etudes) {
-                console.log({
-                    id: e.id,
-                    territory_name: e.territory_name,
-                    year: Number(e.year),
-                    commune_id: e.commune_id,
-                    head_study: e.head_study,
-                    observed_exposure_valid: e.observed_exposure_valid,
-                    sensibility_valid: e.sensibility_valid,
-                    exposition_future_valid: e.exposition_future_valid,
-                    strategy_construction_valid: e.strategy_construction_valid,
-                    created_at: e.created_at,
-                    updated_at: e.updated_at
-                });
-            }
+        for (const r of correspondances) {
+            await afficherUtilisateur(r);
+            console.log('');
         }
     }
-    break;
 }
 
 if (!trouve) {
     console.log(
         `Aucun compte pour « ${identifiant} » (pistes essayées : ${strategies
             .map(([l]) => l)
-            .join(', ')}).`
+            .join(', ')}${estUuid ? '' : ', email/nom/prénom partiels'}).`
     );
 }
 
