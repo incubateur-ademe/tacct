@@ -1,13 +1,14 @@
 import thumbDown from '@/assets/icons/thumb-down.svg';
 import thumbUp from '@/assets/icons/thumb-up.svg';
 import { Body } from '@/design-system/base/Textes';
-import { ExampleKind } from '@/lib/tacctoscope/types';
+import { CalloutKind, RichContent } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
+import { RichText } from '../shared/RichText';
 import styles from './criterion.module.scss';
 
 interface Props {
-  kind: ExampleKind;
-  children: string;
+  kind: CalloutKind;
+  children: RichContent;
 }
 
 export const ExampleCallout = ({ kind, children }: Props) => {
@@ -30,13 +31,12 @@ export const ExampleCallout = ({ kind, children }: Props) => {
           {isExemple ? 'Exemple' : 'Contre-exemple'}
         </Body>
       </div>
-      <Body
+      <RichText
+        content={children}
         size="md"
         color={isExemple ? '#3d3d3d' : '#CE0041'}
         style={{ fontStyle: 'italic', lineHeight: 1.5 }}
-      >
-        {children}
-      </Body>
+      />
     </div>
   );
 };

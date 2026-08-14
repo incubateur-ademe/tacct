@@ -68,9 +68,11 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
           )
         )
         .map((question) => {
-          const recommendation = getRecommendation(
-            buildQuestionKey(criterion.slug, question.id)
-          );
+          const questionKey = buildQuestionKey(criterion.slug, question.id);
+          const answer = currentAnswers[questionKey];
+          const recommendation = answer
+            ? getRecommendation(questionKey, answer)
+            : null;
           return recommendation
             ? { questionId: question.id, recommendation }
             : null;

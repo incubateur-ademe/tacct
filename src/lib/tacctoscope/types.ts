@@ -19,23 +19,32 @@ export type CriterionSlug = (typeof CRITERION_SLUGS)[number];
 
 export type SectionKind = 'analyse' | 'enquete';
 
-export type ExampleKind = 'exemple' | 'contre-exemple';
+export type CalloutKind = 'exemple' | 'contre-exemple';
+
+export type ExampleKind = CalloutKind | 'both';
+
+/** Une string = un paragraphe. Un tableau imbriqué = une liste à puces. */
+export type RichContent = string | (string | string[])[];
 
 export interface Option {
   value: AnswerValue;
   label: string;
 }
 
-export interface Question {
+interface QuestionBase {
   id: string;
   label: string;
-  text: string;
-  example: string;
-  exampleKind: ExampleKind;
+  text: RichContent;
   section: SectionKind;
   minHint?: string;
   maxHint?: string;
 }
+
+export type Question = QuestionBase &
+  (
+    | { exampleKind: CalloutKind; example: RichContent; counterExample?: never }
+    | { exampleKind: 'both'; example: RichContent; counterExample: RichContent }
+  );
 
 export interface Criterion {
   slug: CriterionSlug;

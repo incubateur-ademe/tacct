@@ -10,6 +10,7 @@ import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
 import { AccordionShell, HeaderVariant } from '../shared/AccordionShell';
 import { RadioScale } from '../shared/RadioScale';
+import { RichText } from '../shared/RichText';
 import { StatusTag } from '../shared/StatusTag';
 import styles from './criterion.module.scss';
 import { ExampleCallout } from './ExampleCallout';
@@ -101,12 +102,24 @@ export const QuestionAccordion = ({
       headerTag={value ? <StatusTag value={value} /> : null}
     >
       <div className={styles.criterionQuestionBody}>
-        <Body size="md" color="#3d3d3d" style={{ lineHeight: 1.6 }}>
-          {question.text}
-        </Body>
-        <ExampleCallout kind={question.exampleKind}>
-          {question.example}
-        </ExampleCallout>
+        <RichText
+          content={question.text}
+          size="md"
+          color="#3d3d3d"
+          style={{ lineHeight: 1.6 }}
+        />
+        {question.exampleKind === 'both' ? (
+          <>
+            <ExampleCallout kind="exemple">{question.example}</ExampleCallout>
+            <ExampleCallout kind="contre-exemple">
+              {question.counterExample}
+            </ExampleCallout>
+          </>
+        ) : (
+          <ExampleCallout kind={question.exampleKind}>
+            {question.example}
+          </ExampleCallout>
+        )}
         <div className={styles.criterionQuestionBodyInside}>
           <Body size="md" weight="bold" color="#3D3D3D" style={{ paddingBottom: "1rem" }}>
             Retrouvez-vous ceci dans votre diagnostic ?

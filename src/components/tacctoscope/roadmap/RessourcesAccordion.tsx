@@ -15,30 +15,36 @@ export const RessourcesAccordion = ({
   ressources,
   pourApprofondir,
   defaultOpen = false
-}: Props) => (
-  <div className={styles.accordion}>
-    <CustomAccordion
-      defaultExpanded={defaultOpen}
-      label={<span className={styles.accordionLabel}>Ressources associées</span>}
-    >
-      <div className={styles.accordionContent}>
-        <div className={styles.ressourcesWrapper}>
-          {ressources.map((ressource, index) => (
-            <RessourceCard key={index} ressource={ressource} />
-          ))}
-        </div>
+}: Props) => {
+  if (ressources.length === 0 && pourApprofondir.length === 0) return null;
 
-        {pourApprofondir.length > 0 && (
-          <>
-            <p className={styles.pourApprofondir}>Pour approfondir</p>
+  return (
+    <div className={styles.accordion}>
+      <CustomAccordion
+        defaultExpanded={defaultOpen}
+        label={<span className={styles.accordionLabel}>Ressources associées</span>}
+      >
+        <div className={styles.accordionContent}>
+          {ressources.length > 0 && (
             <div className={styles.ressourcesWrapper}>
-              {pourApprofondir.map((ressource, index) => (
+              {ressources.map((ressource, index) => (
                 <RessourceCard key={index} ressource={ressource} />
               ))}
             </div>
-          </>
-        )}
-      </div>
-    </CustomAccordion>
-  </div>
-);
+          )}
+
+          {pourApprofondir.length > 0 && (
+            <>
+              <p className={styles.pourApprofondir}>Pour approfondir</p>
+              <div className={styles.ressourcesWrapper}>
+                {pourApprofondir.map((ressource, index) => (
+                  <RessourceCard key={index} ressource={ressource} />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </CustomAccordion>
+    </div>
+  );
+};

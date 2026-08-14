@@ -3,6 +3,7 @@
 import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
 import sparklingIcon from '@/assets/icons/sparkling_icon_green.svg';
 import productLaunch from '@/assets/images/product-launch.png';
+import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H3 } from '@/design-system/base/Textes';
 import Image from 'next/image';
@@ -33,8 +34,7 @@ export const TacctoscopeCard = ({
       <div className={styles.tacctoscopeContenu}>
         <div className={styles.tacctoscopeTexte}>
           <div className={styles.blocTitre}>
-            {/* TODO MIGRATION */}
-            {/* {!hasAnswers && (
+            {!hasAnswers && (
               <TagsSimples
                 texte="NOUVEAU"
                 couleur="#E3FAF9"
@@ -44,8 +44,8 @@ export const TacctoscopeCard = ({
                   <Image src={sparklingIcon} alt="" width={12} height={12} />
                 }
               />
-            )} */}
-            <TagsSimples
+            )}
+            {/* <TagsSimples
               texte="BIENTÔT DISPONIBLE "
               couleur="#E3FAF9"
               couleurTexte="var(--boutons-primaire-3)"
@@ -53,7 +53,7 @@ export const TacctoscopeCard = ({
               icone={
                 <Image src={sparklingIcon} alt="" width={12} height={12} />
               }
-            />
+            /> */}
 
             <H3
               color="#038278"
@@ -72,7 +72,7 @@ export const TacctoscopeCard = ({
           </div>
           {/* TODO MIGRATION */}
 
-          {/* {hasAnswers && (
+          {hasAnswers && (
             <div className={styles.progression}>
               <Body weight="medium" color="#038278">
                 {libelle}
@@ -91,8 +91,8 @@ export const TacctoscopeCard = ({
                 />
               </div>
             </div>
-          )} */}
-          {/* <div className={styles.boutonsGroupe}>
+          )}
+          <div className={styles.boutonsGroupe}>
             <BoutonPrimaireClassic
               size="md"
               link="/tacctoscope"
@@ -107,7 +107,7 @@ export const TacctoscopeCard = ({
                 text="Voir ma feuille de route  →"
               />
             )}
-          </div> */}
+          </div>
         </div>
 
         <Image

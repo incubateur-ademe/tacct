@@ -432,7 +432,6 @@ $stripe: repeating-linear-gradient(
 .ressourceCard {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     gap: 0.75rem;
     flex: 1 1 280px;
     max-width: 240px;
@@ -480,6 +479,12 @@ $stripe: repeating-linear-gradient(
     color: #971356;
 }
 
+.ressourceCardText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .ressourceCardTitle {
     font-family: Marianne;
     font-size: 1rem;
@@ -488,7 +493,16 @@ $stripe: repeating-linear-gradient(
     color: $teal;
 }
 
+.ressourceCardDescription {
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: $subtle;
+}
+
 .ressourceCardAction {
     display: flex;
     justify-content: flex-end;
+    margin-top: auto;
 }

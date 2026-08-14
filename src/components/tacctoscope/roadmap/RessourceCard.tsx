@@ -57,7 +57,14 @@ export const RessourceCard = ({ ressource }: Props) => {
         {meta.icon}
         {meta.label}
       </span>
-      <span className={styles.ressourceCardTitle}>{ressource.title}</span>
+      <span className={styles.ressourceCardText}>
+        <span className={styles.ressourceCardTitle}>{ressource.title}</span>
+        {ressource.description && (
+          <span className={styles.ressourceCardDescription}>
+            {ressource.description}
+          </span>
+        )}
+      </span>
       <span className={styles.ressourceCardAction}>
         <ExternalLinkIcon />
       </span>

@@ -252,3 +252,19 @@
     background: #e7e5e5;
     color: #4d4b4b;
 }
+
+/* ===== RichText ===== */
+.richText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.richTextList {
+    margin: 0;
+    padding: 0 0 0 1.25rem;
+
+    li+li {
+        margin-top: 0.25rem;
+    }
+}
