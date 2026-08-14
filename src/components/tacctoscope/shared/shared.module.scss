@@ -253,6 +253,84 @@
     color: #4d4b4b;
 }
 
+/* ===== Mobile ===== */
+@media screen and (max-width: 768px) {
+
+    /* En-tête d'accordéon : titre + chevron sur la 1re ligne, tag sur la 2nde */
+    .accordionShellHeader {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 0.75rem 1rem;
+        min-height: 0;
+        padding: 1rem 1.25rem;
+    }
+
+    .accordionShellTitle {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+
+        span {
+            font-size: 0.875rem !important;
+            line-height: 1.25rem !important;
+        }
+    }
+
+    .accordionShellChevron {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .accordionShellHeader .statusTagPill {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: start;
+        height: 28px;
+        padding: 0 0.5rem;
+
+        span {
+            font-size: 0.75rem !important;
+        }
+    }
+
+    .accordionShellPanel {
+        padding: 1.5rem 1.25rem 1rem;
+    }
+
+    /* Échelle de réponses : 4 colonnes, libellés réduits et coupés si besoin */
+    .radioScaleWrapper {
+        gap: 0.25rem;
+    }
+
+    .radioScaleOption {
+        min-width: 0;
+        gap: 0.5rem;
+        hyphens: auto;
+        overflow-wrap: break-word;
+
+        span {
+            font-size: 0.75rem !important;
+            line-height: 1.125rem !important;
+        }
+    }
+
+    .radioScaleHints {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .radioScaleHint {
+        flex: 1 1 auto;
+        max-width: none;
+        font-size: 0.875rem;
+    }
+
+    .radioScaleHintEnd {
+        text-align: left;
+    }
+}
+
 /* ===== RichText ===== */
 .richText {
     display: flex;

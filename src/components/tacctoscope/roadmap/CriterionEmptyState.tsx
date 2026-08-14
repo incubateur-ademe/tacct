@@ -27,6 +27,7 @@ export const CriterionEmptyState = ({ slug, title }: Props) => (
       link={`/tacctoscope/${slug}`}
       text={`Commencer “${title}” →`}
       size="md"
+      style={{ maxWidth: '100%', whiteSpace: 'normal', textAlign: 'center' }}
     />
   </div>
 );

@@ -31,9 +31,12 @@ const ArrowRightIcon = () => (
 
 const SuccessIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" stroke="#666666" strokeWidth="2" />
     <path
-      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-6l7.07-7.071-1.414-1.414L11 13.172l-2.121-2.121-1.415 1.414L11 16z"
-      fill="#18753c"
+      d="m7.4 12.2 3.3 3.3 6.1-6.9"
+      stroke="#666666"
+      strokeWidth="2"
+      strokeLinejoin="miter"
     />
   </svg>
 );
@@ -41,8 +44,22 @@ const SuccessIcon = () => (
 const MailCheckIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
-      d="M12.803 19H4a1 1 0 01-1-1V6.83l8.482 5.762a1 1 0 001.036 0L21 6.83V13h2V5a1 1 0 00-1-1H2a1 1 0 00-1 1v14a1 1 0 001 1h10.803a6.5 6.5 0 01-.045-1zM20.437 6L12 11.733 3.563 6h16.874zM22 17l-4.243 4.243-2.828-2.829 1.414-1.414 1.414 1.414L20.586 15.6 22 17z"
-      fill="#18753c"
+      d="M13.5 20H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v8"
+      stroke="#161616"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.6 4.8 12 11.8l8.4-7"
+      stroke="#161616"
+      strokeWidth="2"
+      strokeLinejoin="round"
+    />
+    <path
+      d="m14.4 18.1 3 3 4.2-4.9"
+      stroke="#161616"
+      strokeWidth="2"
+      strokeLinejoin="miter"
     />
   </svg>
 );
