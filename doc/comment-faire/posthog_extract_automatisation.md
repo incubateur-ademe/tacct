@@ -157,3 +157,27 @@ scalingo --app <APP> run "node dist/etl.js"
 ```
 
 Vérifie que la contrainte unique + ON CONFLICT empêchent les doublons.
+
+---
+
+## 11) Exclure son navigateur des statistiques
+
+```text
+https://tacct.ademe.fr/?exclure_navigateur=1
+```
+
+Coupe tout envoi vers PostHog depuis ce navigateur (cookie d'un an + miroir localStorage). À faire **une fois par navigateur et par appareil**.
+
+```text
+https://tacct.ademe.fr/?exclure_navigateur=0
+```
+
+Réactive le suivi.
+
+```text
+https://tacct.ademe.fr/statistiques
+```
+
+Affiche un bandeau orange si le navigateur est bien exclu. À vérifier de temps en temps : le flag peut sauter silencieusement (vidage des données du site, navigation privée, nouveau profil).
+
+Détail du mécanisme : voir [explications/posthog_extract_automatisation.md](../explications/posthog_extract_automatisation.md#10-exclusion-des-navigateurs-internes).

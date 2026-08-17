@@ -2,6 +2,11 @@ import type { JWT } from 'next-auth/jwt';
 import { getToken } from 'next-auth/jwt';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+import {
+  EXCLUSION_COOKIE,
+  EXCLUSION_MAX_AGE,
+  EXCLUSION_PARAM
+} from './lib/analytics/exclusionNavigateur';
 import { statsSessionCookieName } from './lib/auth/statsSessionCookie';
 
 /**
@@ -65,11 +70,41 @@ function checkForExternalRedirects(req: NextRequest): NextResponse | null {
   return null;
 }
 
+/**
+ * `?exclure_navigateur=1` exclut le navigateur des statistiques, `=0` le réintègre.
+ * Le cookie est posé côté serveur : il échappe au plafond de 7 jours que Safari
+ * applique aux cookies écrits en JavaScript.
+ */
+function handleExclusionNavigateur(req: NextRequest): NextResponse | null {
+  const valeur = req.nextUrl.searchParams.get(EXCLUSION_PARAM);
+  if (valeur !== '0' && valeur !== '1') {
+    return null;
+  }
+
+  const url = req.nextUrl.clone();
+  url.searchParams.delete(EXCLUSION_PARAM);
+
+  const response = NextResponse.redirect(url);
+  response.cookies.set(EXCLUSION_COOKIE, valeur, {
+    httpOnly: false,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/',
+    maxAge: EXCLUSION_MAX_AGE
+  });
+  return response;
+}
+
 export async function proxy(req: NextRequest): Promise<NextResponse> {
   // Protection globale contre les open redirects
   const redirectBlock = checkForExternalRedirects(req);
   if (redirectBlock) {
     return redirectBlock;
+  }
+
+  const exclusion = handleExclusionNavigateur(req);
+  if (exclusion) {
+    return exclusion;
   }
 
   // Redirect /ressources/articles?title=... to /ressources
