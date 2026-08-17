@@ -167,8 +167,6 @@ export const SearchInputHeader = ((props: SearchInputHeaderProps) => {
         <RenderInputHeader
           className={className}
           setInputValue={setInputValue}
-          setSearchCode={setSearchCode}
-          setSearchLibelle={setSearchLibelle}
           params={params}
         />
       }

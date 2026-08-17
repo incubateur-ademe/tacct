@@ -5,8 +5,6 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
     params,
     className,
     setInputValue,
-    setSearchCode,
-    setSearchLibelle,
   } = props;
   return (
     <div ref={params.InputProps.ref} style={{ minWidth: 0 }}>
@@ -32,8 +30,6 @@ export const RenderInputHeader = (props: SearchInputTagHeaderProps) => {
           onClick={(e) => {
             e.stopPropagation();
             setInputValue('');
-            setSearchCode('');
-            setSearchLibelle('');
           }}
         >
           {params.InputProps.endAdornment}
