@@ -14,6 +14,7 @@ export const BoutonPrimaireClassic = ({
   disabled = false,
   onClick,
   icone,
+  iconeFin,
   style,
   posthogEventName,
   thematique
@@ -25,6 +26,7 @@ export const BoutonPrimaireClassic = ({
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icone?: StaticImageData;
+  iconeFin?: React.ReactNode;
   style?: React.CSSProperties;
   posthogEventName?: string;
   thematique?: string;
@@ -124,6 +126,13 @@ export const BoutonPrimaireClassic = ({
           )
         }
         {text}
+        {
+          iconeFin && (
+            <span style={{ display: 'inline-flex', marginLeft: '8px' }}>
+              {iconeFin}
+            </span>
+          )
+        }
       </span>
     </button>
   );

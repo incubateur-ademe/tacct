@@ -1,6 +1,7 @@
 'use client';
 
 import productLaunch from '@/assets/images/product-launch.png';
+import { FlecheDiagonaleIcon } from '@/design-system/base/BaseIcons';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H2 } from '@/design-system/base/Textes';
 import Image from 'next/image';
@@ -23,7 +24,8 @@ export const RoadmapCard = () => (
     <BoutonPrimaireClassic
       size="md"
       link="/tacctoscope/feuille-de-route"
-      text="Voir votre feuille de route  🡭"
+      text="Voir votre feuille de route"
+      iconeFin={<FlecheDiagonaleIcon />}
     />
   </div>
 );

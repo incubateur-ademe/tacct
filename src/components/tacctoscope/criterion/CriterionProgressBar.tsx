@@ -6,6 +6,7 @@ import { NewContainer } from '@/design-system/layout';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import { ProgressDots } from '../shared/ProgressDots';
 import styles from './criterion.module.scss';
+import { FlecheDiagonaleIcon } from '@/design-system/base/BaseIcons';
 
 interface Props {
   slug: CriterionSlug;
@@ -38,7 +39,8 @@ export const CriterionProgressBar = ({
           <BoutonPrimaireClassic
             size="md"
             link={`/tacctoscope/feuille-de-route#${slug}`}
-            text="Voir ma feuille de route  🡭"
+            text="Voir ma feuille de route"
+            iconeFin={<FlecheDiagonaleIcon />}
           />
         </div>
       </div>
