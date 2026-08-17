@@ -120,3 +120,17 @@ Pour que le run soit moins gourmand, on vérifie le dernier timestamp dans la ba
 - **pg_hba.conf … no encryption** : forcer `ssl: { require: true, rejectUnauthorized: false }` côté `pg`.
 
 ---
+
+## 10) Exclusion des navigateurs internes
+
+**Pourquoi** : l'équipe teste les nouvelles fonctionnalités directement en production, et ses propres événements biaisent les statistiques. Le filtrage « internal users » de PostHog reposait sur l'adresse IP, devenue inutilisable depuis que la collecte d'IP a été désactivée pour la conformité RGPD.
+
+**Comment poser le flag** : ajouter `?exclure_navigateur=1` à n'importe quelle URL du site. Le middleware ([src/proxy.ts](../../src/proxy.ts)) pose le cookie `tacct_exclure_navigateur` avec un `maxAge` d'un an, puis redirige vers la même URL débarrassée du paramètre. `?exclure_navigateur=0` réactive le suivi.
+
+Le cookie est volontairement posé **côté serveur** : Safari (ITP) plafonne à 7 jours tout cookie écrit en JavaScript, alors qu'un cookie envoyé en `Set-Cookie` conserve son expiration. Il est en `httpOnly: false` pour rester lisible par le client, et doublé d'un miroir en `localStorage` qui prend le relais s'il est purgé.
+
+**Effet** : [src/app/providers.tsx](../../src/app/providers.tsx) résout le flag **avant** `posthog.init()` — sinon le premier `$pageview` partirait quand même — et passe alors `opt_out_capturing_by_default` et `advanced_disable_flags` à `true`. Plus aucune requête ne part vers PostHog : ni événements, ni `/flags`, ni `/array/<token>/config`. L'exclusion étant faite à la source, il n'y a rien à filtrer côté insights ni dans les requêtes HogQL de l'ETL.
+
+**Limites** : le flag vaut pour un navigateur et un appareil donnés. Il faut le reposer après un vidage des données du site, sur un nouveau profil, ou en navigation privée. Comme il peut sauter silencieusement, la page `/statistiques` affiche un bandeau lorsque le navigateur est exclu : c'est le seul moyen de vérifier que l'exclusion est toujours active.
+
+---

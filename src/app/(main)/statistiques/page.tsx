@@ -3,6 +3,7 @@ import { NewContainer } from '@/design-system/layout';
 import jwt from 'jsonwebtoken';
 import { type Metadata } from 'next';
 import { sharedMetadata } from '../shared-metadata';
+import { IndicateurExclusion } from './indicateurExclusion';
 import styles from './statistiques.module.scss';
 
 const title = 'Statistiques';
@@ -43,6 +44,7 @@ const Page = async () => {
     <NewContainer size="xl">
       <H1>Statistiques</H1>
       <Body>Cette page présente les statistiques d’utilisation du service TACCT.</Body>
+      <IndicateurExclusion />
       <div className={styles.iframeContainer}>
         <iframe
           src={embedUrl}

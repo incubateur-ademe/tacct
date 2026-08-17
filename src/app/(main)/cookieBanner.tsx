@@ -1,4 +1,5 @@
 'use client';
+import { estNavigateurExclu } from '@/lib/analytics/exclusionNavigateur';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import styles from './main.module.scss';
@@ -23,6 +24,7 @@ export const CookieBanner = () => {
 
   useEffect(() => {
     if (consentGiven !== '') {
+      if (estNavigateurExclu()) return;
       if (consentGiven === 'all') {
         posthog.set_config({
           persistence: 'localStorage+cookie',
