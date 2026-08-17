@@ -19,8 +19,7 @@ export const SuggestionsBanner = () => (
           margin: 0
         }}
       >
-        Un commentaire, une question ou une suggestion sur le service TACCT ?
-        Contactez-nous !
+        Une question ou une suggestion sur le service TACCT ?
       </H3>
       <Body color="#3d3d3d">
         TACCT est un service en construction, vos retours sont précieux et
@@ -31,7 +30,7 @@ export const SuggestionsBanner = () => (
       size="md"
       link={LIEN_COMMENTAIRE}
       rel="noopener noreferrer"
-      text="Envoyer un commentaire"
+      text="Contacter l'équipe"
       icone={enveloppeIcon}
     />
   </div>
