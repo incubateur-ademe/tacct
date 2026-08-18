@@ -92,7 +92,8 @@ export const CriterionCard = ({
           isOpen={modalOpen}
           onClose={() => setModalOpen(false)}
           onConfirm={() => {
-            window.location.href = '/api/proconnect/login';
+            const returnTo = encodeURIComponent(window.location.pathname);
+            window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
           }}
         />
       </>
