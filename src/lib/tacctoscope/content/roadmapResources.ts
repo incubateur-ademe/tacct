@@ -4,8 +4,8 @@ import { CRITERIA } from './criteria';
 
 /**
  * Recommandations de la feuille de route, par question et par niveau de réponse :
- * - `absent` : sa propre recommandation
- * - `partielSatisfaisant` : recommandation commune à « partiel » et « satisfaisant »
+ * - `absentPartiel` : recommandation commune à « absent » et « partiel »
+ * - `satisfaisant` : sa propre recommandation
  * - « très satisfaisant » : aucune recommandation
  * Un bloc `ressources` ou `pourApprofondir` vide n'est pas affiché.
  */
@@ -27,15 +27,15 @@ export interface QuestionRecommendation {
 }
 
 export interface QuestionRecommendations {
-  absent: QuestionRecommendation;
-  partielSatisfaisant: QuestionRecommendation;
+  absentPartiel: QuestionRecommendation;
+  satisfaisant: QuestionRecommendation;
 }
 
 const A_COMPLETER = 'À COMPLÉTER';
 
 const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
   q1: {
-    absent: {
+    absentPartiel: {
       title:
         'Pas ou peu de données sur les évolutions climatiques passées : à approfondir.',
       description:
@@ -51,7 +51,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       ],
       pourApprofondir: []
     },
-    partielSatisfaisant: {
+    satisfaisant: {
       title:
         'Le diagnostic mobilise quelques données ou observations climatiques passées.',
       description:
@@ -61,7 +61,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
     }
   },
   q2: {
-    absent: {
+    absentPartiel: {
       title: 'Utiliser les données de la TRACC n’est pas une option.',
       description:
         "Depuis 2026, la prise en compte de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC) doit être intégrée dans tous les documents de planification. Si certains paramètres vous semblent manquants dans la TRACC, veillez à utiliser des projections provenant d’un scénario respectant un niveau de réchauffement équivalent au +4°C pour la métropole, et de pousser l’analyse jusqu’en fin de siècle (RCP 8.5 par exemple)",
@@ -92,7 +92,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       ],
       pourApprofondir: []
     },
-    partielSatisfaisant: {
+    satisfaisant: {
       title:
         'Les projections climatiques utilisées sont partiellement basées sur la TRACC.',
       description:
@@ -102,14 +102,14 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
     }
   },
   q3: {
-    absent: {
+    absentPartiel: {
       title: "Évitez l'écueil des généralités",
       description:
         "Les données mondiales, voire nationales, sont assez éloignées des réalités locales, même si, ponctuellement, les échelles intermédiaires (départementales, régionales) peuvent offrir un cadre de comparaison pertinent pour positionner votre territoire. Si nécessaire, rapprochez-vous du groupe régional d'experts sur le climat de votre région. Dosez intelligemment : assez de contexte pour comprendre, assez de local pour agir.",
       ressources: [],
       pourApprofondir: []
     },
-    partielSatisfaisant: {
+    satisfaisant: {
       title: 'Les données climatiques mondiales sont trop détaillées.',
       description:
         "Un petit effort de synthèse s’impose. Réorientez cette première partie de votre diagnostic pour être exploitable : elle doit aider les acteurs locaux à se projeter dans une réalité qui leur est directement lisible, plutôt que de reproduire des constats déjà largement documentés à l'échelle globale. Dosez intelligemment : assez de contexte pour comprendre, assez de local pour agir.",
@@ -118,14 +118,14 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
     }
   },
   q4: {
-    absent: {
+    absentPartiel: {
       title: 'Reliez les paramètres climatiques à leurs conséquences',
       description:
         "Un diagnostic n'est pas un inventaire, c'est le fruit d'une analyse. Si aucun des indicateurs climatiques mentionnés n'est relié à un effet observable sur votre territoire, c'est soit qu'il n'y en a pas, soit que le travail de mise en relation reste à faire : c'est ce lien qui donnera son sens au diagnostic.",
       ressources: [],
       pourApprofondir: []
     },
-    partielSatisfaisant: {
+    satisfaisant: {
       title:
         'Les indicateurs climatiques retenus sont parfois reliés à des effets observables sur le territoire.',
       description:
@@ -135,7 +135,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
     }
   },
   q5: {
-    absent: {
+    absentPartiel: {
       title:
         "La qualification de l'exposition de votre territoire aux aléas, présents et futurs, est absente ou très incomplète",
       description:
@@ -143,7 +143,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       ressources: [],
       pourApprofondir: []
     },
-    partielSatisfaisant: {
+    satisfaisant: {
       title: 'L’évaluation de l’exposition a été partiellement réalisée. ',
       description:
         "Une évaluation partielle peut avoir deux origines : soit elle s'est concentrée sur un nombre trop restreint d'aléas, soit elle n'a pas été confrontée au ressenti des acteurs du territoire. Si le périmètre est incomplet, le risque est de passer à côté d'un phénomène climatique qui pourrait peser lourd dans les années à venir. Rassurez-vous : il ne s'agit pas d'une évaluation scientifique nécessitant des connaissances poussées en climatologie, mais d'identifier les phénomènes climatiques qui ont le plus d'impacts sur le territoire, en les priorisant entre eux (par exemple sur une échelle de gravité nulle, faible, moyenne ou élevée). Quelques questions peuvent vous aider à comparer l'importance des aléas entre eux : leur fréquence, leur étendue sur le territoire, une préoccupation déjà exprimée localement... et leur évolution prévue à 2100 pour l’exposition future. Si le ressenti des acteurs manque, le risque est de passer à côté de signaux que seul le vécu permet de capter. Les associer dès le début de l'évaluation, c'est aussi s'assurer une priorisation plus juste, ancrée dans les préoccupations réelles du territoire, et plus légitime puisqu'elle n'est pas décidée par la seule collectivité.",
@@ -193,8 +193,8 @@ const LOREM_RECOMMENDATION: QuestionRecommendation = {
 };
 
 const LOREM_RECOMMENDATIONS: QuestionRecommendations = {
-  absent: LOREM_RECOMMENDATION,
-  partielSatisfaisant: LOREM_RECOMMENDATION
+  absentPartiel: LOREM_RECOMMENDATION,
+  satisfaisant: LOREM_RECOMMENDATION
 };
 
 export const ROADMAP_RECOMMENDATIONS: Record<string, QuestionRecommendations> =
@@ -216,7 +216,7 @@ export const getRecommendation = (
   if (answer === 'tres_satisfaisant') return null;
   const recommendations = ROADMAP_RECOMMENDATIONS[questionKey];
   if (!recommendations) return null;
-  return answer === 'absent'
-    ? recommendations.absent
-    : recommendations.partielSatisfaisant;
+  return answer === 'satisfaisant'
+    ? recommendations.satisfaisant
+    : recommendations.absentPartiel;
 };
