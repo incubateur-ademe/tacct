@@ -199,6 +199,16 @@ const config = {
     async redirects() {
         return [
             {
+                source: '/workspace',
+                destination: '/workspace-tacct',
+                permanent: true
+            },
+            {
+                source: '/workspace/:path*',
+                destination: '/workspace-tacct/:path*',
+                permanent: true
+            },
+            {
                 source: '/ressources/articles/lire-un-diagnostic',
                 destination:
                     '/ressources/articles/analyser-diagnostic-vulnerabilite',

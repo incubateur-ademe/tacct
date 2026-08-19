@@ -17,7 +17,7 @@ export const ReplaceSearchEpci = (libelleEpci: string) => {
 };
 
 export const libellesTypeTerritoire: Record<TerritoireType, string> = {
-  epci: 'Intercommunalité',
+  epci: 'EPCI',
   commune: 'Commune',
   petr: 'PETR',
   pnr: 'PNR',

@@ -13,7 +13,7 @@ export const RoadmapCard = () => (
     <div className={styles.roadmapCardContent}>
       <H2
         color="#038278"
-        style={{ fontSize: '1.125rem', lineHeight: '1.5rem', letterSpacing: 0 }}
+        style={{ fontSize: '1.25rem', lineHeight: '1.5rem', letterSpacing: 0 }}
       >
         Feuille de route personnalisée
       </H2>

@@ -21,7 +21,12 @@ export const CriterionBanner = ({ slug, title, chapeau }: Props) => (
     />
     <H1
       color="#038278"
-      style={{ fontSize: '1.75rem', lineHeight: '2.25rem', letterSpacing: 0 }}
+      style={{ 
+        fontSize: '1.75rem', 
+        lineHeight: '2.25rem', 
+        letterSpacing: 0,
+        marginBottom: "0"
+       }}
     >
       {title}
     </H1>

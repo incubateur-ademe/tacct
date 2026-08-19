@@ -61,7 +61,7 @@ export const CriterionSection = ({
       </span>
       <H2
         color="#161616"
-        style={{ fontSize: '1.25rem', lineHeight: '1.75rem', letterSpacing: 0, margin: 0}}
+        style={{ fontSize: '1.5rem', lineHeight: '1.75rem', letterSpacing: 0, margin: 0}}
       >
         {title}
       </H2>

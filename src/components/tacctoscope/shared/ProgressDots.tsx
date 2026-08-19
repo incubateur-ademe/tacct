@@ -26,7 +26,7 @@ export const ProgressDots = ({ filled, total }: Props) => {
       </ul>
       <Body
         htmlTag="span"
-        size="sm"
+        size="md"
         color="#3D3D3D"
         style={{ whiteSpace: 'nowrap', fontWeight: 500 }}
       >
