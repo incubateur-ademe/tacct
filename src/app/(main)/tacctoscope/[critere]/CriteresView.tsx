@@ -59,10 +59,11 @@ const buildSectionQuestions = (
   answers: AnswerMap
 ): SectionQuestion[] =>
   criterion.questions
-    .filter((question) => question.section === kind)
-    .map((question, index) => ({
+    .map((question, index) => ({ question, number: index + 1 }))
+    .filter(({ question }) => question.section === kind)
+    .map(({ question, number }) => ({
       question,
-      number: index + 1,
+      number,
       initialValue:
         answers[buildQuestionKey(criterion.slug, question.id)] ?? null
     }));

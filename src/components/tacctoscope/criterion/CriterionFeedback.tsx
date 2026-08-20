@@ -119,7 +119,7 @@ export const CriterionFeedback = ({ criterionKey, userEmail }: Props) => {
       <div className={styles.feedback}>
         <div className={styles.feedbackThanks}>
           <SuccessIcon />
-          Merci pour votre contribution !
+          Merci pour votre contribution !
         </div>
       </div>
     );
