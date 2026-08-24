@@ -18,7 +18,7 @@ import {
 } from '@/lib/tacctoscope/types';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from './criteres.module.scss';
 
 interface Props {
@@ -93,6 +93,9 @@ export const CriteresView = ({
   );
   const [toastOpen, setToastOpen] = useState(false);
   const [toastKey, setToastKey] = useState(0);
+  const scrollAnchor = useRef<{ element: HTMLElement; top: number } | null>(
+    null
+  );
 
   const showRecoToast = () => {
     setToastOpen(true);
@@ -154,8 +157,33 @@ export const CriteresView = ({
     });
   }, [hydrated, criterion]);
 
-  const handleToggle = (key: string) =>
+  /**
+   * L'accordéon est exclusif : fermer un panneau situé au-dessus du scroll
+   * retire sa hauteur du flux et fait remonter la question cliquée hors écran.
+   * On mémorise sa position avant le rendu pour la restaurer juste après.
+   */
+  const handleToggle = (key: string) => {
+    const question = criterion.questions.find(
+      (item) => buildQuestionKey(criterion.slug, item.id) === key
+    );
+    const element = question
+      ? document.getElementById(`question-${criterion.slug}-${question.id}`)
+      : null;
+    scrollAnchor.current = element
+      ? { element, top: element.getBoundingClientRect().top }
+      : null;
     setOpenKey((current) => (current === key ? null : key));
+  };
+
+  useLayoutEffect(() => {
+    const anchor = scrollAnchor.current;
+    if (!anchor) return;
+    scrollAnchor.current = null;
+    const delta = anchor.element.getBoundingClientRect().top - anchor.top;
+    // 'instant' est indispensable : html a scroll-behavior: smooth !important,
+    // qui animerait la correction au lieu de la rendre invisible.
+    if (delta !== 0) window.scrollBy({ top: delta, behavior: 'instant' });
+  }, [openKey]);
 
   const handleChanged = (questionKey: string, answered: boolean) =>
     setAnsweredKeys((current) => {
