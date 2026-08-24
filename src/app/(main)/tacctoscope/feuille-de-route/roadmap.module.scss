@@ -419,30 +419,52 @@ $stripe: repeating-linear-gradient(
 }
 
 /* ===== Carte ressource ===== */
+/*
+ * Hauteur fixe : au survol le tag s'efface et le titre + la description
+ * remontent de la hauteur du tag (28px) plus le gap (12px).
+ */
 .ressourceCard {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
     flex: 1 1 280px;
     max-width: 240px;
-    min-height: 200px;
+    height: 240px;
     padding: 1.5rem;
     border: 1px solid $border;
     border-radius: 4px;
     background: #ffffff;
-    text-decoration: none;
-    background-image: none;
-    &::after {
-        content: none;
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+    // Neutralise la teinte grise que DSFR applique à tout button:hover.
+    --hover-tint: #ffffff;
+    --active-tint: #ffffff;
+    transition:
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+
+    &:hover,
+    &:focus-visible {
+        border-color: transparent;
+        box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+
+        .ressourceCardTag {
+            opacity: 0;
+        }
+
+        .ressourceCardTitle,
+        .ressourceCardDescription {
+            transform: translateY(-40px);
+        }
+
+        .ressourceCardDescription {
+            opacity: 1;
+        }
     }
 
-    &:hover {
-        border-color: $teal;
-    }
-
-    &:focus {
-        outline: 6px solid $teal;
-        outline-offset: -6px;
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
     }
 }
 
@@ -464,15 +486,34 @@ $stripe: repeating-linear-gradient(
     color: #5a5a10;
 }
 
+.tagArticle {
+    background: #e3faf9;
+    color: #095d55;
+}
+
 .tagRetourExperience {
     background: #ffc9e4;
     color: #971356;
 }
 
+.tagOutil {
+    background: #d8effa;
+    color: #055fa5;
+}
+
 .ressourceCardText {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.ressourceCardTag {
+    align-self: flex-start;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .ressourceCardTitle {
@@ -481,9 +522,28 @@ $stripe: repeating-linear-gradient(
     font-weight: 700;
     line-height: 1.5rem;
     color: $teal;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
 }
 
 .ressourceCardDescription {
+    opacity: 0;
+    transform: translateY(0);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+/*
+ * 4 lignes = les 96px restants sous un titre de 2 lignes dans les 156px
+ * de zone texte. Le clamp n'est là que pour obtenir les points de suspension.
+ */
+.ressourceCardDescriptionClamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
     font-family: Marianne;
     font-size: 0.875rem;
     font-weight: 400;
@@ -493,6 +553,103 @@ $stripe: repeating-linear-gradient(
 
 .ressourceCardAction {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
-    margin-top: auto;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-family: Marianne;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: $teal;
+}
+
+/* ===== Modale ressource ===== */
+.ressourceModalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 18, 0.48);
+}
+
+.ressourceModalCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    min-width: 0;
+    max-width: 990px;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding: 2rem;
+    border-radius: 4px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 18, 0.16);
+}
+
+.ressourceModalClose {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: inline-flex;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.ressourceModalHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 2rem;
+}
+
+.ressourceModalBody {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.ressourceModalVisual {
+    display: block;
+    flex: 0 1 323px;
+    max-width: 323px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+.ressourceModalVisualMedia {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.ressourceModalText {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.ressourceModalBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ressourceModalFooter {
+    display: flex;
+    justify-content: flex-end;
 }

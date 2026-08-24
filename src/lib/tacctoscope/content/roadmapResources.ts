@@ -1,3 +1,4 @@
+import type { StaticImageData } from 'next/image';
 import { buildQuestionKey } from '../keys';
 import { AnswerValue } from '../types';
 import { CRITERIA } from './criteria';
@@ -10,12 +11,20 @@ import { CRITERIA } from './criteria';
  * Un bloc `ressources` vide n'est pas affiché.
  */
 
-export type RoadmapResourceTag = 'donnees' | 'retour-experience';
+export type RoadmapResourceTag =
+  | 'donnees'
+  | 'article'
+  | 'retour-experience'
+  | 'outil';
 
 export interface RoadmapResource {
   tag: RoadmapResourceTag;
   title: string;
-  description: string;
+  /** Paragraphe « Qu’est-ce que c’est ? », aussi révélé au survol de la carte. */
+  description?: string;
+  /** Paragraphe « Pourquoi est-ce utile ? ». */
+  utilite?: string;
+  image?: StaticImageData;
   url: string;
 }
 
@@ -32,6 +41,9 @@ export interface QuestionRecommendations {
 
 const A_COMPLETER = 'À COMPLÉTER';
 
+const LOREM_UTILITE =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.';
+
 const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
   q1: {
     absentPartiel: {
@@ -45,7 +57,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
           title: 'Base de données GASPAR',
           description:
             'La base de données GASPAR (Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques) recense pour chaque commune les arrêtés de reconnaissance de l’état de catastrophe naturelle parus au Journal officiel depuis la création du dispositif en 1982. Ces données complètent les données climatiques passées, en apportant un éclairage sur les « aléas induits » (mouvements de terrain, submersion, inondations, coulées de boues…) dont la fréquence est susceptible d’évoluer avec le changement climatique. Retrouvez ces données sur TACCT.',
-          url: ''
+          url: '',
+          utilite: LOREM_UTILITE
         }
       ]
     },
@@ -68,7 +81,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
           title: 'Climadiag Commune',
           description:
             'Climadiag Commune est un service de Météo France, en accès libre et gratuit, décrivant les évolutions potentielles du climat à l‘échelle des communes et des EPCI. Les indicateurs (températures moyennes, cumuls de précipitations,…) correspondent aux différents niveaux de réchauffement de la TRACC aux horizons 2030, 2050 et 2100. Ils sont organisés en cinq familles (climat, risques naturels, santé, agriculture, tourisme).',
-          url: 'https://meteofrance.com/climadiag-commune'
+          url: 'https://meteofrance.com/climadiag-commune',
+          utilite: LOREM_UTILITE
         },
         {
           tag: 'donnees',
@@ -76,7 +90,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
             "décret n° 2026-23 du 23 janvier 2026 relatif à la trajectoire de réchauffement de référence pour l'adaptation au changement climatique",
           description:
             'Le décret du 23 janvier 2026 précise les modalités de définition de la TRACC',
-          url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399130'
+          url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399130',
+          utilite: LOREM_UTILITE
         },
         {
           tag: 'donnees',
@@ -84,7 +99,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
             "arrêté du 23 janvier 2026 fixant la trajectoire de réchauffement de référence pour l'adaptation au changement climatique",
           description:
             "L'arrêté du 23 janvier 2026 définit les niveaux de réchauffement (par rapport à l'ère préindustrielle) à différents horizons temporels pour la métropole et les territoires ultramarins.",
-          url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399165'
+          url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399165',
+          utilite: LOREM_UTILITE
         }
       ]
     },
@@ -153,14 +169,16 @@ const LOREM_RESSOURCES: RoadmapResource[] = [
     title: 'Climadiag Commune - Météo France',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.',
-    url: 'https://www.georisques.gouv.fr/'
+    url: 'https://www.georisques.gouv.fr/',
+    utilite: LOREM_UTILITE
   },
   {
     tag: 'donnees',
     title: 'Bulletins Spéciaux - Association Infoclimat',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.',
-    url: 'https://www.infoclimat.fr/'
+    url: 'https://www.infoclimat.fr/',
+    utilite: LOREM_UTILITE
   }
 ];
 
