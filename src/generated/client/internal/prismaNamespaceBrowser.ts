@@ -132,8 +132,7 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  tacctoscope_answer: 'tacctoscope_answer',
-  tacctoscope_criterion_feedback: 'tacctoscope_criterion_feedback'
+  tacctoscope_answer: 'tacctoscope_answer'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1724,19 +1723,6 @@ export const Tacctoscope_answerScalarFieldEnum = {
 } as const
 
 export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
-
-
-export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  criterion_key: 'criterion_key',
-  is_useful: 'is_useful',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  comment: 'comment'
-} as const
-
-export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]
 
 
 export const SortOrder = {

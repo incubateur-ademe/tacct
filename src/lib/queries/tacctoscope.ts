@@ -2,17 +2,12 @@
 
 import { randomUUID } from 'node:crypto';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
-import { encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
-import {
-  isKnownCriterionKey,
-  isKnownQuestionKey
-} from '@/lib/tacctoscope/keys';
+import { isKnownQuestionKey } from '@/lib/tacctoscope/keys';
 import {
   ANSWER_VALUES,
   AnswerMap,
-  AnswerValue,
-  CriterionSlug
+  AnswerValue
 } from '@/lib/tacctoscope/types';
 
 type ActionResult = { ok: boolean };
@@ -91,9 +86,6 @@ export const resetAllAnswers = async (): Promise<ActionResult> => {
 
   try {
     await prisma.tacctoscope_answer.deleteMany({ where: { user_id: user.id } });
-    await prisma.tacctoscope_criterion_feedback.deleteMany({
-      where: { user_id: user.id }
-    });
     return { ok: true };
   } catch (error) {
     console.error('resetAllAnswers error', error);
@@ -101,57 +93,3 @@ export const resetAllAnswers = async (): Promise<ActionResult> => {
   }
 };
 
-export const saveCriterionFeedback = async (
-  criterionKey: CriterionSlug,
-  input: { isUseful: boolean | null; comment: string | null }
-): Promise<ActionResult> => {
-  const user = await getCurrentUser();
-  if (!user) return { ok: false };
-  if (!isKnownCriterionKey(criterionKey)) return { ok: false };
-
-  const comment = input.comment?.trim() ? input.comment.trim() : null;
-  if (input.isUseful === null && !comment) return { ok: false };
-
-  try {
-    await prisma.tacctoscope_criterion_feedback.create({
-      data: {
-        id: randomUUID(),
-        user_id: user.id,
-        criterion_key: criterionKey,
-        is_useful: input.isUseful,
-        comment
-      }
-    });
-    return { ok: true };
-  } catch (error) {
-    console.error('saveCriterionFeedback error', error);
-    return { ok: false };
-  }
-};
-
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export const saveRecontactOptIn = async (
-  email: string
-): Promise<ActionResult> => {
-  const user = await getCurrentUser();
-  if (!user) return { ok: false };
-
-  const trimmed = email.trim();
-  if (!EMAIL_REGEX.test(trimmed)) return { ok: false };
-
-  try {
-    await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        wants_beta_features: true,
-        recontact_email: encryptField(trimmed),
-        updated_at: new Date()
-      }
-    });
-    return { ok: true };
-  } catch (error) {
-    console.error('saveRecontactOptIn error', error);
-    return { ok: false };
-  }
-};

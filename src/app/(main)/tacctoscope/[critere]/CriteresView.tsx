@@ -29,7 +29,6 @@ interface Props {
   answers: AnswerMap;
   nextSlug: CriterionSlug | null;
   isAuthenticated: boolean;
-  userEmail: string;
 }
 
 const BulbIcon = () => (
@@ -93,8 +92,7 @@ export const CriteresView = ({
   criterion,
   answers,
   nextSlug,
-  isAuthenticated,
-  userEmail
+  isAuthenticated
 }: Props) => {
   const orderedKeys = criterion.questions.map((question) =>
     buildQuestionKey(criterion.slug, question.id)
@@ -284,12 +282,7 @@ export const CriteresView = ({
             />
           )}
 
-          {isAuthenticated && (
-            <CriterionFeedback
-              criterionKey={criterion.slug}
-              userEmail={userEmail}
-            />
-          )}
+          <CriterionFeedback criterionKey={criterion.slug} />
 
           <Link
             href="/tacctoscope"

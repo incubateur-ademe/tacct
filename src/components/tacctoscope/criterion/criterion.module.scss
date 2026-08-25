@@ -120,7 +120,7 @@
 .feedback {
     display: flex;
     flex-direction: column;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2rem;
     border: 1px solid #e7e5e5;
     border-radius: 4px;
     background: #fafafa;
@@ -150,22 +150,6 @@
     gap: 1rem;
 }
 
-.feedbackCommentLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    align-self: flex-start;
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-    font-family: Marianne;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #038278;
-    // text-decoration: underline;
-}
-
 .feedbackExpand {
     display: flex;
     flex-direction: column;
@@ -185,6 +169,7 @@
     color: #161616;
     resize: none;
     overflow-y: auto;
+    margin-top: 1rem;
 
     &::placeholder {
         color: #666666;
@@ -210,47 +195,6 @@
     font-weight: 700;
     line-height: 1.5rem;
     color: #3d3d3d;
-}
-
-.feedbackCheckbox {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-family: Marianne;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    color: #3d3d3d;
-    cursor: pointer;
-}
-
-.feedbackCheckbox input {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    accent-color: #038278;
-}
-
-.feedbackEmailRow {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.feedbackEmailInput {
-    flex: 1;
-    min-width: 0;
-    padding: 0.75rem 0.5rem;
-    border: 1px solid #e7e5e5;
-    border-radius: 4px;
-    background: #ffffff;
-    font-family: Marianne;
-    font-size: 0.875rem;
-    color: #3d3d3d;
-
-    &:focus-visible {
-        outline: 2px solid #038278;
-        outline-offset: -1px;
-    }
 }
 
 /* ===== HubGrid ===== */

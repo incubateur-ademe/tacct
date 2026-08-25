@@ -17,6 +17,8 @@ interface Props {
 }
 
 const MAX_TEXTAREA_HEIGHT = 320;
+const LOAD_ATTEMPTS = 20;
+const LOAD_RETRY_MS = 250;
 const END = 'end';
 
 type NextStep = number | typeof END;
@@ -88,13 +90,36 @@ export const CriterionFeedback = ({ criterionKey }: Props) => {
   const shownFor = useRef<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
+  // Les effets enfants s'exécutent avant celui du PHProvider parent : on
+  // patiente jusqu'à ce que posthog soit initialisé.
   useEffect(() => {
     const surveyId = process.env.NEXT_PUBLIC_POSTHOG_TACCTOSCOPE_SURVEY_ID;
-    if (!surveyId || !posthog.__loaded) return;
-    posthog.getSurveys((available) => {
-      const match = available.find((item) => item.id === surveyId);
-      if (match) setSurvey(match);
-    });
+    if (!surveyId) return;
+
+    let cancelled = false;
+    let attempts = 0;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const load = () => {
+      if (cancelled) return;
+      if (!posthog.__loaded) {
+        attempts += 1;
+        if (attempts > LOAD_ATTEMPTS) return;
+        timer = setTimeout(load, LOAD_RETRY_MS);
+        return;
+      }
+      posthog.getSurveys((available) => {
+        if (cancelled) return;
+        const match = available.find((item) => item.id === surveyId);
+        if (match) setSurvey(match);
+      });
+    };
+
+    load();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -164,8 +189,6 @@ export const CriterionFeedback = ({ criterionKey }: Props) => {
     }
   };
 
-  if (!survey || questionIndex >= survey.questions.length) return null;
-
   if (done) {
     return (
       <div className={styles.feedback}>
@@ -176,6 +199,8 @@ export const CriterionFeedback = ({ criterionKey }: Props) => {
       </div>
     );
   }
+
+  if (!survey || questionIndex >= survey.questions.length) return null;
 
   const question = survey.questions[questionIndex];
 
