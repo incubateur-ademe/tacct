@@ -10,6 +10,7 @@ import { decodeUserSession, sessionCookieName } from '@/lib/auth/proconnect';
 import { prisma } from '@/lib/queries/db';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
+import { getRecommendationCount } from '@/lib/tacctoscope/content/roadmapResources';
 import { getAllProgress } from '@/lib/tacctoscope/progress';
 import { Metadata } from 'next';
 import { cookies } from 'next/headers';
@@ -57,6 +58,8 @@ const MonEspace = async () => {
     (criterion) => criterion.total > 0 && criterion.answered === criterion.total
   ).length;
   const started = progress.filter((criterion) => criterion.answered > 0).length;
+  const isComplete = completed === CRITERIA.length;
+  const recommendationCount = isComplete ? getRecommendationCount(answers) : 0;
 
   return (
     <NewContainer size="xl">
@@ -77,6 +80,8 @@ const MonEspace = async () => {
             <div className={styles.sectionInner}>
               <TacctoscopeCard
                 hasAnswers={started > 0}
+                isComplete={isComplete}
+                recommendationCount={recommendationCount}
                 completed={completed}
                 started={started}
                 total={CRITERIA.length}

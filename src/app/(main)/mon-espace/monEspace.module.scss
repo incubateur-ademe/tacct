@@ -226,6 +226,12 @@ $stripe: repeating-linear-gradient(
     align-items: flex-start;
 }
 
+.pistesLigne {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .boutonsGroupe {
     display: flex;
     flex-wrap: wrap;

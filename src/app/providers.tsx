@@ -7,10 +7,14 @@ import { cookieConsentGiven } from './(main)/cookieBanner';
 
 export const PHProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
-    if (
-      !window.location.host.includes('127.0.0.1') &&
-      !window.location.host.includes('localhost')
-    ) {
+    // TEMPORAIRE (recette survey TACCToscope) : rétablir l'exclusion du local
+    // en repassant AUTORISER_POSTHOG_EN_LOCAL à false.
+    const AUTORISER_POSTHOG_EN_LOCAL = true;
+    const enLocal =
+      window.location.host.includes('127.0.0.1') ||
+      window.location.host.includes('localhost');
+
+    if (!enLocal || AUTORISER_POSTHOG_EN_LOCAL) {
       // Doit être résolu avant init : sinon le premier $pageview part quand même.
       const navigateurExclu = resoudreExclusionNavigateur();
       const consent = cookieConsentGiven();

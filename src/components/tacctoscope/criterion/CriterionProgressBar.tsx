@@ -8,6 +8,8 @@ import { ProgressDots } from '../shared/ProgressDots';
 import styles from './criterion.module.scss';
 import { FlecheDiagonaleIcon } from '@/design-system/base/BaseIcons';
 
+export const CRITERION_PROGRESS_BAR_ID = 'criterion-progress-bar';
+
 interface Props {
   slug: CriterionSlug;
   answered: number;
@@ -21,7 +23,10 @@ export const CriterionProgressBar = ({
   total,
   nextSlug
 }: Props) => (
-  <div className={styles.criterionProgressBarOuter}>
+  <div
+    id={CRITERION_PROGRESS_BAR_ID}
+    className={styles.criterionProgressBarOuter}
+  >
     <NewContainer
       size="xl"
       style={{ paddingTop: '1.25rem', paddingBottom: '1.25rem' }}

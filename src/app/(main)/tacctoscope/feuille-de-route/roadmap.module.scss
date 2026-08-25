@@ -254,6 +254,7 @@ $stripe: repeating-linear-gradient(
     padding: 3rem 2rem;
     background: $gray-light;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .emptyStateTitle {
@@ -418,6 +419,24 @@ $stripe: repeating-linear-gradient(
     margin-bottom: 1.5rem;
 }
 
+@mixin ressourceCardRevealed {
+    border-color: transparent;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+
+    .ressourceCardTag {
+        opacity: 0;
+    }
+
+    .ressourceCardTitle,
+    .ressourceCardDescription {
+        transform: translateY(-40px);
+    }
+
+    .ressourceCardDescription {
+        opacity: 1;
+    }
+}
+
 /* ===== Carte ressource ===== */
 /*
  * Hauteur fixe : au survol le tag s'efface et le titre + la description
@@ -443,26 +462,14 @@ $stripe: repeating-linear-gradient(
         border-color 0.5s ease,
         box-shadow 0.5s ease;
 
-    &:hover,
-    &:focus-visible {
-        border-color: transparent;
-        box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
-
-        .ressourceCardTag {
-            opacity: 0;
-        }
-
-        .ressourceCardTitle,
-        .ressourceCardDescription {
-            transform: translateY(-40px);
-        }
-
-        .ressourceCardDescription {
-            opacity: 1;
+    @media (hover: hover) {
+        &:hover {
+            @include ressourceCardRevealed;
         }
     }
 
     &:focus-visible {
+        @include ressourceCardRevealed;
         outline: 2px solid $teal;
         outline-offset: 2px;
     }
@@ -586,7 +593,7 @@ $stripe: repeating-linear-gradient(
     max-width: 990px;
     max-height: calc(100vh - 2rem);
     overflow-y: auto;
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 4px;
     background: #ffffff;
     box-shadow: 0 6px 18px rgba(0, 0, 18, 0.16);
@@ -594,8 +601,8 @@ $stripe: repeating-linear-gradient(
 
 .ressourceModalClose {
     position: absolute;
-    top: 0.75rem;
-    right: 1rem;
+    top: 2.6rem;
+    right: 2.5rem;
     display: inline-flex;
     padding: 0;
     border: none;

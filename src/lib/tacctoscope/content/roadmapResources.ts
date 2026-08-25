@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 import { buildQuestionKey } from '../keys';
-import { AnswerValue } from '../types';
+import { AnswerMap, AnswerValue } from '../types';
 import { CRITERIA } from './criteria';
 
 /**
@@ -216,3 +216,15 @@ export const getRecommendation = (
     ? recommendations.satisfaisant
     : recommendations.absentPartiel;
 };
+
+export const getRecommendationCount = (answers: AnswerMap): number =>
+  CRITERIA.reduce(
+    (count, criterion) =>
+      count +
+      criterion.questions.filter((question) => {
+        const questionKey = buildQuestionKey(criterion.slug, question.id);
+        const answer = answers[questionKey];
+        return answer != null && getRecommendation(questionKey, answer) !== null;
+      }).length,
+    0
+  );
