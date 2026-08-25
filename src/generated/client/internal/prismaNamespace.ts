@@ -8104,7 +8104,11 @@ export const UserScalarFieldEnum = {
   encryption_version: 'encryption_version',
   wants_beta_features: 'wants_beta_features',
   recontact_email: 'recontact_email',
-  last_login_at: 'last_login_at'
+  last_login_at: 'last_login_at',
+  login_count: 'login_count',
+  workspace_login_count: 'workspace_login_count',
+  workspace_last_login_at: 'workspace_last_login_at',
+  workspace_last_session_jti: 'workspace_last_session_jti'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]

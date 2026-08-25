@@ -127,7 +127,7 @@ export async function GET(request: NextRequest) {
     // `updated_at` reste inchangé : il marque les modifications du compte, pas les connexions.
     await prisma.user.update({
       where: { id: user.id },
-      data: { last_login_at: new Date() }
+      data: { last_login_at: new Date(), login_count: { increment: 1 } }
     });
 
     const sessionJwt = await encodeUserSession({
