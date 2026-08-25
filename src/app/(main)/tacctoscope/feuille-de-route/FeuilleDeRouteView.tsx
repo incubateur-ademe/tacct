@@ -1,6 +1,7 @@
 'use client';
 
 import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { getRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
@@ -141,6 +142,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
               />
             ))
           )}
+          {hydrated && <HautDePage />}
         </div>
       </div>
     </NewContainer>

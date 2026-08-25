@@ -40,7 +40,6 @@ export const RecommendationBlock = ({
     </div>
     <RessourcesAccordion
       ressources={recommendation.ressources}
-      pourApprofondir={recommendation.pourApprofondir}
       defaultOpen={defaultOpen}
     />
   </article>

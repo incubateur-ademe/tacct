@@ -50,7 +50,7 @@
 }
 
 .accordionShellVariantDefault .accordionShellHeader:hover {
-    --hover-tint: #e7e5e5;
+    --hover-tint: #f6f6f6;
 }
 
 .accordionShellVariantGreen .accordionShellHeader:hover {
@@ -255,7 +255,6 @@
 
 /* ===== Mobile ===== */
 @media screen and (max-width: 768px) {
-
     /* En-tête d'accordéon : titre + chevron sur la 1re ligne, tag sur la 2nde */
     .accordionShellHeader {
         display: grid;
@@ -342,7 +341,7 @@
     margin: 0;
     padding: 0 0 0 1.25rem;
 
-    li+li {
+    li + li {
         margin-top: 0.25rem;
     }
 }

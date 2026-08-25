@@ -7,16 +7,14 @@ import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scs
 
 interface Props {
   ressources: RoadmapResource[];
-  pourApprofondir: RoadmapResource[];
   defaultOpen?: boolean;
 }
 
 export const RessourcesAccordion = ({
   ressources,
-  pourApprofondir,
   defaultOpen = false
 }: Props) => {
-  if (ressources.length === 0 && pourApprofondir.length === 0) return null;
+  if (ressources.length === 0) return null;
 
   return (
     <div className={styles.accordion}>
@@ -31,17 +29,6 @@ export const RessourcesAccordion = ({
                 <RessourceCard key={index} ressource={ressource} />
               ))}
             </div>
-          )}
-
-          {pourApprofondir.length > 0 && (
-            <>
-              <p className={styles.pourApprofondir}>Pour approfondir</p>
-              <div className={styles.ressourcesWrapper}>
-                {pourApprofondir.map((ressource, index) => (
-                  <RessourceCard key={index} ressource={ressource} />
-                ))}
-              </div>
-            </>
           )}
         </div>
       </CustomAccordion>
