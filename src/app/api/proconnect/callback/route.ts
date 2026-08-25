@@ -125,7 +125,7 @@ export async function GET(request: NextRequest) {
     // modifications du compte et non les connexions.
     await prisma.user.update({
       where: { id: user.id },
-      data: { last_login_at: new Date() }
+      data: { last_login_at: new Date(), login_count: { increment: 1 } }
     });
 
     const sessionJwt = await encodeUserSession({

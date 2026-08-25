@@ -454,7 +454,6 @@ export const ModelName = {
   study: 'study',
   study_office: 'study_office',
   tacctoscope_answer: 'tacctoscope_answer',
-  tacctoscope_criterion_feedback: 'tacctoscope_criterion_feedback',
   thematic: 'thematic',
   token: 'token',
   user: 'user',
@@ -474,7 +473,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "tacctoscope_criterion_feedback" | "thematic" | "token" | "user" | "user_study"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "thematic" | "token" | "user" | "user_study"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5626,80 +5625,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    tacctoscope_criterion_feedback: {
-      payload: Prisma.$tacctoscope_criterion_feedbackPayload<ExtArgs>
-      fields: Prisma.tacctoscope_criterion_feedbackFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.tacctoscope_criterion_feedbackFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.tacctoscope_criterion_feedbackFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        findFirst: {
-          args: Prisma.tacctoscope_criterion_feedbackFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.tacctoscope_criterion_feedbackFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        findMany: {
-          args: Prisma.tacctoscope_criterion_feedbackFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>[]
-        }
-        create: {
-          args: Prisma.tacctoscope_criterion_feedbackCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        createMany: {
-          args: Prisma.tacctoscope_criterion_feedbackCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.tacctoscope_criterion_feedbackCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>[]
-        }
-        delete: {
-          args: Prisma.tacctoscope_criterion_feedbackDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        update: {
-          args: Prisma.tacctoscope_criterion_feedbackUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        deleteMany: {
-          args: Prisma.tacctoscope_criterion_feedbackDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.tacctoscope_criterion_feedbackUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.tacctoscope_criterion_feedbackUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>[]
-        }
-        upsert: {
-          args: Prisma.tacctoscope_criterion_feedbackUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_criterion_feedbackPayload>
-        }
-        aggregate: {
-          args: Prisma.Tacctoscope_criterion_feedbackAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateTacctoscope_criterion_feedback>
-        }
-        groupBy: {
-          args: Prisma.tacctoscope_criterion_feedbackGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Tacctoscope_criterion_feedbackGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.tacctoscope_criterion_feedbackCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Tacctoscope_criterion_feedbackCountAggregateOutputType> | number
-        }
-      }
-    }
     thematic: {
       payload: Prisma.$thematicPayload<ExtArgs>
       fields: Prisma.thematicFieldRefs
@@ -7416,19 +7341,6 @@ export const Tacctoscope_answerScalarFieldEnum = {
 export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
 
 
-export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  criterion_key: 'criterion_key',
-  is_useful: 'is_useful',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  comment: 'comment'
-} as const
-
-export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]
-
-
 export const ThematicScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -7471,7 +7383,11 @@ export const UserScalarFieldEnum = {
   encryption_version: 'encryption_version',
   wants_beta_features: 'wants_beta_features',
   recontact_email: 'recontact_email',
-  last_login_at: 'last_login_at'
+  last_login_at: 'last_login_at',
+  login_count: 'login_count',
+  workspace_login_count: 'workspace_login_count',
+  workspace_last_login_at: 'workspace_last_login_at',
+  workspace_last_session_jti: 'workspace_last_session_jti'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7760,7 +7676,6 @@ export type GlobalOmitConfig = {
   study?: Prisma.studyOmit
   study_office?: Prisma.study_officeOmit
   tacctoscope_answer?: Prisma.tacctoscope_answerOmit
-  tacctoscope_criterion_feedback?: Prisma.tacctoscope_criterion_feedbackOmit
   thematic?: Prisma.thematicOmit
   token?: Prisma.tokenOmit
   user?: Prisma.userOmit
