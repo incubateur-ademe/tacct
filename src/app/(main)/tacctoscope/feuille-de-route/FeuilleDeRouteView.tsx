@@ -32,11 +32,49 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
 
   useEffect(() => {
     if (!hydrated) return;
-    const hash = window.location.hash.slice(1);
+    const hash = decodeURIComponent(window.location.hash.slice(1));
     if (!hash) return;
-    requestAnimationFrame(() => {
-      document.getElementById(hash)?.scrollIntoView({ block: 'start' });
-    });
+
+    let handle = 0;
+    let frames = 0;
+    let stableFrames = 0;
+    let previousTop: number | null = null;
+    let cancelled = false;
+
+    const cancel = () => {
+      cancelled = true;
+      cancelAnimationFrame(handle);
+    };
+
+    const align = () => {
+      if (cancelled) return;
+      const target = document.getElementById(hash);
+      if (target) {
+        const top = target.getBoundingClientRect().top;
+        stableFrames =
+          previousTop !== null && Math.abs(top - previousTop) < 1
+            ? stableFrames + 1
+            : 0;
+        previousTop = top;
+        target.scrollIntoView({ block: 'start' });
+      }
+      frames += 1;
+      if (stableFrames < 10 && frames < 180) {
+        handle = requestAnimationFrame(align);
+      }
+    };
+
+    handle = requestAnimationFrame(align);
+    window.addEventListener('wheel', cancel, { passive: true });
+    window.addEventListener('touchstart', cancel, { passive: true });
+    window.addEventListener('keydown', cancel);
+
+    return () => {
+      cancel();
+      window.removeEventListener('wheel', cancel);
+      window.removeEventListener('touchstart', cancel);
+      window.removeEventListener('keydown', cancel);
+    };
   }, [hydrated]);
 
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
