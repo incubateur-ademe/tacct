@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.champWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.effacer {
+  position: absolute;
+  right: 1rem;
+  top: 47%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #666666; // text-body-subtle
+  cursor: pointer;
+}
+
+.optionAbsent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-top: 1px solid #e7e5e5; // stroke-utility-gray-light
+  background: none;
+  color: #038278;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: #f6f6f6; // background-surface-gray-light-hover
+  }
+}

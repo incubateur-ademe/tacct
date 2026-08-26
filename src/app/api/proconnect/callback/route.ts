@@ -135,11 +135,17 @@ export async function GET(request: NextRequest) {
       id_token: tokens.id_token
     });
 
-    const returnTo =
-      sanitizeReturnTo(request.cookies.get(RETURN_TO_COOKIE)?.value ?? null) ??
-      '/mon-espace';
+    // Tant que le questionnaire de connexion n'est pas validé, il est le seul
+    // point d'entrée possible du compte.
+    const returnTo = user.questionnaire_validated
+      ? (sanitizeReturnTo(
+          request.cookies.get(RETURN_TO_COOKIE)?.value ?? null
+        ) ?? '/mon-espace')
+      : '/questionnaire-compte';
     const destination = new URL(returnTo, getBaseUrl());
-    destination.searchParams.set('login', 'success');
+    if (user.questionnaire_validated) {
+      destination.searchParams.set('login', 'success');
+    }
 
     const response = NextResponse.redirect(destination.toString());
     response.cookies.set(sessionCookieName(), sessionJwt, {

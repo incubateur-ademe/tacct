@@ -19,7 +19,17 @@ export const getCurrentUser = cache(async () => {
       username: true,
       email: true,
       firstname: true,
-      lastname: true
+      lastname: true,
+      questionnaire_validated: true
     }
   });
+});
+
+/**
+ * Tant que le questionnaire de connexion n'est pas validé, le compte n'ouvre
+ * aucun accès : tout ce qui teste « l'utilisateur est connecté » passe par ici.
+ */
+export const getCurrentUserValide = cache(async () => {
+  const user = await getCurrentUser();
+  return user?.questionnaire_validated ? user : null;
 });

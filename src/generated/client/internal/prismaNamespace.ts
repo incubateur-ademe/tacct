@@ -465,7 +465,8 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  tacctoscope_answer: 'tacctoscope_answer'
+  tacctoscope_answer: 'tacctoscope_answer',
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -481,7 +482,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6521,6 +6522,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    user_besoin: {
+      payload: Prisma.$user_besoinPayload<ExtArgs>
+      fields: Prisma.user_besoinFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.user_besoinFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.user_besoinFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        findFirst: {
+          args: Prisma.user_besoinFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.user_besoinFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        findMany: {
+          args: Prisma.user_besoinFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        create: {
+          args: Prisma.user_besoinCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        createMany: {
+          args: Prisma.user_besoinCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.user_besoinCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        delete: {
+          args: Prisma.user_besoinDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        update: {
+          args: Prisma.user_besoinUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        deleteMany: {
+          args: Prisma.user_besoinDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.user_besoinUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.user_besoinUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        upsert: {
+          args: Prisma.user_besoinUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        aggregate: {
+          args: Prisma.User_besoinAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUser_besoin>
+        }
+        groupBy: {
+          args: Prisma.user_besoinGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.User_besoinGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.user_besoinCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.User_besoinCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -8108,7 +8183,14 @@ export const UserScalarFieldEnum = {
   login_count: 'login_count',
   workspace_login_count: 'workspace_login_count',
   workspace_last_login_at: 'workspace_last_login_at',
-  workspace_last_session_jti: 'workspace_last_session_jti'
+  workspace_last_session_jti: 'workspace_last_session_jti',
+  questionnaire_validated: 'questionnaire_validated',
+  profil: 'profil',
+  profil_autre: 'profil_autre',
+  territoire_type: 'territoire_type',
+  territoire_code: 'territoire_code',
+  territoire_libelle: 'territoire_libelle',
+  territoire_autre: 'territoire_autre'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8136,6 +8218,18 @@ export const Tacctoscope_answerScalarFieldEnum = {
 } as const
 
 export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
+
+
+export const User_besoinScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  besoin: 'besoin',
+  rang: 'rang',
+  besoin_autre: 'besoin_autre',
+  created_at: 'created_at'
+} as const
+
+export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -8452,6 +8546,7 @@ export type GlobalOmitConfig = {
   user?: Prisma.userOmit
   user_study?: Prisma.user_studyOmit
   tacctoscope_answer?: Prisma.tacctoscope_answerOmit
+  user_besoin?: Prisma.user_besoinOmit
 }
 
 /* Types for Logging */

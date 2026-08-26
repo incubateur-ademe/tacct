@@ -1,4 +1,4 @@
-import { getCurrentUser } from '@/lib/auth/getCurrentUser';
+import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import {
   buildQuestionKey,
@@ -25,7 +25,7 @@ export async function generateMetadata({
 }
 
 const CriterionPage = async ({ params }: Params) => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
 
   const { critere } = await params;
   if (!isCriterionSlug(critere)) notFound();

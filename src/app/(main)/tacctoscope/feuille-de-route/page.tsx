@@ -3,7 +3,7 @@ import productLaunch from '@/assets/images/product-launch.png';
 import { ExportPdfButton } from '@/components/tacctoscope/roadmap/ExportPdfButton';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import { getCurrentUser } from '@/lib/auth/getCurrentUser';
+import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
@@ -15,7 +15,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Ma feuille de route - TACCToscope' };
 
 const FeuilleDeRoutePage = async () => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   const answers = user ? await getUserAnswers() : {};
 
   return (

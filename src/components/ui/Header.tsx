@@ -81,19 +81,26 @@ const HeaderComp = () => {
     lastname: string;
   }>(null);
   const [showLoginToast, setShowLoginToast] = useState(false);
+  const [showEspaceToast, setShowEspaceToast] = useState(false);
+  const isQuestionnaire = params === '/questionnaire-compte';
 
   useEffect(() => {
     fetch('/api/proconnect/me')
       .then((r) => r.json())
-      .then((d) => setUser(d.user))
+      // Un compte dont le questionnaire n'est pas validé n'ouvre encore aucun accès.
+      .then((d) => setUser(d.user?.questionnaire_validated ? d.user : null))
       .catch(() => setUser(null));
   }, []);
 
   useEffect(() => {
-    if (searchParams.get('login') !== 'success') return;
-    setShowLoginToast(true);
+    const login = searchParams.get('login') === 'success';
+    const questionnaire = searchParams.get('questionnaire') === 'success';
+    if (!login && !questionnaire) return;
+    if (login) setShowLoginToast(true);
+    if (questionnaire) setShowEspaceToast(true);
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.delete('login');
+    nextParams.delete('questionnaire');
     const query = nextParams.toString();
     router.replace(query ? `${params}?${query}` : params, { scroll: false });
   }, [searchParams, params, router]);
@@ -160,6 +167,7 @@ const HeaderComp = () => {
   const territorySearchItems =
     displayType &&
       params !== '/' &&
+      !isQuestionnaire &&
       !(windowDimensions.width && windowDimensions.width < 768)
       ? [
         <HeaderRechercheTerritoire
@@ -173,7 +181,7 @@ const HeaderComp = () => {
 
   const showServiceTitle = !!(
     wide &&
-    (params === '/' || params === '/mon-compte')
+    (params === '/' || params === '/mon-compte' || isQuestionnaire)
   );
 
   const isActiveDonneesTerritoire = [
@@ -190,7 +198,7 @@ const HeaderComp = () => {
   );
 
   const navigationItems: NavItem[] =
-    params !== '/' && params !== '/mon-compte'
+    params !== '/' && params !== '/mon-compte' && !isQuestionnaire
       ? [
         // {
         //   type: 'link',
@@ -345,7 +353,9 @@ const HeaderComp = () => {
               <div className="fr-header__tools">
                 <div className="fr-header__tools-links">
                   <ul className="fr-btns-group">
-                    <li key="account-desktop">{accountItem}</li>
+                    {!isQuestionnaire && (
+                      <li key="account-desktop">{accountItem}</li>
+                    )}
                   </ul>
                 </div>
               </div>
@@ -368,7 +378,9 @@ const HeaderComp = () => {
             </button>
             <div className="fr-header__menu-links">
               <ul className="fr-btns-group">
-                <li key="account-mobile">{accountItem}</li>
+                {!isQuestionnaire && (
+                  <li key="account-mobile">{accountItem}</li>
+                )}
               </ul>
             </div>
             {navigationItems.length > 0 && (
@@ -447,6 +459,12 @@ const HeaderComp = () => {
         onClose={() => setShowLoginToast(false)}
         icon={<CheckIcon />}
         text="Vous êtes connecté·e"
+      />
+      <Toast
+        open={showEspaceToast}
+        onClose={() => setShowEspaceToast(false)}
+        icon={<CheckIcon />}
+        text="Votre espace a bien été créé."
       />
     </>
   );

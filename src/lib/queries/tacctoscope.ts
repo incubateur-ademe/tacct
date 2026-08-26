@@ -1,7 +1,7 @@
 'use server';
 
 import { randomUUID } from 'node:crypto';
-import { getCurrentUser } from '@/lib/auth/getCurrentUser';
+import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { prisma } from '@/lib/queries/db';
 import { isKnownQuestionKey } from '@/lib/tacctoscope/keys';
 import {
@@ -16,7 +16,7 @@ const isAnswerValue = (value: string): value is AnswerValue =>
   (ANSWER_VALUES as readonly string[]).includes(value);
 
 export const getUserAnswers = async (): Promise<AnswerMap> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return {};
 
   try {
@@ -37,7 +37,7 @@ export const saveAnswer = async (
   questionKey: string,
   value: AnswerValue
 ): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
   if (!isKnownQuestionKey(questionKey)) return { ok: false };
   if (!isAnswerValue(value)) return { ok: false };
@@ -65,7 +65,7 @@ export const saveAnswer = async (
 export const deleteAnswer = async (
   questionKey: string
 ): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
   if (!isKnownQuestionKey(questionKey)) return { ok: false };
 
@@ -81,7 +81,7 @@ export const deleteAnswer = async (
 };
 
 export const resetAllAnswers = async (): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
 
   try {

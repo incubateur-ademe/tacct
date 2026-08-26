@@ -6,14 +6,13 @@ import { SuggestionsBanner } from '@/components/mon-espace/SuggestionsBanner';
 import { TacctoscopeCard } from '@/components/mon-espace/TacctoscopeCard';
 import { SousTitre1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import { decodeUserSession, sessionCookieName } from '@/lib/auth/proconnect';
+import { requireQuestionnaireValide } from '@/lib/auth/requireQuestionnaireValide';
 import { prisma } from '@/lib/queries/db';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { getRecommendationCount } from '@/lib/tacctoscope/content/roadmapResources';
 import { getAllProgress } from '@/lib/tacctoscope/progress';
 import { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import styles from './monEspace.module.scss';
 
@@ -41,13 +40,10 @@ const TitreSection = ({ children }: { children: string }) => (
 );
 
 const MonEspace = async () => {
-  const cookieStore = await cookies();
-  const raw = cookieStore.get(sessionCookieName())?.value;
-  const session = raw ? await decodeUserSession(raw) : null;
-  if (!session) redirect('/mon-compte');
+  const compte = await requireQuestionnaireValide();
 
   const user = await prisma.user.findUnique({
-    where: { id: session.sub },
+    where: { id: compte.id },
     select: { firstname: true, lastname: true, email: true, validated: true }
   });
   if (!user) redirect('/mon-compte');

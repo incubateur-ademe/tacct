@@ -2,7 +2,7 @@ import { HubGrid, HubItem } from '@/components/tacctoscope/criterion/HubGrid';
 import { ResetAnswersButton } from '@/components/tacctoscope/criterion/ResetAnswersButton';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import { getCurrentUser } from '@/lib/auth/getCurrentUser';
+import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { isPublicCriterion } from '@/lib/tacctoscope/keys';
@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Le TACCToscope' };
 
 const TacctoscopePage = async () => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
 
   const answers = await getUserAnswers();
 

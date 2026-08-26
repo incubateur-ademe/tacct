@@ -1845,9 +1845,17 @@ model user {
   workspace_login_count      Int                  @default(0)
   workspace_last_login_at    DateTime?            @db.Timestamptz(6)
   workspace_last_session_jti String?              @db.VarChar(64)
+  questionnaire_validated    Boolean              @default(false)
+  profil                     String?              @db.VarChar(30)
+  profil_autre               String?              @db.VarChar(255)
+  territoire_type            String?              @db.VarChar(30)
+  territoire_code            String?              @db.VarChar(30)
+  territoire_libelle         String?              @db.VarChar(255)
+  territoire_autre           String?              @db.VarChar(255)
   tacctoscope_answer         tacctoscope_answer[]
   commune                    commune?             @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
   study_office               study_office?        @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
+  user_besoin                user_besoin[]
   user_study                 user_study[]
 
   @@index([commune_id], map: "idx_16589_idx_8d93d649131a4f72")
@@ -1883,5 +1891,21 @@ model tacctoscope_answer {
 
   @@unique([user_id, question_key], map: "tacctoscope_answer_user_question_unique")
   @@index([user_id], map: "tacctoscope_answer_user_idx")
+  @@schema("tacct")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model user_besoin {
+  id           String   @id @db.Char(36)
+  user_id      String   @db.Char(36)
+  besoin       String   @db.VarChar(30)
+  rang         Int      @db.SmallInt
+  besoin_autre String?  @db.VarChar(255)
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+  user         user     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "user_besoin_user_fk")
+
+  @@unique([user_id, besoin], map: "user_besoin_user_besoin_unique")
+  @@unique([user_id, rang], map: "user_besoin_user_rang_unique")
+  @@index([user_id], map: "user_besoin_user_idx")
   @@schema("tacct")
 }

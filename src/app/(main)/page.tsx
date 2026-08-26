@@ -13,7 +13,7 @@ import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-evolution-fermee';
 const NOTICE_START = new Date('2026-08-10');
-const NOTICE_END = new Date('2026-09-10T23:59:59');
+const NOTICE_END = new Date('2026-08-25T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();

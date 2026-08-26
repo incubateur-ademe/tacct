@@ -132,7 +132,8 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  tacctoscope_answer: 'tacctoscope_answer'
+  tacctoscope_answer: 'tacctoscope_answer',
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1699,7 +1700,14 @@ export const UserScalarFieldEnum = {
   login_count: 'login_count',
   workspace_login_count: 'workspace_login_count',
   workspace_last_login_at: 'workspace_last_login_at',
-  workspace_last_session_jti: 'workspace_last_session_jti'
+  workspace_last_session_jti: 'workspace_last_session_jti',
+  questionnaire_validated: 'questionnaire_validated',
+  profil: 'profil',
+  profil_autre: 'profil_autre',
+  territoire_type: 'territoire_type',
+  territoire_code: 'territoire_code',
+  territoire_libelle: 'territoire_libelle',
+  territoire_autre: 'territoire_autre'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1727,6 +1735,18 @@ export const Tacctoscope_answerScalarFieldEnum = {
 } as const
 
 export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
+
+
+export const User_besoinScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  besoin: 'besoin',
+  rang: 'rang',
+  besoin_autre: 'besoin_autre',
+  created_at: 'created_at'
+} as const
+
+export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
 export const SortOrder = {
