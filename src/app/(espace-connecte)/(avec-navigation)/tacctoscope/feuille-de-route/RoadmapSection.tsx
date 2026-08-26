@@ -1,15 +1,15 @@
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { Body, H2 } from '@/design-system/base/Textes';
 import { QuestionRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
 import { GlobalState } from '@/lib/tacctoscope/progress';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
-import { CriterionEmptyState } from '../../../../components/tacctoscope/roadmap/CriterionEmptyState';
-import { CriterionNoRecommendationState } from '../../../../components/tacctoscope/roadmap/CriterionNoRecommendationState';
-import { CriterionStrengthState } from '../../../../components/tacctoscope/roadmap/CriterionStrengthState';
-import { PartialRecommendationBanner } from '../../../../components/tacctoscope/roadmap/PartialRecommendationBanner';
-import { RecommendationBlock } from '../../../../components/tacctoscope/roadmap/RecommendationBlock';
-import { CRITERION_ICONS } from '../../../../components/tacctoscope/shared/criterionIcons';
+import { CriterionEmptyState } from '@/components/tacctoscope/roadmap/CriterionEmptyState';
+import { CriterionNoRecommendationState } from '@/components/tacctoscope/roadmap/CriterionNoRecommendationState';
+import { CriterionStrengthState } from '@/components/tacctoscope/roadmap/CriterionStrengthState';
+import { PartialRecommendationBanner } from '@/components/tacctoscope/roadmap/PartialRecommendationBanner';
+import { RecommendationBlock } from '@/components/tacctoscope/roadmap/RecommendationBlock';
+import { CRITERION_ICONS } from '@/components/tacctoscope/shared/criterionIcons';
 
 export interface SectionRecommendation {
   questionId: string;

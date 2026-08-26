@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
 import { useState } from 'react';
 import { RessourceModal } from './RessourceModal';

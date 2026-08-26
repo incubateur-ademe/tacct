@@ -1,4 +1,4 @@
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import backArrow from '@/assets/icons/arrow-go-back-white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';

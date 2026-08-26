@@ -1,4 +1,4 @@
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import avatar from '@/assets/svg/custom/avatar-profil.svg';
 import { Body, H1 } from '@/design-system/base/Textes';
 import Image from 'next/image';

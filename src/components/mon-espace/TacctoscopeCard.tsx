@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import sparklingIcon from '@/assets/icons/sparkling_icon_green.svg';
 import productLaunch from '@/assets/images/product-launch.png';
 import { BoutonPrimaireClassic, BoutonSecondaireClassic } from '@/design-system/base/Boutons';

@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
@@ -10,8 +10,8 @@ import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
 import { getCriterionProgress, GlobalState } from '@/lib/tacctoscope/progress';
 import { AnswerMap } from '@/lib/tacctoscope/types';
 import { useEffect, useState } from 'react';
-import { RoadmapEmptyState } from '../../../../components/tacctoscope/roadmap/RoadmapEmptyState';
-import { RoadmapMenu, RoadmapMenuItem } from '../../../../components/tacctoscope/roadmap/RoadmapMenu';
+import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
+import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
 const QUALIFYING = new Set(['absent', 'partiel', 'satisfaisant']);

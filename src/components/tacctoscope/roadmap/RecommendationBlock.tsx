@@ -1,8 +1,8 @@
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { QuestionRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Link from 'next/link';
 import { RessourcesAccordion } from './RessourcesAccordion';
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 
 const ReturnIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">

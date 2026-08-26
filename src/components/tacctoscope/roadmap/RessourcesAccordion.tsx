@@ -1,9 +1,9 @@
 'use client';
 
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { CustomAccordion } from '@/design-system/base/Accordion';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
 import { RessourceCard } from './RessourceCard';
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 
 interface Props {
   ressources: RoadmapResource[];

@@ -1,12 +1,12 @@
 'use client';
 
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import cadenas from '@/assets/svg/custom/cadenas.svg';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { UnlockModal } from '../shared/Modales';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
 
 export interface RoadmapMenuItem {
   slug: CriterionSlug;

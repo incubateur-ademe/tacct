@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import sessionAccueil from '@/assets/images/session-accueil.png';
 import captureTacct from '@/assets/images/tacct-image-screenshot.png';
 import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';

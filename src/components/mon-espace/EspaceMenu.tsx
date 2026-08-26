@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import { Body } from '@/design-system/base/Textes';
 import { useEffect, useState } from 'react';
 

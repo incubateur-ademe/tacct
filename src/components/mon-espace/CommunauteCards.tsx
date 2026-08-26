@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import calendarIcon from '@/assets/icons/calendar_icon_white.svg';
 import clockIcon from '@/assets/icons/clock_icon_green.svg';
 import mapPinIcon from '@/assets/icons/map_pin_icon_green.svg';

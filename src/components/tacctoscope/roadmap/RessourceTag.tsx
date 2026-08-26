@@ -1,4 +1,4 @@
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { RoadmapResourceTag } from '@/lib/tacctoscope/content/roadmapResources';
 import { ReactNode } from 'react';
 

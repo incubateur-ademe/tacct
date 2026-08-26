@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
