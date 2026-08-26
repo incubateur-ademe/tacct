@@ -1,4 +1,3 @@
-import { FeuilleDeRouteView } from '@/app/(main)/tacctoscope/feuille-de-route/FeuilleDeRouteView';
 import productLaunch from '@/assets/images/product-launch.png';
 import { ExportPdfButton } from '@/components/tacctoscope/roadmap/ExportPdfButton';
 import { Body, H1 } from '@/design-system/base/Textes';
@@ -8,6 +7,7 @@ import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { FeuilleDeRouteView } from './FeuilleDeRouteView';
 import styles from './roadmap.module.scss';
 
 export const dynamic = 'force-dynamic';
