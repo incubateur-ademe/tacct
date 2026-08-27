@@ -81,7 +81,6 @@ const HeaderComp = () => {
     lastname: string;
   }>(null);
   const [showLoginToast, setShowLoginToast] = useState(false);
-  const [showEspaceToast, setShowEspaceToast] = useState(false);
   const isQuestionnaire = params === '/questionnaire-compte';
 
   useEffect(() => {
@@ -94,13 +93,10 @@ const HeaderComp = () => {
 
   useEffect(() => {
     const login = searchParams.get('login') === 'success';
-    const questionnaire = searchParams.get('questionnaire') === 'success';
-    if (!login && !questionnaire) return;
-    if (login) setShowLoginToast(true);
-    if (questionnaire) setShowEspaceToast(true);
+    if (!login) return;
+    setShowLoginToast(true);
     const nextParams = new URLSearchParams(searchParams.toString());
     nextParams.delete('login');
-    nextParams.delete('questionnaire');
     const query = nextParams.toString();
     router.replace(query ? `${params}?${query}` : params, { scroll: false });
   }, [searchParams, params, router]);
@@ -459,12 +455,6 @@ const HeaderComp = () => {
         onClose={() => setShowLoginToast(false)}
         icon={<CheckIcon />}
         text="Vous êtes connecté·e"
-      />
-      <Toast
-        open={showEspaceToast}
-        onClose={() => setShowEspaceToast(false)}
-        icon={<CheckIcon />}
-        text="Votre espace a bien été créé."
       />
     </>
   );

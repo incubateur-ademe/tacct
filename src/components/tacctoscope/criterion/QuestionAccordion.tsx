@@ -110,13 +110,18 @@ export const QuestionAccordion = ({
         />
         {question.exampleKind === 'both' ? (
           <>
-            <ExampleCallout kind="exemple">{question.example}</ExampleCallout>
-            <ExampleCallout kind="contre-exemple">
+            <ExampleCallout kind="exemple" attachments={question.exampleAttachments}>
+              {question.example}
+            </ExampleCallout>
+            <ExampleCallout
+              kind="contre-exemple"
+              attachments={question.counterExampleAttachments}
+            >
               {question.counterExample}
             </ExampleCallout>
           </>
         ) : (
-          <ExampleCallout kind={question.exampleKind}>
+          <ExampleCallout kind={question.exampleKind} attachments={question.exampleAttachments}>
             {question.example}
           </ExampleCallout>
         )}

@@ -1,3 +1,4 @@
+import regions from '@/lib/data/regions.json';
 import {
   CollectivitesSearchbar,
   CollectivitesSearchbarWithType
@@ -9,6 +10,12 @@ import { prisma as PrismaPostgres } from '../db';
 // que les remplacements uniformes espace→tiret ou espace→virgule ne couvrent pas.
 const neutraliserSeparateurs = (valeur: string) =>
   valeur.replace(/[\s,-]+/g, '_');
+
+const normaliser = (valeur: string) =>
+  valeur
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
 
 export const PNR = async (variableCollectivite: string) => {
   const searchPattern = variableCollectivite + '%';
@@ -274,6 +281,50 @@ export const Departement = async (variableCollectivite: string) => {
       )
       ORDER BY index ASC LIMIT 20;
     `;
+  return value;
+};
+
+// La table ne porte que le code région (colonne texte dupliquée sur chaque ligne
+// commune/EPCI/département) : pas de libellé, donc pas de recherche texte possible en SQL.
+// On matche le texte saisi (nom ou code) contre regions.json, puis on vérifie en base
+// que ces codes portent bien des collectivités, avant de reconstruire le libellé.
+export const Region = async (variableCollectivite: string) => {
+  const recherche = normaliser(variableCollectivite);
+  if (recherche.length === 0) return [];
+
+  const regionsCorrespondantes = regions.filter(
+    (region) =>
+      normaliser(region.nom).includes(recherche) ||
+      region.code.startsWith(variableCollectivite.trim())
+  );
+  if (regionsCorrespondantes.length === 0) return [];
+
+  const codes = regionsCorrespondantes.map((region) => region.code);
+  const rows = await PrismaPostgres.$queryRaw<{ region: string }[]>`
+    SELECT DISTINCT region
+    FROM databases_v2."collectivites_searchbar"
+    WHERE region = ANY(${codes})
+    `;
+  const codesExistants = new Set(rows.map((row) => row.region));
+
+  const value: CollectivitesSearchbar[] = regionsCorrespondantes
+    .filter((region) => codesExistants.has(region.code))
+    .map((region) => ({
+      search_code: region.code,
+      search_libelle: region.nom,
+      code_geographique: null,
+      coordinates: null,
+      epci: null,
+      libelle_geographique: null,
+      libelle_epci: null,
+      departement: null,
+      libelle_departement: null,
+      region: region.code,
+      ept: null,
+      libelle_petr: null,
+      code_pnr: null,
+      libelle_pnr: null
+    }));
   return value;
 };
 

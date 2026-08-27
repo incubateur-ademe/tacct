@@ -10,7 +10,8 @@ import {
   Departement,
   EPCI,
   PETR,
-  PNR
+  PNR,
+  Region
 } from './territoiresQueries';
 
 export const GetCollectivite = async (
@@ -38,6 +39,9 @@ export const GetCollectivite = async (
         return value;
       } else if (typeTerritoire === 'departement') {
         const value = await Departement(collectivite);
+        return value;
+      } else if (typeTerritoire === 'region') {
+        const value = await Region(collectivite);
         return value;
       } else {
         return [

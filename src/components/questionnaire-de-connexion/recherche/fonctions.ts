@@ -1,7 +1,6 @@
 'use client';
 
 import { TypeTerritoireRecherchable } from '@/lib/questionnaire-de-connexion/types';
-import { eptRegex } from '@/lib/utils/regex';
 
 /** Libellé affiché dans le champ de recherche quand le territoire est déclaré absent. */
 export const LIBELLE_TERRITOIRE_ABSENT = 'Mon territoire n’apparaît pas';
@@ -32,25 +31,6 @@ export const ReplaceSearchEpci = (libelleEpci: string) => {
     .replace('CU ', 'Communauté urbaine ');
 };
 
-export const libellesTypeTerritoire: Record<TypeTerritoireRecherchable, string> =
-  {
-    epci: 'EPCI',
-    commune: 'Commune',
-    petr: 'PETR',
-    pnr: 'PNR',
-    departement: 'Département'
-  };
-
-export const getLibelleTypeTerritoire = (option: {
-  territoireType: TypeTerritoireRecherchable;
-  searchLibelle: string;
-}) => {
-  if (option.territoireType === 'epci' && eptRegex.test(option.searchLibelle)) {
-    return 'EPT';
-  }
-  return libellesTypeTerritoire[option.territoireType];
-};
-
 export const getLibelleTerritoireAvecCode = (option: {
   territoireType: TypeTerritoireRecherchable;
   searchLibelle: string;
@@ -66,7 +46,8 @@ const ordreTypeTerritoire: Record<TypeTerritoireRecherchable, number> = {
   epci: 1,
   pnr: 2,
   petr: 3,
-  departement: 4
+  departement: 4,
+  region: 5
 };
 
 /** Dédoublonne puis trie : correspondance exacte, puis type, puis alphabétique. */

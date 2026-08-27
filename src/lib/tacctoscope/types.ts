@@ -42,8 +42,20 @@ interface QuestionBase {
 
 export type Question = QuestionBase &
   (
-    | { exampleKind: CalloutKind; example: RichContent; counterExample?: never }
-    | { exampleKind: 'both'; example: RichContent; counterExample: RichContent }
+    | {
+        exampleKind: CalloutKind;
+        example: RichContent;
+        exampleAttachments?: string[];
+        counterExample?: never;
+        counterExampleAttachments?: never;
+      }
+    | {
+        exampleKind: 'both';
+        example: RichContent;
+        exampleAttachments?: string[];
+        counterExample: RichContent;
+        counterExampleAttachments?: string[];
+      }
   );
 
 export interface Criterion {

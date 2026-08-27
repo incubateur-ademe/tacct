@@ -2,10 +2,7 @@
 
 import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBanner';
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
-import {
-  CRITERION_PROGRESS_BAR_ID,
-  CriterionProgressBar
-} from '@/components/tacctoscope/criterion/CriterionProgressBar';
+import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
 import { SavePromptModal } from '@/components/tacctoscope/shared/Modales';
 import { Toast } from '@/components/utils/Toast';
@@ -21,7 +18,7 @@ import {
 } from '@/lib/tacctoscope/types';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import Link from 'next/link';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './criteres.module.scss';
 
 interface Props {
@@ -53,24 +50,6 @@ const SECTION_META: Record<SectionKind, { title: string; description: string }> 
     description:
       'Les réponses à ces questions sont à chercher hors du document final.'
   }
-};
-
-const REVEAL_MARGIN = 16;
-
-const revealQuestion = (element: HTMLElement) => {
-  const bar = document.getElementById(CRITERION_PROGRESS_BAR_ID);
-  const topLimit =
-    (bar ? bar.getBoundingClientRect().height : 0) + REVEAL_MARGIN;
-  const bottomLimit = window.innerHeight - REVEAL_MARGIN;
-  const rect = element.getBoundingClientRect();
-
-  let delta = 0;
-  if (rect.height > bottomLimit - topLimit || rect.top < topLimit) {
-    delta = rect.top - topLimit;
-  } else if (rect.bottom > bottomLimit) {
-    delta = Math.min(rect.bottom - bottomLimit, rect.top - topLimit);
-  }
-  if (delta !== 0) window.scrollBy({ top: delta });
 };
 
 const buildSectionQuestions = (
@@ -112,9 +91,6 @@ export const CriteresView = ({
   );
   const [toastOpen, setToastOpen] = useState(false);
   const [toastKey, setToastKey] = useState(0);
-  const scrollAnchor = useRef<{ element: HTMLElement; top: number } | null>(
-    null
-  );
 
   const showRecoToast = () => {
     setToastOpen(true);
@@ -176,34 +152,8 @@ export const CriteresView = ({
     });
   }, [hydrated, criterion]);
 
-  /**
-   * L'accordéon est exclusif : fermer un panneau situé au-dessus du scroll
-   * retire sa hauteur du flux et fait remonter la question cliquée hors écran.
-   * On mémorise sa position avant le rendu pour la restaurer juste après.
-   */
-  const handleToggle = (key: string) => {
-    const question = criterion.questions.find(
-      (item) => buildQuestionKey(criterion.slug, item.id) === key
-    );
-    const element = question
-      ? document.getElementById(`question-${criterion.slug}-${question.id}`)
-      : null;
-    scrollAnchor.current = element
-      ? { element, top: element.getBoundingClientRect().top }
-      : null;
+  const handleToggle = (key: string) =>
     setOpenKey((current) => (current === key ? null : key));
-  };
-
-  useLayoutEffect(() => {
-    const anchor = scrollAnchor.current;
-    if (!anchor) return;
-    scrollAnchor.current = null;
-    const delta = anchor.element.getBoundingClientRect().top - anchor.top;
-    // 'instant' est indispensable : html a scroll-behavior: smooth !important,
-    // qui animerait la correction au lieu de la rendre invisible.
-    if (delta !== 0) window.scrollBy({ top: delta, behavior: 'instant' });
-    if (openKey) revealQuestion(anchor.element);
-  }, [openKey]);
 
   const handleChanged = (questionKey: string, answered: boolean) =>
     setAnsweredKeys((current) => {

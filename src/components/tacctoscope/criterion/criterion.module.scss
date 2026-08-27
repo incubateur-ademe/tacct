@@ -116,6 +116,20 @@
     gap: 0.5rem;
 }
 
+.criterionExampleCalloutAttachment {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    border: none;
+    background: none;
+    padding: 0.5rem 0 0;
+    cursor: pointer;
+    &:hover {
+        background-color: transparent !important;
+    }
+}
+
 /* ===== CriterionFeedback ===== */
 .feedback {
     display: flex;

@@ -190,7 +190,7 @@ export const DemarcheBloc = () => {
                   image={Etape4Image}
                   background={Etape4Background}
                   foreground={Etape4Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Une <b>communauté</b> de <b>300 chargés de mission</b> de tous types de territoires</Body>}
+                  texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Une <b>communauté</b> de <b>400 chargés de mission</b> de tous types de territoires</Body>}
                   numero={4}
                   maxWidth={235}
                   label="Échanges entre pairs"
@@ -201,7 +201,7 @@ export const DemarcheBloc = () => {
                   image={Etape4Image}
                   background={Etape4Background}
                   foreground={Etape4Foreground}
-                  texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Une <b>communauté</b> de <b>300 chargés de mission</b> de tous types de territoires</Body>}
+                  texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Une <b>communauté</b> de <b>400 chargés de mission</b> de tous types de territoires</Body>}
                   numero={4}
                   maxWidth={235}
                   justifyContent="flex-end"

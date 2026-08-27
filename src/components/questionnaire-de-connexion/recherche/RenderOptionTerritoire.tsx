@@ -3,11 +3,7 @@
 import { Body } from '@/design-system/base/Textes';
 import { COULEURS } from '../couleurs';
 import { Box } from '@mui/material';
-import {
-  getLibelleTypeTerritoire,
-  OptionTerritoire,
-  ReplaceDisplayEpci
-} from './fonctions';
+import { OptionTerritoire, ReplaceDisplayEpci } from './fonctions';
 
 export const RenderOptionTerritoire = ({
   props,
@@ -34,10 +30,7 @@ export const RenderOptionTerritoire = ({
         {ReplaceDisplayEpci(option.searchLibelle)}
         {option.territoireType === 'commune' && option.searchCode?.length !== 0
           ? ` - ${option.searchCode}`
-          : ''}{' '}
-        <Body htmlTag="span" size="sm" color={COULEURS.texteSubtil}>
-          ({getLibelleTypeTerritoire(option)})
-        </Body>
+          : ''}
       </Body>
     </Box>
   );

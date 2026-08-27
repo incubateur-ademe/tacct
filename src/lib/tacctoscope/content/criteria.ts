@@ -115,6 +115,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         exampleKind: 'exemple',
+        exampleAttachments: ['/preuve-critere2-q1.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -131,6 +132,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'analyse',
         exampleKind: 'exemple',
+        exampleAttachments: ['/preuve-critere2-q3.webp', '/preuve-critere2-q3bis.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -161,6 +163,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         exampleKind: 'exemple',
+        exampleAttachments: ['/preuve-critere3-q1.webp', '/preuve-critere3-q1bis.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -169,6 +172,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q2',
         section: 'analyse',
         exampleKind: 'contre-exemple',
+        exampleAttachments: ['/preuve-critere3-q2.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -177,6 +181,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'analyse',
         exampleKind: 'exemple',
+        exampleAttachments: ['/preuve-critere3-q3.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -185,6 +190,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q4',
         section: 'enquete',
         exampleKind: 'contre-exemple',
+        exampleAttachments: ['/preuve-critere3-q4.webp', '/preuve-critere3-q4bis.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -193,6 +199,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q5',
         section: 'enquete',
         exampleKind: 'exemple',
+        exampleAttachments: ['/preuve-critere3-q5.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE

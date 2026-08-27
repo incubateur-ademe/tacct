@@ -35,7 +35,7 @@ export const EcranRemerciement = ({ titreRef }: Props) => (
       <BoutonPrimaireClassic
         size="md"
         text="Accéder à mon compte  →"
-        link="/mon-espace?questionnaire=success"
+        link="/mon-espace?login=success"
       />
     </div>
   </>
