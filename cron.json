@@ -1,0 +1,5 @@
+{
+  "jobs": [
+    { "command": "0 2 * * * pnpm run etl:daily" }
+  ]
+}
