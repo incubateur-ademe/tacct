@@ -131,11 +131,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q3',
         section: 'analyse',
-        exampleKind: 'exemple',
-        exampleAttachments: ['/preuve-critere2-q3.webp', '/preuve-critere2-q3bis.webp'],
+        exampleKind: 'both',
+        exampleAttachments: ['/preuve-critere2-q3.webp'],
+        counterExampleAttachments: ['/preuve-critere2-q3bis.webp'],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
-        example: LOREM_EXAMPLE
+        example: LOREM_EXAMPLE,
+        counterExample: LOREM_EXAMPLE
       },
       {
         id: 'q4',
