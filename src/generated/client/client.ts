@@ -390,11 +390,6 @@ export type study_office = Prisma.study_officeModel
  */
 export type tacctoscope_answer = Prisma.tacctoscope_answerModel
 /**
- * Model tacctoscope_criterion_feedback
- * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
- */
-export type tacctoscope_criterion_feedback = Prisma.tacctoscope_criterion_feedbackModel
-/**
  * Model thematic
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */

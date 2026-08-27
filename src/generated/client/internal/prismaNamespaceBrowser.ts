@@ -121,7 +121,6 @@ export const ModelName = {
   study: 'study',
   study_office: 'study_office',
   tacctoscope_answer: 'tacctoscope_answer',
-  tacctoscope_criterion_feedback: 'tacctoscope_criterion_feedback',
   thematic: 'thematic',
   token: 'token',
   user: 'user',
@@ -1525,19 +1524,6 @@ export const Tacctoscope_answerScalarFieldEnum = {
 export type Tacctoscope_answerScalarFieldEnum = (typeof Tacctoscope_answerScalarFieldEnum)[keyof typeof Tacctoscope_answerScalarFieldEnum]
 
 
-export const Tacctoscope_criterion_feedbackScalarFieldEnum = {
-  id: 'id',
-  user_id: 'user_id',
-  criterion_key: 'criterion_key',
-  is_useful: 'is_useful',
-  created_at: 'created_at',
-  updated_at: 'updated_at',
-  comment: 'comment'
-} as const
-
-export type Tacctoscope_criterion_feedbackScalarFieldEnum = (typeof Tacctoscope_criterion_feedbackScalarFieldEnum)[keyof typeof Tacctoscope_criterion_feedbackScalarFieldEnum]
-
-
 export const ThematicScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1580,7 +1566,11 @@ export const UserScalarFieldEnum = {
   encryption_version: 'encryption_version',
   wants_beta_features: 'wants_beta_features',
   recontact_email: 'recontact_email',
-  last_login_at: 'last_login_at'
+  last_login_at: 'last_login_at',
+  login_count: 'login_count',
+  workspace_login_count: 'workspace_login_count',
+  workspace_last_login_at: 'workspace_last_login_at',
+  workspace_last_session_jti: 'workspace_last_session_jti'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
