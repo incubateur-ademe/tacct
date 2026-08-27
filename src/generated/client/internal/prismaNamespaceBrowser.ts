@@ -124,7 +124,9 @@ export const ModelName = {
   thematic: 'thematic',
   token: 'token',
   user: 'user',
-  user_study: 'user_study'
+  user_study: 'user_study',
+  baserow_communaute: 'baserow_communaute',
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1570,7 +1572,14 @@ export const UserScalarFieldEnum = {
   login_count: 'login_count',
   workspace_login_count: 'workspace_login_count',
   workspace_last_login_at: 'workspace_last_login_at',
-  workspace_last_session_jti: 'workspace_last_session_jti'
+  workspace_last_session_jti: 'workspace_last_session_jti',
+  questionnaire_validated: 'questionnaire_validated',
+  profil: 'profil',
+  profil_autre: 'profil_autre',
+  territoire_type: 'territoire_type',
+  territoire_code: 'territoire_code',
+  territoire_libelle: 'territoire_libelle',
+  territoire_autre: 'territoire_autre'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1586,6 +1595,26 @@ export const User_studyScalarFieldEnum = {
 } as const
 
 export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
+
+
+export const Baserow_communauteScalarFieldEnum = {
+  index: 'index',
+  email: 'email'
+} as const
+
+export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
+
+
+export const User_besoinScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  besoin: 'besoin',
+  rang: 'rang',
+  besoin_autre: 'besoin_autre',
+  created_at: 'created_at'
+} as const
+
+export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
 export const SortOrder = {

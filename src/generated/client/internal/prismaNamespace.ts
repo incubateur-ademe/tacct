@@ -457,7 +457,9 @@ export const ModelName = {
   thematic: 'thematic',
   token: 'token',
   user: 'user',
-  user_study: 'user_study'
+  user_study: 'user_study',
+  baserow_communaute: 'baserow_communaute',
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -473,7 +475,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "thematic" | "token" | "user" | "user_study"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "thematic" | "token" | "user" | "user_study" | "baserow_communaute" | "user_besoin"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5921,6 +5923,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    baserow_communaute: {
+      payload: Prisma.$baserow_communautePayload<ExtArgs>
+      fields: Prisma.baserow_communauteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.baserow_communauteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.baserow_communauteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        findFirst: {
+          args: Prisma.baserow_communauteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.baserow_communauteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        findMany: {
+          args: Prisma.baserow_communauteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
+        }
+        create: {
+          args: Prisma.baserow_communauteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        createMany: {
+          args: Prisma.baserow_communauteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.baserow_communauteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
+        }
+        delete: {
+          args: Prisma.baserow_communauteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        update: {
+          args: Prisma.baserow_communauteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        deleteMany: {
+          args: Prisma.baserow_communauteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.baserow_communauteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.baserow_communauteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
+        }
+        upsert: {
+          args: Prisma.baserow_communauteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
+        }
+        aggregate: {
+          args: Prisma.Baserow_communauteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBaserow_communaute>
+        }
+        groupBy: {
+          args: Prisma.baserow_communauteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.baserow_communauteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteCountAggregateOutputType> | number
+        }
+      }
+    }
+    user_besoin: {
+      payload: Prisma.$user_besoinPayload<ExtArgs>
+      fields: Prisma.user_besoinFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.user_besoinFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.user_besoinFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        findFirst: {
+          args: Prisma.user_besoinFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.user_besoinFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        findMany: {
+          args: Prisma.user_besoinFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        create: {
+          args: Prisma.user_besoinCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        createMany: {
+          args: Prisma.user_besoinCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.user_besoinCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        delete: {
+          args: Prisma.user_besoinDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        update: {
+          args: Prisma.user_besoinUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        deleteMany: {
+          args: Prisma.user_besoinDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.user_besoinUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.user_besoinUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>[]
+        }
+        upsert: {
+          args: Prisma.user_besoinUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$user_besoinPayload>
+        }
+        aggregate: {
+          args: Prisma.User_besoinAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUser_besoin>
+        }
+        groupBy: {
+          args: Prisma.user_besoinGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.User_besoinGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.user_besoinCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.User_besoinCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -7387,7 +7537,14 @@ export const UserScalarFieldEnum = {
   login_count: 'login_count',
   workspace_login_count: 'workspace_login_count',
   workspace_last_login_at: 'workspace_last_login_at',
-  workspace_last_session_jti: 'workspace_last_session_jti'
+  workspace_last_session_jti: 'workspace_last_session_jti',
+  questionnaire_validated: 'questionnaire_validated',
+  profil: 'profil',
+  profil_autre: 'profil_autre',
+  territoire_type: 'territoire_type',
+  territoire_code: 'territoire_code',
+  territoire_libelle: 'territoire_libelle',
+  territoire_autre: 'territoire_autre'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7403,6 +7560,26 @@ export const User_studyScalarFieldEnum = {
 } as const
 
 export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
+
+
+export const Baserow_communauteScalarFieldEnum = {
+  index: 'index',
+  email: 'email'
+} as const
+
+export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
+
+
+export const User_besoinScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  besoin: 'besoin',
+  rang: 'rang',
+  besoin_autre: 'besoin_autre',
+  created_at: 'created_at'
+} as const
+
+export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -7680,6 +7857,8 @@ export type GlobalOmitConfig = {
   token?: Prisma.tokenOmit
   user?: Prisma.userOmit
   user_study?: Prisma.user_studyOmit
+  baserow_communaute?: Prisma.baserow_communauteOmit
+  user_besoin?: Prisma.user_besoinOmit
 }
 
 /* Types for Logging */

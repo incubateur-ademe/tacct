@@ -409,3 +409,13 @@ export type user = Prisma.userModel
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
 export type user_study = Prisma.user_studyModel
+/**
+ * Model baserow_communaute
+ * 
+ */
+export type baserow_communaute = Prisma.baserow_communauteModel
+/**
+ * Model user_besoin
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type user_besoin = Prisma.user_besoinModel
