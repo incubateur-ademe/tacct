@@ -454,3 +454,8 @@ export type tacctoscope_answer = Prisma.tacctoscope_answerModel
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type user_besoin = Prisma.user_besoinModel
+/**
+ * Model baserow_communaute
+ * 
+ */
+export type baserow_communaute = Prisma.baserow_communauteModel

@@ -1909,3 +1909,10 @@ model user_besoin {
   @@index([user_id], map: "user_besoin_user_idx")
   @@schema("tacct")
 }
+
+model baserow_communaute {
+  index Int    @id @default(autoincrement())
+  email String
+
+  @@schema("tacct")
+}
