@@ -1852,6 +1852,7 @@ model user {
   territoire_code            String?              @db.VarChar(30)
   territoire_libelle         String?              @db.VarChar(255)
   territoire_autre           String?              @db.VarChar(255)
+  membre_communaute          Boolean              @default(false)
   tacctoscope_answer         tacctoscope_answer[]
   commune                    commune?             @relation(fields: [commune_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d649131a4f72")
   study_office               study_office?        @relation(fields: [study_office_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_8d93d6496b6770b5")
@@ -1907,12 +1908,5 @@ model user_besoin {
   @@unique([user_id, besoin], map: "user_besoin_user_besoin_unique")
   @@unique([user_id, rang], map: "user_besoin_user_rang_unique")
   @@index([user_id], map: "user_besoin_user_idx")
-  @@schema("tacct")
-}
-
-model baserow_communaute {
-  index Int    @id @default(autoincrement())
-  email String
-
   @@schema("tacct")
 }

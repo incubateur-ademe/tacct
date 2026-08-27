@@ -4,6 +4,7 @@ import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
+import { estProfilDeverrouille } from '@/lib/segmentation';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -72,7 +73,10 @@ const FeuilleDeRoutePage = async () => {
         </NewContainer>
       </div>
 
-      <FeuilleDeRouteView answers={answers} isAuthenticated={!!user} />
+      <FeuilleDeRouteView
+        answers={answers}
+        isAuthenticated={estProfilDeverrouille(user?.profil)}
+      />
     </div>
   );
 };

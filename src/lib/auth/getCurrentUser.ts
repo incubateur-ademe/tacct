@@ -20,7 +20,9 @@ export const getCurrentUser = cache(async () => {
       email: true,
       firstname: true,
       lastname: true,
-      questionnaire_validated: true
+      questionnaire_validated: true,
+      profil: true,
+      membre_communaute: true
     }
   });
 });

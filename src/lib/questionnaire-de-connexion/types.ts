@@ -89,7 +89,11 @@ export const ETAT_INITIAL: EtatQuestionnaire = {
   emailRecontact: ''
 };
 
-const PROFILS_AVEC_TERRITOIRE: readonly Profil[] = ['cdm', 'elu', 'responsable'];
+const PROFILS_AVEC_TERRITOIRE: readonly Profil[] = [
+  'cdm',
+  'elu',
+  'responsable'
+];
 const PROFILS_AVEC_BETA: readonly Profil[] = ['cdm', 'responsable', 'be'];
 
 export const estProfil = (valeur: string): valeur is Profil =>
@@ -134,7 +138,8 @@ export const territoireComplet = (etat: EtatQuestionnaire): boolean => {
   if (!etat.typeTerritoire) return false;
   if (rechercheDuType(etat.typeTerritoire)) {
     return (
-      etat.territoireLibelle.length > 0 || etat.territoireAutre.trim().length > 0
+      etat.territoireLibelle.length > 0 ||
+      etat.territoireAutre.trim().length > 0
     );
   }
   return etat.territoireAutre.trim().length > 0;
@@ -150,9 +155,7 @@ export const besoinsComplets = (etat: EtatQuestionnaire): boolean => {
  * pas en base. C'est `questionnaire_validated` qui tranche, donc une séquence dont
  * tout le reste est rempli reprend forcément sur sa dernière étape.
  */
-export const etapeDeReprise = (
-  etat: EtatQuestionnaire
-): EtapeQuestionnaire => {
+export const etapeDeReprise = (etat: EtatQuestionnaire): EtapeQuestionnaire => {
   if (!profilComplet(etat)) return 'profil';
   const sequence = sequenceQuestions(etat.profil);
   if (sequence.includes('territoire') && !territoireComplet(etat)) {

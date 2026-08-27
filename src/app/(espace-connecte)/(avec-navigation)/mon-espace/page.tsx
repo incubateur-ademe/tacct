@@ -44,7 +44,14 @@ const MonEspace = async () => {
 
   const user = await prisma.user.findUnique({
     where: { id: compte.id },
-    select: { firstname: true, lastname: true, email: true, validated: true }
+    select: {
+      firstname: true,
+      lastname: true,
+      email: true,
+      validated: true,
+      profil: true,
+      membre_communaute: true
+    }
   });
   if (!user) redirect('/mon-compte');
 
@@ -68,6 +75,8 @@ const MonEspace = async () => {
               firstname={user.firstname}
               lastname={user.lastname}
               email={user.email}
+              profil={user.profil}
+              membreCommunaute={user.membre_communaute}
             />
           </section>
 

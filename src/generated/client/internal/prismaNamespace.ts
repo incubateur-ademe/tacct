@@ -466,8 +466,7 @@ export const ModelName = {
   user: 'user',
   user_study: 'user_study',
   tacctoscope_answer: 'tacctoscope_answer',
-  user_besoin: 'user_besoin',
-  baserow_communaute: 'baserow_communaute'
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -483,7 +482,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "baserow_communaute"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6597,80 +6596,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    baserow_communaute: {
-      payload: Prisma.$baserow_communautePayload<ExtArgs>
-      fields: Prisma.baserow_communauteFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.baserow_communauteFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.baserow_communauteFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        findFirst: {
-          args: Prisma.baserow_communauteFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.baserow_communauteFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        findMany: {
-          args: Prisma.baserow_communauteFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        create: {
-          args: Prisma.baserow_communauteCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        createMany: {
-          args: Prisma.baserow_communauteCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.baserow_communauteCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        delete: {
-          args: Prisma.baserow_communauteDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        update: {
-          args: Prisma.baserow_communauteUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        deleteMany: {
-          args: Prisma.baserow_communauteDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.baserow_communauteUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.baserow_communauteUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        upsert: {
-          args: Prisma.baserow_communauteUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        aggregate: {
-          args: Prisma.Baserow_communauteAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBaserow_communaute>
-        }
-        groupBy: {
-          args: Prisma.baserow_communauteGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.baserow_communauteCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -8265,7 +8190,8 @@ export const UserScalarFieldEnum = {
   territoire_type: 'territoire_type',
   territoire_code: 'territoire_code',
   territoire_libelle: 'territoire_libelle',
-  territoire_autre: 'territoire_autre'
+  territoire_autre: 'territoire_autre',
+  membre_communaute: 'membre_communaute'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -8305,14 +8231,6 @@ export const User_besoinScalarFieldEnum = {
 } as const
 
 export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
-
-
-export const Baserow_communauteScalarFieldEnum = {
-  index: 'index',
-  email: 'email'
-} as const
-
-export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -8630,7 +8548,6 @@ export type GlobalOmitConfig = {
   user_study?: Prisma.user_studyOmit
   tacctoscope_answer?: Prisma.tacctoscope_answerOmit
   user_besoin?: Prisma.user_besoinOmit
-  baserow_communaute?: Prisma.baserow_communauteOmit
 }
 
 /* Types for Logging */

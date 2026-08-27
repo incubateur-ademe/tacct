@@ -1,16 +1,27 @@
 import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import avatar from '@/assets/svg/custom/avatar-profil.svg';
+import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H1 } from '@/design-system/base/Textes';
+import { PROFILS } from '@/lib/questionnaire-de-connexion/types';
 import Image from 'next/image';
 
 interface Props {
   firstname: string;
   lastname: string;
   email: string;
+  profil: string | null;
+  membreCommunaute: boolean;
 }
 
-export const ProfilCard = ({ firstname, lastname, email }: Props) => {
+export const ProfilCard = ({
+  firstname,
+  lastname,
+  email,
+  profil,
+  membreCommunaute
+}: Props) => {
   const initiale = lastname.trim().charAt(0).toUpperCase();
+  const profilLabel = PROFILS.find((p) => p.value === profil)?.label;
 
   return (
     <div className={styles.profil}>
@@ -40,7 +51,20 @@ export const ProfilCard = ({ firstname, lastname, email }: Props) => {
         <Body color="#666666" style={{ wordBreak: 'break-word' }}>
           {email}
         </Body>
+        {profilLabel && (
+          <div className={styles.profilTag}>
+            <TagsSimples
+              texte={profilLabel}
+              couleur="#E3FAF9"
+              couleurTexte="#095D55"
+              taille="small"
+            />
+          </div>
+        )}
       </div>
+      <Body color="#666666" style={{ position: 'relative', zIndex: 1, marginLeft: 'auto' }}>
+        {membreCommunaute ? 'Membre de la commu' : 'Non membre de la commu'}
+      </Body>
     </div>
   );
 };

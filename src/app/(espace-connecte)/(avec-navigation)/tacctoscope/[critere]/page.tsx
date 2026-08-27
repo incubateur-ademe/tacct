@@ -1,5 +1,6 @@
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
+import { estProfilDeverrouille } from '@/lib/segmentation';
 import {
   buildQuestionKey,
   getCriterionBySlug,
@@ -49,7 +50,7 @@ const CriterionPage = async ({ params }: Params) => {
       criterion={criterion}
       answers={answers}
       nextSlug={getNextCriterionSlug(criterion.slug)}
-      isAuthenticated={!!user}
+      isAuthenticated={estProfilDeverrouille(user?.profil)}
     />
   );
 };

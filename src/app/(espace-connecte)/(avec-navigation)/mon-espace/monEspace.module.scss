@@ -167,8 +167,13 @@ $stripe: repeating-linear-gradient(
     z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0rem;
     min-width: 0;
+}
+
+.profilTag {
+    align-self: flex-start;
+    margin-top: 0.5rem;
 }
 
 /* ===== Carte TACCToscope ===== */

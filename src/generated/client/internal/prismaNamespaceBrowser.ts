@@ -133,8 +133,7 @@ export const ModelName = {
   user: 'user',
   user_study: 'user_study',
   tacctoscope_answer: 'tacctoscope_answer',
-  user_besoin: 'user_besoin',
-  baserow_communaute: 'baserow_communaute'
+  user_besoin: 'user_besoin'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1708,7 +1707,8 @@ export const UserScalarFieldEnum = {
   territoire_type: 'territoire_type',
   territoire_code: 'territoire_code',
   territoire_libelle: 'territoire_libelle',
-  territoire_autre: 'territoire_autre'
+  territoire_autre: 'territoire_autre',
+  membre_communaute: 'membre_communaute'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1748,14 +1748,6 @@ export const User_besoinScalarFieldEnum = {
 } as const
 
 export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
-
-
-export const Baserow_communauteScalarFieldEnum = {
-  index: 'index',
-  email: 'email'
-} as const
-
-export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
 
 
 export const SortOrder = {
