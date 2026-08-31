@@ -79,3 +79,20 @@
 .footer.footerCompact > * {
   flex: 0 0 auto;
 }
+
+.infoBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 4px;
+  background: #ecfffd;
+  color: #038278;
+}
+
+.infoBlockIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  margin-top: 2px;
+}

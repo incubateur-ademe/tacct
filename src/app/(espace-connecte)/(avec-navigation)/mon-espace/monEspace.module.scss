@@ -183,6 +183,9 @@ $stripe: repeating-linear-gradient(
     border: 1px solid $border;
     background: $stripe;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .tacctoscopeCircle {

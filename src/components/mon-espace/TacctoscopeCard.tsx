@@ -91,7 +91,7 @@ export const TacctoscopeCard = ({
                 margin: 0
               }}
             >
-              Le TACCToscope : analyse de diagnostic existant
+              Le TACCToscope : analyse de diagnostic existant
             </H3>
             {!hasAnswers && (
               <Body color="#3d3d3d" style={{ lineHeight: "24px" }}>
@@ -138,8 +138,8 @@ export const TacctoscopeCard = ({
                 link="/tacctoscope"
                 text={
                   hasAnswers
-                    ? 'Continuer l’analyse  →'
-                    : 'Commencer l’analyse  →'
+                    ? 'Continuer l’analyse  →'
+                    : 'Commencer l’analyse de votre diagnostic  →'
                 }
               />
             )}

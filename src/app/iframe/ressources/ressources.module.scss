@@ -463,30 +463,31 @@
 }
 .ressourcesAutresOutilsWrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 2.5rem;
-    align-items: flex-start;
-    .titles {
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-        max-width: 450px;
-        width: 40%;
-        p {
-            color: #3d3d3d;
-            margin: 0;
-        }
-    }
-    .cartesWrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .autresOutilsColonnes {
         display: flex;
         flex-direction: row;
+        align-items: stretch;
         gap: 1.5rem;
-        align-self: center;
-        // display: grid;
-        // grid-template-columns: repeat(2, 1fr);
-        // grid-template-rows: repeat(2, 1fr);
-        // gap: 1.5rem;
+    }
+
+    .autresOutilsPrincipal {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+
+        > * {
+            flex: 1;
+        }
+    }
+
+    .cartesWrapper {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        gap: 1.5rem;
     }
 }
 
@@ -497,20 +498,12 @@
 }
 @media screen and (max-width: 992px) {
     .ressourcesAutresOutilsWrapper {
-        flex-direction: column;
-        gap: 1.5rem;
         padding: 0 1rem;
-        .titles {
-            width: auto;
-            max-width: none;
-            .subtitle {
-                display: none;
-            }
+        .autresOutilsColonnes {
+            flex-direction: column;
         }
         .cartesWrapper {
             width: 100%;
-            display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 1rem;
         }
