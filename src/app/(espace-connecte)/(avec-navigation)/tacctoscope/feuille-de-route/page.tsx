@@ -76,6 +76,7 @@ const FeuilleDeRoutePage = async () => {
       <FeuilleDeRouteView
         answers={answers}
         isAuthenticated={estProfilDeverrouille(user?.profil)}
+        isLoggedIn={!!user}
       />
     </div>
   );

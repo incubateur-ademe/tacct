@@ -1,5 +1,6 @@
 'use client';
 
+import enveloppeIcon from '@/assets/icons/enveloppe_icon_white.svg';
 import {
   BoutonPrimaireClassic,
   BoutonSecondaireClassic
@@ -216,6 +217,38 @@ export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) =>
     onClose={onClose}
     onConfirm={onConfirm}
   />
+);
+
+interface AccesReserveModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const LIEN_CONTACT = 'https://tally.so/r/mJGELz';
+
+export const AccesReserveModal = ({ isOpen, onClose }: AccesReserveModalProps) => (
+  <Modal
+    isOpen={isOpen}
+    onClose={onClose}
+    title="Accès réservé à certains profils d’utilisateurs"
+    icon={<LockIcon />}
+    compactFooter
+    footer={
+      <>
+        <BoutonSecondaireClassic size="md" text="Annuler" onClick={onClose} />
+        <BoutonPrimaireClassic
+          size="md"
+          link={LIEN_CONTACT}
+          rel="noopener noreferrer"
+          text="Contacter l’équipe"
+          icone={enveloppeIcon}
+        />
+      </>
+    }
+  >
+    Si vous souhaitez en savoir plus, nous vous invitons à nous contacter, en
+    précisant votre rôle et le contexte de votre demande.
+  </Modal>
 );
 
 const SaveIcon = () => (

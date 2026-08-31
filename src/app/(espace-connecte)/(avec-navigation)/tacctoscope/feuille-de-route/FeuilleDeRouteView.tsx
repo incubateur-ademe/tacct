@@ -19,9 +19,14 @@ const QUALIFYING = new Set(['absent', 'partiel', 'satisfaisant']);
 interface Props {
   answers: AnswerMap;
   isAuthenticated: boolean;
+  isLoggedIn: boolean;
 }
 
-export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
+export const FeuilleDeRouteView = ({
+  answers,
+  isAuthenticated,
+  isLoggedIn
+}: Props) => {
   const [hydrated, setHydrated] = useState(isAuthenticated);
   const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
 
@@ -125,7 +130,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
   return (
     <NewContainer size="xl">
       <div className={styles.body}>
-        <RoadmapMenu items={menuItems} />
+        <RoadmapMenu items={menuItems} isLoggedIn={isLoggedIn} />
         <div className={styles.content}>
           {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />

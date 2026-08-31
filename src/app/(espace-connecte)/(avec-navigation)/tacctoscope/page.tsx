@@ -80,7 +80,11 @@ const TacctoscopePage = async () => {
       </div>
 
       <NewContainer size="xl">
-        <HubGrid items={items} isAuthenticated={deverrouille} />
+        <HubGrid
+          items={items}
+          isAuthenticated={deverrouille}
+          isLoggedIn={!!user}
+        />
         <ResetAnswersButton isAuthenticated={deverrouille} />
       </NewContainer>
     </>
