@@ -388,6 +388,32 @@ $stripe: repeating-linear-gradient(
     justify-content: center;
 }
 
+.carteCreneau {
+    background-color: #ffffff;
+    padding: 2rem 2rem 0;
+    gap: 2.5rem;
+    justify-content: space-between;
+}
+
+.carteEspaceCommu {
+    background-color: $cta2;
+    padding: 2rem 2rem 0;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.carteCommunauteIllustration {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+
+    img {
+        max-width: 380;
+        height: auto;
+    }
+}
+
 .sessionIllustration {
     // height: 176px;
     display: flex;
@@ -450,5 +476,282 @@ $stripe: repeating-linear-gradient(
     &:focus-visible {
         outline: 2px solid $teal;
         outline-offset: 2px;
+    }
+}
+
+/* ===== Bloc élu ===== */
+.blocElu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 2rem 2.5rem;
+    border: 1px solid $border;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.blocEluListe {
+    margin: 0;
+    padding: 0;
+    max-width: 652px;
+    list-style-position: inside;
+}
+
+.blocEluLien {
+    color: $teal;
+    font-weight: 500;
+}
+
+.blocEluIllustration {
+    width: 330px;
+    height: auto;
+    margin-top: 3rem;
+}
+
+/* ===== Bloc Élus pour agir ===== */
+.eluPourAgir {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    border: 1px solid $border;
+    background-color: #ffffff;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.eluPourAgirTexte {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.eluPourAgirListe {
+    margin: 0;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.eluPourAgirIllustration {
+    flex-shrink: 0;
+    width: 344px;
+    height: auto;
+
+    @media screen and (max-width: 768px) {
+        align-self: center;
+        max-width: 100%;
+    }
+}
+
+/* ===== Carte session d'accueil (non-membres) ===== */
+.carteSessionAccueil {
+    position: relative;
+    overflow: hidden;
+    padding: 2.5rem 4rem;
+    border-radius: 4px;
+    background-color: $cta2;
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem 1.5rem;
+    }
+}
+
+.carteSessionAccueilTexte {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+.avantagesSession {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.avantageSession {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avantageSessionIcone {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: $tag-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carteSessionAccueilIllustration {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 340px;
+    height: auto;
+
+    @media screen and (max-width: 992px) {
+        position: static;
+        display: block;
+        width: 100%;
+        max-width: 340px;
+        margin: 1.5rem auto 0;
+    }
+}
+
+/* ===== Cartes liens utiles (bureaux d'etudes) ===== */
+.carteLienUtile {
+    display: flex;
+    align-items: stretch;
+    gap: 2.5rem;
+    // Pas de padding bas : l'illustration descend jusqu'au bord de la carte.
+    padding: 2rem 2rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+
+    @media screen and (max-width: 992px) {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 1.5rem 0;
+    }
+}
+
+.carteLienUtileTexte {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+
+    @media screen and (max-width: 992px) {
+        padding-bottom: 0;
+    }
+}
+
+.carteLienUtileIllustration {
+    flex: 0 0 auto;
+    align-self: flex-end;
+    max-width: 100%;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    @media screen and (max-width: 992px) {
+        align-self: center;
+    }
+}
+
+/* ===== Bloc presentation du service (admin / etat) ===== */
+.blocServiceTacct {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 1px solid $border;
+    border-radius: 4px;
+    background-color: #ecfffd;
+}
+
+.serviceTacctRessources {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.serviceTacctRessource {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    img {
+        display: block;
+        height: 200px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+    }
+}
+
+/* ===== Autres ressources ADEME (entreprises) ===== */
+.blocRessourcesAdeme {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 4px;
+    background-color: #ecfffd;
+}
+
+.ressourcesAdemeGrille {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.ressourceAdeme {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.ressourceAdemeVisuel {
+    flex-shrink: 0;
+
+    img {
+        display: block;
+        height: 150px;
+        width: auto;
+        object-fit: contain;
+    }
+}
+
+.ressourceAdemeTexte {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ressourceAdemeLien {
+    color: $teal;
+    font-weight: 500;
+    background-image: none;
+    text-decoration: underline;
+    line-height: 1.5rem;
+
+    svg {
+        display: inline;
+        vertical-align: text-bottom;
     }
 }

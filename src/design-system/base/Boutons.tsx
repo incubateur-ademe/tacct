@@ -146,9 +146,12 @@ export const BoutonSecondaireClassic = ({
   disabled = false,
   onClick,
   icone,
+  iconeFin,
   style,
   posthogEventName,
-  sansBordure = false
+  sansBordure = false,
+  couleurFond,
+  couleurBordure
 }: {
   link?: string;
   text: string;
@@ -157,17 +160,20 @@ export const BoutonSecondaireClassic = ({
   disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   icone?: StaticImageData;
+  iconeFin?: React.ReactNode;
   style?: React.CSSProperties;
   posthogEventName?: string;
   /** Bordure et fond transparents au repos, révélés au survol et au focus. */
   sansBordure?: boolean;
+  couleurFond?: string;
+  couleurBordure?: string;
 }) => {
   const posthog = usePostHog();
   const router = useRouter();
-  const fondAuRepos = sansBordure ? 'transparent' : 'white';
+  const fondAuRepos = sansBordure ? 'transparent' : couleurFond ?? 'white';
   const bordureAuRepos = sansBordure
     ? '1px solid transparent'
-    : `1px solid ${couleursBoutons.primaire[2]}`;
+    : `1px solid ${couleurBordure ?? couleursBoutons.primaire[2]}`;
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
     color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
@@ -216,7 +222,7 @@ export const BoutonSecondaireClassic = ({
       e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[1]}`;
       return;
     }
-    e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[2]}`;
+    e.currentTarget.style.border = bordureAuRepos;
     e.currentTarget.style.backgroundColor = couleursBoutons.primaire[2];
   };
 
@@ -230,7 +236,7 @@ export const BoutonSecondaireClassic = ({
   const handleFocus = (e: React.FocusEvent<HTMLButtonElement>) => {
     if (!disabled && e.currentTarget.matches(':focus-visible')) {
       e.currentTarget.style.outline = 'none';
-      e.currentTarget.style.border = `1px solid ${couleursBoutons.primaire[2]}`;
+      e.currentTarget.style.border = bordureAuRepos;
       e.currentTarget.style.boxShadow = `0 0 0 2px ${couleursBoutons.primaire[1]}, 0 0 0 4px ${couleursBoutons.primaire[2]}`;
       e.currentTarget.style.backgroundColor = fondAuRepos;
     }
@@ -267,6 +273,13 @@ export const BoutonSecondaireClassic = ({
           )
         }
         {text}
+        {
+          iconeFin && (
+            <span style={{ display: 'inline-flex', marginLeft: '8px' }}>
+              {iconeFin}
+            </span>
+          )
+        }
       </span>
     </button>
   );

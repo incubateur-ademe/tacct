@@ -66,8 +66,6 @@ async function copyStudy(studyId, targetUserId, headStudy) {
     const themeIds = themes.map((r) => r.id);
     const oes = await fetchBy('observed_exposure', 'study_id = $1', [studyId]);
     const oeIds = oes.map((r) => r.id);
-    const nds = await fetchBy('natural_disaster_search', 'study_id = $1', [studyId]);
-    const ndsIds = nds.map((r) => r.id);
 
     const impacts = themeIds.length
         ? await fetchBy('impact', `impact_theme_id ${anyText}`, [themeIds])
@@ -138,17 +136,11 @@ async function copyStudy(studyId, targetUserId, headStudy) {
     const futureExp = oeIds.length
         ? await fetchBy('future_exposure', `observed_exposure_id ${anyText}`, [oeIds])
         : [];
-    const ndsCommunes = ndsIds.length
-        ? await fetchBy('natural_disaster_search_commune', `natural_disaster_search_id ${anyText}`, [
-              ndsIds
-          ])
-        : [];
 
     maps.impact_level = prepIdMap(levels);
     maps.study = prepIdMap(study);
     maps.impact_theme = prepIdMap(themes);
     maps.observed_exposure = prepIdMap(oes);
-    maps.natural_disaster_search = prepIdMap(nds);
     maps.impact_strategy = prepIdMap(strategies);
     maps.impact = prepIdMap(impacts);
     maps.impact_action = prepIdMap(actions);
@@ -180,10 +172,6 @@ async function copyStudy(studyId, targetUserId, headStudy) {
     });
     await ins('observed_exposure', oes, {
         idMap: maps.observed_exposure,
-        fkRemap: { study_id: 'study' }
-    });
-    await ins('natural_disaster_search', nds, {
-        idMap: maps.natural_disaster_search,
         fkRemap: { study_id: 'study' }
     });
     await ins('impact_strategy', strategies, {
@@ -233,10 +221,6 @@ async function copyStudy(studyId, targetUserId, headStudy) {
     await ins('impact_trajectory_impact_action', trajActions, {
         idMap: prepIdMap(trajActions),
         fkRemap: { trajectory_id: 'impact_trajectory', action_id: 'impact_action' }
-    });
-    await ins('natural_disaster_search_commune', ndsCommunes, {
-        hasId: false,
-        fkRemap: { natural_disaster_search_id: 'natural_disaster_search' }
     });
 
     const newStudyId = maps.study.get(studyId);
