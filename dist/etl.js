@@ -96,7 +96,7 @@ var require_package = __commonJS({
 // node_modules/.pnpm/dotenv@17.2.3/node_modules/dotenv/lib/main.js
 var require_main = __commonJS({
   "node_modules/.pnpm/dotenv@17.2.3/node_modules/dotenv/lib/main.js"(exports2, module2) {
-    var fs3 = require("fs");
+    var fs5 = require("fs");
     var path = require("path");
     var os = require("os");
     var crypto = require("crypto");
@@ -238,7 +238,7 @@ var require_main = __commonJS({
       if (options && options.path && options.path.length > 0) {
         if (Array.isArray(options.path)) {
           for (const filepath of options.path) {
-            if (fs3.existsSync(filepath)) {
+            if (fs5.existsSync(filepath)) {
               possibleVaultPath = filepath.endsWith(".vault") ? filepath : `${filepath}.vault`;
             }
           }
@@ -248,7 +248,7 @@ var require_main = __commonJS({
       } else {
         possibleVaultPath = path.resolve(process.cwd(), ".env.vault");
       }
-      if (fs3.existsSync(possibleVaultPath)) {
+      if (fs5.existsSync(possibleVaultPath)) {
         return possibleVaultPath;
       }
       return null;
@@ -301,7 +301,7 @@ var require_main = __commonJS({
       const parsedAll = {};
       for (const path2 of optionPaths) {
         try {
-          const parsed = DotenvModule.parse(fs3.readFileSync(path2, { encoding }));
+          const parsed = DotenvModule.parse(fs5.readFileSync(path2, { encoding }));
           DotenvModule.populate(parsedAll, parsed, options);
         } catch (e) {
           if (debug) {
@@ -2046,15 +2046,15 @@ var require_pg_connection_string = __commonJS({
       if (config.sslcert || config.sslkey || config.sslrootcert || config.sslmode) {
         config.ssl = {};
       }
-      const fs3 = config.sslcert || config.sslkey || config.sslrootcert ? require("fs") : null;
+      const fs5 = config.sslcert || config.sslkey || config.sslrootcert ? require("fs") : null;
       if (config.sslcert) {
-        config.ssl.cert = fs3.readFileSync(config.sslcert).toString();
+        config.ssl.cert = fs5.readFileSync(config.sslcert).toString();
       }
       if (config.sslkey) {
-        config.ssl.key = fs3.readFileSync(config.sslkey).toString();
+        config.ssl.key = fs5.readFileSync(config.sslkey).toString();
       }
       if (config.sslrootcert) {
-        config.ssl.ca = fs3.readFileSync(config.sslrootcert).toString();
+        config.ssl.ca = fs5.readFileSync(config.sslrootcert).toString();
       }
       if (options.useLibpqCompat && config.uselibpqcompat) {
         throw new Error("Both useLibpqCompat and uselibpqcompat are set. Please use only one of them.");
@@ -2112,8 +2112,8 @@ var require_pg_connection_string = __commonJS({
       }
       return config;
     }
-    function toConnectionOptions(sslConfig) {
-      const connectionOptions = Object.entries(sslConfig).reduce((c, [key, value]) => {
+    function toConnectionOptions(sslConfig3) {
+      const connectionOptions = Object.entries(sslConfig3).reduce((c, [key, value]) => {
         if (value !== void 0 && value !== null) {
           c[key] = value;
         }
@@ -2124,12 +2124,12 @@ var require_pg_connection_string = __commonJS({
     function toClientConfig(config) {
       const poolConfig = Object.entries(config).reduce((c, [key, value]) => {
         if (key === "ssl") {
-          const sslConfig = value;
-          if (typeof sslConfig === "boolean") {
-            c[key] = sslConfig;
+          const sslConfig3 = value;
+          if (typeof sslConfig3 === "boolean") {
+            c[key] = sslConfig3;
           }
-          if (typeof sslConfig === "object") {
-            c[key] = toConnectionOptions(sslConfig);
+          if (typeof sslConfig3 === "object") {
+            c[key] = toConnectionOptions(sslConfig3);
           }
         } else if (value !== void 0 && value !== null) {
           if (key === "port") {
@@ -3960,15 +3960,15 @@ var require_lib = __commonJS({
   "node_modules/.pnpm/pgpass@1.0.5/node_modules/pgpass/lib/index.js"(exports2, module2) {
     "use strict";
     var path = require("path");
-    var fs3 = require("fs");
+    var fs5 = require("fs");
     var helper = require_helper();
     module2.exports = function(connInfo, cb) {
       var file = helper.getFileName();
-      fs3.stat(file, function(err, stat) {
+      fs5.stat(file, function(err, stat) {
         if (err || !helper.usePgPass(stat, file)) {
           return cb(void 0);
         }
-        var st = fs3.createReadStream(file);
+        var st = fs5.createReadStream(file);
         helper.getPassword(connInfo, st, cb);
       });
     };
@@ -5922,5 +5922,389 @@ function injectWindow(hogql, startIso) {
   console.log("\n[ETL] Processus termin\xE9 pour toutes les requ\xEAtes.");
 })().catch((e) => {
   console.error("[ETL] Erreur fatale :", e);
+  process.exit(1);
+});
+
+// etl/prod/runBaserowCdm.mjs
+var import_node_crypto = require("node:crypto");
+var import_dotenv3 = __toESM(require_main(), 1);
+var import_fs3 = __toESM(require("fs"), 1);
+var import_path = require("path");
+var import_node_url = require("node:url");
+var import_meta = {};
+if (import_fs3.default.existsSync(".env")) {
+  import_dotenv3.default.config();
+}
+var {
+  SCALINGO_POSTGRESQL_URL: SCALINGO_POSTGRESQL_URL3,
+  BASEROW_HOST: BASEROW_HOST2,
+  BASEROW_API_KEY: BASEROW_API_KEY2,
+  BASEROW_TABLE_ID_CDM = "490425",
+  USER_ENCRYPTION_KEY
+} = process.env;
+var HKDF_SALT = Buffer.from("tacct-user-crypto");
+function deriveKeys(rawBase64) {
+  const ikm = Buffer.from(rawBase64, "base64");
+  return {
+    hmac: Buffer.from((0, import_node_crypto.hkdfSync)("sha256", ikm, HKDF_SALT, "tacct-user-bidx", 32))
+  };
+}
+function blindIndex(keys, value) {
+  return (0, import_node_crypto.createHmac)("sha256", keys.hmac).update(value).digest("base64");
+}
+async function fetchBaserow2(tableId) {
+  const baseUrl = `${BASEROW_HOST2}/api/database/rows/table/${tableId}/?user_field_names=true`;
+  let allResults = [];
+  let nextUrl = baseUrl;
+  let page = 1;
+  while (nextUrl) {
+    console.log(`[baserow-cdm] requ\xEAte page ${page} : ${nextUrl}`);
+    const resp = await fetch(nextUrl, {
+      method: "GET",
+      headers: { Authorization: `Token ${BASEROW_API_KEY2}` }
+    });
+    if (!resp.ok)
+      throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+    const data = await resp.json();
+    allResults = allResults.concat(data.results);
+    console.log(
+      `[baserow-cdm] page ${page} re\xE7ue : ${data.results.length} ligne(s) (total ${allResults.length})`
+    );
+    nextUrl = data.next ? data.next.replace(/^http:/, "https:") : null;
+    page++;
+  }
+  return allResults;
+}
+var valeursTypeTerritoire = (valeur) => {
+  if (!Array.isArray(valeur)) return [];
+  return valeur.flatMap(
+    (lien) => Array.isArray(lien?.value) ? lien.value.map((option) => option?.value).filter((v) => typeof v === "string") : []
+  );
+};
+function filtrerLignes(rows) {
+  return rows.filter((row) => {
+    const email = row["Email"];
+    if (typeof email !== "string" || email.trim().length === 0) return false;
+    if (row["Compte inactif"] === true) return false;
+    if (valeursTypeTerritoire(row["Type Territoire"]).includes("BE")) return false;
+    return true;
+  });
+}
+var caPath = (0, import_path.join)(process.cwd(), "ca.pem");
+var sslConfig = import_fs3.default.existsSync(caPath) ? { ca: import_fs3.default.readFileSync(caPath, "utf8"), rejectUnauthorized: false } : true;
+var cleanConnectionString = SCALINGO_POSTGRESQL_URL3?.split("?")[0];
+async function withPg3(fn) {
+  const client = new esm_default.Client({
+    connectionString: cleanConnectionString,
+    ssl: sslConfig
+  });
+  await client.connect();
+  try {
+    return await fn(client);
+  } finally {
+    await client.end();
+  }
+}
+async function majMembreCommunaute(client, rows, keys) {
+  const bidx = rows.map((row) => blindIndex(keys, row["Email"].trim()));
+  const result = await client.query(
+    `UPDATE tacct."user" SET membre_communaute = (email_bidx = ANY($1)) RETURNING membre_communaute`,
+    [bidx]
+  );
+  return { total: result.rowCount, membres: result.rows.filter((r) => r.membre_communaute).length };
+}
+async function run({ apply }) {
+  if (!BASEROW_HOST2 || !BASEROW_API_KEY2) {
+    throw new Error("BASEROW_HOST / BASEROW_API_KEY manquants");
+  }
+  if (!apply) {
+    console.log("[baserow-cdm] mode=DRY-RUN (relancer avec --apply pour \xE9crire)");
+  } else {
+    console.log("[baserow-cdm] mode=APPLY");
+  }
+  const rows = await fetchBaserow2(BASEROW_TABLE_ID_CDM);
+  console.log(`[baserow-cdm] lignes r\xE9cup\xE9r\xE9es : ${rows.length}`);
+  const lignesFiltrees = filtrerLignes(rows);
+  console.log(
+    `[baserow-cdm] lignes apr\xE8s filtre (compte actif, hors BE, email non vide) : ${lignesFiltrees.length}`
+  );
+  if (!apply) return { total: rows.length, filtrees: lignesFiltrees.length };
+  if (!SCALINGO_POSTGRESQL_URL3) {
+    throw new Error("SCALINGO_POSTGRESQL_URL manquante");
+  }
+  if (!USER_ENCRYPTION_KEY) {
+    throw new Error("USER_ENCRYPTION_KEY manquante");
+  }
+  const keys = deriveKeys(USER_ENCRYPTION_KEY);
+  const { total: comptesTotal, membres: comptesMembre } = await withPg3(
+    (client) => majMembreCommunaute(client, lignesFiltrees, keys)
+  );
+  console.log(
+    `[baserow-cdm] membre_communaute mis \xE0 jour : ${comptesMembre}/${comptesTotal} compte(s) marqu\xE9(s) membre.`
+  );
+  return { total: rows.length, filtrees: lignesFiltrees.length, comptesTotal, comptesMembre };
+}
+var estAppelDirect = process.argv[1] && import_meta.url === (0, import_node_url.pathToFileURL)(process.argv[1]).href;
+if (estAppelDirect) {
+  run({ apply: process.argv.includes("--apply") }).catch((err) => {
+    console.error("[baserow-cdm] \xE9chec :", err);
+    process.exit(1);
+  });
+}
+
+// etl/prod/runBaserowTestsUtilisateurs.mjs
+var import_node_crypto2 = require("node:crypto");
+var import_dotenv4 = __toESM(require_main(), 1);
+var import_fs4 = __toESM(require("fs"), 1);
+var import_path2 = require("path");
+var import_node_url2 = require("node:url");
+var import_meta2 = {};
+if (import_fs4.default.existsSync(".env")) {
+  import_dotenv4.default.config();
+}
+var {
+  SCALINGO_POSTGRESQL_URL: SCALINGO_POSTGRESQL_URL4,
+  BASEROW_HOST: BASEROW_HOST3,
+  BASEROW_WRITE_API_KEY,
+  BASEROW_TABLE_ID_CDM: BASEROW_TABLE_ID_CDM2 = "490425",
+  USER_ENCRYPTION_KEY: USER_ENCRYPTION_KEY2
+} = process.env;
+var CHAMP_TESTS = "Souhaite participer \xE0 des tests utilisateurs";
+var TAG_OUI = "Oui";
+var TAG_NON = "Non";
+var TAG_PAS_PRECISE = "Pas pr\xE9cis\xE9";
+var TAILLE_LOT = 200;
+var PROFILS_AVEC_BETA = ["cdm", "responsable", "be"];
+var HKDF_SALT2 = Buffer.from("tacct-user-crypto");
+function deriveKeys2(rawBase64) {
+  const ikm = Buffer.from(rawBase64, "base64");
+  return {
+    hmac: Buffer.from((0, import_node_crypto2.hkdfSync)("sha256", ikm, HKDF_SALT2, "tacct-user-bidx", 32))
+  };
+}
+function blindIndex2(keys, value) {
+  return (0, import_node_crypto2.createHmac)("sha256", keys.hmac).update(value).digest("base64");
+}
+function enteteBaserow() {
+  return { Authorization: `Token ${BASEROW_WRITE_API_KEY}` };
+}
+async function fetchBaserow3(tableId) {
+  const baseUrl = `${BASEROW_HOST3}/api/database/rows/table/${tableId}/?user_field_names=true`;
+  let allResults = [];
+  let nextUrl = baseUrl;
+  let page = 1;
+  while (nextUrl) {
+    console.log(`[baserow-tests-utilisateurs] requ\xEAte page ${page} : ${nextUrl}`);
+    const resp = await fetch(nextUrl, { method: "GET", headers: enteteBaserow() });
+    if (!resp.ok)
+      throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+    const data = await resp.json();
+    allResults = allResults.concat(data.results);
+    console.log(
+      `[baserow-tests-utilisateurs] page ${page} re\xE7ue : ${data.results.length} ligne(s) (total ${allResults.length})`
+    );
+    nextUrl = data.next ? data.next.replace(/^http:/, "https:") : null;
+    page++;
+  }
+  return allResults;
+}
+async function chargerOptionsChampTests(tableId) {
+  const resp = await fetch(
+    `${BASEROW_HOST3}/api/database/fields/table/${tableId}/`,
+    { method: "GET", headers: enteteBaserow() }
+  );
+  if (!resp.ok) throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+  const champs = await resp.json();
+  const champ = champs.find((c) => c.name === CHAMP_TESTS);
+  if (!champ) {
+    throw new Error(
+      `Champ "${CHAMP_TESTS}" introuvable sur la table ${tableId}. Champs disponibles : ${champs.map((c) => c.name).join(", ")}`
+    );
+  }
+  if (champ.type !== "single_select") {
+    throw new Error(
+      `Champ "${CHAMP_TESTS}" de type ${champ.type}, liste d\xE9roulante (single_select) attendue.`
+    );
+  }
+  const options = new Map(
+    (champ.select_options ?? []).map((option) => [option.value, option.id])
+  );
+  for (const tag of [TAG_OUI, TAG_NON, TAG_PAS_PRECISE]) {
+    if (!options.has(tag)) {
+      throw new Error(
+        `Option "${tag}" absente du champ "${CHAMP_TESTS}". Options pr\xE9sentes : ${[
+          ...options.keys()
+        ].join(", ")}`
+      );
+    }
+  }
+  return options;
+}
+async function appliquerMisesAJour(tableId, misesAJour, options) {
+  let ecrites = 0;
+  for (let debut = 0; debut < misesAJour.length; debut += TAILLE_LOT) {
+    const lot = misesAJour.slice(debut, debut + TAILLE_LOT);
+    const resp = await fetch(
+      `${BASEROW_HOST3}/api/database/rows/table/${tableId}/batch/?user_field_names=true`,
+      {
+        method: "PATCH",
+        headers: { ...enteteBaserow(), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: lot.map(({ id, tag }) => ({
+            id,
+            [CHAMP_TESTS]: options.get(tag)
+          }))
+        })
+      }
+    );
+    if (!resp.ok)
+      throw new Error(`Baserow ${resp.status}: ${await resp.text()}`);
+    ecrites += lot.length;
+    console.log(
+      `[baserow-tests-utilisateurs] lot \xE9crit : ${ecrites}/${misesAJour.length} ligne(s)`
+    );
+  }
+  return ecrites;
+}
+var caPath2 = (0, import_path2.join)(process.cwd(), "ca.pem");
+var sslConfig2 = import_fs4.default.existsSync(caPath2) ? { ca: import_fs4.default.readFileSync(caPath2, "utf8"), rejectUnauthorized: false } : true;
+var cleanConnectionString2 = SCALINGO_POSTGRESQL_URL4?.split("?")[0];
+async function withPg4(fn) {
+  const client = new esm_default.Client({
+    connectionString: cleanConnectionString2,
+    ssl: sslConfig2
+  });
+  await client.connect();
+  try {
+    return await fn(client);
+  } finally {
+    await client.end();
+  }
+}
+async function chargerReponses(client) {
+  const result = await client.query(
+    `SELECT email_bidx, wants_beta_features, questionnaire_validated, profil
+         FROM tacct."user"
+         WHERE email_bidx IS NOT NULL`
+  );
+  return new Map(
+    result.rows.map((row) => {
+      if (row.wants_beta_features) return [row.email_bidx, TAG_OUI];
+      if (row.questionnaire_validated && PROFILS_AVEC_BETA.includes(row.profil))
+        return [row.email_bidx, TAG_NON];
+      return [row.email_bidx, TAG_PAS_PRECISE];
+    })
+  );
+}
+function calculerMisesAJour(rows, reponses, keys) {
+  const misesAJour = [];
+  const repartition = { [TAG_OUI]: 0, [TAG_NON]: 0, [TAG_PAS_PRECISE]: 0 };
+  let sansEmail = 0;
+  let sansCorrespondance = 0;
+  let inchangees = 0;
+  for (const row of rows) {
+    const email = row["Email"];
+    if (typeof email !== "string" || email.trim().length === 0) {
+      sansEmail++;
+      continue;
+    }
+    const tag = reponses.get(blindIndex2(keys, email.trim()));
+    if (!tag) {
+      sansCorrespondance++;
+      continue;
+    }
+    repartition[tag]++;
+    if (row[CHAMP_TESTS]?.value === tag) {
+      inchangees++;
+      continue;
+    }
+    misesAJour.push({ id: row.id, tag });
+  }
+  return { misesAJour, repartition, sansEmail, sansCorrespondance, inchangees };
+}
+async function run2({ apply, limite }) {
+  if (!BASEROW_HOST3 || !BASEROW_WRITE_API_KEY) {
+    throw new Error("BASEROW_HOST / BASEROW_WRITE_API_KEY manquants");
+  }
+  if (!SCALINGO_POSTGRESQL_URL4) {
+    throw new Error("SCALINGO_POSTGRESQL_URL manquante");
+  }
+  if (!USER_ENCRYPTION_KEY2) {
+    throw new Error("USER_ENCRYPTION_KEY manquante");
+  }
+  console.log(
+    apply ? "[baserow-tests-utilisateurs] mode=APPLY" : "[baserow-tests-utilisateurs] mode=DRY-RUN (relancer avec --apply pour \xE9crire)"
+  );
+  const keys = deriveKeys2(USER_ENCRYPTION_KEY2);
+  const options = await chargerOptionsChampTests(BASEROW_TABLE_ID_CDM2);
+  const rows = await fetchBaserow3(BASEROW_TABLE_ID_CDM2);
+  console.log(`[baserow-tests-utilisateurs] lignes r\xE9cup\xE9r\xE9es : ${rows.length}`);
+  const reponses = await withPg4(chargerReponses);
+  console.log(
+    `[baserow-tests-utilisateurs] comptes avec email_bidx : ${reponses.size}`
+  );
+  const { misesAJour, repartition, sansEmail, sansCorrespondance, inchangees } = calculerMisesAJour(rows, reponses, keys);
+  console.log(
+    `[baserow-tests-utilisateurs] lignes ignor\xE9es : ${sansCorrespondance} sans compte chez nous, ${sansEmail} sans email`
+  );
+  console.log(
+    `[baserow-tests-utilisateurs] correspondances : ${TAG_OUI}=${repartition[TAG_OUI]}, ${TAG_NON}=${repartition[TAG_NON]}, ${TAG_PAS_PRECISE}=${repartition[TAG_PAS_PRECISE]}`
+  );
+  console.log(
+    `[baserow-tests-utilisateurs] d\xE9j\xE0 \xE0 jour : ${inchangees}, \xE0 modifier : ${misesAJour.length}`
+  );
+  if (!apply) {
+    return {
+      total: rows.length,
+      repartition,
+      sansEmail,
+      sansCorrespondance,
+      inchangees,
+      aModifier: misesAJour.length
+    };
+  }
+  const aEcrire = limite ? misesAJour.slice(0, limite) : misesAJour;
+  if (limite) {
+    console.log(
+      `[baserow-tests-utilisateurs] --limit=${limite} : ${aEcrire.length} ligne(s) \xE9crite(s) sur ${misesAJour.length}`
+    );
+  }
+  const ecrites = await appliquerMisesAJour(
+    BASEROW_TABLE_ID_CDM2,
+    aEcrire,
+    options
+  );
+  console.log(`[baserow-tests-utilisateurs] termin\xE9 : ${ecrites} ligne(s) mise(s) \xE0 jour.`);
+  return {
+    total: rows.length,
+    repartition,
+    sansEmail,
+    sansCorrespondance,
+    inchangees,
+    ecrites
+  };
+}
+var estAppelDirect2 = process.argv[1] && import_meta2.url === (0, import_node_url2.pathToFileURL)(process.argv[1]).href;
+if (estAppelDirect2) {
+  const argLimite = process.argv.find((arg) => arg.startsWith("--limit="));
+  const limite = argLimite ? Number(argLimite.split("=")[1]) : void 0;
+  run2({ apply: process.argv.includes("--apply"), limite }).catch((err) => {
+    console.error("[baserow-tests-utilisateurs] \xE9chec :", err);
+    process.exit(1);
+  });
+}
+
+// etl/prod/index.mjs
+(async () => {
+  if (process.env.NEXT_PUBLIC_ENV === "production") {
+    await run({ apply: true });
+    await run2({ apply: true });
+  } else {
+    console.log(
+      `[etl/prod] NEXT_PUBLIC_ENV=${process.env.NEXT_PUBLIC_ENV ?? "(non d\xE9fini)"} : ETL production ignor\xE9s.`
+    );
+  }
+})().catch((err) => {
+  console.error("[etl/prod] \xE9chec :", err);
   process.exit(1);
 });
