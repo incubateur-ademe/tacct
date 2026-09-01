@@ -135,6 +135,20 @@ $stripe: repeating-linear-gradient(
     gap: 1rem;
     align-items: center;
     min-height: 188px;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.profilIdentite {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
 }
 
 .profilCircle {
@@ -174,6 +188,39 @@ $stripe: repeating-linear-gradient(
 .profilTag {
     align-self: flex-start;
     margin-top: 0.5rem;
+}
+
+.profilTerritoire {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: #ffffff;
+    padding: 24px;
+    margin-left: auto;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+    }
+}
+
+.profilTerritoireBadges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profilTerritoirePin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    background: #f6f6f6;
+    flex-shrink: 0;
 }
 
 /* ===== Carte TACCToscope ===== */

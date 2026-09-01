@@ -91,12 +91,12 @@ export const TacctoscopeCard = ({
                 margin: 0
               }}
             >
-              Le TACCToscope : analyse de diagnostic existant
+              Analysez votre diagnostic de vulnérabilité avec le TACCToscope
             </H3>
             {!hasAnswers && (
               <Body color="#3d3d3d" style={{ lineHeight: "24px" }}>
-              Vous révisez un diagnostic de vulnérabilité ? Ne repartez pas de zéro ! Notre outil interactif vous guide pour un retravail ciblé et méthodique.
-            </Body>
+                Vous révisez un diagnostic de vulnérabilité ? Ne repartez pas de zéro ! Notre outil interactif vous guide pour un retravail ciblé et méthodique.
+              </Body>
             )}
             {isComplete && (
               <div className={styles.pistesLigne}>

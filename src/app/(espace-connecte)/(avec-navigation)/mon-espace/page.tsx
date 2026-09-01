@@ -67,7 +67,10 @@ const MonEspace = async () => {
       email: true,
       validated: true,
       profil: true,
-      membre_communaute: true
+      membre_communaute: true,
+      territoire_type: true,
+      territoire_libelle: true,
+      territoire_autre: true
     }
   });
   if (!user) redirect('/api/proconnect/login');
@@ -163,7 +166,9 @@ const MonEspace = async () => {
                 lastname={user.lastname}
                 email={user.email}
                 profil={user.profil}
-                membreCommunaute={user.membre_communaute}
+                territoireType={user.territoire_type}
+                territoireLibelle={user.territoire_libelle}
+                territoireAutre={user.territoire_autre}
               />
               {(estProfilElu(user.profil) ||
                 estProfilAdminEtat(user.profil)) && (

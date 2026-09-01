@@ -1,20 +1,9 @@
 "use client";
 import { eptRegex } from '@/lib/utils/regex';
+import { ReplaceDisplayEpci, ReplaceSearchEpci } from '@/lib/utils/string';
 import { useRouter } from 'next/navigation';
 
-export const ReplaceDisplayEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace("Communauté d'agglomération", 'CA')
-    .replace('Communauté de communes', 'CC')
-    .replace('Communauté urbaine', 'CU');
-};
-
-export const ReplaceSearchEpci = (libelleEpci: string) => {
-  return libelleEpci
-    .replace('CA ', "Communauté d'agglomération ")
-    .replace('CC ', 'Communauté de communes ')
-    .replace('CU ', 'Communauté urbaine ');
-};
+export { ReplaceDisplayEpci, ReplaceSearchEpci };
 
 export const libellesTypeTerritoire: Record<TerritoireType, string> = {
   epci: 'EPCI',

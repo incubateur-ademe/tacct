@@ -47,7 +47,7 @@ const LienExterneIcon = () => (
 export const EntreprisePlateformeAgir = () => (
   <CarteLienUtile
     fond="#d3edeb"
-    titre="Votre plateforme dédiée : Agir pour la transition (ADEME)"
+    titre="La plateforme dédiée aux entreprises : Agir pour la transition (ADEME)"
     texte={
       <>
         Un parcours pour les entreprises, avec des <b>outils</b>, <b>méthodes</b>{' '}
