@@ -279,7 +279,7 @@ export const SavePromptModal = ({
         Si vous souhaitez enregistrer vos réponses, créez un compte ou
         connectez-vous.
         <InfoBlock>
-          Cette fonctionnalité est réservée à certains profils d’utilisateurs.
+          Les critères suivants sont réservés à certains profils d'utilisateurs.
         </InfoBlock>
       </>
     }
