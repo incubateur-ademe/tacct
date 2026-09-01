@@ -30,7 +30,7 @@ export const SuggestionsBanner = () => (
       size="md"
       link={LIEN_COMMENTAIRE}
       rel="noopener noreferrer"
-      text="Contacter l'équipe"
+      text="Partagez vos retours"
       icone={enveloppeIcon}
     />
   </div>

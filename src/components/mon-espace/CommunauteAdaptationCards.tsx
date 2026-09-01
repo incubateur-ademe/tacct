@@ -70,7 +70,7 @@ const CartesMembre = () => (
             icone={<Image src={videoIcon} alt="" width={12} height={12} style={{ marginTop: "6px" }} />}
           />
           <TagsSimples
-            texte="1h"
+            texte="45min"
             couleur="#E3FAF9"
             couleurTexte="var(--boutons-primaire-3)"
             taille="small"
@@ -138,7 +138,7 @@ const CarteSessionAccueil = () => (
           taille="small"
         />
         <TagsSimples
-          texte="45min"
+          texte="1h"
           couleur="#E3FAF9"
           couleurTexte="var(--boutons-primaire-3)"
           taille="small"

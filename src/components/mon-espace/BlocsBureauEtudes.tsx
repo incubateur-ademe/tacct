@@ -99,6 +99,7 @@ export const BeAccompagnementEntreprises = () => (
 export const BeFormation = () => (
   <CarteLienUtile
     fond="#ecfffd"
+    couleurTitre='#2B4B49'
     titre="Formez-vous en ligne à l’adaptation au changement climatique (ADEME)"
     texte={
       <>

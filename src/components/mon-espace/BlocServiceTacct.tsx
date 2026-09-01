@@ -57,6 +57,7 @@ export const BlocServiceTacct = () => (
           iconeFin={<FlecheDroiteIcon />}
           couleurFond="#ECFFFD"
           couleurBordure="#038278"
+          style={{ border: "2px solid #038278" }}
         />
       </div>
       <div className={styles.serviceTacctRessource}>
@@ -69,6 +70,7 @@ export const BlocServiceTacct = () => (
           iconeFin={<TelechargerIcon />}
           couleurFond="#ECFFFD"
           couleurBordure="#038278"
+          style={{ border: "2px solid #038278" }}
         />
       </div>
     </div>
