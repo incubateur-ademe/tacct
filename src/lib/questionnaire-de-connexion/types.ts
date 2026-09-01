@@ -40,6 +40,8 @@ export const TYPES_TERRITOIRE = [
 
 export type TypeTerritoire = (typeof TYPES_TERRITOIRE)[number]['value'];
 
+export type OptionTypeTerritoire = (typeof TYPES_TERRITOIRE)[number];
+
 export const BESOINS = [
   { value: 'data', label: 'Accéder à des données fiables sur mon territoire' },
   { value: 'mobiliser', label: 'Mobiliser les acteurs de mon territoire' },
@@ -92,9 +94,15 @@ export const ETAT_INITIAL: EtatQuestionnaire = {
 const PROFILS_AVEC_TERRITOIRE: readonly Profil[] = [
   'cdm',
   'elu',
-  'responsable'
+  'responsable',
+  'etat'
 ];
 const PROFILS_AVEC_BETA: readonly Profil[] = ['cdm', 'responsable', 'be'];
+
+const TYPES_TERRITOIRE_ETAT: readonly TypeTerritoire[] = [
+  'departement',
+  'region'
+];
 
 export const estProfil = (valeur: string): valeur is Profil =>
   PROFILS.some((profil) => profil.value === valeur);
@@ -109,6 +117,21 @@ export const rechercheDuType = (
   type: TypeTerritoire | null
 ): TypeTerritoireRecherchable | null =>
   TYPES_TERRITOIRE.find((option) => option.value === type)?.recherche ?? null;
+
+export const typesTerritoirePourProfil = (
+  profil: Profil | null
+): readonly OptionTypeTerritoire[] =>
+  profil === 'etat'
+    ? TYPES_TERRITOIRE.filter((option) =>
+        TYPES_TERRITOIRE_ETAT.includes(option.value)
+      )
+    : TYPES_TERRITOIRE;
+
+export const typeTerritoireAutorise = (
+  profil: Profil | null,
+  type: TypeTerritoire
+): boolean =>
+  typesTerritoirePourProfil(profil).some((option) => option.value === type);
 
 export const sequenceQuestions = (
   profil: Profil | null

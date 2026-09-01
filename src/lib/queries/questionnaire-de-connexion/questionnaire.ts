@@ -18,7 +18,8 @@ import {
   estTypeTerritoire,
   rechercheDuType,
   reponsesObligatoiresCompletes,
-  sequenceQuestions
+  sequenceQuestions,
+  typeTerritoireAutorise
 } from '@/lib/questionnaire-de-connexion/types';
 
 export interface ResultatQuestionnaire {
@@ -129,8 +130,19 @@ export const enregistrerProfil = async (
 
   const sequence = sequenceQuestions(profil);
 
+  const ligne = await prisma.user.findUnique({
+    where: { id: user.id },
+    select: { territoire_type: true }
+  });
+  const typeCourant = ligne?.territoire_type;
+
   // Les réponses qui sortent de la séquence du nouveau profil sont effacées.
-  const remiseAZeroTerritoire = sequence.includes('territoire')
+  const territoireConserve =
+    sequence.includes('territoire') &&
+    (!typeCourant ||
+      (estTypeTerritoire(typeCourant) &&
+        typeTerritoireAutorise(profil, typeCourant)));
+  const remiseAZeroTerritoire = territoireConserve
     ? {}
     : {
         territoire_type: null,
@@ -169,6 +181,9 @@ export const enregistrerTerritoire = async (payload: {
   const user = await getCurrentUser();
   if (!user) return ECHEC;
   if (!estTypeTerritoire(payload.typeTerritoire)) return ECHEC;
+
+  const profil = user.profil && estProfil(user.profil) ? user.profil : null;
+  if (!typeTerritoireAutorise(profil, payload.typeTerritoire)) return ECHEC;
 
   const recherchable = rechercheDuType(payload.typeTerritoire);
   const libelle = payload.territoireLibelle.trim();

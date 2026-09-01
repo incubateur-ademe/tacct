@@ -19,10 +19,13 @@ import {
   NOMBRE_BESOINS,
   Profil,
   profilComplet,
+  PROFILS,
   rechercheDuType,
   sequenceQuestions,
   territoireComplet,
-  TypeTerritoire
+  typesTerritoirePourProfil,
+  TypeTerritoire,
+  typeTerritoireAutorise
 } from '@/lib/questionnaire-de-connexion/types';
 import { useEffect, useRef, useState } from 'react';
 import { BarreDeProgression } from './BarreDeProgression';
@@ -48,10 +51,13 @@ type ChampEnErreur =
   | 'enregistrement'
   | null;
 
-/** La barre doit se voir amorcée dès la première question, sans promettre d'avancée. */
-const AMORCE_PROGRESSION = 5;
-const DELAI_AVANCE_PROFIL = 450;
-const DELAI_AVANCE_TERRITOIRE = 600;
+/** Tant que le profil n'est pas choisi, la séquence n'est pas connue : on cale la
+ * barre sur la plus longue pour ne pas surestimer l'avancée. */
+const ETAPES_MAX = Math.max(
+  ...PROFILS.map((option) => sequenceQuestions(option.value).length)
+);
+const DELAI_AVANCE_PROFIL = 0;
+const DELAI_AVANCE_TERRITOIRE = 50;
 
 const TITRES: Record<EtapeQuestionnaire, string> = {
   profil: 'Vous êtes',
@@ -90,11 +96,12 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
     setAvanceEnAttente(false);
   };
 
+  // L'avance reste « en attente » pendant l'enregistrement : `allerA` la lève au
+  // changement d'écran, sinon le CTA clignote le temps de l'aller-retour serveur.
   const armerAvance = (action: () => void, delai: number) => {
     setAvanceEnAttente(true);
     minuteur.current = setTimeout(() => {
       minuteur.current = null;
-      setAvanceEnAttente(false);
       action();
     }, delai);
   };
@@ -104,12 +111,11 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
   const sequence = sequenceQuestions(etat.profil);
   const indexEcran =
     ecran === 'remerciement' ? sequence.length : sequence.indexOf(ecran);
+  const nombreEtapes = etat.profil ? sequence.length : ETAPES_MAX;
   const pourcentage =
     ecran === 'remerciement'
       ? 100
-      : indexEcran === 0
-        ? AMORCE_PROGRESSION
-        : Math.round((indexEcran / sequence.length) * 100);
+      : Math.round(((indexEcran + 1) / nombreEtapes) * 100);
   const texteProgression =
     ecran === 'remerciement'
       ? 'Questionnaire terminé'
@@ -138,6 +144,7 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
     sequenceCourante: EtapeQuestionnaire[]
   ) => {
     if (!resultat.ok) {
+      annulerMinuteur();
       setChampEnErreur('enregistrement');
       return;
     }
@@ -153,11 +160,15 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
 
   const majProfil = (profil: Profil) => {
     const nouvelleSequence = sequenceQuestions(profil);
+    const territoireConserve =
+      nouvelleSequence.includes('territoire') &&
+      (!etat.typeTerritoire ||
+        typeTerritoireAutorise(profil, etat.typeTerritoire));
     setEtat((precedent) => ({
       ...precedent,
       profil,
       profilAutre: profil === 'autre' ? precedent.profilAutre : '',
-      ...(nouvelleSequence.includes('territoire')
+      ...(territoireConserve
         ? {}
         : {
             typeTerritoire: null,
@@ -169,7 +180,7 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
         ? {}
         : { optInBeta: false, emailRecontact: precedent.emailRecontact })
     }));
-    if (!nouvelleSequence.includes('territoire')) setTerritoireAbsent(false);
+    if (!territoireConserve) setTerritoireAbsent(false);
     setChampEnErreur(null);
   };
 
@@ -368,20 +379,17 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
 
   // ---- Rendu ----
 
-  // Le CTA n'apparaît que si la réponse demande une saisie, ou si la question a
-  // déjà une réponse (retour arrière, reprise) et qu'aucune avance n'est armée.
-  const reponseDejaDonnee =
-    (ecran === 'profil' && profilComplet(etat)) ||
-    (ecran === 'territoire' && territoireComplet(etat));
-
+  // Le CTA n'apparaît que là où il doit être cliqué : les questions dont un clic
+  // sur la réponse enchaîne tout seul s'en passent.
   const ctaVisible =
     ecran === 'besoins' ||
     ecran === 'beta' ||
     (ecran === 'profil' && etat.profil === 'autre') ||
     (ecran === 'territoire' &&
       !!etat.typeTerritoire &&
-      (!rechercheDuType(etat.typeTerritoire) || territoireAbsent)) ||
-    (!avanceEnAttente && reponseDejaDonnee);
+      (!rechercheDuType(etat.typeTerritoire) ||
+        territoireAbsent ||
+        (!avanceEnAttente && territoireComplet(etat))));
 
   const ctaDesactive =
     enCours ||
@@ -438,6 +446,7 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
           {ecran === 'territoire' && (
             <QuestionTerritoire
               titreRef={titreRef}
+              typesDisponibles={typesTerritoirePourProfil(etat.profil)}
               typeTerritoire={etat.typeTerritoire}
               territoireLibelle={etat.territoireLibelle}
               territoireCode={etat.territoireCode}

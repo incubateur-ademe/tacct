@@ -85,6 +85,7 @@ export const QuestionBesoins = ({
           value={besoinAutre}
           onChange={onChangementBesoinAutre}
           erreur={erreurBesoinAutre}
+          autoFocus
         />
       </div>
     )}

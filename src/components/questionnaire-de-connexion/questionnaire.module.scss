@@ -54,7 +54,7 @@ $blanc: #ffffff; // background-surface-white-default
 
 .contenu {
   width: 100%;
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
@@ -212,7 +212,8 @@ $blanc: #ffffff; // background-surface-white-default
 .pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  column-gap: 0.5rem;
 }
 
 .pill {
@@ -221,6 +222,7 @@ $blanc: #ffffff; // background-surface-white-default
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 0.875rem;
+  margin: 0.2rem 0 0.2rem;
   border: 1.5px solid $gris-bordure-hover;
   border-radius: 999px;
   background: $blanc;

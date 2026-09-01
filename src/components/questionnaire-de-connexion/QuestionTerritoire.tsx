@@ -2,20 +2,21 @@
 
 import { Body, H2 } from '@/design-system/base/Textes';
 import {
+  OptionTypeTerritoire,
   rechercheDuType,
-  TypeTerritoire,
-  TYPES_TERRITOIRE
+  TypeTerritoire
 } from '@/lib/questionnaire-de-connexion/types';
 import { Fragment, KeyboardEvent, RefObject } from 'react';
 import { ChampTexte } from './ChampTexte';
 import { COULEURS } from './couleurs';
 import styles from './questionnaire.module.scss';
-import { STYLE_TITRE_QUESTION } from './stylesTitres';
 import { BarreDeRechercheTerritoire } from './recherche/BarreDeRechercheTerritoire';
 import { LIBELLE_TERRITOIRE_ABSENT } from './recherche/fonctions';
+import { STYLE_TITRE_QUESTION } from './stylesTitres';
 
 interface Props {
   titreRef: RefObject<HTMLHeadingElement | null>;
+  typesDisponibles: readonly OptionTypeTerritoire[];
   typeTerritoire: TypeTerritoire | null;
   territoireLibelle: string;
   territoireCode: string;
@@ -32,6 +33,7 @@ interface Props {
 
 export const QuestionTerritoire = ({
   titreRef,
+  typesDisponibles,
   typeTerritoire,
   territoireLibelle,
   territoireCode,
@@ -51,7 +53,7 @@ export const QuestionTerritoire = ({
     const touches = ['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'];
     if (!touches.includes(event.key)) return;
     event.preventDefault();
-    const valeurs = TYPES_TERRITOIRE.map((option) => option.value);
+    const valeurs = typesDisponibles.map((option) => option.value);
     const indexCourant = typeTerritoire ? valeurs.indexOf(typeTerritoire) : 0;
     const sens =
       event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
@@ -81,7 +83,7 @@ export const QuestionTerritoire = ({
             className={styles.pills}
             onKeyDown={onNavigationClavier}
           >
-            {TYPES_TERRITOIRE.map((option, index) => (
+            {typesDisponibles.map((option, index) => (
               <Fragment key={option.value}>
                 <button
                   type="button"
@@ -103,7 +105,7 @@ export const QuestionTerritoire = ({
                 >
                   <Body
                     htmlTag="span"
-                    size="sm"
+                    size="md"
                     color={
                       typeTerritoire === option.value
                         ? COULEURS.texteTitre
@@ -116,9 +118,11 @@ export const QuestionTerritoire = ({
                     {option.label}
                   </Body>
                 </button>
-                {'sautDeLigne' in option && option.sautDeLigne && (
-                  <div className={styles.sautDeLigne} />
-                )}
+                {'sautDeLigne' in option &&
+                  option.sautDeLigne &&
+                  index < typesDisponibles.length - 1 && (
+                    <div className={styles.sautDeLigne} />
+                  )}
               </Fragment>
             ))}
           </div>

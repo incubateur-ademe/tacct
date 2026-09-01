@@ -60,8 +60,7 @@ export const QuestionProfil = ({
         style={{ maxWidth: '520px' }}
         margin="1rem 0 0"
       >
-        Un questionnaire rapide pour vous proposer des contenus adaptés à votre
-        profil. Environ 2 minutes.
+        Voici un rapide questionnaire pour vous proposer des contenus adaptés à votre profil (environ 2 minutes).
       </Body>
 
       <hr className={styles.separateur} />

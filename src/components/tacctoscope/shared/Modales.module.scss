@@ -16,7 +16,7 @@
   gap: 1.5rem;
   width: 100%;
   min-width: 0;
-  max-width: 524px;
+  max-width: 600px;
   padding: 2rem;
   border-radius: 4px;
   background: #ffffff;
@@ -48,11 +48,15 @@
 
 .title {
   margin: 0;
-  font-family: Marianne;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
   color: #161616;
+}
+
+.title.titleLarge {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .body {
@@ -78,6 +82,10 @@
 
 .footer.footerCompact > * {
   flex: 0 0 auto;
+}
+
+.footer.footerGapTight {
+  gap: 0.5rem;
 }
 
 .infoBlock {

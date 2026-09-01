@@ -17,10 +17,13 @@ export const ModaleQuitter = ({
 }: Props) => (
   <ConfirmModal
     isOpen={isOpen}
-    title="Voulez-vous quitter le questionnaire et vous déconnecter ?"
+    title="Voulez-vous quitter le questionnaire et vous déconnecter ?"
     message="Votre compte ProConnect sera conservé et vous pourrez reprendre le questionnaire plus tard."
     cancelLabel="Non, rester sur le questionnaire"
     confirmLabel="Oui, quitter"
+    compactFooter
+    tightFooterGap
+    largeTitle
     pending={pending}
     onClose={onClose}
     onConfirm={onConfirm}

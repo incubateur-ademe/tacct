@@ -132,6 +132,7 @@ export const BarreDeRechercheSansFiltre = ({
                   backgroundColor: 'white',
                   outline: 'none',
                   // fontStyle: "italic",
+                  fontSize: '1rem',
                   fontWeight: 400
                 }}
               />

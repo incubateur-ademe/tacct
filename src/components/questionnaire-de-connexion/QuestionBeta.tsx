@@ -47,10 +47,14 @@ export const QuestionBeta = ({
     <H2
       ref={titreRef}
       tabIndex={-1}
-      style={STYLE_TITRE_QUESTION}
+      style={{ ...STYLE_TITRE_QUESTION, margin: '0 0 0.25rem' }}
     >
-      Souhaitez-vous tester nos nouveautés en avant-première&nbsp;? (facultatif)
+      Souhaitez-vous tester les futures évolutions du site avant leur sortie&nbsp;? (facultatif)
     </H2>
+
+    <Body weight="medium" color={COULEURS.texteSubtil} margin="0 0 1.75rem">
+      (occasionnellement dans les prochains mois)
+    </Body>
 
     <div className={styles.blocBeta}>
       <div className={styles.encadreBeta}>
@@ -72,8 +76,7 @@ export const QuestionBeta = ({
             color={COULEURS.texteCorps}
             style={{ lineHeight: '1.5rem' }}
           >
-            J’accepte d’être recontacté·e pour participer à des tests de
-            fonctionnalités avant leur sortie.
+            J’accepte d’être recontacté·e pour participer à des tests dans les prochains mois
           </Body>
         </button>
         <Body

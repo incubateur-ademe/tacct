@@ -26,6 +26,8 @@ interface ModalProps {
   children: ReactNode;
   footer?: ReactNode;
   compactFooter?: boolean;
+  tightFooterGap?: boolean;
+  largeTitle?: boolean;
 }
 
 export const Modal = ({
@@ -35,7 +37,9 @@ export const Modal = ({
   icon,
   children,
   footer,
-  compactFooter = false
+  compactFooter = false,
+  tightFooterGap = false,
+  largeTitle = false
 }: ModalProps) => {
   const [mounted, setMounted] = useState(false);
 
@@ -85,14 +89,20 @@ export const Modal = ({
 
         <div className={styles.header}>
           {icon && <span className={styles.headerIcon}>{icon}</span>}
-          <p className={styles.title}>{title}</p>
+          <p
+            className={`${styles.title} ${largeTitle ? styles.titleLarge : ''}`}
+          >
+            {title}
+          </p>
         </div>
 
         <div className={styles.body}>{children}</div>
 
         {footer && (
           <div
-            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''}`}
+            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''} ${
+              tightFooterGap ? styles.footerGapTight : ''
+            }`}
           >
             {footer}
           </div>
@@ -112,6 +122,8 @@ interface ConfirmModalProps {
   cancelLabel?: string;
   pending?: boolean;
   compactFooter?: boolean;
+  tightFooterGap?: boolean;
+  largeTitle?: boolean;
   onConfirm: () => void;
   onClose: () => void;
 }
@@ -125,6 +137,8 @@ export const ConfirmModal = ({
   cancelLabel = 'Annuler',
   pending = false,
   compactFooter = false,
+  tightFooterGap = false,
+  largeTitle = false,
   onConfirm,
   onClose
 }: ConfirmModalProps) => (
@@ -134,6 +148,8 @@ export const ConfirmModal = ({
     title={title}
     icon={icon}
     compactFooter={compactFooter}
+    tightFooterGap={tightFooterGap}
+    largeTitle={largeTitle}
     footer={
       <>
         <BoutonSecondaireClassic

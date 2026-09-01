@@ -117,34 +117,43 @@ export const BarreDeRechercheTerritoire = ({
     onReinitialisation();
   };
 
+  const aucunResultat = !isLoading && territoires.length === 0;
+
   // Le lien « Mon territoire n'apparaît pas » vit sous la liste, donc hors du
-  // `role="listbox"` : il reste atteignable même quand la recherche ne renvoie rien.
+  // `role="listbox"` : ce n'est pas une option de la recherche.
   const PaperAvecAbsent = useMemo(() => {
     const Composant = ({ children, ...props }: PaperProps) => (
       <Paper {...props}>
         {children}
-        <button
-          type="button"
-          className={styles.optionAbsent}
-          onMouseDown={(event) => {
-            event.preventDefault();
-            setSelectedTerritoire(optionAbsente);
-            setOptions([optionAbsente]);
-            setInputValue(LIBELLE_TERRITOIRE_ABSENT);
-            setIsOpen(false);
-            absentRef.current();
-          }}
-        >
-          <span aria-hidden="true">+</span>
-          <Body htmlTag="span" size="sm" weight="medium" color={COULEURS.texteVert}>
-            {LIBELLE_TERRITOIRE_ABSENT}
-          </Body>
-        </button>
+        {aucunResultat && (
+          <button
+            type="button"
+            className={styles.optionAbsent}
+            onMouseDown={(event) => {
+              event.preventDefault();
+              setSelectedTerritoire(optionAbsente);
+              setOptions([optionAbsente]);
+              setInputValue(LIBELLE_TERRITOIRE_ABSENT);
+              setIsOpen(false);
+              absentRef.current();
+            }}
+          >
+            <span aria-hidden="true">+</span>
+            <Body
+              htmlTag="span"
+              size="sm"
+              weight="medium"
+              color={COULEURS.texteVert}
+            >
+              {LIBELLE_TERRITOIRE_ABSENT}
+            </Body>
+          </button>
+        )}
       </Paper>
     );
     Composant.displayName = 'PaperAvecAbsent';
     return Composant;
-  }, []);
+  }, [aucunResultat]);
 
   return (
     <div className={styles.wrapper}>
@@ -220,6 +229,7 @@ export const BarreDeRechercheTerritoire = ({
                 backgroundColor: 'white',
                 outline: 'none',
                 fontFamily: 'Marianne',
+                fontSize: '1rem',
                 fontWeight: 400
               }}
             />
