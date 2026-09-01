@@ -29,9 +29,8 @@ export async function GET(request: NextRequest) {
   const oidcError = searchParams.get('error');
 
   const fail = (reason: string) => {
-    const response = NextResponse.redirect(
-      `${getBaseUrl()}/mon-compte?error=${encodeURIComponent(reason)}`
-    );
+    console.error('proconnect callback error', reason);
+    const response = NextResponse.redirect(`${getBaseUrl()}/`);
     response.cookies.delete(RETURN_TO_COOKIE);
     return response;
   };

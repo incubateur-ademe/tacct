@@ -70,7 +70,7 @@ const MonEspace = async () => {
       membre_communaute: true
     }
   });
-  if (!user) redirect('/mon-compte');
+  if (!user) redirect('/api/proconnect/login');
 
   const answers = await getUserAnswers();
   const progress = getAllProgress(answers);

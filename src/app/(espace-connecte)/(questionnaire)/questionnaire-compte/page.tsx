@@ -11,11 +11,11 @@ export const metadata: Metadata = { title: 'Création de votre espace TACCT' };
 
 const PageQuestionnaire = async () => {
   const user = await getCurrentUser();
-  if (!user) redirect('/mon-compte');
+  if (!user) redirect('/api/proconnect/login');
   if (user.questionnaire_validated) redirect('/mon-espace');
 
   const etat = await chargerQuestionnaire();
-  if (!etat) redirect('/mon-compte');
+  if (!etat) redirect('/api/proconnect/login');
 
   return (
     <QuestionnaireFlow

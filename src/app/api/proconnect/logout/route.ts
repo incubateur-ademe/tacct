@@ -21,21 +21,21 @@ export async function GET(request: NextRequest) {
     return res;
   };
 
-  const toMonCompte = () =>
-    clearSession(NextResponse.redirect(`${getBaseUrl()}/mon-compte`));
+  const versAccueil = () =>
+    clearSession(NextResponse.redirect(`${getBaseUrl()}/`));
 
   const raw = request.cookies.get(cookieName)?.value;
-  if (!raw) return toMonCompte();
+  if (!raw) return versAccueil();
 
   let idToken: string | undefined;
   try {
     const session = await decodeUserSession(raw);
     idToken = session?.id_token || undefined;
   } catch {
-    return toMonCompte();
+    return versAccueil();
   }
 
-  if (!idToken) return toMonCompte();
+  if (!idToken) return versAccueil();
 
   try {
     const discovery = await getDiscovery();
@@ -53,6 +53,6 @@ export async function GET(request: NextRequest) {
     });
     return clearSession(NextResponse.redirect(endSessionUrl.toString()));
   } catch {
-    return toMonCompte();
+    return versAccueil();
   }
 }

@@ -96,7 +96,7 @@ export const accountItemComp = (
           className="flex flex-row items-center"
           onClick={() => {
             posthog.capture('click_bouton_mon_compte_header', { date: new Date() });
-            router.push('/mon-compte');
+            router.push('/api/proconnect/login');
           }}
           key="mon-compte-header"
           aria-label="Mon compte"

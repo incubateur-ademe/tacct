@@ -34,7 +34,7 @@ const CriterionPage = async ({ params }: Params) => {
   const criterion = getCriterionBySlug(critere);
   if (!criterion) notFound();
 
-  if (!user && !isPublicCriterion(criterion.slug)) redirect('/mon-compte');
+  if (!user && !isPublicCriterion(criterion.slug)) redirect('/api/proconnect/login');
 
   const allAnswers = await getUserAnswers();
 

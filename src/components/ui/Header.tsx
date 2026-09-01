@@ -177,7 +177,7 @@ const HeaderComp = () => {
 
   const showServiceTitle = !!(
     wide &&
-    (params === '/' || params === '/mon-compte' || isQuestionnaire)
+    (params === '/' || isQuestionnaire)
   );
 
   const isActiveDonneesTerritoire = [
@@ -194,7 +194,7 @@ const HeaderComp = () => {
   );
 
   const navigationItems: NavItem[] =
-    params !== '/' && params !== '/mon-compte' && !isQuestionnaire
+    params !== '/' && !isQuestionnaire
       ? [
         // {
         //   type: 'link',
