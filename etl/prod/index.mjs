@@ -3,10 +3,12 @@
 // Importé par etl/index.mjs, donc exécuté par le même cron nocturne.
 
 import { run as runBaserowCdm } from './runBaserowCdm.mjs';
+import { run as runBaserowTestsUtilisateurs } from './runBaserowTestsUtilisateurs.mjs';
 
 (async () => {
     if (process.env.NEXT_PUBLIC_ENV === 'production') {
         await runBaserowCdm({ apply: true });
+        await runBaserowTestsUtilisateurs({ apply: true });
     } else {
         console.log(
             `[etl/prod] NEXT_PUBLIC_ENV=${process.env.NEXT_PUBLIC_ENV ?? '(non défini)'} : ETL production ignorés.`
