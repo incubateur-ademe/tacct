@@ -49,11 +49,10 @@ export const QuestionBeta = ({
       tabIndex={-1}
       style={{ ...STYLE_TITRE_QUESTION, margin: '0 0 0.25rem' }}
     >
-      Souhaitez-vous tester les futures évolutions du site avant leur sortie&nbsp;? (facultatif)
-    </H2>
+      Souhaitez-vous tester les futures évolutions du site avant leur sortie ? <i>(facultatif)</i>    </H2>
 
-    <Body weight="medium" color={COULEURS.texteSubtil} margin="0 0 1.75rem">
-      (occasionnellement dans les prochains mois)
+    <Body weight="medium" color={COULEURS.texteSubtil} margin="0.5rem 0 1.75rem">
+      Nous vous recontacterons occasionnellement dans les prochains mois.
     </Body>
 
     <div className={styles.blocBeta}>
@@ -76,7 +75,7 @@ export const QuestionBeta = ({
             color={COULEURS.texteCorps}
             style={{ lineHeight: '1.5rem' }}
           >
-            J’accepte d’être recontacté·e pour participer à des tests dans les prochains mois
+            J’accepte d’être recontacté·e pour participer à des tests
           </Body>
         </button>
         <Body
@@ -85,8 +84,8 @@ export const QuestionBeta = ({
           margin="0.5rem 0 0"
           style={{ lineHeight: '1.25rem' }}
         >
-          Votre adresse sera utilisée uniquement pour vous inviter à tester des
-          fonctionnalités. Vous pouvez retirer votre accord à tout moment.{' '}
+          Votre adresse sera utilisée uniquement pour vous inviter à tester de futures évolutions du site. 
+          Vous pouvez retirer votre accord à tout moment.{' '}
           <Link
             href="/politique-de-confidentialite"
             target="_blank"
