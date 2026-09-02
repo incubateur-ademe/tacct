@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 import { buildQuestionKey } from '../keys';
-import { AnswerMap, AnswerValue } from '../types';
+import { AnswerMap, AnswerValue, CriterionSlug } from '../types';
 import { CRITERIA } from './criteria';
 
 /**
@@ -14,8 +14,8 @@ import { CRITERIA } from './criteria';
 export type RoadmapResourceTag =
   | 'donnees'
   | 'article'
-  | 'retour-experience'
-  | 'outil';
+  | 'reglementation'
+  | 'exemple-diagnostic';
 
 export interface RoadmapResource {
   tag: RoadmapResourceTag;
@@ -193,14 +193,68 @@ const LOREM_RECOMMENDATIONS: QuestionRecommendations = {
   satisfaisant: LOREM_RECOMMENDATION
 };
 
+const PROBLEMATISATION_Q1_RESSOURCES: RoadmapResource[] = [
+  {
+    tag: 'donnees',
+    title: 'Lorem ipsum - base de données territoriale',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    url: '',
+    utilite: LOREM_UTILITE
+  },
+  {
+    tag: 'article',
+    title: 'Lorem ipsum - article de synthèse',
+    description:
+      'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    url: '',
+    utilite: LOREM_UTILITE
+  },
+  {
+    tag: 'reglementation',
+    title: 'Lorem ipsum - cadre réglementaire',
+    description:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+    url: '',
+    utilite: LOREM_UTILITE
+  },
+  {
+    tag: 'exemple-diagnostic',
+    title: 'Lorem ipsum - exemple de diagnostic',
+    description:
+      'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    url: '',
+    utilite: LOREM_UTILITE
+  }
+];
+
+const PROBLEMATISATION_Q1: QuestionRecommendation = {
+  title: LOREM_RECO_TITLE,
+  description: LOREM_RECO_DESCRIPTION,
+  ressources: PROBLEMATISATION_Q1_RESSOURCES
+};
+
+const PROBLEMATISATION_ET_CONCLUSION: Record<string, QuestionRecommendations> = {
+  q1: {
+    absentPartiel: PROBLEMATISATION_Q1,
+    satisfaisant: PROBLEMATISATION_Q1
+  }
+};
+
+const RECOMMENDATIONS_PAR_CRITERE: Partial<
+  Record<CriterionSlug, Record<string, QuestionRecommendations>>
+> = {
+  'donnees-climatiques': DONNEES_CLIMATIQUES,
+  'problematisation-et-conclusion': PROBLEMATISATION_ET_CONCLUSION
+};
+
 export const ROADMAP_RECOMMENDATIONS: Record<string, QuestionRecommendations> =
   Object.fromEntries(
     CRITERIA.flatMap((criterion) =>
       criterion.questions.map((question) => [
         buildQuestionKey(criterion.slug, question.id),
-        criterion.slug === 'donnees-climatiques'
-          ? (DONNEES_CLIMATIQUES[question.id] ?? LOREM_RECOMMENDATIONS)
-          : LOREM_RECOMMENDATIONS
+        RECOMMENDATIONS_PAR_CRITERE[criterion.slug]?.[question.id] ??
+          LOREM_RECOMMENDATIONS
       ])
     )
   );

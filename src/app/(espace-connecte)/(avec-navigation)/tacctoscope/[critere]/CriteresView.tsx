@@ -4,7 +4,10 @@ import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBan
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
-import { SavePromptModal } from '@/components/tacctoscope/shared/Modales';
+import {
+  AccesReserveModal,
+  SavePromptModal
+} from '@/components/tacctoscope/shared/Modales';
 import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
@@ -26,6 +29,7 @@ interface Props {
   answers: AnswerMap;
   nextSlug: CriterionSlug | null;
   isAuthenticated: boolean;
+  isLoggedIn: boolean;
 }
 
 const BulbIcon = () => (
@@ -71,7 +75,8 @@ export const CriteresView = ({
   criterion,
   answers,
   nextSlug,
-  isAuthenticated
+  isAuthenticated,
+  isLoggedIn
 }: Props) => {
   const orderedKeys = criterion.questions.map((question) =>
     buildQuestionKey(criterion.slug, question.id)
@@ -248,14 +253,21 @@ export const CriteresView = ({
         </div>
       </NewContainer>
 
-      <SavePromptModal
-        isOpen={savePromptOpen}
-        onClose={() => setSavePromptOpen(false)}
-        onConfirm={() => {
-          const returnTo = encodeURIComponent(`/tacctoscope/${criterion.slug}`);
-          window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
-        }}
-      />
+      {isLoggedIn ? (
+        <AccesReserveModal
+          isOpen={savePromptOpen}
+          onClose={() => setSavePromptOpen(false)}
+        />
+      ) : (
+        <SavePromptModal
+          isOpen={savePromptOpen}
+          onClose={() => setSavePromptOpen(false)}
+          onConfirm={() => {
+            const returnTo = encodeURIComponent(`/tacctoscope/${criterion.slug}`);
+            window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
+          }}
+        />
+      )}
 
       <Toast
         key={toastKey}

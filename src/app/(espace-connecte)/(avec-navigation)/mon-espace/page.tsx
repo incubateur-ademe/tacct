@@ -1,5 +1,6 @@
 import { AncienEspaceCard } from '@/components/mon-espace/AncienEspaceCard';
 import { BlocAutre } from '@/components/mon-espace/BlocAutre';
+import { EluFormation } from '@/components/mon-espace/BlocEluFormation';
 import { BlocElu } from '@/components/mon-espace/BlocElu';
 import { BlocEntreprise } from '@/components/mon-espace/BlocEntreprise';
 import { BlocServiceTacct } from '@/components/mon-espace/BlocServiceTacct';
@@ -123,7 +124,12 @@ const MonEspace = async () => {
       labelMenu: 'Liens utiles',
       contenu: (
         <div className={styles.sectionInner}>
-          {estProfilElu(user.profil) && <EluPourAgir />}
+          {estProfilElu(user.profil) && (
+            <>
+              <EluPourAgir />
+              <EluFormation />
+            </>
+          )}
           {estProfilBe(user.profil) && (
             <>
               <BeAccompagnementEntreprises />

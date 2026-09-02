@@ -139,7 +139,7 @@ export const TacctoscopeCard = ({
                 text={
                   hasAnswers
                     ? 'Continuer l’analyse  →'
-                    : 'Commencer l’analyse de votre diagnostic  →'
+                    : 'Commencer l’analyse du diagnostic  →'
                 }
               />
             )}

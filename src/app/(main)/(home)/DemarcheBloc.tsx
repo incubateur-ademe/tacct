@@ -256,7 +256,7 @@ export const DemarcheBloc = () => {
                 <BoutonPrimaireClassic
                   size="md"
                   link="/tacctoscope"
-                  text="Commencer l'analyse de votre diagnostic"
+                  text="Commencer l'analyse du diagnostic"
                   iconeFin={<ArrowRightIcon />}
                   style={{ marginTop: '0.75rem' }}
                 />
