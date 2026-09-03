@@ -6,7 +6,7 @@ import {
   rechercheDuType,
   TypeTerritoire
 } from '@/lib/questionnaire-de-connexion/types';
-import { Fragment, KeyboardEvent, RefObject } from 'react';
+import { Fragment, KeyboardEvent, RefObject, useRef } from 'react';
 import { ChampTexte } from './ChampTexte';
 import { COULEURS } from './couleurs';
 import styles from './questionnaire.module.scss';
@@ -48,11 +48,13 @@ export const QuestionTerritoire = ({
   onChangementTerritoireAutre
 }: Props) => {
   const typeRecherche = rechercheDuType(typeTerritoire);
+  const focusRecherche = useRef(false);
 
   const onNavigationClavier = (event: KeyboardEvent<HTMLDivElement>) => {
     const touches = ['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft'];
     if (!touches.includes(event.key)) return;
     event.preventDefault();
+    focusRecherche.current = false;
     const valeurs = typesDisponibles.map((option) => option.value);
     const indexCourant = typeTerritoire ? valeurs.indexOf(typeTerritoire) : 0;
     const sens =
@@ -101,7 +103,10 @@ export const QuestionTerritoire = ({
                       ? styles.pillSelectionnee
                       : ''
                   }`}
-                  onClick={() => onChangementType(option.value)}
+                  onClick={() => {
+                    focusRecherche.current = true;
+                    onChangementType(option.value);
+                  }}
                 >
                   <Body
                     htmlTag="span"
@@ -145,6 +150,7 @@ export const QuestionTerritoire = ({
                   }
                   codeInitial={territoireAbsent ? '' : territoireCode}
                   enErreur={erreurRecherche}
+                  autoFocus={focusRecherche.current}
                   onSelection={onSelectionTerritoire}
                   onReinitialisation={onReinitialisationRecherche}
                   onTerritoireAbsent={onTerritoireAbsent}

@@ -164,6 +164,7 @@ export const ConfirmModal = ({
           text={confirmLabel}
           onClick={onConfirm}
           disabled={pending}
+          style={{ whiteSpace: 'pre-line', textAlign: 'center' }}
         />
       </>
     }
@@ -229,7 +230,7 @@ export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) =>
     }
     icon={<LockIcon />}
     cancelLabel={'Non, pas pour\nl’instant'}
-    confirmLabel="Oui, se connecter ou créer un compte"
+    confirmLabel={'Oui, se connecter\nou créer un compte'}
     onClose={onClose}
     onConfirm={onConfirm}
   />
@@ -301,7 +302,7 @@ export const SavePromptModal = ({
     }
     icon={<SaveIcon />}
     cancelLabel={'Non, pas pour\nl’instant'}
-    confirmLabel="Oui, se connecter ou créer un compte"
+    confirmLabel={'Oui, se connecter\nou créer un compte'}
     onClose={onClose}
     onConfirm={onConfirm}
   />

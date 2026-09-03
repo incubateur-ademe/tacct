@@ -22,6 +22,7 @@ interface Props {
   libelleInitial: string;
   codeInitial: string;
   enErreur: boolean;
+  autoFocus?: boolean;
   onSelection: (territoire: { code: string; libelle: string }) => void;
   onReinitialisation: () => void;
   onTerritoireAbsent: () => void;
@@ -32,6 +33,7 @@ export const BarreDeRechercheTerritoire = ({
   libelleInitial,
   codeInitial,
   enErreur,
+  autoFocus = false,
   onSelection,
   onReinitialisation,
   onTerritoireAbsent
@@ -215,6 +217,7 @@ export const BarreDeRechercheTerritoire = ({
           <div ref={params.InputProps.ref} className={styles.champWrapper}>
             <input
               {...params.inputProps}
+              autoFocus={autoFocus}
               aria-label="Rechercher votre territoire"
               aria-invalid={enErreur}
               placeholder="Saisir un territoire"

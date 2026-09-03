@@ -17,6 +17,11 @@ const normaliser = (valeur: string) =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
 
+const cleDeDebut = (valeur: string) =>
+  normaliser(valeur)
+    .replace(/[\s,'\u2019-]+/g, ' ')
+    .trim();
+
 export const PNR = async (variableCollectivite: string) => {
   const searchPattern = variableCollectivite + '%';
   const searchPatternSpace = '% ' + variableCollectivite + '%';
@@ -230,22 +235,7 @@ export const Commune = async (variableCollectivite: string) => {
 
 export const Departement = async (variableCollectivite: string) => {
   const searchPattern = variableCollectivite + '%';
-  const searchPatternSpace = '% ' + variableCollectivite + '%';
-  const searchPatternDash = '%-' + variableCollectivite + '%';
-  const searchPatternApostrophe = "%'" + variableCollectivite + '%';
-  const searchPatternSpaceReplace =
-    '% ' + variableCollectivite.replace(' ', '-') + '%';
-  const searchPatternDashReplace =
-    '%-' + variableCollectivite.replace(' ', '-') + '%';
-  const searchPatternSpaceComma =
-    '% ' + variableCollectivite.replace(' ', ', ') + '%';
-  const searchPatternDashComma =
-    '%-' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
-  const searchPatternSpaceSeparateurs =
-    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
-  const searchPatternDashSeparateurs =
-    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
@@ -265,19 +255,8 @@ export const Departement = async (variableCollectivite: string) => {
     FROM databases_v2."collectivites_searchbar" WHERE (departement IS NOT NULL AND code_geographique IS NULL) AND 
       (
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPattern})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpace})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDash})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternApostrophe})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceReplace})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
-        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
-        OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
       )
       ORDER BY index ASC LIMIT 20;
     `;
@@ -289,12 +268,12 @@ export const Departement = async (variableCollectivite: string) => {
 // On matche le texte saisi (nom ou code) contre regions.json, puis on vérifie en base
 // que ces codes portent bien des collectivités, avant de reconstruire le libellé.
 export const Region = async (variableCollectivite: string) => {
-  const recherche = normaliser(variableCollectivite);
+  const recherche = cleDeDebut(variableCollectivite);
   if (recherche.length === 0) return [];
 
   const regionsCorrespondantes = regions.filter(
     (region) =>
-      normaliser(region.nom).includes(recherche) ||
+      cleDeDebut(region.nom).startsWith(recherche) ||
       region.code.startsWith(variableCollectivite.trim())
   );
   if (regionsCorrespondantes.length === 0) return [];

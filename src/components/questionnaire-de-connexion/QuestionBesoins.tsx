@@ -13,6 +13,31 @@ import { COULEURS } from './couleurs';
 import styles from './questionnaire.module.scss';
 import { STYLE_TITRE_QUESTION } from './stylesTitres';
 
+const IconeErreur = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+    aria-hidden="true"
+    style={{ flexShrink: 0 }}
+  >
+    <circle
+      cx="10"
+      cy="10"
+      r="9"
+      stroke={COULEURS.rougeErreur}
+      strokeWidth="1.6"
+    />
+    <path
+      d="M7 7l6 6M13 7l-6 6"
+      stroke={COULEURS.rougeErreur}
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 interface Props {
   titreRef: RefObject<HTMLHeadingElement | null>;
   besoins: Besoin[];
@@ -48,7 +73,8 @@ export const QuestionBesoins = ({
 
     {messageAlerte && (
       <div role="alert" className={styles.alerte}>
-        <Body size="sm" color={COULEURS.texteErreur}>
+        <IconeErreur />
+        <Body size="sm" color={COULEURS.texteErreur} style={{ lineHeight: "1.25rem" }}>
           {messageAlerte}
         </Body>
       </div>

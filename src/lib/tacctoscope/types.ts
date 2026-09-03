@@ -34,7 +34,7 @@ export interface Option {
 interface QuestionBase {
   id: string;
   label: string;
-  text: RichContent;
+  text?: RichContent;
   section: SectionKind;
   minHint?: string;
   maxHint?: string;

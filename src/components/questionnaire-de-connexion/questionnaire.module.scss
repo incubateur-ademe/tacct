@@ -313,11 +313,12 @@ $blanc: #ffffff; // background-surface-white-default
 .alerte {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
   border-left: 4px solid $rouge-erreur;
   background: $rouge-fond;
+  border-radius: 0.5rem;
 }
 
 // ---- Q4 ----

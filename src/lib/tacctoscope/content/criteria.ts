@@ -78,9 +78,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'both',
         label:
           'Les paramètres de projections climatiques retenus dans le diagnostic ont une utilité pour expliquer certains impacts.',
-        text: 'TEXTE A COMPLETER',
         example: [
-          'Les conséquences des vagues de chaleur pour le territoire :',
+          'Les conséquences des vagues de chaleur pour le territoire :',
           [
             'surcharge des services médicaux',
             'hausse de la consommation d’énergie due à la climatisation',
