@@ -1,12 +1,12 @@
 // Récupère les emails de la table Baserow "CdM", filtrés (compte actif, hors BE),
-// les chiffre et les pousse dans tacct.baserow_communaute.
+// et met à jour tacct."user".membre_communaute par blind index : aucun email
+// n'est jamais stocké côté nous, email_bidx est un HMAC déterministe et non
+// réversible (même mécanisme que la recherche par email au login).
 //
 //   node etl/prod/runBaserowCdm.mjs            # DRY-RUN (compte, n'écrit rien)
 //   node etl/prod/runBaserowCdm.mjs --apply    # applique
-//
-// Table cible à créer au préalable : voir prisma/sql/create_baserow_communaute.sql
 
-import { createCipheriv, hkdfSync, randomBytes } from 'node:crypto';
+import { createHmac, hkdfSync } from 'node:crypto';
 import dotenv from 'dotenv';
 import fs from 'fs';
 import { join } from 'path';
@@ -26,23 +26,17 @@ const {
 } = process.env;
 
 // --- Crypto (copie canonique de src/lib/crypto/user-crypto.ts) -------------
-const ENC_PREFIX = 'enc:v1:';
 const HKDF_SALT = Buffer.from('tacct-user-crypto');
-const IV_LENGTH = 12;
 
 function deriveKeys(rawBase64) {
     const ikm = Buffer.from(rawBase64, 'base64');
     return {
-        enc: Buffer.from(hkdfSync('sha256', ikm, HKDF_SALT, 'tacct-user-enc', 32))
+        hmac: Buffer.from(hkdfSync('sha256', ikm, HKDF_SALT, 'tacct-user-bidx', 32))
     };
 }
 
-function encryptField(keys, plaintext) {
-    const iv = randomBytes(IV_LENGTH);
-    const cipher = createCipheriv('aes-256-gcm', keys.enc, iv);
-    const ct = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
-    const tag = cipher.getAuthTag();
-    return ENC_PREFIX + Buffer.concat([iv, tag, ct]).toString('base64');
+function blindIndex(keys, value) {
+    return createHmac('sha256', keys.hmac).update(value).digest('base64');
 }
 
 // --- Baserow -----------------------------------------------------------------
@@ -120,24 +114,15 @@ async function withPg(fn) {
     }
 }
 
-// Aucune clé de rapprochement avec Baserow n'est conservée (même l'id) : le
-// couplage d'un email chiffré à une ligne Baserow identifiable romprait
-// l'anonymisation. On repart donc de zéro à chaque run plutôt que d'upserter.
-async function replaceCommunaute(client, rows, keys) {
-    const sql = `INSERT INTO tacct.baserow_communaute (email) VALUES ($1)`;
-    await client.query('BEGIN');
-    try {
-        await client.query('TRUNCATE tacct.baserow_communaute');
-        for (const row of rows) {
-            const email = encryptField(keys, row['Email'].trim());
-            await client.query(sql, [email]);
-        }
-        await client.query('COMMIT');
-    } catch (err) {
-        await client.query('ROLLBACK');
-        throw err;
-    }
-    return rows.length;
+// Un seul UPDATE couvre ajouts et retraits : true pour les blind index qui
+// matchent, false pour tous les autres.
+async function majMembreCommunaute(client, rows, keys) {
+    const bidx = rows.map((row) => blindIndex(keys, row['Email'].trim()));
+    const result = await client.query(
+        `UPDATE tacct."user" SET membre_communaute = (email_bidx = ANY($1)) RETURNING membre_communaute`,
+        [bidx]
+    );
+    return { total: result.rowCount, membres: result.rows.filter((r) => r.membre_communaute).length };
 }
 
 // --- Main ------------------------------------------------------------------
@@ -169,12 +154,14 @@ export async function run({ apply }) {
     }
     const keys = deriveKeys(USER_ENCRYPTION_KEY);
 
-    const count = await withPg((client) =>
-        replaceCommunaute(client, lignesFiltrees, keys)
+    const { total: comptesTotal, membres: comptesMembre } = await withPg((client) =>
+        majMembreCommunaute(client, lignesFiltrees, keys)
     );
-    console.log(`[baserow-cdm] table remplacée : ${count} email(s) chiffré(s).`);
+    console.log(
+        `[baserow-cdm] membre_communaute mis à jour : ${comptesMembre}/${comptesTotal} compte(s) marqué(s) membre.`
+    );
 
-    return { total: rows.length, filtrees: lignesFiltrees.length, inseres: count };
+    return { total: rows.length, filtrees: lignesFiltrees.length, comptesTotal, comptesMembre };
 }
 
 // Exécution directe (node etl/prod/runBaserowCdm.mjs [--apply]) : indépendant

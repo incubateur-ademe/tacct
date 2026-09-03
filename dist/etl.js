@@ -1617,7 +1617,7 @@ var require_utils_webcrypto = __commonJS({
     var nodeCrypto = require("crypto");
     module2.exports = {
       postgresMd5PasswordHash,
-      randomBytes: randomBytes2,
+      randomBytes,
       deriveKey,
       sha256,
       hashByName,
@@ -1627,7 +1627,7 @@ var require_utils_webcrypto = __commonJS({
     var webCrypto = nodeCrypto.webcrypto || globalThis.crypto;
     var subtleCrypto = webCrypto.subtle;
     var textEncoder = new TextEncoder();
-    function randomBytes2(length) {
+    function randomBytes(length) {
       return webCrypto.getRandomValues(Buffer.alloc(length));
     }
     async function md5(string) {
@@ -5378,21 +5378,15 @@ var {
   BASEROW_TABLE_ID_CDM = "490425",
   USER_ENCRYPTION_KEY
 } = process.env;
-var ENC_PREFIX = "enc:v1:";
 var HKDF_SALT = Buffer.from("tacct-user-crypto");
-var IV_LENGTH = 12;
 function deriveKeys(rawBase64) {
   const ikm = Buffer.from(rawBase64, "base64");
   return {
-    enc: Buffer.from((0, import_node_crypto.hkdfSync)("sha256", ikm, HKDF_SALT, "tacct-user-enc", 32))
+    hmac: Buffer.from((0, import_node_crypto.hkdfSync)("sha256", ikm, HKDF_SALT, "tacct-user-bidx", 32))
   };
 }
-function encryptField(keys, plaintext) {
-  const iv = (0, import_node_crypto.randomBytes)(IV_LENGTH);
-  const cipher = (0, import_node_crypto.createCipheriv)("aes-256-gcm", keys.enc, iv);
-  const ct = Buffer.concat([cipher.update(plaintext, "utf8"), cipher.final()]);
-  const tag = cipher.getAuthTag();
-  return ENC_PREFIX + Buffer.concat([iv, tag, ct]).toString("base64");
+function blindIndex(keys, value) {
+  return (0, import_node_crypto.createHmac)("sha256", keys.hmac).update(value).digest("base64");
 }
 async function fetchBaserow(tableId) {
   const baseUrl = `${BASEROW_HOST}/api/database/rows/table/${tableId}/?user_field_names=true`;
@@ -5447,21 +5441,13 @@ async function withPg(fn) {
     await client.end();
   }
 }
-async function replaceCommunaute(client, rows, keys) {
-  const sql = `INSERT INTO tacct.baserow_communaute (email) VALUES ($1)`;
-  await client.query("BEGIN");
-  try {
-    await client.query("TRUNCATE tacct.baserow_communaute");
-    for (const row of rows) {
-      const email = encryptField(keys, row["Email"].trim());
-      await client.query(sql, [email]);
-    }
-    await client.query("COMMIT");
-  } catch (err) {
-    await client.query("ROLLBACK");
-    throw err;
-  }
-  return rows.length;
+async function majMembreCommunaute(client, rows, keys) {
+  const bidx = rows.map((row) => blindIndex(keys, row["Email"].trim()));
+  const result = await client.query(
+    `UPDATE tacct."user" SET membre_communaute = (email_bidx = ANY($1)) RETURNING membre_communaute`,
+    [bidx]
+  );
+  return { total: result.rowCount, membres: result.rows.filter((r) => r.membre_communaute).length };
 }
 async function run({ apply }) {
   if (!BASEROW_HOST || !BASEROW_API_KEY) {
@@ -5486,11 +5472,13 @@ async function run({ apply }) {
     throw new Error("USER_ENCRYPTION_KEY manquante");
   }
   const keys = deriveKeys(USER_ENCRYPTION_KEY);
-  const count = await withPg(
-    (client) => replaceCommunaute(client, lignesFiltrees, keys)
+  const { total: comptesTotal, membres: comptesMembre } = await withPg(
+    (client) => majMembreCommunaute(client, lignesFiltrees, keys)
   );
-  console.log(`[baserow-cdm] table remplac\xE9e : ${count} email(s) chiffr\xE9(s).`);
-  return { total: rows.length, filtrees: lignesFiltrees.length, inseres: count };
+  console.log(
+    `[baserow-cdm] membre_communaute mis \xE0 jour : ${comptesMembre}/${comptesTotal} compte(s) marqu\xE9(s) membre.`
+  );
+  return { total: rows.length, filtrees: lignesFiltrees.length, comptesTotal, comptesMembre };
 }
 var estAppelDirect = process.argv[1] && import_meta.url === (0, import_node_url.pathToFileURL)(process.argv[1]).href;
 if (estAppelDirect) {
@@ -5530,7 +5518,7 @@ function deriveKeys2(rawBase64) {
     hmac: Buffer.from((0, import_node_crypto2.hkdfSync)("sha256", ikm, HKDF_SALT2, "tacct-user-bidx", 32))
   };
 }
-function blindIndex(keys, value) {
+function blindIndex2(keys, value) {
   return (0, import_node_crypto2.createHmac)("sha256", keys.hmac).update(value).digest("base64");
 }
 function enteteBaserow() {
@@ -5656,7 +5644,7 @@ function calculerMisesAJour(rows, reponses, keys) {
       sansEmail++;
       continue;
     }
-    const tag = reponses.get(blindIndex(keys, email.trim()));
+    const tag = reponses.get(blindIndex2(keys, email.trim()));
     if (!tag) {
       sansCorrespondance++;
       continue;
