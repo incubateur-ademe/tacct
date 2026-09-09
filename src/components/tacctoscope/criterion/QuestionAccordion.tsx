@@ -120,11 +120,11 @@ export const QuestionAccordion = ({
               {question.counterExample}
             </ExampleCallout>
           </>
-        ) : (
+        ) : question.exampleKind ? (
           <ExampleCallout kind={question.exampleKind} attachments={question.exampleAttachments}>
             {question.example}
           </ExampleCallout>
-        )}
+        ) : null}
         <div className={styles.criterionQuestionBodyInside}>
           <Body size="md" weight="bold" color="#3D3D3D" style={{ paddingBottom: "1rem" }}>
             Retrouvez-vous ceci dans votre diagnostic ?

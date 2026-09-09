@@ -43,6 +43,13 @@ interface QuestionBase {
 export type Question = QuestionBase &
   (
     | {
+        exampleKind?: never;
+        example?: never;
+        exampleAttachments?: never;
+        counterExample?: never;
+        counterExampleAttachments?: never;
+      }
+    | {
         exampleKind: CalloutKind;
         example: RichContent;
         exampleAttachments?: string[];
