@@ -1,5 +1,4 @@
 import productLaunch from '@/assets/images/product-launch.png';
-import { ExportPdfButton } from '@/components/tacctoscope/roadmap/ExportPdfButton';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
@@ -62,7 +61,7 @@ const FeuilleDeRoutePage = async () => {
                 dans chacun des 5 critères d’analyse. Améliorez votre diagnostic
                 de vulnérabilité à votre rythme !
               </Body>
-              <ExportPdfButton />
+              {/* <ExportPdfButton /> */}
             </div>
             <Image
               src={productLaunch}

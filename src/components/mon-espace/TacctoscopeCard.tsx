@@ -52,7 +52,7 @@ export const TacctoscopeCard = ({
   const libelle =
     completed > 0
       ? `Vous avez complété ${completed}/${total} critères`
-      : `Vous avez commencé ${started} critères`;
+      : `Vous avez commencé ${started}/${total} critères`;
 
   return (
     <div className={styles.tacctoscope}>

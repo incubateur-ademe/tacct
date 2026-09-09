@@ -70,8 +70,7 @@ const MonEspace = async () => {
       profil: true,
       membre_communaute: true,
       territoire_type: true,
-      territoire_libelle: true,
-      territoire_autre: true
+      territoire_libelle: true
     }
   });
   if (!user) redirect('/api/proconnect/login');
@@ -85,7 +84,7 @@ const MonEspace = async () => {
   const isComplete = completed === CRITERIA.length;
   const recommendationCount = isComplete ? getRecommendationCount(answers) : 0;
 
-  const sections = sectionsEspace(user.profil);
+  const sections = sectionsEspace(user.profil, user.validated);
 
   const SECTIONS: Record<
     SectionEspace,
@@ -106,7 +105,7 @@ const MonEspace = async () => {
               total={CRITERIA.length}
             />
           )}
-          <AncienEspaceCard validated={user.validated} />
+          {user.validated && <AncienEspaceCard validated={user.validated} />}
         </div>
       )
     },
@@ -174,7 +173,6 @@ const MonEspace = async () => {
                 profil={user.profil}
                 territoireType={user.territoire_type}
                 territoireLibelle={user.territoire_libelle}
-                territoireAutre={user.territoire_autre}
               />
               {(estProfilElu(user.profil) ||
                 estProfilAdminEtat(user.profil)) && (

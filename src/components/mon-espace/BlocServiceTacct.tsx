@@ -6,10 +6,11 @@ import video from '@/assets/images/service_etat_video.png';
 import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { Body, H3 } from '@/design-system/base/Textes';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const LIEN_VIDEO =
   'https://www.canva.com/design/DAHK933zhTA/ZqJYu-iOTxkAq8MGY4W_Cg/watch?utm_content=DAHK933zhTA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6c09ff22fb';
-const LIEN_PRESENTATION = '';
+const LIEN_PRESENTATION = 'https://www.canva.com/design/DAHKAce9-t8/C4ZV_xBwQ5u-bJYuae5ahA/view?utm_content=DAHKAce9-t8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdb8d1d4fa9#6';
 
 const PlayIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
@@ -50,7 +51,17 @@ export const BlocServiceTacct = () => (
 
     <div className={styles.serviceTacctRessources}>
       <div className={styles.serviceTacctRessource}>
-        <Image src={video} alt="" />
+        {/* Raccourci vers la même cible que le bouton : masqué aux technologies
+            d'assistance et hors tabulation, pour ne pas dupliquer l'action. */}
+        <Link
+          href={LIEN_VIDEO}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <Image src={video} alt="" />
+        </Link>
         <BoutonSecondaireClassic
           size="md"
           link={LIEN_VIDEO}
@@ -63,12 +74,20 @@ export const BlocServiceTacct = () => (
         />
       </div>
       <div className={styles.serviceTacctRessource}>
-        <Image src={presentation} alt="" />
+        <Link
+          href={LIEN_PRESENTATION}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <Image src={presentation} alt="" />
+        </Link>
         <BoutonSecondaireClassic
           size="md"
           link={LIEN_PRESENTATION}
           rel="noopener noreferrer"
-          text="Télécharger la présentation (.pdf)"
+          text="Consulter la présentation"
           iconeFin={<TelechargerIcon />}
           couleurFond="#ECFFFD"
           couleurBordure="#038278"

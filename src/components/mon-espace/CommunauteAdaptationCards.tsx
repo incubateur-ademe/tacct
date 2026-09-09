@@ -21,7 +21,7 @@ import { Body, H3 } from '@/design-system/base/Textes';
 import Image, { StaticImageData } from 'next/image';
 
 const LIEN_CRENEAU = 'https://rdv.incubateur.ademe.fr/facili-tacct/echange-suivi';
-const LIEN_PORTAIL = 'https://communautes.ademe.fr/signup';
+const LIEN_PORTAIL = 'https://communautes.ademe.fr/topics/58078/feed';
 const LIEN_SESSION = 'https://tally.so/r/n0LrEZ';
 
 const AVANTAGES: {
@@ -30,25 +30,25 @@ const AVANTAGES: {
   fort: string;
   apres: string;
 }[] = [
-  {
-    icone: teamIcon,
-    avant: 'Un annuaire de plus de ',
-    fort: '400 chargé·es de mission',
-    apres: ''
-  },
-  {
-    icone: questionAnswerIcon,
-    avant: 'Une plateforme d’',
-    fort: 'échange et d’entraide',
-    apres: ''
-  },
-  {
-    icone: mapPinIcon,
-    avant: '',
-    fort: 'Tous types de territoires',
-    apres: ' représentés'
-  }
-];
+    {
+      icone: teamIcon,
+      avant: 'Un annuaire de plus de ',
+      fort: '400 chargé·es de mission',
+      apres: ''
+    },
+    {
+      icone: questionAnswerIcon,
+      avant: 'Une plateforme d’',
+      fort: 'échange et d’entraide',
+      apres: ''
+    },
+    {
+      icone: mapPinIcon,
+      avant: '',
+      fort: 'Tous types de territoires',
+      apres: ' représentés'
+    }
+  ];
 
 const titreStyle = {
   fontSize: '1.25rem',

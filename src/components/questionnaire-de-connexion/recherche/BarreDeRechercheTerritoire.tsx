@@ -188,19 +188,23 @@ export const BarreDeRechercheTerritoire = ({
           }
         }}
         onInputChange={(event, newInputValue, reason) => {
+          // `ReplaceSearchEpci` n'est utile qu'à la saisie, pour que la requête
+          // porte le libellé complet. Sur un `reset` (clic sur une option), MUI
+          // renvoie déjà le libellé abrégé : le réécrire rallongerait le champ.
+          if (reason !== 'input') {
+            setInputValue(newInputValue);
+            setIsOpen(false);
+            return;
+          }
           const value = ReplaceSearchEpci(newInputValue);
           setInputValue(value);
-          if (reason === 'input') {
-            onReinitialisation();
-            setSelectedTerritoire(null);
-            setIsOpen(value.length > 0);
-            if (value.length === 0) {
-              setOptions([]);
-            } else {
-              void fetchTerritoires(value);
-            }
+          onReinitialisation();
+          setSelectedTerritoire(null);
+          setIsOpen(value.length > 0);
+          if (value.length === 0) {
+            setOptions([]);
           } else {
-            setIsOpen(false);
+            void fetchTerritoires(value);
           }
         }}
         getOptionLabel={(option) =>

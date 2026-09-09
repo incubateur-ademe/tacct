@@ -32,7 +32,8 @@ export type SectionEspace =
   | 'suggestions';
 
 export const sectionsEspace = (
-  profil: string | null | undefined
+  profil: string | null | undefined,
+  validated: boolean
 ): SectionEspace[] => {
   if (profil === 'elu') {
     return ['communaute', 'outils', 'liens-utiles', 'suggestions'];
@@ -41,7 +42,11 @@ export const sectionsEspace = (
     return ['outils', 'communaute', 'suggestions'];
   }
   if (profil === 'be') {
-    return ['outils', 'liens-utiles', 'suggestions'];
+    // Outils ne contient pour ce profil que le bloc « ancien espace TACCT »,
+    // réservé aux comptes validés : sans lui, la section serait vide.
+    return validated
+      ? ['outils', 'liens-utiles', 'suggestions']
+      : ['liens-utiles', 'suggestions'];
   }
   if (profil === 'admin' || profil === 'etat') {
     return ['liens-utiles', 'suggestions'];

@@ -3,8 +3,22 @@ import avatar from '@/assets/svg/custom/avatar-profil.svg';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { PROFILS, TYPES_TERRITOIRE } from '@/lib/questionnaire-de-connexion/types';
+import { estProfilAutre } from '@/lib/segmentation';
 import { ReplaceDisplayEpci } from '@/lib/utils/string';
 import Image from 'next/image';
+
+// Libellés raccourcis propres au tag de la carte profil. `PROFILS` reste la
+// source de vérité du questionnaire et des autres écrans.
+const LIBELLES_COURTS: Record<string, string> = {
+  elu: 'Élu·e'
+};
+
+const libelleProfil = (profil: string | null): string | undefined => {
+  if (!profil || estProfilAutre(profil)) return undefined;
+  return (
+    LIBELLES_COURTS[profil] ?? PROFILS.find((p) => p.value === profil)?.label
+  );
+};
 
 const PinIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -22,7 +36,6 @@ interface Props {
   profil: string | null;
   territoireType: string | null;
   territoireLibelle: string | null;
-  territoireAutre: string | null;
 }
 
 export const ProfilCard = ({
@@ -31,18 +44,18 @@ export const ProfilCard = ({
   email,
   profil,
   territoireType,
-  territoireLibelle,
-  territoireAutre
+  territoireLibelle
 }: Props) => {
   const initiale = lastname.trim().charAt(0).toUpperCase();
-  const profilLabel = PROFILS.find((p) => p.value === profil)?.label;
+  const profilLabel = libelleProfil(profil);
   const territoireTypeLabel = TYPES_TERRITOIRE.find(
     (t) => t.value === territoireType
   )?.label;
-  const territoireNomBrut = territoireLibelle || territoireAutre;
-  const territoireNom = territoireNomBrut
-    ? ReplaceDisplayEpci(territoireNomBrut)
-    : territoireNomBrut;
+  // Un territoire saisi à la main n'est pas référencé : sans libellé, le bloc
+  // territoire entier disparaît.
+  const territoireNom = territoireLibelle
+    ? ReplaceDisplayEpci(territoireLibelle)
+    : null;
 
   return (
     <div className={styles.profil}>

@@ -160,7 +160,7 @@ $stripe: repeating-linear-gradient(
     z-index: 0;
 
     &:first-of-type {
-        top: -110px;
+        top: -170px;
         left: -60px;
     }
     &:last-of-type {
@@ -454,6 +454,7 @@ $stripe: repeating-linear-gradient(
     align-items: flex-end;
     justify-content: center;
     width: 100%;
+    margin-bottom: -3px;
 
     img {
         max-width: 380;
@@ -647,7 +648,7 @@ $stripe: repeating-linear-gradient(
 .carteSessionAccueilIllustration {
     position: absolute;
     right: 0;
-    bottom: 0;
+    bottom: -3px;
     z-index: 0;
     width: 340px;
     height: auto;
@@ -670,6 +671,7 @@ $stripe: repeating-linear-gradient(
     padding: 2rem 2rem 0;
     border-radius: 4px;
     overflow: hidden;
+    border: 1px solid #e7e5e5;
 
     @media screen and (max-width: 992px) {
         flex-direction: column;
@@ -736,6 +738,21 @@ $stripe: repeating-linear-gradient(
     align-items: center;
     gap: 1.5rem;
 
+    a {
+        display: block;
+        /* Le soulignement DSFR est un dégradé en fond sur [href]. */
+        background-image: none;
+        text-decoration: none;
+        /* DSFR teinte le fond au survol et au clic via ces deux variables. */
+        --hover-tint: transparent;
+        --active-tint: transparent;
+    }
+
+    /* L'icône « lien externe » du DSFR est un ::after sur [target=_blank]. */
+    a::after {
+        content: none;
+    }
+
     img {
         display: block;
         height: 200px;
@@ -753,6 +770,7 @@ $stripe: repeating-linear-gradient(
     padding: 2rem;
     border-radius: 4px;
     background-color: #ecfffd;
+    border: 1px solid #e7e5e5;
 }
 
 .ressourcesAdemeGrille {
