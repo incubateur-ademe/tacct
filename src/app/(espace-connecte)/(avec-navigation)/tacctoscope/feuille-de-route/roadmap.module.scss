@@ -373,6 +373,8 @@ $stripe: repeating-linear-gradient(
     font-size: 1rem;
     line-height: 1.5rem;
     color: $body;
+    /* Les \n du contenu font un retour à la ligne ; les espaces restent groupés. */
+    white-space: pre-line;
 }
 
 .recoQuestionLink {
@@ -654,6 +656,8 @@ $stripe: repeating-linear-gradient(
     flex-direction: column;
     gap: 1rem;
     min-width: 0;
+    /* Héritée par les paragraphes : les \n du contenu font un retour à la ligne. */
+    white-space: pre-line;
 }
 
 .ressourceModalBlock {

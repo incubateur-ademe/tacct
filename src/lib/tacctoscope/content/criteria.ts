@@ -52,7 +52,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
           'Les projections climatiques ont un horizon de réchauffement de +4° C à l’horizon 2100.',
         text: "Le niveau de réchauffement de 4° C (pour la métropole) et l’horizon temporel de fin de siècle sont les deux caractéristiques de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC), adoptée par la France pour fixer une cible commune d'adaptation.",
         example:
-          "Un certain nombre de diagnostics sont basés sur des scénarios climatiques fondés sur des hypothèses de réchauffement inférieures au +4° C retenus dans la TRACC pour la métropole. L’horizon temporel se limite souvent à 2050, ne permettant pas d'anticiper les évolutions attendues au-delà de cette échéance, désormais de court terme.",
+          "Un certain nombre de diagnostics sont basés sur des scénarios climatiques fondés sur des hypothèses de réchauffement inférieures au +4°C retenus dans la TRACC pour la métropole. L’horizon temporel se limite souvent à 2050, ne permettant pas d'anticiper les évolutions attendues au-delà de cette échéance, désormais de court terme.",
         minHint:
           'Les projections climatiques utilisées ne sont pas basées sur la TRACC.',
         maxHint:
@@ -65,8 +65,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Décrire son territoire, plutôt que le climat global',
         text: "Les projections à l'échelle mondiale, voire nationale, ne permettent pas aux acteurs locaux de se reconnaître. Le diagnostic de vulnérabilité doit se recentrer sur votre territoire.",
         example: [
-          'Les continents et les latitudes élevées se réchauffent beaucoup plus vite. Ainsi, la température en Arctique pourrait augmenter jusqu’à +11°C en 2100.',
-          '⇒ Cette affirmation est vraie. Pour autant, quelle compréhension de votre territoire apporte-t-elle ?'
+          '“Les continents et les latitudes élevées se réchauffent beaucoup plus vite. Ainsi, la température en Arctique pourrait augmenter jusqu’à +11°C en 2100.”',
+          'Cette affirmation est vraie. Pour autant, quelle compréhension de votre territoire apporte-t-elle ?'
         ],
         minHint: 'Les données climatiques mondiales sont très détaillées.',
         maxHint:
@@ -99,10 +99,11 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'exemple',
         label: 'Un exercice de qualification de l’exposition a été mené',
         text: "Cet exercice est destiné à identifier les aléas et les phénomènes climatiques qui ont le plus d'impacts sur votre territoire, en les priorisant entre eux.",
-        example: 'METTRE UN EXEMPLE',
-        minHint: 'Il n’y a aucune évaluation de l’exposition',
-        maxHint:
-          "Cet exercice est destiné à identifier les aléas et les phénomènes climatiques qui ont le plus d'impacts sur votre territoire, en les priorisant entre eux."
+        example:
+          'Diagnostic de vulnérabilité au changement climatique Rennes métropole - Janvier 2025',
+        exampleAttachments: ['/preuve-critere1-q5.webp'],
+        minHint: 'Il n’y a aucune évaluation de l’exposition.',
+        maxHint: 'L’exposition passée et future a été évaluée.'
       }
     ]
   },
@@ -164,7 +165,10 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         exampleKind: 'exemple',
-        exampleAttachments: ['/preuve-critere3-q1.webp', '/preuve-critere3-q1bis.webp'],
+        exampleAttachments: [
+          '/preuve-critere3-q1.webp',
+          '/preuve-critere3-q1bis.webp'
+        ],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
@@ -191,7 +195,10 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q4',
         section: 'enquete',
         exampleKind: 'contre-exemple',
-        exampleAttachments: ['/preuve-critere3-q4.webp', '/preuve-critere3-q4bis.webp'],
+        exampleAttachments: [
+          '/preuve-critere3-q4.webp',
+          '/preuve-critere3-q4bis.webp'
+        ],
         label: LOREM_LABEL,
         text: LOREM_QUESTION,
         example: LOREM_EXAMPLE
