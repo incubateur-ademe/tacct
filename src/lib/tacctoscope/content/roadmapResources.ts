@@ -1,3 +1,15 @@
+import RessourceCritere1Q1Non from '@/assets/images/ressource-critere1-q1-non.webp';
+import RessourceCritere1Q2Non from '@/assets/images/ressource-critere1-q2-non.webp';
+import RessourceCritere1Q2Nonbis from '@/assets/images/ressource-critere1-q2-nonbis.webp';
+import RessourceCritere1Q2Nonter from '@/assets/images/ressource-critere1-q2-nonter.webp';
+import RessourceCritere1Q5Non from '@/assets/images/ressource-critere1-q5-non.webp';
+import RessourceCritere2Q1Non from '@/assets/images/ressource-critere2-q1-non.webp';
+import RessourceCritere2Q2Non from '@/assets/images/ressource-critere2-q2-non.webp';
+import RessourceCritere3Q4Non from '@/assets/images/ressource-critere3-q4-non.webp';
+import RessourceCritere3Q4Nonbis from '@/assets/images/ressource-critere3-q4-nonbis.webp';
+import RessourceCritere3Q4Nonter from '@/assets/images/ressource-critere3-q4-nonter.webp';
+import RessourceCritere3Q5Non from '@/assets/images/ressource-critere3-q5-non.webp';
+import RessourceCritere4Q3Non from '@/assets/images/ressource-critere4-q3-non.webp';
 import type { StaticImageData } from 'next/image';
 import { buildQuestionKey } from '../keys';
 import { AnswerMap, AnswerValue, CriterionSlug } from '../types';
@@ -46,7 +58,8 @@ const DIAGNOSTIC_RENNES_METROPOLE: RoadmapResource = {
     'Il s’agit du diagnostic de vulnérabilité au changement climatique de la métropole de Rennes (Bretagne), réalisé en 2025.',
   url: 'https://www.audiar.org/publication/environnement/climat/diagnostic-et-vulnerabilite-au-changement-climatique-a-rennes-metropole/',
   utilite:
-    'Dans ce diagnostic de vulnérabilité, vous retrouverez l’usage des critères de notation de l’exposition actuelle et future.\n\nUn format de synthèse du diagnostic de vulnérabilité est également accessible.'
+    'Dans ce diagnostic de vulnérabilité, vous retrouverez l’usage des critères de notation de l’exposition actuelle et future.\n\nUn format de synthèse du diagnostic de vulnérabilité est également accessible.',
+  image: RessourceCritere1Q5Non
 };
 
 const DIAGNOSTIC_COEUR_DU_PAYS_HAUT: RoadmapResource = {
@@ -57,7 +70,8 @@ const DIAGNOSTIC_COEUR_DU_PAYS_HAUT: RoadmapResource = {
     'Il s’agit du diagnostic de vulnérabilité au changement climatique de la Communauté de communes Cœur du Pays Haut (région Grand Est), réalisé en 2023.',
   url: 'https://coeurdupayshaut.fr/gedExt/contenu/RESILIENCE-CLIMATIQUE/DiagnosticVulnerabiliteCPH_.pdf',
   utilite:
-    'C’est un exemple de diagnostic de vulnérabilité accordant une place centrale aux analyses de sensibilité et de vulnérabilité (voir les chapitres dédiés). De plus, ce document s’appuie sur le système de notation de la méthode TACCT (exposition actuelle, exposition future et sensibilité), ce qui permet d’identifier la vulnérabilité du territoire et de prioriser les enjeux clés.'
+    'C’est un exemple de diagnostic de vulnérabilité accordant une place centrale aux analyses de sensibilité et de vulnérabilité (voir les chapitres dédiés). De plus, ce document s’appuie sur le système de notation de la méthode TACCT (exposition actuelle, exposition future et sensibilité), ce qui permet d’identifier la vulnérabilité du territoire et de prioriser les enjeux clés.',
+  image: RessourceCritere2Q1Non
 };
 
 const DIAGNOSTIC_BARONNIES: RoadmapResource = {
@@ -68,7 +82,8 @@ const DIAGNOSTIC_BARONNIES: RoadmapResource = {
     'Il s’agit du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale.',
   url: 'https://www.cc-bdp.fr/wp-content/uploads/2024/12/202412_02b-Diagnostic-de-vulnerabilite_PCAET_CCBDP.pdf',
   utilite:
-    'Le diagnostic de vulnérabilité mentionne explicitement la gouvernance associée.\n\nUne partie du diagnostic de vulnérabilité est consacrée aux difficultés rencontrées et solutions apportées laissant une trace utile du processus de réalisation du document pour la future révision.\n\nL’annexe bibliographique permet de consulter le support utilisé en séance lors de l’atelier sur la sensibilité du territoire au changement climatique (p.78).'
+    'Le diagnostic de vulnérabilité mentionne explicitement la gouvernance associée.\n\nUne partie du diagnostic de vulnérabilité est consacrée aux difficultés rencontrées et solutions apportées laissant une trace utile du processus de réalisation du document pour la future révision.\n\nL’annexe bibliographique permet de consulter le support utilisé en séance lors de l’atelier sur la sensibilité du territoire au changement climatique (p.78).',
+  image: RessourceCritere3Q5Non
 };
 
 const DIAGNOSTIC_PNR_AUBRAC: RoadmapResource = {
@@ -78,7 +93,8 @@ const DIAGNOSTIC_PNR_AUBRAC: RoadmapResource = {
     'Il s’agit du rapport de vulnérabilité climatique du parc naturel régional de l’Aubrac.',
   url: 'https://www.parc-naturel-aubrac.fr/en-action/trajectoires-dadaptation-au-changement-climatique-des-territoires/',
   utilite:
-    'Le diagnostic de vulnérabilité présente des données d’exposition sur les horizons de temps 2050 et 2100.\n\nA partir de la page 66, l’analyse de la sensibilité est menée et permet de visualiser les résultats obtenus avec la matrice de vulnérabilité.'
+    'Le diagnostic de vulnérabilité présente des données d’exposition sur les horizons de temps 2050 et 2100.\n\nA partir de la page 66, l’analyse de la sensibilité est menée et permet de visualiser les résultats obtenus avec la matrice de vulnérabilité.',
+  image: RessourceCritere4Q3Non
 };
 
 const DONNEES_SENSIBILITE_TACCT: RoadmapResource = {
@@ -88,7 +104,8 @@ const DONNEES_SENSIBILITE_TACCT: RoadmapResource = {
     'La plateforme TACCT donne un accès direct à des données du territoire – socio-économiques, climatiques, environnementales.',
   url: 'https://tacct.ademe.fr/recherche-territoire',
   utilite:
-    'Il s’agit d’une sélection d’indicateurs permettant d’engager rapidement le dialogue avec les acteurs locaux, sur une base commune, et d’identifier ensemble les vulnérabilités du territoire face au changement climatique.'
+    'Il s’agit d’une sélection d’indicateurs permettant d’engager rapidement le dialogue avec les acteurs locaux, sur une base commune, et d’identifier ensemble les vulnérabilités du territoire face au changement climatique.',
+  image: RessourceCritere2Q2Non
 };
 
 const TEMOIGNAGE_RENNES_METROPOLE: RoadmapResource = {
@@ -98,7 +115,8 @@ const TEMOIGNAGE_RENNES_METROPOLE: RoadmapResource = {
     'Il s’agit de l’article “Réaliser votre diagnostic de vulnérabilité” qui reprend le témoignage de Clémence Noyau, chargée de mission adaptation au changement climatique à Rennes Métropole.',
   url: 'https://tacct.ademe.fr/ressources/demarrer-diagnostic-vulnerabilite/realiser-diagnostic-vulnerabilite',
   utilite:
-    'Il permet de comprendre la démarche suivie par une chargée de mission avec la place accordée à la donnée et aux temps de mobilisation. Cet article met en avant les apprentissages liés à la réalisation du diagnostic de vulnérabilité de la métropole et l’intérêt de mobiliser pour légitimer le diagnostic de vulnérabilité. “Pour moi, dans le diagnostic de vulnérabilité, le plus important, c’est le processus, c’est profiter de cette occasion pour aller rencontrer et mobiliser tout le monde sur ces questions” (Clémence Noyau).'
+    'Il permet de comprendre la démarche suivie par une chargée de mission avec la place accordée à la donnée et aux temps de mobilisation. Cet article met en avant les apprentissages liés à la réalisation du diagnostic de vulnérabilité de la métropole et l’intérêt de mobiliser pour légitimer le diagnostic de vulnérabilité. “Pour moi, dans le diagnostic de vulnérabilité, le plus important, c’est le processus, c’est profiter de cette occasion pour aller rencontrer et mobiliser tout le monde sur ces questions” (Clémence Noyau).',
+  image: RessourceCritere3Q4Non
 };
 
 const GUIDE_ENTRETIENS: RoadmapResource = {
@@ -108,7 +126,8 @@ const GUIDE_ENTRETIENS: RoadmapResource = {
     'Il s’agit de l’article “Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité” disponible dans notre collection “Associer les parties prenantes”.',
   url: 'https://tacct.ademe.fr/ressources/associer-parties-prenantes/entretien-adaptation',
   utilite:
-    'Les bases de données ne révèlent pas tout : elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain. Retrouvez ici les bonnes pratiques et un exemple de format simple pour mener des entretiens efficaces. Votre diagnostic de vulnérabilité parlera véritablement de votre territoire.'
+    'Les bases de données ne révèlent pas tout : elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain. Retrouvez ici les bonnes pratiques et un exemple de format simple pour mener des entretiens efficaces. Votre diagnostic de vulnérabilité parlera véritablement de votre territoire.',
+  image: RessourceCritere3Q4Nonbis
 };
 
 const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
@@ -118,7 +137,8 @@ const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
     'Retrouvez nos deux retours d’expériences de territoires ayant animé des ateliers pour évaluer leur sensibilité. Disponibles dans notre collection “Évaluer les impacts du changement climatique”.',
   url: 'https://tacct.ademe.fr/ressources/evaluer-impacts-changement-climatique',
   utilite:
-    'Découvrez les apprentissages liés à la réalisation d’ateliers sensibilité. Ces deux retours d’expériences proposent des déroulés d’ateliers, à personnaliser à votre contexte, pour évaluer la sensibilité de votre territoire.'
+    'Découvrez les apprentissages liés à la réalisation d’ateliers sensibilité. Ces deux retours d’expériences proposent des déroulés d’ateliers, à personnaliser à votre contexte, pour évaluer la sensibilité de votre territoire.',
+  image: RessourceCritere3Q4Nonter
 };
 
 const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
@@ -133,9 +153,10 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
           title: 'Base de données GASPAR',
           description:
             'La base de données GASPAR (Base nationale de Gestion ASsistée des Procédures Administratives relatives aux Risques) recense pour chaque commune les arrêtés de reconnaissance de l’état de catastrophe naturelle parus au Journal officiel depuis la création du dispositif en 1982.',
-          url: '',
+          url: 'https://ecologie.data.gouv.fr/datasets/536995eea3a729239d20486b',
           utilite:
-            'Ces données complètent les données climatiques passées, en apportant un éclairage sur les « aléas induits » (mouvements de terrain, submersion, inondations, coulées de boues…) dont la fréquence est susceptible d’évoluer avec le changement climatique.\n\nVisualisez ces données sur TACCT, dans notre thématique ‘Gestion des risques’, onglet ‘Données de mon territoire’.'
+            'Ces données complètent les données climatiques passées, en apportant un éclairage sur les « aléas induits » (mouvements de terrain, submersion, inondations, coulées de boues…) dont la fréquence est susceptible d’évoluer avec le changement climatique.\n\nVisualisez ces données sur TACCT, dans notre thématique ‘Gestion des risques’, onglet ‘Données de mon territoire’.',
+          image: RessourceCritere1Q1Non
         }
       ]
     },
@@ -159,7 +180,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
             'Climadiag Commune est un service de Météo France, en accès libre et gratuit, décrivant les évolutions potentielles du climat à l‘échelle des communes et des EPCI. Les indicateurs (températures moyennes, cumuls de précipitations,…) correspondent aux différents niveaux de réchauffement de la TRACC aux horizons 2030, 2050 et 2100. Ils sont organisés en cinq familles (climat, risques naturels, santé, agriculture, tourisme).',
           url: 'https://meteofrance.com/climadiag-commune',
           utilite:
-            'ClimaDiag Commune est un outil directement utilisable, sans nécessiter de compétences en climatologie ou en traitement de données, contrairement à d’autres outils, tel que DRIAS.'
+            'ClimaDiag Commune est un outil directement utilisable, sans nécessiter de compétences en climatologie ou en traitement de données, contrairement à d’autres outils, tel que DRIAS.',
+          image: RessourceCritere1Q2Non
         },
         {
           tag: 'reglementation',
@@ -168,7 +190,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
             "Il s’agit du décret relatif à la Trajectoire de Réchauffement de Référence pour l'Adaptation au Changement Climatique (TRACC) adoptée par la France.",
           url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399130',
           utilite:
-            "Le décret du 23 janvier 2026 précise les modalités de définition de la TRACC. C'est ce texte qui légitime l'usage par les territoires de la TRACC comme référence officielle dans les diagnostics de vulnérabilité."
+            "Le décret du 23 janvier 2026 précise les modalités de définition de la TRACC. C'est ce texte qui légitime l'usage par les territoires de la TRACC comme référence officielle dans les diagnostics de vulnérabilité.",
+          image: RessourceCritere1Q2Nonbis
         },
         {
           tag: 'reglementation',
@@ -177,7 +200,8 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
             "Il s’agit de l’arrêté du 23 janvier 2026 fixant les niveaux de réchauffement de la Trajectoire de Réchauffement de Référence pour l'Adaptation au Changement Climatique.",
           url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053399165',
           utilite:
-            "L'arrêté du 23 janvier 2026 définit les niveaux de réchauffement (par rapport à l'ère préindustrielle) à différents horizons temporels pour la métropole et les territoires ultramarins."
+            "L'arrêté du 23 janvier 2026 définit les niveaux de réchauffement (par rapport à l'ère préindustrielle) à différents horizons temporels pour la métropole et les territoires ultramarins.",
+          image: RessourceCritere1Q2Nonter
         }
       ]
     },
