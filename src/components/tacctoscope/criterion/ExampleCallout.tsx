@@ -1,10 +1,13 @@
+'use client';
+
 import thumbDown from '@/assets/icons/thumb-down.svg';
 import thumbUp from '@/assets/icons/thumb-up.svg';
 import { Body } from '@/design-system/base/Textes';
 import { CalloutKind, RichContent } from '@/lib/tacctoscope/types';
-import JSZip from 'jszip';
 import Image from 'next/image';
+import { useState } from 'react';
 import { RichText } from '../shared/RichText';
+import { CasReelModal } from './CasReelModal';
 import styles from './criterion.module.scss';
 
 interface Props {
@@ -24,34 +27,8 @@ const DocIcon = ({ color }: { color: string }) => (
   </svg>
 );
 
-const triggerDownload = (href: string, filename: string) => {
-  const link = document.createElement('a');
-  link.href = href;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
-const downloadAttachments = async (attachments: string[]) => {
-  if (attachments.length === 1) {
-    const attachment = attachments[0];
-    triggerDownload(attachment, attachment.split('/').pop() ?? attachment);
-    return;
-  }
-
-  const zip = new JSZip();
-  for (const attachment of attachments) {
-    const blob = await (await fetch(attachment)).blob();
-    zip.file(attachment.split('/').pop() ?? attachment, blob);
-  }
-  const zipBlob = await zip.generateAsync({ type: 'blob' });
-  const zipUrl = URL.createObjectURL(zipBlob);
-  triggerDownload(zipUrl, 'cas-reel.zip');
-  URL.revokeObjectURL(zipUrl);
-};
-
 export const ExampleCallout = ({ kind, children, attachments }: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isExemple = kind === 'exemple';
   const accentColor = isExemple ? '#095D55' : '#CE0041';
   return (
@@ -79,16 +56,24 @@ export const ExampleCallout = ({ kind, children, attachments }: Props) => {
         style={{ fontStyle: 'italic', lineHeight: 1.5 }}
       />
       {attachments && attachments.length > 0 && (
-        <button
-          type="button"
-          onClick={() => void downloadAttachments(attachments)}
-          className={styles.criterionExampleCalloutAttachment}
-        >
-          <DocIcon color={accentColor} />
-          <Body htmlTag="span" weight="medium" color={accentColor}>
-            Voir un cas réel
-          </Body>
-        </button>
+        <>
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className={styles.criterionExampleCalloutAttachment}
+          >
+            <DocIcon color={accentColor} />
+            <Body htmlTag="span" weight="medium" color={accentColor}>
+              Voir le cas réel
+            </Body>
+          </button>
+          <CasReelModal
+            attachments={attachments}
+            accentColor={accentColor}
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        </>
       )}
     </div>
   );
