@@ -24,7 +24,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         exampleKind: 'exemple',
-        label: 'Le diagnostic comprend des observations climatiques passées.',
+        label: 'Le diagnostic comprend des observations climatiques passées',
         text: "Il s'agit de données climatiques mesurées, ou de phénomènes observés, sur votre territoire (températures, précipitations, événements extrêmes, etc.).",
         example:
           'Lors des épisodes caniculaires de 2003 et 2023, 10 des 14 stations météorologiques du territoire ont enregistré les journées les plus chaudes depuis 1947.',
@@ -65,9 +65,9 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'both',
         label:
-          'Les paramètres de projections climatiques retenus dans le diagnostic ont une utilité pour expliquer certains impacts.',
+          'Les paramètres de projections climatiques retenus dans le diagnostic ont une utilité pour expliquer certains impacts',
         example: [
-          'Les conséquences des vagues de chaleur pour le territoire :',
+          'Les conséquences des vagues de chaleur pour le territoire :',
           [
             'surcharge des services médicaux',
             'hausse de la consommation d’énergie due à la climatisation',
@@ -85,7 +85,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q5',
         section: 'enquete',
         exampleKind: 'exemple',
-        label: 'Un exercice de qualification de l’exposition a été mené.',
+        label: 'Un exercice de qualification de l’exposition a été mené',
         text: "Cet exercice est destiné à identifier les aléas et les phénomènes climatiques qui ont le plus d'impacts sur votre territoire, en les priorisant entre eux.",
         example:
           'Diagnostic de vulnérabilité au changement climatique Rennes métropole - Janvier 2025',
@@ -104,7 +104,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'exemple',
         label:
-          'La majeure partie du diagnostic est dédiée à l’analyse des impacts.',
+          'La majeure partie du diagnostic est dédiée à l’analyse des impacts',
         text: 'L’analyse de la sensibilité vise à recenser de façon empirique les principales conséquences (ou impacts) observées ou pressenties de l’évolution du climat sur votre territoire. La table des matières de votre diagnostic permet de vérifier rapidement la place qui lui est accordée.',
         example:
           'Table des matières du diagnostic de vulnérabilité de la communauté de communes Cœur du Pays Haut - 2024',
@@ -119,7 +119,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'exemple',
         label:
-          'Le diagnostic de vulnérabilité recense des facteurs de sensibilité du territoire.',
+          'Le diagnostic de vulnérabilité recense des facteurs de sensibilité du territoire',
         text: 'Les facteurs de sensibilité, ce sont les caractéristiques qui rendent un territoire plus fragile face à un aléa (par exemple, la densité urbaine ou la présence de populations fragiles). Autrement dit, des caractéristiques socio-économiques ou environnementales qui amplifient les impacts d’un aléa climatique.',
         example:
           'Le pourcentage de personnes de plus de 75 ans est un facteur de sensibilité du territoire qui aggrave le risque de surmortalité (l’impact) due aux fortes chaleurs.',
@@ -130,7 +130,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'analyse',
         exampleKind: 'both',
-        label: 'Les impacts identifiés sont spécifiques au territoire analysé.',
+        label: 'Les impacts identifiés sont spécifiques au territoire analysé',
         text: 'Les impacts sont les conséquences observées ou attendues du changement climatique sur les populations, l’économie locale, les ressources naturelles, etc.',
         example:
           "Le diagnostic de vulnérabilité de la Vallée de Villé (2024) comprend une coupure de presse. Cet article ancré dans un cas réel rend le changement climatique concret et incarné. Même limité à un cas particulier, il illustre des décisions d'adaptation prises face à des contraintes réelles — ce qui aide bien mieux à se projeter qu'une liste d’impacts génériques du changement climatique sur l’arboriculture.",
@@ -144,8 +144,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q4',
         section: 'analyse',
-        label:
-          'Les sources des données utilisées et faits relatés sont citées.',
+        label: 'Les sources des données utilisées et faits relatés sont citées',
         text: 'Il s’agit de citer les bases de données consultées avec date de consultation, les producteurs des données, les références des rapports cités et des articles de presse utilisés, etc.',
         minHint: 'Beaucoup de sources manquent.',
         maxHint: 'Aucune source ne manque.'
@@ -153,7 +152,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q5',
         section: 'enquete',
-        label: 'Un exercice de qualification de la sensibilité a été mené.',
+        label: 'Un exercice de qualification de la sensibilité a été mené',
         text: 'Cet exercice est destiné à hiérarchiser les impacts au sein d’une même thématique, puis les thématiques entre elles.',
         minHint: 'Aucune évaluation de la gravité des impacts n’a été menée.',
         maxHint: 'La gravité des impacts a été évaluée.'
@@ -169,7 +168,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'exemple',
         label:
-          "L'approche méthodologique utilisée est mentionnée dans le document.",
+          "L'approche méthodologique utilisée est mentionnée dans le document",
         text: 'Par approche méthodologique, on entend l’ensemble des choix qui structurent le diagnostic : définition des concepts utilisés, partis pris méthodologique, logique d’ensemble, mais aussi types de sources et de données mobilisées, méthode de recueil, critères de priorisation...',
         example:
           'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)',
@@ -180,7 +179,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q2',
         section: 'analyse',
-        label: 'La description des impacts est accompagnée de verbatims.',
+        label: 'La description des impacts est accompagnée de verbatims',
         text: 'Un verbatim est la reproduction intégrale de propos prononcés ou écrits.',
         minHint: 'Aucun verbatim ne figure dans le diagnostic.',
         maxHint: 'Des verbatims sont retranscrits.'
@@ -190,7 +189,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'exemple',
         label:
-          'Le diagnostic fait référence à des actions déjà menées sur le territoire.',
+          'Le diagnostic fait référence à des actions déjà menées sur le territoire',
         text: 'Il peut s’agir d’actions d’adaptation, de plans ou de dispositifs existants sur lesquels s’appuyer pour agir, menés par la collectivité ou par d’autres acteurs du territoire.',
         example:
           'Face à l’impact « mise en tension des capacités des systèmes de santé » lors des fortes chaleurs, la ville de Marseille recense des dispositifs prêts à l’action pour en réduire les effets. Atelier Santé lors de la démarche d’adaptation au changement climatique de la ville de Marseille. (2026)',
@@ -204,7 +203,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'enquete',
         exampleKind: 'exemple',
         label:
-          'La construction du diagnostic s’est appuyée sur des temps d’échange avec les acteurs du territoire.',
+          'La construction du diagnostic s’est appuyée sur des temps d’échange avec les acteurs du territoire',
         text: "L’analyse des données doit être confrontée au ressenti des acteurs du territoire. Cette dimension d'échange n'est pas un simple complément méthodologique mais une nécessité.",
         example: [
           [
@@ -225,7 +224,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q5',
         section: 'enquete',
         exampleKind: 'exemple',
-        label: 'Une trace des travaux menés reste consultable.',
+        label: 'Une trace des travaux menés reste consultable',
         text: 'Il peut s’agir de relevés de décision, de comptes-rendus d’ateliers ou d’entretiens, de tableurs de données, de supports de réunions, de rapports ayant servis de source, etc.',
         example:
           'Annexe “CCBDP. (2023, mars). Compte rendu de l’atelier sur la sensibilité du territoire au changement climatique.” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
@@ -244,7 +243,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'exemple',
         label:
-          'Une section de la table des matières mentionne ouvertement la vulnérabilité du territoire.',
+          'Une section de la table des matières mentionne ouvertement la vulnérabilité du territoire',
         text: "La vulnérabilité résulte du croisement entre l'exposition aux aléas climatiques et la sensibilité du territoire. Son analyse constitue une étape distincte des deux précédentes qui mérite une section dédiée.",
         example:
           'Table des matières du diagnostic de vulnérabilité de la Communauté de communes du Pays de Sainte Odile',
@@ -255,7 +254,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q2',
         section: 'analyse',
-        label: 'Le choix des enjeux prioritaires est objectivé.',
+        label: 'Le choix des enjeux prioritaires est objectivé',
         text: 'Les enjeux sont ce que l’on gagne ou que l’on perd si le territoire n’agit pas pour s’adapter (autrement dit ce qui est “en jeu”).',
         minHint: 'Il n’y a pas de priorisation des enjeux.',
         maxHint: 'Les choix sont objectivés.'
@@ -264,7 +263,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'analyse',
         exampleKind: 'both',
-        label: 'Le diagnostic comporte une matrice de vulnérabilité.',
+        label: 'Le diagnostic comporte une matrice de vulnérabilité',
         text: 'La matrice de vulnérabilité est le résultat du croisement entre exposition et sensibilité.',
         example:
           'Aubrac 2050 - Extrait du rapport de vulnérabilité climatique Communauté des Communes Aubrac - Carladez - Viadène, (pp.77-79)',
@@ -285,7 +284,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         label:
-          'La conclusion du diagnostic de vulnérabilité invite à poursuivre le travail vers la stratégie.',
+          'La conclusion du diagnostic de vulnérabilité invite à poursuivre le travail vers la stratégie',
         minHint: 'La conclusion ne mentionne pas de suite.',
         maxHint: 'La conclusion mentionne la suite de la démarche d’adaptation.'
       },
@@ -293,7 +292,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q2',
         section: 'enquete',
         exampleKind: 'exemple',
-        label: 'Une problématique claire est identifiée.',
+        label: 'Une problématique claire est identifiée',
         text: "La problématique est la reformulation d'un enjeu constaté en un défi politique ouvert.",
         example: [
           "Aléa — Les sécheresses estivales vont s'intensifier, avec des étiages de cours d'eau plus précoces et plus longs.",
@@ -307,7 +306,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'enquete',
         label:
-          "Les résultats du diagnostic sont restitués aux acteurs du territoire, dans le cadre de temps d'échange dédiés.",
+          "Les résultats du diagnostic sont restitués aux acteurs du territoire, dans le cadre de temps d'échange dédiés",
         text: 'Il s’agit de temps dédiés (réunion, atelier) pour présenter, expliquer et échanger autour des résultats du diagnostic, par opposition à une diffusion passive (publication, envoi de document).',
         minHint: 'Aucune restitution n’a eu lieu.',
         maxHint: 'Une restitution a eu lieu.'

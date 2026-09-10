@@ -13,6 +13,31 @@ const ReturnIcon = () => (
   </svg>
 );
 
+type DescriptionBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'list'; items: string[] };
+
+/* Les lignes commençant par « • » sont regroupées en liste pour obtenir un
+   retrait pendant sur les puces qui débordent sur plusieurs lignes. */
+const parseDescription = (description: string): DescriptionBlock[] =>
+  description
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .reduce<DescriptionBlock[]>((blocks, line) => {
+      if (!line.startsWith('•')) {
+        return [...blocks, { type: 'paragraph', text: line }];
+      }
+      const item = line.slice(1).trim();
+      const last = blocks[blocks.length - 1];
+      return last?.type === 'list'
+        ? [
+            ...blocks.slice(0, -1),
+            { type: 'list', items: [...last.items, item] }
+          ]
+        : [...blocks, { type: 'list', items: [item] }];
+    }, []);
+
 interface Props {
   slug: CriterionSlug;
   questionId: string;
@@ -28,7 +53,19 @@ export const RecommendationBlock = ({
 }: Props) => (
   <article className={styles.recoCard}>
     <h3 className={styles.recoTitle}>{recommendation.title}</h3>
-    <p className={styles.recoDescription}>{recommendation.description}</p>
+    <div className={styles.recoDescription}>
+      {parseDescription(recommendation.description).map((block, index) =>
+        block.type === 'list' ? (
+          <ul key={index} className={styles.recoList}>
+            {block.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p key={index}>{block.text}</p>
+        )
+      )}
+    </div>
     <div className={styles.recoQuestionLink}>
       <Link
         href={`/tacctoscope/${slug}#question-${slug}-${questionId}`}
