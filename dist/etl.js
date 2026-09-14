@@ -5827,6 +5827,36 @@ async function insertThematique(client, rows) {
   }
   return inserted;
 }
+async function insertTacctoscopeRessources(client, rows) {
+  const sql = `
+    INSERT INTO analytics.tacctoscope_ressources
+      (event_timestamp, session_id, person_id, ressource_url, ressource_titre, ressource_tag)
+    VALUES ($1::timestamptz, $2::text, $3::text, $4::text, $5::text, $6::text)
+    ON CONFLICT ON CONSTRAINT uq_tacctoscope_ressources_natural DO NOTHING
+  `;
+  let inserted = 0;
+  for (const row of rows) {
+    if (!Array.isArray(row)) continue;
+    const [
+      ts,
+      session_id,
+      person_id,
+      ressource_url,
+      ressource_titre,
+      ressource_tag
+    ] = row;
+    await client.query(sql, [
+      ts,
+      session_id ?? "",
+      person_id ?? "",
+      ressource_url ?? "",
+      ressource_titre ?? "",
+      ressource_tag ?? ""
+    ]);
+    inserted++;
+  }
+  return inserted;
+}
 async function fetchPosthog(query) {
   const url = `${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`;
   const resp = await fetch(url, {
@@ -5891,6 +5921,13 @@ function injectWindow(hogql, startIso) {
       table: "thematique",
       insertFunction: insertThematique,
       description: "\xC9v\xE9nements de th\xE9matique"
+    },
+    {
+      name: "tacctoscope_ressources",
+      sqlFile: "./etl/queries/tacctoscope_ressources.hogql.sql",
+      table: "tacctoscope_ressources",
+      insertFunction: insertTacctoscopeRessources,
+      description: "Clics sur les ressources de la feuille de route du tacctoscope"
     }
   ];
   console.log(`[ETL] D\xE9but du processus avec ${etlQueries.length} requ\xEAtes`);
