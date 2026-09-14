@@ -5,6 +5,8 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { RessourceTag } from './RessourceTag';
@@ -58,6 +60,8 @@ interface Props {
 
 export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
+  const posthog = usePostHog();
+  const router = useRouter();
 
   useEffect(() => setMounted(true), []);
 
@@ -86,6 +90,21 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   if (!mounted || !isOpen) return null;
 
   const externe = ressource.url.startsWith('https');
+
+  // Navigation reprise ici : BoutonPrimaireClassic la court-circuite dès qu'un `onClick` est fourni.
+  const handleRessourceClick = () => {
+    posthog.capture('tacctoscope_ressource_consultée', {
+      date: new Date(),
+      ressource_url: ressource.url,
+      ressource_titre: ressource.title,
+      ressource_tag: ressource.tag
+    });
+    if (externe) {
+      window.open(ressource.url, '_blank', 'noopener,noreferrer');
+    } else {
+      router.push(ressource.url);
+    }
+  };
 
   return createPortal(
     <div className={styles.ressourceModalOverlay} onClick={onClose}>
@@ -157,6 +176,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
               text={externe ? 'Accéder à la ressource' : 'Consulter la ressource'}
               link={ressource.url}
               rel={externe ? 'noopener noreferrer' : undefined}
+              onClick={handleRessourceClick}
               iconeFin={externe ? <ExternalLinkIcon /> : <ArrowRightIcon />}
             />
           </div>
