@@ -100,9 +100,8 @@ export const Modal = ({
 
         {footer && (
           <div
-            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''} ${
-              tightFooterGap ? styles.footerGapTight : ''
-            }`}
+            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''} ${tightFooterGap ? styles.footerGapTight : ''
+              }`}
           >
             {footer}
           </div>
@@ -296,7 +295,7 @@ export const SavePromptModal = ({
         Si vous souhaitez enregistrer vos réponses, créez un compte ou
         connectez-vous.
         <InfoBlock>
-          Les critères suivants sont réservés à certains profils d'utilisateurs.
+          Cette fonctionnalité est réservée à certains profils d'utilisateurs
         </InfoBlock>
       </>
     }
