@@ -3,8 +3,10 @@
 import { getLastTerritory } from '@/components/searchbar/fonctions';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
+import { appliquerSuperProprietesUtilisateur } from '@/lib/analytics/superProprietes';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePostHog } from 'posthog-js/react';
 import { type ReactNode, useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { Brand } from '../Brand';
@@ -53,7 +55,19 @@ type NavItem =
     links: NavLink[];
   };
 
+type UtilisateurConnecte = {
+  id: string;
+  username: string;
+  email: string;
+  firstname: string;
+  lastname: string;
+  questionnaire_validated: boolean;
+};
+
+type ReponseUtilisateur = { user: UtilisateurConnecte | null };
+
 const HeaderComp = () => {
+  const posthog = usePostHog();
   const searchParams = useSearchParams();
   const router = useRouter();
   const params = usePathname();
@@ -74,22 +88,21 @@ const HeaderComp = () => {
   const [displayType, setDisplayType] = useState<
     'epci' | 'commune' | 'departement' | 'ept' | 'petr' | 'pnr' | null
   >(urlType);
-  const [user, setUser] = useState<null | {
-    username: string;
-    email: string;
-    firstname: string;
-    lastname: string;
-  }>(null);
+  const [user, setUser] = useState<UtilisateurConnecte | null>(null);
   const [showLoginToast, setShowLoginToast] = useState(false);
   const isQuestionnaire = params === '/questionnaire-compte';
 
   useEffect(() => {
+    const appliquer = (utilisateur: UtilisateurConnecte | null) => {
+      setUser(utilisateur);
+      appliquerSuperProprietesUtilisateur(posthog, utilisateur?.id ?? null);
+    };
     fetch('/api/proconnect/me')
-      .then((r) => r.json())
+      .then((r) => r.json() as Promise<ReponseUtilisateur>)
       // Un compte dont le questionnaire n'est pas validé n'ouvre encore aucun accès.
-      .then((d) => setUser(d.user?.questionnaire_validated ? d.user : null))
-      .catch(() => setUser(null));
-  }, []);
+      .then((d) => appliquer(d.user?.questionnaire_validated ? d.user : null))
+      .catch(() => appliquer(null));
+  }, [posthog]);
 
   useEffect(() => {
     const login = searchParams.get('login') === 'success';
