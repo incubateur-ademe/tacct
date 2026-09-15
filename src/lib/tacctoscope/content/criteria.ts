@@ -5,9 +5,6 @@ import { Criterion, CRITERION_SLUGS, CriterionSlug, Question } from '../types';
  * Seuls les `chapeau` des critères 2 à 5 restent à rédiger.
  */
 
-const CHAPEAU_A_REDIGER =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod ?';
-
 interface CriterionContent {
   title: string;
   chapeau: string;
@@ -97,7 +94,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'donnees-socio-economiques': {
     title: 'Données socio-économiques',
-    chapeau: CHAPEAU_A_REDIGER,
+    chapeau: "Les sensibilités territoriales sont documentées avec des indicateurs socio-économiques pertinents.",
     questions: [
       {
         id: 'q1',
@@ -161,7 +158,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'dialogue-et-partage': {
     title: 'Dialogue et partage',
-    chapeau: CHAPEAU_A_REDIGER,
+    chapeau: "Le diagnostic a été construit collectivement avec les parties prenantes du territoire.",
     questions: [
       {
         id: 'q1',
@@ -236,7 +233,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'priorisation-des-impacts': {
     title: 'Priorisation des impacts',
-    chapeau: CHAPEAU_A_REDIGER,
+    chapeau: "Les impacts identifiés sont hiérarchisés de manière explicite et justifiée.",
     questions: [
       {
         id: 'q1',
@@ -278,7 +275,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'problematisation-et-conclusion': {
     title: 'Problématisation et conclusion',
-    chapeau: CHAPEAU_A_REDIGER,
+    chapeau: "Le diagnostic débouche sur des problèmes territoriaux actionnables, pas seulement des constats.",
     questions: [
       {
         id: 'q1',
