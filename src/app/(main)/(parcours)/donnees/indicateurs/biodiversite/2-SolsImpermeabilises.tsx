@@ -88,13 +88,14 @@ export const SolsImpermeabilises = (props: {
                 />
                 <div
                   className={styles.legend}
-style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: 8,
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }}                >
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 8,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                  }}                >
                   <Body weight="bold">
                     - Nombre d’hectares d’espaces naturels, agricoles ou forestiers consommés -
                   </Body>
