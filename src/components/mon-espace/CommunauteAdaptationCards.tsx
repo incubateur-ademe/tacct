@@ -54,7 +54,8 @@ const titreStyle = {
   fontSize: '1.25rem',
   lineHeight: '1.75rem',
   letterSpacing: 0,
-  margin: 0
+  margin: 0,
+  padding: "0 3rem"
 };
 
 const CartesMembre = () => (
@@ -80,7 +81,7 @@ const CartesMembre = () => (
         <H3 color="#038278" style={titreStyle}>
           Demandez un échange de suivi individuel !
         </H3>
-        <Body color="#3d3d3d" style={{ marginBottom: "1.5rem" }}>
+        <Body color="#3d3d3d" style={{ marginBottom: "1rem", padding: "0 3rem" }}>
           Une discussion avec notre équipe pour vous aiguiller dans votre
           démarche.
         </Body>
@@ -109,7 +110,7 @@ const CartesMembre = () => (
         <H3 color="#2b4b49" style={titreStyle}>
           Découvrez l’espace communauté en ligne
         </H3>
-        <Body color="#3d3d3d" style={{ marginBottom: "1.5rem" }}>
+        <Body color="#3d3d3d" style={{ marginBottom: "1rem", padding: "0 3rem" }}>
           Une plateforme d’entraide réunissant plus de 400 chargé·es de mission
         </Body>
         <BoutonSecondaireClassic
