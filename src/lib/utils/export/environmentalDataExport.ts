@@ -416,7 +416,7 @@ export const IndicatorExportTransformations = {
           latitude: el.latitude,
           longitude: el.longitude,
           point_d_eau: el.nom_site,
-          qualite_eau_2024: el.qualite
+          qualite_eau_2025: el.qualite
         };
       });
     }
