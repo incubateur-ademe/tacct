@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import sessionAccueil from '@/assets/images/session-accueil.png';
 import captureTacct from '@/assets/images/tacct-image-screenshot.png';
 import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';
@@ -42,14 +42,15 @@ export const AncienEspaceCard = ({ validated }: { validated: boolean }) => (
         />
       )}
     </div>
-    {validated ? (
-      <div className={styles.ancienEspaceImage}>
-        <Image src={captureTacct} alt="" width={244} height={137} />
-      </div>
-    ) : (
-      <div>
-        <Image src={sessionAccueil} alt="" width={244} height={137} />
-      </div>
-    )}
+    {
+      validated ?
+        <div className={styles.ancienEspaceImage}>
+          <Image src={captureTacct} alt="" width={244} height={137} />
+        </div>
+        :
+        <div>
+          <Image src={sessionAccueil} alt="" width={244} height={137} />
+        </div>
+    }
   </div>
 );

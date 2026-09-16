@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import hautDePageIcon from '@/assets/icons/haut_de_page_icon_green.svg';
 import { Body } from '@/design-system/base/Textes';
 import Image from 'next/image';

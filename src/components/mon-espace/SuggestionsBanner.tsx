@@ -1,6 +1,6 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import enveloppeIcon from '@/assets/icons/enveloppe_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H3 } from '@/design-system/base/Textes';
@@ -30,7 +30,7 @@ export const SuggestionsBanner = () => (
       size="md"
       link={LIEN_COMMENTAIRE}
       rel="noopener noreferrer"
-      text="Contacter l'équipe"
+      text="Partagez vos retours"
       icone={enveloppeIcon}
     />
   </div>

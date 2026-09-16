@@ -1,11 +1,11 @@
+import { randomBytes } from 'crypto';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   decodeUserSession,
   getBaseUrl,
   getDiscovery,
   sessionCookieName
 } from '@/lib/auth/moncompteademe';
-import { randomBytes } from 'crypto';
-import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const cookieName = sessionCookieName();
@@ -21,27 +21,30 @@ export async function GET(request: NextRequest) {
     return res;
   };
 
-  const toMonCompte = () =>
-    clearSession(NextResponse.redirect(`${getBaseUrl()}/mon-compte`));
+  const versAccueil = () =>
+    clearSession(NextResponse.redirect(`${getBaseUrl()}/`));
 
   const raw = request.cookies.get(cookieName)?.value;
-  if (!raw) return toMonCompte();
+  if (!raw) return versAccueil();
 
   let idToken: string | undefined;
   try {
     const session = await decodeUserSession(raw);
     idToken = session?.id_token || undefined;
   } catch {
-    return toMonCompte();
+    return versAccueil();
   }
 
-  if (!idToken) return toMonCompte();
+  if (!idToken) return versAccueil();
 
   try {
     const discovery = await getDiscovery();
     const endSessionUrl = new URL(discovery.end_session_endpoint);
     endSessionUrl.searchParams.set('id_token_hint', idToken);
-    endSessionUrl.searchParams.set('post_logout_redirect_uri', getBaseUrl());
+    endSessionUrl.searchParams.set(
+      'post_logout_redirect_uri',
+      getBaseUrl()
+    );
     endSessionUrl.searchParams.set('state', randomBytes(16).toString('hex'));
     console.log('[ProConnect logout] paramètres envoyés', {
       end_session_endpoint: discovery.end_session_endpoint,
@@ -50,6 +53,6 @@ export async function GET(request: NextRequest) {
     });
     return clearSession(NextResponse.redirect(endSessionUrl.toString()));
   } catch {
-    return toMonCompte();
+    return versAccueil();
   }
 }

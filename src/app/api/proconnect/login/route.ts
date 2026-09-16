@@ -1,13 +1,15 @@
 import { randomBytes } from 'crypto';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import {
   getClientId,
   getDiscovery,
   getRedirectUri,
-  MON_COMPTE_ADEME_SCOPES
+  MON_COMPTE_ADEME_SCOPES,
+  RETURN_TO_COOKIE,
+  sanitizeReturnTo
 } from '@/lib/auth/moncompteademe';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   let discovery;
   try {
     discovery = await getDiscovery();
@@ -44,6 +46,18 @@ export async function GET() {
     secure: isSecure,
     maxAge: 300
   });
+
+  const returnTo = sanitizeReturnTo(
+    request.nextUrl.searchParams.get('returnTo')
+  );
+  if (returnTo) {
+    response.cookies.set(RETURN_TO_COOKIE, returnTo, {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: isSecure,
+      maxAge: 300
+    });
+  }
 
   return response;
 }

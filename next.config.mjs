@@ -194,6 +194,13 @@ const config = {
     },
     async redirects() {
         return [
+            // La page /mon-compte a disparu : la connexion se fait depuis le
+            // header et l'espace personnel est servi sous /mon-espace.
+            {
+                source: '/mon-compte',
+                destination: '/',
+                permanent: true
+            },
             {
                 source: '/workspace',
                 destination: '/workspace-tacct',
