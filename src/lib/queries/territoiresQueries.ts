@@ -4,6 +4,12 @@ import {
 } from '../postgres/models';
 import { prisma as PrismaPostgres } from './db';
 
+// Chaque séparateur saisi devient `_` (joker LIKE d'un caractère) : c'est le seul
+// moyen d'atteindre les libellés qui mélangent espaces et tirets (Le Verdon-sur-Mer),
+// que les remplacements uniformes espace→tiret ou espace→virgule ne couvrent pas.
+const neutraliserSeparateurs = (valeur: string) =>
+  valeur.replace(/[\s,-]+/g, '_');
+
 export const PNR = async (variableCollectivite: string) => {
   const searchPattern = variableCollectivite + '%';
   const searchPatternSpace = '% ' + variableCollectivite + '%';
@@ -17,6 +23,11 @@ export const PNR = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternSpaceSeparateurs =
+    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternDashSeparateurs =
+    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
@@ -43,6 +54,9 @@ export const PNR = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
@@ -65,6 +79,11 @@ export const PETR = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternSpaceSeparateurs =
+    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternDashSeparateurs =
+    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
@@ -91,6 +110,9 @@ export const PETR = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
       )
       LIMIT 20;
     `;
@@ -110,6 +132,11 @@ export const EPCI = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternSpaceSeparateurs =
+    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternDashSeparateurs =
+    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
   const searchPatternGuillemetsFr = '%«' + variableCollectivite + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
@@ -142,6 +169,9 @@ export const EPCI = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternGuillemetsFr})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
@@ -158,6 +188,7 @@ export const Commune = async (variableCollectivite: string) => {
   const startPattern = variableCollectivite + '%';
   const startPatternDash = variableCollectivite.replace(/ /g, '-') + '%';
   const startPatternComma = variableCollectivite.replace(/ /g, ', ') + '%';
+  const startPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
     search_code,
@@ -178,6 +209,7 @@ export const Commune = async (variableCollectivite: string) => {
         unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPattern})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPatternDash})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPatternComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${startPatternSeparateurs})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${startPattern})
       )
       ORDER BY
@@ -202,6 +234,11 @@ export const Departement = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternSpaceSeparateurs =
+    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternDashSeparateurs =
+    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbar[]>`
     SELECT 
@@ -228,6 +265,9 @@ export const Departement = async (variableCollectivite: string) => {
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
         OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
+        OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPattern})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternSpace})
         OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${searchPatternDash})
@@ -246,6 +286,8 @@ export const AllTerritoires = async (variableCollectivite: string) => {
   const communeStartPattern = variableCollectivite + '%';
   const communeStartPatternDash = variableCollectivite.replace(/ /g, '-') + '%';
   const communeStartPatternComma = variableCollectivite.replace(/ /g, ', ') + '%';
+  const communeStartPatternSeparateurs =
+    neutraliserSeparateurs(variableCollectivite) + '%';
 
   const searchPattern = variableCollectivite + '%';
   const searchPatternSpace = '% ' + variableCollectivite + '%';
@@ -259,6 +301,11 @@ export const AllTerritoires = async (variableCollectivite: string) => {
     '% ' + variableCollectivite.replace(' ', ', ') + '%';
   const searchPatternDashComma =
     '%-' + variableCollectivite.replace(' ', ', ') + '%';
+  const searchPatternSeparateurs = neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternSpaceSeparateurs =
+    '% ' + neutraliserSeparateurs(variableCollectivite) + '%';
+  const searchPatternDashSeparateurs =
+    '%-' + neutraliserSeparateurs(variableCollectivite) + '%';
 
   const value = await PrismaPostgres.$queryRaw<CollectivitesSearchbarWithType[]>`
     SELECT
@@ -290,6 +337,7 @@ export const AllTerritoires = async (variableCollectivite: string) => {
             unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPattern})
             OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPatternDash})
             OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPatternComma})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${communeStartPatternSeparateurs})
             OR unaccent('unaccent', search_code) ILIKE unaccent('unaccent', ${communeStartPattern})
           )
         )
@@ -312,6 +360,9 @@ export const AllTerritoires = async (variableCollectivite: string) => {
             OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashReplace})
             OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceComma})
             OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashComma})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSeparateurs})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternSpaceSeparateurs})
+            OR unaccent('unaccent', search_libelle) ILIKE unaccent('unaccent', ${searchPatternDashSeparateurs})
           )
         )
       )

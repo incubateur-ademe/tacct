@@ -193,7 +193,7 @@ export type Project_sheet_questionGroupByOutputType = {
   _max: Project_sheet_questionMaxAggregateOutputType | null
 }
 
-type GetProject_sheet_questionGroupByPayload<T extends project_sheet_questionGroupByArgs> = Prisma.PrismaPromise<
+export type GetProject_sheet_questionGroupByPayload<T extends project_sheet_questionGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Project_sheet_questionGroupByOutputType, T['by']> &
       {
@@ -1297,6 +1297,11 @@ export type project_sheet_questionFindManyArgs<ExtArgs extends runtime.Types.Ext
    * Skip the first `n` project_sheet_questions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of project_sheet_questions.
+   */
   distinct?: Prisma.Project_sheet_questionScalarFieldEnum | Prisma.Project_sheet_questionScalarFieldEnum[]
 }
 

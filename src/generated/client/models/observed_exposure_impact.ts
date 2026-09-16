@@ -137,7 +137,7 @@ export type Observed_exposure_impactGroupByOutputType = {
   _max: Observed_exposure_impactMaxAggregateOutputType | null
 }
 
-type GetObserved_exposure_impactGroupByPayload<T extends observed_exposure_impactGroupByArgs> = Prisma.PrismaPromise<
+export type GetObserved_exposure_impactGroupByPayload<T extends observed_exposure_impactGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Observed_exposure_impactGroupByOutputType, T['by']> &
       {
@@ -1126,6 +1126,11 @@ export type observed_exposure_impactFindManyArgs<ExtArgs extends runtime.Types.E
    * Skip the first `n` observed_exposure_impacts.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of observed_exposure_impacts.
+   */
   distinct?: Prisma.Observed_exposure_impactScalarFieldEnum | Prisma.Observed_exposure_impactScalarFieldEnum[]
 }
 

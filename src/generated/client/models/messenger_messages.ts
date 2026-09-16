@@ -206,7 +206,7 @@ export type Messenger_messagesGroupByOutputType = {
   _max: Messenger_messagesMaxAggregateOutputType | null
 }
 
-type GetMessenger_messagesGroupByPayload<T extends messenger_messagesGroupByArgs> = Prisma.PrismaPromise<
+export type GetMessenger_messagesGroupByPayload<T extends messenger_messagesGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Messenger_messagesGroupByOutputType, T['by']> &
       {
@@ -1054,6 +1054,11 @@ export type messenger_messagesFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` messenger_messages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of messenger_messages.
+   */
   distinct?: Prisma.Messenger_messagesScalarFieldEnum | Prisma.Messenger_messagesScalarFieldEnum[]
 }
 

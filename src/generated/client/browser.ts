@@ -388,11 +388,6 @@ export type user = Prisma.userModel
  */
 export type user_study = Prisma.user_studyModel
 /**
- * Model baserow_communaute
- * 
- */
-export type baserow_communaute = Prisma.baserow_communauteModel
-/**
  * Model user_besoin
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */

@@ -263,7 +263,7 @@ export type Databases_v2_agricultureGroupByOutputType = {
   _max: Databases_v2_agricultureMaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_agricultureGroupByPayload<T extends databases_v2_agricultureGroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_agricultureGroupByPayload<T extends databases_v2_agricultureGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_agricultureGroupByOutputType, T['by']> &
       {
@@ -1294,6 +1294,11 @@ export type databases_v2_agricultureFindManyArgs<ExtArgs extends runtime.Types.E
    * Skip the first `n` databases_v2_agricultures.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_agricultures.
+   */
   distinct?: Prisma.Databases_v2_agricultureScalarFieldEnum | Prisma.Databases_v2_agricultureScalarFieldEnum[]
 }
 

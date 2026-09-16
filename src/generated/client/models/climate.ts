@@ -172,7 +172,7 @@ export type ClimateGroupByOutputType = {
   _max: ClimateMaxAggregateOutputType | null
 }
 
-type GetClimateGroupByPayload<T extends climateGroupByArgs> = Prisma.PrismaPromise<
+export type GetClimateGroupByPayload<T extends climateGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ClimateGroupByOutputType, T['by']> &
       {
@@ -1140,6 +1140,11 @@ export type climateFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Skip the first `n` climates.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of climates.
+   */
   distinct?: Prisma.ClimateScalarFieldEnum | Prisma.ClimateScalarFieldEnum[]
 }
 

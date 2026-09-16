@@ -3,14 +3,23 @@ import React from 'react';
 export const H1 = ({
   children,
   color = "#23282B",
-  style
+  style,
+  id,
+  ref,
+  tabIndex
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
+  id?: string;
+  ref?: React.Ref<HTMLHeadingElement>;
+  tabIndex?: number;
 }) => {
   return (
     <h1
+      id={id}
+      ref={ref}
+      tabIndex={tabIndex}
       className="ds-h1"
       style={{
         color: color,
@@ -28,14 +37,23 @@ export const H1 = ({
 export const H2 = ({
   children,
   color = "#23282B",
-  style
+  style,
+  id,
+  ref,
+  tabIndex
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
+  id?: string;
+  ref?: React.Ref<HTMLHeadingElement>;
+  tabIndex?: number;
 }) => {
   return (
     <h2
+      id={id}
+      ref={ref}
+      tabIndex={tabIndex}
       className="ds-h2"
       style={{
         color: color,
@@ -56,16 +74,22 @@ export const H3 = ({
   children,
   color = "#23282B",
   style,
-  id
+  id,
+  ref,
+  tabIndex
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
   id?: string;
+  ref?: React.Ref<HTMLHeadingElement>;
+  tabIndex?: number;
 }) => {
   return (
     <h3
       id={id}
+      ref={ref}
+      tabIndex={tabIndex}
       style={{
         color: color,
         fontSize: "1.75rem",
@@ -84,14 +108,23 @@ export const H3 = ({
 export const H4 = ({
   children,
   color = "#23282B",
-  style
+  style,
+  id,
+  ref,
+  tabIndex
 }: {
   children: React.ReactNode;
   color?: string;
   style?: React.CSSProperties;
+  id?: string;
+  ref?: React.Ref<HTMLHeadingElement>;
+  tabIndex?: number;
 }) => {
   return (
     <h4
+      id={id}
+      ref={ref}
+      tabIndex={tabIndex}
       style={{
         color: color,
         fontSize: "1.25rem",

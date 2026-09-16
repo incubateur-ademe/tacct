@@ -158,7 +158,7 @@ export type Climate_hazardGroupByOutputType = {
   _max: Climate_hazardMaxAggregateOutputType | null
 }
 
-type GetClimate_hazardGroupByPayload<T extends climate_hazardGroupByArgs> = Prisma.PrismaPromise<
+export type GetClimate_hazardGroupByPayload<T extends climate_hazardGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Climate_hazardGroupByOutputType, T['by']> &
       {
@@ -1237,6 +1237,11 @@ export type climate_hazardFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` climate_hazards.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of climate_hazards.
+   */
   distinct?: Prisma.Climate_hazardScalarFieldEnum | Prisma.Climate_hazardScalarFieldEnum[]
 }
 

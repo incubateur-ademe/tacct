@@ -373,7 +373,7 @@ export type Feux_foretGroupByOutputType = {
   _max: Feux_foretMaxAggregateOutputType | null
 }
 
-type GetFeux_foretGroupByPayload<T extends feux_foretGroupByArgs> = Prisma.PrismaPromise<
+export type GetFeux_foretGroupByPayload<T extends feux_foretGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Feux_foretGroupByOutputType, T['by']> &
       {
@@ -1602,6 +1602,11 @@ export type feux_foretFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` feux_forets.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of feux_forets.
+   */
   distinct?: Prisma.Feux_foretScalarFieldEnum | Prisma.Feux_foretScalarFieldEnum[]
 }
 

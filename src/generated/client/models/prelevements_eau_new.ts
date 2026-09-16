@@ -1400,7 +1400,7 @@ export type Prelevements_eau_newGroupByOutputType = {
   _max: Prelevements_eau_newMaxAggregateOutputType | null
 }
 
-type GetPrelevements_eau_newGroupByPayload<T extends prelevements_eau_newGroupByArgs> = Prisma.PrismaPromise<
+export type GetPrelevements_eau_newGroupByPayload<T extends prelevements_eau_newGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Prelevements_eau_newGroupByOutputType, T['by']> &
       {
@@ -4770,6 +4770,11 @@ export type prelevements_eau_newFindManyArgs<ExtArgs extends runtime.Types.Exten
    * Skip the first `n` prelevements_eau_news.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of prelevements_eau_news.
+   */
   distinct?: Prisma.Prelevements_eau_newScalarFieldEnum | Prisma.Prelevements_eau_newScalarFieldEnum[]
 }
 

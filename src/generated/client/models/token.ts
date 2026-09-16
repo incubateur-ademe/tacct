@@ -151,7 +151,7 @@ export type TokenGroupByOutputType = {
   _max: TokenMaxAggregateOutputType | null
 }
 
-type GetTokenGroupByPayload<T extends tokenGroupByArgs> = Prisma.PrismaPromise<
+export type GetTokenGroupByPayload<T extends tokenGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<TokenGroupByOutputType, T['by']> &
       {
@@ -926,6 +926,11 @@ export type tokenFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Skip the first `n` tokens.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of tokens.
+   */
   distinct?: Prisma.TokenScalarFieldEnum | Prisma.TokenScalarFieldEnum[]
 }
 

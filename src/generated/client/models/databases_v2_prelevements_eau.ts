@@ -350,7 +350,7 @@ export type Databases_v2_prelevements_eauGroupByOutputType = {
   _max: Databases_v2_prelevements_eauMaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_prelevements_eauGroupByPayload<T extends databases_v2_prelevements_eauGroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_prelevements_eauGroupByPayload<T extends databases_v2_prelevements_eauGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_prelevements_eauGroupByOutputType, T['by']> &
       {
@@ -1620,6 +1620,11 @@ export type databases_v2_prelevements_eauFindManyArgs<ExtArgs extends runtime.Ty
    * Skip the first `n` databases_v2_prelevements_eaus.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_prelevements_eaus.
+   */
   distinct?: Prisma.Databases_v2_prelevements_eauScalarFieldEnum | Prisma.Databases_v2_prelevements_eauScalarFieldEnum[]
 }
 

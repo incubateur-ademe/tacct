@@ -256,7 +256,7 @@ export type Future_climateGroupByOutputType = {
   _max: Future_climateMaxAggregateOutputType | null
 }
 
-type GetFuture_climateGroupByPayload<T extends future_climateGroupByArgs> = Prisma.PrismaPromise<
+export type GetFuture_climateGroupByPayload<T extends future_climateGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Future_climateGroupByOutputType, T['by']> &
       {
@@ -1458,6 +1458,11 @@ export type future_climateFindManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Skip the first `n` future_climates.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of future_climates.
+   */
   distinct?: Prisma.Future_climateScalarFieldEnum | Prisma.Future_climateScalarFieldEnum[]
 }
 

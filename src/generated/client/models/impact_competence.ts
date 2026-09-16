@@ -165,7 +165,7 @@ export type Impact_competenceGroupByOutputType = {
   _max: Impact_competenceMaxAggregateOutputType | null
 }
 
-type GetImpact_competenceGroupByPayload<T extends impact_competenceGroupByArgs> = Prisma.PrismaPromise<
+export type GetImpact_competenceGroupByPayload<T extends impact_competenceGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Impact_competenceGroupByOutputType, T['by']> &
       {
@@ -1283,6 +1283,11 @@ export type impact_competenceFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` impact_competences.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of impact_competences.
+   */
   distinct?: Prisma.Impact_competenceScalarFieldEnum | Prisma.Impact_competenceScalarFieldEnum[]
 }
 

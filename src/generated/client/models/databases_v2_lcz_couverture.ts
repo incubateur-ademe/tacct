@@ -256,7 +256,7 @@ export type Databases_v2_lcz_couvertureGroupByOutputType = {
   _max: Databases_v2_lcz_couvertureMaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_lcz_couvertureGroupByPayload<T extends databases_v2_lcz_couvertureGroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_lcz_couvertureGroupByPayload<T extends databases_v2_lcz_couvertureGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_lcz_couvertureGroupByOutputType, T['by']> &
       {
@@ -1234,6 +1234,11 @@ export type databases_v2_lcz_couvertureFindManyArgs<ExtArgs extends runtime.Type
    * Skip the first `n` databases_v2_lcz_couvertures.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_lcz_couvertures.
+   */
   distinct?: Prisma.Databases_v2_lcz_couvertureScalarFieldEnum | Prisma.Databases_v2_lcz_couvertureScalarFieldEnum[]
 }
 

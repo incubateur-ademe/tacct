@@ -36,7 +36,7 @@ export const FiltresOptions = [
       'Nouvelle-Aquitaine',
       'Occitanie',
       // 'Pays de la Loire',
-      // "Provence Alpes Côte d'Azur",
+      "Provence Alpes Côte d'Azur",
       // 'Guadeloupe',
       // 'Guyane',
       // 'Martinique',
@@ -104,7 +104,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileArticle,
     date: '2025-07-25',
     ordre: 20,
-    ordreCollection: 3,
+    ordreCollection: 4,
     metadata: {
       title: 'PNACC, TRACC, Comment suis-je concerné ?',
       description:
@@ -125,7 +125,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 90,
-    ordreCollection: 10
+    ordreCollection: 11
   },
   {
     id: 4,
@@ -141,7 +141,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 30,
-    ordreCollection: 9
+    ordreCollection: 10
   },
   {
     id: 5,
@@ -157,7 +157,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 110,
-    ordreCollection: 8
+    ordreCollection: 9
   },
   {
     id: 6,
@@ -178,7 +178,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileRex,
     date: '2024-09-25',
     ordre: 80,
-    ordreCollection: 11
+    ordreCollection: 12
   },
   {
     id: 7,
@@ -715,7 +715,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileQuiz,
     date: '2025-12-10',
     ordre: 10,
-    ordreCollection: 4
+    ordreCollection: 5
   },
   {
     id: 36,
@@ -731,7 +731,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 20,
-    ordreCollection: 5
+    ordreCollection: 6
   },
   {
     id: 37,
@@ -746,7 +746,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileAutre,
     date: '2025-12-10',
     ordre: 30,
-    ordreCollection: 6
+    ordreCollection: 7
   },
   {
     id: 38,
@@ -851,7 +851,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     image: ImageTuileMethodo,
     date: '2026-04-14',
     ordre: 170,
-    ordreCollection: 7
+    ordreCollection: 8
   },
   {
     id: 44,
@@ -970,6 +970,32 @@ export const toutesLesRessources: ToutesRessources[] = [
         'Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité',
       description:
         'Les bases de données ne révèlent pas tout 255: elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain.'
+    }
+  },
+  {
+    id: 50,
+    type: 'Article',
+    slug: 'diagnostic-exhaustivite-concision',
+    titre: 'Diagnostic de vulnérabilité : jusqu’où aller sans se perdre ?',
+    description:
+      'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que le diagnostic reste opérationnel et utile ?',
+    lien: '/ressources/articles/diagnostic-exhaustivite-concision',
+    filtres: [
+      'Article',
+      "Retour d'expérience",
+      "M'inspirer",
+      "Provence Alpes Côte d'Azur"
+    ],
+    collections: ['Démarrer le diagnostic de vulnérabilité'],
+    tempsLecture: 4,
+    image: ImageTuileArticle,
+    date: '2026-09-23',
+    ordre: 25,
+    ordreCollection: 3,
+    metadata: {
+      title: 'Diagnostic de vulnérabilité : jusqu’où aller sans se perdre ?',
+      description:
+        'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que le diagnostic reste opérationnel et utile ?'
     }
   }
 ];

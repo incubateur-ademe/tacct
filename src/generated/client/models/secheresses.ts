@@ -252,7 +252,7 @@ export type SecheressesGroupByOutputType = {
   _max: SecheressesMaxAggregateOutputType | null
 }
 
-type GetSecheressesGroupByPayload<T extends secheressesGroupByArgs> = Prisma.PrismaPromise<
+export type GetSecheressesGroupByPayload<T extends secheressesGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<SecheressesGroupByOutputType, T['by']> &
       {
@@ -1228,6 +1228,11 @@ export type secheressesFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Skip the first `n` secheresses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of secheresses.
+   */
   distinct?: Prisma.SecheressesScalarFieldEnum | Prisma.SecheressesScalarFieldEnum[]
 }
 

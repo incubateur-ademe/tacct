@@ -125,7 +125,6 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  baserow_communaute: 'baserow_communaute',
   user_besoin: 'user_besoin'
 } as const
 
@@ -1579,7 +1578,8 @@ export const UserScalarFieldEnum = {
   territoire_type: 'territoire_type',
   territoire_code: 'territoire_code',
   territoire_libelle: 'territoire_libelle',
-  territoire_autre: 'territoire_autre'
+  territoire_autre: 'territoire_autre',
+  membre_communaute: 'membre_communaute'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1595,14 +1595,6 @@ export const User_studyScalarFieldEnum = {
 } as const
 
 export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
-
-
-export const Baserow_communauteScalarFieldEnum = {
-  index: 'index',
-  email: 'email'
-} as const
-
-export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
 
 
 export const User_besoinScalarFieldEnum = {

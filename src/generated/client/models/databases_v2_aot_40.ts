@@ -211,7 +211,7 @@ export type Databases_v2_aot_40GroupByOutputType = {
   _max: Databases_v2_aot_40MaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_aot_40GroupByPayload<T extends databases_v2_aot_40GroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_aot_40GroupByPayload<T extends databases_v2_aot_40GroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_aot_40GroupByOutputType, T['by']> &
       {
@@ -1044,6 +1044,11 @@ export type databases_v2_aot_40FindManyArgs<ExtArgs extends runtime.Types.Extens
    * Skip the first `n` databases_v2_aot_40s.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_aot_40s.
+   */
   distinct?: Prisma.Databases_v2_aot_40ScalarFieldEnum | Prisma.Databases_v2_aot_40ScalarFieldEnum[]
 }
 

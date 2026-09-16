@@ -204,7 +204,7 @@ export type O3_seuilsGroupByOutputType = {
   _max: O3_seuilsMaxAggregateOutputType | null
 }
 
-type GetO3_seuilsGroupByPayload<T extends o3_seuilsGroupByArgs> = Prisma.PrismaPromise<
+export type GetO3_seuilsGroupByPayload<T extends o3_seuilsGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<O3_seuilsGroupByOutputType, T['by']> &
       {
@@ -1016,6 +1016,11 @@ export type o3_seuilsFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` o3_seuils.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of o3_seuils.
+   */
   distinct?: Prisma.O3_seuilsScalarFieldEnum | Prisma.O3_seuilsScalarFieldEnum[]
 }
 

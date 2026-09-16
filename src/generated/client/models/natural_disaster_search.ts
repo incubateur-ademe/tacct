@@ -203,7 +203,7 @@ export type Natural_disaster_searchGroupByOutputType = {
   _max: Natural_disaster_searchMaxAggregateOutputType | null
 }
 
-type GetNatural_disaster_searchGroupByPayload<T extends natural_disaster_searchGroupByArgs> = Prisma.PrismaPromise<
+export type GetNatural_disaster_searchGroupByPayload<T extends natural_disaster_searchGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Natural_disaster_searchGroupByOutputType, T['by']> &
       {
@@ -1271,6 +1271,11 @@ export type natural_disaster_searchFindManyArgs<ExtArgs extends runtime.Types.Ex
    * Skip the first `n` natural_disaster_searches.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of natural_disaster_searches.
+   */
   distinct?: Prisma.Natural_disaster_searchScalarFieldEnum | Prisma.Natural_disaster_searchScalarFieldEnum[]
 }
 
