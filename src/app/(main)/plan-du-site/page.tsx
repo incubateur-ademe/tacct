@@ -1,3 +1,4 @@
+import { CollectionsData } from '@/app/(main)/ressources/[collectionId]/collectionsData';
 import { H1, H2 } from '@/design-system/base/Textes';
 import { Container } from '@/design-system/server';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
@@ -88,6 +89,14 @@ const PlanDuSite = () => (
                 </li>
               </ul>
             </li>
+            {CollectionsData.map((collection) => (
+              <li key={collection.slug} style={{ marginBottom: '0.5rem' }}>
+                <a href={`/ressources/${collection.slug}`}>{collection.titre}</a>
+              </li>
+            ))}
+            <li style={{ marginBottom: '0.5rem' }}>
+              <a href="/ressources/faq">Questions fréquentes</a>
+            </li>
           </ul>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
@@ -119,6 +128,9 @@ const PlanDuSite = () => (
         </li>
         <li style={{ marginBottom: '0.5rem' }}>
           <a href="/statistiques">Statistiques</a>
+        </li>
+        <li style={{ marginBottom: '0.5rem' }}>
+          <a href="/budget">Budget</a>
         </li>
       </ul>
     </nav>
