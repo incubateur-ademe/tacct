@@ -42,6 +42,15 @@ export const Debroussaillement = ({
         title={debroussaillementTooltipText}
         texte="Définition"
       />
+      <a
+        className="fr-sr-only"
+        href="https://geoservices.ign.fr/sites/default/files/2023-05/Info_zonage-OLD-Geoportail.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Consulter la notice d&apos;utilisation du zonage informatif des
+        obligations légales de débroussaillement (nouvelle fenêtre)
+      </a>
       {coordonneesCommunes &&
         coordonneesCommunes.codes.length &&
         hasData ? (

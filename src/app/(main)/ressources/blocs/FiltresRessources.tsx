@@ -8,7 +8,7 @@ import { Body, H2 } from "@/design-system/base/Textes";
 import { FiltresOptions, ToutesRessources } from "@/lib/ressources/toutesRessources";
 import { SelectChangeEvent } from "@mui/material";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../ressources.module.scss";
 
 interface FiltresRessourcesProps {
@@ -80,7 +80,7 @@ export const FiltresRessources = ({
           tabIndex={0}
           style={{ cursor: "pointer" }}
         >
-          <Image src={ReinitialiserIcon} alt="Icône réinitialiser" />
+          <Image src={ReinitialiserIcon} alt="" />
           <Body weight="medium" style={{ color: "var(--boutons-primaire-1)" }}>
             Réinitialiser les filtres
           </Body>
@@ -128,6 +128,7 @@ export const ModalFiltresRessources = ({
   onSelectFormatRessource
 }: ModalFiltresRessourcesProps) => {
   const showTerritoireFilter = selectedFilters['Format de ressource']?.includes("Retour d'expérience");
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -141,6 +142,17 @@ export const ModalFiltresRessources = ({
     };
   }, [isOpen]);
 
+  // Ouverture : le focus entre dans la modale. Échap la referme (RGAA 7.3).
+  useEffect(() => {
+    if (!isOpen) return;
+    closeButtonRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   useEffect(() => {
     if (!showTerritoireFilter && selectedFilters['Territoire']?.length > 0) {
       selectedFilters['Territoire'].forEach(value => {
@@ -153,9 +165,17 @@ export const ModalFiltresRessources = ({
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.modalContent}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Filtrer les ressources"
+      >
         <div className={styles.modalHeader}>
           <button
+            type="button"
+            ref={closeButtonRef}
             className={styles.closeButton}
             onClick={onClose}
             aria-label="Fermer"

@@ -32,7 +32,7 @@ export const ExportPngSimple = ({
     setIsExporting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
       const canvas = await html2canvas(containerRef.current, {
         useCORS: true,
@@ -98,12 +98,15 @@ export const ExportPngMaplibreSimple = ({
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPng = async () => {
-    if (!mapRef.current || !mapContainer.current || isExporting || disabled) return;
+    if (!mapRef.current || !mapContainer.current || isExporting || disabled)
+      return;
 
     setIsExporting(true);
 
     try {
-      const navControls = mapContainer.current.querySelectorAll('.maplibregl-ctrl-top-right');
+      const navControls = mapContainer.current.querySelectorAll(
+        '.maplibregl-ctrl-top-right'
+      );
       navControls.forEach((control) => {
         (control as HTMLElement).style.display = 'none';
       });
@@ -125,7 +128,9 @@ export const ExportPngMaplibreSimple = ({
               });
 
               finalCanvas = document.createElement('canvas');
-              const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+              const ctx = finalCanvas.getContext(
+                '2d'
+              ) as CanvasRenderingContext2D;
               finalCanvas.width = mapCanvas.width;
               finalCanvas.height = mapCanvas.height + legendCanvas.height;
               ctx.drawImage(mapCanvas, 0, 0);
@@ -205,7 +210,9 @@ export const ExportPngMaplibreButton = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
-  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(
+    undefined
+  );
 
   useLayoutEffect(() => {
     if (buttonWrapperRef.current) {
@@ -319,18 +326,25 @@ export const ExportPngMaplibreButton = ({
             // Capture native du canvas WebGL (rapide, fiable, non taché grâce
             // au proxy) ; html2canvas seulement pour la légende.
             const mapCanvas = mapRef.current!.getCanvas();
-            console.log('[export] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
             const t0 = Date.now();
             const legendCanvas = await Promise.race([
-              html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
+              html2canvas(originalLegendDiv, {
+                useCORS: true,
+                logging: false,
+                imageTimeout: 4000
+              }),
               new Promise<never>((_, reject) =>
-                setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
+                setTimeout(
+                  () => reject(new Error('html2canvas timeout')),
+                  20000
+                )
               )
             ]);
-            console.log('[export] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
 
             const finalCanvas = document.createElement('canvas');
-            const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
+            const ctx = finalCanvas.getContext(
+              '2d'
+            ) as CanvasRenderingContext2D;
             finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
             finalCanvas.height = mapCanvas.height + legendCanvas.height;
             ctx.drawImage(mapCanvas, 0, 0);
@@ -352,7 +366,14 @@ export const ExportPngMaplibreButton = ({
             });
           } catch (error) {
             const e = error as Error;
-            console.error('Error capturing canvas:', e?.name, '|', e?.message, '|', e?.stack);
+            console.error(
+              'Error capturing canvas:',
+              e?.name,
+              '|',
+              e?.message,
+              '|',
+              e?.stack
+            );
             cleanup();
             resolve();
           }
@@ -362,7 +383,6 @@ export const ExportPngMaplibreButton = ({
 
       setTimeout(() => setIsLoading(false), 3000);
     } else {
-      console.log('Map or container not found');
       setIsLoading(false);
     }
   };
@@ -450,15 +470,17 @@ export async function generateMapPngBlob({
           // Capture native du canvas WebGL (rapide, fiable, non taché grâce au
           // proxy same-origin) au lieu de html2canvas, trop lent sur iOS.
           const mapCanvas = mapRef.current!.getCanvas();
-          console.log('[zip] mapCanvas', mapCanvas.width, 'x', mapCanvas.height, 'legendDiv?', !!originalLegendDiv);
           const t0 = Date.now();
           const legendCanvas = await Promise.race([
-            html2canvas(originalLegendDiv, { useCORS: true, logging: false, imageTimeout: 4000 }),
+            html2canvas(originalLegendDiv, {
+              useCORS: true,
+              logging: false,
+              imageTimeout: 4000
+            }),
             new Promise<never>((_, reject) =>
               setTimeout(() => reject(new Error('html2canvas timeout')), 20000)
             )
           ]);
-          console.log('[zip] legend html2canvas en', Date.now() - t0, 'ms', legendCanvas.width, 'x', legendCanvas.height);
           const finalCanvas = document.createElement('canvas');
           const ctx = finalCanvas.getContext('2d') as CanvasRenderingContext2D;
           finalCanvas.width = Math.max(mapCanvas.width, legendCanvas.width);
@@ -471,7 +493,14 @@ export async function generateMapPngBlob({
           });
         } catch (error) {
           const e = error as Error;
-          console.error('generateMapPngBlob - error:', e?.name, '|', e?.message, '|', e?.stack);
+          console.error(
+            'generateMapPngBlob - error:',
+            e?.name,
+            '|',
+            e?.message,
+            '|',
+            e?.stack
+          );
           restore();
           resolve(null);
         }
@@ -479,7 +508,6 @@ export async function generateMapPngBlob({
       mapRef.current!.triggerRepaint();
     });
   } else {
-    console.log('generateMapPngBlob - mapRef or mapContainer not found');
     return null;
   }
 }

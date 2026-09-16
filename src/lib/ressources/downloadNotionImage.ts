@@ -39,7 +39,6 @@ export async function downloadNotionImage(
     const buffer = Buffer.from(arrayBuffer);
     writeFileSync(filepath, buffer);
 
-    console.log(`Downloaded: ${publicPath}`);
     return publicPath;
   } catch (error) {
     console.error(`Error downloading image ${url}:`, error);

@@ -108,6 +108,7 @@ export const TypesDeSols = ({
                     pourcentage={foretPercent}
                     territoireContours={territoireContours}
                     arrondi={1}
+                    ariaLabel="Part du territoire recouverte par de la forêt ou des espaces semi-naturels"
                   />
                 )}
                 <div className={styles.text}>

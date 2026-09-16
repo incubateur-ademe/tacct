@@ -52,10 +52,36 @@ export const Toast = ({
     return () => clearTimeout(timer);
   }, [open, duration, onClose]);
 
-  if (!mounted || !open) return null;
+  if (!mounted) return null;
 
   return createPortal(
-    <div className={styles.wrapper} role="status" aria-live="polite">
+    <>
+      {/* Région live montée en permanence : une région `aria-live` insérée en
+          même temps que son contenu n'est pas annoncée par les lecteurs
+          d'écran (RGAA 7.5). */}
+      <div
+        className="fr-sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {open ? text : ''}
+      </div>
+      {open && <ToastVisuel {...{ text, icon, link, linkText, onClose }} />}
+    </>,
+    document.body
+  );
+};
+
+const ToastVisuel = ({
+  text,
+  icon,
+  link,
+  linkText,
+  onClose
+}: Pick<ToastProps, 'text' | 'icon' | 'link' | 'linkText' | 'onClose'>) => {
+  return (
+    <div className={styles.wrapper}>
       <div className={styles.toast}>
         <div className={styles.content}>
           <div className={styles.titleRow}>
@@ -83,7 +109,6 @@ export const Toast = ({
           <CloseIcon />
         </button>
       </div>
-    </div>,
-    document.body
+    </div>
   );
 };

@@ -31,13 +31,25 @@ interface ExportButtonProps {
 }
 
 export function ExportButton({
-  data, baseName, type, libelle, code, sheetName, documentation, children = 'Exporter', style, disabled, anchor
+  data,
+  baseName,
+  type,
+  libelle,
+  code,
+  sheetName,
+  documentation,
+  children = 'Exporter',
+  style,
+  disabled,
+  anchor
 }: ExportButtonProps) {
   const posthog = usePostHog();
   const [isExporting, setIsExporting] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const buttonWrapperRef = useRef<HTMLDivElement>(null);
-  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(undefined);
+  const [buttonMinWidth, setButtonMinWidth] = useState<number | undefined>(
+    undefined
+  );
 
   useLayoutEffect(() => {
     if (buttonWrapperRef.current) {
@@ -63,7 +75,6 @@ export function ExportButton({
     await new Promise((resolve) => setTimeout(resolve, 0));
 
     if (!data || data.length === 0) {
-      console.log('Aucune donnée à exporter');
       setIsExporting(false);
       return;
     }
@@ -108,7 +119,8 @@ export function ExportButton({
                 minWidth: buttonMinWidth,
                 cursor: isExporting ? 'wait' : 'pointer',
                 ...style
-              }} />
+              }}
+            />
           </div>
           {isClicked && <ExportDataTrigger />}
         </div>

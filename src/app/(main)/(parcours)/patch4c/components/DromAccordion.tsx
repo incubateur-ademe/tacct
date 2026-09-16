@@ -176,7 +176,7 @@ export const DromAccordion = ({
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <Image src={dromTerritory.icon} alt={dromTerritory.name} width={32} height={32} />
+                  <Image src={dromTerritory.icon} alt={dromTerritory.name} width={32} height={32} style={{border: "#9D9D9D"}} />
                   <span style={{ fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.name}</span>
                 </div>
                 <div style={{ textAlign: "center", fontWeight: 600, color: "#2B4B49" }}>{dromTerritory.t2030}</div>

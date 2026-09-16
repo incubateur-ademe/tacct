@@ -77,6 +77,7 @@ export const SuperficiesIrriguees = (props: {
                     pourcentage={surfaceTerritoire ?? 0}
                     territoireContours={territoireContours}
                     arrondi={1}
+                    ariaLabel="Part de la surface agricole du territoire dépendant de l'irrigation"
                   />
                 )}
                 <div className={styles.text}>

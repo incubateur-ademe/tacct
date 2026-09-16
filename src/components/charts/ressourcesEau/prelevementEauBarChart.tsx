@@ -154,12 +154,12 @@ const PrelevementEauBarChart = ({
       <div className={styles.filtreEauWrapper} style={{ padding: "1rem 1.75rem" }}>
         <input
           type="checkbox"
-          id="filter-energie"
+          id="filter-energie-bar-chart"
           checked={filterEnergie}
           onChange={(e) => setFilterEnergie(e.target.checked)}
           style={{ cursor: 'pointer', width: '1rem', height: '1rem', accentColor: 'var(--principales-vert)' }}
         />
-        <label htmlFor="filter-energie" style={{ cursor: 'pointer' }}>
+        <label htmlFor="filter-energie-bar-chart" style={{ cursor: 'pointer' }}>
           <Body size='sm' style={{ color: "var(--gris-medium-dark)" }}>
             Filtrer les prélèvements en eau pour l&apos;énergie
           </Body>

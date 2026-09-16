@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { exportMultipleSheetToXLSX } from '@/lib/utils/export/exportXlsx';
 import { Button } from '@codegouvfr/react-dsfr/Button';
 import { usePostHog } from 'posthog-js/react';
@@ -19,7 +19,7 @@ export const FetchAndExportButton = <T extends Record<string, unknown[]>>({
   type,
   libelle,
   code,
-  children = 'Télécharger les données',
+  children = 'Télécharger les données'
 }: FetchAndExportButtonProps<T>) => {
   const posthog = usePostHog();
   posthog.capture('export_xlsx_thematique_bouton', {
@@ -74,25 +74,26 @@ export const FetchAndExportButton = <T extends Record<string, unknown[]>>({
     try {
       const rawData = await fetchFunction();
       // Check si la donnée existe
-      const hasData = Object.values(rawData).some(dataArray => dataArray && dataArray.length > 0);
+      const hasData = Object.values(rawData).some(
+        (dataArray) => dataArray && dataArray.length > 0
+      );
       if (!hasData) {
-        console.log('Aucune donnée à exporter');
         return;
       }
       // Export XLSX avec plusieurs feuilles
       exportMultipleSheetToXLSX(rawData, baseName, type, libelle);
     } catch (error) {
-      console.error('Erreur lors de la récupération et de l\'export des données:', error);
+      console.error(
+        "Erreur lors de la récupération et de l'export des données:",
+        error
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Button
-      onClick={handleFetchAndExport}
-      disabled={isLoading}
-    >
+    <Button onClick={handleFetchAndExport} disabled={isLoading}>
       {isLoading ? 'Téléchargement en cours...' : children}
     </Button>
   );
