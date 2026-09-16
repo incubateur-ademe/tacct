@@ -81,7 +81,7 @@ export const GET = async (request: NextRequest) => {
       }
       aggregated.get(key)!.value += stat.value;
     }
-    const allAggregated = Array.from(aggregated.values()).sort(
+    const allAggregated = Array.from(aggregated.values()).toSorted(
       (a, b) => a.date.getTime() - b.date.getTime()
     );
     if (sinceNum === null) {

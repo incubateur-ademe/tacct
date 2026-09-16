@@ -91,6 +91,16 @@ export const SurfacesEnBio = (props: { agricultureBio: AgricultureBio[] }) => {
                     représentant {Round(pourcentageTotal, 1)} % de la surface
                     agricole totale ({Round(surfaceAgriBio, 0)} hectares).
                   </Body>
+                ) : type === 'ept' ? (
+                  <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+                    Cette donnée n’existe qu’à l’échelle de la Métropole du
+                    Grand Paris, dont dépend votre EPT :{' '}
+                    {numberWithSpacesRegex(nombreExploitations)} exploitations y
+                    sont en agriculture biologique ou en conversion,
+                    représentant {Round(pourcentageTotal, 1)}&nbsp;% de la
+                    surface agricole totale, soit {Round(surfaceAgriBio, 0)}{' '}
+                    hectares.
+                  </Body>
                 ) : (
                   <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                     Sur votre territoire,{' '}

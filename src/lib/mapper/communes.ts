@@ -42,20 +42,3 @@ export const CommunesContourMapper = (
   },
   geometry: JSON.parse(commune.geometry)
 });
-
-export const LCZBayonneMapper = (lcz: any): any => ({
-  type: 'Feature',
-  properties: {
-    hre: lcz.hre,
-    are: lcz.are,
-    bur: lcz.bur,
-    ror: lcz.ror,
-    bsr: lcz.bsr,
-    war: lcz.war,
-    ver: lcz.ver,
-    vhr: lcz.vhr,
-    lcz: lcz.lcz,
-    lcz_int: lcz.lcz_int
-  },
-  geometry: JSON.parse(lcz.geometry)
-});

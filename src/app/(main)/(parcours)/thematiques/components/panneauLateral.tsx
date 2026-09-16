@@ -37,8 +37,7 @@ const PanneauLateral = ({
                 right: 'auto',
                 top: 'auto',
                 transform: 'none',
-                width: '100%',
-                maxWidth: '100%',
+                width: 'auto',
                 margin: "0 2rem",
                 opacity: selectedItem ? 1 : 0,
                 border: selectedItem ? '1px solid var(--gris-medium)' : 'none',
@@ -89,6 +88,7 @@ const PanneauLateral = ({
                     Aucune connexion directe identifiée pour cette thématique.
                   </p>
                 )}
+                <div style={{ overflowX: 'hidden' }}>
                 <BoutonPrimaireClassic
                   text="J'explore cette thématique"
                   size="lg"
@@ -101,6 +101,7 @@ const PanneauLateral = ({
                     else router.push(`/donnees?libelle=${libelle}&type=${typeTerritoire}&thematique=${thematique.link}`);
                   }}
                 />
+                </div>
               </div>
             )}
           </div>

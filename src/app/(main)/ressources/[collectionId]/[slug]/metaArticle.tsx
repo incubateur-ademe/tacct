@@ -46,9 +46,16 @@ export const MetaArticleResponsive = ({
               <TagsIcone
                 key={index}
                 texte={filtre}
-                filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir"}
+                filtre={filtre as "Article" | "Retour d'expérience" | "M'inspirer" | "Me former" | "Agir" | "Quiz" | "Formation" | "Support méthodo" | "Vidéo"}
                 taille="small"
               />
+              // <TagsSimples
+              //   key={index}
+              //   texte={filtre}
+              //   couleur={filtre === "M'inspirer" ? "#FFC9E4" : filtre === "Me former" ? "#F6F69B" : filtre === "Agir" ? "#FFE2AE" : "#E3FAF9"}
+              //   couleurTexte={filtre === "M'inspirer" ? "#971356" : filtre === "Me former" ? "#5A5A10" : filtre === "Agir" ? "#7E5202" : "var(--boutons-primaire-3)"}
+              //   taille="small"
+              // />
             ))}
           </div>
           <H1 style={{

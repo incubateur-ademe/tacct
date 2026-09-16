@@ -99,6 +99,18 @@ export const SurfacesEnHerbeDynamicText = ({
               l'état de sa biodiversité : plus cette part est élevée, plus les
               écosystèmes sont préservés.
             </Body>
+          ) : type === 'ept' ? (
+            <Body
+              weight="bold"
+              style={{ color: 'var(--gris-dark)', paddingBottom: '1rem' }}
+            >
+              Bien que cette donnée n’existe qu’à l’échelle de la Métropole du
+              Grand Paris, dont dépend votre EPT, elle reste révélatrice : avec{' '}
+              {Round(pourcentageSurfacesToujoursEnHerbe, 1)}&nbsp;% de surfaces
+              toujours en herbe, la Métropole dispose d’un indicateur clé de
+              l’état de sa biodiversité : plus cette part est élevée, plus les
+              écosystèmes sont préservés.
+            </Body>
           ) : (
             <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
               Avec {Round(pourcentageSurfacesToujoursEnHerbe, 1)} % de surfaces

@@ -61,6 +61,4 @@ type SearchInputTagHeaderProps = {
   params: AutocompleteRenderInputParams;
   className?: string;
   setInputValue: (value: string) => void;
-  setSearchCode: (value: string) => void;
-  setSearchLibelle: (value: string) => void;
 };
