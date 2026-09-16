@@ -127,7 +127,7 @@ export const EtatEcoCoursDeau = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : Agences de l’eau, 2024 (consultée en février 2026) et Ministère des Solidarités et de la Santé, 2024 (consultée en mars 2026)
+          Source : Agences de l’eau, 2024 (consultée en février 2026) et Ministère des Solidarités et de la Santé, 2025 (consultée en septembre 2026)
         </Body>
         {
           etatCoursDeau.length > 0 && (
