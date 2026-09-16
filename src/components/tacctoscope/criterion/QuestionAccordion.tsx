@@ -3,7 +3,7 @@
 import { Body } from '@/design-system/base/Textes';
 import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
 import { ANSWER_OPTIONS } from '@/lib/tacctoscope/content/options';
-import { buildQuestionKey } from '@/lib/tacctoscope/keys';
+import { buildQuestionKey, getCriterionNumber } from '@/lib/tacctoscope/keys';
 import { deleteLocalAnswer, saveLocalAnswer } from '@/lib/tacctoscope/localAnswers';
 import { ANSWER_STATUS } from '@/lib/tacctoscope/status';
 import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
@@ -39,6 +39,7 @@ export const QuestionAccordion = ({
   isAuthenticated
 }: Props) => {
   const questionKey = buildQuestionKey(slug, question.id);
+  const downloadName = `critere${getCriterionNumber(slug)}-${question.id}`;
   const [value, setValue] = useState<AnswerValue | null>(initialValue);
   const [error, setError] = useState(false);
   const [, startTransition] = useTransition();
@@ -110,18 +111,27 @@ export const QuestionAccordion = ({
         />
         {question.exampleKind === 'both' ? (
           <>
-            <ExampleCallout kind="exemple" attachments={question.exampleAttachments}>
+            <ExampleCallout
+              kind="exemple"
+              attachments={question.exampleAttachments}
+              downloadName={downloadName}
+            >
               {question.example}
             </ExampleCallout>
             <ExampleCallout
               kind="contre-exemple"
               attachments={question.counterExampleAttachments}
+              downloadName={`${downloadName}-contre-exemple`}
             >
               {question.counterExample}
             </ExampleCallout>
           </>
         ) : question.exampleKind ? (
-          <ExampleCallout kind={question.exampleKind} attachments={question.exampleAttachments}>
+          <ExampleCallout
+            kind={question.exampleKind}
+            attachments={question.exampleAttachments}
+            downloadName={downloadName}
+          >
             {question.example}
           </ExampleCallout>
         ) : null}

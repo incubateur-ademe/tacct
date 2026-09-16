@@ -978,9 +978,14 @@ export const toutesLesRessources: ToutesRessources[] = [
     slug: 'diagnostic-exhaustivite-concision',
     titre: 'Diagnostic de vulnérabilité : jusqu’où aller sans se perdre ?',
     description:
-      'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que ce document reste opérationnel et utile ?',
+      'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que le diagnostic reste opérationnel et utile ?',
     lien: '/ressources/articles/diagnostic-exhaustivite-concision',
-    filtres: ['Article', "Retour d'expérience", "M'inspirer", "Provence Alpes Côte d'Azur"],
+    filtres: [
+      'Article',
+      "Retour d'expérience",
+      "M'inspirer",
+      "Provence Alpes Côte d'Azur"
+    ],
     collections: ['Démarrer le diagnostic de vulnérabilité'],
     tempsLecture: 4,
     image: ImageTuileArticle,
@@ -990,7 +995,7 @@ export const toutesLesRessources: ToutesRessources[] = [
     metadata: {
       title: 'Diagnostic de vulnérabilité : jusqu’où aller sans se perdre ?',
       description:
-        'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que ce document reste opérationnel et utile ?'
+        'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que le diagnostic reste opérationnel et utile ?'
     }
-  },
+  }
 ];

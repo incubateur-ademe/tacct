@@ -14,6 +14,7 @@ interface Props {
   kind: CalloutKind;
   children: RichContent;
   attachments?: string[];
+  downloadName: string;
 }
 
 const DocIcon = ({ color }: { color: string }) => (
@@ -27,7 +28,12 @@ const DocIcon = ({ color }: { color: string }) => (
   </svg>
 );
 
-export const ExampleCallout = ({ kind, children, attachments }: Props) => {
+export const ExampleCallout = ({
+  kind,
+  children,
+  attachments,
+  downloadName
+}: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isExemple = kind === 'exemple';
   const accentColor = isExemple ? '#095D55' : '#CE0041';
@@ -70,6 +76,7 @@ export const ExampleCallout = ({ kind, children, attachments }: Props) => {
           <CasReelModal
             attachments={attachments}
             accentColor={accentColor}
+            downloadName={downloadName}
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
           />

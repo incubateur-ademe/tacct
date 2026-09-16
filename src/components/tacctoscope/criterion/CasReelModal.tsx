@@ -31,7 +31,10 @@ const triggerDownload = (href: string, filename: string) => {
   document.body.removeChild(link);
 };
 
-const downloadAttachments = async (attachments: string[]) => {
+const downloadAttachments = async (
+  attachments: string[],
+  downloadName: string
+) => {
   if (attachments.length === 1) {
     const attachment = attachments[0];
     triggerDownload(attachment, attachment.split('/').pop() ?? attachment);
@@ -45,13 +48,14 @@ const downloadAttachments = async (attachments: string[]) => {
   }
   const zipBlob = await zip.generateAsync({ type: 'blob' });
   const zipUrl = URL.createObjectURL(zipBlob);
-  triggerDownload(zipUrl, 'cas-reel.zip');
+  triggerDownload(zipUrl, `${downloadName}.zip`);
   URL.revokeObjectURL(zipUrl);
 };
 
 interface Props {
   attachments: string[];
   accentColor: string;
+  downloadName: string;
   isOpen: boolean;
   onClose: () => void;
 }
@@ -59,6 +63,7 @@ interface Props {
 export const CasReelModal = ({
   attachments,
   accentColor,
+  downloadName,
   isOpen,
   onClose
 }: Props) => {
@@ -150,7 +155,7 @@ export const CasReelModal = ({
           <BoutonPrimaireClassic
             size="md"
             text="Télécharger"
-            onClick={() => void downloadAttachments(attachments)}
+            onClick={() => void downloadAttachments(attachments, downloadName)}
             iconeFin={<TelechargerIcon />}
           />
         </div>

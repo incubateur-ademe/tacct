@@ -167,9 +167,16 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           "L'approche méthodologique utilisée est mentionnée dans le document",
         text: 'Par approche méthodologique, on entend l’ensemble des choix qui structurent le diagnostic : définition des concepts utilisés, partis pris méthodologique, logique d’ensemble, mais aussi types de sources et de données mobilisées, méthode de recueil, critères de priorisation...',
-        example:
-          'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)',
-        exampleAttachments: ['/preuve-critere3-q1bis.webp'],
+        example: [
+          [
+            'Approche méthodologique de Saint Brieuc Armor Agglomération (2025)',
+            'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)'
+          ]
+        ],
+        exampleAttachments: [
+          '/preuve-critere3-q1.webp',
+          '/preuve-critere3-q1bis.webp'
+        ],
         minHint: 'Aucune mention de l’approche méthodologique n’est présente.',
         maxHint: 'L’approche méthodologique utilisée est décrite.'
       },
@@ -280,8 +287,12 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q1',
         section: 'analyse',
+        exampleKind: 'exemple',
         label:
           'La conclusion du diagnostic de vulnérabilité invite à poursuivre le travail vers la stratégie',
+        example:
+          'Approche méthodologique de Saint Brieuc Armor Agglomération - 2025',
+        exampleAttachments: ['/preuve-critere5-q1.webp'],
         minHint: 'La conclusion ne mentionne pas de suite.',
         maxHint: 'La conclusion mentionne la suite de la démarche d’adaptation.'
       },
@@ -292,9 +303,9 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Une problématique claire est identifiée',
         text: "La problématique est la reformulation d'un enjeu constaté en un défi politique ouvert.",
         example: [
-          "Aléa — Les sécheresses estivales vont s'intensifier, avec des étiages de cours d'eau plus précoces et plus longs.",
-          "Impact — L'alimentation en eau potable de X communes sera menacée dès 2035. L'agriculture irriguée perdra Y% de sa capacité, etc.",
-          "Problématique — Comment garantir l'accès à l'eau pour tous les usages essentiels alors que la ressource va se raréfier et que les usages sont déjà en concurrence ?"
+          "Aléa → Les sécheresses estivales vont s'intensifier, avec des étiages de cours d'eau plus précoces et plus longs.",
+          "Impact → L'alimentation en eau potable de X communes sera menacée dès 2035. L'agriculture irriguée perdra Y% de sa capacité, etc.",
+          "Problématique → Comment garantir l'accès à l'eau pour tous les usages essentiels alors que la ressource va se raréfier et que les usages sont déjà en concurrence ?"
         ],
         minHint: 'Aucune problématique n’est identifiée.',
         maxHint: 'Une problématique est clairement identifiée.'
