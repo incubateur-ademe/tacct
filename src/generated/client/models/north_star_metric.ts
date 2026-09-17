@@ -178,7 +178,7 @@ export type North_star_metricGroupByOutputType = {
   _max: North_star_metricMaxAggregateOutputType | null
 }
 
-type GetNorth_star_metricGroupByPayload<T extends north_star_metricGroupByArgs> = Prisma.PrismaPromise<
+export type GetNorth_star_metricGroupByPayload<T extends north_star_metricGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<North_star_metricGroupByOutputType, T['by']> &
       {
@@ -942,6 +942,11 @@ export type north_star_metricFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` north_star_metrics.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of north_star_metrics.
+   */
   distinct?: Prisma.North_star_metricScalarFieldEnum | Prisma.North_star_metricScalarFieldEnum[]
 }
 

@@ -223,7 +223,7 @@ export type Baserow_evenementsGroupByOutputType = {
   _max: Baserow_evenementsMaxAggregateOutputType | null
 }
 
-type GetBaserow_evenementsGroupByPayload<T extends baserow_evenementsGroupByArgs> = Prisma.PrismaPromise<
+export type GetBaserow_evenementsGroupByPayload<T extends baserow_evenementsGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Baserow_evenementsGroupByOutputType, T['by']> &
       {
@@ -1256,6 +1256,11 @@ export type baserow_evenementsFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` baserow_evenements.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of baserow_evenements.
+   */
   distinct?: Prisma.Baserow_evenementsScalarFieldEnum | Prisma.Baserow_evenementsScalarFieldEnum[]
 }
 

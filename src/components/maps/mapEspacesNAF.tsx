@@ -37,7 +37,7 @@ export const MapEspacesNaf = (props: {
 
   // Créer une Map des valeurs NAF par code commune
   const nafByCommune = new Map(
-    consommationNAF.map(item => [item.code_geographique, item.naf09art23 ?? 0])
+    consommationNAF.map(item => [item.code_geographique, item.naf11art25 ?? 0])
   );
 
   // Créer une Map des noms de communes par code
@@ -77,7 +77,7 @@ export const MapEspacesNaf = (props: {
       // Créer l'expression de couleur basée sur les valeurs NAF
       const colorPairs: (ExpressionSpecification | string)[] = [];
       consommationNAF.forEach(item => {
-        const naf = item.naf09art23 ?? 0;
+        const naf = item.naf11art25 ?? 0;
         const color = getColor(naf);
         colorPairs.push(
           ['==', ['get', 'code_geographique'], item.code_geographique],

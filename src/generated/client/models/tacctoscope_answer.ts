@@ -165,7 +165,7 @@ export type Tacctoscope_answerGroupByOutputType = {
   _max: Tacctoscope_answerMaxAggregateOutputType | null
 }
 
-type GetTacctoscope_answerGroupByPayload<T extends tacctoscope_answerGroupByArgs> = Prisma.PrismaPromise<
+export type GetTacctoscope_answerGroupByPayload<T extends tacctoscope_answerGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Tacctoscope_answerGroupByOutputType, T['by']> &
       {
@@ -1163,6 +1163,11 @@ export type tacctoscope_answerFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` tacctoscope_answers.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of tacctoscope_answers.
+   */
   distinct?: Prisma.Tacctoscope_answerScalarFieldEnum | Prisma.Tacctoscope_answerScalarFieldEnum[]
 }
 

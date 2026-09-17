@@ -196,7 +196,7 @@ export type Spatial_ref_sysGroupByOutputType = {
   _max: Spatial_ref_sysMaxAggregateOutputType | null
 }
 
-type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
+export type GetSpatial_ref_sysGroupByPayload<T extends spatial_ref_sysGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Spatial_ref_sysGroupByOutputType, T['by']> &
       {
@@ -1004,6 +1004,11 @@ export type spatial_ref_sysFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` spatial_ref_sys.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of spatial_ref_sys.
+   */
   distinct?: Prisma.Spatial_ref_sysScalarFieldEnum | Prisma.Spatial_ref_sysScalarFieldEnum[]
 }
 

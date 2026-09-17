@@ -203,7 +203,7 @@ export type Impact_action_reviewGroupByOutputType = {
   _max: Impact_action_reviewMaxAggregateOutputType | null
 }
 
-type GetImpact_action_reviewGroupByPayload<T extends impact_action_reviewGroupByArgs> = Prisma.PrismaPromise<
+export type GetImpact_action_reviewGroupByPayload<T extends impact_action_reviewGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Impact_action_reviewGroupByOutputType, T['by']> &
       {
@@ -1207,6 +1207,11 @@ export type impact_action_reviewFindManyArgs<ExtArgs extends runtime.Types.Exten
    * Skip the first `n` impact_action_reviews.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of impact_action_reviews.
+   */
   distinct?: Prisma.Impact_action_reviewScalarFieldEnum | Prisma.Impact_action_reviewScalarFieldEnum[]
 }
 

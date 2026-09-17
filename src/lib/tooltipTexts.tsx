@@ -51,7 +51,7 @@ export const espacesNAFTooltipText = (
     Le suivi de cet indicateur est réalisé par le CEREMA dans le cadre de
     l’objectif « zéro artificialisation nette » de la loi « Climat et
     résilience ». La consommation d’espaces NAF est calculée à partir des
-    fichiers fonciers entre 2009 et 2023, présentée ici toute destination
+    fichiers fonciers entre 2011 et 2025, présentée ici toute destination
     confondue. Les données sont traitées pour donner des tendances de façon
     uniforme sur toute la France ; ponctuellement, il est possible que les
     documents de planification de certaines collectivités territoriales fassent

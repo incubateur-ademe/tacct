@@ -200,7 +200,7 @@ export type ArboviroseGroupByOutputType = {
   _max: ArboviroseMaxAggregateOutputType | null
 }
 
-type GetArboviroseGroupByPayload<T extends arboviroseGroupByArgs> = Prisma.PrismaPromise<
+export type GetArboviroseGroupByPayload<T extends arboviroseGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ArboviroseGroupByOutputType, T['by']> &
       {
@@ -1010,6 +1010,11 @@ export type arboviroseFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` arboviroses.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of arboviroses.
+   */
   distinct?: Prisma.ArboviroseScalarFieldEnum | Prisma.ArboviroseScalarFieldEnum[]
 }
 

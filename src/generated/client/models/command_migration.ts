@@ -158,7 +158,7 @@ export type Command_migrationGroupByOutputType = {
   _max: Command_migrationMaxAggregateOutputType | null
 }
 
-type GetCommand_migrationGroupByPayload<T extends command_migrationGroupByArgs> = Prisma.PrismaPromise<
+export type GetCommand_migrationGroupByPayload<T extends command_migrationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Command_migrationGroupByOutputType, T['by']> &
       {
@@ -958,6 +958,11 @@ export type command_migrationFindManyArgs<ExtArgs extends runtime.Types.Extensio
    * Skip the first `n` command_migrations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of command_migrations.
+   */
   distinct?: Prisma.Command_migrationScalarFieldEnum | Prisma.Command_migrationScalarFieldEnum[]
 }
 

@@ -295,7 +295,7 @@ export type Qualite_sites_baignade_newGroupByOutputType = {
   _max: Qualite_sites_baignade_newMaxAggregateOutputType | null
 }
 
-type GetQualite_sites_baignade_newGroupByPayload<T extends qualite_sites_baignade_newGroupByArgs> = Prisma.PrismaPromise<
+export type GetQualite_sites_baignade_newGroupByPayload<T extends qualite_sites_baignade_newGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Qualite_sites_baignade_newGroupByOutputType, T['by']> &
       {
@@ -1380,6 +1380,11 @@ export type qualite_sites_baignade_newFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` qualite_sites_baignade_news.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of qualite_sites_baignade_news.
+   */
   distinct?: Prisma.Qualite_sites_baignade_newScalarFieldEnum | Prisma.Qualite_sites_baignade_newScalarFieldEnum[]
 }
 

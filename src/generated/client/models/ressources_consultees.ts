@@ -206,7 +206,7 @@ export type Ressources_consulteesGroupByOutputType = {
   _max: Ressources_consulteesMaxAggregateOutputType | null
 }
 
-type GetRessources_consulteesGroupByPayload<T extends ressources_consulteesGroupByArgs> = Prisma.PrismaPromise<
+export type GetRessources_consulteesGroupByPayload<T extends ressources_consulteesGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Ressources_consulteesGroupByOutputType, T['by']> &
       {
@@ -1062,6 +1062,11 @@ export type ressources_consulteesFindManyArgs<ExtArgs extends runtime.Types.Exte
    * Skip the first `n` ressources_consultees.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of ressources_consultees.
+   */
   distinct?: Prisma.Ressources_consulteesScalarFieldEnum | Prisma.Ressources_consulteesScalarFieldEnum[]
 }
 

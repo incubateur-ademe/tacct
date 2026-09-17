@@ -158,7 +158,7 @@ export type Page_infoGroupByOutputType = {
   _max: Page_infoMaxAggregateOutputType | null
 }
 
-type GetPage_infoGroupByPayload<T extends page_infoGroupByArgs> = Prisma.PrismaPromise<
+export type GetPage_infoGroupByPayload<T extends page_infoGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Page_infoGroupByOutputType, T['by']> &
       {
@@ -1090,6 +1090,11 @@ export type page_infoFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Skip the first `n` page_infos.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of page_infos.
+   */
   distinct?: Prisma.Page_infoScalarFieldEnum | Prisma.Page_infoScalarFieldEnum[]
 }
 

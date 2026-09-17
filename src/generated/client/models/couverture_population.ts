@@ -182,7 +182,7 @@ export type Couverture_populationGroupByOutputType = {
   _max: Couverture_populationMaxAggregateOutputType | null
 }
 
-type GetCouverture_populationGroupByPayload<T extends couverture_populationGroupByArgs> = Prisma.PrismaPromise<
+export type GetCouverture_populationGroupByPayload<T extends couverture_populationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Couverture_populationGroupByOutputType, T['by']> &
       {
@@ -948,6 +948,11 @@ export type couverture_populationFindManyArgs<ExtArgs extends runtime.Types.Exte
    * Skip the first `n` couverture_populations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of couverture_populations.
+   */
   distinct?: Prisma.Couverture_populationScalarFieldEnum | Prisma.Couverture_populationScalarFieldEnum[]
 }
 

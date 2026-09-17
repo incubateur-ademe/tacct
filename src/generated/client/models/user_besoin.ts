@@ -199,7 +199,7 @@ export type User_besoinGroupByOutputType = {
   _max: User_besoinMaxAggregateOutputType | null
 }
 
-type GetUser_besoinGroupByPayload<T extends user_besoinGroupByArgs> = Prisma.PrismaPromise<
+export type GetUser_besoinGroupByPayload<T extends user_besoinGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<User_besoinGroupByOutputType, T['by']> &
       {
@@ -1213,6 +1213,11 @@ export type user_besoinFindManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Skip the first `n` user_besoins.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of user_besoins.
+   */
   distinct?: Prisma.User_besoinScalarFieldEnum | Prisma.User_besoinScalarFieldEnum[]
 }
 

@@ -264,7 +264,7 @@ export type Baserow_territoiresGroupByOutputType = {
   _max: Baserow_territoiresMaxAggregateOutputType | null
 }
 
-type GetBaserow_territoiresGroupByPayload<T extends baserow_territoiresGroupByArgs> = Prisma.PrismaPromise<
+export type GetBaserow_territoiresGroupByPayload<T extends baserow_territoiresGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Baserow_territoiresGroupByOutputType, T['by']> &
       {
@@ -1480,6 +1480,11 @@ export type baserow_territoiresFindManyArgs<ExtArgs extends runtime.Types.Extens
    * Skip the first `n` baserow_territoires.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of baserow_territoires.
+   */
   distinct?: Prisma.Baserow_territoiresScalarFieldEnum | Prisma.Baserow_territoiresScalarFieldEnum[]
 }
 

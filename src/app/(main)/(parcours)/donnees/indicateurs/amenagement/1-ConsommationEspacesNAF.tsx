@@ -29,9 +29,9 @@ export const ConsommationEspacesNAFAmenagement = (props: {
   const sumNaf =
     (type === 'commune'
       ? consommationNAF.filter((item) => item.code_geographique === code)[0]
-        ?.naf09art23
+        ?.naf11art25
       : consommationNAF.reduce(
-        (acc, item) => acc + (item.naf09art23 ?? 0),
+        (acc, item) => acc + (item.naf11art25 ?? 0),
         0
       )) ?? 0;
 
@@ -44,7 +44,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
             <div className={styles.text}>
               {sumNaf !== null ? (
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-                  Entre 2009 et 2023, votre territoire a consommé{' '}
+                  Entre 2011 et 2025, votre territoire a consommé{' '}
                   <b>{Round(sumNaf / 10000, 1)} hectare(s)</b> d’espaces
                   naturels et forestiers.{' '}
                 </Body>
@@ -53,7 +53,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
               )}
               <CustomTooltipNouveauParcours
                 title={espacesNAFTooltipText}
-                texte="D'où vient ce chiffre ?"
+                texte="D'où vient ce chiffre ?"
               />
             </div>
           </div>
@@ -66,7 +66,7 @@ export const ConsommationEspacesNAFAmenagement = (props: {
         <div className={styles.datavizWrapper}>
           <ConsommationEspacesNAFCharts consommationNAF={consommationNAF} />
           <SourceExport
-            source="CEREMA, 2024 (consultée en décembre 2024)"
+            source="CEREMA, 2026 (consultée en septembre 2026)"
             condition={sumNaf !== 0}
             exportComponent={
               <ExportButton

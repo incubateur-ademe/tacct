@@ -206,7 +206,7 @@ export type Future_exposureGroupByOutputType = {
   _max: Future_exposureMaxAggregateOutputType | null
 }
 
-type GetFuture_exposureGroupByPayload<T extends future_exposureGroupByArgs> = Prisma.PrismaPromise<
+export type GetFuture_exposureGroupByPayload<T extends future_exposureGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Future_exposureGroupByOutputType, T['by']> &
       {
@@ -1180,6 +1180,11 @@ export type future_exposureFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` future_exposures.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of future_exposures.
+   */
   distinct?: Prisma.Future_exposureScalarFieldEnum | Prisma.Future_exposureScalarFieldEnum[]
 }
 

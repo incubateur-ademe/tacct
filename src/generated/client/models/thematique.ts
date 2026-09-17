@@ -209,7 +209,7 @@ export type ThematiqueGroupByOutputType = {
   _max: ThematiqueMaxAggregateOutputType | null
 }
 
-type GetThematiqueGroupByPayload<T extends thematiqueGroupByArgs> = Prisma.PrismaPromise<
+export type GetThematiqueGroupByPayload<T extends thematiqueGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<ThematiqueGroupByOutputType, T['by']> &
       {
@@ -1084,6 +1084,11 @@ export type thematiqueFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` thematiques.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of thematiques.
+   */
   distinct?: Prisma.ThematiqueScalarFieldEnum | Prisma.ThematiqueScalarFieldEnum[]
 }
 

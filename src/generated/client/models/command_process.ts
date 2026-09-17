@@ -192,7 +192,7 @@ export type Command_processGroupByOutputType = {
   _max: Command_processMaxAggregateOutputType | null
 }
 
-type GetCommand_processGroupByPayload<T extends command_processGroupByArgs> = Prisma.PrismaPromise<
+export type GetCommand_processGroupByPayload<T extends command_processGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Command_processGroupByOutputType, T['by']> &
       {
@@ -998,6 +998,11 @@ export type command_processFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` command_processes.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of command_processes.
+   */
   distinct?: Prisma.Command_processScalarFieldEnum | Prisma.Command_processScalarFieldEnum[]
 }
 

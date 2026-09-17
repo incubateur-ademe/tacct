@@ -189,7 +189,7 @@ export type Postgis_v2_etat_cours_d_eauGroupByOutputType = {
   _max: Postgis_v2_etat_cours_d_eauMaxAggregateOutputType | null
 }
 
-type GetPostgis_v2_etat_cours_d_eauGroupByPayload<T extends postgis_v2_etat_cours_d_eauGroupByArgs> = Prisma.PrismaPromise<
+export type GetPostgis_v2_etat_cours_d_eauGroupByPayload<T extends postgis_v2_etat_cours_d_eauGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Postgis_v2_etat_cours_d_eauGroupByOutputType, T['by']> &
       {
@@ -876,6 +876,11 @@ export type postgis_v2_etat_cours_d_eauFindManyArgs<ExtArgs extends runtime.Type
    * Skip the first `n` postgis_v2_etat_cours_d_eaus.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of postgis_v2_etat_cours_d_eaus.
+   */
   distinct?: Prisma.Postgis_v2_etat_cours_d_eauScalarFieldEnum | Prisma.Postgis_v2_etat_cours_d_eauScalarFieldEnum[]
 }
 

@@ -178,7 +178,7 @@ export type Doctrine_migration_versionsGroupByOutputType = {
   _max: Doctrine_migration_versionsMaxAggregateOutputType | null
 }
 
-type GetDoctrine_migration_versionsGroupByPayload<T extends doctrine_migration_versionsGroupByArgs> = Prisma.PrismaPromise<
+export type GetDoctrine_migration_versionsGroupByPayload<T extends doctrine_migration_versionsGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Doctrine_migration_versionsGroupByOutputType, T['by']> &
       {
@@ -950,6 +950,11 @@ export type doctrine_migration_versionsFindManyArgs<ExtArgs extends runtime.Type
    * Skip the first `n` doctrine_migration_versions.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of doctrine_migration_versions.
+   */
   distinct?: Prisma.Doctrine_migration_versionsScalarFieldEnum | Prisma.Doctrine_migration_versionsScalarFieldEnum[]
 }
 

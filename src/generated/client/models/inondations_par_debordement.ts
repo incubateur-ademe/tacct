@@ -196,7 +196,7 @@ export type Inondations_par_debordementGroupByOutputType = {
   _max: Inondations_par_debordementMaxAggregateOutputType | null
 }
 
-type GetInondations_par_debordementGroupByPayload<T extends inondations_par_debordementGroupByArgs> = Prisma.PrismaPromise<
+export type GetInondations_par_debordementGroupByPayload<T extends inondations_par_debordementGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Inondations_par_debordementGroupByOutputType, T['by']> &
       {
@@ -1004,6 +1004,11 @@ export type inondations_par_debordementFindManyArgs<ExtArgs extends runtime.Type
    * Skip the first `n` inondations_par_debordements.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of inondations_par_debordements.
+   */
   distinct?: Prisma.Inondations_par_debordementScalarFieldEnum | Prisma.Inondations_par_debordementScalarFieldEnum[]
 }
 

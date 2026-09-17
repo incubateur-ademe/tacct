@@ -28,7 +28,9 @@ export * from "./enums"
  * Type-safe database client for TypeScript
  * @example
  * ```
- * const prisma = new PrismaClient()
+ * const prisma = new PrismaClient({
+ *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
+ * })
  * // Fetch zero or more Sandbox_users
  * const sandbox_users = await prisma.sandbox_users.findMany()
  * ```
@@ -454,3 +456,8 @@ export type tacctoscope_answer = Prisma.tacctoscope_answerModel
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type user_besoin = Prisma.user_besoinModel
+/**
+ * Model tacctoscope_ressources
+ * 
+ */
+export type tacctoscope_ressources = Prisma.tacctoscope_ressourcesModel

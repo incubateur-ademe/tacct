@@ -185,7 +185,7 @@ export type Sandbox_usersGroupByOutputType = {
   _max: Sandbox_usersMaxAggregateOutputType | null
 }
 
-type GetSandbox_usersGroupByPayload<T extends sandbox_usersGroupByArgs> = Prisma.PrismaPromise<
+export type GetSandbox_usersGroupByPayload<T extends sandbox_usersGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Sandbox_usersGroupByOutputType, T['by']> &
       {
@@ -983,6 +983,11 @@ export type sandbox_usersFindManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * Skip the first `n` sandbox_users.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of sandbox_users.
+   */
   distinct?: Prisma.Sandbox_usersScalarFieldEnum | Prisma.Sandbox_usersScalarFieldEnum[]
 }
 

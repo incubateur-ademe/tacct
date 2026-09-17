@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.4.0
- * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
+ * Prisma Client JS version: 7.10.0
+ * Query Engine version: 0edf323efd1d98336f3f0a68684b56f689b900d3
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.4.0",
-  engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
+  client: "7.10.0",
+  engine: "0edf323efd1d98336f3f0a68684b56f689b900d3"
 }
 
 /**
@@ -156,6 +156,19 @@ export type Subset<T, U> = {
 };
 
 /**
+ * Resolved type of the argument passed to the `PrismaClient` constructor.
+ *
+ * When called without a narrower options type (the common case), this resolves
+ * to `PrismaClientOptions` directly, which produces a clear TypeScript error
+ * message (`not assignable to parameter of type 'PrismaClientOptions'`) when
+ * the argument is missing or incomplete. When the user supplies a narrower
+ * options type (e.g. via a literal), it falls back to `Subset` to keep
+ * filtering out unknown properties.
+ */
+export type PrismaClientConstructorArgs<Options extends PrismaClientOptions> =
+  [PrismaClientOptions] extends [Options] ? PrismaClientOptions : Subset<Options, PrismaClientOptions>;
+
+/**
  * SelectSubset
  * @desc From `T` pick properties that exist in `U`. Simple version of Intersection.
  * Additionally, it validates, if both select and include are present. If the case, it errors.
@@ -187,7 +200,7 @@ type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> =
   T extends object ?
   U extends object ?
-    (Without<T, U> & U) | (Without<U, T> & T)
+    ((Without<T, U> & U) | (Without<U, T> & T)) & object
   : U : T
 
 
@@ -466,7 +479,8 @@ export const ModelName = {
   user: 'user',
   user_study: 'user_study',
   tacctoscope_answer: 'tacctoscope_answer',
-  user_besoin: 'user_besoin'
+  user_besoin: 'user_besoin',
+  tacctoscope_ressources: 'tacctoscope_ressources'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -482,7 +496,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6596,6 +6610,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    tacctoscope_ressources: {
+      payload: Prisma.$tacctoscope_ressourcesPayload<ExtArgs>
+      fields: Prisma.tacctoscope_ressourcesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.tacctoscope_ressourcesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.tacctoscope_ressourcesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        findFirst: {
+          args: Prisma.tacctoscope_ressourcesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.tacctoscope_ressourcesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        findMany: {
+          args: Prisma.tacctoscope_ressourcesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>[]
+        }
+        create: {
+          args: Prisma.tacctoscope_ressourcesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        createMany: {
+          args: Prisma.tacctoscope_ressourcesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.tacctoscope_ressourcesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>[]
+        }
+        delete: {
+          args: Prisma.tacctoscope_ressourcesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        update: {
+          args: Prisma.tacctoscope_ressourcesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        deleteMany: {
+          args: Prisma.tacctoscope_ressourcesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.tacctoscope_ressourcesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.tacctoscope_ressourcesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>[]
+        }
+        upsert: {
+          args: Prisma.tacctoscope_ressourcesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$tacctoscope_ressourcesPayload>
+        }
+        aggregate: {
+          args: Prisma.Tacctoscope_ressourcesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTacctoscope_ressources>
+        }
+        groupBy: {
+          args: Prisma.tacctoscope_ressourcesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Tacctoscope_ressourcesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.tacctoscope_ressourcesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Tacctoscope_ressourcesCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -6865,112 +6953,112 @@ export const Databases_v2_consommation_espaces_nafScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  naf09art10: 'naf09art10',
-  art09act10: 'art09act10',
-  art09hab10: 'art09hab10',
-  art09mix10: 'art09mix10',
-  art09rou10: 'art09rou10',
-  art09fer10: 'art09fer10',
-  art09inc10: 'art09inc10',
-  naf10art11: 'naf10art11',
-  art10act11: 'art10act11',
-  art10hab11: 'art10hab11',
-  art10mix11: 'art10mix11',
-  art10rou11: 'art10rou11',
-  art10fer11: 'art10fer11',
-  art10inc11: 'art10inc11',
   naf11art12: 'naf11art12',
-  art11act12: 'art11act12',
   art11hab12: 'art11hab12',
-  art11mix12: 'art11mix12',
-  art11rou12: 'art11rou12',
-  art11fer12: 'art11fer12',
+  art11act12: 'art11act12',
   art11inc12: 'art11inc12',
+  art11mix12: 'art11mix12',
+  art11fer12: 'art11fer12',
+  art11rou12: 'art11rou12',
   naf12art13: 'naf12art13',
-  art12act13: 'art12act13',
   art12hab13: 'art12hab13',
-  art12mix13: 'art12mix13',
-  art12rou13: 'art12rou13',
-  art12fer13: 'art12fer13',
+  art12act13: 'art12act13',
   art12inc13: 'art12inc13',
+  art12mix13: 'art12mix13',
+  art12fer13: 'art12fer13',
+  art12rou13: 'art12rou13',
   naf13art14: 'naf13art14',
-  art13act14: 'art13act14',
   art13hab14: 'art13hab14',
-  art13mix14: 'art13mix14',
-  art13rou14: 'art13rou14',
-  art13fer14: 'art13fer14',
+  art13act14: 'art13act14',
   art13inc14: 'art13inc14',
+  art13mix14: 'art13mix14',
+  art13fer14: 'art13fer14',
+  art13rou14: 'art13rou14',
   naf14art15: 'naf14art15',
-  art14act15: 'art14act15',
   art14hab15: 'art14hab15',
-  art14mix15: 'art14mix15',
-  art14rou15: 'art14rou15',
-  art14fer15: 'art14fer15',
+  art14act15: 'art14act15',
   art14inc15: 'art14inc15',
+  art14mix15: 'art14mix15',
+  art14fer15: 'art14fer15',
+  art14rou15: 'art14rou15',
   naf15art16: 'naf15art16',
-  art15act16: 'art15act16',
   art15hab16: 'art15hab16',
-  art15mix16: 'art15mix16',
-  art15rou16: 'art15rou16',
-  art15fer16: 'art15fer16',
+  art15act16: 'art15act16',
   art15inc16: 'art15inc16',
+  art15mix16: 'art15mix16',
+  art15fer16: 'art15fer16',
+  art15rou16: 'art15rou16',
   naf16art17: 'naf16art17',
-  art16act17: 'art16act17',
   art16hab17: 'art16hab17',
-  art16mix17: 'art16mix17',
-  art16rou17: 'art16rou17',
-  art16fer17: 'art16fer17',
+  art16act17: 'art16act17',
   art16inc17: 'art16inc17',
+  art16mix17: 'art16mix17',
+  art16fer17: 'art16fer17',
+  art16rou17: 'art16rou17',
   naf17art18: 'naf17art18',
-  art17act18: 'art17act18',
   art17hab18: 'art17hab18',
-  art17mix18: 'art17mix18',
-  art17rou18: 'art17rou18',
-  art17fer18: 'art17fer18',
+  art17act18: 'art17act18',
   art17inc18: 'art17inc18',
+  art17mix18: 'art17mix18',
+  art17fer18: 'art17fer18',
+  art17rou18: 'art17rou18',
   naf18art19: 'naf18art19',
-  art18act19: 'art18act19',
   art18hab19: 'art18hab19',
-  art18mix19: 'art18mix19',
-  art18rou19: 'art18rou19',
-  art18fer19: 'art18fer19',
+  art18act19: 'art18act19',
   art18inc19: 'art18inc19',
+  art18mix19: 'art18mix19',
+  art18fer19: 'art18fer19',
+  art18rou19: 'art18rou19',
   naf19art20: 'naf19art20',
-  art19act20: 'art19act20',
   art19hab20: 'art19hab20',
-  art19mix20: 'art19mix20',
-  art19rou20: 'art19rou20',
-  art19fer20: 'art19fer20',
+  art19act20: 'art19act20',
   art19inc20: 'art19inc20',
+  art19mix20: 'art19mix20',
+  art19fer20: 'art19fer20',
+  art19rou20: 'art19rou20',
   naf20art21: 'naf20art21',
-  art20act21: 'art20act21',
   art20hab21: 'art20hab21',
-  art20mix21: 'art20mix21',
-  art20rou21: 'art20rou21',
-  art20fer21: 'art20fer21',
+  art20act21: 'art20act21',
   art20inc21: 'art20inc21',
+  art20mix21: 'art20mix21',
+  art20fer21: 'art20fer21',
+  art20rou21: 'art20rou21',
   naf21art22: 'naf21art22',
-  art21act22: 'art21act22',
   art21hab22: 'art21hab22',
-  art21mix22: 'art21mix22',
-  art21rou22: 'art21rou22',
-  art21fer22: 'art21fer22',
+  art21act22: 'art21act22',
   art21inc22: 'art21inc22',
+  art21mix22: 'art21mix22',
+  art21fer22: 'art21fer22',
+  art21rou22: 'art21rou22',
   naf22art23: 'naf22art23',
-  art22act23: 'art22act23',
   art22hab23: 'art22hab23',
-  art22mix23: 'art22mix23',
-  art22rou23: 'art22rou23',
-  art22fer23: 'art22fer23',
+  art22act23: 'art22act23',
   art22inc23: 'art22inc23',
-  naf09art23: 'naf09art23',
-  art09act23: 'art09act23',
-  art09hab23: 'art09hab23',
-  art09mix23: 'art09mix23',
-  art09inc23: 'art09inc23',
-  art09rou23: 'art09rou23',
-  art09fer23: 'art09fer23',
-  artcom0923: 'artcom0923'
+  art22mix23: 'art22mix23',
+  art22fer23: 'art22fer23',
+  art22rou23: 'art22rou23',
+  naf23art24: 'naf23art24',
+  art23hab24: 'art23hab24',
+  art23act24: 'art23act24',
+  art23inc24: 'art23inc24',
+  art23mix24: 'art23mix24',
+  art23fer24: 'art23fer24',
+  art23rou24: 'art23rou24',
+  naf24art25: 'naf24art25',
+  art24hab25: 'art24hab25',
+  art24act25: 'art24act25',
+  art24inc25: 'art24inc25',
+  art24mix25: 'art24mix25',
+  art24fer25: 'art24fer25',
+  art24rou25: 'art24rou25',
+  naf11art25: 'naf11art25',
+  art11hab25: 'art11hab25',
+  art11act25: 'art11act25',
+  art11inc25: 'art11inc25',
+  art11mix25: 'art11mix25',
+  art11fer25: 'art11fer25',
+  art11rou25: 'art11rou25',
+  artcom1125: 'artcom1125'
 } as const
 
 export type Databases_v2_consommation_espaces_nafScalarFieldEnum = (typeof Databases_v2_consommation_espaces_nafScalarFieldEnum)[keyof typeof Databases_v2_consommation_espaces_nafScalarFieldEnum]
@@ -8233,6 +8321,20 @@ export const User_besoinScalarFieldEnum = {
 export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
+export const Tacctoscope_ressourcesScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ressource_url: 'ressource_url',
+  ressource_titre: 'ressource_titre',
+  ressource_tag: 'ressource_tag',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Tacctoscope_ressourcesScalarFieldEnum = (typeof Tacctoscope_ressourcesScalarFieldEnum)[keyof typeof Tacctoscope_ressourcesScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -8380,19 +8482,10 @@ export type BatchPayload = {
 export const defineExtension = runtime.Extensions.defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
 export type DefaultPrismaClient = PrismaClient
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
-export type PrismaClientOptions = ({
-  /**
-   * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-pg`.
-   */
-  adapter: runtime.SqlDriverAdapterFactory
-  accelerateUrl?: never
-} | {
-  /**
-   * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
-   */
-  accelerateUrl: string
-  adapter?: never
-}) & {
+/**
+ * Options common to all variants of `PrismaClientOptions`, regardless of whether you connect to your database through a driver adapter or through Prisma Accelerate.
+ */
+export interface PrismaClientBaseOptions {
   /**
    * @default "colorless"
    */
@@ -8463,7 +8556,72 @@ export type PrismaClientOptions = ({
    * ```
    */
   comments?: runtime.SqlCommenterPlugin[]
+  /**
+   * Optional maximum size for the query plan cache. If not provided, a default size will be used.
+   * A value of `0` can be used to disable the cache entirely. A higher cache size can improve
+   * performance for applications that execute a large number of unique queries, while a smaller
+   * cache size can reduce memory usage.
+   * 
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter,
+   *   queryPlanCacheMaxSize: 100,
+   * })
+   * ```
+   */
+  queryPlanCacheMaxSize?: number
 }
+
+/**
+ * `PrismaClient` options for connecting to your database through Prisma Accelerate instead of a driver adapter.
+ * 
+ * Learn more: https://pris.ly/d/accelerate
+ */
+export interface PrismaClientOptionsWithAccelerateUrl extends PrismaClientBaseOptions {
+  /**
+   * The Prisma Accelerate connection URL. Use this option to connect to your database through Prisma Accelerate instead of using a driver adapter to connect directly.
+   * 
+   * Learn more: https://pris.ly/d/accelerate
+   */
+  accelerateUrl: string
+  adapter?: never
+}
+
+/**
+ * `PrismaClient` options for connecting to your database through a driver adapter. This is the common case in Prisma 7.
+ * 
+ * Learn more: https://pris.ly/d/driver-adapters
+ */
+export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions {
+  /**
+   * A driver adapter that PrismaClient uses to connect to your database, such as the ones provided by `@prisma/adapter-pg`, `@prisma/adapter-libsql`, `@prisma/adapter-planetscale`, etc.
+   * 
+   * A driver adapter is **required** unless you connect to your database through Prisma Accelerate (in which case use `accelerateUrl` instead).
+   * 
+   * Learn more: https://pris.ly/d/driver-adapters
+   * 
+   * @example
+   * ```ts
+   * import { PrismaPg } from '@prisma/adapter-pg'
+   * import { PrismaClient } from './generated/prisma/client'
+   * 
+   * const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * const prisma = new PrismaClient({ adapter })
+   * ```
+   */
+  adapter: runtime.SqlDriverAdapterFactory
+  accelerateUrl?: never
+}
+
+/**
+ * Options passed to the `PrismaClient` constructor.
+ * 
+ * A driver adapter (or, alternatively, a Prisma Accelerate URL) is **required**. See {@link PrismaClientOptionsWithAdapter} and {@link PrismaClientOptionsWithAccelerateUrl} for the two variants. All other properties live in {@link PrismaClientBaseOptions} and are optional.
+ * 
+ * Learn more about driver adapters: https://pris.ly/d/driver-adapters
+ */
+export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   sandbox_users?: Prisma.sandbox_usersOmit
   databases_v2_agriculture?: Prisma.databases_v2_agricultureOmit
@@ -8548,6 +8706,7 @@ export type GlobalOmitConfig = {
   user_study?: Prisma.user_studyOmit
   tacctoscope_answer?: Prisma.tacctoscope_answerOmit
   user_besoin?: Prisma.user_besoinOmit
+  tacctoscope_ressources?: Prisma.tacctoscope_ressourcesOmit
 }
 
 /* Types for Logging */

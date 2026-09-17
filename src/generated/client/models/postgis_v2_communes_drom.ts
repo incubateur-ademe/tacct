@@ -274,7 +274,7 @@ export type Postgis_v2_communes_dromGroupByOutputType = {
   _max: Postgis_v2_communes_dromMaxAggregateOutputType | null
 }
 
-type GetPostgis_v2_communes_dromGroupByPayload<T extends postgis_v2_communes_dromGroupByArgs> = Prisma.PrismaPromise<
+export type GetPostgis_v2_communes_dromGroupByPayload<T extends postgis_v2_communes_dromGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Postgis_v2_communes_dromGroupByOutputType, T['by']> &
       {
@@ -1301,6 +1301,11 @@ export type postgis_v2_communes_dromFindManyArgs<ExtArgs extends runtime.Types.E
    * Skip the first `n` postgis_v2_communes_droms.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of postgis_v2_communes_droms.
+   */
   distinct?: Prisma.Postgis_v2_communes_dromScalarFieldEnum | Prisma.Postgis_v2_communes_dromScalarFieldEnum[]
 }
 

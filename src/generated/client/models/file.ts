@@ -165,7 +165,7 @@ export type FileGroupByOutputType = {
   _max: FileMaxAggregateOutputType | null
 }
 
-type GetFileGroupByPayload<T extends fileGroupByArgs> = Prisma.PrismaPromise<
+export type GetFileGroupByPayload<T extends fileGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<FileGroupByOutputType, T['by']> &
       {
@@ -1091,6 +1091,11 @@ export type fileFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Skip the first `n` files.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of files.
+   */
   distinct?: Prisma.FileScalarFieldEnum | Prisma.FileScalarFieldEnum[]
 }
 

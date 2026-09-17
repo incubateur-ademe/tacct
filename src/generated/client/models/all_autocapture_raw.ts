@@ -209,7 +209,7 @@ export type All_autocapture_rawGroupByOutputType = {
   _max: All_autocapture_rawMaxAggregateOutputType | null
 }
 
-type GetAll_autocapture_rawGroupByPayload<T extends all_autocapture_rawGroupByArgs> = Prisma.PrismaPromise<
+export type GetAll_autocapture_rawGroupByPayload<T extends all_autocapture_rawGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<All_autocapture_rawGroupByOutputType, T['by']> &
       {
@@ -1093,6 +1093,11 @@ export type all_autocapture_rawFindManyArgs<ExtArgs extends runtime.Types.Extens
    * Skip the first `n` all_autocapture_raws.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of all_autocapture_raws.
+   */
   distinct?: Prisma.All_autocapture_rawScalarFieldEnum | Prisma.All_autocapture_rawScalarFieldEnum[]
 }
 

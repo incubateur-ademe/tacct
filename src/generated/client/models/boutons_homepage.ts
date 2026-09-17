@@ -209,7 +209,7 @@ export type Boutons_homepageGroupByOutputType = {
   _max: Boutons_homepageMaxAggregateOutputType | null
 }
 
-type GetBoutons_homepageGroupByPayload<T extends boutons_homepageGroupByArgs> = Prisma.PrismaPromise<
+export type GetBoutons_homepageGroupByPayload<T extends boutons_homepageGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Boutons_homepageGroupByOutputType, T['by']> &
       {
@@ -1084,6 +1084,11 @@ export type boutons_homepageFindManyArgs<ExtArgs extends runtime.Types.Extension
    * Skip the first `n` boutons_homepages.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of boutons_homepages.
+   */
   distinct?: Prisma.Boutons_homepageScalarFieldEnum | Prisma.Boutons_homepageScalarFieldEnum[]
 }
 

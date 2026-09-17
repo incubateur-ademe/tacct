@@ -29,223 +29,223 @@ export type AggregateDatabases_v2_consommation_espaces_naf = {
 export type Databases_v2_consommation_espaces_nafAvgAggregateOutputType = {
   index: number | null
   region: number | null
-  naf09art10: number | null
-  art09act10: number | null
-  art09hab10: number | null
-  art09mix10: number | null
-  art09rou10: number | null
-  art09fer10: number | null
-  art09inc10: number | null
-  naf10art11: number | null
-  art10act11: number | null
-  art10hab11: number | null
-  art10mix11: number | null
-  art10rou11: number | null
-  art10fer11: number | null
-  art10inc11: number | null
   naf11art12: number | null
-  art11act12: number | null
   art11hab12: number | null
-  art11mix12: number | null
-  art11rou12: number | null
-  art11fer12: number | null
+  art11act12: number | null
   art11inc12: number | null
+  art11mix12: number | null
+  art11fer12: number | null
+  art11rou12: number | null
   naf12art13: number | null
-  art12act13: number | null
   art12hab13: number | null
-  art12mix13: number | null
-  art12rou13: number | null
-  art12fer13: number | null
+  art12act13: number | null
   art12inc13: number | null
+  art12mix13: number | null
+  art12fer13: number | null
+  art12rou13: number | null
   naf13art14: number | null
-  art13act14: number | null
   art13hab14: number | null
-  art13mix14: number | null
-  art13rou14: number | null
-  art13fer14: number | null
+  art13act14: number | null
   art13inc14: number | null
+  art13mix14: number | null
+  art13fer14: number | null
+  art13rou14: number | null
   naf14art15: number | null
-  art14act15: number | null
   art14hab15: number | null
-  art14mix15: number | null
-  art14rou15: number | null
-  art14fer15: number | null
+  art14act15: number | null
   art14inc15: number | null
+  art14mix15: number | null
+  art14fer15: number | null
+  art14rou15: number | null
   naf15art16: number | null
-  art15act16: number | null
   art15hab16: number | null
-  art15mix16: number | null
-  art15rou16: number | null
-  art15fer16: number | null
+  art15act16: number | null
   art15inc16: number | null
+  art15mix16: number | null
+  art15fer16: number | null
+  art15rou16: number | null
   naf16art17: number | null
-  art16act17: number | null
   art16hab17: number | null
-  art16mix17: number | null
-  art16rou17: number | null
-  art16fer17: number | null
+  art16act17: number | null
   art16inc17: number | null
+  art16mix17: number | null
+  art16fer17: number | null
+  art16rou17: number | null
   naf17art18: number | null
-  art17act18: number | null
   art17hab18: number | null
-  art17mix18: number | null
-  art17rou18: number | null
-  art17fer18: number | null
+  art17act18: number | null
   art17inc18: number | null
+  art17mix18: number | null
+  art17fer18: number | null
+  art17rou18: number | null
   naf18art19: number | null
-  art18act19: number | null
   art18hab19: number | null
-  art18mix19: number | null
-  art18rou19: number | null
-  art18fer19: number | null
+  art18act19: number | null
   art18inc19: number | null
+  art18mix19: number | null
+  art18fer19: number | null
+  art18rou19: number | null
   naf19art20: number | null
-  art19act20: number | null
   art19hab20: number | null
-  art19mix20: number | null
-  art19rou20: number | null
-  art19fer20: number | null
+  art19act20: number | null
   art19inc20: number | null
+  art19mix20: number | null
+  art19fer20: number | null
+  art19rou20: number | null
   naf20art21: number | null
-  art20act21: number | null
   art20hab21: number | null
-  art20mix21: number | null
-  art20rou21: number | null
-  art20fer21: number | null
+  art20act21: number | null
   art20inc21: number | null
+  art20mix21: number | null
+  art20fer21: number | null
+  art20rou21: number | null
   naf21art22: number | null
-  art21act22: number | null
   art21hab22: number | null
-  art21mix22: number | null
-  art21rou22: number | null
-  art21fer22: number | null
+  art21act22: number | null
   art21inc22: number | null
+  art21mix22: number | null
+  art21fer22: number | null
+  art21rou22: number | null
   naf22art23: number | null
-  art22act23: number | null
   art22hab23: number | null
-  art22mix23: number | null
-  art22rou23: number | null
-  art22fer23: number | null
+  art22act23: number | null
   art22inc23: number | null
-  naf09art23: number | null
-  art09act23: number | null
-  art09hab23: number | null
-  art09mix23: number | null
-  art09inc23: number | null
-  art09rou23: number | null
-  art09fer23: number | null
-  artcom0923: number | null
+  art22mix23: number | null
+  art22fer23: number | null
+  art22rou23: number | null
+  naf23art24: number | null
+  art23hab24: number | null
+  art23act24: number | null
+  art23inc24: number | null
+  art23mix24: number | null
+  art23fer24: number | null
+  art23rou24: number | null
+  naf24art25: number | null
+  art24hab25: number | null
+  art24act25: number | null
+  art24inc25: number | null
+  art24mix25: number | null
+  art24fer25: number | null
+  art24rou25: number | null
+  naf11art25: number | null
+  art11hab25: number | null
+  art11act25: number | null
+  art11inc25: number | null
+  art11mix25: number | null
+  art11fer25: number | null
+  art11rou25: number | null
+  artcom1125: number | null
 }
 
 export type Databases_v2_consommation_espaces_nafSumAggregateOutputType = {
   index: number | null
   region: number | null
-  naf09art10: number | null
-  art09act10: number | null
-  art09hab10: number | null
-  art09mix10: number | null
-  art09rou10: number | null
-  art09fer10: number | null
-  art09inc10: number | null
-  naf10art11: number | null
-  art10act11: number | null
-  art10hab11: number | null
-  art10mix11: number | null
-  art10rou11: number | null
-  art10fer11: number | null
-  art10inc11: number | null
   naf11art12: number | null
-  art11act12: number | null
   art11hab12: number | null
-  art11mix12: number | null
-  art11rou12: number | null
-  art11fer12: number | null
+  art11act12: number | null
   art11inc12: number | null
+  art11mix12: number | null
+  art11fer12: number | null
+  art11rou12: number | null
   naf12art13: number | null
-  art12act13: number | null
   art12hab13: number | null
-  art12mix13: number | null
-  art12rou13: number | null
-  art12fer13: number | null
+  art12act13: number | null
   art12inc13: number | null
+  art12mix13: number | null
+  art12fer13: number | null
+  art12rou13: number | null
   naf13art14: number | null
-  art13act14: number | null
   art13hab14: number | null
-  art13mix14: number | null
-  art13rou14: number | null
-  art13fer14: number | null
+  art13act14: number | null
   art13inc14: number | null
+  art13mix14: number | null
+  art13fer14: number | null
+  art13rou14: number | null
   naf14art15: number | null
-  art14act15: number | null
   art14hab15: number | null
-  art14mix15: number | null
-  art14rou15: number | null
-  art14fer15: number | null
+  art14act15: number | null
   art14inc15: number | null
+  art14mix15: number | null
+  art14fer15: number | null
+  art14rou15: number | null
   naf15art16: number | null
-  art15act16: number | null
   art15hab16: number | null
-  art15mix16: number | null
-  art15rou16: number | null
-  art15fer16: number | null
+  art15act16: number | null
   art15inc16: number | null
+  art15mix16: number | null
+  art15fer16: number | null
+  art15rou16: number | null
   naf16art17: number | null
-  art16act17: number | null
   art16hab17: number | null
-  art16mix17: number | null
-  art16rou17: number | null
-  art16fer17: number | null
+  art16act17: number | null
   art16inc17: number | null
+  art16mix17: number | null
+  art16fer17: number | null
+  art16rou17: number | null
   naf17art18: number | null
-  art17act18: number | null
   art17hab18: number | null
-  art17mix18: number | null
-  art17rou18: number | null
-  art17fer18: number | null
+  art17act18: number | null
   art17inc18: number | null
+  art17mix18: number | null
+  art17fer18: number | null
+  art17rou18: number | null
   naf18art19: number | null
-  art18act19: number | null
   art18hab19: number | null
-  art18mix19: number | null
-  art18rou19: number | null
-  art18fer19: number | null
+  art18act19: number | null
   art18inc19: number | null
+  art18mix19: number | null
+  art18fer19: number | null
+  art18rou19: number | null
   naf19art20: number | null
-  art19act20: number | null
   art19hab20: number | null
-  art19mix20: number | null
-  art19rou20: number | null
-  art19fer20: number | null
+  art19act20: number | null
   art19inc20: number | null
+  art19mix20: number | null
+  art19fer20: number | null
+  art19rou20: number | null
   naf20art21: number | null
-  art20act21: number | null
   art20hab21: number | null
-  art20mix21: number | null
-  art20rou21: number | null
-  art20fer21: number | null
+  art20act21: number | null
   art20inc21: number | null
+  art20mix21: number | null
+  art20fer21: number | null
+  art20rou21: number | null
   naf21art22: number | null
-  art21act22: number | null
   art21hab22: number | null
-  art21mix22: number | null
-  art21rou22: number | null
-  art21fer22: number | null
+  art21act22: number | null
   art21inc22: number | null
+  art21mix22: number | null
+  art21fer22: number | null
+  art21rou22: number | null
   naf22art23: number | null
-  art22act23: number | null
   art22hab23: number | null
-  art22mix23: number | null
-  art22rou23: number | null
-  art22fer23: number | null
+  art22act23: number | null
   art22inc23: number | null
-  naf09art23: number | null
-  art09act23: number | null
-  art09hab23: number | null
-  art09mix23: number | null
-  art09inc23: number | null
-  art09rou23: number | null
-  art09fer23: number | null
-  artcom0923: number | null
+  art22mix23: number | null
+  art22fer23: number | null
+  art22rou23: number | null
+  naf23art24: number | null
+  art23hab24: number | null
+  art23act24: number | null
+  art23inc24: number | null
+  art23mix24: number | null
+  art23fer24: number | null
+  art23rou24: number | null
+  naf24art25: number | null
+  art24hab25: number | null
+  art24act25: number | null
+  art24inc25: number | null
+  art24mix25: number | null
+  art24fer25: number | null
+  art24rou25: number | null
+  naf11art25: number | null
+  art11hab25: number | null
+  art11act25: number | null
+  art11inc25: number | null
+  art11mix25: number | null
+  art11fer25: number | null
+  art11rou25: number | null
+  artcom1125: number | null
 }
 
 export type Databases_v2_consommation_espaces_nafMinAggregateOutputType = {
@@ -261,112 +261,112 @@ export type Databases_v2_consommation_espaces_nafMinAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  naf09art10: number | null
-  art09act10: number | null
-  art09hab10: number | null
-  art09mix10: number | null
-  art09rou10: number | null
-  art09fer10: number | null
-  art09inc10: number | null
-  naf10art11: number | null
-  art10act11: number | null
-  art10hab11: number | null
-  art10mix11: number | null
-  art10rou11: number | null
-  art10fer11: number | null
-  art10inc11: number | null
   naf11art12: number | null
-  art11act12: number | null
   art11hab12: number | null
-  art11mix12: number | null
-  art11rou12: number | null
-  art11fer12: number | null
+  art11act12: number | null
   art11inc12: number | null
+  art11mix12: number | null
+  art11fer12: number | null
+  art11rou12: number | null
   naf12art13: number | null
-  art12act13: number | null
   art12hab13: number | null
-  art12mix13: number | null
-  art12rou13: number | null
-  art12fer13: number | null
+  art12act13: number | null
   art12inc13: number | null
+  art12mix13: number | null
+  art12fer13: number | null
+  art12rou13: number | null
   naf13art14: number | null
-  art13act14: number | null
   art13hab14: number | null
-  art13mix14: number | null
-  art13rou14: number | null
-  art13fer14: number | null
+  art13act14: number | null
   art13inc14: number | null
+  art13mix14: number | null
+  art13fer14: number | null
+  art13rou14: number | null
   naf14art15: number | null
-  art14act15: number | null
   art14hab15: number | null
-  art14mix15: number | null
-  art14rou15: number | null
-  art14fer15: number | null
+  art14act15: number | null
   art14inc15: number | null
+  art14mix15: number | null
+  art14fer15: number | null
+  art14rou15: number | null
   naf15art16: number | null
-  art15act16: number | null
   art15hab16: number | null
-  art15mix16: number | null
-  art15rou16: number | null
-  art15fer16: number | null
+  art15act16: number | null
   art15inc16: number | null
+  art15mix16: number | null
+  art15fer16: number | null
+  art15rou16: number | null
   naf16art17: number | null
-  art16act17: number | null
   art16hab17: number | null
-  art16mix17: number | null
-  art16rou17: number | null
-  art16fer17: number | null
+  art16act17: number | null
   art16inc17: number | null
+  art16mix17: number | null
+  art16fer17: number | null
+  art16rou17: number | null
   naf17art18: number | null
-  art17act18: number | null
   art17hab18: number | null
-  art17mix18: number | null
-  art17rou18: number | null
-  art17fer18: number | null
+  art17act18: number | null
   art17inc18: number | null
+  art17mix18: number | null
+  art17fer18: number | null
+  art17rou18: number | null
   naf18art19: number | null
-  art18act19: number | null
   art18hab19: number | null
-  art18mix19: number | null
-  art18rou19: number | null
-  art18fer19: number | null
+  art18act19: number | null
   art18inc19: number | null
+  art18mix19: number | null
+  art18fer19: number | null
+  art18rou19: number | null
   naf19art20: number | null
-  art19act20: number | null
   art19hab20: number | null
-  art19mix20: number | null
-  art19rou20: number | null
-  art19fer20: number | null
+  art19act20: number | null
   art19inc20: number | null
+  art19mix20: number | null
+  art19fer20: number | null
+  art19rou20: number | null
   naf20art21: number | null
-  art20act21: number | null
   art20hab21: number | null
-  art20mix21: number | null
-  art20rou21: number | null
-  art20fer21: number | null
+  art20act21: number | null
   art20inc21: number | null
+  art20mix21: number | null
+  art20fer21: number | null
+  art20rou21: number | null
   naf21art22: number | null
-  art21act22: number | null
   art21hab22: number | null
-  art21mix22: number | null
-  art21rou22: number | null
-  art21fer22: number | null
+  art21act22: number | null
   art21inc22: number | null
+  art21mix22: number | null
+  art21fer22: number | null
+  art21rou22: number | null
   naf22art23: number | null
-  art22act23: number | null
   art22hab23: number | null
-  art22mix23: number | null
-  art22rou23: number | null
-  art22fer23: number | null
+  art22act23: number | null
   art22inc23: number | null
-  naf09art23: number | null
-  art09act23: number | null
-  art09hab23: number | null
-  art09mix23: number | null
-  art09inc23: number | null
-  art09rou23: number | null
-  art09fer23: number | null
-  artcom0923: number | null
+  art22mix23: number | null
+  art22fer23: number | null
+  art22rou23: number | null
+  naf23art24: number | null
+  art23hab24: number | null
+  art23act24: number | null
+  art23inc24: number | null
+  art23mix24: number | null
+  art23fer24: number | null
+  art23rou24: number | null
+  naf24art25: number | null
+  art24hab25: number | null
+  art24act25: number | null
+  art24inc25: number | null
+  art24mix25: number | null
+  art24fer25: number | null
+  art24rou25: number | null
+  naf11art25: number | null
+  art11hab25: number | null
+  art11act25: number | null
+  art11inc25: number | null
+  art11mix25: number | null
+  art11fer25: number | null
+  art11rou25: number | null
+  artcom1125: number | null
 }
 
 export type Databases_v2_consommation_espaces_nafMaxAggregateOutputType = {
@@ -382,112 +382,112 @@ export type Databases_v2_consommation_espaces_nafMaxAggregateOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  naf09art10: number | null
-  art09act10: number | null
-  art09hab10: number | null
-  art09mix10: number | null
-  art09rou10: number | null
-  art09fer10: number | null
-  art09inc10: number | null
-  naf10art11: number | null
-  art10act11: number | null
-  art10hab11: number | null
-  art10mix11: number | null
-  art10rou11: number | null
-  art10fer11: number | null
-  art10inc11: number | null
   naf11art12: number | null
-  art11act12: number | null
   art11hab12: number | null
-  art11mix12: number | null
-  art11rou12: number | null
-  art11fer12: number | null
+  art11act12: number | null
   art11inc12: number | null
+  art11mix12: number | null
+  art11fer12: number | null
+  art11rou12: number | null
   naf12art13: number | null
-  art12act13: number | null
   art12hab13: number | null
-  art12mix13: number | null
-  art12rou13: number | null
-  art12fer13: number | null
+  art12act13: number | null
   art12inc13: number | null
+  art12mix13: number | null
+  art12fer13: number | null
+  art12rou13: number | null
   naf13art14: number | null
-  art13act14: number | null
   art13hab14: number | null
-  art13mix14: number | null
-  art13rou14: number | null
-  art13fer14: number | null
+  art13act14: number | null
   art13inc14: number | null
+  art13mix14: number | null
+  art13fer14: number | null
+  art13rou14: number | null
   naf14art15: number | null
-  art14act15: number | null
   art14hab15: number | null
-  art14mix15: number | null
-  art14rou15: number | null
-  art14fer15: number | null
+  art14act15: number | null
   art14inc15: number | null
+  art14mix15: number | null
+  art14fer15: number | null
+  art14rou15: number | null
   naf15art16: number | null
-  art15act16: number | null
   art15hab16: number | null
-  art15mix16: number | null
-  art15rou16: number | null
-  art15fer16: number | null
+  art15act16: number | null
   art15inc16: number | null
+  art15mix16: number | null
+  art15fer16: number | null
+  art15rou16: number | null
   naf16art17: number | null
-  art16act17: number | null
   art16hab17: number | null
-  art16mix17: number | null
-  art16rou17: number | null
-  art16fer17: number | null
+  art16act17: number | null
   art16inc17: number | null
+  art16mix17: number | null
+  art16fer17: number | null
+  art16rou17: number | null
   naf17art18: number | null
-  art17act18: number | null
   art17hab18: number | null
-  art17mix18: number | null
-  art17rou18: number | null
-  art17fer18: number | null
+  art17act18: number | null
   art17inc18: number | null
+  art17mix18: number | null
+  art17fer18: number | null
+  art17rou18: number | null
   naf18art19: number | null
-  art18act19: number | null
   art18hab19: number | null
-  art18mix19: number | null
-  art18rou19: number | null
-  art18fer19: number | null
+  art18act19: number | null
   art18inc19: number | null
+  art18mix19: number | null
+  art18fer19: number | null
+  art18rou19: number | null
   naf19art20: number | null
-  art19act20: number | null
   art19hab20: number | null
-  art19mix20: number | null
-  art19rou20: number | null
-  art19fer20: number | null
+  art19act20: number | null
   art19inc20: number | null
+  art19mix20: number | null
+  art19fer20: number | null
+  art19rou20: number | null
   naf20art21: number | null
-  art20act21: number | null
   art20hab21: number | null
-  art20mix21: number | null
-  art20rou21: number | null
-  art20fer21: number | null
+  art20act21: number | null
   art20inc21: number | null
+  art20mix21: number | null
+  art20fer21: number | null
+  art20rou21: number | null
   naf21art22: number | null
-  art21act22: number | null
   art21hab22: number | null
-  art21mix22: number | null
-  art21rou22: number | null
-  art21fer22: number | null
+  art21act22: number | null
   art21inc22: number | null
+  art21mix22: number | null
+  art21fer22: number | null
+  art21rou22: number | null
   naf22art23: number | null
-  art22act23: number | null
   art22hab23: number | null
-  art22mix23: number | null
-  art22rou23: number | null
-  art22fer23: number | null
+  art22act23: number | null
   art22inc23: number | null
-  naf09art23: number | null
-  art09act23: number | null
-  art09hab23: number | null
-  art09mix23: number | null
-  art09inc23: number | null
-  art09rou23: number | null
-  art09fer23: number | null
-  artcom0923: number | null
+  art22mix23: number | null
+  art22fer23: number | null
+  art22rou23: number | null
+  naf23art24: number | null
+  art23hab24: number | null
+  art23act24: number | null
+  art23inc24: number | null
+  art23mix24: number | null
+  art23fer24: number | null
+  art23rou24: number | null
+  naf24art25: number | null
+  art24hab25: number | null
+  art24act25: number | null
+  art24inc25: number | null
+  art24mix25: number | null
+  art24fer25: number | null
+  art24rou25: number | null
+  naf11art25: number | null
+  art11hab25: number | null
+  art11act25: number | null
+  art11inc25: number | null
+  art11mix25: number | null
+  art11fer25: number | null
+  art11rou25: number | null
+  artcom1125: number | null
 }
 
 export type Databases_v2_consommation_espaces_nafCountAggregateOutputType = {
@@ -503,112 +503,112 @@ export type Databases_v2_consommation_espaces_nafCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
-  naf09art10: number
-  art09act10: number
-  art09hab10: number
-  art09mix10: number
-  art09rou10: number
-  art09fer10: number
-  art09inc10: number
-  naf10art11: number
-  art10act11: number
-  art10hab11: number
-  art10mix11: number
-  art10rou11: number
-  art10fer11: number
-  art10inc11: number
   naf11art12: number
-  art11act12: number
   art11hab12: number
-  art11mix12: number
-  art11rou12: number
-  art11fer12: number
+  art11act12: number
   art11inc12: number
+  art11mix12: number
+  art11fer12: number
+  art11rou12: number
   naf12art13: number
-  art12act13: number
   art12hab13: number
-  art12mix13: number
-  art12rou13: number
-  art12fer13: number
+  art12act13: number
   art12inc13: number
+  art12mix13: number
+  art12fer13: number
+  art12rou13: number
   naf13art14: number
-  art13act14: number
   art13hab14: number
-  art13mix14: number
-  art13rou14: number
-  art13fer14: number
+  art13act14: number
   art13inc14: number
+  art13mix14: number
+  art13fer14: number
+  art13rou14: number
   naf14art15: number
-  art14act15: number
   art14hab15: number
-  art14mix15: number
-  art14rou15: number
-  art14fer15: number
+  art14act15: number
   art14inc15: number
+  art14mix15: number
+  art14fer15: number
+  art14rou15: number
   naf15art16: number
-  art15act16: number
   art15hab16: number
-  art15mix16: number
-  art15rou16: number
-  art15fer16: number
+  art15act16: number
   art15inc16: number
+  art15mix16: number
+  art15fer16: number
+  art15rou16: number
   naf16art17: number
-  art16act17: number
   art16hab17: number
-  art16mix17: number
-  art16rou17: number
-  art16fer17: number
+  art16act17: number
   art16inc17: number
+  art16mix17: number
+  art16fer17: number
+  art16rou17: number
   naf17art18: number
-  art17act18: number
   art17hab18: number
-  art17mix18: number
-  art17rou18: number
-  art17fer18: number
+  art17act18: number
   art17inc18: number
+  art17mix18: number
+  art17fer18: number
+  art17rou18: number
   naf18art19: number
-  art18act19: number
   art18hab19: number
-  art18mix19: number
-  art18rou19: number
-  art18fer19: number
+  art18act19: number
   art18inc19: number
+  art18mix19: number
+  art18fer19: number
+  art18rou19: number
   naf19art20: number
-  art19act20: number
   art19hab20: number
-  art19mix20: number
-  art19rou20: number
-  art19fer20: number
+  art19act20: number
   art19inc20: number
+  art19mix20: number
+  art19fer20: number
+  art19rou20: number
   naf20art21: number
-  art20act21: number
   art20hab21: number
-  art20mix21: number
-  art20rou21: number
-  art20fer21: number
+  art20act21: number
   art20inc21: number
+  art20mix21: number
+  art20fer21: number
+  art20rou21: number
   naf21art22: number
-  art21act22: number
   art21hab22: number
-  art21mix22: number
-  art21rou22: number
-  art21fer22: number
+  art21act22: number
   art21inc22: number
+  art21mix22: number
+  art21fer22: number
+  art21rou22: number
   naf22art23: number
-  art22act23: number
   art22hab23: number
-  art22mix23: number
-  art22rou23: number
-  art22fer23: number
+  art22act23: number
   art22inc23: number
-  naf09art23: number
-  art09act23: number
-  art09hab23: number
-  art09mix23: number
-  art09inc23: number
-  art09rou23: number
-  art09fer23: number
-  artcom0923: number
+  art22mix23: number
+  art22fer23: number
+  art22rou23: number
+  naf23art24: number
+  art23hab24: number
+  art23act24: number
+  art23inc24: number
+  art23mix24: number
+  art23fer24: number
+  art23rou24: number
+  naf24art25: number
+  art24hab25: number
+  art24act25: number
+  art24inc25: number
+  art24mix25: number
+  art24fer25: number
+  art24rou25: number
+  naf11art25: number
+  art11hab25: number
+  art11act25: number
+  art11inc25: number
+  art11mix25: number
+  art11fer25: number
+  art11rou25: number
+  artcom1125: number
   _all: number
 }
 
@@ -616,223 +616,223 @@ export type Databases_v2_consommation_espaces_nafCountAggregateOutputType = {
 export type Databases_v2_consommation_espaces_nafAvgAggregateInputType = {
   index?: true
   region?: true
-  naf09art10?: true
-  art09act10?: true
-  art09hab10?: true
-  art09mix10?: true
-  art09rou10?: true
-  art09fer10?: true
-  art09inc10?: true
-  naf10art11?: true
-  art10act11?: true
-  art10hab11?: true
-  art10mix11?: true
-  art10rou11?: true
-  art10fer11?: true
-  art10inc11?: true
   naf11art12?: true
-  art11act12?: true
   art11hab12?: true
-  art11mix12?: true
-  art11rou12?: true
-  art11fer12?: true
+  art11act12?: true
   art11inc12?: true
+  art11mix12?: true
+  art11fer12?: true
+  art11rou12?: true
   naf12art13?: true
-  art12act13?: true
   art12hab13?: true
-  art12mix13?: true
-  art12rou13?: true
-  art12fer13?: true
+  art12act13?: true
   art12inc13?: true
+  art12mix13?: true
+  art12fer13?: true
+  art12rou13?: true
   naf13art14?: true
-  art13act14?: true
   art13hab14?: true
-  art13mix14?: true
-  art13rou14?: true
-  art13fer14?: true
+  art13act14?: true
   art13inc14?: true
+  art13mix14?: true
+  art13fer14?: true
+  art13rou14?: true
   naf14art15?: true
-  art14act15?: true
   art14hab15?: true
-  art14mix15?: true
-  art14rou15?: true
-  art14fer15?: true
+  art14act15?: true
   art14inc15?: true
+  art14mix15?: true
+  art14fer15?: true
+  art14rou15?: true
   naf15art16?: true
-  art15act16?: true
   art15hab16?: true
-  art15mix16?: true
-  art15rou16?: true
-  art15fer16?: true
+  art15act16?: true
   art15inc16?: true
+  art15mix16?: true
+  art15fer16?: true
+  art15rou16?: true
   naf16art17?: true
-  art16act17?: true
   art16hab17?: true
-  art16mix17?: true
-  art16rou17?: true
-  art16fer17?: true
+  art16act17?: true
   art16inc17?: true
+  art16mix17?: true
+  art16fer17?: true
+  art16rou17?: true
   naf17art18?: true
-  art17act18?: true
   art17hab18?: true
-  art17mix18?: true
-  art17rou18?: true
-  art17fer18?: true
+  art17act18?: true
   art17inc18?: true
+  art17mix18?: true
+  art17fer18?: true
+  art17rou18?: true
   naf18art19?: true
-  art18act19?: true
   art18hab19?: true
-  art18mix19?: true
-  art18rou19?: true
-  art18fer19?: true
+  art18act19?: true
   art18inc19?: true
+  art18mix19?: true
+  art18fer19?: true
+  art18rou19?: true
   naf19art20?: true
-  art19act20?: true
   art19hab20?: true
-  art19mix20?: true
-  art19rou20?: true
-  art19fer20?: true
+  art19act20?: true
   art19inc20?: true
+  art19mix20?: true
+  art19fer20?: true
+  art19rou20?: true
   naf20art21?: true
-  art20act21?: true
   art20hab21?: true
-  art20mix21?: true
-  art20rou21?: true
-  art20fer21?: true
+  art20act21?: true
   art20inc21?: true
+  art20mix21?: true
+  art20fer21?: true
+  art20rou21?: true
   naf21art22?: true
-  art21act22?: true
   art21hab22?: true
-  art21mix22?: true
-  art21rou22?: true
-  art21fer22?: true
+  art21act22?: true
   art21inc22?: true
+  art21mix22?: true
+  art21fer22?: true
+  art21rou22?: true
   naf22art23?: true
-  art22act23?: true
   art22hab23?: true
-  art22mix23?: true
-  art22rou23?: true
-  art22fer23?: true
+  art22act23?: true
   art22inc23?: true
-  naf09art23?: true
-  art09act23?: true
-  art09hab23?: true
-  art09mix23?: true
-  art09inc23?: true
-  art09rou23?: true
-  art09fer23?: true
-  artcom0923?: true
+  art22mix23?: true
+  art22fer23?: true
+  art22rou23?: true
+  naf23art24?: true
+  art23hab24?: true
+  art23act24?: true
+  art23inc24?: true
+  art23mix24?: true
+  art23fer24?: true
+  art23rou24?: true
+  naf24art25?: true
+  art24hab25?: true
+  art24act25?: true
+  art24inc25?: true
+  art24mix25?: true
+  art24fer25?: true
+  art24rou25?: true
+  naf11art25?: true
+  art11hab25?: true
+  art11act25?: true
+  art11inc25?: true
+  art11mix25?: true
+  art11fer25?: true
+  art11rou25?: true
+  artcom1125?: true
 }
 
 export type Databases_v2_consommation_espaces_nafSumAggregateInputType = {
   index?: true
   region?: true
-  naf09art10?: true
-  art09act10?: true
-  art09hab10?: true
-  art09mix10?: true
-  art09rou10?: true
-  art09fer10?: true
-  art09inc10?: true
-  naf10art11?: true
-  art10act11?: true
-  art10hab11?: true
-  art10mix11?: true
-  art10rou11?: true
-  art10fer11?: true
-  art10inc11?: true
   naf11art12?: true
-  art11act12?: true
   art11hab12?: true
-  art11mix12?: true
-  art11rou12?: true
-  art11fer12?: true
+  art11act12?: true
   art11inc12?: true
+  art11mix12?: true
+  art11fer12?: true
+  art11rou12?: true
   naf12art13?: true
-  art12act13?: true
   art12hab13?: true
-  art12mix13?: true
-  art12rou13?: true
-  art12fer13?: true
+  art12act13?: true
   art12inc13?: true
+  art12mix13?: true
+  art12fer13?: true
+  art12rou13?: true
   naf13art14?: true
-  art13act14?: true
   art13hab14?: true
-  art13mix14?: true
-  art13rou14?: true
-  art13fer14?: true
+  art13act14?: true
   art13inc14?: true
+  art13mix14?: true
+  art13fer14?: true
+  art13rou14?: true
   naf14art15?: true
-  art14act15?: true
   art14hab15?: true
-  art14mix15?: true
-  art14rou15?: true
-  art14fer15?: true
+  art14act15?: true
   art14inc15?: true
+  art14mix15?: true
+  art14fer15?: true
+  art14rou15?: true
   naf15art16?: true
-  art15act16?: true
   art15hab16?: true
-  art15mix16?: true
-  art15rou16?: true
-  art15fer16?: true
+  art15act16?: true
   art15inc16?: true
+  art15mix16?: true
+  art15fer16?: true
+  art15rou16?: true
   naf16art17?: true
-  art16act17?: true
   art16hab17?: true
-  art16mix17?: true
-  art16rou17?: true
-  art16fer17?: true
+  art16act17?: true
   art16inc17?: true
+  art16mix17?: true
+  art16fer17?: true
+  art16rou17?: true
   naf17art18?: true
-  art17act18?: true
   art17hab18?: true
-  art17mix18?: true
-  art17rou18?: true
-  art17fer18?: true
+  art17act18?: true
   art17inc18?: true
+  art17mix18?: true
+  art17fer18?: true
+  art17rou18?: true
   naf18art19?: true
-  art18act19?: true
   art18hab19?: true
-  art18mix19?: true
-  art18rou19?: true
-  art18fer19?: true
+  art18act19?: true
   art18inc19?: true
+  art18mix19?: true
+  art18fer19?: true
+  art18rou19?: true
   naf19art20?: true
-  art19act20?: true
   art19hab20?: true
-  art19mix20?: true
-  art19rou20?: true
-  art19fer20?: true
+  art19act20?: true
   art19inc20?: true
+  art19mix20?: true
+  art19fer20?: true
+  art19rou20?: true
   naf20art21?: true
-  art20act21?: true
   art20hab21?: true
-  art20mix21?: true
-  art20rou21?: true
-  art20fer21?: true
+  art20act21?: true
   art20inc21?: true
+  art20mix21?: true
+  art20fer21?: true
+  art20rou21?: true
   naf21art22?: true
-  art21act22?: true
   art21hab22?: true
-  art21mix22?: true
-  art21rou22?: true
-  art21fer22?: true
+  art21act22?: true
   art21inc22?: true
+  art21mix22?: true
+  art21fer22?: true
+  art21rou22?: true
   naf22art23?: true
-  art22act23?: true
   art22hab23?: true
-  art22mix23?: true
-  art22rou23?: true
-  art22fer23?: true
+  art22act23?: true
   art22inc23?: true
-  naf09art23?: true
-  art09act23?: true
-  art09hab23?: true
-  art09mix23?: true
-  art09inc23?: true
-  art09rou23?: true
-  art09fer23?: true
-  artcom0923?: true
+  art22mix23?: true
+  art22fer23?: true
+  art22rou23?: true
+  naf23art24?: true
+  art23hab24?: true
+  art23act24?: true
+  art23inc24?: true
+  art23mix24?: true
+  art23fer24?: true
+  art23rou24?: true
+  naf24art25?: true
+  art24hab25?: true
+  art24act25?: true
+  art24inc25?: true
+  art24mix25?: true
+  art24fer25?: true
+  art24rou25?: true
+  naf11art25?: true
+  art11hab25?: true
+  art11act25?: true
+  art11inc25?: true
+  art11mix25?: true
+  art11fer25?: true
+  art11rou25?: true
+  artcom1125?: true
 }
 
 export type Databases_v2_consommation_espaces_nafMinAggregateInputType = {
@@ -848,112 +848,112 @@ export type Databases_v2_consommation_espaces_nafMinAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  naf09art10?: true
-  art09act10?: true
-  art09hab10?: true
-  art09mix10?: true
-  art09rou10?: true
-  art09fer10?: true
-  art09inc10?: true
-  naf10art11?: true
-  art10act11?: true
-  art10hab11?: true
-  art10mix11?: true
-  art10rou11?: true
-  art10fer11?: true
-  art10inc11?: true
   naf11art12?: true
-  art11act12?: true
   art11hab12?: true
-  art11mix12?: true
-  art11rou12?: true
-  art11fer12?: true
+  art11act12?: true
   art11inc12?: true
+  art11mix12?: true
+  art11fer12?: true
+  art11rou12?: true
   naf12art13?: true
-  art12act13?: true
   art12hab13?: true
-  art12mix13?: true
-  art12rou13?: true
-  art12fer13?: true
+  art12act13?: true
   art12inc13?: true
+  art12mix13?: true
+  art12fer13?: true
+  art12rou13?: true
   naf13art14?: true
-  art13act14?: true
   art13hab14?: true
-  art13mix14?: true
-  art13rou14?: true
-  art13fer14?: true
+  art13act14?: true
   art13inc14?: true
+  art13mix14?: true
+  art13fer14?: true
+  art13rou14?: true
   naf14art15?: true
-  art14act15?: true
   art14hab15?: true
-  art14mix15?: true
-  art14rou15?: true
-  art14fer15?: true
+  art14act15?: true
   art14inc15?: true
+  art14mix15?: true
+  art14fer15?: true
+  art14rou15?: true
   naf15art16?: true
-  art15act16?: true
   art15hab16?: true
-  art15mix16?: true
-  art15rou16?: true
-  art15fer16?: true
+  art15act16?: true
   art15inc16?: true
+  art15mix16?: true
+  art15fer16?: true
+  art15rou16?: true
   naf16art17?: true
-  art16act17?: true
   art16hab17?: true
-  art16mix17?: true
-  art16rou17?: true
-  art16fer17?: true
+  art16act17?: true
   art16inc17?: true
+  art16mix17?: true
+  art16fer17?: true
+  art16rou17?: true
   naf17art18?: true
-  art17act18?: true
   art17hab18?: true
-  art17mix18?: true
-  art17rou18?: true
-  art17fer18?: true
+  art17act18?: true
   art17inc18?: true
+  art17mix18?: true
+  art17fer18?: true
+  art17rou18?: true
   naf18art19?: true
-  art18act19?: true
   art18hab19?: true
-  art18mix19?: true
-  art18rou19?: true
-  art18fer19?: true
+  art18act19?: true
   art18inc19?: true
+  art18mix19?: true
+  art18fer19?: true
+  art18rou19?: true
   naf19art20?: true
-  art19act20?: true
   art19hab20?: true
-  art19mix20?: true
-  art19rou20?: true
-  art19fer20?: true
+  art19act20?: true
   art19inc20?: true
+  art19mix20?: true
+  art19fer20?: true
+  art19rou20?: true
   naf20art21?: true
-  art20act21?: true
   art20hab21?: true
-  art20mix21?: true
-  art20rou21?: true
-  art20fer21?: true
+  art20act21?: true
   art20inc21?: true
+  art20mix21?: true
+  art20fer21?: true
+  art20rou21?: true
   naf21art22?: true
-  art21act22?: true
   art21hab22?: true
-  art21mix22?: true
-  art21rou22?: true
-  art21fer22?: true
+  art21act22?: true
   art21inc22?: true
+  art21mix22?: true
+  art21fer22?: true
+  art21rou22?: true
   naf22art23?: true
-  art22act23?: true
   art22hab23?: true
-  art22mix23?: true
-  art22rou23?: true
-  art22fer23?: true
+  art22act23?: true
   art22inc23?: true
-  naf09art23?: true
-  art09act23?: true
-  art09hab23?: true
-  art09mix23?: true
-  art09inc23?: true
-  art09rou23?: true
-  art09fer23?: true
-  artcom0923?: true
+  art22mix23?: true
+  art22fer23?: true
+  art22rou23?: true
+  naf23art24?: true
+  art23hab24?: true
+  art23act24?: true
+  art23inc24?: true
+  art23mix24?: true
+  art23fer24?: true
+  art23rou24?: true
+  naf24art25?: true
+  art24hab25?: true
+  art24act25?: true
+  art24inc25?: true
+  art24mix25?: true
+  art24fer25?: true
+  art24rou25?: true
+  naf11art25?: true
+  art11hab25?: true
+  art11act25?: true
+  art11inc25?: true
+  art11mix25?: true
+  art11fer25?: true
+  art11rou25?: true
+  artcom1125?: true
 }
 
 export type Databases_v2_consommation_espaces_nafMaxAggregateInputType = {
@@ -969,112 +969,112 @@ export type Databases_v2_consommation_espaces_nafMaxAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  naf09art10?: true
-  art09act10?: true
-  art09hab10?: true
-  art09mix10?: true
-  art09rou10?: true
-  art09fer10?: true
-  art09inc10?: true
-  naf10art11?: true
-  art10act11?: true
-  art10hab11?: true
-  art10mix11?: true
-  art10rou11?: true
-  art10fer11?: true
-  art10inc11?: true
   naf11art12?: true
-  art11act12?: true
   art11hab12?: true
-  art11mix12?: true
-  art11rou12?: true
-  art11fer12?: true
+  art11act12?: true
   art11inc12?: true
+  art11mix12?: true
+  art11fer12?: true
+  art11rou12?: true
   naf12art13?: true
-  art12act13?: true
   art12hab13?: true
-  art12mix13?: true
-  art12rou13?: true
-  art12fer13?: true
+  art12act13?: true
   art12inc13?: true
+  art12mix13?: true
+  art12fer13?: true
+  art12rou13?: true
   naf13art14?: true
-  art13act14?: true
   art13hab14?: true
-  art13mix14?: true
-  art13rou14?: true
-  art13fer14?: true
+  art13act14?: true
   art13inc14?: true
+  art13mix14?: true
+  art13fer14?: true
+  art13rou14?: true
   naf14art15?: true
-  art14act15?: true
   art14hab15?: true
-  art14mix15?: true
-  art14rou15?: true
-  art14fer15?: true
+  art14act15?: true
   art14inc15?: true
+  art14mix15?: true
+  art14fer15?: true
+  art14rou15?: true
   naf15art16?: true
-  art15act16?: true
   art15hab16?: true
-  art15mix16?: true
-  art15rou16?: true
-  art15fer16?: true
+  art15act16?: true
   art15inc16?: true
+  art15mix16?: true
+  art15fer16?: true
+  art15rou16?: true
   naf16art17?: true
-  art16act17?: true
   art16hab17?: true
-  art16mix17?: true
-  art16rou17?: true
-  art16fer17?: true
+  art16act17?: true
   art16inc17?: true
+  art16mix17?: true
+  art16fer17?: true
+  art16rou17?: true
   naf17art18?: true
-  art17act18?: true
   art17hab18?: true
-  art17mix18?: true
-  art17rou18?: true
-  art17fer18?: true
+  art17act18?: true
   art17inc18?: true
+  art17mix18?: true
+  art17fer18?: true
+  art17rou18?: true
   naf18art19?: true
-  art18act19?: true
   art18hab19?: true
-  art18mix19?: true
-  art18rou19?: true
-  art18fer19?: true
+  art18act19?: true
   art18inc19?: true
+  art18mix19?: true
+  art18fer19?: true
+  art18rou19?: true
   naf19art20?: true
-  art19act20?: true
   art19hab20?: true
-  art19mix20?: true
-  art19rou20?: true
-  art19fer20?: true
+  art19act20?: true
   art19inc20?: true
+  art19mix20?: true
+  art19fer20?: true
+  art19rou20?: true
   naf20art21?: true
-  art20act21?: true
   art20hab21?: true
-  art20mix21?: true
-  art20rou21?: true
-  art20fer21?: true
+  art20act21?: true
   art20inc21?: true
+  art20mix21?: true
+  art20fer21?: true
+  art20rou21?: true
   naf21art22?: true
-  art21act22?: true
   art21hab22?: true
-  art21mix22?: true
-  art21rou22?: true
-  art21fer22?: true
+  art21act22?: true
   art21inc22?: true
+  art21mix22?: true
+  art21fer22?: true
+  art21rou22?: true
   naf22art23?: true
-  art22act23?: true
   art22hab23?: true
-  art22mix23?: true
-  art22rou23?: true
-  art22fer23?: true
+  art22act23?: true
   art22inc23?: true
-  naf09art23?: true
-  art09act23?: true
-  art09hab23?: true
-  art09mix23?: true
-  art09inc23?: true
-  art09rou23?: true
-  art09fer23?: true
-  artcom0923?: true
+  art22mix23?: true
+  art22fer23?: true
+  art22rou23?: true
+  naf23art24?: true
+  art23hab24?: true
+  art23act24?: true
+  art23inc24?: true
+  art23mix24?: true
+  art23fer24?: true
+  art23rou24?: true
+  naf24art25?: true
+  art24hab25?: true
+  art24act25?: true
+  art24inc25?: true
+  art24mix25?: true
+  art24fer25?: true
+  art24rou25?: true
+  naf11art25?: true
+  art11hab25?: true
+  art11act25?: true
+  art11inc25?: true
+  art11mix25?: true
+  art11fer25?: true
+  art11rou25?: true
+  artcom1125?: true
 }
 
 export type Databases_v2_consommation_espaces_nafCountAggregateInputType = {
@@ -1090,112 +1090,112 @@ export type Databases_v2_consommation_espaces_nafCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
-  naf09art10?: true
-  art09act10?: true
-  art09hab10?: true
-  art09mix10?: true
-  art09rou10?: true
-  art09fer10?: true
-  art09inc10?: true
-  naf10art11?: true
-  art10act11?: true
-  art10hab11?: true
-  art10mix11?: true
-  art10rou11?: true
-  art10fer11?: true
-  art10inc11?: true
   naf11art12?: true
-  art11act12?: true
   art11hab12?: true
-  art11mix12?: true
-  art11rou12?: true
-  art11fer12?: true
+  art11act12?: true
   art11inc12?: true
+  art11mix12?: true
+  art11fer12?: true
+  art11rou12?: true
   naf12art13?: true
-  art12act13?: true
   art12hab13?: true
-  art12mix13?: true
-  art12rou13?: true
-  art12fer13?: true
+  art12act13?: true
   art12inc13?: true
+  art12mix13?: true
+  art12fer13?: true
+  art12rou13?: true
   naf13art14?: true
-  art13act14?: true
   art13hab14?: true
-  art13mix14?: true
-  art13rou14?: true
-  art13fer14?: true
+  art13act14?: true
   art13inc14?: true
+  art13mix14?: true
+  art13fer14?: true
+  art13rou14?: true
   naf14art15?: true
-  art14act15?: true
   art14hab15?: true
-  art14mix15?: true
-  art14rou15?: true
-  art14fer15?: true
+  art14act15?: true
   art14inc15?: true
+  art14mix15?: true
+  art14fer15?: true
+  art14rou15?: true
   naf15art16?: true
-  art15act16?: true
   art15hab16?: true
-  art15mix16?: true
-  art15rou16?: true
-  art15fer16?: true
+  art15act16?: true
   art15inc16?: true
+  art15mix16?: true
+  art15fer16?: true
+  art15rou16?: true
   naf16art17?: true
-  art16act17?: true
   art16hab17?: true
-  art16mix17?: true
-  art16rou17?: true
-  art16fer17?: true
+  art16act17?: true
   art16inc17?: true
+  art16mix17?: true
+  art16fer17?: true
+  art16rou17?: true
   naf17art18?: true
-  art17act18?: true
   art17hab18?: true
-  art17mix18?: true
-  art17rou18?: true
-  art17fer18?: true
+  art17act18?: true
   art17inc18?: true
+  art17mix18?: true
+  art17fer18?: true
+  art17rou18?: true
   naf18art19?: true
-  art18act19?: true
   art18hab19?: true
-  art18mix19?: true
-  art18rou19?: true
-  art18fer19?: true
+  art18act19?: true
   art18inc19?: true
+  art18mix19?: true
+  art18fer19?: true
+  art18rou19?: true
   naf19art20?: true
-  art19act20?: true
   art19hab20?: true
-  art19mix20?: true
-  art19rou20?: true
-  art19fer20?: true
+  art19act20?: true
   art19inc20?: true
+  art19mix20?: true
+  art19fer20?: true
+  art19rou20?: true
   naf20art21?: true
-  art20act21?: true
   art20hab21?: true
-  art20mix21?: true
-  art20rou21?: true
-  art20fer21?: true
+  art20act21?: true
   art20inc21?: true
+  art20mix21?: true
+  art20fer21?: true
+  art20rou21?: true
   naf21art22?: true
-  art21act22?: true
   art21hab22?: true
-  art21mix22?: true
-  art21rou22?: true
-  art21fer22?: true
+  art21act22?: true
   art21inc22?: true
+  art21mix22?: true
+  art21fer22?: true
+  art21rou22?: true
   naf22art23?: true
-  art22act23?: true
   art22hab23?: true
-  art22mix23?: true
-  art22rou23?: true
-  art22fer23?: true
+  art22act23?: true
   art22inc23?: true
-  naf09art23?: true
-  art09act23?: true
-  art09hab23?: true
-  art09mix23?: true
-  art09inc23?: true
-  art09rou23?: true
-  art09fer23?: true
-  artcom0923?: true
+  art22mix23?: true
+  art22fer23?: true
+  art22rou23?: true
+  naf23art24?: true
+  art23hab24?: true
+  art23act24?: true
+  art23inc24?: true
+  art23mix24?: true
+  art23fer24?: true
+  art23rou24?: true
+  naf24art25?: true
+  art24hab25?: true
+  art24act25?: true
+  art24inc25?: true
+  art24mix25?: true
+  art24fer25?: true
+  art24rou25?: true
+  naf11art25?: true
+  art11hab25?: true
+  art11act25?: true
+  art11inc25?: true
+  art11mix25?: true
+  art11fer25?: true
+  art11rou25?: true
+  artcom1125?: true
   _all?: true
 }
 
@@ -1292,118 +1292,118 @@ export type Databases_v2_consommation_espaces_nafGroupByOutputType = {
   epci: string
   libelle_epci: string
   departement: string
-  libelle_departement: string
+  libelle_departement: string | null
   region: number
   ept: string | null
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
-  naf09art10: number | null
-  art09act10: number | null
-  art09hab10: number | null
-  art09mix10: number | null
-  art09rou10: number | null
-  art09fer10: number | null
-  art09inc10: number | null
-  naf10art11: number | null
-  art10act11: number | null
-  art10hab11: number | null
-  art10mix11: number | null
-  art10rou11: number | null
-  art10fer11: number | null
-  art10inc11: number | null
   naf11art12: number | null
-  art11act12: number | null
   art11hab12: number | null
-  art11mix12: number | null
-  art11rou12: number | null
-  art11fer12: number | null
+  art11act12: number | null
   art11inc12: number | null
+  art11mix12: number | null
+  art11fer12: number | null
+  art11rou12: number | null
   naf12art13: number | null
-  art12act13: number | null
   art12hab13: number | null
-  art12mix13: number | null
-  art12rou13: number | null
-  art12fer13: number | null
+  art12act13: number | null
   art12inc13: number | null
+  art12mix13: number | null
+  art12fer13: number | null
+  art12rou13: number | null
   naf13art14: number | null
-  art13act14: number | null
   art13hab14: number | null
-  art13mix14: number | null
-  art13rou14: number | null
-  art13fer14: number | null
+  art13act14: number | null
   art13inc14: number | null
+  art13mix14: number | null
+  art13fer14: number | null
+  art13rou14: number | null
   naf14art15: number | null
-  art14act15: number | null
   art14hab15: number | null
-  art14mix15: number | null
-  art14rou15: number | null
-  art14fer15: number | null
+  art14act15: number | null
   art14inc15: number | null
+  art14mix15: number | null
+  art14fer15: number | null
+  art14rou15: number | null
   naf15art16: number | null
-  art15act16: number | null
   art15hab16: number | null
-  art15mix16: number | null
-  art15rou16: number | null
-  art15fer16: number | null
+  art15act16: number | null
   art15inc16: number | null
+  art15mix16: number | null
+  art15fer16: number | null
+  art15rou16: number | null
   naf16art17: number | null
-  art16act17: number | null
   art16hab17: number | null
-  art16mix17: number | null
-  art16rou17: number | null
-  art16fer17: number | null
+  art16act17: number | null
   art16inc17: number | null
+  art16mix17: number | null
+  art16fer17: number | null
+  art16rou17: number | null
   naf17art18: number | null
-  art17act18: number | null
   art17hab18: number | null
-  art17mix18: number | null
-  art17rou18: number | null
-  art17fer18: number | null
+  art17act18: number | null
   art17inc18: number | null
+  art17mix18: number | null
+  art17fer18: number | null
+  art17rou18: number | null
   naf18art19: number | null
-  art18act19: number | null
   art18hab19: number | null
-  art18mix19: number | null
-  art18rou19: number | null
-  art18fer19: number | null
+  art18act19: number | null
   art18inc19: number | null
+  art18mix19: number | null
+  art18fer19: number | null
+  art18rou19: number | null
   naf19art20: number | null
-  art19act20: number | null
   art19hab20: number | null
-  art19mix20: number | null
-  art19rou20: number | null
-  art19fer20: number | null
+  art19act20: number | null
   art19inc20: number | null
+  art19mix20: number | null
+  art19fer20: number | null
+  art19rou20: number | null
   naf20art21: number | null
-  art20act21: number | null
   art20hab21: number | null
-  art20mix21: number | null
-  art20rou21: number | null
-  art20fer21: number | null
+  art20act21: number | null
   art20inc21: number | null
+  art20mix21: number | null
+  art20fer21: number | null
+  art20rou21: number | null
   naf21art22: number | null
-  art21act22: number | null
   art21hab22: number | null
-  art21mix22: number | null
-  art21rou22: number | null
-  art21fer22: number | null
+  art21act22: number | null
   art21inc22: number | null
+  art21mix22: number | null
+  art21fer22: number | null
+  art21rou22: number | null
   naf22art23: number | null
-  art22act23: number | null
   art22hab23: number | null
-  art22mix23: number | null
-  art22rou23: number | null
-  art22fer23: number | null
+  art22act23: number | null
   art22inc23: number | null
-  naf09art23: number | null
-  art09act23: number | null
-  art09hab23: number | null
-  art09mix23: number | null
-  art09inc23: number | null
-  art09rou23: number | null
-  art09fer23: number | null
-  artcom0923: number | null
+  art22mix23: number | null
+  art22fer23: number | null
+  art22rou23: number | null
+  naf23art24: number | null
+  art23hab24: number | null
+  art23act24: number | null
+  art23inc24: number | null
+  art23mix24: number | null
+  art23fer24: number | null
+  art23rou24: number | null
+  naf24art25: number | null
+  art24hab25: number | null
+  art24act25: number | null
+  art24inc25: number | null
+  art24mix25: number | null
+  art24fer25: number | null
+  art24rou25: number | null
+  naf11art25: number | null
+  art11hab25: number | null
+  art11act25: number | null
+  art11inc25: number | null
+  art11mix25: number | null
+  art11fer25: number | null
+  art11rou25: number | null
+  artcom1125: number | null
   _count: Databases_v2_consommation_espaces_nafCountAggregateOutputType | null
   _avg: Databases_v2_consommation_espaces_nafAvgAggregateOutputType | null
   _sum: Databases_v2_consommation_espaces_nafSumAggregateOutputType | null
@@ -1411,7 +1411,7 @@ export type Databases_v2_consommation_espaces_nafGroupByOutputType = {
   _max: Databases_v2_consommation_espaces_nafMaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_consommation_espaces_nafGroupByPayload<T extends databases_v2_consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_consommation_espaces_nafGroupByPayload<T extends databases_v2_consommation_espaces_nafGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_consommation_espaces_nafGroupByOutputType, T['by']> &
       {
@@ -1436,118 +1436,118 @@ export type databases_v2_consommation_espaces_nafWhereInput = {
   epci?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
   libelle_epci?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
   departement?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
-  libelle_departement?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
+  libelle_departement?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   region?: Prisma.FloatFilter<"databases_v2_consommation_espaces_naf"> | number
   ept?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
-  naf09art10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf10art11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10act11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10hab11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10mix11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10rou11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10fer11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10inc11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf11art12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11act12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11hab12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11mix12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11rou12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11fer12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11inc12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf12art13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12act13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12hab13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12mix13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12rou13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12fer13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12act13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12inc13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12mix13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12fer13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12rou13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf13art14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13act14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13hab14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13mix14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13rou14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13fer14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13act14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13inc14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13mix14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13fer14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13rou14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf14art15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14act15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14hab15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14mix15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14rou15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14fer15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14act15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14inc15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14mix15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14fer15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14rou15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf15art16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15act16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15hab16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15mix16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15rou16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15fer16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15act16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15inc16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15mix16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15fer16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15rou16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf16art17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16act17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16hab17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16mix17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16rou17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16fer17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16act17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16inc17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16mix17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16fer17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16rou17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf17art18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17act18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17hab18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17mix18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17rou18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17fer18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17act18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17inc18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17mix18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17fer18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17rou18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf18art19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18act19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18hab19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18mix19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18rou19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18fer19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18act19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18inc19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18mix19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18fer19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18rou19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf19art20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19act20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19hab20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19mix20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19rou20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19fer20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19act20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19inc20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19mix20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19fer20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19rou20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf20art21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20act21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20hab21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20mix21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20rou21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20fer21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20act21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20inc21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20mix21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20fer21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20rou21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf21art22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21act22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21hab22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21mix22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21rou22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21fer22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21act22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21inc22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21mix22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21fer22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21rou22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf22art23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22hab23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22inc23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf09art23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  artcom0923?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf23art24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23hab24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23act24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23inc24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23mix24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23fer24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23rou24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf24art25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24hab25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24act25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24inc25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24mix25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf11art25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11hab25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11inc25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  artcom1125?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
 }
 
 export type databases_v2_consommation_espaces_nafOrderByWithRelationInput = {
@@ -1557,118 +1557,118 @@ export type databases_v2_consommation_espaces_nafOrderByWithRelationInput = {
   epci?: Prisma.SortOrder
   libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
-  libelle_departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrderInput | Prisma.SortOrder
   region?: Prisma.SortOrder
   ept?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf09art10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09act10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09hab10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09mix10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09rou10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09fer10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09inc10?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf10art11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10act11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10hab11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10mix11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10rou11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10fer11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10inc11?: Prisma.SortOrderInput | Prisma.SortOrder
   naf11art12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11act12?: Prisma.SortOrderInput | Prisma.SortOrder
   art11hab12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11mix12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11rou12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11fer12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11act12?: Prisma.SortOrderInput | Prisma.SortOrder
   art11inc12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11mix12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11fer12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11rou12?: Prisma.SortOrderInput | Prisma.SortOrder
   naf12art13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12act13?: Prisma.SortOrderInput | Prisma.SortOrder
   art12hab13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12mix13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12rou13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12fer13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12act13?: Prisma.SortOrderInput | Prisma.SortOrder
   art12inc13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12mix13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12fer13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12rou13?: Prisma.SortOrderInput | Prisma.SortOrder
   naf13art14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13act14?: Prisma.SortOrderInput | Prisma.SortOrder
   art13hab14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13mix14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13rou14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13fer14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13act14?: Prisma.SortOrderInput | Prisma.SortOrder
   art13inc14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13mix14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13fer14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13rou14?: Prisma.SortOrderInput | Prisma.SortOrder
   naf14art15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14act15?: Prisma.SortOrderInput | Prisma.SortOrder
   art14hab15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14mix15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14rou15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14fer15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14act15?: Prisma.SortOrderInput | Prisma.SortOrder
   art14inc15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14mix15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14fer15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14rou15?: Prisma.SortOrderInput | Prisma.SortOrder
   naf15art16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15act16?: Prisma.SortOrderInput | Prisma.SortOrder
   art15hab16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15mix16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15rou16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15fer16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15act16?: Prisma.SortOrderInput | Prisma.SortOrder
   art15inc16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15mix16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15fer16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15rou16?: Prisma.SortOrderInput | Prisma.SortOrder
   naf16art17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16act17?: Prisma.SortOrderInput | Prisma.SortOrder
   art16hab17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16mix17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16rou17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16fer17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16act17?: Prisma.SortOrderInput | Prisma.SortOrder
   art16inc17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16mix17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16fer17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16rou17?: Prisma.SortOrderInput | Prisma.SortOrder
   naf17art18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17act18?: Prisma.SortOrderInput | Prisma.SortOrder
   art17hab18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17mix18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17rou18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17fer18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17act18?: Prisma.SortOrderInput | Prisma.SortOrder
   art17inc18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17mix18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17fer18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17rou18?: Prisma.SortOrderInput | Prisma.SortOrder
   naf18art19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18act19?: Prisma.SortOrderInput | Prisma.SortOrder
   art18hab19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18mix19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18rou19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18fer19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18act19?: Prisma.SortOrderInput | Prisma.SortOrder
   art18inc19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18mix19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18fer19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18rou19?: Prisma.SortOrderInput | Prisma.SortOrder
   naf19art20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19act20?: Prisma.SortOrderInput | Prisma.SortOrder
   art19hab20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19mix20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19rou20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19fer20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19act20?: Prisma.SortOrderInput | Prisma.SortOrder
   art19inc20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19mix20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19fer20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19rou20?: Prisma.SortOrderInput | Prisma.SortOrder
   naf20art21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20act21?: Prisma.SortOrderInput | Prisma.SortOrder
   art20hab21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20mix21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20rou21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20fer21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20act21?: Prisma.SortOrderInput | Prisma.SortOrder
   art20inc21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20mix21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20fer21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20rou21?: Prisma.SortOrderInput | Prisma.SortOrder
   naf21art22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21act22?: Prisma.SortOrderInput | Prisma.SortOrder
   art21hab22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21mix22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21rou22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21fer22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21act22?: Prisma.SortOrderInput | Prisma.SortOrder
   art21inc22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21mix22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21fer22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21rou22?: Prisma.SortOrderInput | Prisma.SortOrder
   naf22art23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22act23?: Prisma.SortOrderInput | Prisma.SortOrder
   art22hab23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22mix23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22rou23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22fer23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22act23?: Prisma.SortOrderInput | Prisma.SortOrder
   art22inc23?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf09art23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09act23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09hab23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09mix23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09inc23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09rou23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09fer23?: Prisma.SortOrderInput | Prisma.SortOrder
-  artcom0923?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22mix23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22fer23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22rou23?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf23art24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23hab24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23act24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23inc24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23mix24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23fer24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23rou24?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf24art25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24hab25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24act25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24inc25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24mix25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24fer25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24rou25?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf11art25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11hab25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11act25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11inc25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11mix25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11fer25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11rou25?: Prisma.SortOrderInput | Prisma.SortOrder
+  artcom1125?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<{
@@ -1681,118 +1681,118 @@ export type databases_v2_consommation_espaces_nafWhereUniqueInput = Prisma.AtLea
   epci?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
   libelle_epci?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
   departement?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
-  libelle_departement?: Prisma.StringFilter<"databases_v2_consommation_espaces_naf"> | string
+  libelle_departement?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   region?: Prisma.FloatFilter<"databases_v2_consommation_espaces_naf"> | number
   ept?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_consommation_espaces_naf"> | string | null
-  naf09art10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc10?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf10art11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10act11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10hab11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10mix11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10rou11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10fer11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10inc11?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf11art12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11act12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11hab12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11mix12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11rou12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11fer12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11inc12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou12?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf12art13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12act13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12hab13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12mix13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12rou13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12fer13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12act13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12inc13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12mix13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12fer13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12rou13?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf13art14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13act14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13hab14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13mix14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13rou14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13fer14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13act14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13inc14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13mix14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13fer14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13rou14?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf14art15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14act15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14hab15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14mix15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14rou15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14fer15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14act15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14inc15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14mix15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14fer15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14rou15?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf15art16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15act16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15hab16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15mix16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15rou16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15fer16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15act16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15inc16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15mix16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15fer16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15rou16?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf16art17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16act17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16hab17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16mix17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16rou17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16fer17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16act17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16inc17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16mix17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16fer17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16rou17?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf17art18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17act18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17hab18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17mix18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17rou18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17fer18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17act18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17inc18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17mix18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17fer18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17rou18?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf18art19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18act19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18hab19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18mix19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18rou19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18fer19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18act19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18inc19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18mix19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18fer19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18rou19?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf19art20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19act20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19hab20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19mix20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19rou20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19fer20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19act20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19inc20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19mix20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19fer20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19rou20?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf20art21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20act21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20hab21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20mix21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20rou21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20fer21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20act21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20inc21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20mix21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20fer21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20rou21?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf21art22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21act22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21hab22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21mix22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21rou22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21fer22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21act22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21inc22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21mix22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21fer22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21rou22?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf22art23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22hab23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22inc23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf09art23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  artcom0923?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22mix23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22fer23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22rou23?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf23art24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23hab24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23act24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23inc24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23mix24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23fer24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23rou24?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf24art25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24hab25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24act25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24inc25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24mix25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf11art25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11hab25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11inc25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  artcom1125?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
 }, "index">
 
 export type databases_v2_consommation_espaces_nafOrderByWithAggregationInput = {
@@ -1802,118 +1802,118 @@ export type databases_v2_consommation_espaces_nafOrderByWithAggregationInput = {
   epci?: Prisma.SortOrder
   libelle_epci?: Prisma.SortOrder
   departement?: Prisma.SortOrder
-  libelle_departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrderInput | Prisma.SortOrder
   region?: Prisma.SortOrder
   ept?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf09art10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09act10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09hab10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09mix10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09rou10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09fer10?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09inc10?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf10art11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10act11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10hab11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10mix11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10rou11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10fer11?: Prisma.SortOrderInput | Prisma.SortOrder
-  art10inc11?: Prisma.SortOrderInput | Prisma.SortOrder
   naf11art12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11act12?: Prisma.SortOrderInput | Prisma.SortOrder
   art11hab12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11mix12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11rou12?: Prisma.SortOrderInput | Prisma.SortOrder
-  art11fer12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11act12?: Prisma.SortOrderInput | Prisma.SortOrder
   art11inc12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11mix12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11fer12?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11rou12?: Prisma.SortOrderInput | Prisma.SortOrder
   naf12art13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12act13?: Prisma.SortOrderInput | Prisma.SortOrder
   art12hab13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12mix13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12rou13?: Prisma.SortOrderInput | Prisma.SortOrder
-  art12fer13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12act13?: Prisma.SortOrderInput | Prisma.SortOrder
   art12inc13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12mix13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12fer13?: Prisma.SortOrderInput | Prisma.SortOrder
+  art12rou13?: Prisma.SortOrderInput | Prisma.SortOrder
   naf13art14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13act14?: Prisma.SortOrderInput | Prisma.SortOrder
   art13hab14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13mix14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13rou14?: Prisma.SortOrderInput | Prisma.SortOrder
-  art13fer14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13act14?: Prisma.SortOrderInput | Prisma.SortOrder
   art13inc14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13mix14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13fer14?: Prisma.SortOrderInput | Prisma.SortOrder
+  art13rou14?: Prisma.SortOrderInput | Prisma.SortOrder
   naf14art15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14act15?: Prisma.SortOrderInput | Prisma.SortOrder
   art14hab15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14mix15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14rou15?: Prisma.SortOrderInput | Prisma.SortOrder
-  art14fer15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14act15?: Prisma.SortOrderInput | Prisma.SortOrder
   art14inc15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14mix15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14fer15?: Prisma.SortOrderInput | Prisma.SortOrder
+  art14rou15?: Prisma.SortOrderInput | Prisma.SortOrder
   naf15art16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15act16?: Prisma.SortOrderInput | Prisma.SortOrder
   art15hab16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15mix16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15rou16?: Prisma.SortOrderInput | Prisma.SortOrder
-  art15fer16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15act16?: Prisma.SortOrderInput | Prisma.SortOrder
   art15inc16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15mix16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15fer16?: Prisma.SortOrderInput | Prisma.SortOrder
+  art15rou16?: Prisma.SortOrderInput | Prisma.SortOrder
   naf16art17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16act17?: Prisma.SortOrderInput | Prisma.SortOrder
   art16hab17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16mix17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16rou17?: Prisma.SortOrderInput | Prisma.SortOrder
-  art16fer17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16act17?: Prisma.SortOrderInput | Prisma.SortOrder
   art16inc17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16mix17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16fer17?: Prisma.SortOrderInput | Prisma.SortOrder
+  art16rou17?: Prisma.SortOrderInput | Prisma.SortOrder
   naf17art18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17act18?: Prisma.SortOrderInput | Prisma.SortOrder
   art17hab18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17mix18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17rou18?: Prisma.SortOrderInput | Prisma.SortOrder
-  art17fer18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17act18?: Prisma.SortOrderInput | Prisma.SortOrder
   art17inc18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17mix18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17fer18?: Prisma.SortOrderInput | Prisma.SortOrder
+  art17rou18?: Prisma.SortOrderInput | Prisma.SortOrder
   naf18art19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18act19?: Prisma.SortOrderInput | Prisma.SortOrder
   art18hab19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18mix19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18rou19?: Prisma.SortOrderInput | Prisma.SortOrder
-  art18fer19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18act19?: Prisma.SortOrderInput | Prisma.SortOrder
   art18inc19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18mix19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18fer19?: Prisma.SortOrderInput | Prisma.SortOrder
+  art18rou19?: Prisma.SortOrderInput | Prisma.SortOrder
   naf19art20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19act20?: Prisma.SortOrderInput | Prisma.SortOrder
   art19hab20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19mix20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19rou20?: Prisma.SortOrderInput | Prisma.SortOrder
-  art19fer20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19act20?: Prisma.SortOrderInput | Prisma.SortOrder
   art19inc20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19mix20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19fer20?: Prisma.SortOrderInput | Prisma.SortOrder
+  art19rou20?: Prisma.SortOrderInput | Prisma.SortOrder
   naf20art21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20act21?: Prisma.SortOrderInput | Prisma.SortOrder
   art20hab21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20mix21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20rou21?: Prisma.SortOrderInput | Prisma.SortOrder
-  art20fer21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20act21?: Prisma.SortOrderInput | Prisma.SortOrder
   art20inc21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20mix21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20fer21?: Prisma.SortOrderInput | Prisma.SortOrder
+  art20rou21?: Prisma.SortOrderInput | Prisma.SortOrder
   naf21art22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21act22?: Prisma.SortOrderInput | Prisma.SortOrder
   art21hab22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21mix22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21rou22?: Prisma.SortOrderInput | Prisma.SortOrder
-  art21fer22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21act22?: Prisma.SortOrderInput | Prisma.SortOrder
   art21inc22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21mix22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21fer22?: Prisma.SortOrderInput | Prisma.SortOrder
+  art21rou22?: Prisma.SortOrderInput | Prisma.SortOrder
   naf22art23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22act23?: Prisma.SortOrderInput | Prisma.SortOrder
   art22hab23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22mix23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22rou23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art22fer23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22act23?: Prisma.SortOrderInput | Prisma.SortOrder
   art22inc23?: Prisma.SortOrderInput | Prisma.SortOrder
-  naf09art23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09act23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09hab23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09mix23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09inc23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09rou23?: Prisma.SortOrderInput | Prisma.SortOrder
-  art09fer23?: Prisma.SortOrderInput | Prisma.SortOrder
-  artcom0923?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22mix23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22fer23?: Prisma.SortOrderInput | Prisma.SortOrder
+  art22rou23?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf23art24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23hab24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23act24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23inc24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23mix24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23fer24?: Prisma.SortOrderInput | Prisma.SortOrder
+  art23rou24?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf24art25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24hab25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24act25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24inc25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24mix25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24fer25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art24rou25?: Prisma.SortOrderInput | Prisma.SortOrder
+  naf11art25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11hab25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11act25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11inc25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11mix25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11fer25?: Prisma.SortOrderInput | Prisma.SortOrder
+  art11rou25?: Prisma.SortOrderInput | Prisma.SortOrder
+  artcom1125?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.databases_v2_consommation_espaces_nafCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_consommation_espaces_nafAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_consommation_espaces_nafMaxOrderByAggregateInput
@@ -1931,118 +1931,118 @@ export type databases_v2_consommation_espaces_nafScalarWhereWithAggregatesInput 
   epci?: Prisma.StringWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string
   libelle_epci?: Prisma.StringWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string
   departement?: Prisma.StringWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string
-  libelle_departement?: Prisma.StringWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string
+  libelle_departement?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string | null
   region?: Prisma.FloatWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number
   ept?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | string | null
-  naf09art10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc10?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf10art11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10act11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10hab11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10mix11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10rou11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10fer11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art10inc11?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf11art12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11act12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11hab12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11mix12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11rou12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art11fer12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11inc12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou12?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf12art13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12act13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12hab13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12mix13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12rou13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art12fer13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12act13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art12inc13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12mix13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12fer13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art12rou13?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf13art14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13act14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13hab14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13mix14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13rou14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art13fer14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13act14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art13inc14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13mix14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13fer14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art13rou14?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf14art15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14act15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14hab15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14mix15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14rou15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art14fer15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14act15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art14inc15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14mix15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14fer15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art14rou15?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf15art16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15act16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15hab16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15mix16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15rou16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art15fer16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15act16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art15inc16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15mix16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15fer16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art15rou16?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf16art17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16act17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16hab17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16mix17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16rou17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art16fer17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16act17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art16inc17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16mix17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16fer17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art16rou17?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf17art18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17act18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17hab18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17mix18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17rou18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art17fer18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17act18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art17inc18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17mix18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17fer18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art17rou18?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf18art19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18act19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18hab19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18mix19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18rou19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art18fer19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18act19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art18inc19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18mix19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18fer19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art18rou19?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf19art20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19act20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19hab20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19mix20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19rou20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art19fer20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19act20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art19inc20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19mix20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19fer20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art19rou20?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf20art21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20act21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20hab21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20mix21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20rou21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art20fer21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20act21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art20inc21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20mix21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20fer21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art20rou21?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf21art22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21act22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21hab22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21mix22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21rou22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art21fer22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21act22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art21inc22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21mix22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21fer22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art21rou22?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   naf22art23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22act23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22hab23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22mix23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22rou23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art22fer23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22act23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art22inc23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  naf09art23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09act23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09hab23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09mix23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09inc23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09rou23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  art09fer23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
-  artcom0923?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22mix23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22fer23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art22rou23?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf23art24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23hab24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23act24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23inc24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23mix24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23fer24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art23rou24?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf24art25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24hab25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24act25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24inc25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24mix25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24fer25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art24rou25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  naf11art25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11hab25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11act25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11inc25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11mix25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11fer25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  art11rou25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  artcom1125?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
 }
 
 export type databases_v2_consommation_espaces_nafCreateInput = {
@@ -2052,118 +2052,118 @@ export type databases_v2_consommation_espaces_nafCreateInput = {
   epci: string
   libelle_epci: string
   departement: string
-  libelle_departement: string
+  libelle_departement?: string | null
   region: number
   ept?: string | null
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  naf09art10?: number | null
-  art09act10?: number | null
-  art09hab10?: number | null
-  art09mix10?: number | null
-  art09rou10?: number | null
-  art09fer10?: number | null
-  art09inc10?: number | null
-  naf10art11?: number | null
-  art10act11?: number | null
-  art10hab11?: number | null
-  art10mix11?: number | null
-  art10rou11?: number | null
-  art10fer11?: number | null
-  art10inc11?: number | null
   naf11art12?: number | null
-  art11act12?: number | null
   art11hab12?: number | null
-  art11mix12?: number | null
-  art11rou12?: number | null
-  art11fer12?: number | null
+  art11act12?: number | null
   art11inc12?: number | null
+  art11mix12?: number | null
+  art11fer12?: number | null
+  art11rou12?: number | null
   naf12art13?: number | null
-  art12act13?: number | null
   art12hab13?: number | null
-  art12mix13?: number | null
-  art12rou13?: number | null
-  art12fer13?: number | null
+  art12act13?: number | null
   art12inc13?: number | null
+  art12mix13?: number | null
+  art12fer13?: number | null
+  art12rou13?: number | null
   naf13art14?: number | null
-  art13act14?: number | null
   art13hab14?: number | null
-  art13mix14?: number | null
-  art13rou14?: number | null
-  art13fer14?: number | null
+  art13act14?: number | null
   art13inc14?: number | null
+  art13mix14?: number | null
+  art13fer14?: number | null
+  art13rou14?: number | null
   naf14art15?: number | null
-  art14act15?: number | null
   art14hab15?: number | null
-  art14mix15?: number | null
-  art14rou15?: number | null
-  art14fer15?: number | null
+  art14act15?: number | null
   art14inc15?: number | null
+  art14mix15?: number | null
+  art14fer15?: number | null
+  art14rou15?: number | null
   naf15art16?: number | null
-  art15act16?: number | null
   art15hab16?: number | null
-  art15mix16?: number | null
-  art15rou16?: number | null
-  art15fer16?: number | null
+  art15act16?: number | null
   art15inc16?: number | null
+  art15mix16?: number | null
+  art15fer16?: number | null
+  art15rou16?: number | null
   naf16art17?: number | null
-  art16act17?: number | null
   art16hab17?: number | null
-  art16mix17?: number | null
-  art16rou17?: number | null
-  art16fer17?: number | null
+  art16act17?: number | null
   art16inc17?: number | null
+  art16mix17?: number | null
+  art16fer17?: number | null
+  art16rou17?: number | null
   naf17art18?: number | null
-  art17act18?: number | null
   art17hab18?: number | null
-  art17mix18?: number | null
-  art17rou18?: number | null
-  art17fer18?: number | null
+  art17act18?: number | null
   art17inc18?: number | null
+  art17mix18?: number | null
+  art17fer18?: number | null
+  art17rou18?: number | null
   naf18art19?: number | null
-  art18act19?: number | null
   art18hab19?: number | null
-  art18mix19?: number | null
-  art18rou19?: number | null
-  art18fer19?: number | null
+  art18act19?: number | null
   art18inc19?: number | null
+  art18mix19?: number | null
+  art18fer19?: number | null
+  art18rou19?: number | null
   naf19art20?: number | null
-  art19act20?: number | null
   art19hab20?: number | null
-  art19mix20?: number | null
-  art19rou20?: number | null
-  art19fer20?: number | null
+  art19act20?: number | null
   art19inc20?: number | null
+  art19mix20?: number | null
+  art19fer20?: number | null
+  art19rou20?: number | null
   naf20art21?: number | null
-  art20act21?: number | null
   art20hab21?: number | null
-  art20mix21?: number | null
-  art20rou21?: number | null
-  art20fer21?: number | null
+  art20act21?: number | null
   art20inc21?: number | null
+  art20mix21?: number | null
+  art20fer21?: number | null
+  art20rou21?: number | null
   naf21art22?: number | null
-  art21act22?: number | null
   art21hab22?: number | null
-  art21mix22?: number | null
-  art21rou22?: number | null
-  art21fer22?: number | null
+  art21act22?: number | null
   art21inc22?: number | null
+  art21mix22?: number | null
+  art21fer22?: number | null
+  art21rou22?: number | null
   naf22art23?: number | null
-  art22act23?: number | null
   art22hab23?: number | null
-  art22mix23?: number | null
-  art22rou23?: number | null
-  art22fer23?: number | null
+  art22act23?: number | null
   art22inc23?: number | null
-  naf09art23?: number | null
-  art09act23?: number | null
-  art09hab23?: number | null
-  art09mix23?: number | null
-  art09inc23?: number | null
-  art09rou23?: number | null
-  art09fer23?: number | null
-  artcom0923?: number | null
+  art22mix23?: number | null
+  art22fer23?: number | null
+  art22rou23?: number | null
+  naf23art24?: number | null
+  art23hab24?: number | null
+  art23act24?: number | null
+  art23inc24?: number | null
+  art23mix24?: number | null
+  art23fer24?: number | null
+  art23rou24?: number | null
+  naf24art25?: number | null
+  art24hab25?: number | null
+  art24act25?: number | null
+  art24inc25?: number | null
+  art24mix25?: number | null
+  art24fer25?: number | null
+  art24rou25?: number | null
+  naf11art25?: number | null
+  art11hab25?: number | null
+  art11act25?: number | null
+  art11inc25?: number | null
+  art11mix25?: number | null
+  art11fer25?: number | null
+  art11rou25?: number | null
+  artcom1125?: number | null
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedCreateInput = {
@@ -2173,118 +2173,118 @@ export type databases_v2_consommation_espaces_nafUncheckedCreateInput = {
   epci: string
   libelle_epci: string
   departement: string
-  libelle_departement: string
+  libelle_departement?: string | null
   region: number
   ept?: string | null
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  naf09art10?: number | null
-  art09act10?: number | null
-  art09hab10?: number | null
-  art09mix10?: number | null
-  art09rou10?: number | null
-  art09fer10?: number | null
-  art09inc10?: number | null
-  naf10art11?: number | null
-  art10act11?: number | null
-  art10hab11?: number | null
-  art10mix11?: number | null
-  art10rou11?: number | null
-  art10fer11?: number | null
-  art10inc11?: number | null
   naf11art12?: number | null
-  art11act12?: number | null
   art11hab12?: number | null
-  art11mix12?: number | null
-  art11rou12?: number | null
-  art11fer12?: number | null
+  art11act12?: number | null
   art11inc12?: number | null
+  art11mix12?: number | null
+  art11fer12?: number | null
+  art11rou12?: number | null
   naf12art13?: number | null
-  art12act13?: number | null
   art12hab13?: number | null
-  art12mix13?: number | null
-  art12rou13?: number | null
-  art12fer13?: number | null
+  art12act13?: number | null
   art12inc13?: number | null
+  art12mix13?: number | null
+  art12fer13?: number | null
+  art12rou13?: number | null
   naf13art14?: number | null
-  art13act14?: number | null
   art13hab14?: number | null
-  art13mix14?: number | null
-  art13rou14?: number | null
-  art13fer14?: number | null
+  art13act14?: number | null
   art13inc14?: number | null
+  art13mix14?: number | null
+  art13fer14?: number | null
+  art13rou14?: number | null
   naf14art15?: number | null
-  art14act15?: number | null
   art14hab15?: number | null
-  art14mix15?: number | null
-  art14rou15?: number | null
-  art14fer15?: number | null
+  art14act15?: number | null
   art14inc15?: number | null
+  art14mix15?: number | null
+  art14fer15?: number | null
+  art14rou15?: number | null
   naf15art16?: number | null
-  art15act16?: number | null
   art15hab16?: number | null
-  art15mix16?: number | null
-  art15rou16?: number | null
-  art15fer16?: number | null
+  art15act16?: number | null
   art15inc16?: number | null
+  art15mix16?: number | null
+  art15fer16?: number | null
+  art15rou16?: number | null
   naf16art17?: number | null
-  art16act17?: number | null
   art16hab17?: number | null
-  art16mix17?: number | null
-  art16rou17?: number | null
-  art16fer17?: number | null
+  art16act17?: number | null
   art16inc17?: number | null
+  art16mix17?: number | null
+  art16fer17?: number | null
+  art16rou17?: number | null
   naf17art18?: number | null
-  art17act18?: number | null
   art17hab18?: number | null
-  art17mix18?: number | null
-  art17rou18?: number | null
-  art17fer18?: number | null
+  art17act18?: number | null
   art17inc18?: number | null
+  art17mix18?: number | null
+  art17fer18?: number | null
+  art17rou18?: number | null
   naf18art19?: number | null
-  art18act19?: number | null
   art18hab19?: number | null
-  art18mix19?: number | null
-  art18rou19?: number | null
-  art18fer19?: number | null
+  art18act19?: number | null
   art18inc19?: number | null
+  art18mix19?: number | null
+  art18fer19?: number | null
+  art18rou19?: number | null
   naf19art20?: number | null
-  art19act20?: number | null
   art19hab20?: number | null
-  art19mix20?: number | null
-  art19rou20?: number | null
-  art19fer20?: number | null
+  art19act20?: number | null
   art19inc20?: number | null
+  art19mix20?: number | null
+  art19fer20?: number | null
+  art19rou20?: number | null
   naf20art21?: number | null
-  art20act21?: number | null
   art20hab21?: number | null
-  art20mix21?: number | null
-  art20rou21?: number | null
-  art20fer21?: number | null
+  art20act21?: number | null
   art20inc21?: number | null
+  art20mix21?: number | null
+  art20fer21?: number | null
+  art20rou21?: number | null
   naf21art22?: number | null
-  art21act22?: number | null
   art21hab22?: number | null
-  art21mix22?: number | null
-  art21rou22?: number | null
-  art21fer22?: number | null
+  art21act22?: number | null
   art21inc22?: number | null
+  art21mix22?: number | null
+  art21fer22?: number | null
+  art21rou22?: number | null
   naf22art23?: number | null
-  art22act23?: number | null
   art22hab23?: number | null
-  art22mix23?: number | null
-  art22rou23?: number | null
-  art22fer23?: number | null
+  art22act23?: number | null
   art22inc23?: number | null
-  naf09art23?: number | null
-  art09act23?: number | null
-  art09hab23?: number | null
-  art09mix23?: number | null
-  art09inc23?: number | null
-  art09rou23?: number | null
-  art09fer23?: number | null
-  artcom0923?: number | null
+  art22mix23?: number | null
+  art22fer23?: number | null
+  art22rou23?: number | null
+  naf23art24?: number | null
+  art23hab24?: number | null
+  art23act24?: number | null
+  art23inc24?: number | null
+  art23mix24?: number | null
+  art23fer24?: number | null
+  art23rou24?: number | null
+  naf24art25?: number | null
+  art24hab25?: number | null
+  art24act25?: number | null
+  art24inc25?: number | null
+  art24mix25?: number | null
+  art24fer25?: number | null
+  art24rou25?: number | null
+  naf11art25?: number | null
+  art11hab25?: number | null
+  art11act25?: number | null
+  art11inc25?: number | null
+  art11mix25?: number | null
+  art11fer25?: number | null
+  art11rou25?: number | null
+  artcom1125?: number | null
 }
 
 export type databases_v2_consommation_espaces_nafUpdateInput = {
@@ -2294,118 +2294,118 @@ export type databases_v2_consommation_espaces_nafUpdateInput = {
   epci?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
-  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   region?: Prisma.FloatFieldUpdateOperationsInput | number
   ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  naf09art10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf10art11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10act11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10hab11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10mix11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10rou11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10fer11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10inc11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf11art12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11hab12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11inc12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf12art13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12hab13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12inc13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf13art14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13hab14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13inc14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf14art15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14hab15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14inc15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf15art16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15hab16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15inc16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf16art17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16hab17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16inc17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf17art18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17hab18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17inc18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf18art19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18hab19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18inc19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf19art20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19hab20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19inc20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf20art21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20hab21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20inc21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf21art22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21hab22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21inc22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf22art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf09art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  artcom0923?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf23art24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23hab24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23act24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23inc24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23mix24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23fer24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23rou24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf24art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf11art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedUpdateInput = {
@@ -2415,118 +2415,118 @@ export type databases_v2_consommation_espaces_nafUncheckedUpdateInput = {
   epci?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
-  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   region?: Prisma.FloatFieldUpdateOperationsInput | number
   ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  naf09art10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf10art11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10act11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10hab11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10mix11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10rou11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10fer11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10inc11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf11art12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11hab12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11inc12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf12art13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12hab13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12inc13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf13art14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13hab14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13inc14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf14art15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14hab15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14inc15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf15art16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15hab16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15inc16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf16art17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16hab17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16inc17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf17art18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17hab18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17inc18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf18art19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18hab19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18inc19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf19art20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19hab20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19inc20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf20art21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20hab21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20inc21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf21art22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21hab22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21inc22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf22art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf09art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  artcom0923?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf23art24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23hab24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23act24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23inc24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23mix24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23fer24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23rou24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf24art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf11art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_consommation_espaces_nafCreateManyInput = {
@@ -2536,118 +2536,118 @@ export type databases_v2_consommation_espaces_nafCreateManyInput = {
   epci: string
   libelle_epci: string
   departement: string
-  libelle_departement: string
+  libelle_departement?: string | null
   region: number
   ept?: string | null
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
-  naf09art10?: number | null
-  art09act10?: number | null
-  art09hab10?: number | null
-  art09mix10?: number | null
-  art09rou10?: number | null
-  art09fer10?: number | null
-  art09inc10?: number | null
-  naf10art11?: number | null
-  art10act11?: number | null
-  art10hab11?: number | null
-  art10mix11?: number | null
-  art10rou11?: number | null
-  art10fer11?: number | null
-  art10inc11?: number | null
   naf11art12?: number | null
-  art11act12?: number | null
   art11hab12?: number | null
-  art11mix12?: number | null
-  art11rou12?: number | null
-  art11fer12?: number | null
+  art11act12?: number | null
   art11inc12?: number | null
+  art11mix12?: number | null
+  art11fer12?: number | null
+  art11rou12?: number | null
   naf12art13?: number | null
-  art12act13?: number | null
   art12hab13?: number | null
-  art12mix13?: number | null
-  art12rou13?: number | null
-  art12fer13?: number | null
+  art12act13?: number | null
   art12inc13?: number | null
+  art12mix13?: number | null
+  art12fer13?: number | null
+  art12rou13?: number | null
   naf13art14?: number | null
-  art13act14?: number | null
   art13hab14?: number | null
-  art13mix14?: number | null
-  art13rou14?: number | null
-  art13fer14?: number | null
+  art13act14?: number | null
   art13inc14?: number | null
+  art13mix14?: number | null
+  art13fer14?: number | null
+  art13rou14?: number | null
   naf14art15?: number | null
-  art14act15?: number | null
   art14hab15?: number | null
-  art14mix15?: number | null
-  art14rou15?: number | null
-  art14fer15?: number | null
+  art14act15?: number | null
   art14inc15?: number | null
+  art14mix15?: number | null
+  art14fer15?: number | null
+  art14rou15?: number | null
   naf15art16?: number | null
-  art15act16?: number | null
   art15hab16?: number | null
-  art15mix16?: number | null
-  art15rou16?: number | null
-  art15fer16?: number | null
+  art15act16?: number | null
   art15inc16?: number | null
+  art15mix16?: number | null
+  art15fer16?: number | null
+  art15rou16?: number | null
   naf16art17?: number | null
-  art16act17?: number | null
   art16hab17?: number | null
-  art16mix17?: number | null
-  art16rou17?: number | null
-  art16fer17?: number | null
+  art16act17?: number | null
   art16inc17?: number | null
+  art16mix17?: number | null
+  art16fer17?: number | null
+  art16rou17?: number | null
   naf17art18?: number | null
-  art17act18?: number | null
   art17hab18?: number | null
-  art17mix18?: number | null
-  art17rou18?: number | null
-  art17fer18?: number | null
+  art17act18?: number | null
   art17inc18?: number | null
+  art17mix18?: number | null
+  art17fer18?: number | null
+  art17rou18?: number | null
   naf18art19?: number | null
-  art18act19?: number | null
   art18hab19?: number | null
-  art18mix19?: number | null
-  art18rou19?: number | null
-  art18fer19?: number | null
+  art18act19?: number | null
   art18inc19?: number | null
+  art18mix19?: number | null
+  art18fer19?: number | null
+  art18rou19?: number | null
   naf19art20?: number | null
-  art19act20?: number | null
   art19hab20?: number | null
-  art19mix20?: number | null
-  art19rou20?: number | null
-  art19fer20?: number | null
+  art19act20?: number | null
   art19inc20?: number | null
+  art19mix20?: number | null
+  art19fer20?: number | null
+  art19rou20?: number | null
   naf20art21?: number | null
-  art20act21?: number | null
   art20hab21?: number | null
-  art20mix21?: number | null
-  art20rou21?: number | null
-  art20fer21?: number | null
+  art20act21?: number | null
   art20inc21?: number | null
+  art20mix21?: number | null
+  art20fer21?: number | null
+  art20rou21?: number | null
   naf21art22?: number | null
-  art21act22?: number | null
   art21hab22?: number | null
-  art21mix22?: number | null
-  art21rou22?: number | null
-  art21fer22?: number | null
+  art21act22?: number | null
   art21inc22?: number | null
+  art21mix22?: number | null
+  art21fer22?: number | null
+  art21rou22?: number | null
   naf22art23?: number | null
-  art22act23?: number | null
   art22hab23?: number | null
-  art22mix23?: number | null
-  art22rou23?: number | null
-  art22fer23?: number | null
+  art22act23?: number | null
   art22inc23?: number | null
-  naf09art23?: number | null
-  art09act23?: number | null
-  art09hab23?: number | null
-  art09mix23?: number | null
-  art09inc23?: number | null
-  art09rou23?: number | null
-  art09fer23?: number | null
-  artcom0923?: number | null
+  art22mix23?: number | null
+  art22fer23?: number | null
+  art22rou23?: number | null
+  naf23art24?: number | null
+  art23hab24?: number | null
+  art23act24?: number | null
+  art23inc24?: number | null
+  art23mix24?: number | null
+  art23fer24?: number | null
+  art23rou24?: number | null
+  naf24art25?: number | null
+  art24hab25?: number | null
+  art24act25?: number | null
+  art24inc25?: number | null
+  art24mix25?: number | null
+  art24fer25?: number | null
+  art24rou25?: number | null
+  naf11art25?: number | null
+  art11hab25?: number | null
+  art11act25?: number | null
+  art11inc25?: number | null
+  art11mix25?: number | null
+  art11fer25?: number | null
+  art11rou25?: number | null
+  artcom1125?: number | null
 }
 
 export type databases_v2_consommation_espaces_nafUpdateManyMutationInput = {
@@ -2657,118 +2657,118 @@ export type databases_v2_consommation_espaces_nafUpdateManyMutationInput = {
   epci?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
-  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   region?: Prisma.FloatFieldUpdateOperationsInput | number
   ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  naf09art10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf10art11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10act11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10hab11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10mix11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10rou11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10fer11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10inc11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf11art12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11hab12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11inc12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf12art13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12hab13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12inc13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf13art14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13hab14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13inc14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf14art15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14hab15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14inc15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf15art16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15hab16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15inc16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf16art17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16hab17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16inc17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf17art18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17hab18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17inc18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf18art19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18hab19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18inc19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf19art20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19hab20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19inc20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf20art21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20hab21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20inc21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf21art22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21hab22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21inc22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf22art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf09art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  artcom0923?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf23art24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23hab24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23act24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23inc24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23mix24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23fer24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23rou24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf24art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf11art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedUpdateManyInput = {
@@ -2778,118 +2778,118 @@ export type databases_v2_consommation_espaces_nafUncheckedUpdateManyInput = {
   epci?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_epci?: Prisma.StringFieldUpdateOperationsInput | string
   departement?: Prisma.StringFieldUpdateOperationsInput | string
-  libelle_departement?: Prisma.StringFieldUpdateOperationsInput | string
+  libelle_departement?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   region?: Prisma.FloatFieldUpdateOperationsInput | number
   ept?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  naf09art10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc10?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf10art11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10act11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10hab11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10mix11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10rou11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10fer11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art10inc11?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf11art12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11hab12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11inc12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou12?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf12art13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12hab13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12act13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art12inc13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12mix13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12fer13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art12rou13?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf13art14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13hab14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13act14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art13inc14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13mix14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13fer14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art13rou14?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf14art15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14hab15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14act15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art14inc15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14mix15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14fer15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art14rou15?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf15art16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15hab16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15act16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art15inc16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15mix16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15fer16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art15rou16?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf16art17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16hab17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16act17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art16inc17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16mix17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16fer17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art16rou17?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf17art18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17hab18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17act18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art17inc18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17mix18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17fer18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art17rou18?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf18art19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18hab19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18act19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art18inc19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18mix19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18fer19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art18rou19?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf19art20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19hab20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19act20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art19inc20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19mix20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19fer20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art19rou20?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf20art21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20hab21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20act21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art20inc21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20mix21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20fer21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art20rou21?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf21art22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21hab22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21act22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art21inc22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21mix22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21fer22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art21rou22?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   naf22art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art22inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  naf09art23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09act23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09hab23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09inc23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  art09fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
-  artcom0923?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22mix23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22fer23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art22rou23?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf23art24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23hab24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23act24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23inc24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23mix24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23fer24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art23rou24?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf24art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art24rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  naf11art25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11hab25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11act25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11inc25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11mix25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
 export type databases_v2_consommation_espaces_nafCountOrderByAggregateInput = {
@@ -2905,223 +2905,223 @@ export type databases_v2_consommation_espaces_nafCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  naf09art10?: Prisma.SortOrder
-  art09act10?: Prisma.SortOrder
-  art09hab10?: Prisma.SortOrder
-  art09mix10?: Prisma.SortOrder
-  art09rou10?: Prisma.SortOrder
-  art09fer10?: Prisma.SortOrder
-  art09inc10?: Prisma.SortOrder
-  naf10art11?: Prisma.SortOrder
-  art10act11?: Prisma.SortOrder
-  art10hab11?: Prisma.SortOrder
-  art10mix11?: Prisma.SortOrder
-  art10rou11?: Prisma.SortOrder
-  art10fer11?: Prisma.SortOrder
-  art10inc11?: Prisma.SortOrder
   naf11art12?: Prisma.SortOrder
-  art11act12?: Prisma.SortOrder
   art11hab12?: Prisma.SortOrder
-  art11mix12?: Prisma.SortOrder
-  art11rou12?: Prisma.SortOrder
-  art11fer12?: Prisma.SortOrder
+  art11act12?: Prisma.SortOrder
   art11inc12?: Prisma.SortOrder
+  art11mix12?: Prisma.SortOrder
+  art11fer12?: Prisma.SortOrder
+  art11rou12?: Prisma.SortOrder
   naf12art13?: Prisma.SortOrder
-  art12act13?: Prisma.SortOrder
   art12hab13?: Prisma.SortOrder
-  art12mix13?: Prisma.SortOrder
-  art12rou13?: Prisma.SortOrder
-  art12fer13?: Prisma.SortOrder
+  art12act13?: Prisma.SortOrder
   art12inc13?: Prisma.SortOrder
+  art12mix13?: Prisma.SortOrder
+  art12fer13?: Prisma.SortOrder
+  art12rou13?: Prisma.SortOrder
   naf13art14?: Prisma.SortOrder
-  art13act14?: Prisma.SortOrder
   art13hab14?: Prisma.SortOrder
-  art13mix14?: Prisma.SortOrder
-  art13rou14?: Prisma.SortOrder
-  art13fer14?: Prisma.SortOrder
+  art13act14?: Prisma.SortOrder
   art13inc14?: Prisma.SortOrder
+  art13mix14?: Prisma.SortOrder
+  art13fer14?: Prisma.SortOrder
+  art13rou14?: Prisma.SortOrder
   naf14art15?: Prisma.SortOrder
-  art14act15?: Prisma.SortOrder
   art14hab15?: Prisma.SortOrder
-  art14mix15?: Prisma.SortOrder
-  art14rou15?: Prisma.SortOrder
-  art14fer15?: Prisma.SortOrder
+  art14act15?: Prisma.SortOrder
   art14inc15?: Prisma.SortOrder
+  art14mix15?: Prisma.SortOrder
+  art14fer15?: Prisma.SortOrder
+  art14rou15?: Prisma.SortOrder
   naf15art16?: Prisma.SortOrder
-  art15act16?: Prisma.SortOrder
   art15hab16?: Prisma.SortOrder
-  art15mix16?: Prisma.SortOrder
-  art15rou16?: Prisma.SortOrder
-  art15fer16?: Prisma.SortOrder
+  art15act16?: Prisma.SortOrder
   art15inc16?: Prisma.SortOrder
+  art15mix16?: Prisma.SortOrder
+  art15fer16?: Prisma.SortOrder
+  art15rou16?: Prisma.SortOrder
   naf16art17?: Prisma.SortOrder
-  art16act17?: Prisma.SortOrder
   art16hab17?: Prisma.SortOrder
-  art16mix17?: Prisma.SortOrder
-  art16rou17?: Prisma.SortOrder
-  art16fer17?: Prisma.SortOrder
+  art16act17?: Prisma.SortOrder
   art16inc17?: Prisma.SortOrder
+  art16mix17?: Prisma.SortOrder
+  art16fer17?: Prisma.SortOrder
+  art16rou17?: Prisma.SortOrder
   naf17art18?: Prisma.SortOrder
-  art17act18?: Prisma.SortOrder
   art17hab18?: Prisma.SortOrder
-  art17mix18?: Prisma.SortOrder
-  art17rou18?: Prisma.SortOrder
-  art17fer18?: Prisma.SortOrder
+  art17act18?: Prisma.SortOrder
   art17inc18?: Prisma.SortOrder
+  art17mix18?: Prisma.SortOrder
+  art17fer18?: Prisma.SortOrder
+  art17rou18?: Prisma.SortOrder
   naf18art19?: Prisma.SortOrder
-  art18act19?: Prisma.SortOrder
   art18hab19?: Prisma.SortOrder
-  art18mix19?: Prisma.SortOrder
-  art18rou19?: Prisma.SortOrder
-  art18fer19?: Prisma.SortOrder
+  art18act19?: Prisma.SortOrder
   art18inc19?: Prisma.SortOrder
+  art18mix19?: Prisma.SortOrder
+  art18fer19?: Prisma.SortOrder
+  art18rou19?: Prisma.SortOrder
   naf19art20?: Prisma.SortOrder
-  art19act20?: Prisma.SortOrder
   art19hab20?: Prisma.SortOrder
-  art19mix20?: Prisma.SortOrder
-  art19rou20?: Prisma.SortOrder
-  art19fer20?: Prisma.SortOrder
+  art19act20?: Prisma.SortOrder
   art19inc20?: Prisma.SortOrder
+  art19mix20?: Prisma.SortOrder
+  art19fer20?: Prisma.SortOrder
+  art19rou20?: Prisma.SortOrder
   naf20art21?: Prisma.SortOrder
-  art20act21?: Prisma.SortOrder
   art20hab21?: Prisma.SortOrder
-  art20mix21?: Prisma.SortOrder
-  art20rou21?: Prisma.SortOrder
-  art20fer21?: Prisma.SortOrder
+  art20act21?: Prisma.SortOrder
   art20inc21?: Prisma.SortOrder
+  art20mix21?: Prisma.SortOrder
+  art20fer21?: Prisma.SortOrder
+  art20rou21?: Prisma.SortOrder
   naf21art22?: Prisma.SortOrder
-  art21act22?: Prisma.SortOrder
   art21hab22?: Prisma.SortOrder
-  art21mix22?: Prisma.SortOrder
-  art21rou22?: Prisma.SortOrder
-  art21fer22?: Prisma.SortOrder
+  art21act22?: Prisma.SortOrder
   art21inc22?: Prisma.SortOrder
+  art21mix22?: Prisma.SortOrder
+  art21fer22?: Prisma.SortOrder
+  art21rou22?: Prisma.SortOrder
   naf22art23?: Prisma.SortOrder
-  art22act23?: Prisma.SortOrder
   art22hab23?: Prisma.SortOrder
-  art22mix23?: Prisma.SortOrder
-  art22rou23?: Prisma.SortOrder
-  art22fer23?: Prisma.SortOrder
+  art22act23?: Prisma.SortOrder
   art22inc23?: Prisma.SortOrder
-  naf09art23?: Prisma.SortOrder
-  art09act23?: Prisma.SortOrder
-  art09hab23?: Prisma.SortOrder
-  art09mix23?: Prisma.SortOrder
-  art09inc23?: Prisma.SortOrder
-  art09rou23?: Prisma.SortOrder
-  art09fer23?: Prisma.SortOrder
-  artcom0923?: Prisma.SortOrder
+  art22mix23?: Prisma.SortOrder
+  art22fer23?: Prisma.SortOrder
+  art22rou23?: Prisma.SortOrder
+  naf23art24?: Prisma.SortOrder
+  art23hab24?: Prisma.SortOrder
+  art23act24?: Prisma.SortOrder
+  art23inc24?: Prisma.SortOrder
+  art23mix24?: Prisma.SortOrder
+  art23fer24?: Prisma.SortOrder
+  art23rou24?: Prisma.SortOrder
+  naf24art25?: Prisma.SortOrder
+  art24hab25?: Prisma.SortOrder
+  art24act25?: Prisma.SortOrder
+  art24inc25?: Prisma.SortOrder
+  art24mix25?: Prisma.SortOrder
+  art24fer25?: Prisma.SortOrder
+  art24rou25?: Prisma.SortOrder
+  naf11art25?: Prisma.SortOrder
+  art11hab25?: Prisma.SortOrder
+  art11act25?: Prisma.SortOrder
+  art11inc25?: Prisma.SortOrder
+  art11mix25?: Prisma.SortOrder
+  art11fer25?: Prisma.SortOrder
+  art11rou25?: Prisma.SortOrder
+  artcom1125?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  naf09art10?: Prisma.SortOrder
-  art09act10?: Prisma.SortOrder
-  art09hab10?: Prisma.SortOrder
-  art09mix10?: Prisma.SortOrder
-  art09rou10?: Prisma.SortOrder
-  art09fer10?: Prisma.SortOrder
-  art09inc10?: Prisma.SortOrder
-  naf10art11?: Prisma.SortOrder
-  art10act11?: Prisma.SortOrder
-  art10hab11?: Prisma.SortOrder
-  art10mix11?: Prisma.SortOrder
-  art10rou11?: Prisma.SortOrder
-  art10fer11?: Prisma.SortOrder
-  art10inc11?: Prisma.SortOrder
   naf11art12?: Prisma.SortOrder
-  art11act12?: Prisma.SortOrder
   art11hab12?: Prisma.SortOrder
-  art11mix12?: Prisma.SortOrder
-  art11rou12?: Prisma.SortOrder
-  art11fer12?: Prisma.SortOrder
+  art11act12?: Prisma.SortOrder
   art11inc12?: Prisma.SortOrder
+  art11mix12?: Prisma.SortOrder
+  art11fer12?: Prisma.SortOrder
+  art11rou12?: Prisma.SortOrder
   naf12art13?: Prisma.SortOrder
-  art12act13?: Prisma.SortOrder
   art12hab13?: Prisma.SortOrder
-  art12mix13?: Prisma.SortOrder
-  art12rou13?: Prisma.SortOrder
-  art12fer13?: Prisma.SortOrder
+  art12act13?: Prisma.SortOrder
   art12inc13?: Prisma.SortOrder
+  art12mix13?: Prisma.SortOrder
+  art12fer13?: Prisma.SortOrder
+  art12rou13?: Prisma.SortOrder
   naf13art14?: Prisma.SortOrder
-  art13act14?: Prisma.SortOrder
   art13hab14?: Prisma.SortOrder
-  art13mix14?: Prisma.SortOrder
-  art13rou14?: Prisma.SortOrder
-  art13fer14?: Prisma.SortOrder
+  art13act14?: Prisma.SortOrder
   art13inc14?: Prisma.SortOrder
+  art13mix14?: Prisma.SortOrder
+  art13fer14?: Prisma.SortOrder
+  art13rou14?: Prisma.SortOrder
   naf14art15?: Prisma.SortOrder
-  art14act15?: Prisma.SortOrder
   art14hab15?: Prisma.SortOrder
-  art14mix15?: Prisma.SortOrder
-  art14rou15?: Prisma.SortOrder
-  art14fer15?: Prisma.SortOrder
+  art14act15?: Prisma.SortOrder
   art14inc15?: Prisma.SortOrder
+  art14mix15?: Prisma.SortOrder
+  art14fer15?: Prisma.SortOrder
+  art14rou15?: Prisma.SortOrder
   naf15art16?: Prisma.SortOrder
-  art15act16?: Prisma.SortOrder
   art15hab16?: Prisma.SortOrder
-  art15mix16?: Prisma.SortOrder
-  art15rou16?: Prisma.SortOrder
-  art15fer16?: Prisma.SortOrder
+  art15act16?: Prisma.SortOrder
   art15inc16?: Prisma.SortOrder
+  art15mix16?: Prisma.SortOrder
+  art15fer16?: Prisma.SortOrder
+  art15rou16?: Prisma.SortOrder
   naf16art17?: Prisma.SortOrder
-  art16act17?: Prisma.SortOrder
   art16hab17?: Prisma.SortOrder
-  art16mix17?: Prisma.SortOrder
-  art16rou17?: Prisma.SortOrder
-  art16fer17?: Prisma.SortOrder
+  art16act17?: Prisma.SortOrder
   art16inc17?: Prisma.SortOrder
+  art16mix17?: Prisma.SortOrder
+  art16fer17?: Prisma.SortOrder
+  art16rou17?: Prisma.SortOrder
   naf17art18?: Prisma.SortOrder
-  art17act18?: Prisma.SortOrder
   art17hab18?: Prisma.SortOrder
-  art17mix18?: Prisma.SortOrder
-  art17rou18?: Prisma.SortOrder
-  art17fer18?: Prisma.SortOrder
+  art17act18?: Prisma.SortOrder
   art17inc18?: Prisma.SortOrder
+  art17mix18?: Prisma.SortOrder
+  art17fer18?: Prisma.SortOrder
+  art17rou18?: Prisma.SortOrder
   naf18art19?: Prisma.SortOrder
-  art18act19?: Prisma.SortOrder
   art18hab19?: Prisma.SortOrder
-  art18mix19?: Prisma.SortOrder
-  art18rou19?: Prisma.SortOrder
-  art18fer19?: Prisma.SortOrder
+  art18act19?: Prisma.SortOrder
   art18inc19?: Prisma.SortOrder
+  art18mix19?: Prisma.SortOrder
+  art18fer19?: Prisma.SortOrder
+  art18rou19?: Prisma.SortOrder
   naf19art20?: Prisma.SortOrder
-  art19act20?: Prisma.SortOrder
   art19hab20?: Prisma.SortOrder
-  art19mix20?: Prisma.SortOrder
-  art19rou20?: Prisma.SortOrder
-  art19fer20?: Prisma.SortOrder
+  art19act20?: Prisma.SortOrder
   art19inc20?: Prisma.SortOrder
+  art19mix20?: Prisma.SortOrder
+  art19fer20?: Prisma.SortOrder
+  art19rou20?: Prisma.SortOrder
   naf20art21?: Prisma.SortOrder
-  art20act21?: Prisma.SortOrder
   art20hab21?: Prisma.SortOrder
-  art20mix21?: Prisma.SortOrder
-  art20rou21?: Prisma.SortOrder
-  art20fer21?: Prisma.SortOrder
+  art20act21?: Prisma.SortOrder
   art20inc21?: Prisma.SortOrder
+  art20mix21?: Prisma.SortOrder
+  art20fer21?: Prisma.SortOrder
+  art20rou21?: Prisma.SortOrder
   naf21art22?: Prisma.SortOrder
-  art21act22?: Prisma.SortOrder
   art21hab22?: Prisma.SortOrder
-  art21mix22?: Prisma.SortOrder
-  art21rou22?: Prisma.SortOrder
-  art21fer22?: Prisma.SortOrder
+  art21act22?: Prisma.SortOrder
   art21inc22?: Prisma.SortOrder
+  art21mix22?: Prisma.SortOrder
+  art21fer22?: Prisma.SortOrder
+  art21rou22?: Prisma.SortOrder
   naf22art23?: Prisma.SortOrder
-  art22act23?: Prisma.SortOrder
   art22hab23?: Prisma.SortOrder
-  art22mix23?: Prisma.SortOrder
-  art22rou23?: Prisma.SortOrder
-  art22fer23?: Prisma.SortOrder
+  art22act23?: Prisma.SortOrder
   art22inc23?: Prisma.SortOrder
-  naf09art23?: Prisma.SortOrder
-  art09act23?: Prisma.SortOrder
-  art09hab23?: Prisma.SortOrder
-  art09mix23?: Prisma.SortOrder
-  art09inc23?: Prisma.SortOrder
-  art09rou23?: Prisma.SortOrder
-  art09fer23?: Prisma.SortOrder
-  artcom0923?: Prisma.SortOrder
+  art22mix23?: Prisma.SortOrder
+  art22fer23?: Prisma.SortOrder
+  art22rou23?: Prisma.SortOrder
+  naf23art24?: Prisma.SortOrder
+  art23hab24?: Prisma.SortOrder
+  art23act24?: Prisma.SortOrder
+  art23inc24?: Prisma.SortOrder
+  art23mix24?: Prisma.SortOrder
+  art23fer24?: Prisma.SortOrder
+  art23rou24?: Prisma.SortOrder
+  naf24art25?: Prisma.SortOrder
+  art24hab25?: Prisma.SortOrder
+  art24act25?: Prisma.SortOrder
+  art24inc25?: Prisma.SortOrder
+  art24mix25?: Prisma.SortOrder
+  art24fer25?: Prisma.SortOrder
+  art24rou25?: Prisma.SortOrder
+  naf11art25?: Prisma.SortOrder
+  art11hab25?: Prisma.SortOrder
+  art11act25?: Prisma.SortOrder
+  art11inc25?: Prisma.SortOrder
+  art11mix25?: Prisma.SortOrder
+  art11fer25?: Prisma.SortOrder
+  art11rou25?: Prisma.SortOrder
+  artcom1125?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafMaxOrderByAggregateInput = {
@@ -3137,112 +3137,112 @@ export type databases_v2_consommation_espaces_nafMaxOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  naf09art10?: Prisma.SortOrder
-  art09act10?: Prisma.SortOrder
-  art09hab10?: Prisma.SortOrder
-  art09mix10?: Prisma.SortOrder
-  art09rou10?: Prisma.SortOrder
-  art09fer10?: Prisma.SortOrder
-  art09inc10?: Prisma.SortOrder
-  naf10art11?: Prisma.SortOrder
-  art10act11?: Prisma.SortOrder
-  art10hab11?: Prisma.SortOrder
-  art10mix11?: Prisma.SortOrder
-  art10rou11?: Prisma.SortOrder
-  art10fer11?: Prisma.SortOrder
-  art10inc11?: Prisma.SortOrder
   naf11art12?: Prisma.SortOrder
-  art11act12?: Prisma.SortOrder
   art11hab12?: Prisma.SortOrder
-  art11mix12?: Prisma.SortOrder
-  art11rou12?: Prisma.SortOrder
-  art11fer12?: Prisma.SortOrder
+  art11act12?: Prisma.SortOrder
   art11inc12?: Prisma.SortOrder
+  art11mix12?: Prisma.SortOrder
+  art11fer12?: Prisma.SortOrder
+  art11rou12?: Prisma.SortOrder
   naf12art13?: Prisma.SortOrder
-  art12act13?: Prisma.SortOrder
   art12hab13?: Prisma.SortOrder
-  art12mix13?: Prisma.SortOrder
-  art12rou13?: Prisma.SortOrder
-  art12fer13?: Prisma.SortOrder
+  art12act13?: Prisma.SortOrder
   art12inc13?: Prisma.SortOrder
+  art12mix13?: Prisma.SortOrder
+  art12fer13?: Prisma.SortOrder
+  art12rou13?: Prisma.SortOrder
   naf13art14?: Prisma.SortOrder
-  art13act14?: Prisma.SortOrder
   art13hab14?: Prisma.SortOrder
-  art13mix14?: Prisma.SortOrder
-  art13rou14?: Prisma.SortOrder
-  art13fer14?: Prisma.SortOrder
+  art13act14?: Prisma.SortOrder
   art13inc14?: Prisma.SortOrder
+  art13mix14?: Prisma.SortOrder
+  art13fer14?: Prisma.SortOrder
+  art13rou14?: Prisma.SortOrder
   naf14art15?: Prisma.SortOrder
-  art14act15?: Prisma.SortOrder
   art14hab15?: Prisma.SortOrder
-  art14mix15?: Prisma.SortOrder
-  art14rou15?: Prisma.SortOrder
-  art14fer15?: Prisma.SortOrder
+  art14act15?: Prisma.SortOrder
   art14inc15?: Prisma.SortOrder
+  art14mix15?: Prisma.SortOrder
+  art14fer15?: Prisma.SortOrder
+  art14rou15?: Prisma.SortOrder
   naf15art16?: Prisma.SortOrder
-  art15act16?: Prisma.SortOrder
   art15hab16?: Prisma.SortOrder
-  art15mix16?: Prisma.SortOrder
-  art15rou16?: Prisma.SortOrder
-  art15fer16?: Prisma.SortOrder
+  art15act16?: Prisma.SortOrder
   art15inc16?: Prisma.SortOrder
+  art15mix16?: Prisma.SortOrder
+  art15fer16?: Prisma.SortOrder
+  art15rou16?: Prisma.SortOrder
   naf16art17?: Prisma.SortOrder
-  art16act17?: Prisma.SortOrder
   art16hab17?: Prisma.SortOrder
-  art16mix17?: Prisma.SortOrder
-  art16rou17?: Prisma.SortOrder
-  art16fer17?: Prisma.SortOrder
+  art16act17?: Prisma.SortOrder
   art16inc17?: Prisma.SortOrder
+  art16mix17?: Prisma.SortOrder
+  art16fer17?: Prisma.SortOrder
+  art16rou17?: Prisma.SortOrder
   naf17art18?: Prisma.SortOrder
-  art17act18?: Prisma.SortOrder
   art17hab18?: Prisma.SortOrder
-  art17mix18?: Prisma.SortOrder
-  art17rou18?: Prisma.SortOrder
-  art17fer18?: Prisma.SortOrder
+  art17act18?: Prisma.SortOrder
   art17inc18?: Prisma.SortOrder
+  art17mix18?: Prisma.SortOrder
+  art17fer18?: Prisma.SortOrder
+  art17rou18?: Prisma.SortOrder
   naf18art19?: Prisma.SortOrder
-  art18act19?: Prisma.SortOrder
   art18hab19?: Prisma.SortOrder
-  art18mix19?: Prisma.SortOrder
-  art18rou19?: Prisma.SortOrder
-  art18fer19?: Prisma.SortOrder
+  art18act19?: Prisma.SortOrder
   art18inc19?: Prisma.SortOrder
+  art18mix19?: Prisma.SortOrder
+  art18fer19?: Prisma.SortOrder
+  art18rou19?: Prisma.SortOrder
   naf19art20?: Prisma.SortOrder
-  art19act20?: Prisma.SortOrder
   art19hab20?: Prisma.SortOrder
-  art19mix20?: Prisma.SortOrder
-  art19rou20?: Prisma.SortOrder
-  art19fer20?: Prisma.SortOrder
+  art19act20?: Prisma.SortOrder
   art19inc20?: Prisma.SortOrder
+  art19mix20?: Prisma.SortOrder
+  art19fer20?: Prisma.SortOrder
+  art19rou20?: Prisma.SortOrder
   naf20art21?: Prisma.SortOrder
-  art20act21?: Prisma.SortOrder
   art20hab21?: Prisma.SortOrder
-  art20mix21?: Prisma.SortOrder
-  art20rou21?: Prisma.SortOrder
-  art20fer21?: Prisma.SortOrder
+  art20act21?: Prisma.SortOrder
   art20inc21?: Prisma.SortOrder
+  art20mix21?: Prisma.SortOrder
+  art20fer21?: Prisma.SortOrder
+  art20rou21?: Prisma.SortOrder
   naf21art22?: Prisma.SortOrder
-  art21act22?: Prisma.SortOrder
   art21hab22?: Prisma.SortOrder
-  art21mix22?: Prisma.SortOrder
-  art21rou22?: Prisma.SortOrder
-  art21fer22?: Prisma.SortOrder
+  art21act22?: Prisma.SortOrder
   art21inc22?: Prisma.SortOrder
+  art21mix22?: Prisma.SortOrder
+  art21fer22?: Prisma.SortOrder
+  art21rou22?: Prisma.SortOrder
   naf22art23?: Prisma.SortOrder
-  art22act23?: Prisma.SortOrder
   art22hab23?: Prisma.SortOrder
-  art22mix23?: Prisma.SortOrder
-  art22rou23?: Prisma.SortOrder
-  art22fer23?: Prisma.SortOrder
+  art22act23?: Prisma.SortOrder
   art22inc23?: Prisma.SortOrder
-  naf09art23?: Prisma.SortOrder
-  art09act23?: Prisma.SortOrder
-  art09hab23?: Prisma.SortOrder
-  art09mix23?: Prisma.SortOrder
-  art09inc23?: Prisma.SortOrder
-  art09rou23?: Prisma.SortOrder
-  art09fer23?: Prisma.SortOrder
-  artcom0923?: Prisma.SortOrder
+  art22mix23?: Prisma.SortOrder
+  art22fer23?: Prisma.SortOrder
+  art22rou23?: Prisma.SortOrder
+  naf23art24?: Prisma.SortOrder
+  art23hab24?: Prisma.SortOrder
+  art23act24?: Prisma.SortOrder
+  art23inc24?: Prisma.SortOrder
+  art23mix24?: Prisma.SortOrder
+  art23fer24?: Prisma.SortOrder
+  art23rou24?: Prisma.SortOrder
+  naf24art25?: Prisma.SortOrder
+  art24hab25?: Prisma.SortOrder
+  art24act25?: Prisma.SortOrder
+  art24inc25?: Prisma.SortOrder
+  art24mix25?: Prisma.SortOrder
+  art24fer25?: Prisma.SortOrder
+  art24rou25?: Prisma.SortOrder
+  naf11art25?: Prisma.SortOrder
+  art11hab25?: Prisma.SortOrder
+  art11act25?: Prisma.SortOrder
+  art11inc25?: Prisma.SortOrder
+  art11mix25?: Prisma.SortOrder
+  art11fer25?: Prisma.SortOrder
+  art11rou25?: Prisma.SortOrder
+  artcom1125?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafMinOrderByAggregateInput = {
@@ -3258,223 +3258,223 @@ export type databases_v2_consommation_espaces_nafMinOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
-  naf09art10?: Prisma.SortOrder
-  art09act10?: Prisma.SortOrder
-  art09hab10?: Prisma.SortOrder
-  art09mix10?: Prisma.SortOrder
-  art09rou10?: Prisma.SortOrder
-  art09fer10?: Prisma.SortOrder
-  art09inc10?: Prisma.SortOrder
-  naf10art11?: Prisma.SortOrder
-  art10act11?: Prisma.SortOrder
-  art10hab11?: Prisma.SortOrder
-  art10mix11?: Prisma.SortOrder
-  art10rou11?: Prisma.SortOrder
-  art10fer11?: Prisma.SortOrder
-  art10inc11?: Prisma.SortOrder
   naf11art12?: Prisma.SortOrder
-  art11act12?: Prisma.SortOrder
   art11hab12?: Prisma.SortOrder
-  art11mix12?: Prisma.SortOrder
-  art11rou12?: Prisma.SortOrder
-  art11fer12?: Prisma.SortOrder
+  art11act12?: Prisma.SortOrder
   art11inc12?: Prisma.SortOrder
+  art11mix12?: Prisma.SortOrder
+  art11fer12?: Prisma.SortOrder
+  art11rou12?: Prisma.SortOrder
   naf12art13?: Prisma.SortOrder
-  art12act13?: Prisma.SortOrder
   art12hab13?: Prisma.SortOrder
-  art12mix13?: Prisma.SortOrder
-  art12rou13?: Prisma.SortOrder
-  art12fer13?: Prisma.SortOrder
+  art12act13?: Prisma.SortOrder
   art12inc13?: Prisma.SortOrder
+  art12mix13?: Prisma.SortOrder
+  art12fer13?: Prisma.SortOrder
+  art12rou13?: Prisma.SortOrder
   naf13art14?: Prisma.SortOrder
-  art13act14?: Prisma.SortOrder
   art13hab14?: Prisma.SortOrder
-  art13mix14?: Prisma.SortOrder
-  art13rou14?: Prisma.SortOrder
-  art13fer14?: Prisma.SortOrder
+  art13act14?: Prisma.SortOrder
   art13inc14?: Prisma.SortOrder
+  art13mix14?: Prisma.SortOrder
+  art13fer14?: Prisma.SortOrder
+  art13rou14?: Prisma.SortOrder
   naf14art15?: Prisma.SortOrder
-  art14act15?: Prisma.SortOrder
   art14hab15?: Prisma.SortOrder
-  art14mix15?: Prisma.SortOrder
-  art14rou15?: Prisma.SortOrder
-  art14fer15?: Prisma.SortOrder
+  art14act15?: Prisma.SortOrder
   art14inc15?: Prisma.SortOrder
+  art14mix15?: Prisma.SortOrder
+  art14fer15?: Prisma.SortOrder
+  art14rou15?: Prisma.SortOrder
   naf15art16?: Prisma.SortOrder
-  art15act16?: Prisma.SortOrder
   art15hab16?: Prisma.SortOrder
-  art15mix16?: Prisma.SortOrder
-  art15rou16?: Prisma.SortOrder
-  art15fer16?: Prisma.SortOrder
+  art15act16?: Prisma.SortOrder
   art15inc16?: Prisma.SortOrder
+  art15mix16?: Prisma.SortOrder
+  art15fer16?: Prisma.SortOrder
+  art15rou16?: Prisma.SortOrder
   naf16art17?: Prisma.SortOrder
-  art16act17?: Prisma.SortOrder
   art16hab17?: Prisma.SortOrder
-  art16mix17?: Prisma.SortOrder
-  art16rou17?: Prisma.SortOrder
-  art16fer17?: Prisma.SortOrder
+  art16act17?: Prisma.SortOrder
   art16inc17?: Prisma.SortOrder
+  art16mix17?: Prisma.SortOrder
+  art16fer17?: Prisma.SortOrder
+  art16rou17?: Prisma.SortOrder
   naf17art18?: Prisma.SortOrder
-  art17act18?: Prisma.SortOrder
   art17hab18?: Prisma.SortOrder
-  art17mix18?: Prisma.SortOrder
-  art17rou18?: Prisma.SortOrder
-  art17fer18?: Prisma.SortOrder
+  art17act18?: Prisma.SortOrder
   art17inc18?: Prisma.SortOrder
+  art17mix18?: Prisma.SortOrder
+  art17fer18?: Prisma.SortOrder
+  art17rou18?: Prisma.SortOrder
   naf18art19?: Prisma.SortOrder
-  art18act19?: Prisma.SortOrder
   art18hab19?: Prisma.SortOrder
-  art18mix19?: Prisma.SortOrder
-  art18rou19?: Prisma.SortOrder
-  art18fer19?: Prisma.SortOrder
+  art18act19?: Prisma.SortOrder
   art18inc19?: Prisma.SortOrder
+  art18mix19?: Prisma.SortOrder
+  art18fer19?: Prisma.SortOrder
+  art18rou19?: Prisma.SortOrder
   naf19art20?: Prisma.SortOrder
-  art19act20?: Prisma.SortOrder
   art19hab20?: Prisma.SortOrder
-  art19mix20?: Prisma.SortOrder
-  art19rou20?: Prisma.SortOrder
-  art19fer20?: Prisma.SortOrder
+  art19act20?: Prisma.SortOrder
   art19inc20?: Prisma.SortOrder
+  art19mix20?: Prisma.SortOrder
+  art19fer20?: Prisma.SortOrder
+  art19rou20?: Prisma.SortOrder
   naf20art21?: Prisma.SortOrder
-  art20act21?: Prisma.SortOrder
   art20hab21?: Prisma.SortOrder
-  art20mix21?: Prisma.SortOrder
-  art20rou21?: Prisma.SortOrder
-  art20fer21?: Prisma.SortOrder
+  art20act21?: Prisma.SortOrder
   art20inc21?: Prisma.SortOrder
+  art20mix21?: Prisma.SortOrder
+  art20fer21?: Prisma.SortOrder
+  art20rou21?: Prisma.SortOrder
   naf21art22?: Prisma.SortOrder
-  art21act22?: Prisma.SortOrder
   art21hab22?: Prisma.SortOrder
-  art21mix22?: Prisma.SortOrder
-  art21rou22?: Prisma.SortOrder
-  art21fer22?: Prisma.SortOrder
+  art21act22?: Prisma.SortOrder
   art21inc22?: Prisma.SortOrder
+  art21mix22?: Prisma.SortOrder
+  art21fer22?: Prisma.SortOrder
+  art21rou22?: Prisma.SortOrder
   naf22art23?: Prisma.SortOrder
-  art22act23?: Prisma.SortOrder
   art22hab23?: Prisma.SortOrder
-  art22mix23?: Prisma.SortOrder
-  art22rou23?: Prisma.SortOrder
-  art22fer23?: Prisma.SortOrder
+  art22act23?: Prisma.SortOrder
   art22inc23?: Prisma.SortOrder
-  naf09art23?: Prisma.SortOrder
-  art09act23?: Prisma.SortOrder
-  art09hab23?: Prisma.SortOrder
-  art09mix23?: Prisma.SortOrder
-  art09inc23?: Prisma.SortOrder
-  art09rou23?: Prisma.SortOrder
-  art09fer23?: Prisma.SortOrder
-  artcom0923?: Prisma.SortOrder
+  art22mix23?: Prisma.SortOrder
+  art22fer23?: Prisma.SortOrder
+  art22rou23?: Prisma.SortOrder
+  naf23art24?: Prisma.SortOrder
+  art23hab24?: Prisma.SortOrder
+  art23act24?: Prisma.SortOrder
+  art23inc24?: Prisma.SortOrder
+  art23mix24?: Prisma.SortOrder
+  art23fer24?: Prisma.SortOrder
+  art23rou24?: Prisma.SortOrder
+  naf24art25?: Prisma.SortOrder
+  art24hab25?: Prisma.SortOrder
+  art24act25?: Prisma.SortOrder
+  art24inc25?: Prisma.SortOrder
+  art24mix25?: Prisma.SortOrder
+  art24fer25?: Prisma.SortOrder
+  art24rou25?: Prisma.SortOrder
+  naf11art25?: Prisma.SortOrder
+  art11hab25?: Prisma.SortOrder
+  art11act25?: Prisma.SortOrder
+  art11inc25?: Prisma.SortOrder
+  art11mix25?: Prisma.SortOrder
+  art11fer25?: Prisma.SortOrder
+  art11rou25?: Prisma.SortOrder
+  artcom1125?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
-  naf09art10?: Prisma.SortOrder
-  art09act10?: Prisma.SortOrder
-  art09hab10?: Prisma.SortOrder
-  art09mix10?: Prisma.SortOrder
-  art09rou10?: Prisma.SortOrder
-  art09fer10?: Prisma.SortOrder
-  art09inc10?: Prisma.SortOrder
-  naf10art11?: Prisma.SortOrder
-  art10act11?: Prisma.SortOrder
-  art10hab11?: Prisma.SortOrder
-  art10mix11?: Prisma.SortOrder
-  art10rou11?: Prisma.SortOrder
-  art10fer11?: Prisma.SortOrder
-  art10inc11?: Prisma.SortOrder
   naf11art12?: Prisma.SortOrder
-  art11act12?: Prisma.SortOrder
   art11hab12?: Prisma.SortOrder
-  art11mix12?: Prisma.SortOrder
-  art11rou12?: Prisma.SortOrder
-  art11fer12?: Prisma.SortOrder
+  art11act12?: Prisma.SortOrder
   art11inc12?: Prisma.SortOrder
+  art11mix12?: Prisma.SortOrder
+  art11fer12?: Prisma.SortOrder
+  art11rou12?: Prisma.SortOrder
   naf12art13?: Prisma.SortOrder
-  art12act13?: Prisma.SortOrder
   art12hab13?: Prisma.SortOrder
-  art12mix13?: Prisma.SortOrder
-  art12rou13?: Prisma.SortOrder
-  art12fer13?: Prisma.SortOrder
+  art12act13?: Prisma.SortOrder
   art12inc13?: Prisma.SortOrder
+  art12mix13?: Prisma.SortOrder
+  art12fer13?: Prisma.SortOrder
+  art12rou13?: Prisma.SortOrder
   naf13art14?: Prisma.SortOrder
-  art13act14?: Prisma.SortOrder
   art13hab14?: Prisma.SortOrder
-  art13mix14?: Prisma.SortOrder
-  art13rou14?: Prisma.SortOrder
-  art13fer14?: Prisma.SortOrder
+  art13act14?: Prisma.SortOrder
   art13inc14?: Prisma.SortOrder
+  art13mix14?: Prisma.SortOrder
+  art13fer14?: Prisma.SortOrder
+  art13rou14?: Prisma.SortOrder
   naf14art15?: Prisma.SortOrder
-  art14act15?: Prisma.SortOrder
   art14hab15?: Prisma.SortOrder
-  art14mix15?: Prisma.SortOrder
-  art14rou15?: Prisma.SortOrder
-  art14fer15?: Prisma.SortOrder
+  art14act15?: Prisma.SortOrder
   art14inc15?: Prisma.SortOrder
+  art14mix15?: Prisma.SortOrder
+  art14fer15?: Prisma.SortOrder
+  art14rou15?: Prisma.SortOrder
   naf15art16?: Prisma.SortOrder
-  art15act16?: Prisma.SortOrder
   art15hab16?: Prisma.SortOrder
-  art15mix16?: Prisma.SortOrder
-  art15rou16?: Prisma.SortOrder
-  art15fer16?: Prisma.SortOrder
+  art15act16?: Prisma.SortOrder
   art15inc16?: Prisma.SortOrder
+  art15mix16?: Prisma.SortOrder
+  art15fer16?: Prisma.SortOrder
+  art15rou16?: Prisma.SortOrder
   naf16art17?: Prisma.SortOrder
-  art16act17?: Prisma.SortOrder
   art16hab17?: Prisma.SortOrder
-  art16mix17?: Prisma.SortOrder
-  art16rou17?: Prisma.SortOrder
-  art16fer17?: Prisma.SortOrder
+  art16act17?: Prisma.SortOrder
   art16inc17?: Prisma.SortOrder
+  art16mix17?: Prisma.SortOrder
+  art16fer17?: Prisma.SortOrder
+  art16rou17?: Prisma.SortOrder
   naf17art18?: Prisma.SortOrder
-  art17act18?: Prisma.SortOrder
   art17hab18?: Prisma.SortOrder
-  art17mix18?: Prisma.SortOrder
-  art17rou18?: Prisma.SortOrder
-  art17fer18?: Prisma.SortOrder
+  art17act18?: Prisma.SortOrder
   art17inc18?: Prisma.SortOrder
+  art17mix18?: Prisma.SortOrder
+  art17fer18?: Prisma.SortOrder
+  art17rou18?: Prisma.SortOrder
   naf18art19?: Prisma.SortOrder
-  art18act19?: Prisma.SortOrder
   art18hab19?: Prisma.SortOrder
-  art18mix19?: Prisma.SortOrder
-  art18rou19?: Prisma.SortOrder
-  art18fer19?: Prisma.SortOrder
+  art18act19?: Prisma.SortOrder
   art18inc19?: Prisma.SortOrder
+  art18mix19?: Prisma.SortOrder
+  art18fer19?: Prisma.SortOrder
+  art18rou19?: Prisma.SortOrder
   naf19art20?: Prisma.SortOrder
-  art19act20?: Prisma.SortOrder
   art19hab20?: Prisma.SortOrder
-  art19mix20?: Prisma.SortOrder
-  art19rou20?: Prisma.SortOrder
-  art19fer20?: Prisma.SortOrder
+  art19act20?: Prisma.SortOrder
   art19inc20?: Prisma.SortOrder
+  art19mix20?: Prisma.SortOrder
+  art19fer20?: Prisma.SortOrder
+  art19rou20?: Prisma.SortOrder
   naf20art21?: Prisma.SortOrder
-  art20act21?: Prisma.SortOrder
   art20hab21?: Prisma.SortOrder
-  art20mix21?: Prisma.SortOrder
-  art20rou21?: Prisma.SortOrder
-  art20fer21?: Prisma.SortOrder
+  art20act21?: Prisma.SortOrder
   art20inc21?: Prisma.SortOrder
+  art20mix21?: Prisma.SortOrder
+  art20fer21?: Prisma.SortOrder
+  art20rou21?: Prisma.SortOrder
   naf21art22?: Prisma.SortOrder
-  art21act22?: Prisma.SortOrder
   art21hab22?: Prisma.SortOrder
-  art21mix22?: Prisma.SortOrder
-  art21rou22?: Prisma.SortOrder
-  art21fer22?: Prisma.SortOrder
+  art21act22?: Prisma.SortOrder
   art21inc22?: Prisma.SortOrder
+  art21mix22?: Prisma.SortOrder
+  art21fer22?: Prisma.SortOrder
+  art21rou22?: Prisma.SortOrder
   naf22art23?: Prisma.SortOrder
-  art22act23?: Prisma.SortOrder
   art22hab23?: Prisma.SortOrder
-  art22mix23?: Prisma.SortOrder
-  art22rou23?: Prisma.SortOrder
-  art22fer23?: Prisma.SortOrder
+  art22act23?: Prisma.SortOrder
   art22inc23?: Prisma.SortOrder
-  naf09art23?: Prisma.SortOrder
-  art09act23?: Prisma.SortOrder
-  art09hab23?: Prisma.SortOrder
-  art09mix23?: Prisma.SortOrder
-  art09inc23?: Prisma.SortOrder
-  art09rou23?: Prisma.SortOrder
-  art09fer23?: Prisma.SortOrder
-  artcom0923?: Prisma.SortOrder
+  art22mix23?: Prisma.SortOrder
+  art22fer23?: Prisma.SortOrder
+  art22rou23?: Prisma.SortOrder
+  naf23art24?: Prisma.SortOrder
+  art23hab24?: Prisma.SortOrder
+  art23act24?: Prisma.SortOrder
+  art23inc24?: Prisma.SortOrder
+  art23mix24?: Prisma.SortOrder
+  art23fer24?: Prisma.SortOrder
+  art23rou24?: Prisma.SortOrder
+  naf24art25?: Prisma.SortOrder
+  art24hab25?: Prisma.SortOrder
+  art24act25?: Prisma.SortOrder
+  art24inc25?: Prisma.SortOrder
+  art24mix25?: Prisma.SortOrder
+  art24fer25?: Prisma.SortOrder
+  art24rou25?: Prisma.SortOrder
+  naf11art25?: Prisma.SortOrder
+  art11hab25?: Prisma.SortOrder
+  art11act25?: Prisma.SortOrder
+  art11inc25?: Prisma.SortOrder
+  art11mix25?: Prisma.SortOrder
+  art11fer25?: Prisma.SortOrder
+  art11rou25?: Prisma.SortOrder
+  artcom1125?: Prisma.SortOrder
 }
 
 
@@ -3492,112 +3492,112 @@ export type databases_v2_consommation_espaces_nafSelect<ExtArgs extends runtime.
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  naf09art10?: boolean
-  art09act10?: boolean
-  art09hab10?: boolean
-  art09mix10?: boolean
-  art09rou10?: boolean
-  art09fer10?: boolean
-  art09inc10?: boolean
-  naf10art11?: boolean
-  art10act11?: boolean
-  art10hab11?: boolean
-  art10mix11?: boolean
-  art10rou11?: boolean
-  art10fer11?: boolean
-  art10inc11?: boolean
   naf11art12?: boolean
-  art11act12?: boolean
   art11hab12?: boolean
-  art11mix12?: boolean
-  art11rou12?: boolean
-  art11fer12?: boolean
+  art11act12?: boolean
   art11inc12?: boolean
+  art11mix12?: boolean
+  art11fer12?: boolean
+  art11rou12?: boolean
   naf12art13?: boolean
-  art12act13?: boolean
   art12hab13?: boolean
-  art12mix13?: boolean
-  art12rou13?: boolean
-  art12fer13?: boolean
+  art12act13?: boolean
   art12inc13?: boolean
+  art12mix13?: boolean
+  art12fer13?: boolean
+  art12rou13?: boolean
   naf13art14?: boolean
-  art13act14?: boolean
   art13hab14?: boolean
-  art13mix14?: boolean
-  art13rou14?: boolean
-  art13fer14?: boolean
+  art13act14?: boolean
   art13inc14?: boolean
+  art13mix14?: boolean
+  art13fer14?: boolean
+  art13rou14?: boolean
   naf14art15?: boolean
-  art14act15?: boolean
   art14hab15?: boolean
-  art14mix15?: boolean
-  art14rou15?: boolean
-  art14fer15?: boolean
+  art14act15?: boolean
   art14inc15?: boolean
+  art14mix15?: boolean
+  art14fer15?: boolean
+  art14rou15?: boolean
   naf15art16?: boolean
-  art15act16?: boolean
   art15hab16?: boolean
-  art15mix16?: boolean
-  art15rou16?: boolean
-  art15fer16?: boolean
+  art15act16?: boolean
   art15inc16?: boolean
+  art15mix16?: boolean
+  art15fer16?: boolean
+  art15rou16?: boolean
   naf16art17?: boolean
-  art16act17?: boolean
   art16hab17?: boolean
-  art16mix17?: boolean
-  art16rou17?: boolean
-  art16fer17?: boolean
+  art16act17?: boolean
   art16inc17?: boolean
+  art16mix17?: boolean
+  art16fer17?: boolean
+  art16rou17?: boolean
   naf17art18?: boolean
-  art17act18?: boolean
   art17hab18?: boolean
-  art17mix18?: boolean
-  art17rou18?: boolean
-  art17fer18?: boolean
+  art17act18?: boolean
   art17inc18?: boolean
+  art17mix18?: boolean
+  art17fer18?: boolean
+  art17rou18?: boolean
   naf18art19?: boolean
-  art18act19?: boolean
   art18hab19?: boolean
-  art18mix19?: boolean
-  art18rou19?: boolean
-  art18fer19?: boolean
+  art18act19?: boolean
   art18inc19?: boolean
+  art18mix19?: boolean
+  art18fer19?: boolean
+  art18rou19?: boolean
   naf19art20?: boolean
-  art19act20?: boolean
   art19hab20?: boolean
-  art19mix20?: boolean
-  art19rou20?: boolean
-  art19fer20?: boolean
+  art19act20?: boolean
   art19inc20?: boolean
+  art19mix20?: boolean
+  art19fer20?: boolean
+  art19rou20?: boolean
   naf20art21?: boolean
-  art20act21?: boolean
   art20hab21?: boolean
-  art20mix21?: boolean
-  art20rou21?: boolean
-  art20fer21?: boolean
+  art20act21?: boolean
   art20inc21?: boolean
+  art20mix21?: boolean
+  art20fer21?: boolean
+  art20rou21?: boolean
   naf21art22?: boolean
-  art21act22?: boolean
   art21hab22?: boolean
-  art21mix22?: boolean
-  art21rou22?: boolean
-  art21fer22?: boolean
+  art21act22?: boolean
   art21inc22?: boolean
+  art21mix22?: boolean
+  art21fer22?: boolean
+  art21rou22?: boolean
   naf22art23?: boolean
-  art22act23?: boolean
   art22hab23?: boolean
-  art22mix23?: boolean
-  art22rou23?: boolean
-  art22fer23?: boolean
+  art22act23?: boolean
   art22inc23?: boolean
-  naf09art23?: boolean
-  art09act23?: boolean
-  art09hab23?: boolean
-  art09mix23?: boolean
-  art09inc23?: boolean
-  art09rou23?: boolean
-  art09fer23?: boolean
-  artcom0923?: boolean
+  art22mix23?: boolean
+  art22fer23?: boolean
+  art22rou23?: boolean
+  naf23art24?: boolean
+  art23hab24?: boolean
+  art23act24?: boolean
+  art23inc24?: boolean
+  art23mix24?: boolean
+  art23fer24?: boolean
+  art23rou24?: boolean
+  naf24art25?: boolean
+  art24hab25?: boolean
+  art24act25?: boolean
+  art24inc25?: boolean
+  art24mix25?: boolean
+  art24fer25?: boolean
+  art24rou25?: boolean
+  naf11art25?: boolean
+  art11hab25?: boolean
+  art11act25?: boolean
+  art11inc25?: boolean
+  art11mix25?: boolean
+  art11fer25?: boolean
+  art11rou25?: boolean
+  artcom1125?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3613,112 +3613,112 @@ export type databases_v2_consommation_espaces_nafSelectCreateManyAndReturn<ExtAr
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  naf09art10?: boolean
-  art09act10?: boolean
-  art09hab10?: boolean
-  art09mix10?: boolean
-  art09rou10?: boolean
-  art09fer10?: boolean
-  art09inc10?: boolean
-  naf10art11?: boolean
-  art10act11?: boolean
-  art10hab11?: boolean
-  art10mix11?: boolean
-  art10rou11?: boolean
-  art10fer11?: boolean
-  art10inc11?: boolean
   naf11art12?: boolean
-  art11act12?: boolean
   art11hab12?: boolean
-  art11mix12?: boolean
-  art11rou12?: boolean
-  art11fer12?: boolean
+  art11act12?: boolean
   art11inc12?: boolean
+  art11mix12?: boolean
+  art11fer12?: boolean
+  art11rou12?: boolean
   naf12art13?: boolean
-  art12act13?: boolean
   art12hab13?: boolean
-  art12mix13?: boolean
-  art12rou13?: boolean
-  art12fer13?: boolean
+  art12act13?: boolean
   art12inc13?: boolean
+  art12mix13?: boolean
+  art12fer13?: boolean
+  art12rou13?: boolean
   naf13art14?: boolean
-  art13act14?: boolean
   art13hab14?: boolean
-  art13mix14?: boolean
-  art13rou14?: boolean
-  art13fer14?: boolean
+  art13act14?: boolean
   art13inc14?: boolean
+  art13mix14?: boolean
+  art13fer14?: boolean
+  art13rou14?: boolean
   naf14art15?: boolean
-  art14act15?: boolean
   art14hab15?: boolean
-  art14mix15?: boolean
-  art14rou15?: boolean
-  art14fer15?: boolean
+  art14act15?: boolean
   art14inc15?: boolean
+  art14mix15?: boolean
+  art14fer15?: boolean
+  art14rou15?: boolean
   naf15art16?: boolean
-  art15act16?: boolean
   art15hab16?: boolean
-  art15mix16?: boolean
-  art15rou16?: boolean
-  art15fer16?: boolean
+  art15act16?: boolean
   art15inc16?: boolean
+  art15mix16?: boolean
+  art15fer16?: boolean
+  art15rou16?: boolean
   naf16art17?: boolean
-  art16act17?: boolean
   art16hab17?: boolean
-  art16mix17?: boolean
-  art16rou17?: boolean
-  art16fer17?: boolean
+  art16act17?: boolean
   art16inc17?: boolean
+  art16mix17?: boolean
+  art16fer17?: boolean
+  art16rou17?: boolean
   naf17art18?: boolean
-  art17act18?: boolean
   art17hab18?: boolean
-  art17mix18?: boolean
-  art17rou18?: boolean
-  art17fer18?: boolean
+  art17act18?: boolean
   art17inc18?: boolean
+  art17mix18?: boolean
+  art17fer18?: boolean
+  art17rou18?: boolean
   naf18art19?: boolean
-  art18act19?: boolean
   art18hab19?: boolean
-  art18mix19?: boolean
-  art18rou19?: boolean
-  art18fer19?: boolean
+  art18act19?: boolean
   art18inc19?: boolean
+  art18mix19?: boolean
+  art18fer19?: boolean
+  art18rou19?: boolean
   naf19art20?: boolean
-  art19act20?: boolean
   art19hab20?: boolean
-  art19mix20?: boolean
-  art19rou20?: boolean
-  art19fer20?: boolean
+  art19act20?: boolean
   art19inc20?: boolean
+  art19mix20?: boolean
+  art19fer20?: boolean
+  art19rou20?: boolean
   naf20art21?: boolean
-  art20act21?: boolean
   art20hab21?: boolean
-  art20mix21?: boolean
-  art20rou21?: boolean
-  art20fer21?: boolean
+  art20act21?: boolean
   art20inc21?: boolean
+  art20mix21?: boolean
+  art20fer21?: boolean
+  art20rou21?: boolean
   naf21art22?: boolean
-  art21act22?: boolean
   art21hab22?: boolean
-  art21mix22?: boolean
-  art21rou22?: boolean
-  art21fer22?: boolean
+  art21act22?: boolean
   art21inc22?: boolean
+  art21mix22?: boolean
+  art21fer22?: boolean
+  art21rou22?: boolean
   naf22art23?: boolean
-  art22act23?: boolean
   art22hab23?: boolean
-  art22mix23?: boolean
-  art22rou23?: boolean
-  art22fer23?: boolean
+  art22act23?: boolean
   art22inc23?: boolean
-  naf09art23?: boolean
-  art09act23?: boolean
-  art09hab23?: boolean
-  art09mix23?: boolean
-  art09inc23?: boolean
-  art09rou23?: boolean
-  art09fer23?: boolean
-  artcom0923?: boolean
+  art22mix23?: boolean
+  art22fer23?: boolean
+  art22rou23?: boolean
+  naf23art24?: boolean
+  art23hab24?: boolean
+  art23act24?: boolean
+  art23inc24?: boolean
+  art23mix24?: boolean
+  art23fer24?: boolean
+  art23rou24?: boolean
+  naf24art25?: boolean
+  art24hab25?: boolean
+  art24act25?: boolean
+  art24inc25?: boolean
+  art24mix25?: boolean
+  art24fer25?: boolean
+  art24rou25?: boolean
+  naf11art25?: boolean
+  art11hab25?: boolean
+  art11act25?: boolean
+  art11inc25?: boolean
+  art11mix25?: boolean
+  art11fer25?: boolean
+  art11rou25?: boolean
+  artcom1125?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3734,112 +3734,112 @@ export type databases_v2_consommation_espaces_nafSelectUpdateManyAndReturn<ExtAr
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  naf09art10?: boolean
-  art09act10?: boolean
-  art09hab10?: boolean
-  art09mix10?: boolean
-  art09rou10?: boolean
-  art09fer10?: boolean
-  art09inc10?: boolean
-  naf10art11?: boolean
-  art10act11?: boolean
-  art10hab11?: boolean
-  art10mix11?: boolean
-  art10rou11?: boolean
-  art10fer11?: boolean
-  art10inc11?: boolean
   naf11art12?: boolean
-  art11act12?: boolean
   art11hab12?: boolean
-  art11mix12?: boolean
-  art11rou12?: boolean
-  art11fer12?: boolean
+  art11act12?: boolean
   art11inc12?: boolean
+  art11mix12?: boolean
+  art11fer12?: boolean
+  art11rou12?: boolean
   naf12art13?: boolean
-  art12act13?: boolean
   art12hab13?: boolean
-  art12mix13?: boolean
-  art12rou13?: boolean
-  art12fer13?: boolean
+  art12act13?: boolean
   art12inc13?: boolean
+  art12mix13?: boolean
+  art12fer13?: boolean
+  art12rou13?: boolean
   naf13art14?: boolean
-  art13act14?: boolean
   art13hab14?: boolean
-  art13mix14?: boolean
-  art13rou14?: boolean
-  art13fer14?: boolean
+  art13act14?: boolean
   art13inc14?: boolean
+  art13mix14?: boolean
+  art13fer14?: boolean
+  art13rou14?: boolean
   naf14art15?: boolean
-  art14act15?: boolean
   art14hab15?: boolean
-  art14mix15?: boolean
-  art14rou15?: boolean
-  art14fer15?: boolean
+  art14act15?: boolean
   art14inc15?: boolean
+  art14mix15?: boolean
+  art14fer15?: boolean
+  art14rou15?: boolean
   naf15art16?: boolean
-  art15act16?: boolean
   art15hab16?: boolean
-  art15mix16?: boolean
-  art15rou16?: boolean
-  art15fer16?: boolean
+  art15act16?: boolean
   art15inc16?: boolean
+  art15mix16?: boolean
+  art15fer16?: boolean
+  art15rou16?: boolean
   naf16art17?: boolean
-  art16act17?: boolean
   art16hab17?: boolean
-  art16mix17?: boolean
-  art16rou17?: boolean
-  art16fer17?: boolean
+  art16act17?: boolean
   art16inc17?: boolean
+  art16mix17?: boolean
+  art16fer17?: boolean
+  art16rou17?: boolean
   naf17art18?: boolean
-  art17act18?: boolean
   art17hab18?: boolean
-  art17mix18?: boolean
-  art17rou18?: boolean
-  art17fer18?: boolean
+  art17act18?: boolean
   art17inc18?: boolean
+  art17mix18?: boolean
+  art17fer18?: boolean
+  art17rou18?: boolean
   naf18art19?: boolean
-  art18act19?: boolean
   art18hab19?: boolean
-  art18mix19?: boolean
-  art18rou19?: boolean
-  art18fer19?: boolean
+  art18act19?: boolean
   art18inc19?: boolean
+  art18mix19?: boolean
+  art18fer19?: boolean
+  art18rou19?: boolean
   naf19art20?: boolean
-  art19act20?: boolean
   art19hab20?: boolean
-  art19mix20?: boolean
-  art19rou20?: boolean
-  art19fer20?: boolean
+  art19act20?: boolean
   art19inc20?: boolean
+  art19mix20?: boolean
+  art19fer20?: boolean
+  art19rou20?: boolean
   naf20art21?: boolean
-  art20act21?: boolean
   art20hab21?: boolean
-  art20mix21?: boolean
-  art20rou21?: boolean
-  art20fer21?: boolean
+  art20act21?: boolean
   art20inc21?: boolean
+  art20mix21?: boolean
+  art20fer21?: boolean
+  art20rou21?: boolean
   naf21art22?: boolean
-  art21act22?: boolean
   art21hab22?: boolean
-  art21mix22?: boolean
-  art21rou22?: boolean
-  art21fer22?: boolean
+  art21act22?: boolean
   art21inc22?: boolean
+  art21mix22?: boolean
+  art21fer22?: boolean
+  art21rou22?: boolean
   naf22art23?: boolean
-  art22act23?: boolean
   art22hab23?: boolean
-  art22mix23?: boolean
-  art22rou23?: boolean
-  art22fer23?: boolean
+  art22act23?: boolean
   art22inc23?: boolean
-  naf09art23?: boolean
-  art09act23?: boolean
-  art09hab23?: boolean
-  art09mix23?: boolean
-  art09inc23?: boolean
-  art09rou23?: boolean
-  art09fer23?: boolean
-  artcom0923?: boolean
+  art22mix23?: boolean
+  art22fer23?: boolean
+  art22rou23?: boolean
+  naf23art24?: boolean
+  art23hab24?: boolean
+  art23act24?: boolean
+  art23inc24?: boolean
+  art23mix24?: boolean
+  art23fer24?: boolean
+  art23rou24?: boolean
+  naf24art25?: boolean
+  art24hab25?: boolean
+  art24act25?: boolean
+  art24inc25?: boolean
+  art24mix25?: boolean
+  art24fer25?: boolean
+  art24rou25?: boolean
+  naf11art25?: boolean
+  art11hab25?: boolean
+  art11act25?: boolean
+  art11inc25?: boolean
+  art11mix25?: boolean
+  art11fer25?: boolean
+  art11rou25?: boolean
+  artcom1125?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectScalar = {
@@ -3855,115 +3855,115 @@ export type databases_v2_consommation_espaces_nafSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
-  naf09art10?: boolean
-  art09act10?: boolean
-  art09hab10?: boolean
-  art09mix10?: boolean
-  art09rou10?: boolean
-  art09fer10?: boolean
-  art09inc10?: boolean
-  naf10art11?: boolean
-  art10act11?: boolean
-  art10hab11?: boolean
-  art10mix11?: boolean
-  art10rou11?: boolean
-  art10fer11?: boolean
-  art10inc11?: boolean
   naf11art12?: boolean
-  art11act12?: boolean
   art11hab12?: boolean
-  art11mix12?: boolean
-  art11rou12?: boolean
-  art11fer12?: boolean
+  art11act12?: boolean
   art11inc12?: boolean
+  art11mix12?: boolean
+  art11fer12?: boolean
+  art11rou12?: boolean
   naf12art13?: boolean
-  art12act13?: boolean
   art12hab13?: boolean
-  art12mix13?: boolean
-  art12rou13?: boolean
-  art12fer13?: boolean
+  art12act13?: boolean
   art12inc13?: boolean
+  art12mix13?: boolean
+  art12fer13?: boolean
+  art12rou13?: boolean
   naf13art14?: boolean
-  art13act14?: boolean
   art13hab14?: boolean
-  art13mix14?: boolean
-  art13rou14?: boolean
-  art13fer14?: boolean
+  art13act14?: boolean
   art13inc14?: boolean
+  art13mix14?: boolean
+  art13fer14?: boolean
+  art13rou14?: boolean
   naf14art15?: boolean
-  art14act15?: boolean
   art14hab15?: boolean
-  art14mix15?: boolean
-  art14rou15?: boolean
-  art14fer15?: boolean
+  art14act15?: boolean
   art14inc15?: boolean
+  art14mix15?: boolean
+  art14fer15?: boolean
+  art14rou15?: boolean
   naf15art16?: boolean
-  art15act16?: boolean
   art15hab16?: boolean
-  art15mix16?: boolean
-  art15rou16?: boolean
-  art15fer16?: boolean
+  art15act16?: boolean
   art15inc16?: boolean
+  art15mix16?: boolean
+  art15fer16?: boolean
+  art15rou16?: boolean
   naf16art17?: boolean
-  art16act17?: boolean
   art16hab17?: boolean
-  art16mix17?: boolean
-  art16rou17?: boolean
-  art16fer17?: boolean
+  art16act17?: boolean
   art16inc17?: boolean
+  art16mix17?: boolean
+  art16fer17?: boolean
+  art16rou17?: boolean
   naf17art18?: boolean
-  art17act18?: boolean
   art17hab18?: boolean
-  art17mix18?: boolean
-  art17rou18?: boolean
-  art17fer18?: boolean
+  art17act18?: boolean
   art17inc18?: boolean
+  art17mix18?: boolean
+  art17fer18?: boolean
+  art17rou18?: boolean
   naf18art19?: boolean
-  art18act19?: boolean
   art18hab19?: boolean
-  art18mix19?: boolean
-  art18rou19?: boolean
-  art18fer19?: boolean
+  art18act19?: boolean
   art18inc19?: boolean
+  art18mix19?: boolean
+  art18fer19?: boolean
+  art18rou19?: boolean
   naf19art20?: boolean
-  art19act20?: boolean
   art19hab20?: boolean
-  art19mix20?: boolean
-  art19rou20?: boolean
-  art19fer20?: boolean
+  art19act20?: boolean
   art19inc20?: boolean
+  art19mix20?: boolean
+  art19fer20?: boolean
+  art19rou20?: boolean
   naf20art21?: boolean
-  art20act21?: boolean
   art20hab21?: boolean
-  art20mix21?: boolean
-  art20rou21?: boolean
-  art20fer21?: boolean
+  art20act21?: boolean
   art20inc21?: boolean
+  art20mix21?: boolean
+  art20fer21?: boolean
+  art20rou21?: boolean
   naf21art22?: boolean
-  art21act22?: boolean
   art21hab22?: boolean
-  art21mix22?: boolean
-  art21rou22?: boolean
-  art21fer22?: boolean
+  art21act22?: boolean
   art21inc22?: boolean
+  art21mix22?: boolean
+  art21fer22?: boolean
+  art21rou22?: boolean
   naf22art23?: boolean
-  art22act23?: boolean
   art22hab23?: boolean
-  art22mix23?: boolean
-  art22rou23?: boolean
-  art22fer23?: boolean
+  art22act23?: boolean
   art22inc23?: boolean
-  naf09art23?: boolean
-  art09act23?: boolean
-  art09hab23?: boolean
-  art09mix23?: boolean
-  art09inc23?: boolean
-  art09rou23?: boolean
-  art09fer23?: boolean
-  artcom0923?: boolean
+  art22mix23?: boolean
+  art22fer23?: boolean
+  art22rou23?: boolean
+  naf23art24?: boolean
+  art23hab24?: boolean
+  art23act24?: boolean
+  art23inc24?: boolean
+  art23mix24?: boolean
+  art23fer24?: boolean
+  art23rou24?: boolean
+  naf24art25?: boolean
+  art24hab25?: boolean
+  art24act25?: boolean
+  art24inc25?: boolean
+  art24mix25?: boolean
+  art24fer25?: boolean
+  art24rou25?: boolean
+  naf11art25?: boolean
+  art11hab25?: boolean
+  art11act25?: boolean
+  art11inc25?: boolean
+  art11mix25?: boolean
+  art11fer25?: boolean
+  art11rou25?: boolean
+  artcom1125?: boolean
 }
 
-export type databases_v2_consommation_espaces_nafOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "naf09art10" | "art09act10" | "art09hab10" | "art09mix10" | "art09rou10" | "art09fer10" | "art09inc10" | "naf10art11" | "art10act11" | "art10hab11" | "art10mix11" | "art10rou11" | "art10fer11" | "art10inc11" | "naf11art12" | "art11act12" | "art11hab12" | "art11mix12" | "art11rou12" | "art11fer12" | "art11inc12" | "naf12art13" | "art12act13" | "art12hab13" | "art12mix13" | "art12rou13" | "art12fer13" | "art12inc13" | "naf13art14" | "art13act14" | "art13hab14" | "art13mix14" | "art13rou14" | "art13fer14" | "art13inc14" | "naf14art15" | "art14act15" | "art14hab15" | "art14mix15" | "art14rou15" | "art14fer15" | "art14inc15" | "naf15art16" | "art15act16" | "art15hab16" | "art15mix16" | "art15rou16" | "art15fer16" | "art15inc16" | "naf16art17" | "art16act17" | "art16hab17" | "art16mix17" | "art16rou17" | "art16fer17" | "art16inc17" | "naf17art18" | "art17act18" | "art17hab18" | "art17mix18" | "art17rou18" | "art17fer18" | "art17inc18" | "naf18art19" | "art18act19" | "art18hab19" | "art18mix19" | "art18rou19" | "art18fer19" | "art18inc19" | "naf19art20" | "art19act20" | "art19hab20" | "art19mix20" | "art19rou20" | "art19fer20" | "art19inc20" | "naf20art21" | "art20act21" | "art20hab21" | "art20mix21" | "art20rou21" | "art20fer21" | "art20inc21" | "naf21art22" | "art21act22" | "art21hab22" | "art21mix22" | "art21rou22" | "art21fer22" | "art21inc22" | "naf22art23" | "art22act23" | "art22hab23" | "art22mix23" | "art22rou23" | "art22fer23" | "art22inc23" | "naf09art23" | "art09act23" | "art09hab23" | "art09mix23" | "art09inc23" | "art09rou23" | "art09fer23" | "artcom0923", ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
+export type databases_v2_consommation_espaces_nafOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "naf11art12" | "art11hab12" | "art11act12" | "art11inc12" | "art11mix12" | "art11fer12" | "art11rou12" | "naf12art13" | "art12hab13" | "art12act13" | "art12inc13" | "art12mix13" | "art12fer13" | "art12rou13" | "naf13art14" | "art13hab14" | "art13act14" | "art13inc14" | "art13mix14" | "art13fer14" | "art13rou14" | "naf14art15" | "art14hab15" | "art14act15" | "art14inc15" | "art14mix15" | "art14fer15" | "art14rou15" | "naf15art16" | "art15hab16" | "art15act16" | "art15inc16" | "art15mix16" | "art15fer16" | "art15rou16" | "naf16art17" | "art16hab17" | "art16act17" | "art16inc17" | "art16mix17" | "art16fer17" | "art16rou17" | "naf17art18" | "art17hab18" | "art17act18" | "art17inc18" | "art17mix18" | "art17fer18" | "art17rou18" | "naf18art19" | "art18hab19" | "art18act19" | "art18inc19" | "art18mix19" | "art18fer19" | "art18rou19" | "naf19art20" | "art19hab20" | "art19act20" | "art19inc20" | "art19mix20" | "art19fer20" | "art19rou20" | "naf20art21" | "art20hab21" | "art20act21" | "art20inc21" | "art20mix21" | "art20fer21" | "art20rou21" | "naf21art22" | "art21hab22" | "art21act22" | "art21inc22" | "art21mix22" | "art21fer22" | "art21rou22" | "naf22art23" | "art22hab23" | "art22act23" | "art22inc23" | "art22mix23" | "art22fer23" | "art22rou23" | "naf23art24" | "art23hab24" | "art23act24" | "art23inc24" | "art23mix24" | "art23fer24" | "art23rou24" | "naf24art25" | "art24hab25" | "art24act25" | "art24inc25" | "art24mix25" | "art24fer25" | "art24rou25" | "naf11art25" | "art11hab25" | "art11act25" | "art11inc25" | "art11mix25" | "art11fer25" | "art11rou25" | "artcom1125", ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type $databases_v2_consommation_espaces_nafPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_consommation_espaces_naf"
@@ -3975,118 +3975,118 @@ export type $databases_v2_consommation_espaces_nafPayload<ExtArgs extends runtim
     epci: string
     libelle_epci: string
     departement: string
-    libelle_departement: string
+    libelle_departement: string | null
     region: number
     ept: string | null
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
-    naf09art10: number | null
-    art09act10: number | null
-    art09hab10: number | null
-    art09mix10: number | null
-    art09rou10: number | null
-    art09fer10: number | null
-    art09inc10: number | null
-    naf10art11: number | null
-    art10act11: number | null
-    art10hab11: number | null
-    art10mix11: number | null
-    art10rou11: number | null
-    art10fer11: number | null
-    art10inc11: number | null
     naf11art12: number | null
-    art11act12: number | null
     art11hab12: number | null
-    art11mix12: number | null
-    art11rou12: number | null
-    art11fer12: number | null
+    art11act12: number | null
     art11inc12: number | null
+    art11mix12: number | null
+    art11fer12: number | null
+    art11rou12: number | null
     naf12art13: number | null
-    art12act13: number | null
     art12hab13: number | null
-    art12mix13: number | null
-    art12rou13: number | null
-    art12fer13: number | null
+    art12act13: number | null
     art12inc13: number | null
+    art12mix13: number | null
+    art12fer13: number | null
+    art12rou13: number | null
     naf13art14: number | null
-    art13act14: number | null
     art13hab14: number | null
-    art13mix14: number | null
-    art13rou14: number | null
-    art13fer14: number | null
+    art13act14: number | null
     art13inc14: number | null
+    art13mix14: number | null
+    art13fer14: number | null
+    art13rou14: number | null
     naf14art15: number | null
-    art14act15: number | null
     art14hab15: number | null
-    art14mix15: number | null
-    art14rou15: number | null
-    art14fer15: number | null
+    art14act15: number | null
     art14inc15: number | null
+    art14mix15: number | null
+    art14fer15: number | null
+    art14rou15: number | null
     naf15art16: number | null
-    art15act16: number | null
     art15hab16: number | null
-    art15mix16: number | null
-    art15rou16: number | null
-    art15fer16: number | null
+    art15act16: number | null
     art15inc16: number | null
+    art15mix16: number | null
+    art15fer16: number | null
+    art15rou16: number | null
     naf16art17: number | null
-    art16act17: number | null
     art16hab17: number | null
-    art16mix17: number | null
-    art16rou17: number | null
-    art16fer17: number | null
+    art16act17: number | null
     art16inc17: number | null
+    art16mix17: number | null
+    art16fer17: number | null
+    art16rou17: number | null
     naf17art18: number | null
-    art17act18: number | null
     art17hab18: number | null
-    art17mix18: number | null
-    art17rou18: number | null
-    art17fer18: number | null
+    art17act18: number | null
     art17inc18: number | null
+    art17mix18: number | null
+    art17fer18: number | null
+    art17rou18: number | null
     naf18art19: number | null
-    art18act19: number | null
     art18hab19: number | null
-    art18mix19: number | null
-    art18rou19: number | null
-    art18fer19: number | null
+    art18act19: number | null
     art18inc19: number | null
+    art18mix19: number | null
+    art18fer19: number | null
+    art18rou19: number | null
     naf19art20: number | null
-    art19act20: number | null
     art19hab20: number | null
-    art19mix20: number | null
-    art19rou20: number | null
-    art19fer20: number | null
+    art19act20: number | null
     art19inc20: number | null
+    art19mix20: number | null
+    art19fer20: number | null
+    art19rou20: number | null
     naf20art21: number | null
-    art20act21: number | null
     art20hab21: number | null
-    art20mix21: number | null
-    art20rou21: number | null
-    art20fer21: number | null
+    art20act21: number | null
     art20inc21: number | null
+    art20mix21: number | null
+    art20fer21: number | null
+    art20rou21: number | null
     naf21art22: number | null
-    art21act22: number | null
     art21hab22: number | null
-    art21mix22: number | null
-    art21rou22: number | null
-    art21fer22: number | null
+    art21act22: number | null
     art21inc22: number | null
+    art21mix22: number | null
+    art21fer22: number | null
+    art21rou22: number | null
     naf22art23: number | null
-    art22act23: number | null
     art22hab23: number | null
-    art22mix23: number | null
-    art22rou23: number | null
-    art22fer23: number | null
+    art22act23: number | null
     art22inc23: number | null
-    naf09art23: number | null
-    art09act23: number | null
-    art09hab23: number | null
-    art09mix23: number | null
-    art09inc23: number | null
-    art09rou23: number | null
-    art09fer23: number | null
-    artcom0923: number | null
+    art22mix23: number | null
+    art22fer23: number | null
+    art22rou23: number | null
+    naf23art24: number | null
+    art23hab24: number | null
+    art23act24: number | null
+    art23inc24: number | null
+    art23mix24: number | null
+    art23fer24: number | null
+    art23rou24: number | null
+    naf24art25: number | null
+    art24hab25: number | null
+    art24act25: number | null
+    art24inc25: number | null
+    art24mix25: number | null
+    art24fer25: number | null
+    art24rou25: number | null
+    naf11art25: number | null
+    art11hab25: number | null
+    art11act25: number | null
+    art11inc25: number | null
+    art11mix25: number | null
+    art11fer25: number | null
+    art11rou25: number | null
+    artcom1125: number | null
   }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
   composites: {}
 }
@@ -4522,112 +4522,112 @@ export interface databases_v2_consommation_espaces_nafFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'String'>
   readonly code_pnr: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'String'>
-  readonly naf09art10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09act10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09hab10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09mix10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09rou10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09fer10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09inc10: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly naf10art11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10act11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10hab11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10mix11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10rou11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10fer11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art10inc11: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf11art12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art11act12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art11hab12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art11mix12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art11rou12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art11fer12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11act12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art11inc12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11mix12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11fer12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11rou12: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf12art13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art12act13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art12hab13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art12mix13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art12rou13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art12fer13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art12act13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art12inc13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art12mix13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art12fer13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art12rou13: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf13art14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art13act14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art13hab14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art13mix14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art13rou14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art13fer14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art13act14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art13inc14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art13mix14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art13fer14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art13rou14: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf14art15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art14act15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art14hab15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art14mix15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art14rou15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art14fer15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art14act15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art14inc15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art14mix15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art14fer15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art14rou15: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf15art16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art15act16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art15hab16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art15mix16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art15rou16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art15fer16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art15act16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art15inc16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art15mix16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art15fer16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art15rou16: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf16art17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art16act17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art16hab17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art16mix17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art16rou17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art16fer17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art16act17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art16inc17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art16mix17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art16fer17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art16rou17: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf17art18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art17act18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art17hab18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art17mix18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art17rou18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art17fer18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art17act18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art17inc18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art17mix18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art17fer18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art17rou18: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf18art19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art18act19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art18hab19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art18mix19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art18rou19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art18fer19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art18act19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art18inc19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art18mix19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art18fer19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art18rou19: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf19art20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art19act20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art19hab20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art19mix20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art19rou20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art19fer20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art19act20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art19inc20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art19mix20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art19fer20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art19rou20: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf20art21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art20act21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art20hab21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art20mix21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art20rou21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art20fer21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art20act21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art20inc21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art20mix21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art20fer21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art20rou21: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf21art22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art21act22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art21hab22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art21mix22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art21rou22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art21fer22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art21act22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art21inc22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art21mix22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art21fer22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art21rou22: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly naf22art23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art22act23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art22hab23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art22mix23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art22rou23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art22fer23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art22act23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art22inc23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly naf09art23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09act23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09hab23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09mix23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09inc23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09rou23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly art09fer23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
-  readonly artcom0923: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art22mix23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art22fer23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art22rou23: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly naf23art24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23hab24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23act24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23inc24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23mix24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23fer24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art23rou24: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly naf24art25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24hab25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24act25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24inc25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24mix25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24fer25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art24rou25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly naf11art25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11hab25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11act25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11inc25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11mix25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11fer25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly art11rou25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly artcom1125: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
 }
     
 
@@ -4804,6 +4804,11 @@ export type databases_v2_consommation_espaces_nafFindManyArgs<ExtArgs extends ru
    * Skip the first `n` databases_v2_consommation_espaces_nafs.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_consommation_espaces_nafs.
+   */
   distinct?: Prisma.Databases_v2_consommation_espaces_nafScalarFieldEnum | Prisma.Databases_v2_consommation_espaces_nafScalarFieldEnum[]
 }
 

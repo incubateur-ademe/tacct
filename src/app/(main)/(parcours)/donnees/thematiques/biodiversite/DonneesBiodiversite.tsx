@@ -186,7 +186,7 @@ export const DonneesBiodiversite = ({
             <H3
               style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
             >
-              Sols imperméabilisés entre 2009 et 2023
+              Sols imperméabilisés entre 2011 et 2025
             </H3>
           </div>
           <SolsImpermeabilises

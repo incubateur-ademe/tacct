@@ -220,7 +220,7 @@ export type Boutons_export_rawGroupByOutputType = {
   _max: Boutons_export_rawMaxAggregateOutputType | null
 }
 
-type GetBoutons_export_rawGroupByPayload<T extends boutons_export_rawGroupByArgs> = Prisma.PrismaPromise<
+export type GetBoutons_export_rawGroupByPayload<T extends boutons_export_rawGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Boutons_export_rawGroupByOutputType, T['by']> &
       {
@@ -1121,6 +1121,11 @@ export type boutons_export_rawFindManyArgs<ExtArgs extends runtime.Types.Extensi
    * Skip the first `n` boutons_export_raws.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of boutons_export_raws.
+   */
   distinct?: Prisma.Boutons_export_rawScalarFieldEnum | Prisma.Boutons_export_rawScalarFieldEnum[]
 }
 
