@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "24",
-    "pnpm": "^10"
+    "node": "24.20.0",
+    "pnpm": "12.4.2"
   },
-  "engines.pnpm": "^10",
   "scripts": {
     "predev": "react-dsfr update-icons",
     "prebuild": "react-dsfr update-icons",
@@ -61,7 +60,6 @@
     "classnames": "^2.5.1",
     "cross-env": "10.1.0",
     "d3": "^7.9.0",
-    "dev": "link:",
     "dotenv": "^17.2.3",
     "esbuild": "^0.25.12",
     "file-saver": "^2.0.5",
@@ -112,8 +110,8 @@
     "@typescript-eslint/parser": "8.58.2",
     "autoprefixer": "^10.4.23",
     "eruda": "^3.4.3",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^15.5.9",
+    "eslint": "10.10.0",
+    "eslint-config-next": "16.3.5",
     "eslint-config-prettier": "^9.1.2",
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -133,13 +131,5 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "8.58.2"
   },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.3.0",
-      "@types/react-dom": "19.3.0",
-      "react": "19.3.0",
-      "react-dom": "19.3.0",
-      "ioredis": "^5.8.2"
-    }
-  }
+  "packageManager": "pnpm@12.4.2+sha512.08adc6613180275c7c9edada39dcf08c9c61ad4e7eaf330a4f3461f102b0f907423454d117f98e72d47fef0616070644d7bffc973a6a57f5090a6d7c368b07c9"
 }
