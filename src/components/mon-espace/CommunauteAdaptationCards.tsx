@@ -146,7 +146,7 @@ const CarteSessionAccueil = () => (
           icone={<Image src={clockIcon} alt="" width={12} height={12} style={{ marginTop: "6px" }} />}
         />
       </div>
-      <H3 color="#2b4b49" style={{ ...titreStyle, marginBottom: '0.5rem' }}>
+      <H3 color="#2b4b49" style={{ ...titreStyle, marginBottom: '0.5rem', padding: "0" }}>
         Participez à une session d’accueil !
       </H3>
       <Body color="#3d3d3d">

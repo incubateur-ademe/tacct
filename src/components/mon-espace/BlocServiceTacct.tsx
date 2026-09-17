@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const LIEN_VIDEO =
   'https://www.canva.com/design/DAHK933zhTA/ZqJYu-iOTxkAq8MGY4W_Cg/watch?utm_content=DAHK933zhTA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6c09ff22fb';
-const LIEN_PRESENTATION = 'https://www.canva.com/design/DAHKAce9-t8/C4ZV_xBwQ5u-bJYuae5ahA/view?utm_content=DAHKAce9-t8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdb8d1d4fa9#6';
+const LIEN_PRESENTATION = 'https://www.canva.com/design/DAHKAce9-t8/C4ZV_xBwQ5u-bJYuae5ahA/view?utm_content=DAHKAce9-t8&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdb8d1d4fa9';
 
 const PlayIcon = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
