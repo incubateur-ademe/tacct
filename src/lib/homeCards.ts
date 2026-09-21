@@ -26,7 +26,7 @@ export const homeCards = [
     icone: Card4Icon,
     titre: 'Un cadre méthodologique de référence',
     description:
-      'Dans le cadre du PNACC3, TACCT est désormais reconnu comme la méthode de référence pour accompagner les collectivités locales dans l’élaboration de leur stratégie d’adaptation. Accompagné par l’ADEME ou le CEREMA, en autonomie ou assisté d’un bureau d’étude, rejoignez la communauté !'
+      'Dans le cadre du PNACC-3, TACCT est désormais reconnu comme la méthode de référence pour accompagner les collectivités locales dans l’élaboration de leur stratégie d’adaptation. En autonomie ou assisté d’un bureau d’étude, rejoignez la communauté !'
   }
 ];
 
