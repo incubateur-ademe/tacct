@@ -23,8 +23,10 @@ import { GetConfortThermique } from '@/lib/queries/databases/confortThermique';
 import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
+import Notice from '@codegouvfr/react-dsfr/Notice';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { TypesDeSols } from '../../indicateurs/biodiversite/1-TypesDeSols';
@@ -71,6 +73,7 @@ export const DonneesBiodiversite = ({
   surfacesAgricoles,
   tableCommune
 }: Props) => {
+  const { css } = useStyles();
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Biodiversité';
   const libelle = searchParams.get('libelle')!;
@@ -189,6 +192,29 @@ export const DonneesBiodiversite = ({
               Sols imperméabilisés entre 2011 et 2025
             </H3>
           </div>
+          <Notice
+            className={css({
+              backgroundColor: 'var(--gris-medium)',
+              borderRadius: '1rem',
+              color: '#201F1E',
+              marginRight: 32,
+              marginBottom: '2rem',
+              '& .fr-container': {
+                maxWidth: 'none'
+              }
+            })}
+            isClosable={true}
+            title={'Mise à jour des données :'}
+            description={
+              <>
+                le Cerema a amélioré sa méthode de calcul des sols imperméabilisés.
+                Pour garantir l’homogénéité des données, ce calcul a été appliqué à
+                toutes les années depuis 2011 : nos graphiques tiennent compte de cette évolution.
+                Notez que, si vous aviez consulté ces chiffres sur notre site avant le 23
+                septembre 2026, vous pourriez constater des différences.
+              </>
+            }
+          />
           <SolsImpermeabilises
             consommationNAF={data.consommationNAF}
             coordonneesCommunes={coordonneesCommunes}
