@@ -13,7 +13,7 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-espace-connecte-fermee';
-const NOTICE_START = new Date('2026-09-22');
+const NOTICE_START = new Date('2026-09-23');
 const NOTICE_END = new Date('2026-10-03T23:59:59');
 
 const Home = () => {
