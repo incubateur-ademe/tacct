@@ -259,122 +259,126 @@ model databases_v2_consommation_espaces_naf {
   epci                 String
   libelle_epci         String
   departement          String
-  libelle_departement  String
+  libelle_departement  String?
   region               Float
   ept                  String?
   libelle_petr         String?
   code_pnr             String?
   libelle_pnr          String?
-  naf09art10           Float?
-  art09act10           Float?
-  art09hab10           Float?
-  art09mix10           Float?
-  art09rou10           Float?
-  art09fer10           Float?
-  art09inc10           Float?
-  naf10art11           Float?
-  art10act11           Float?
-  art10hab11           Float?
-  art10mix11           Float?
-  art10rou11           Float?
-  art10fer11           Float?
-  art10inc11           Float?
   naf11art12           Float?
-  art11act12           Float?
   art11hab12           Float?
-  art11mix12           Float?
-  art11rou12           Float?
-  art11fer12           Float?
+  art11act12           Float?
   art11inc12           Float?
+  art11mix12           Float?
+  art11fer12           Float?
+  art11rou12           Float?
   naf12art13           Float?
-  art12act13           Float?
   art12hab13           Float?
-  art12mix13           Float?
-  art12rou13           Float?
-  art12fer13           Float?
+  art12act13           Float?
   art12inc13           Float?
+  art12mix13           Float?
+  art12fer13           Float?
+  art12rou13           Float?
   naf13art14           Float?
-  art13act14           Float?
   art13hab14           Float?
-  art13mix14           Float?
-  art13rou14           Float?
-  art13fer14           Float?
+  art13act14           Float?
   art13inc14           Float?
+  art13mix14           Float?
+  art13fer14           Float?
+  art13rou14           Float?
   naf14art15           Float?
-  art14act15           Float?
   art14hab15           Float?
-  art14mix15           Float?
-  art14rou15           Float?
-  art14fer15           Float?
+  art14act15           Float?
   art14inc15           Float?
+  art14mix15           Float?
+  art14fer15           Float?
+  art14rou15           Float?
   naf15art16           Float?
-  art15act16           Float?
   art15hab16           Float?
-  art15mix16           Float?
-  art15rou16           Float?
-  art15fer16           Float?
+  art15act16           Float?
   art15inc16           Float?
+  art15mix16           Float?
+  art15fer16           Float?
+  art15rou16           Float?
   naf16art17           Float?
-  art16act17           Float?
   art16hab17           Float?
-  art16mix17           Float?
-  art16rou17           Float?
-  art16fer17           Float?
+  art16act17           Float?
   art16inc17           Float?
+  art16mix17           Float?
+  art16fer17           Float?
+  art16rou17           Float?
   naf17art18           Float?
-  art17act18           Float?
   art17hab18           Float?
-  art17mix18           Float?
-  art17rou18           Float?
-  art17fer18           Float?
+  art17act18           Float?
   art17inc18           Float?
+  art17mix18           Float?
+  art17fer18           Float?
+  art17rou18           Float?
   naf18art19           Float?
-  art18act19           Float?
   art18hab19           Float?
-  art18mix19           Float?
-  art18rou19           Float?
-  art18fer19           Float?
+  art18act19           Float?
   art18inc19           Float?
+  art18mix19           Float?
+  art18fer19           Float?
+  art18rou19           Float?
   naf19art20           Float?
-  art19act20           Float?
   art19hab20           Float?
-  art19mix20           Float?
-  art19rou20           Float?
-  art19fer20           Float?
+  art19act20           Float?
   art19inc20           Float?
+  art19mix20           Float?
+  art19fer20           Float?
+  art19rou20           Float?
   naf20art21           Float?
-  art20act21           Float?
   art20hab21           Float?
-  art20mix21           Float?
-  art20rou21           Float?
-  art20fer21           Float?
+  art20act21           Float?
   art20inc21           Float?
+  art20mix21           Float?
+  art20fer21           Float?
+  art20rou21           Float?
   naf21art22           Float?
-  art21act22           Float?
   art21hab22           Float?
-  art21mix22           Float?
-  art21rou22           Float?
-  art21fer22           Float?
+  art21act22           Float?
   art21inc22           Float?
+  art21mix22           Float?
+  art21fer22           Float?
+  art21rou22           Float?
   naf22art23           Float?
-  art22act23           Float?
   art22hab23           Float?
-  art22mix23           Float?
-  art22rou23           Float?
-  art22fer23           Float?
+  art22act23           Float?
   art22inc23           Float?
-  naf09art23           Float?
-  art09act23           Float?
-  art09hab23           Float?
-  art09mix23           Float?
-  art09inc23           Float?
-  art09rou23           Float?
-  art09fer23           Float?
-  artcom0923           Float?
+  art22mix23           Float?
+  art22fer23           Float?
+  art22rou23           Float?
+  naf23art24           Float?
+  art23hab24           Float?
+  art23act24           Float?
+  art23inc24           Float?
+  art23mix24           Float?
+  art23fer24           Float?
+  art23rou24           Float?
+  naf24art25           Float?
+  art24hab25           Float?
+  art24act25           Float?
+  art24inc25           Float?
+  art24mix25           Float?
+  art24fer25           Float?
+  art24rou25           Float?
+  naf11art25           Float?
+  art11hab25           Float?
+  art11act25           Float?
+  art11inc25           Float?
+  art11mix25           Float?
+  art11fer25           Float?
+  art11rou25           Float?
+  artcom1125           Float?
 
-  @@index([code_geographique], map: "consommation_espaces_naf_communes_index")
   @@index([epci], map: "consommation_espaces_naf_epci_index")
   @@index([index], map: "ix_consommation_espaces_naf_index")
+  @@index([code_geographique], map: "consommation_espaces_naf_commune_index")
+  @@index([departement], map: "consommation_espaces_naf_departement_index")
+  @@index([ept], map: "consommation_espaces_naf_ept_index")
+  @@index([libelle_petr], map: "consommation_espaces_naf_petr_index")
+  @@index([code_pnr], map: "consommation_espaces_naf_pnr_index")
   @@map("consommation_espaces_naf")
   @@schema("databases_v2")
 }
