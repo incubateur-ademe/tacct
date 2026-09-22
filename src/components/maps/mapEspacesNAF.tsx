@@ -267,7 +267,7 @@ export const MapEspacesNaf = (props: {
           }
       `}</style>
       <AccessibleMapWrapper
-        ariaLabel="Cartographie de la consommation d'espaces naturels, agricoles et forestiers (NAF) par commune sur votre territoire entre 2009 et 2023"
+        ariaLabel="Cartographie de la consommation d'espaces naturels, agricoles et forestiers (NAF) par commune sur votre territoire entre 2011 et 2025"
         style={{ position: 'relative' }}
       >
         <div ref={mapContainer} className='map-container' style={{ height: '500px', width: '100%' }} />

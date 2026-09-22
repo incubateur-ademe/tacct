@@ -6,6 +6,7 @@ export const USERS_SESSION_MAX_AGE = 60 * 60 * 12;
 
 export const PROCONNECT_SCOPES = 'openid given_name usual_name email';
 
+// Forme de la découverte OIDC, partagée avec moncompteademe.ts.
 export interface ProconnectDiscovery {
   issuer: string;
   authorization_endpoint: string;
@@ -46,6 +47,7 @@ export function getBaseUrl(): string {
   return (process.env.NEXTAUTH_URL ?? '').replace(/\/+$/, '');
 }
 
+// Chemin enregistré côté Keycloak ADEME : ne pas renommer sans mise à jour de leur configuration.
 export function getRedirectUri(): string {
   return `${getBaseUrl()}/api/proconnect/callback`;
 }
