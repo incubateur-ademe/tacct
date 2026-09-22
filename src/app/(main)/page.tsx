@@ -1,6 +1,7 @@
 'use client';
 
 import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { DemarcheBloc } from './(home)/DemarcheBloc';
@@ -11,9 +12,9 @@ import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
-const NOTICE_KEY = 'notice-tacct-evolution-fermee';
-const NOTICE_START = new Date('2026-08-10');
-const NOTICE_END = new Date('2026-08-26T23:59:59');
+const NOTICE_KEY = 'notice-tacct-espace-connecte-fermee';
+const NOTICE_START = new Date('2026-09-22');
+const NOTICE_END = new Date('2026-10-03T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
@@ -43,20 +44,23 @@ const Home = () => {
           })}
           isClosable={true}
           onClose={handleCloseNotice}
-          title={'Nouveauté !'}
+          title={'Nouveautés !'}
           description={
             <>
-              <br></br>Vous réalisez votre diagnostic de vulnérabilité ? Les
-              bases de données ne révèlent pas tout :{' '}
-              <a
-                href="/ressources/associer-parties-prenantes/entretien-adaptation"
-                target="_blank"
+              <br></br>Votre compte s’adapte à vos besoins : en fonction de
+              votre profil, vous pourrez découvrir des liens utiles sur votre
+              espace connecté (nous ajouterons progressivement des contenus) :
+              renseignez dès maintenant vos informations professionnelles ! Et
+              pour ceux qui n’ont pas pu assister au wébinaire de juin,
+              découvrez maintenant{' '}
+              <Link
+                href="/ressources/demarrer-diagnostic-vulnerabilite/diagnostic-exhaustivite-concision"
                 rel="noopener noreferrer"
+                target="_blank"
               >
-                découvrez nos conseils pour mener des entretiens de terrain
-                efficaces
-              </a>
-               !
+                comment réaliser un diagnostic utile plutôt que parfait
+              </Link>{' '}
+              (retour d’expérience de la Ville de Marseille).
             </>
           }
         />
