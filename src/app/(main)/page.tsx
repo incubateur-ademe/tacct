@@ -13,7 +13,7 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-espace-connecte-fermee';
-const NOTICE_START = new Date('2026-09-23');
+const NOTICE_START = new Date('2026-09-22');
 const NOTICE_END = new Date('2026-10-03T23:59:59');
 
 const Home = () => {
@@ -49,9 +49,15 @@ const Home = () => {
             <>
               <br></br>Votre compte s’adapte à vos besoins : en fonction de
               votre profil, vous pourrez découvrir des liens utiles sur votre
-              espace connecté (nous ajouterons progressivement des contenus) :
-              renseignez dès maintenant vos informations professionnelles ! Et
-              pour ceux qui n’ont pas pu assister au wébinaire de juin,
+              espace connecté (nous ajouterons progressivement des contenus) :{' '}
+              <a
+                href="/api/proconnect/login"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                renseignez dès maintenant vos informations professionnelles
+              </a>
+               ! Et pour ceux qui n’ont pas pu assister au wébinaire de juin,
               découvrez maintenant{' '}
               <Link
                 href="/ressources/demarrer-diagnostic-vulnerabilite/diagnostic-exhaustivite-concision"
