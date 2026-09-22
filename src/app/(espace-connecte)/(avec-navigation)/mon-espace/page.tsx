@@ -18,6 +18,7 @@ import { EspaceMenu, EspaceMenuItem } from '@/components/mon-espace/EspaceMenu';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { ProfilCard } from '@/components/mon-espace/ProfilCard';
 import { SuggestionsBanner } from '@/components/mon-espace/SuggestionsBanner';
+import { TacctoscopeCard } from '@/components/mon-espace/TacctoscopeCard';
 import { SousTitre1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { requireQuestionnaireValide } from '@/lib/auth/requireQuestionnaireValide';
@@ -81,6 +82,7 @@ const MonEspace = async () => {
       labelMenu: 'Outils',
       contenu: (
         <div className={styles.sectionInner}>
+          {!estProfilBe(user.profil) && <TacctoscopeCard />}
           {user.validated && <AncienEspaceCard validated={user.validated} />}
         </div>
       )

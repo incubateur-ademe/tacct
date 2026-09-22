@@ -1,32 +1,13 @@
 'use client';
 
-import styles from '@/app/(main)/mon-espace/monEspace.module.scss';
+import styles from '@/app/(espace-connecte)/(avec-navigation)/mon-espace/monEspace.module.scss';
 import sparklingIcon from '@/assets/icons/sparkling_icon_green.svg';
 import productLaunch from '@/assets/images/product-launch.png';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H3 } from '@/design-system/base/Textes';
 import Image from 'next/image';
 
-interface Props {
-  hasAnswers: boolean;
-  completed: number;
-  started: number;
-  total: number;
-}
-
-export const TacctoscopeCard = ({
-  hasAnswers,
-  completed,
-  started,
-  total
-}: Props) => {
-  const valeur = completed > 0 ? completed : started;
-  const pourcentage = total > 0 ? Math.round((valeur / total) * 100) : 0;
-  const libelle =
-    completed > 0
-      ? `Vous avez complété ${completed}/${total} critères`
-      : `Vous avez commencé ${started} critères`;
-
+export const TacctoscopeCard = () => {
   return (
     <div className={styles.tacctoscope}>
       <span className={styles.tacctoscopeCircle} aria-hidden="true" />
