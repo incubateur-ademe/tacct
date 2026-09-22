@@ -473,7 +473,7 @@ export const multipleEpciBydepartementLibelle = [
     departement: '24',
     liste_epci_multi_dept: [
       'Communauté de communes du Pays Foyen',
-      'Communauté de communes Castillon\/Pujols'
+      'Communauté de communes Castillon Pujols'
     ]
   },
   {
@@ -548,7 +548,7 @@ export const multipleEpciBydepartementLibelle = [
     departement: '33',
     liste_epci_multi_dept: [
       'Communauté de communes du Pays Foyen',
-      'Communauté de communes Castillon\/Pujols'
+      'Communauté de communes Castillon Pujols'
     ]
   },
   {

@@ -6,7 +6,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { handleRedirectionThematique } from '@/hooks/Redirections';
 import { ConfortThermique, TableCommuneModel } from '@/lib/postgres/models';
-import { GetConfortThermique } from '@/lib/queries/databases/inconfortThermique';
+import { GetConfortThermique } from '@/lib/queries/databases/confortThermique';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import {
   GetCommunesContours,

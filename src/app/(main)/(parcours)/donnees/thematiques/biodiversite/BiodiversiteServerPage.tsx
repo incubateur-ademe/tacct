@@ -6,7 +6,7 @@ import {
   GetAOT40,
   GetConsommationNAF
 } from '@/lib/queries/databases/biodiversite';
-import { GetConfortThermiqueBiodiversite } from '@/lib/queries/databases/inconfortThermique';
+import { GetConfortThermiqueBiodiversite } from '@/lib/queries/databases/confortThermique';
 import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import {
   GetCommunesContours,

@@ -5,6 +5,8 @@ import {
   getClientSecret,
   getDiscovery,
   getRedirectUri,
+  RETURN_TO_COOKIE,
+  sanitizeReturnTo,
   sessionCookieName,
   USERS_SESSION_MAX_AGE,
   verifyIdToken
@@ -26,10 +28,12 @@ export async function GET(request: NextRequest) {
   const state = searchParams.get('state');
   const oidcError = searchParams.get('error');
 
-  const fail = (reason: string) =>
-    NextResponse.redirect(
-      `${getBaseUrl()}/mon-compte?error=${encodeURIComponent(reason)}`
-    );
+  const fail = (reason: string) => {
+    console.error('proconnect callback error', reason);
+    const response = NextResponse.redirect(`${getBaseUrl()}/`);
+    response.cookies.delete(RETURN_TO_COOKIE);
+    return response;
+  };
 
   if (oidcError) return fail(oidcError);
 
@@ -120,9 +124,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Après validation du nonce et de l'id_token : couvre les trois branches
-    // ci-dessus. `updated_at` n'est volontairement pas touché, il marque les
-    // modifications du compte et non les connexions.
+    // `updated_at` reste inchangé : il marque les modifications du compte, pas les connexions.
     await prisma.user.update({
       where: { id: user.id },
       data: { last_login_at: new Date(), login_count: { increment: 1 } }
@@ -133,9 +135,19 @@ export async function GET(request: NextRequest) {
       id_token: tokens.id_token
     });
 
-    const response = NextResponse.redirect(
-      `${getBaseUrl()}/mon-espace?login=success`
-    );
+    // Tant que le questionnaire de connexion n'est pas validé, il est le seul
+    // point d'entrée possible du compte.
+    const returnTo = user.questionnaire_validated
+      ? (sanitizeReturnTo(
+          request.cookies.get(RETURN_TO_COOKIE)?.value ?? null
+        ) ?? '/mon-espace')
+      : '/questionnaire-compte';
+    const destination = new URL(returnTo, getBaseUrl());
+    if (user.questionnaire_validated) {
+      destination.searchParams.set('login', 'success');
+    }
+
+    const response = NextResponse.redirect(destination.toString());
     response.cookies.set(sessionCookieName(), sessionJwt, {
       httpOnly: true,
       sameSite: 'lax',
@@ -145,6 +157,7 @@ export async function GET(request: NextRequest) {
     });
     response.cookies.delete('pc_state');
     response.cookies.delete('pc_nonce');
+    response.cookies.delete(RETURN_TO_COOKIE);
 
     return response;
   } catch (err) {

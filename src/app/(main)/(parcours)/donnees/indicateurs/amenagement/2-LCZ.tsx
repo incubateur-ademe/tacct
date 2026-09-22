@@ -6,7 +6,7 @@ import { Loader } from '@/components/ui/loader';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
-import { GetLczCouverture } from '@/lib/queries/databases/inconfortThermique';
+import { GetLczCouverture } from '@/lib/queries/databases/confortThermique';
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
 import { useSearchParams } from 'next/navigation';

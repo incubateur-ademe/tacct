@@ -4,12 +4,13 @@ import { type ButtonProps } from '@codegouvfr/react-dsfr/Button';
 import ButtonsGroup from '@codegouvfr/react-dsfr/ButtonsGroup';
 
 import { config } from '@/config';
+import { Any } from './lib/utils/types';
 
 const DEFAULT_CTA_HREF = config.formUrl;
 const DEFAULT_CTA_TITLE = '';
 
 export interface CTAProps {
-  buttons: any[];
+  buttons: Any[];
   mobile?: boolean;
 }
 export const CTA = ({ buttons, mobile: asGroup }: CTAProps) => {

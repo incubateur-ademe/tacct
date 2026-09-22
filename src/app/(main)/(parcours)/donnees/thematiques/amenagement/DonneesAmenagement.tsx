@@ -6,8 +6,11 @@ import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { ConsommationNAF } from '@/lib/postgres/models';
 import { GetConsommationNAF } from '@/lib/queries/databases/biodiversite';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
+import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
+import { useStyles } from 'tss-react/dsfr';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { ConsommationEspacesNAFAmenagement } from '../../indicateurs/amenagement/1-ConsommationEspacesNAF';
@@ -25,6 +28,7 @@ export const DonneesAmenagement = ({
   coordonneesCommunes,
   consommationNAF
 }: Props) => {
+  const { css } = useStyles();
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Aménagement';
   const libelle = searchParams.get('libelle')!;
@@ -106,6 +110,38 @@ export const DonneesAmenagement = ({
               Destination des surfaces imperméabilisées
             </H3>
           </div>
+          <Notice
+            className={css({
+              backgroundColor: 'var(--gris-medium)',
+              borderRadius: '1rem',
+              color: '#201F1E',
+              marginRight: 32,
+              marginBottom: '2rem',
+              '& .fr-container': {
+                maxWidth: 'none'
+              }
+            })}
+            isClosable={true}
+            title={'Mise à jour des données :'}
+            description={
+              <>
+                le Cerema a amélioré sa{' '}
+                <Link
+                  href="https://doc-datafoncier.cerema.fr/doc/guide/conso-enaf/evolution-liees-au-millesime-2011-2025"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  title="Évolutions liées au millésime 2011-2025, documentation Cerema - nouvelle fenêtre"
+                >
+                  méthode de calcul
+                </Link>{' '}
+                des sols imperméabilisés. Pour garantir l’homogénéité des
+                données, ce calcul a été appliqué à toutes les années depuis
+                2011 : nos graphiques tiennent compte de cette évolution. Notez
+                que, si vous aviez consulté ces chiffres sur notre site avant le
+                23 septembre 2026, vous pourriez constater des différences.
+              </>
+            }
+          />
           <ConsommationEspacesNAFAmenagement
             consommationNAF={data.consommationNAF}
           />

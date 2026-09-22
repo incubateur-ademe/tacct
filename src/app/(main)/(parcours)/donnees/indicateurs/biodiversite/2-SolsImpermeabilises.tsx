@@ -38,8 +38,8 @@ export const SolsImpermeabilises = (props: {
   );
   const sumNaf = (type === "commune"
     ? consommationNAF.filter((item) => item.code_geographique === code)[0]
-      ?.naf09art23
-    : consommationNAF.reduce((acc, item) => acc + (item.naf09art23 ?? 0), 0));
+      ?.naf11art25
+    : consommationNAF.reduce((acc, item) => acc + (item.naf11art25 ?? 0), 0));
 
   const exportData = IndicatorExportTransformations.biodiversite.EspacesNaf(consommationNAF);
 
@@ -88,8 +88,17 @@ export const SolsImpermeabilises = (props: {
                 />
                 <div
                   className={styles.legend}
-                  style={{ width: 'auto', justifyContent: 'center' }}
-                >
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 8,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center'
+                  }}                >
+                  <Body weight="bold">
+                    - Nombre d’hectares d’espaces naturels, agricoles ou forestiers consommés -
+                  </Body>
                   <LegendCompColor legends={espacesNAFDatavizLegend} />
                 </div>
               </Suspense>
@@ -101,7 +110,7 @@ export const SolsImpermeabilises = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : CEREMA, 2024 (consultée en décembre 2024)
+          Source : CEREMA, 2026 (consultée en septembre 2026)
         </Body>
         {
           consommationNAF && coordonneesCommunes && (

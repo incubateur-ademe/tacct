@@ -1,7 +1,7 @@
+import { CollectionsData } from '@/app/(main)/ressources/[collectionId]/collectionsData';
 import { H1, H2 } from '@/design-system/base/Textes';
 import { Container } from '@/design-system/server';
 import { type Metadata } from 'next';
-import { CollectionsData } from '../ressources/[collectionId]/collectionsData';
 import { sharedMetadata } from '../shared-metadata';
 
 const title = 'Plan du site';
@@ -74,18 +74,6 @@ const PlanDuSite = () => (
             ))}
             <li style={{ marginBottom: '0.5rem' }}>
               <a href="/ressources/faq">Questions fréquentes</a>
-            </li>
-          </ul>
-        </li>
-        <li style={{ marginBottom: '0.75rem' }}>
-          Mon espace
-          <ul style={{ listStyle: 'circle', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <a href="/mon-compte">Se connecter à mon compte</a>
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <a href="/mon-espace">Mon espace personnel</a>{' '}
-              <em>(connexion requise)</em>
             </li>
           </ul>
         </li>

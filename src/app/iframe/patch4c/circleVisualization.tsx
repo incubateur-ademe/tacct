@@ -2,7 +2,6 @@
 import { ReplaceDisplayEpci } from '@/components/searchbar/fonctions';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body } from '@/design-system/base/Textes';
-import { NewContainer } from '@/design-system/layout';
 import { Patch4 } from "@/lib/postgres/models";
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -76,7 +75,7 @@ const CircleVisualization = ({
                     className={styles.CircleIcon}
                     style={{
                       backgroundColor: getBackgroundColor(item.value),
-                      border: selectedAleaKey === item.key ? '1px solid black' : '1px solid var(--gris-medium)',
+                      border: selectedAleaKey === item.key ? '1px solid black' : '1px solid #808080',
                     }}
                   >
                     <Image

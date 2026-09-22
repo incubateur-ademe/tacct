@@ -11,6 +11,7 @@ WITH base AS (
   FROM analytics.all_pageview_raw
   WHERE current_url ILIKE '%/thematiques%'
      OR current_url ILIKE '%/donnees-territoriales%'
+     OR current_url ILIKE '%/donnees%'
 ),
 
 kv AS (
@@ -85,21 +86,27 @@ normalized AS (
 ),
 
 eligible_sessions AS (
-  -- 6) Sessions qui respectent le “tunnel”
+  -- 6) Sessions qui respectent le "tunnel"
   SELECT session_id
   FROM normalized
   GROUP BY session_id
   HAVING
-    COUNT(*) FILTER (WHERE path_norm = '/donnees-territoriales') > 0
+    (COUNT(*) FILTER (WHERE path_norm = '/donnees-territoriales') > 0
+     OR COUNT(*) FILTER (WHERE path_norm = '/donnees') > 0)
     AND COUNT(*) FILTER (WHERE path_norm = '/thematiques') > 0
     AND (
       COUNT(*) FILTER (
-        WHERE path_norm = '/donnees-territoriales' AND prev_path_norm = '/thematiques'
+        WHERE (path_norm = '/donnees-territoriales' OR path_norm = '/donnees')
+          AND prev_path_norm = '/thematiques'
       ) > 0
       OR (
         MIN(event_timestamp) FILTER (WHERE path_norm = '/thematiques')
         <
-        MIN(event_timestamp) FILTER (WHERE path_norm = '/donnees-territoriales')
+        LEAST(
+          COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/thematiques'), 'infinity'::timestamp),
+          COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/donnees-territoriales'), 'infinity'::timestamp),
+          COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/donnees'), 'infinity'::timestamp)
+        )
       )
     )
 ),
@@ -122,7 +129,7 @@ clean AS (
     END AS territory_key
   FROM normalized n
   JOIN eligible_sessions es USING (session_id)
-  WHERE n.path_norm = '/donnees-territoriales'
+  WHERE (n.path_norm = '/donnees-territoriales' OR n.path_norm = '/donnees')
     AND n.type_norm IS NOT NULL
     AND (n.code_norm IS NOT NULL OR n.libelle_norm IS NOT NULL)
 ),

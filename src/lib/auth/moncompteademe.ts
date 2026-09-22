@@ -13,6 +13,15 @@ export {
 
 export const MON_COMPTE_ADEME_SCOPES = 'openid profile email';
 
+export const RETURN_TO_COOKIE = 'pc_return_to';
+
+// Seuls les chemins internes sont acceptés, pour écarter tout open redirect.
+export function sanitizeReturnTo(value: string | null): string | null {
+  if (!value || !value.startsWith('/')) return null;
+  if (value.startsWith('//') || value.startsWith('/\\')) return null;
+  return value;
+}
+
 export interface AdemeIdTokenClaims extends JWTPayload {
   sub: string;
   nonce?: string;

@@ -16,6 +16,20 @@ export const isFalsy = (v?: string): boolean => !v || ["no", "false", "0"].inclu
 export const escapeStringRegexp = (string: string) =>
   string.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
 
+export const ReplaceDisplayEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace("Communauté d'agglomération", 'CA')
+    .replace('Communauté de communes', 'CC')
+    .replace('Communauté urbaine', 'CU');
+};
+
+export const ReplaceSearchEpci = (libelleEpci: string) => {
+  return libelleEpci
+    .replace('CA ', "Communauté d'agglomération ")
+    .replace('CC ', 'Communauté de communes ')
+    .replace('CU ', 'Communauté urbaine ');
+};
+
 export const slugify = (string: string) =>
   string
     .toLowerCase()

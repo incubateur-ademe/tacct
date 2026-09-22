@@ -12,7 +12,7 @@ export const GetTablecommune = async (
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
-    }, 2000)
+    }, 6000)
   );
   const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
