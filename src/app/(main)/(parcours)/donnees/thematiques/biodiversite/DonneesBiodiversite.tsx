@@ -24,6 +24,7 @@ import { GetQualiteEauxBaignade } from '@/lib/queries/databases/ressourcesEau';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetEtatCoursDeau } from '@/lib/queries/postgis/etatCoursDeau';
 import Notice from '@codegouvfr/react-dsfr/Notice';
+import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
@@ -207,7 +208,15 @@ export const DonneesBiodiversite = ({
             title={'Mise à jour des données :'}
             description={
               <>
-                le Cerema a amélioré sa méthode de calcul des sols imperméabilisés.
+                le Cerema a amélioré sa{' '}
+                <Link
+                  href="https://doc-datafoncier.cerema.fr/doc/guide/conso-enaf/evolution-liees-au-millesime-2011-2025"
+                  rel="noopener noreferrer"
+                  title="Évolutions liées au millésime 2011-2025, documentation Cerema - nouvelle fenêtre"
+                >
+                  méthode de calcul
+                </Link>{' '}
+                des sols imperméabilisés.
                 Pour garantir l’homogénéité des données, ce calcul a été appliqué à
                 toutes les années depuis 2011 : nos graphiques tiennent compte de cette évolution.
                 Notez que, si vous aviez consulté ces chiffres sur notre site avant le 23
