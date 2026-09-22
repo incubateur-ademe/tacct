@@ -20,9 +20,9 @@ export const ArticlesMemeCollection = () => {
   const articles = CollectionsData.find(
     (c) => c.slug === collectionSlug
   )?.articles;
-  const listeArticlesFiltres = articles?.filter(
-    (c) => !c.lien.includes(articleSlug)
-  );
+  const listeArticlesFiltres = articles
+    ?.filter((c) => !c.lien.includes(articleSlug))
+    .sort((a, b) => a.ordreCollection - b.ordreCollection);
 
   return (
     <>
@@ -63,9 +63,9 @@ export const ArticlesMemeCollectionResponsive = () => {
   const articles = CollectionsData.find(
     (c) => c.slug === collectionSlug
   )?.articles;
-  const listeArticlesFiltres = articles?.filter(
-    (c) => !c.lien.includes(articleSlug)
-  );
+  const listeArticlesFiltres = articles
+    ?.filter((c) => !c.lien.includes(articleSlug))
+    .sort((a, b) => a.ordreCollection - b.ordreCollection);
 
   const smoothScroll = (distance: number) => {
     if (!sliderRef.current) return;

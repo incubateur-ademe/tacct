@@ -20,7 +20,7 @@ export const ConsommationEspacesNAFCharts = (props: {
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const [typeValue, setTypeValue] = useState<string>('Tous types');
-  const [sliderValue, setSliderValue] = useState<number[]>([2009, 2023]);
+  const [sliderValue, setSliderValue] = useState<number[]>([2011, 2025]);
   const filteredConsommationNAF = type === 'commune'
     ? consommationNAF.filter((item) => item.code_geographique === code)
     : consommationNAF;
@@ -47,8 +47,8 @@ export const ConsommationEspacesNAFCharts = (props: {
             </div>
             <div className={styles.sliderWrapper}>
               <RangeSlider
-                firstValue={2009}
-                lastValue={2023}
+                firstValue={2011}
+                lastValue={2025}
                 minDist={1}
                 setSliderValue={setSliderValue}
                 sliderValue={sliderValue}

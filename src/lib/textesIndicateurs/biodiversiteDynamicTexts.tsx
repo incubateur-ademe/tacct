@@ -28,13 +28,13 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
     <>
       {atlasBiodiversite.length === 0 ? (
         <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-          Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
+          Entre 2011 et 2025, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
           naturels, agricoles ou forestiers ont été consommés sur votre
           territoire.
         </Body>
       ) : atlasBiodiversite.length > 0 && type !== 'commune' ? (
         <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-          Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
+          Entre 2011 et 2025, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
           naturels, agricoles ou forestiers ont été consommés sur votre
           territoire. Face à ce constat, les Atlas de la biodiversité communale
           (ABC) apportent un outil précieux : {atlasBiodiversite.length}{' '}
@@ -46,7 +46,7 @@ export const SolsImpermeabilisesBiodiversiteDynamicText = ({
         </Body>
       ) : atlasBiodiversite.length > 0 && type === 'commune' ? (
         <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-          Entre 2009 et 2023, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
+          Entre 2011 et 2025, {Round(sumNaf / 10000, 1)} hectare(s) d'espaces
           naturels, agricoles ou forestiers ont été consommés sur votre commune.
           Face à cet enjeu, l'Atlas de la biodiversité communale lancé en{' '}
           {atlasBiodiversite[0].atlas_biodiversite_annee_debut}{' '}

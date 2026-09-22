@@ -1,78 +1,73 @@
 export const consommationEspacesNafDoc = [
   {
-    Variable: 'naf09art10',
+    Variable: 'naf11art12',
     Description:
-      'Flux entre NAF (Naturel, Agricole et Forestier) et artificialisé, sur la période 2009-2010'
+      'Flux entre NAF (Naturel, Agricole et Forestier) et artificialisé, sur la période 2011-2012'
   },
   {
-    Variable: 'art09act10',
+    Variable: 'art11act12',
     Description:
-      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'activité sur la période 2009-2010"
+      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'activité sur la période 2011-2012"
   },
   {
-    Variable: 'art09hab10',
+    Variable: 'art11hab12',
     Description:
-      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'habitat sur la période 2009-2010"
+      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'habitat sur la période 2011-2012"
   },
   {
-    Variable: 'art09mix10',
+    Variable: 'art11mix12',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné au mixte sur la période 2009-2010'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné au mixte sur la période 2011-2012'
   },
   {
-    Variable: 'art09rou10',
+    Variable: 'art11rou12',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures routières sur la période 2009-2010'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures routières sur la période 2011-2012'
   },
   {
-    Variable: 'art09fer10',
+    Variable: 'art11fer12',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures ferroviaires sur la période 2009-2010'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures ferroviaires sur la période 2011-2012'
   },
   {
-    Variable: 'art09inc10',
+    Variable: 'art11inc12',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé dont la destination est inconnue sur la période 2009-2010'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé dont la destination est inconnue sur la période 2011-2012'
   },
   {
-    Variable: 'nafart0923',
+    Variable: 'naf11art25',
     Description:
-      'Total des flux entre NAF (Naturel, Agricole et Forestier) et artificialisé, sur la période 2009-2023'
+      'Total des flux entre NAF (Naturel, Agricole et Forestier) et artificialisé, sur la période 2011-2025'
   },
   {
-    Variable: 'nafact0923',
+    Variable: 'art11act25',
     Description:
-      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'activité sur la période 2009-2023"
+      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'activité sur la période 2011-2025"
   },
   {
-    Variable: 'artact0923',
+    Variable: 'art11hab25',
     Description:
-      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'habitat sur la période 2009-2023"
+      "Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné à l'habitat sur la période 2011-2025"
   },
   {
-    Variable: 'arthab0923',
+    Variable: 'art11mix25',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné au mixte sur la période 2009-2023'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné au mixte sur la période 2011-2025'
   },
   {
-    Variable: 'artmix0923',
+    Variable: 'art11rou25',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures routières sur la période 2009-2023'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures routières sur la période 2011-2025'
   },
   {
-    Variable: 'artrou0923',
+    Variable: 'art11fer25',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures ferroviaires sur la période 2009-2023'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé destiné aux infrastructures ferroviaires sur la période 2011-2025'
   },
   {
-    Variable: 'artfer0923',
+    Variable: 'art11inc25',
     Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé dont la destination est inconnue sur la période 2009-2023'
-  },
-  {
-    Variable: 'artinc0923',
-    Description:
-      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé dont la destination est inconnue sur la période 2009-2023'
+      'Flux NAF (Naturel, Agricole et Forestier) vers artificialisé dont la destination est inconnue sur la période 2011-2025'
   },
   {
     Variable: '',
@@ -80,7 +75,7 @@ export const consommationEspacesNafDoc = [
   },
   {
     Variable:
-      'Nous avons donc naf09art10 = art09act10 + art09hab10 + art09mix10 + art09rou10 + art09fer10 + art09inc10',
+      'Nous avons donc naf11art12 = art11act12 + art11hab12 + art11mix12 + art11rou12 + art11fer12 + art11inc12',
     Description: ''
   },
   {
@@ -89,12 +84,12 @@ export const consommationEspacesNafDoc = [
   },
   {
     Variable: 'Source',
-    Description: 'CEREMA, avril 2024 (consultée en décembre 2024)'
+    Description: 'CEREMA, 2026 (consultée en septembre 2026)'
   },
   {
     Variable: 'Documentation complète',
     Description:
-      'https://www.data.gouv.fr/datasets/consommation-despaces-naturels-agricoles-et-forestiers-du-1er-janvier-2009-au-1er-janvier-2023/'
+      'https://www.data.gouv.fr/datasets/consommation-despaces-naturels-agricoles-et-forestiers-du-1er-janvier-2011-au-1er-janvier-2025'
   }
 ];
 
