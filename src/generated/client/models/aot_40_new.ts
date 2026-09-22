@@ -204,7 +204,7 @@ export type Aot_40_newGroupByOutputType = {
   _max: Aot_40_newMaxAggregateOutputType | null
 }
 
-type GetAot_40_newGroupByPayload<T extends aot_40_newGroupByArgs> = Prisma.PrismaPromise<
+export type GetAot_40_newGroupByPayload<T extends aot_40_newGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Aot_40_newGroupByOutputType, T['by']> &
       {
@@ -1016,6 +1016,11 @@ export type aot_40_newFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Skip the first `n` aot_40_news.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of aot_40_news.
+   */
   distinct?: Prisma.Aot_40_newScalarFieldEnum | Prisma.Aot_40_newScalarFieldEnum[]
 }
 

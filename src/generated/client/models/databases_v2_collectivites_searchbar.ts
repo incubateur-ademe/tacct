@@ -255,7 +255,7 @@ export type Databases_v2_collectivites_searchbarGroupByOutputType = {
   _max: Databases_v2_collectivites_searchbarMaxAggregateOutputType | null
 }
 
-type GetDatabases_v2_collectivites_searchbarGroupByPayload<T extends databases_v2_collectivites_searchbarGroupByArgs> = Prisma.PrismaPromise<
+export type GetDatabases_v2_collectivites_searchbarGroupByPayload<T extends databases_v2_collectivites_searchbarGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Databases_v2_collectivites_searchbarGroupByOutputType, T['by']> &
       {
@@ -1250,6 +1250,11 @@ export type databases_v2_collectivites_searchbarFindManyArgs<ExtArgs extends run
    * Skip the first `n` databases_v2_collectivites_searchbars.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of databases_v2_collectivites_searchbars.
+   */
   distinct?: Prisma.Databases_v2_collectivites_searchbarScalarFieldEnum | Prisma.Databases_v2_collectivites_searchbarScalarFieldEnum[]
 }
 

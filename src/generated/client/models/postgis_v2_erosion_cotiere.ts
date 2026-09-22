@@ -208,7 +208,7 @@ export type Postgis_v2_erosion_cotiereGroupByOutputType = {
   _max: Postgis_v2_erosion_cotiereMaxAggregateOutputType | null
 }
 
-type GetPostgis_v2_erosion_cotiereGroupByPayload<T extends postgis_v2_erosion_cotiereGroupByArgs> = Prisma.PrismaPromise<
+export type GetPostgis_v2_erosion_cotiereGroupByPayload<T extends postgis_v2_erosion_cotiereGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Postgis_v2_erosion_cotiereGroupByOutputType, T['by']> &
       {
@@ -918,6 +918,11 @@ export type postgis_v2_erosion_cotiereFindManyArgs<ExtArgs extends runtime.Types
    * Skip the first `n` postgis_v2_erosion_cotieres.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of postgis_v2_erosion_cotieres.
+   */
   distinct?: Prisma.Postgis_v2_erosion_cotiereScalarFieldEnum | Prisma.Postgis_v2_erosion_cotiereScalarFieldEnum[]
 }
 

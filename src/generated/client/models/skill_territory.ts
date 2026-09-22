@@ -151,7 +151,7 @@ export type Skill_territoryGroupByOutputType = {
   _max: Skill_territoryMaxAggregateOutputType | null
 }
 
-type GetSkill_territoryGroupByPayload<T extends skill_territoryGroupByArgs> = Prisma.PrismaPromise<
+export type GetSkill_territoryGroupByPayload<T extends skill_territoryGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Skill_territoryGroupByOutputType, T['by']> &
       {
@@ -1058,6 +1058,11 @@ export type skill_territoryFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` skill_territories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of skill_territories.
+   */
   distinct?: Prisma.Skill_territoryScalarFieldEnum | Prisma.Skill_territoryScalarFieldEnum[]
 }
 

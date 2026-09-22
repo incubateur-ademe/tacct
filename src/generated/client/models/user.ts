@@ -71,6 +71,7 @@ export type UserMinAggregateOutputType = {
   territoire_code: string | null
   territoire_libelle: string | null
   territoire_autre: string | null
+  membre_communaute: boolean | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -106,6 +107,7 @@ export type UserMaxAggregateOutputType = {
   territoire_code: string | null
   territoire_libelle: string | null
   territoire_autre: string | null
+  membre_communaute: boolean | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -141,6 +143,7 @@ export type UserCountAggregateOutputType = {
   territoire_code: number
   territoire_libelle: number
   territoire_autre: number
+  membre_communaute: number
   _all: number
 }
 
@@ -190,6 +193,7 @@ export type UserMinAggregateInputType = {
   territoire_code?: true
   territoire_libelle?: true
   territoire_autre?: true
+  membre_communaute?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -225,6 +229,7 @@ export type UserMaxAggregateInputType = {
   territoire_code?: true
   territoire_libelle?: true
   territoire_autre?: true
+  membre_communaute?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -260,6 +265,7 @@ export type UserCountAggregateInputType = {
   territoire_code?: true
   territoire_libelle?: true
   territoire_autre?: true
+  membre_communaute?: true
   _all?: true
 }
 
@@ -382,6 +388,7 @@ export type UserGroupByOutputType = {
   territoire_code: string | null
   territoire_libelle: string | null
   territoire_autre: string | null
+  membre_communaute: boolean
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -389,7 +396,7 @@ export type UserGroupByOutputType = {
   _max: UserMaxAggregateOutputType | null
 }
 
-type GetUserGroupByPayload<T extends userGroupByArgs> = Prisma.PrismaPromise<
+export type GetUserGroupByPayload<T extends userGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<UserGroupByOutputType, T['by']> &
       {
@@ -440,6 +447,7 @@ export type userWhereInput = {
   territoire_code?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_libelle?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_autre?: Prisma.StringNullableFilter<"user"> | string | null
+  membre_communaute?: Prisma.BoolFilter<"user"> | boolean
   tacctoscope_answer?: Prisma.Tacctoscope_answerListRelationFilter
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   study_office?: Prisma.XOR<Prisma.Study_officeNullableScalarRelationFilter, Prisma.study_officeWhereInput> | null
@@ -480,6 +488,7 @@ export type userOrderByWithRelationInput = {
   territoire_code?: Prisma.SortOrderInput | Prisma.SortOrder
   territoire_libelle?: Prisma.SortOrderInput | Prisma.SortOrder
   territoire_autre?: Prisma.SortOrderInput | Prisma.SortOrder
+  membre_communaute?: Prisma.SortOrder
   tacctoscope_answer?: Prisma.tacctoscope_answerOrderByRelationAggregateInput
   commune?: Prisma.communeOrderByWithRelationInput
   study_office?: Prisma.study_officeOrderByWithRelationInput
@@ -523,6 +532,7 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   territoire_code?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_libelle?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_autre?: Prisma.StringNullableFilter<"user"> | string | null
+  membre_communaute?: Prisma.BoolFilter<"user"> | boolean
   tacctoscope_answer?: Prisma.Tacctoscope_answerListRelationFilter
   commune?: Prisma.XOR<Prisma.CommuneNullableScalarRelationFilter, Prisma.communeWhereInput> | null
   study_office?: Prisma.XOR<Prisma.Study_officeNullableScalarRelationFilter, Prisma.study_officeWhereInput> | null
@@ -563,6 +573,7 @@ export type userOrderByWithAggregationInput = {
   territoire_code?: Prisma.SortOrderInput | Prisma.SortOrder
   territoire_libelle?: Prisma.SortOrderInput | Prisma.SortOrder
   territoire_autre?: Prisma.SortOrderInput | Prisma.SortOrder
+  membre_communaute?: Prisma.SortOrder
   _count?: Prisma.userCountOrderByAggregateInput
   _avg?: Prisma.userAvgOrderByAggregateInput
   _max?: Prisma.userMaxOrderByAggregateInput
@@ -606,6 +617,7 @@ export type userScalarWhereWithAggregatesInput = {
   territoire_code?: Prisma.StringNullableWithAggregatesFilter<"user"> | string | null
   territoire_libelle?: Prisma.StringNullableWithAggregatesFilter<"user"> | string | null
   territoire_autre?: Prisma.StringNullableWithAggregatesFilter<"user"> | string | null
+  membre_communaute?: Prisma.BoolWithAggregatesFilter<"user"> | boolean
 }
 
 export type userCreateInput = {
@@ -639,6 +651,7 @@ export type userCreateInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerCreateNestedManyWithoutUserInput
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
@@ -679,6 +692,7 @@ export type userUncheckedCreateInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedCreateNestedManyWithoutUserInput
   user_besoin?: Prisma.user_besoinUncheckedCreateNestedManyWithoutUserInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
@@ -715,6 +729,7 @@ export type userUpdateInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUpdateManyWithoutUserNestedInput
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
@@ -755,6 +770,7 @@ export type userUncheckedUpdateInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedUpdateManyWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUncheckedUpdateManyWithoutUserNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
@@ -793,6 +809,7 @@ export type userCreateManyInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
 }
 
 export type userUpdateManyMutationInput = {
@@ -826,6 +843,7 @@ export type userUpdateManyMutationInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type userUncheckedUpdateManyInput = {
@@ -861,6 +879,7 @@ export type userUncheckedUpdateManyInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserListRelationFilter = {
@@ -911,6 +930,7 @@ export type userCountOrderByAggregateInput = {
   territoire_code?: Prisma.SortOrder
   territoire_libelle?: Prisma.SortOrder
   territoire_autre?: Prisma.SortOrder
+  membre_communaute?: Prisma.SortOrder
 }
 
 export type userAvgOrderByAggregateInput = {
@@ -952,6 +972,7 @@ export type userMaxOrderByAggregateInput = {
   territoire_code?: Prisma.SortOrder
   territoire_libelle?: Prisma.SortOrder
   territoire_autre?: Prisma.SortOrder
+  membre_communaute?: Prisma.SortOrder
 }
 
 export type userMinOrderByAggregateInput = {
@@ -987,6 +1008,7 @@ export type userMinOrderByAggregateInput = {
   territoire_code?: Prisma.SortOrder
   territoire_libelle?: Prisma.SortOrder
   territoire_autre?: Prisma.SortOrder
+  membre_communaute?: Prisma.SortOrder
 }
 
 export type userSumOrderByAggregateInput = {
@@ -1163,6 +1185,7 @@ export type userCreateWithoutCommuneInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerCreateNestedManyWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
   user_besoin?: Prisma.user_besoinCreateNestedManyWithoutUserInput
@@ -1201,6 +1224,7 @@ export type userUncheckedCreateWithoutCommuneInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedCreateNestedManyWithoutUserInput
   user_besoin?: Prisma.user_besoinUncheckedCreateNestedManyWithoutUserInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
@@ -1268,6 +1292,7 @@ export type userScalarWhereInput = {
   territoire_code?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_libelle?: Prisma.StringNullableFilter<"user"> | string | null
   territoire_autre?: Prisma.StringNullableFilter<"user"> | string | null
+  membre_communaute?: Prisma.BoolFilter<"user"> | boolean
 }
 
 export type userCreateWithoutStudy_officeInput = {
@@ -1301,6 +1326,7 @@ export type userCreateWithoutStudy_officeInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerCreateNestedManyWithoutUserInput
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   user_besoin?: Prisma.user_besoinCreateNestedManyWithoutUserInput
@@ -1339,6 +1365,7 @@ export type userUncheckedCreateWithoutStudy_officeInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedCreateNestedManyWithoutUserInput
   user_besoin?: Prisma.user_besoinUncheckedCreateNestedManyWithoutUserInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
@@ -1401,6 +1428,7 @@ export type userCreateWithoutTacctoscope_answerInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
   user_besoin?: Prisma.user_besoinCreateNestedManyWithoutUserInput
@@ -1440,6 +1468,7 @@ export type userUncheckedCreateWithoutTacctoscope_answerInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   user_besoin?: Prisma.user_besoinUncheckedCreateNestedManyWithoutUserInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
 }
@@ -1491,6 +1520,7 @@ export type userUpdateWithoutTacctoscope_answerInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUpdateManyWithoutUserNestedInput
@@ -1530,6 +1560,7 @@ export type userUncheckedUpdateWithoutTacctoscope_answerInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user_besoin?: Prisma.user_besoinUncheckedUpdateManyWithoutUserNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -1565,6 +1596,7 @@ export type userCreateWithoutUser_studyInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerCreateNestedManyWithoutUserInput
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
@@ -1604,6 +1636,7 @@ export type userUncheckedCreateWithoutUser_studyInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedCreateNestedManyWithoutUserInput
   user_besoin?: Prisma.user_besoinUncheckedCreateNestedManyWithoutUserInput
 }
@@ -1655,6 +1688,7 @@ export type userUpdateWithoutUser_studyInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUpdateManyWithoutUserNestedInput
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
@@ -1694,6 +1728,7 @@ export type userUncheckedUpdateWithoutUser_studyInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedUpdateManyWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -1729,6 +1764,7 @@ export type userCreateWithoutUser_besoinInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerCreateNestedManyWithoutUserInput
   commune?: Prisma.communeCreateNestedOneWithoutUserInput
   study_office?: Prisma.study_officeCreateNestedOneWithoutUserInput
@@ -1768,6 +1804,7 @@ export type userUncheckedCreateWithoutUser_besoinInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedCreateNestedManyWithoutUserInput
   user_study?: Prisma.user_studyUncheckedCreateNestedManyWithoutUserInput
 }
@@ -1819,6 +1856,7 @@ export type userUpdateWithoutUser_besoinInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUpdateManyWithoutUserNestedInput
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
@@ -1858,6 +1896,7 @@ export type userUncheckedUpdateWithoutUser_besoinInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedUpdateManyWithoutUserNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -1894,6 +1933,7 @@ export type userCreateManyCommuneInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
 }
 
 export type userUpdateWithoutCommuneInput = {
@@ -1927,6 +1967,7 @@ export type userUpdateWithoutCommuneInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUpdateManyWithoutUserNestedInput
   study_office?: Prisma.study_officeUpdateOneWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUpdateManyWithoutUserNestedInput
@@ -1965,6 +2006,7 @@ export type userUncheckedUpdateWithoutCommuneInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedUpdateManyWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUncheckedUpdateManyWithoutUserNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
@@ -2002,6 +2044,7 @@ export type userUncheckedUpdateManyWithoutCommuneInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type userCreateManyStudy_officeInput = {
@@ -2036,6 +2079,7 @@ export type userCreateManyStudy_officeInput = {
   territoire_code?: string | null
   territoire_libelle?: string | null
   territoire_autre?: string | null
+  membre_communaute?: boolean
 }
 
 export type userUpdateWithoutStudy_officeInput = {
@@ -2069,6 +2113,7 @@ export type userUpdateWithoutStudy_officeInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUpdateManyWithoutUserNestedInput
   commune?: Prisma.communeUpdateOneWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUpdateManyWithoutUserNestedInput
@@ -2107,6 +2152,7 @@ export type userUncheckedUpdateWithoutStudy_officeInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
   tacctoscope_answer?: Prisma.tacctoscope_answerUncheckedUpdateManyWithoutUserNestedInput
   user_besoin?: Prisma.user_besoinUncheckedUpdateManyWithoutUserNestedInput
   user_study?: Prisma.user_studyUncheckedUpdateManyWithoutUserNestedInput
@@ -2144,6 +2190,7 @@ export type userUncheckedUpdateManyWithoutStudy_officeInput = {
   territoire_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_libelle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   territoire_autre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  membre_communaute?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -2228,6 +2275,7 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   territoire_code?: boolean
   territoire_libelle?: boolean
   territoire_autre?: boolean
+  membre_communaute?: boolean
   tacctoscope_answer?: boolean | Prisma.user$tacctoscope_answerArgs<ExtArgs>
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
@@ -2269,6 +2317,7 @@ export type userSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   territoire_code?: boolean
   territoire_libelle?: boolean
   territoire_autre?: boolean
+  membre_communaute?: boolean
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -2306,6 +2355,7 @@ export type userSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   territoire_code?: boolean
   territoire_libelle?: boolean
   territoire_autre?: boolean
+  membre_communaute?: boolean
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
   study_office?: boolean | Prisma.user$study_officeArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -2343,9 +2393,10 @@ export type userSelectScalar = {
   territoire_code?: boolean
   territoire_libelle?: boolean
   territoire_autre?: boolean
+  membre_communaute?: boolean
 }
 
-export type userOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "study_office_id" | "commune_id" | "email" | "username" | "firstname" | "lastname" | "validated" | "validated_terms_of_use" | "authenticated_id" | "access_token" | "roles" | "created_at" | "updated_at" | "has_accepted_surveys" | "authenticated_id_bidx" | "email_bidx" | "encryption_version" | "wants_beta_features" | "recontact_email" | "last_login_at" | "login_count" | "workspace_login_count" | "workspace_last_login_at" | "workspace_last_session_jti" | "questionnaire_validated" | "profil" | "profil_autre" | "territoire_type" | "territoire_code" | "territoire_libelle" | "territoire_autre", ExtArgs["result"]["user"]>
+export type userOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "study_office_id" | "commune_id" | "email" | "username" | "firstname" | "lastname" | "validated" | "validated_terms_of_use" | "authenticated_id" | "access_token" | "roles" | "created_at" | "updated_at" | "has_accepted_surveys" | "authenticated_id_bidx" | "email_bidx" | "encryption_version" | "wants_beta_features" | "recontact_email" | "last_login_at" | "login_count" | "workspace_login_count" | "workspace_last_login_at" | "workspace_last_session_jti" | "questionnaire_validated" | "profil" | "profil_autre" | "territoire_type" | "territoire_code" | "territoire_libelle" | "territoire_autre" | "membre_communaute", ExtArgs["result"]["user"]>
 export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tacctoscope_answer?: boolean | Prisma.user$tacctoscope_answerArgs<ExtArgs>
   commune?: boolean | Prisma.user$communeArgs<ExtArgs>
@@ -2405,6 +2456,7 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     territoire_code: string | null
     territoire_libelle: string | null
     territoire_autre: string | null
+    membre_communaute: boolean
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -2865,6 +2917,7 @@ export interface userFieldRefs {
   readonly territoire_code: Prisma.FieldRef<"user", 'String'>
   readonly territoire_libelle: Prisma.FieldRef<"user", 'String'>
   readonly territoire_autre: Prisma.FieldRef<"user", 'String'>
+  readonly membre_communaute: Prisma.FieldRef<"user", 'Boolean'>
 }
     
 
@@ -3061,6 +3114,11 @@ export type userFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Skip the first `n` users.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of users.
+   */
   distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
 }
 

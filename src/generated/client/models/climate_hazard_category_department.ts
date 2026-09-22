@@ -137,7 +137,7 @@ export type Climate_hazard_category_departmentGroupByOutputType = {
   _max: Climate_hazard_category_departmentMaxAggregateOutputType | null
 }
 
-type GetClimate_hazard_category_departmentGroupByPayload<T extends climate_hazard_category_departmentGroupByArgs> = Prisma.PrismaPromise<
+export type GetClimate_hazard_category_departmentGroupByPayload<T extends climate_hazard_category_departmentGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Climate_hazard_category_departmentGroupByOutputType, T['by']> &
       {
@@ -1126,6 +1126,11 @@ export type climate_hazard_category_departmentFindManyArgs<ExtArgs extends runti
    * Skip the first `n` climate_hazard_category_departments.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of climate_hazard_category_departments.
+   */
   distinct?: Prisma.Climate_hazard_category_departmentScalarFieldEnum | Prisma.Climate_hazard_category_departmentScalarFieldEnum[]
 }
 

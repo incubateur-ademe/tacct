@@ -172,7 +172,7 @@ export type Impact_themeGroupByOutputType = {
   _max: Impact_themeMaxAggregateOutputType | null
 }
 
-type GetImpact_themeGroupByPayload<T extends impact_themeGroupByArgs> = Prisma.PrismaPromise<
+export type GetImpact_themeGroupByPayload<T extends impact_themeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Impact_themeGroupByOutputType, T['by']> &
       {
@@ -1559,6 +1559,11 @@ export type impact_themeFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` impact_themes.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of impact_themes.
+   */
   distinct?: Prisma.Impact_themeScalarFieldEnum | Prisma.Impact_themeScalarFieldEnum[]
 }
 

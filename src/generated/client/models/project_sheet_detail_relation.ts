@@ -137,7 +137,7 @@ export type Project_sheet_detail_relationGroupByOutputType = {
   _max: Project_sheet_detail_relationMaxAggregateOutputType | null
 }
 
-type GetProject_sheet_detail_relationGroupByPayload<T extends project_sheet_detail_relationGroupByArgs> = Prisma.PrismaPromise<
+export type GetProject_sheet_detail_relationGroupByPayload<T extends project_sheet_detail_relationGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Project_sheet_detail_relationGroupByOutputType, T['by']> &
       {
@@ -1126,6 +1126,11 @@ export type project_sheet_detail_relationFindManyArgs<ExtArgs extends runtime.Ty
    * Skip the first `n` project_sheet_detail_relations.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of project_sheet_detail_relations.
+   */
   distinct?: Prisma.Project_sheet_detail_relationScalarFieldEnum | Prisma.Project_sheet_detail_relationScalarFieldEnum[]
 }
 

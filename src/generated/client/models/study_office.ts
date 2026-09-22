@@ -158,7 +158,7 @@ export type Study_officeGroupByOutputType = {
   _max: Study_officeMaxAggregateOutputType | null
 }
 
-type GetStudy_officeGroupByPayload<T extends study_officeGroupByArgs> = Prisma.PrismaPromise<
+export type GetStudy_officeGroupByPayload<T extends study_officeGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Study_officeGroupByOutputType, T['by']> &
       {
@@ -1237,6 +1237,11 @@ export type study_officeFindManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Skip the first `n` study_offices.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of study_offices.
+   */
   distinct?: Prisma.Study_officeScalarFieldEnum | Prisma.Study_officeScalarFieldEnum[]
 }
 

@@ -80,12 +80,12 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 7.4.0
- * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
+ * Prisma Client JS version: 7.10.0
+ * Query Engine version: 0edf323efd1d98336f3f0a68684b56f689b900d3
  */
 export const prismaVersion: PrismaVersion = {
-  client: "7.4.0",
-  engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
+  client: "7.10.0",
+  engine: "0edf323efd1d98336f3f0a68684b56f689b900d3"
 }
 
 /**
@@ -156,6 +156,19 @@ export type Subset<T, U> = {
 };
 
 /**
+ * Resolved type of the argument passed to the `PrismaClient` constructor.
+ *
+ * When called without a narrower options type (the common case), this resolves
+ * to `PrismaClientOptions` directly, which produces a clear TypeScript error
+ * message (`not assignable to parameter of type 'PrismaClientOptions'`) when
+ * the argument is missing or incomplete. When the user supplies a narrower
+ * options type (e.g. via a literal), it falls back to `Subset` to keep
+ * filtering out unknown properties.
+ */
+export type PrismaClientConstructorArgs<Options extends PrismaClientOptions> =
+  [PrismaClientOptions] extends [Options] ? PrismaClientOptions : Subset<Options, PrismaClientOptions>;
+
+/**
  * SelectSubset
  * @desc From `T` pick properties that exist in `U`. Simple version of Intersection.
  * Additionally, it validates, if both select and include are present. If the case, it errors.
@@ -187,7 +200,7 @@ type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
 export type XOR<T, U> =
   T extends object ?
   U extends object ?
-    (Without<T, U> & U) | (Without<U, T> & T)
+    ((Without<T, U> & U) | (Without<U, T> & T)) & object
   : U : T
 
 
@@ -458,7 +471,6 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  baserow_communaute: 'baserow_communaute',
   user_besoin: 'user_besoin'
 } as const
 
@@ -475,7 +487,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "thematic" | "token" | "user" | "user_study" | "baserow_communaute" | "user_besoin"
+    modelProps: "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_rga" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "prelevements_eau_new" | "o3_seuils" | "secheresses" | "inondations_par_debordement" | "arbovirose" | "feux_foret" | "aot_40_new" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "natural_disaster" | "natural_disaster_search" | "natural_disaster_search_commune" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "tacctoscope_answer" | "thematic" | "token" | "user" | "user_study" | "user_besoin"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -5923,80 +5935,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    baserow_communaute: {
-      payload: Prisma.$baserow_communautePayload<ExtArgs>
-      fields: Prisma.baserow_communauteFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.baserow_communauteFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.baserow_communauteFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        findFirst: {
-          args: Prisma.baserow_communauteFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.baserow_communauteFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        findMany: {
-          args: Prisma.baserow_communauteFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        create: {
-          args: Prisma.baserow_communauteCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        createMany: {
-          args: Prisma.baserow_communauteCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.baserow_communauteCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        delete: {
-          args: Prisma.baserow_communauteDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        update: {
-          args: Prisma.baserow_communauteUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        deleteMany: {
-          args: Prisma.baserow_communauteDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.baserow_communauteUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.baserow_communauteUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>[]
-        }
-        upsert: {
-          args: Prisma.baserow_communauteUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$baserow_communautePayload>
-        }
-        aggregate: {
-          args: Prisma.Baserow_communauteAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateBaserow_communaute>
-        }
-        groupBy: {
-          args: Prisma.baserow_communauteGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.baserow_communauteCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Baserow_communauteCountAggregateOutputType> | number
-        }
-      }
-    }
     user_besoin: {
       payload: Prisma.$user_besoinPayload<ExtArgs>
       fields: Prisma.user_besoinFieldRefs
@@ -7544,7 +7482,8 @@ export const UserScalarFieldEnum = {
   territoire_type: 'territoire_type',
   territoire_code: 'territoire_code',
   territoire_libelle: 'territoire_libelle',
-  territoire_autre: 'territoire_autre'
+  territoire_autre: 'territoire_autre',
+  membre_communaute: 'membre_communaute'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -7560,14 +7499,6 @@ export const User_studyScalarFieldEnum = {
 } as const
 
 export type User_studyScalarFieldEnum = (typeof User_studyScalarFieldEnum)[keyof typeof User_studyScalarFieldEnum]
-
-
-export const Baserow_communauteScalarFieldEnum = {
-  index: 'index',
-  email: 'email'
-} as const
-
-export type Baserow_communauteScalarFieldEnum = (typeof Baserow_communauteScalarFieldEnum)[keyof typeof Baserow_communauteScalarFieldEnum]
 
 
 export const User_besoinScalarFieldEnum = {
@@ -7698,19 +7629,10 @@ export type BatchPayload = {
 export const defineExtension = runtime.Extensions.defineExtension as unknown as runtime.Types.Extensions.ExtendsHook<"define", TypeMapCb, runtime.Types.Extensions.DefaultArgs>
 export type DefaultPrismaClient = PrismaClient
 export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
-export type PrismaClientOptions = ({
-  /**
-   * Instance of a Driver Adapter, e.g., like one provided by `@prisma/adapter-pg`.
-   */
-  adapter: runtime.SqlDriverAdapterFactory
-  accelerateUrl?: never
-} | {
-  /**
-   * Prisma Accelerate URL allowing the client to connect through Accelerate instead of a direct database.
-   */
-  accelerateUrl: string
-  adapter?: never
-}) & {
+/**
+ * Options common to all variants of `PrismaClientOptions`, regardless of whether you connect to your database through a driver adapter or through Prisma Accelerate.
+ */
+export interface PrismaClientBaseOptions {
   /**
    * @default "colorless"
    */
@@ -7781,7 +7703,72 @@ export type PrismaClientOptions = ({
    * ```
    */
   comments?: runtime.SqlCommenterPlugin[]
+  /**
+   * Optional maximum size for the query plan cache. If not provided, a default size will be used.
+   * A value of `0` can be used to disable the cache entirely. A higher cache size can improve
+   * performance for applications that execute a large number of unique queries, while a smaller
+   * cache size can reduce memory usage.
+   * 
+   * @example
+   * ```
+   * const prisma = new PrismaClient({
+   *   adapter,
+   *   queryPlanCacheMaxSize: 100,
+   * })
+   * ```
+   */
+  queryPlanCacheMaxSize?: number
 }
+
+/**
+ * `PrismaClient` options for connecting to your database through Prisma Accelerate instead of a driver adapter.
+ * 
+ * Learn more: https://pris.ly/d/accelerate
+ */
+export interface PrismaClientOptionsWithAccelerateUrl extends PrismaClientBaseOptions {
+  /**
+   * The Prisma Accelerate connection URL. Use this option to connect to your database through Prisma Accelerate instead of using a driver adapter to connect directly.
+   * 
+   * Learn more: https://pris.ly/d/accelerate
+   */
+  accelerateUrl: string
+  adapter?: never
+}
+
+/**
+ * `PrismaClient` options for connecting to your database through a driver adapter. This is the common case in Prisma 7.
+ * 
+ * Learn more: https://pris.ly/d/driver-adapters
+ */
+export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions {
+  /**
+   * A driver adapter that PrismaClient uses to connect to your database, such as the ones provided by `@prisma/adapter-pg`, `@prisma/adapter-libsql`, `@prisma/adapter-planetscale`, etc.
+   * 
+   * A driver adapter is **required** unless you connect to your database through Prisma Accelerate (in which case use `accelerateUrl` instead).
+   * 
+   * Learn more: https://pris.ly/d/driver-adapters
+   * 
+   * @example
+   * ```ts
+   * import { PrismaPg } from '@prisma/adapter-pg'
+   * import { PrismaClient } from './generated/prisma/client'
+   * 
+   * const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
+   * const prisma = new PrismaClient({ adapter })
+   * ```
+   */
+  adapter: runtime.SqlDriverAdapterFactory
+  accelerateUrl?: never
+}
+
+/**
+ * Options passed to the `PrismaClient` constructor.
+ * 
+ * A driver adapter (or, alternatively, a Prisma Accelerate URL) is **required**. See {@link PrismaClientOptionsWithAdapter} and {@link PrismaClientOptionsWithAccelerateUrl} for the two variants. All other properties live in {@link PrismaClientBaseOptions} and are optional.
+ * 
+ * Learn more about driver adapters: https://pris.ly/d/driver-adapters
+ */
+export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   databases_v2_agriculture?: Prisma.databases_v2_agricultureOmit
   databases_v2_agriculture_bio?: Prisma.databases_v2_agriculture_bioOmit
@@ -7857,7 +7844,6 @@ export type GlobalOmitConfig = {
   token?: Prisma.tokenOmit
   user?: Prisma.userOmit
   user_study?: Prisma.user_studyOmit
-  baserow_communaute?: Prisma.baserow_communauteOmit
   user_besoin?: Prisma.user_besoinOmit
 }
 

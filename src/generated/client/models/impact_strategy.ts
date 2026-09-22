@@ -165,7 +165,7 @@ export type Impact_strategyGroupByOutputType = {
   _max: Impact_strategyMaxAggregateOutputType | null
 }
 
-type GetImpact_strategyGroupByPayload<T extends impact_strategyGroupByArgs> = Prisma.PrismaPromise<
+export type GetImpact_strategyGroupByPayload<T extends impact_strategyGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<Impact_strategyGroupByOutputType, T['by']> &
       {
@@ -1586,6 +1586,11 @@ export type impact_strategyFindManyArgs<ExtArgs extends runtime.Types.Extensions
    * Skip the first `n` impact_strategies.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of impact_strategies.
+   */
   distinct?: Prisma.Impact_strategyScalarFieldEnum | Prisma.Impact_strategyScalarFieldEnum[]
 }
 
