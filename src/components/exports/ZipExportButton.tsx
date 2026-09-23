@@ -106,21 +106,23 @@ export const ZipExportButton = ({
   };
 
   return (
-    <div className={`${styles.exportShareWrapper} ${styles.zipExportButtonHidden}`}>
+    <div className={styles.exportShareWrapper}>
       {anchor && <CopyLinkClipboard anchor={anchor} />}
-      <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
-        <BoutonPrimaireClassic
-          onClick={handleClick}
-          disabled={isExporting}
-          icone={isExporting ? null : ExporterIcon}
-          size="sm"
-          text={isExporting ? 'En cours...' : (children as string)}
-          style={{
-            minWidth: buttonMinWidth,
-            cursor: isExporting ? 'wait' : 'pointer',
-            ...style
-          }}
-        />
+      <div className={styles.zipExportButtonHidden}>
+        <div ref={buttonWrapperRef} style={{ display: 'inline-flex' }}>
+          <BoutonPrimaireClassic
+            onClick={handleClick}
+            disabled={isExporting}
+            icone={isExporting ? null : ExporterIcon}
+            size="sm"
+            text={isExporting ? 'En cours...' : (children as string)}
+            style={{
+              minWidth: buttonMinWidth,
+              cursor: isExporting ? 'wait' : 'pointer',
+              ...style
+            }}
+          />
+        </div>
       </div>
       {isClicked && <ExportDataTrigger />}
     </div>
