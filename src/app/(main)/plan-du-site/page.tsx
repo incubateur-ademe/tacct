@@ -124,6 +124,9 @@ const PlanDuSite = () => (
           <a href="/politique-de-confidentialite">Politique de confidentialité</a>
         </li>
         <li style={{ marginBottom: '0.5rem' }}>
+          <a href="/cgu">Conditions générales d&apos;utilisation</a>
+        </li>
+        <li style={{ marginBottom: '0.5rem' }}>
           <a href="/politique-des-cookies">Politique des cookies</a>
         </li>
         <li style={{ marginBottom: '0.5rem' }}>

@@ -3,13 +3,13 @@ import { type Metadata } from 'next';
 import { anchorHeadingMDXComponents } from '@/mdx-components';
 
 import { Suspense } from 'react';
-import MentionsLegalesContent from '../../../../content/mentions-legales.mdx';
+import CguContent from '../../../../content/cgu.mdx';
 import { Container } from '../../../design-system/server';
 import styles from '../pagesLegales.module.scss';
 import { sharedMetadata } from '../shared-metadata';
 
-const title = 'Mentions légales';
-const url = '/mentions-legales';
+const title = "Conditions générales d'utilisation";
+const url = '/cgu';
 
 export const metadata: Metadata = {
   ...sharedMetadata,
@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   }
 };
 
-const MentionsLegales = () => (
+const Cgu = () => (
   <Container my="4w">
     <div className={styles.contenu}>
       <Suspense>
-        <MentionsLegalesContent components={anchorHeadingMDXComponents} />
+        <CguContent components={anchorHeadingMDXComponents} />
       </Suspense>
     </div>
   </Container>
 );
 
-export default MentionsLegales;
+export default Cgu;

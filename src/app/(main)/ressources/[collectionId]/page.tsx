@@ -1,3 +1,4 @@
+import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { NewContainer } from "@/design-system/layout";
 import { getFaqItems } from "@/lib/queries/notion/notion";
 import { collectionsCartes } from "@/lib/ressources/cartes";
@@ -61,6 +62,7 @@ const Collections = async ({ params }: { params: Promise<{ collectionId: string 
 
   return (
     <>
+      <ScrollToTop />
       <NewContainer size="xl" style={{ padding: 0 }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb

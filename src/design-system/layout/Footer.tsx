@@ -129,6 +129,11 @@ export default function AppFooter() {
               </a>
             </li>
             <li className="fr-footer__bottom-item">
+              <a className="fr-footer__bottom-link" href="/cgu">
+                CGU
+              </a>
+            </li>
+            <li className="fr-footer__bottom-item">
               <a className="fr-footer__bottom-link" href="/politique-des-cookies">
                 Politique des cookies
               </a>
