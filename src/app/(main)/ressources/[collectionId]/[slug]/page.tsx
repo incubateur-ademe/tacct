@@ -72,7 +72,6 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
       const richText = block.heading_2?.rich_text || [];
       return normalizeText(richText.map(rt => rt.plain_text || rt.text.content).join(''));
     });
-
   const pageContent = await groupAndRenderBlocks(contentWithoutH1);
   const collection = CollectionsData.find(c => c.slug === collectionId);
   const collectionSlug = CollectionsData.find(c => c.titre === article?.collections[0])?.slug || collectionId;
@@ -101,7 +100,7 @@ const ArticleRessourcePage = async ({ params }: ArticlePageProps) => {
           </div>
           <div
             className={styles.article}
-            style={{ marginTop: contentWithoutH1[0]?.heading_2 && "-5rem" }}
+            style={{ marginTop: contentWithoutH1[0]?.heading_2 && '-5rem' }}
           >
             {pageContent}
           </div>

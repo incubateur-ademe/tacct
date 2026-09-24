@@ -27,7 +27,7 @@ export const patch4Indices = (patch4: Patch4) => [
       'Inconfort thermique'
     ],
     themesSansAggravation: null,
-    themesSansAggravationEpciCommunes: null,
+        themesSansAggravationEpciCommunes: null,
     actions: [
       {
         title:

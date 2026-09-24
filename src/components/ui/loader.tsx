@@ -1,16 +1,27 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import styles from "../components.module.scss";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import styles from '../components.module.scss';
 
 export const Loader = ({ height }: { height?: string }) => {
   return (
-    <div role="status" aria-label="Chargement en cours" className="flex flex-col justify-center" style={{ height: height || "80dvh", position: 'relative' }}>
+    <div
+      role="status"
+      aria-label="Chargement en cours"
+      className="flex flex-col justify-center"
+      style={{ height: height || '80dvh', position: 'relative' }}
+    >
       <div className={styles.loader}></div>
     </div>
   );
-}
+};
 
-export const LoaderText = ({ text, height }: { text: string; height?: string }) => {
+export const LoaderText = ({
+  text,
+  height
+}: {
+  text: string;
+  height?: string;
+}) => {
   const [show, setShow] = useState(false);
   const [visible, setVisible] = useState(false);
   const [first, setFirst] = useState(true);
@@ -66,7 +77,8 @@ export const LoaderText = ({ text, height }: { text: string; height?: string }) 
       role="status"
       aria-label={text}
       className="flex flex-col items-center justify-center"
-      style={{ height: height || "80dvh", position: 'relative' }}>
+      style={{ height: height || '80dvh', position: 'relative' }}
+    >
       <div className={styles.loader}></div>
       <div
         style={{
@@ -79,13 +91,13 @@ export const LoaderText = ({ text, height }: { text: string; height?: string }) 
           alignItems: 'center',
           justifyContent: 'center',
           pointerEvents: 'none',
-          width: "500px"
+          width: '500px'
         }}
       >
         <div
           style={{
             position: 'relative',
-            left: show && first && visible ? 0 : (show && first ? '-350px' : 0),
+            left: show && first && visible ? 0 : show && first ? '-350px' : 0,
             fontSize: '0.8em',
             color: '#909090',
             fontWeight: 400,
@@ -96,10 +108,12 @@ export const LoaderText = ({ text, height }: { text: string; height?: string }) 
                 : 'opacity 0.5s',
             whiteSpace: 'pre',
             textAlign: 'center',
-            width: '100%',
+            width: '100%'
           }}
         >
-          {show ? `${text}${'.'.repeat(dotCount)}${' '.repeat(3 - dotCount)}` : ''}
+          {show
+            ? `${text}${'.'.repeat(dotCount)}${' '.repeat(3 - dotCount)}`
+            : ''}
         </div>
       </div>
     </div>

@@ -119,6 +119,7 @@ export const BarreDeRechercheSansFiltre = ({
             >
               <input
                 {...params.inputProps}
+                className={`${params.inputProps.className ?? ''} ${styles.inputSansFiltre}`}
                 aria-label="Rechercher un territoire"
                 placeholder="Saisir un territoire"
                 style={{

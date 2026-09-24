@@ -315,10 +315,10 @@ export const rgaTooltipText = (
     logements et les individus (Base Fidéli -Insee, 2021).
     <br></br>
     <br></br>
-    La carte permet d’identifier le niveau d’exposition des communes au phénomène
-    mais il n’est pas adapté pour travailler à une échelle plus fine (parcellaire).
-    Ainsi, la visualisation cartographique proposée ne peut en aucun cas prétendre
-    refléter en tout point l’exacte nature des sols.
+    L’indicateur permet d’identifier le niveau d’exposition des communes au
+    phénomène mais il n’est pas adapté pour travailler à une échelle plus fine
+    (parcellaire). Ainsi, la visualisation cartographique proposée ne peut en
+    aucun cas prétendre refléter en tout point l’exacte nature des sols.
   </Body>
 );
 

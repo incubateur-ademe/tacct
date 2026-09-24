@@ -88,8 +88,8 @@ export const debroussaillement = (
 
 export const ozone = (
   <span>
-    Gaz naturellement présent dans l’atmosphère, il se forme par des réactions chimiques
-    entre des polluants sous l’effet du soleil. Lorsqu’il s’accumule en basse altitude,
+    Gaz naturellement présent dans l’atmosphère, il se forme par des réactions chimiques 
+    entre des polluants sous l’effet du soleil. Lorsqu’il s’accumule en basse altitude, 
     notamment lors de vagues de chaleur, il devient nocif pour la santé et la végétation.
   </span>
 );

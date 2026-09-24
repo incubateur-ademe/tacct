@@ -142,7 +142,7 @@ export const sommaireThematiques = {
         thematique: 'Biodiversité',
         icone: '🌼',
         sousCategories: ['Moustique tigre et arboviroses']
-      }
+      }      
     ]
   },
   Forêts: {
@@ -266,21 +266,21 @@ export const thematiquesInfo: {
     title: 'Santé',
     description: <div>
       <Body size="sm" style={{ marginBottom: '1rem' }}>
-        Le changement climatique ne menace pas la santé directement : il
-        dégrade d'abord les conditions qui la rendent possible. Plus que
-        les catastrophes, ce sont souvent des mécanismes lents et cumulatifs
-        qui fragilisent la santé publique, à travers quatre grands canaux de
-        dégradation progressive :
-      </Body>
-      <div className="flex flex-col">
-        <Body size="sm">💨 Qualité de l’air</Body>
-        <Body size="sm">🌼 Biodiversité</Body>
-        <Body size="sm">💧 Eau</Body>
-        <Body size="sm">🌡️ Confort thermique</Body>
-      </div>
-      <Body size="sm" margin="1rem 0">
-        👉 La santé des habitants se joue aussi dans la qualité de vos écosystèmes.
-      </Body>
+          Le changement climatique ne menace pas la santé directement : il 
+          dégrade d'abord les conditions qui la rendent possible. Plus que 
+          les catastrophes, ce sont souvent des mécanismes lents et cumulatifs 
+          qui fragilisent la santé publique, à travers quatre grands canaux de 
+          dégradation progressive :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">💨 Qualité de l’air</Body>
+          <Body size="sm">🌼 Biodiversité</Body>
+          <Body size="sm">💧 Eau</Body>
+          <Body size="sm">🌡️ Confort thermique</Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 La santé des habitants se joue aussi dans la qualité de vos écosystèmes.
+        </Body>
     </div>,
     link: 'Santé'
   },
