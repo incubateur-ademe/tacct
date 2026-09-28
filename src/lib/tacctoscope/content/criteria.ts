@@ -15,7 +15,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   'donnees-climatiques': {
     title: 'Données climatiques',
     chapeau:
-      "Le diagnostic s'appuie-t-il sur des données climatiques pertinentes et territorialisées ?",
+      "Le diagnostic s'appuie-t-il sur des données climatiques pertinentes et territorialisées ?",
     questions: [
       {
         id: 'q1',
@@ -94,7 +94,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'donnees-socio-economiques': {
     title: 'Données socio-économiques',
-    chapeau: "Les sensibilités territoriales sont documentées avec des indicateurs socio-économiques pertinents.",
+    chapeau:
+      'Les sensibilités territoriales sont-elles documentées avec des indicateurs pertinents et territorialisés ?',
     questions: [
       {
         id: 'q1',
@@ -158,7 +159,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'dialogue-et-partage': {
     title: 'Dialogue et partage',
-    chapeau: "Le diagnostic a été construit collectivement avec les parties prenantes du territoire.",
+    chapeau:
+      'Le diagnostic a-t-il été construit collectivement avec les parties prenantes du territoire ?',
     questions: [
       {
         id: 'q1',
@@ -240,7 +242,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'priorisation-des-impacts': {
     title: 'Priorisation des impacts',
-    chapeau: "Les impacts identifiés sont hiérarchisés de manière explicite et justifiée.",
+    chapeau:
+      'Les impacts sont-ils hiérarchisés de manière explicite et justifiée ?',
     questions: [
       {
         id: 'q1',
@@ -282,7 +285,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   },
   'problematisation-et-conclusion': {
     title: 'Problématisation et conclusion',
-    chapeau: "Le diagnostic débouche sur des problèmes territoriaux actionnables, pas seulement des constats.",
+    chapeau:
+      "Plus qu'un simple constat, le diagnostic identifie-t-il des problématiques territoriales parlantes ?",
     questions: [
       {
         id: 'q1',

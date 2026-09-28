@@ -24,10 +24,7 @@ import { CRITERIA } from './criteria';
  */
 
 export type RoadmapResourceTag =
-  | 'donnees'
-  | 'article'
-  | 'reglementation'
-  | 'exemple-diagnostic';
+  'donnees' | 'article' | 'reglementation' | 'exemple-diagnostic';
 
 export interface RoadmapResource {
   tag: RoadmapResourceTag;
@@ -134,7 +131,7 @@ const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
   tag: 'article',
   title: 'Retours d’expérience sur les ateliers sensibilité',
   description:
-    'Retrouvez nos deux retours d’expériences de territoires ayant animé des ateliers pour évaluer leur sensibilité. Disponibles dans notre collection “Évaluer les impacts du changement climatique”.',
+    'Retrouvez nos deux retours d’expériences de territoires ayant animé des ateliers pour évaluer leur sensibilité, disponibles dans notre collection “Évaluer les impacts du changement climatique”.',
   url: 'https://tacct.ademe.fr/ressources/evaluer-impacts-changement-climatique',
   utilite:
     'Découvrez les apprentissages liés à la réalisation d’ateliers sensibilité. Ces deux retours d’expériences proposent des déroulés d’ateliers, à personnaliser à votre contexte, pour évaluer la sensibilité de votre territoire.',

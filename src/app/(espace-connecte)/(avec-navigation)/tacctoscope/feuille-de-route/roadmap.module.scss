@@ -660,6 +660,7 @@ $stripe: repeating-linear-gradient(
     max-width: 323px;
     border-radius: 4px;
     overflow: hidden;
+    align-self: center;
 
     @media screen and (max-width: 768px) {
         display: none;
