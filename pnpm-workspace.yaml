@@ -7,6 +7,9 @@ allowBuilds:
   sharp: true
   unrs-resolver: false
 
+minimumReleaseAgeExclude:
+  - nodemailer@10.0.12
+
 nodeLinker: hoisted
 
 # Refuse d'installer des packages publiés il y a moins de 7 jours (10080 minutes)
