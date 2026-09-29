@@ -1,16 +1,6 @@
 import { Body } from '@/design-system/base/Textes';
-import { Feature, MultiPoint, Point } from 'geojson';
 import { SurfacesAgricolesModel, TableCommuneModel } from '../postgres/models';
 import { Round } from '../utils/reusableFunctions/round';
-import { Any } from '../utils/types';
-
-interface NearestPoint extends Feature<Point> {
-  properties: {
-    featureIndex: number;
-    distanceToPoint: number;
-    [key: string]: Any;
-  };
-}
 
 {
   /* Biodiversité */
@@ -162,67 +152,61 @@ export const EtatCoursDeauDynamicText = () => {
   );
 };
 
+// Sources du texte :
+// « Sur 2020-2024 » : SDES, La pollution de l'air par l'ozone (O₃), mise à jour du 30 juin 2026, https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « Pour la protection de la végétation, la réglementation fixe une norme en moyenne sur cinq ans. Sur la période 2020-2024 […] »
+// « l'exposition moyenne de la végétation à l'ozone (AOT40) » : INERIS, Quelques enseignements sur l'évolution de la qualité de l'air de 2000 à 2019, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air-0 — « Les indicateurs d'exposition des écosystèmes (AOT40) »
+// « atteint {moyenne} […] jusqu'à {max} » : moyenne et maximum de la propriété valeur des tuiles aot40, relevée tous les 1 km à l'intérieur du territoire, calculés par valeursSurTerritoire dans src/components/maps/mapTilesAOT40.tsx
+// « valeur cible européenne de 18 000 µg/m³ × h » : directive (UE) 2024/2881, annexe I, section 2 B — « 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « France métropolitaine » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « sur l'ensemble du territoire métropolitain et la Corse »
+// « Il n'y a pas de données référencées […] » : formule standard du site, reprise de SurfacesEnHerbeDynamicText
 export const AOT40DynamicText = ({
-  stationWithMaxValue,
-  nearestPoint
+  valeurs,
+  isOutreMer,
+  type
 }: {
-  stationWithMaxValue:
-  | Feature<
-    Point | MultiPoint,
-    {
-      value: number;
-      nom_site: string;
-    }
-  >[]
-  | null;
-  nearestPoint: NearestPoint;
+  valeurs: { moyenne: number; max: number } | null | undefined;
+  isOutreMer: boolean;
+  type: string;
 }) => {
+  if (isOutreMer) {
+    return (
+      <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+        Cette donnée n’est disponible que pour la France
+        métropolitaine.
+      </Body>
+    );
+  }
+  if (valeurs === undefined) return null;
+  if (valeurs === null) {
+    return (
+      <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+        Il n’y a pas de données référencées sur le territoire que vous avez
+        sélectionné
+      </Body>
+    );
+  }
+  const lieu = type === 'commune' ? 'votre commune' : 'votre territoire';
+  const moyenne = Math.round(valeurs.moyenne);
+  const max = Math.round(valeurs.max);
   return (
-    <>
-      {stationWithMaxValue == null ? (
-        <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-          Nous ne disposons pas de données pour les stations proches de votre
-          territoire
-        </Body>
-      ) : (
+    <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+      Sur 2020-2024, l’exposition moyenne de la végétation à l’ozone (AOT40)
+      atteint {Round(moyenne, 0)} µg/m³.h sur {lieu}
+      {max > moyenne ? (
         <>
-          <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-            Plusieurs stations peuvent apparaître sur la carte. C'est la station
-            ayant la valeur la plus élevée dans un rayon de{' '}
-            {Round(nearestPoint.properties.distanceToPoint + 20, 1)} km qui est
-            retenue. Dans votre cas, il s’agit de la station{' '}
-            {stationWithMaxValue[0].properties.nom_site}, avec un seuil mesuré
-            de {Round(stationWithMaxValue[0].properties.value, 0)} µg/m³.
-          </Body>
-          <br></br>
-          {stationWithMaxValue[0].properties.value < 6000 ? (
-            <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-              Bonne nouvelle : votre territoire anticipe l'objectif 2050 avec un
-              seuil de 6 000 µg/m³ par heure déjà respecté. Ce résultat
-              favorable pour la végétation nécessite toutefois de rester
-              vigilant face aux évolutions de la pollution à l’ozone.
-            </Body>
-          ) : stationWithMaxValue[0].properties.value > 18000 ? (
-            <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-              Le cumul d’ozone enregistré ces 5 dernières années pendant la
-              période de végétation risque d’engendrer des réactions de la part
-              des végétaux de votre territoire (croissance réduite, perte de
-              rendement, altération des feuilles). Une vigilance accrue est
-              nécessaire pour limiter l’exposition de la végétation.
-            </Body>
-          ) : (
-            <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-              Le seuil actuel de 18 000 µg/m³ par heure est respecté, mais le
-              cumul d'ozone dépasse encore l'objectif de 6 000 µg/m³ fixé pour
-              2050. Poursuivez vos efforts !
-            </Body>
-          )}
+          , et jusqu’à {Round(max, 0)} µg/m³.h dans son secteur le plus
+          exposé
         </>
-      )}
-    </>
+      ) : null}
+      .{' '}
+      {max <= 18000
+        ? `${max > moyenne ? 'Ces valeurs restent' : 'Cette valeur reste'} en deçà de la valeur cible européenne de 18 000 µg/m³.h.`
+        : moyenne <= 18000
+          ? 'La valeur cible européenne de 18 000 µg/m³.h est dépassée dans le secteur le plus exposé.'
+          : `La valeur cible européenne de 18 000 µg/m³.h est dépassée en moyenne sur ${lieu}.`}
+    </Body>
   );
 };
-
 
 export const O3DynamicText = () => {
   return (

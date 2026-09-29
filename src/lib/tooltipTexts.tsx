@@ -86,21 +86,53 @@ export const agricultureBioTooltipText = (
   </Body>
 );
 
+// Sources du texte :
+// « L'exposition de la végétation à l'ozone est évaluée par l'indicateur AOT40 » : INERIS, Quelques enseignements sur l'évolution de la qualité de l'air de 2000 à 2019, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air-0 — « Les indicateurs d'exposition des écosystèmes (AOT40) »
+// « Accumulated Exposure Over Threshold 40 » : texte TACCT précédent, conservé ; SDES, Normes réglementaires relatives à l'ozone, p. 1, https://www.statistiques.developpement-durable.gouv.fr/media/4861/download?inline — « AOT40 : Accumulated Exposure Over Threshold 40 »
+// « au-delà du seuil de 40 parties par milliard, soit 80 µg/m³ […] somme des écarts […] entre 8 h et 20 h » : directive (UE) 2024/2881, annexe I, section 2 A — « la somme des différences entre les concentrations horaires supérieures à 80 μg/m3 (= 40 parties par milliard) et le seuil de 80 μg/m3 durant une période donnée, en utilisant uniquement les valeurs sur 1 heure mesurées quotidiennement entre 8 h 00 et 20 h 00 (heure de l'Europe centrale) »
+// « de mai à juillet » : directive (UE) 2024/2881, annexe I, section 2 B — « Protection de la végétation — De mai à juillet »
+// « période de pleine végétation » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 14 du PDF, § 3.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « valeur cible de 18 000 µg/m³ × h, en moyenne calculée sur 5 ans » : directive (UE) 2024/2881, annexe I, section 2 B — « 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « directive 2024/2881 du 23 octobre 2024 concernant la qualité de l'air ambiant et un air pur pour l'Europe » : Légifrance, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050712855 — titre du texte
+// « objectif à long terme de 6 000 µg/m³ × h […] au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l'ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] Protection de la végétation […] 6 000 μg/m3 × h »
+// « calculé sur une seule année » : Airparif, p. 14 du PDF, § 3.1 — « Objectif à long terme : 6 000 µg/m3.h-1 en moyenne sur une année »
+// « moyenne 2020-2024 » : SDES, La pollution de l'air par l'ozone (O₃), mise à jour du 30 juin 2026, https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « Pour la protection de la végétation, la réglementation fixe une norme en moyenne sur cinq ans. Sur la période 2020-2024 […] » ; titre de la carte INERIS — « AOT 40 (moyenne sur 5 ans) de O3 pour l'année 2024 »
+// « en combinant un modèle numérique de qualité de l'air et les mesures des stations de fond » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « combinaison de données modélisées et de données d'observation » ; « n'incluent que les stations urbaines, périurbaines, rurales de fond »
+// « grille d'environ 2 km » : INERIS, méthodologie, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air — « raffinée à 2km pour les années après 2018 »
+// « France métropolitaine » : INERIS, cartothèque — « sur l'ensemble du territoire métropolitain et la Corse »
+// « pollution dite « de fond » […] trafic dense et des sites industriels » : INERIS, cartothèque — « Ces cartes ne sont donc pas représentatives de situations de proximité de sources spécifiques (zones de trafic dense ou activités industrielles notamment) »
+// « (*) Valeur cible » : texte TACCT précédent, conservé ; SDES, Normes réglementaires relatives à l'ozone, p. 2 — « un niveau de concentration de substances polluantes fixé dans le but d'éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine et/ou l'environnement dans son ensemble, à atteindre dans la mesure du possible sur une période donnée »
 export const AOT40TooltipText = (
   <Body weight="bold" size="sm">
-    Un seuil critique de toxicité de l’ozone pour la végétation est défini par
-    l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci
-    représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40
-    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des
-    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et ce
-    seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h et
-    20 h, sur la période de mai à juillet, afin de coïncider avec la phase
-    active de photosynthèse.
+    L’exposition de la végétation à l’ozone est évaluée par l’indicateur AOT40
+    (Accumulated Exposure Over Threshold 40). Celui-ci représente
+    l’accumulation d’exposition à l’ozone au-delà du seuil de 40 parties par
+    milliard, soit 80 µg/m³. Son calcul repose sur la somme des écarts entre
+    les concentrations horaires d’ozone dépassant 80 µg/m³ et ce seuil de
+    80 µg/m³. Seules les concentrations horaires entre 8 h et 20 h sont
+    prises en compte, de mai à juillet, période de pleine végétation.
     <br></br>
     <br></br>
-    Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
+    Une valeur cible(*) de 18 000 µg/m³.h, en moyenne calculée sur 5
     ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant la
-    qualité de l’air ambiant et un air pur pour l’Europe.
+    qualité de l’air ambiant et un air pur pour l’Europe. Cette directive fixe
+    également un objectif à long terme de 6 000 µg/m³.h, calculé sur
+    une seule année et à atteindre au plus tard le 1er janvier 2050.
+    <br></br>
+    <br></br>
+    Les données proposées sont calculées par l’Institut
+    national de l’environnement industriel et des risques (Ineris).
+    Elle représente la pollution dite « de fond » : les abords
+    du trafic dense et des sites industriels ne sont pas représentés. La carte
+    est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
     <br></br>
     <br></br>
     <i>

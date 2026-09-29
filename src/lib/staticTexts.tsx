@@ -329,14 +329,34 @@ export const EtatCoursEauRessourcesEauText = () => (
   </div>
 );
 
+// Sources du texte :
+// « cinq principales pressions » : IPBES, communiqué du rapport mondial, 5 mai 2019, https://www.ipbes.net/news/Media-Release-Global-Assessment-Fr — « (1) les changements d'usage des terres et de la mer ; (2) l'exploitation directe de certains organismes ; (3) le changement climatique ; (4) la pollution et (5) les espèces exotiques envahissantes »
+// « Très oxydant » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 7 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « un impact néfaste sur la santé et sur l'environnement, du fait de son caractère oxydant »
+// « aussi bien les cultures que la végétation naturelle » : Airparif, p. 11, § 2.2 — « L'ozone touche à la fois la végétation naturelle (en particulier, les forêts et les zones d'intérêt écologique), mais également des cultures (notamment les céréales) »
+// « en altérant les tissus des feuilles […] rendements agricoles » : Airparif, p. 11, § 2.2 — « l'ozone conduit à la formation de nécroses sur les feuilles, ce qui limite la photosynthèse […] et provoque, à terme, des baisses de rendement pour les cultures »
+// « capacité des végétaux à absorber le CO₂ » : Airparif, p. 12, § 2.3 — « en réduisant l'activité photosynthétique des plantes, des cultures, des forêts, celles-ci seront ainsi moins capables de consommer le CO2 atmosphérique »
+// « polluant secondaire […] sous l'effet du soleil et de la chaleur, par réaction chimique entre d'autres polluants » : Airparif, p. 7, § 1 — « Il s'agit d'un polluant secondaire. Il est principalement formé chimiquement dans l'atmosphère, par oxydation des Composés Organiques Volatils (COV) en présence d'oxydes d'azote (NOx), sous l'effet du rayonnement solaire et de fortes températures »
+// « comme ceux émis par les transports » : Conseil national de l'air, L'ozone et ses impacts, octobre 2025, p. 2 du PDF, https://www.ecologie.gouv.fr/sites/default/files/documents/25084_Ozone-et-ses-impacts_vf.pdf — « les oxydes d'azote (NOx) issus du transport »
+// « Ses concentrations culminent donc en été » : Airparif, p. 8 — « les plus fortes concentrations d'ozone sont mesurées durant l'été, lorsque que les températures et l'ensoleillement sont les plus forts »
+// « en pleine période de végétation » : Airparif, p. 14, § 3.1 — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « Portée par le vent […] en subissent les effets » : texte TACCT précédent, conservé ; Airparif, p. 10 — « L'ozone est un polluant qui voyage. […] La pollution issue de l'agglomération impacte les zones rurales alentours »
 export const AOT40Text = () => (
   <>
     <Body size="sm">
-      La pollution figure parmi les cinq principales pressions à l’origine de
-      l’effondrement de la biodiversité. Portée par le vent, la pollution à
-      l’ozone ne s'arrête pas aux frontières des agglomérations. La dispersion
-      peut s’étendre sur plusieurs centaines de kilomètres. Même les territoires
-      éloignés des sources de pollution en subissent les effets.
+      La pollution figure parmi les cinq principales pressions à l'origine de
+      l'effondrement de la biodiversité. Très oxydant, l'ozone touche aussi
+      bien les cultures que la végétation naturelle : en altérant les tissus
+      des feuilles, il limite la photosynthèse, ce qui réduit les rendements
+      agricoles et la capacité des végétaux à absorber le CO₂.
+    </Body>
+    <Body size="sm"><br></br>
+      L'ozone n'est pas rejeté directement dans l'air : c’est un polluant
+      secondaire qui se forme sous l'effet du soleil et de la chaleur, par
+      réaction chimique entre d'autres polluants comme ceux émis par les
+      transports. Ses concentrations culminent donc en été, en pleine période
+      de végétation. Portée par le vent, la pollution à l'ozone ne s'arrête pas
+      aux frontières des agglomérations : même les territoires éloignés des
+      sources de pollution en subissent les effets.
     </Body>
   </>
 );

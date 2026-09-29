@@ -5,7 +5,9 @@ import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { aot40Legends } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
+import type { ValeursTerritoire } from '@/components/maps/mapTilesAOT40';
 import { Loader } from '@/components/ui/loader';
+import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from "@/design-system/base/Textes";
 import { AOT40 } from "@/lib/postgres/models";
@@ -13,21 +15,14 @@ import { AOT40Text } from '@/lib/staticTexts';
 import { AOT40DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
-import { Any } from '@/lib/utils/types';
-import * as turf from '@turf/turf';
-import type { Feature, MultiPoint, Point } from 'geojson';
+import { Skeleton } from 'antd';
+import type { Geometry } from 'geojson';
 import { useSearchParams } from "next/navigation";
-import { lazy, Suspense, useRef } from 'react';
+import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
 
 // const MapAOT40 = lazy(() => import('@/components/maps/mapAOT40').then(m => ({ default: m.MapAOT40 })));
 const MapTilesAOT40 = lazy(() => import('@/components/maps/mapTilesAOT40').then(m => ({ default: m.MapTilesAOT40 })));
-
-type NearestPoint = Feature<Point, {
-  featureIndex: number;
-  distanceToPoint: number;
-  [key: string]: Any;
-}>;
 
 export const OzoneEtVegetation = (props: {
   aot40: AOT40[];
@@ -44,47 +39,48 @@ export const OzoneEtVegetation = (props: {
   const type = searchParams.get('type')!;
   const mapRef = useRef<maplibregl.Map | null>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
+  const [valeurs, setValeurs] = useState<ValeursTerritoire | undefined>(undefined);
 
-  // Calculate center coordinates from territory geometry
-  const territoireGeometry = contoursCommunes ? JSON.parse(contoursCommunes.geometry) : null;
-  const polygonTerritoire = territoireGeometry ? turf.feature(territoireGeometry) : null;
-  const centroid = polygonTerritoire ? turf.centroid(polygonTerritoire).geometry.coordinates : null;
-  // GeoJSON uses [longitude, latitude], but we need [latitude, longitude] to match AOT40 data
-  const centerCoord = centroid ? [centroid[1], centroid[0]] : [0, 0];
-  // Transform AOT40 data and calculate station with max value
-  let stationWithMaxValue: Feature<Point | MultiPoint, { value: number; nom_site: string; }>[] | null = null;
-  let nearestStation: NearestPoint | null = null;
-
-  if (aot40 && aot40.length > 0) {
-    const aot40map = aot40?.map((station: AOT40) =>
-      turf.point([station.latitude, station.longitude], {
-        value: station.valeur,
-        nom_site: station.nom_site,
-      })
-    );
-
-    const pointCollection = turf.featureCollection(aot40map);
-    const centerPoint = turf.point(centerCoord as [number, number]);
-    nearestStation = turf.nearestPoint(centerPoint, pointCollection);
-    const circle = turf.circle(centerPoint, nearestStation.properties.distanceToPoint + 20, { steps: 10, units: 'kilometers' });
-    const stationsWithinCircle = turf.pointsWithinPolygon(pointCollection, circle);
-    if (stationsWithinCircle.features.length > 0) {
-      stationWithMaxValue = stationsWithinCircle.features
-        .filter((f) => f.properties?.value === Math.max(...stationsWithinCircle.features.map((f) => f.properties?.value)));
-    }
-  }
+  const territoireGeometry = useMemo<Geometry | null>(
+    () => (contoursCommunes ? JSON.parse(contoursCommunes.geometry) : null),
+    [contoursCommunes]
+  );
+  const carteDisponible = Boolean(coordonneesCommunes && coordonneesCommunes.codes.length);
+  const isOutreMer = coordonneesCommunes
+    ? coordonneesCommunes.bbox.maxLat < 41 || coordonneesCommunes.bbox.maxLng < -6
+    : false;
+  const valeursTerritoire = carteDisponible && territoireGeometry ? valeurs : null;
+  const enCalcul = valeursTerritoire === undefined && !isOutreMer;
   const exportData = IndicatorExportTransformations.biodiversite.aot40(aot40);
 
   return (
     <>
       <div className={styles.datavizMapContainer}>
         <div className={styles.chiffreDynamiqueWrapper} >
-          {stationWithMaxValue && <MicroNumberCircle valeur={stationWithMaxValue[0].properties.value} arrondi={0} unite='µg/m³' ariaLabel="Valeur maximale d'AOT40 mesurée sur votre territoire, en microgrammes par mètre cube" />}
-          <div className={styles.text}>
-            <AOT40DynamicText
-              stationWithMaxValue={stationWithMaxValue}
-              nearestPoint={nearestStation!}
+          {enCalcul ? (
+            <div style={{ marginBottom: '0.875rem' }}>
+              <Skeleton.Avatar active shape="circle" size={110} />
+            </div>
+          ) : valeursTerritoire && !isOutreMer && (
+            <MicroNumberCircle
+              valeur={valeursTerritoire.moyenne}
+              arrondi={0}
+              unite='µg/m³.h'
+              ariaLabel="Exposition moyenne de la végétation à l'ozone (AOT40) sur votre territoire, en microgrammes par mètre cube heure"
             />
+          )}
+          <div className={styles.text} style={enCalcul ? { flex: 1 } : undefined}>
+            {enCalcul ? (
+              <div role="status" aria-label="Calcul de l'exposition de votre territoire en cours" style={{ width: '100%' }}>
+                <Skeleton active title={false} paragraph={{ rows: 3 }} />
+              </div>
+            ) : (
+              <AOT40DynamicText
+                valeurs={valeursTerritoire}
+                isOutreMer={isOutreMer}
+                type={type}
+              />
+            )}
             <CustomTooltipNouveauParcours
               title={AOT40TooltipText}
               texte="D'où vient ce chiffre ?"
@@ -92,27 +88,12 @@ export const OzoneEtVegetation = (props: {
           </div>
         </div>
         <div className='pr-5 pt-8'>
-          <AOT40Text />
+          <ReadMoreFade
+            maxHeight={100}
+          >
+            <AOT40Text />
+          </ReadMoreFade>
         </div>
-        {/* <div className={styles.mapWrapper}>
-          {
-            aot40.length && contoursCommunes ? (
-              <Suspense fallback={<Loader />}>
-                <MapAOT40
-                  aot40={aot40}
-                  contoursCommunes={contoursCommunes}
-                  communesCodes={communesCodes}
-                />
-                <div
-                  className={styles.legend}
-                  style={{ width: 'auto', justifyContent: 'center' }}
-                >
-                  <LegendCompColor legends={aot40Legends} />
-                </div>
-              </Suspense>
-            ) : <div className='p-10 flex flex-row justify-center'><DataNotFoundForGraph image={DataNotFound} /></div>
-          }
-        </div> */}
         <div className={styles.mapWrapper}>
           {coordonneesCommunes && coordonneesCommunes.codes.length ? (
             <Suspense fallback={<Loader />}>
@@ -122,6 +103,8 @@ export const OzoneEtVegetation = (props: {
                 mapContainer={mapContainer}
                 bucketUrl="aot40"
                 layer="aot40"
+                territoireGeometry={territoireGeometry}
+                onValeursTerritoire={setValeurs}
                 paint={{
                   'fill-color': [
                     'step',
@@ -164,7 +147,7 @@ export const OzoneEtVegetation = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : INERIS, 2026 (consultée en mai 2026)
+          Source : INERIS, 2024 (consultée en mai 2026)
         </Body>
         {
           aot40.length && contoursCommunes ? (
