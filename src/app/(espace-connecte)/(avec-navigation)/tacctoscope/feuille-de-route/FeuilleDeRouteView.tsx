@@ -9,7 +9,7 @@ import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
 import { getCriterionProgress, GlobalState } from '@/lib/tacctoscope/progress';
 import { AnswerMap } from '@/lib/tacctoscope/types';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
 import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
@@ -29,6 +29,10 @@ export const FeuilleDeRouteView = ({
 }: Props) => {
   const [hydrated, setHydrated] = useState(isAuthenticated);
   const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   useEffect(() => {
     if (isAuthenticated) return;
