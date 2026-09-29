@@ -35,7 +35,8 @@ const THEMATIQUES = [
   'Eau',
   'Forêts',
   'Gestion des risques',
-  'Santé'
+  'Santé',
+  'Air'
 ];
 
 for (const thematique of THEMATIQUES) {

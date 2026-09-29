@@ -154,6 +154,16 @@ export const sommaireThematiques = {
         sousCategories: ['Hauteur de la canopée']
       }
     ]
+  },
+  Air: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Santé',
+        icone: '🏥',
+        sousCategories: ['Pollution à l’ozone']
+      }
+    ]
   }
 };
 
@@ -342,7 +352,7 @@ export const thematiquesInfo: {
   Air: {
     title: 'Air',
     description: <div></div>,
-    link: ''
+    link: 'Air'
   },
   Entreprises: {
     title: 'Entreprises',

@@ -56,7 +56,7 @@ export const nomThematiques = [
     yOffset: -15,
     icon: '🏥',
     disabled: false,
-    liens: ['Confort thermique', 'Eau', 'Qualité de l\'air', 'Biodiversité']
+    liens: ['Confort thermique', 'Eau', "Qualité de l'air", 'Biodiversité']
   },
   {
     label: 'Confort thermique',
@@ -103,8 +103,8 @@ export const nomThematiques = [
     xOffset: -30,
     yOffset: 20,
     icon: '💨',
-    disabled: true,
-    liens: []
+    disabled: false,
+    liens: ['Santé', 'Biodiversité']
   },
   {
     label: 'Biodiversité',
@@ -391,7 +391,7 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.25
   },
-{
+  {
     source: 'Santé',
     target: 'Biodiversité',
     curve: -1,
@@ -409,7 +409,21 @@ export const liensEntreThematiques = [
   //   target: 'Gestion des risques',
   //   curve: 1,
   //   curveRadius: 1
-  // }
+  // },
+
+  // Air
+  {
+    source: 'Air',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 1
+  },
+  {
+    source: 'Air',
+    target: 'Santé',
+    curve: 1,
+    curveRadius: 0.15
+  },
 ];
 
 // Grouper les nœuds par catégorie avec leurs indices d'origine
