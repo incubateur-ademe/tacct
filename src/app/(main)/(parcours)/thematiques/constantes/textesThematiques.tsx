@@ -351,7 +351,24 @@ export const thematiquesInfo: {
   },
   Air: {
     title: 'Air',
-    description: <div></div>,
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          La qualité de l’air se joue à l’échelle d’un bassin de vie, pas
+          seulement des zones émettrices : polluants, chaleur et vents
+          déterminent où et quand l’air devient un enjeu. Deux domaines
+          révèlent l’exposition de votre territoire :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">🏥 Santé</Body>
+          <Body size="sm">🌼 Biodiversité</Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Ensemble, ils montrent à quel point la qualité de l’air de votre
+          territoire compte pour vos habitants et vos écosystèmes.
+        </Body>
+      </div>
+    ),
     link: 'Air'
   },
   Entreprises: {

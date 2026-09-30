@@ -1,23 +1,27 @@
 'use client';
 import ScrollToHash from '@/components/interactions/ScrollToHash';
+import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { GetArbovirose } from '@/lib/queries/databases/sante';
-import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
+import {
+  GetCommunesContours,
+  GetCommunesCoordinates
+} from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
-import { SeuilsReglementairesO3 } from '../../indicateurs/sante/1-o3';
+import { PollutionOzone } from '../../indicateurs/air/1-PollutionOzone';
 
 interface Props {
   coordonneesCommunes: {
     codes: string[];
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
+  contoursCommunes: { geometry: string } | null;
 }
 
-export const DonneesAir = ({ coordonneesCommunes }: Props) => {
+export const DonneesAir = ({ coordonneesCommunes, contoursCommunes }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Gestion des risques';
   const code = searchParams.get('code')!;
@@ -25,6 +29,7 @@ export const DonneesAir = ({ coordonneesCommunes }: Props) => {
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
+    contoursCommunes
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -37,12 +42,13 @@ export const DonneesAir = ({ coordonneesCommunes }: Props) => {
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newArbovirose] = await Promise.all([
+      const [newCoordonneesCommunes, newContoursCommunes] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetArbovirose(code, libelle, type)
+        GetCommunesContours(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
+        contoursCommunes: newContoursCommunes
       });
       setIsLoading(false);
     })();
@@ -95,12 +101,15 @@ export const DonneesAir = ({ coordonneesCommunes }: Props) => {
               Pollution à l’ozone
             </H3>
           </div>
-          <SeuilsReglementairesO3
+          <PollutionOzone
             coordonneesCommunes={data.coordonneesCommunes}
+            contoursCommunes={data.contoursCommunes}
           />
         </div>
       </section>
 
+      {/* Sources */}
+      <SourcesSection tag="h2" thematique="air" />
     </div>
   );
 };

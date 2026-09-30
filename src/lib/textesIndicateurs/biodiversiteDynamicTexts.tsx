@@ -210,10 +210,19 @@ export const AOT40DynamicText = ({
 
 export const O3DynamicText = () => {
   return (
-    <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
-      Au niveau européen, la valeur cible pour la protection de la santé humaine 
-      est fixé à un maximum journalier de la moyenne sur 8 h de 120 µg/m3, à ne 
-      pas dépasser plus de <b>25 jours par an</b> (en moyenne sur 3 ans).
-    </Body>
+    <>
+      <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+        L’ozone se forme lorsque des polluants, sous l’effet du rayonnement
+        solaire et des températures élevées, réagissent entre eux. Résultat :
+        les vagues de chaleur s’accompagnent souvent de pics de pollution à
+        l’ozone.
+      </Body>
+      <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+        Au niveau européen, la valeur cible pour la protection de la santé
+        humaine est fixé à un maximum journalier de la moyenne sur 8&nbsp;h de
+        120&nbsp;µg/m3, à ne pas dépasser plus de <b>25 jours par an</b> (en
+        moyenne sur 3 ans).
+      </Body>
+    </>
   )
 };

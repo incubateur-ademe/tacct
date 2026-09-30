@@ -431,7 +431,7 @@ export const airesAppellationsControleesTooltipText = (
 
 export const O3TooltipText = (
   <Body weight="bold" size="sm">
-    Les données de la carte sont calculées par l’Institut national de l'environnement industriel
+    Ces chiffres sont calculés par l’Institut national de l'environnement industriel
     et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
     La carte est visible sur leur{' '}
     <a
@@ -442,6 +442,61 @@ export const O3TooltipText = (
       site
     </a>
     .
+  </Body>
+);
+
+// Sources du texte :
+// « Pour chaque jour, on calcule la concentration moyenne d’ozone sur 8 heures consécutives, heure par heure, et on retient la plus élevée » : directive (UE) 2024/2881, annexe I, note (3), https://eur-lex.europa.eu/eli/dir/2024/2881/oj — « Le maximum journalier de la concentration moyenne sur 8 heures est sélectionné après examen des moyennes glissantes sur 8 heures, calculées à partir des données horaires et actualisées toutes les heures »
+// « le nombre de jours où cette valeur dépasse 120 µg/m³ » : INERIS, méthodologie, tableau « Synthèse des indicateurs statistiques cartographiés », https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air — « Nombre de jours pour lesquels la moyenne glissante sur 8h dépasse 120 µg.m-3 (en moyenne sur 3 ans) »
+// « en moyenne annuelle sur 2022-2024 » : SDES, La pollution de l’air par l’ozone (O₃), mise à jour du 30 juin 2026, section « Les concentrations d’O₃ au regard de la réglementation pour la protection de la santé, en cartes », https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « En moyenne sur 2022-2024 » ; fichier INERIS Reanalysed_FRA_2024_O3_t120_3y, attribut Times_bnds — « 20220101 ; 20241231 »
+// « la directive 2024/2881 du 23 octobre 2024 concernant la qualité de l’air ambiant et un air pur pour l’Europe » : Légifrance, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050712855 — titre du texte
+// « ne doivent pas être dépassés plus de 25 jours par an, en moyenne calculée sur 3 ans » : directive (UE) 2024/2881, annexe I, note (5) — « Jusqu’au 1er janvier 2030, 120 μg/m3 à ne pas dépasser plus de 25 jours par année civile, moyenne calculée sur trois ans »
+// « puis plus de 18 jours à partir du 1er janvier 2030 » : directive (UE) 2024/2881, annexe I, section 2 B — « 120 μg/m3 à ne pas dépasser plus de 18 jours par année civile, moyenne calculée sur trois ans »
+// « objectif à long terme : ne pas dépasser 100 µg/m³ plus de 3 jours par an, au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l’ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] 100 μg/m3 à ne pas dépasser plus de 3 jours par année civile (99e percentile) »
+// « seuil d’information et de recommandation (180 µg/m³ en moyenne horaire) […] seuil d’alerte (240 µg/m³ en moyenne horaire) » : Code de l’environnement, article R221-1, 5° e) et f), https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022964539 — « Seuil de recommandation et d’information : 180 µg/m³ en moyenne horaire » ; « Seuil d’alerte pour une protection sanitaire pour toute la population : 240 µg/m³ en moyenne horaire »
+// « dont le dépassement caractérise un épisode de pollution » : SDES, La pollution de l’air par l’ozone (O₃), section « Les épisodes de pollution en O₃ en France » — « Un épisode de pollution est caractérisé par le dépassement de certaines normes réglementaires de qualité de l’air pour la protection de la santé humaine à court terme (seuil d’information et de recommandation et seuil d’alerte) »
+// « Les données sont calculées par l’Institut national de l’environnement industriel et des risques (Ineris) » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « Données issues de la Cartothèque de Qualité de l’Air de l’Ineris »
+// « (*) Valeur cible » : directive (UE) 2024/2881, article 4, point 32 — « un niveau fixé sur la base des meilleures connaissances scientifiques, dans le but d’éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine ou l’environnement, à atteindre dans la mesure du possible sur une période donnée »
+export const O3AirTooltipText = (
+  <Body weight="bold" size="sm">
+    Pour chaque jour, on calcule la concentration moyenne d’ozone sur
+    8&nbsp;heures consécutives, heure par heure, et on retient la plus élevée.
+    Le chiffre correspond au nombre de jours où cette valeur dépasse
+    120&nbsp;µg/m³, en moyenne annuelle sur 2022-2024.
+    <br></br>
+    <br></br>
+    Pour protéger la santé humaine, la directive 2024/2881 du 23 octobre 2024
+    concernant la qualité de l’air ambiant et un air pur pour l’Europe fixe une
+    valeur cible(*) : ces 120&nbsp;µg/m³ ne doivent pas être dépassés plus de
+    25&nbsp;jours par an, en moyenne calculée sur 3&nbsp;ans, puis plus de
+    18&nbsp;jours à partir du 1er janvier 2030. Elle fixe également un objectif
+    à long terme : ne pas dépasser 100&nbsp;µg/m³ plus de 3&nbsp;jours par an,
+    au plus tard le 1er janvier 2050.
+    <br></br>
+    <br></br>
+    Cette valeur cible ne doit pas être confondue avec le seuil d’information
+    et de recommandation (180&nbsp;µg/m³ en moyenne horaire) ni avec le seuil
+    d’alerte (240&nbsp;µg/m³ en moyenne horaire), dont le dépassement
+    caractérise un épisode de pollution.
+    <br></br>
+    <br></br>
+    Les données sont calculées par l’Institut national de l’environnement
+    industriel et des risques (Ineris). La carte est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
+    <br></br>
+    <br></br>
+    <i>
+      (*) Valeur cible : niveau à atteindre, dans la mesure du possible, afin
+      d’éviter, de prévenir ou de réduire les effets nocifs sur la santé
+      humaine.
+    </i>
   </Body>
 );
 

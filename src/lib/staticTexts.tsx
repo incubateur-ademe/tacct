@@ -560,6 +560,11 @@ export const SurfacesAgricolesText = () => (
   </div>
 );
 
+// Sources du texte :
+// « 93 zones géographiques : 88 aires urbaines de l’Hexagone, la Guadeloupe, la Martinique, La Réunion, Mayotte et le littoral nord-ouest de la Guyane » : Cerema, actualité du 15 septembre 2026, https://www.cerema.fr/fr/actualites/cartographie-lcz-outil-villes-plus-fraiches-cerema-presente — « Une cartographie en ligne des LCZ sur 93 zones géographiques […] En France Hexagonale, 88 aires urbaines de plus de 50 000 habitants sont couvertes. En Outre-Mer, cette couverture concerne les îles de Guadeloupe, Martinique, La Réunion et Mayotte, et le littoral nord-ouest de Guyane. »
+// « 12 110 communes couvertes » : Cerema, même page — « La cartographie est disponible en ligne pour 12 110 communes (sur 34 955) »
+// « plus de 5 millions d’habitants vivent dans des quartiers à forte sensibilité aux fortes chaleurs » : Cerema, même page, rubrique « Enseignements » — « Plus de 5 millions d’habitants vivent dans des quartiers à forte sensibilité aux fortes chaleurs »
+// « cahier du Cerema « Cartographie des LCZ : un outil pour des villes plus fraîches » » : Cerema, collection « Les cahiers », 2026, https://doc.cerema.fr/Default/doc/SYRACUSE/616032/cartographie-des-lcz-un-outil-pour-des-villes-plus-fraiches — titre du document
 export const LCZCeremaText1 = () => (
   <>
     <Body weight="bold">Comment lire cette carte ?</Body>
@@ -576,21 +581,23 @@ export const LCZCeremaText1 = () => (
         cette cartographie n’est pas une modélisation de l’îlot de chaleur
         urbain.
       </b>{' '}
-      Ces données, fournies par le CEREMA, couvrent 88 aires urbaines en France
-      métropolitaine. Sur les 12 000 communes étudiées, plus de 5 millions
-      d’habitants vivent dans des quartiers très sensibles aux fortes chaleurs.
+      Ces données, fournies par le CEREMA, couvrent 93 zones géographiques :
+      88 aires urbaines de l’Hexagone, la Guadeloupe, la Martinique,
+      La Réunion, Mayotte et le littoral nord-ouest de la Guyane. Sur les
+      12 110 communes couvertes, plus de 5 millions d’habitants vivent dans
+      des quartiers à forte sensibilité aux fortes chaleurs.
     </Body>
 
     <Body style={{ marginTop: '1rem', color: 'var(--gris-dark)' }}>
-      Rendez-vous sur le site du{' '}
+      Pour prendre en main cette cartographie, consultez le cahier du{' '}
       <a
-        href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
+        href="https://doc.cerema.fr/Default/doc/SYRACUSE/616032/cartographie-des-lcz-un-outil-pour-des-villes-plus-fraiches"
         target="_blank"
         rel="noreferrer"
       >
         Cerema
       </a>{' '}
-      pour en savoir plus sur leur méthodologie.
+      « Cartographie des LCZ : un outil pour des villes plus fraîches ».
     </Body>
   </>
 );
@@ -716,21 +723,64 @@ export const DebroussaillementText = ({
 );
 
 export const O3Text = () => (
-  <Body size="sm">
-    <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
-    (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
-    une réglementation et des seuils conduisant aux déclenchement de procédures
-    préfectorales. Si les pics de pollution aiguë provoquent des symptômes
-    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
-    plus préoccupant : elle est associée à des effets à long terme, même à des
-    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
-    l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
-    recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
-    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
-      agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
-      en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
-        appliquées </ScrollToSourceTag>.</b>
-  </Body>
+  <>
+    <Body size="sm">
+      <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
+      (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
+      une réglementation et des seuils conduisant aux déclenchement de procédures
+      préfectorales. Si les pics de pollution aiguë provoquent des symptômes
+      respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
+      plus préoccupant : elle est associée à des effets à long terme, même à des
+      concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
+      l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
+      recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
+      plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
+        agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
+        en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
+          appliquées </ScrollToSourceTag>.</b>
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Pas de stations sur votre territoire ?
+    </Body>
+    <Body size="sm" style={{ marginTop: '0.5rem' }}>
+      Les concentrations d’ozone les plus importantes ne sont pas toujours
+      mesurées au cœur des zones émettrices (centres villes, zones
+      industrielles) mais parfois à 50, 100 ou 150 km de là, sous le vent des
+      émetteurs. Là où, en milieu urbain, l’ozone produit la journée disparaît
+      en grande partie pendant la nuit ou sous l’effet d’autres polluants, dans
+      les zones rurales en revanche, la moindre présence de polluants
+      destructeurs peut favoriser son accumulation et générer des
+      concentrations plus élevées qu’en ville.
+    </Body>
+  </>
+);
+
+// Sources du texte :
+// « gaz irritant : inhalé, il peut provoquer des troubles respiratoires, déclencher des crises d’asthme et réduire la fonction pulmonaire » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 11 du PDF, § 2.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « L’ozone est un gaz irritant qui pénètre facilement jusqu’aux voies respiratoires les plus fines […] il peut provoquer des problèmes respiratoires, déclencher des crises d’asthme, diminuer la fonction pulmonaire »
+// « Contrairement au dioxyde d’azote et aux particules (PM10), ses dépassements de la valeur cible pour la santé concernent surtout les zones rurales et les agglomérations de petite et moyenne taille » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, p. 39 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « Contrairement au NO2 et aux PM10, les agglomérations les plus touchées sont celles de moyenne et de petite taille (moins de 50 000 habitants), de même que les zones rurales »
+// « Les pics d’ozone surviennent par temps chaud et ensoleillé » : Atmo France, Canicule et ozone : bien s’informer pour mieux se protéger, 19 juin 2026, https://www.atmo-france.org/actualite/canicule-et-ozone-bien-sinformer-pour-mieux-se-proteger — « les concentrations d’ozone augmentent généralement lors des périodes estivales, particulièrement lorsque les conditions sont chaudes, ensoleillées et peu ventées »
+// « la chaleur en aggrave les effets sur la santé » : PNACC-3, mesure 18, action 2, p. 140, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « La chaleur aggravant les effets sanitaires de certains polluants » ; Santé publique France, Pollution atmosphérique : quels sont les risques ?, https://invs.santepubliquefrance.fr/air/pollution-atmospherique-quels-sont-les-risques — « le risque de décès associé à l’ozone et aux particules fines était plus important les jours chauds »
+// « La mesure 18 […] prévoit ainsi une expérimentation dans un département : dès la vigilance chaleur orange ou rouge, le préfet pourra y déclencher des mesures habituellement prises lors des épisodes de pollution » : PNACC-3, mesure 18, actions nouvelles, p. 139 — « Réaliser une expérimentation pendant une durée maximale de deux ans dans un département pour que le préfet examine le déclenchement de mesures, appliquées habituellement lors d’épisodes de pollution, en cas de vigilance chaleur orange ou rouge »
+// « comme la réduction de vitesse des transports ou la limitation du trafic » : PNACC-3, mesure 18, action 2, p. 140 — « des limitations, reports de trafic ou réduction de vitesse pour le secteur des transports »
+export const O3AirText = () => (
+  <>
+    <Body size="sm">
+      L’ozone est un gaz irritant : inhalé, il peut provoquer des troubles
+      respiratoires, déclencher des crises d’asthme et réduire la fonction
+      pulmonaire. Contrairement au dioxyde d’azote et aux particules (PM10),
+      ses dépassements de la valeur cible pour la santé concernent surtout les
+      zones rurales et les agglomérations de petite et moyenne taille.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Les pics d’ozone surviennent par temps chaud et ensoleillé, alors même
+      que la chaleur en aggrave les effets sur la santé. La mesure 18 du Plan
+      National d’Adaptation au Changement Climatique (PNACC-3) prévoit ainsi
+      une expérimentation dans un département : dès la vigilance chaleur
+      orange ou rouge, le préfet pourra y déclencher des mesures
+      habituellement prises lors des épisodes de pollution, comme la réduction
+      de vitesse des transports ou la limitation du trafic.
+    </Body>
+  </>
 );
 
 export const SecheressesText = () => (

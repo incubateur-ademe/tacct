@@ -43,7 +43,8 @@ export const SourcesSection = ({
   | 'agricultureImpact'
   | 'biodiversite'
   | 'gestionDesRisques'
-  | 'sante';
+  | 'sante'
+  | 'air';
 }) => {
   return (
     <section
