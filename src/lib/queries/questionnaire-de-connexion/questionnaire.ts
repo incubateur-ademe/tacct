@@ -126,7 +126,7 @@ const validerSiTermine = async (
         where: { id: userId },
         select: { email: true }
       });
-      if (ligne?.email) await envoyerMailBienvenue(ligne.email, etat.profil);
+      if (ligne?.email) await envoyerMailBienvenue(ligne.email);
     });
   }
   return true;

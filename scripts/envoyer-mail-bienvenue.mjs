@@ -5,10 +5,9 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 
 // Envoie le mail de bienvenue réel (SMTP Brevo du .env) à l'adresse choisie.
-//   node scripts/envoyer-mail-bienvenue.mjs <email> <profil>
-// profil : cdm | elu | responsable | be | entreprise | admin | etat | autre
+//   node scripts/envoyer-mail-bienvenue.mjs <email>
 
-const [email, profil] = process.argv.slice(2);
+const [email] = process.argv.slice(2);
 
 const racine = path.resolve(import.meta.dirname, '..');
 const sortie = path.join(racine, 'node_modules', '.cache', 'envoyer-mail-bienvenue.cjs');
@@ -20,7 +19,6 @@ await build({
   stdin: {
     contents: `
       export { envoyerMailBienvenue } from './src/lib/mail/bienvenue';
-      export { PROFILS, estProfil } from './src/lib/questionnaire-de-connexion/types';
     `,
     resolveDir: racine,
     loader: 'ts'
@@ -42,14 +40,13 @@ await build({
   ]
 });
 
-const { envoyerMailBienvenue, PROFILS, estProfil } = createRequire(import.meta.url)(sortie);
+const { envoyerMailBienvenue } = createRequire(import.meta.url)(sortie);
 
-if (!email || !profil || !estProfil(profil)) {
-  console.error('Usage : node scripts/envoyer-mail-bienvenue.mjs <email> <profil>');
-  console.error(`Profils : ${PROFILS.map((p) => p.value).join(' | ')}`);
+if (!email) {
+  console.error('Usage : node scripts/envoyer-mail-bienvenue.mjs <email>');
   process.exit(1);
 }
 
-const envoye = await envoyerMailBienvenue(email, profil);
-console.log(envoye ? `Mail envoyé à ${email} (profil ${profil}).` : 'Échec de l’envoi (voir le message ci-dessus).');
+const envoye = await envoyerMailBienvenue(email);
+console.log(envoye ? `Mail envoyé à ${email}.` : 'Échec de l’envoi (voir le message ci-dessus).');
 process.exit(envoye ? 0 : 1);
