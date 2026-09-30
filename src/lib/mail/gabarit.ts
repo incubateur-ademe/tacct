@@ -38,7 +38,7 @@ export const bouton = (
   return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:${marge};">
   <tr>
     <td align="center" bgcolor="${fond}" style="border-radius:60px;background-color:${fond};border:1px solid ${bordure};">
-      <a href="${href}" target="_blank" style="display:inline-block;padding:12px 48px;font-family:${POLICE};font-size:18px;line-height:24px;font-weight:700;color:${couleur};text-decoration:none;border-radius:60px;">${texte}</a>
+      <a href="${href}" target="_blank" style="display:inline-block;padding:12px 48px;font-family:${POLICE};font-size:18px;line-height:24px;font-weight:600;color:${couleur};text-decoration:none;border-radius:60px;">${texte}</a>
     </td>
   </tr>
 </table>`;
@@ -88,7 +88,7 @@ export const gabaritMail = ({ preheader, contenu }: { preheader: string; contenu
             </td>
           </tr>
           <tr>
-            <td style="padding:80px 0 0;">
+            <td style="padding:48px 0 0;">
               ${contenu}
             </td>
           </tr>
