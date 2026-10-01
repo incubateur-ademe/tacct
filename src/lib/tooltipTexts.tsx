@@ -406,6 +406,34 @@ export const SurfacesToujoursEnHerbeText = (
   </Body>
 );
 
+// Sources du texte :
+// « élaboré de manière concertée avec l’ensemble des acteurs d’un territoire, pour structurer l’économie agricole locale et mettre en œuvre un système alimentaire territorial » : Code rural et de la pêche maritime, article L111-2-2, premier alinéa, https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978779 — « sont élaborés de manière concertée avec l'ensemble des acteurs d'un territoire et répondent à l'objectif de structuration de l'économie agricole et de mise en œuvre d'un système alimentaire territorial »
+// « Il s’appuie sur un diagnostic partagé de l’agriculture et de l’alimentation, et sur des actions opérationnelles » : Code rural et de la pêche maritime, article L111-2-2, avant-dernier alinéa — « Ils s'appuient sur un diagnostic partagé de l'agriculture et de l'alimentation sur le territoire et la définition d'actions opérationnelles visant la réalisation du projet »
+// « recensés par l’Observatoire national des PAT (France PAT), à partir de fiches renseignées par leurs animateurs et relues par les DRAAF » : France PAT, Vademecum de l'Observatoire, juin 2025, https://france-pat.fr/app/uploads/2025/06/France-PAT_Vademecum_Observatoire.pdf — fiches « produites par les animateurs PAT » et « relues par les DRAAF »
+// « Ce recensement porte sur les PAT reconnus par le ministère de l’Agriculture » : France PAT, Vademecum de l'Observatoire — « Cet Observatoire, depuis 2024 et le passage à France PAT, recense uniquement les PAT reconnus par le Ministère »
+// « au niveau 1 (PAT émergents) ou au niveau 2 (PAT opérationnels) » : DGAL, Reconnaissance officielle des PAT, p. 3, https://agriculture.gouv.fr/telecharger/125564 — « Niveau 1 : PAT émergent » ; « Niveau 2 : PAT opérationnel »
+// « ainsi que sur quelques projets en attente de reconnaissance » : France PAT, fichier pats-20250710, colonne niveaux_de_labelisation, https://www.data.gouv.fr/datasets/pat-projets-alimentaires-territoriaux-description — 12 PAT sur 460 en « Labellisation en attente »
+// « Une commune peut appartenir à plusieurs PAT, par exemple un PAT intercommunal et un PAT départemental » : colonne projets_alimentaires_territoriaux de databases_v2.table_commune ; DGAL, document préparatoire à la reconnaissance de niveau 2, p. 10, https://draaf.bretagne.agriculture.gouv.fr/IMG/pdf/notice_de_reconnaissance_n2.pdf — « Dans le cas spécifique des PAT départementaux, organisation de l'articulation […] avec et entre les PAT infra »
+export const projetsAlimentairesTerritoriauxTooltipText = (
+  <Body weight="bold" size="sm">
+    Un projet alimentaire territorial (PAT) est élaboré de manière concertée
+    avec l’ensemble des acteurs d’un territoire, pour structurer l’économie
+    agricole locale et mettre en œuvre un système alimentaire territorial. Il
+    s’appuie sur un diagnostic partagé de l’agriculture et de l’alimentation,
+    et sur des actions opérationnelles.
+    <br></br>
+    <br></br>
+    Les PAT sont recensés par l’Observatoire national des PAT (France PAT), à
+    partir de fiches renseignées par leurs animateurs et relues par les
+    directions régionales de l’alimentation, de l’agriculture et de la forêt
+    (DRAAF). Ce recensement porte sur les PAT reconnus par le ministère de
+    l’Agriculture, au niveau 1 (PAT émergents) ou au niveau 2 (PAT
+    opérationnels), ainsi que sur quelques projets en attente de
+    reconnaissance. Une commune peut appartenir à plusieurs PAT, par exemple un
+    PAT intercommunal et un PAT départemental.
+  </Body>
+);
+
 export const airesAppellationsControleesTooltipText = (
   <>
     <Body weight="bold" size="sm">

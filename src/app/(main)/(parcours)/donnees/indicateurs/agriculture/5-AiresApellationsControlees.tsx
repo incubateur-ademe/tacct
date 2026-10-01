@@ -10,32 +10,9 @@ import { Body } from '@/design-system/base/Textes';
 import { TableCommuneModel } from '@/lib/postgres/models';
 import { AiresAppellationsControleesText } from '@/lib/staticTexts';
 import { airesAppellationsControleesTooltipText } from '@/lib/tooltipTexts';
+import { parsePostgresArray } from '@/lib/utils/reusableFunctions/parsePostgresArray';
 import { useSearchParams } from 'next/navigation';
 import styles from '../../explorerDonnees.module.scss';
-
-const parsePostgresArray = (pgArray: string | null): string[] => {
-  if (!pgArray || pgArray === '{}') return [];
-  const content = pgArray.slice(1, -1);
-  if (!content) return [];
-  const items: string[] = [];
-  let currentItem = '';
-  let inQuotes = false;
-  for (let i = 0; i < content.length; i++) {
-    const char = content[i];
-    if (char === '"') {
-      inQuotes = !inQuotes;
-    } else if (char === ',' && !inQuotes) {
-      items.push(currentItem.trim());
-      currentItem = '';
-    } else {
-      currentItem += char;
-    }
-  }
-  if (currentItem) {
-    items.push(currentItem.trim());
-  }
-  return items;
-};
 
 export const AiresAppellationsControlees = (props: {
   tableCommune: TableCommuneModel[];

@@ -86,7 +86,8 @@ export const sommaireThematiques = {
         icone: '🌾',
         sousCategories: [
           'Part des chefs d’exploitation séniors',
-          'Types de culture'
+          'Types de culture',
+          'Projets alimentaires territoriaux'
         ]
       },
       {

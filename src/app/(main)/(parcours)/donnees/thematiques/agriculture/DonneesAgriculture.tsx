@@ -21,6 +21,7 @@ import { TypesDeCulture } from '../../indicateurs/agriculture/2-TypesDeCultures'
 import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-SuperficiesIrriguees';
 import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
 import { AiresAppellationsControlees } from '../../indicateurs/agriculture/5-AiresApellationsControlees';
+import { ProjetsAlimentairesTerritoriaux } from '../../indicateurs/agriculture/6-ProjetsAlimentairesTerritoriaux';
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
@@ -131,7 +132,11 @@ export const DonneesAgriculture = ({
           </div>
 
           {/* Types de cultures */}
-          <div id="Types-de-culture" className={styles.indicateurWrapper}>
+          <div
+            id="Types-de-culture"
+            className={styles.indicateurWrapper}
+            style={{ borderBottom: '1px solid var(--gris-medium)' }}
+          >
             <div className={styles.h3Titles}>
               <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
                 Surface agricole par type de culture
@@ -139,6 +144,18 @@ export const DonneesAgriculture = ({
             </div>
             <TypesDeCulture
               surfacesAgricoles={data.surfacesAgricoles}
+              tableCommune={data.tableCommune}
+            />
+          </div>
+
+          {/* Projets alimentaires territoriaux */}
+          <div id="Projets-alimentaires-territoriaux" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Projets alimentaires territoriaux (PAT)
+              </H3>
+            </div>
+            <ProjetsAlimentairesTerritoriaux
               tableCommune={data.tableCommune}
             />
           </div>

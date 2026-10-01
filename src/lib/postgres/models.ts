@@ -940,6 +940,7 @@ export type TableCommuneModel = {
   couverture_lcz: string | null;
   aires_appellations_controlees_nom: string[] | null;
   aires_appellations_controlees_signe: string[] | null;
+  projets_alimentaires_territoriaux: string[] | null;
 };
 
 export type DebroussaillementModel = {
