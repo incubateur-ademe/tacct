@@ -1,6 +1,5 @@
 'use client';
 import ScrollToHash from '@/components/interactions/ScrollToHash';
-import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import {
@@ -109,7 +108,7 @@ export const DonneesAir = ({ coordonneesCommunes, contoursCommunes }: Props) => 
       </section>
 
       {/* Sources */}
-      <SourcesSection tag="h2" thematique="air" />
+      {/* <SourcesSection tag="h2" thematique="air" /> */}
     </div>
   );
 };
