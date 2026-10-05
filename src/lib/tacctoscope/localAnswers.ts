@@ -1,3 +1,4 @@
+import { normalizeAnswers } from './answers';
 import { AnswerMap, AnswerValue, CriterionSlug, FeedbackMap } from './types';
 
 const ANSWERS_KEY = 'tacctoscope_local_answers';
@@ -18,7 +19,8 @@ const writeJSON = <T>(key: string, value: T): void => {
   window.localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getLocalAnswers = (): AnswerMap => readJSON(ANSWERS_KEY, {});
+export const getLocalAnswers = (): AnswerMap =>
+  normalizeAnswers(readJSON<Record<string, string>>(ANSWERS_KEY, {}));
 
 export const saveLocalAnswer = (
   questionKey: string,

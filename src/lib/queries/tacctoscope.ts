@@ -3,17 +3,11 @@
 import { randomUUID } from 'node:crypto';
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { prisma } from '@/lib/queries/db';
+import { isAnswerValue, normalizeAnswers } from '@/lib/tacctoscope/answers';
 import { isKnownQuestionKey } from '@/lib/tacctoscope/keys';
-import {
-  ANSWER_VALUES,
-  AnswerMap,
-  AnswerValue
-} from '@/lib/tacctoscope/types';
+import { AnswerMap, AnswerValue } from '@/lib/tacctoscope/types';
 
 type ActionResult = { ok: boolean };
-
-const isAnswerValue = (value: string): value is AnswerValue =>
-  (ANSWER_VALUES as readonly string[]).includes(value);
 
 export const getUserAnswers = async (): Promise<AnswerMap> => {
   const user = await getCurrentUserValide();
@@ -24,8 +18,8 @@ export const getUserAnswers = async (): Promise<AnswerMap> => {
       where: { user_id: user.id },
       select: { question_key: true, value: true }
     });
-    return Object.fromEntries(
-      rows.map((row) => [row.question_key, row.value as AnswerValue])
+    return normalizeAnswers(
+      Object.fromEntries(rows.map((row) => [row.question_key, row.value]))
     );
   } catch (error) {
     console.error('getUserAnswers error', error);

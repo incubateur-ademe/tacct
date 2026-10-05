@@ -1,58 +1,80 @@
 'use client';
 
 import { Body } from '@/design-system/base/Textes';
+import {
+  SCALE_OPTIONS,
+  UNKNOWN_OPTION
+} from '@/lib/tacctoscope/content/options';
 import { AnswerValue, Option } from '@/lib/tacctoscope/types';
 import styles from './shared.module.scss';
 
+const HIGHLIGHT: Record<AnswerValue, string> = {
+  '1': '#FFE2E3',
+  '2': '#FFE2E3',
+  '3': '#E4FFE6',
+  '4': '#9DD9A0',
+  ne_sais_pas: '#E7E5E5'
+};
+
 interface Props {
-  options: Option[];
   value: AnswerValue | null;
   onSelect: (value: AnswerValue) => void;
-  minHint?: string;
-  maxHint?: string;
 }
 
-export const RadioScale = ({
-  options,
-  value,
-  onSelect,
-  minHint,
-  maxHint
-}: Props) => (
-  <div className={styles.radioScaleContainer}>
-    <div className={styles.radioScaleWrapper} role="radiogroup">
-      {options.map((option) => {
-        const selected = option.value === value;
-        return (
-          <button
-            key={option.value}
-            type="button"
-            role="radio"
-            aria-checked={selected}
-            className={`${styles.radioScaleOption} ${selected ? styles.radioScaleOptionSelected : ''
-              }`}
-            onClick={() => onSelect(option.value)}
-          >
-            <span className={styles.radioScaleBullet} aria-hidden="true" />
-            <Body
-              htmlTag="span"
-              size="md"
-              weight="bold"
-            // color={selected ? '#038278' : '#3d3d3d'}
-            >
-              {option.label}
-            </Body>
-          </button>
-        );
-      })}
-    </div>
-    {(minHint || maxHint) && (
-      <div className={styles.radioScaleHints}>
-        <span className={styles.radioScaleHint}>{minHint}</span>
-        <span className={`${styles.radioScaleHint} ${styles.radioScaleHintEnd}`}>
-          {maxHint}
+export const RadioScale = ({ value, onSelect }: Props) => {
+  const answered = value !== null;
+  const labelWeight = answered ? 'regular' : 'bold';
+  const labelColor = '#3D3D3D';
+
+  const renderOption = (option: Option) => {
+    const selected = option.value === value;
+    return (
+      <button
+        key={option.value}
+        type="button"
+        role="radio"
+        aria-checked={selected}
+        className={`${styles.radioScaleOption} ${selected ? styles.radioScaleOptionSelected : ''
+          }`}
+        style={selected ? { background: HIGHLIGHT[option.value] } : undefined}
+        onClick={() => onSelect(option.value)}
+      >
+        <Body
+          htmlTag="span"
+          size="md"
+          weight={selected ? 'bold' : labelWeight}
+          color={labelColor}
+        >
+          {option.label}
+        </Body>
+        <span className={styles.radioScaleBullet} aria-hidden="true" />
+      </button>
+    );
+  };
+
+  return (
+    <div
+      className={`${styles.radioScale} ${answered ? styles.radioScaleAnswered : ''}`}
+      role="radiogroup"
+      aria-label="Retrouvez-vous ceci dans votre diagnostic ? De 1 (pas du tout) à 4 (tout à fait)"
+    >
+      <div className={styles.radioScaleRange}>
+        <span className={styles.radioScaleEndLabel}>
+          <Body htmlTag="span" size="md" weight={labelWeight} color={labelColor}>
+            Pas du tout
+          </Body>
+        </span>
+        <div className={styles.radioScaleSteps}>
+          {SCALE_OPTIONS.map(renderOption)}
+        </div>
+        <span className={styles.radioScaleEndLabel}>
+          <Body htmlTag="span" size="md" weight={labelWeight} color={labelColor}>
+            Tout à fait
+          </Body>
         </span>
       </div>
-    )}
-  </div>
-);
+      <span className={styles.radioScaleSeparator} aria-hidden="true" />
+      {renderOption(UNKNOWN_OPTION)}
+    </div>
+  );
+};

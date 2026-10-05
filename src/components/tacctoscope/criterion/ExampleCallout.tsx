@@ -15,6 +15,7 @@ interface Props {
   children: RichContent;
   attachments?: string[];
   downloadName: string;
+  answered: boolean;
 }
 
 const DocIcon = ({ color }: { color: string }) => (
@@ -32,17 +33,20 @@ export const ExampleCallout = ({
   kind,
   children,
   attachments,
-  downloadName
+  downloadName,
+  answered
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isExemple = kind === 'exemple';
   const accentColor = isExemple ? '#095D55' : '#CE0041';
+  const titleColor = answered ? '#3D3D3D' : isExemple ? '#2b4b49' : '#ce0041';
+  const textColor = answered || isExemple ? '#3D3D3D' : '#CE0041';
   return (
     <div
       className={`${styles.criterionExampleCallout} ${isExemple
           ? styles.criterionExampleCalloutExemple
           : styles.criterionExampleCalloutContre
-        }`}
+        } ${answered ? styles.criterionExampleCalloutAnswered : ''}`}
     >
       <div className={styles.criterionExampleCalloutTitle}>
         <Image
@@ -51,14 +55,14 @@ export const ExampleCallout = ({
           width={16}
           height={16}
         />
-        <Body htmlTag="span" weight="bold" color={isExemple ? '#2b4b49' : '#ce0041'}>
-          {isExemple ? 'Exemple' : 'Contre-exemple'}
+        <Body htmlTag="span" weight="bold" color={titleColor}>
+          {isExemple ? 'Bonne pratique' : 'À éviter'}
         </Body>
       </div>
       <RichText
         content={children}
         size="md"
-        color={isExemple ? '#3d3d3d' : '#CE0041'}
+        color={textColor}
         style={{ fontStyle: 'italic', lineHeight: 1.5 }}
       />
       {attachments && attachments.length > 0 && (

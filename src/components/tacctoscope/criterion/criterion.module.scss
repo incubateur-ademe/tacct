@@ -84,14 +84,6 @@
     gap: 1.25rem;
 }
 
-.criterionQuestionBodyInside {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    border-top: 1px solid #e7e5e5;
-    padding: 2rem 0;
-}
-
 /* ===== ExampleCallout ===== */
 .criterionExampleCallout {
     display: flex;
@@ -108,6 +100,10 @@
 
 .criterionExampleCalloutContre {
     background: rgba(255, 226, 227, 0.5);
+}
+
+.criterionExampleCalloutAnswered {
+    background: #fafafa;
 }
 
 .criterionExampleCalloutTitle {

@@ -2,16 +2,14 @@
 
 import { Body } from '@/design-system/base/Textes';
 import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
-import { ANSWER_OPTIONS } from '@/lib/tacctoscope/content/options';
+import { yieldsRecommendation } from '@/lib/tacctoscope/answers';
 import { buildQuestionKey, getCriterionNumber } from '@/lib/tacctoscope/keys';
 import { deleteLocalAnswer, saveLocalAnswer } from '@/lib/tacctoscope/localAnswers';
-import { ANSWER_STATUS } from '@/lib/tacctoscope/status';
 import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
-import { AccordionShell, HeaderVariant } from '../shared/AccordionShell';
+import { AccordionShell } from '../shared/AccordionShell';
 import { RadioScale } from '../shared/RadioScale';
 import { RichText } from '../shared/RichText';
-import { StatusTag } from '../shared/StatusTag';
 import styles from './criterion.module.scss';
 import { ExampleCallout } from './ExampleCallout';
 
@@ -51,7 +49,7 @@ export const QuestionAccordion = ({
     setError(false);
     onChanged(questionKey, next !== null);
 
-    if (next !== null && next !== 'tres_satisfaisant') {
+    if (next !== null && yieldsRecommendation(next)) {
       onRecommendationAdded();
     }
 
@@ -74,9 +72,8 @@ export const QuestionAccordion = ({
     });
   };
 
-  const headerVariant: HeaderVariant = value
-    ? ANSWER_STATUS[value].variant
-    : 'default';
+  const answered = value !== null;
+  const titleWeight = answered ? 'regular' : 'bold';
 
   return (
     <AccordionShell
@@ -84,25 +81,32 @@ export const QuestionAccordion = ({
         <>
           <Body
             htmlTag="span"
-            weight="bold"
+            weight={titleWeight}
             color="#161616"
             style={{ flexShrink: 0 }}
           >
             Q{number}
           </Body>
-          <Body htmlTag="span" weight="bold" color="#161616">
+          <Body htmlTag="span" weight={titleWeight} color="#161616">
             {question.label}
           </Body>
         </>
       }
       accent={question.section}
-      variant={headerVariant}
+      highlighted={!answered}
       id={`question-${slug}-${question.id}`}
       open={openKey === questionKey}
       onToggle={() => onToggle(questionKey)}
-      headerTag={value ? <StatusTag value={value} /> : null}
     >
       <div className={styles.criterionQuestionBody}>
+        <RadioScale value={value} onSelect={handleSelect} />
+        {error && (
+          <div role="alert">
+            <Body size="sm" color="#ce0041">
+              L’enregistrement a échoué, merci de réessayer.
+            </Body>
+          </div>
+        )}
         <RichText
           content={question.text}
           size="md"
@@ -115,6 +119,7 @@ export const QuestionAccordion = ({
               kind="exemple"
               attachments={question.exampleAttachments}
               downloadName={downloadName}
+              answered={answered}
             >
               {question.example}
             </ExampleCallout>
@@ -122,6 +127,7 @@ export const QuestionAccordion = ({
               kind="contre-exemple"
               attachments={question.counterExampleAttachments}
               downloadName={`${downloadName}-contre-exemple`}
+              answered={answered}
             >
               {question.counterExample}
             </ExampleCallout>
@@ -131,29 +137,11 @@ export const QuestionAccordion = ({
             kind={question.exampleKind}
             attachments={question.exampleAttachments}
             downloadName={downloadName}
+            answered={answered}
           >
             {question.example}
           </ExampleCallout>
         ) : null}
-        <div className={styles.criterionQuestionBodyInside}>
-          <Body size="md" weight="bold" color="#3D3D3D" style={{ paddingBottom: "1rem" }}>
-            Retrouvez-vous ceci dans votre diagnostic ?
-          </Body>
-          <RadioScale
-            options={ANSWER_OPTIONS}
-            value={value}
-            onSelect={handleSelect}
-            minHint={question.minHint}
-            maxHint={question.maxHint}
-          />
-          {error && (
-            <div role="alert">
-              <Body size="sm" color="#ce0041">
-                L’enregistrement a échoué, merci de réessayer.
-              </Body>
-            </div>
-          )}
-        </div>
       </div>
     </AccordionShell>
   );

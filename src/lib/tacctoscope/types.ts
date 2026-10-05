@@ -1,9 +1,4 @@
-export const ANSWER_VALUES = [
-  'absent',
-  'partiel',
-  'satisfaisant',
-  'tres_satisfaisant'
-] as const;
+export const ANSWER_VALUES = ['1', '2', '3', '4', 'ne_sais_pas'] as const;
 
 export type AnswerValue = (typeof ANSWER_VALUES)[number];
 

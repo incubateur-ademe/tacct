@@ -52,7 +52,7 @@ const SECTION_META: Record<SectionKind, { title: string; description: string }> 
   enquete: {
     title: 'Enquête à mener',
     description:
-      'Les réponses à ces questions sont à chercher hors du document final.'
+      "Si les réponses aux questions suivantes ne figurent pas dans le diagnostic existant, enquêtez auprès de l’ancienne équipe projet, dans les documents de travail, comptes-rendus d'atelier, etc."
   }
 };
 

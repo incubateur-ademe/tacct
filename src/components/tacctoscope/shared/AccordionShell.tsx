@@ -4,19 +4,10 @@ import { SectionKind } from '@/lib/tacctoscope/types';
 import { ReactNode, useId, useState } from 'react';
 import styles from './shared.module.scss';
 
-export type HeaderVariant = 'default' | 'green' | 'gray';
-
-const VARIANT_CLASS: Record<HeaderVariant, string> = {
-  default: styles.accordionShellVariantDefault,
-  green: styles.accordionShellVariantGreen,
-  gray: styles.accordionShellVariantGray
-};
-
 interface Props {
   title: ReactNode;
   accent?: SectionKind;
-  variant?: HeaderVariant;
-  headerTag?: ReactNode;
+  highlighted?: boolean;
   defaultOpen?: boolean;
   id?: string;
   open?: boolean;
@@ -47,8 +38,7 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 export const AccordionShell = ({
   title,
   accent = 'analyse',
-  variant = 'default',
-  headerTag,
+  highlighted = false,
   defaultOpen = false,
   id,
   open,
@@ -68,8 +58,8 @@ export const AccordionShell = ({
   return (
     <div
       id={id}
-      className={`${styles.accordionShellItem} ${VARIANT_CLASS[variant]} ${accent === 'enquete' ? styles.accordionShellEnquete : ''
-        }`}
+      className={`${styles.accordionShellItem} ${highlighted ? styles.accordionShellHighlighted : ''
+        } ${accent === 'enquete' ? styles.accordionShellEnquete : ''}`}
     >
       <button
         type="button"
@@ -79,7 +69,6 @@ export const AccordionShell = ({
         onClick={toggle}
       >
         <span className={styles.accordionShellTitle}>{title}</span>
-        {headerTag}
         <ChevronIcon open={isOpen} />
       </button>
       {isOpen && (

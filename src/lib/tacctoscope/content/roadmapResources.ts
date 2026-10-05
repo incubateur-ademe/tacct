@@ -12,15 +12,16 @@ import RessourceCritere3Q4Nonter from '@/assets/images/ressource-critere3-q4-non
 import RessourceCritere3Q5Non from '@/assets/images/ressource-critere3-q5-non.webp';
 import RessourceCritere4Q3Non from '@/assets/images/ressource-critere4-q3-non.webp';
 import type { StaticImageData } from 'next/image';
+import { yieldsRecommendation } from '../answers';
 import { buildQuestionKey } from '../keys';
 import { AnswerMap, AnswerValue, CriterionSlug } from '../types';
 import { CRITERIA } from './criteria';
 
 /**
  * Recommandations de la feuille de route, par question et par niveau de réponse :
- * - `absentPartiel` : recommandation commune à « absent » et « partiel »
- * - `satisfaisant` : sa propre recommandation
- * - « très satisfaisant » : aucune recommandation
+ * - `absentPartiel` : recommandation commune aux réponses 1 et 2
+ * - `satisfaisant` : recommandation de la réponse 3
+ * - réponse 4 et « Je ne sais pas » : aucune recommandation
  * Un bloc `ressources` vide n'est pas affiché.
  */
 
@@ -545,10 +546,10 @@ export const getRecommendation = (
   questionKey: string,
   answer: AnswerValue
 ): QuestionRecommendation | null => {
-  if (answer === 'tres_satisfaisant') return null;
+  if (!yieldsRecommendation(answer)) return null;
   const recommendations = ROADMAP_RECOMMENDATIONS[questionKey];
   if (!recommendations) return null;
-  return answer === 'satisfaisant'
+  return answer === '3'
     ? recommendations.satisfaisant
     : recommendations.absentPartiel;
 };

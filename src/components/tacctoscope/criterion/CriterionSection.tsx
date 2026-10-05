@@ -22,7 +22,7 @@ const SECTION_ICON: Record<
   { icon: StaticImageData; background: string }
 > = {
   analyse: { icon: AnalyseDiagnosticIcon, background: '#d3edeb' },
-  enquete: { icon: EnqueteIcon, background: '#ffc9e4' }
+  enquete: { icon: EnqueteIcon, background: '#89cac6' }
 };
 
 interface Props {

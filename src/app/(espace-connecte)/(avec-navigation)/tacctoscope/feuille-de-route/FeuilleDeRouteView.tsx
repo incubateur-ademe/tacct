@@ -14,7 +14,7 @@ import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmpty
 import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
-const QUALIFYING = new Set(['absent', 'partiel', 'satisfaisant']);
+const QUALIFYING = new Set(['1', '2', '3']);
 
 interface Props {
   answers: AnswerMap;
