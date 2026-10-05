@@ -36,11 +36,19 @@
     }
 }
 
-.criterionProgressBarActions {
+/* ===== CriterionNextSteps ===== */
+/* 80px sous la dernière question : 40px de marge + 40px d'écart du corps de page */
+.criterionNextSteps {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+
+    @media screen and (max-width: 768px) {
+        justify-content: flex-start;
+    }
 }
 
 /* ===== CriterionSection ===== */

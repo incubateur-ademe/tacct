@@ -1,6 +1,6 @@
 import { CRITERIA } from './content/criteria';
 import { buildQuestionKey } from './keys';
-import { AnswerMap, Criterion, CriterionSlug } from './types';
+import { AnswerMap, AnswerValue, Criterion, CriterionSlug } from './types';
 
 export interface CriterionProgress {
   slug: CriterionSlug;
@@ -19,6 +19,34 @@ export const getCriterionProgress = (
   ).length;
   return { slug: criterion.slug, answered, total };
 };
+
+export interface AnswerCounts {
+  pointsForts: number;
+  aConsolider: number;
+  pointsAttention: number;
+}
+
+export type AnswerLevel = keyof AnswerCounts;
+
+export const getAnswerLevel = (answer: AnswerValue): AnswerLevel | null => {
+  if (answer === '4') return 'pointsForts';
+  if (answer === '3') return 'aConsolider';
+  if (answer === '1' || answer === '2') return 'pointsAttention';
+  return null;
+};
+
+export const getCriterionAnswerCounts = (
+  criterion: Criterion,
+  answers: AnswerMap
+): AnswerCounts =>
+  criterion.questions.reduce<AnswerCounts>(
+    (counts, question) => {
+      const answer = answers[buildQuestionKey(criterion.slug, question.id)];
+      const level = answer ? getAnswerLevel(answer) : null;
+      return level ? { ...counts, [level]: counts[level] + 1 } : counts;
+    },
+    { pointsForts: 0, aConsolider: 0, pointsAttention: 0 }
+  );
 
 export const getAllProgress = (answers: AnswerMap): CriterionProgress[] =>
   CRITERIA.map((criterion) => getCriterionProgress(criterion, answers));

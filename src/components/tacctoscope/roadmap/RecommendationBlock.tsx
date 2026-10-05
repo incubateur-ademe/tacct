@@ -1,18 +1,17 @@
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
+import { Body } from '@/design-system/base/Textes';
 import { QuestionRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
+import { getAnswerLevel } from '@/lib/tacctoscope/progress';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
-import Link from 'next/link';
 import { FormattedText } from '../shared/FormattedText';
 import { RessourcesAccordion } from './RessourcesAccordion';
-
-const ReturnIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M5.828 7l2.536 2.536-1.415 1.414L2 6l4.95-4.95 1.414 1.415L5.828 5H13a8 8 0 110 16H4v-2h9a6 6 0 000-12H5.828z"
-      fill="#038278"
-    />
-  </svg>
-);
+import {
+  BlockTitle,
+  LevelAccent,
+  LevelTag,
+  QuestionQuote,
+  SectionQuestionRef
+} from './RoadmapBlockParts';
 
 type DescriptionBlock =
   | { type: 'paragraph'; text: string }
@@ -39,50 +38,59 @@ const parseDescription = (description: string): DescriptionBlock[] =>
         : [...blocks, { type: 'list', items: [item] }];
     }, []);
 
+const DESCRIPTION_STYLE = { lineHeight: '1.5rem' };
+
 interface Props {
   slug: CriterionSlug;
-  questionId: string;
+  question: SectionQuestionRef;
   recommendation: QuestionRecommendation;
   defaultOpen?: boolean;
 }
 
 export const RecommendationBlock = ({
   slug,
-  questionId,
+  question,
   recommendation,
   defaultOpen = false
-}: Props) => (
-  <article className={styles.recoCard}>
-    <h3 className={styles.recoTitle}>{recommendation.title}</h3>
-    <div className={styles.recoDescription}>
-      {parseDescription(recommendation.description).map((block, index) =>
-        block.type === 'list' ? (
-          <ul key={index} className={styles.recoList}>
-            {block.items.map((item) => (
-              <li key={item}>
-                <FormattedText text={item} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p key={index}>
-            <FormattedText text={block.text} />
-          </p>
-        )
-      )}
-    </div>
-    <div className={styles.recoQuestionLink}>
-      <Link
-        href={`/tacctoscope/${slug}#question-${slug}-${questionId}`}
-        className={styles.questionLink}
-      >
-        <ReturnIcon />
-        Revoir la question
-      </Link>
-    </div>
-    <RessourcesAccordion
-      ressources={recommendation.ressources}
-      defaultOpen={defaultOpen}
-    />
-  </article>
-);
+}: Props) => {
+  const level = getAnswerLevel(question.answer);
+
+  return (
+    <article className={styles.recoCard}>
+      {level && <LevelAccent level={level} />}
+      <div className={styles.recoBody}>
+        {level && <LevelTag level={level} />}
+        <BlockTitle>{recommendation.title}</BlockTitle>
+        <QuestionQuote slug={slug} question={question} />
+        <div className={styles.recoDescription}>
+          {parseDescription(recommendation.description).map((block, index) =>
+            block.type === 'list' ? (
+              <ul key={index} className={styles.recoList}>
+                {block.items.map((item) => (
+                  <li key={item}>
+                    <Body
+                      htmlTag="span"
+                      size="md"
+                      color="#3d3d3d"
+                      style={DESCRIPTION_STYLE}
+                    >
+                      <FormattedText text={item} />
+                    </Body>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <Body key={index} size="md" color="#3d3d3d" style={DESCRIPTION_STYLE}>
+                <FormattedText text={block.text} />
+              </Body>
+            )
+          )}
+        </div>
+      </div>
+      <RessourcesAccordion
+        ressources={recommendation.ressources}
+        defaultOpen={defaultOpen}
+      />
+    </article>
+  );
+};

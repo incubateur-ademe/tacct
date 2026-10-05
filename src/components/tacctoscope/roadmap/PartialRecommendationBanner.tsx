@@ -33,7 +33,7 @@ export const PartialRecommendationBanner = ({
   <div className={styles.partialBanner}>
     <div className={styles.partialBannerLeft}>
       <InfoIcon />
-      <span className={styles.partialBannerTitle}>Recommandation partielle</span>
+      <span className={styles.partialBannerTitle}>Questionnaire incomplet</span>
     </div>
     <Link
       href={

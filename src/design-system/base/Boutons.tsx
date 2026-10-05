@@ -122,11 +122,11 @@ export const BoutonPrimaireClassic = ({
         {
           icone && (
             <Image
-            src={icone}
-            alt=""
-            style={{ marginRight: '8px' }}
-            width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
-            height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+              src={icone}
+              alt=""
+              style={{ marginRight: '8px' }}
+              width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+              height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
             />
           )
         }
@@ -181,10 +181,10 @@ export const BoutonSecondaireClassic = ({
   const fondAuRepos = sansBordure ? 'transparent' : couleurFond ?? 'white';
   const bordureAuRepos = sansBordure
     ? '1px solid transparent'
-    : `1px solid ${couleurBordure ?? couleursBoutons.primaire[2]}`;
+    : `1.6px solid ${couleurBordure ?? couleursBoutons.primaire[1]}`;
   const buttonStyle: React.CSSProperties = {
     textTransform: 'none',
-    color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[3],
+    color: disabled ? `${nuancesGris.dark} !important` : couleursBoutons.primaire[1],
     backgroundColor: disabled ? nuancesGris.light : fondAuRepos,
     borderRadius: '60px',
     // minHeight: 'fit-content',
@@ -274,11 +274,11 @@ export const BoutonSecondaireClassic = ({
         {
           icone && (
             <Image
-            src={icone}
-            alt=""
-            style={{ marginRight: '8px' }}
-            width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
-            height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+              src={icone}
+              alt=""
+              style={{ marginRight: '8px' }}
+              width={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
+              height={size === 'xs' ? 14 : size === 'lg' ? 24 : 16}
             />
           )
         }

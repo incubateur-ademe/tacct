@@ -33,7 +33,7 @@ $stripe: repeating-linear-gradient(
         border-radius: 50%;
         background-color: rgb(255, 255, 255);
         top: 25%;
-        left: 15%;
+        left: 5%;
         z-index: 0;
     }
 }
@@ -111,7 +111,6 @@ $stripe: repeating-linear-gradient(
     top: 2rem;
     width: 271px;
     flex-shrink: 0;
-    padding: 1rem 0;
 
     @media screen and (max-width: 992px) {
         position: relative;
@@ -123,7 +122,7 @@ $stripe: repeating-linear-gradient(
 }
 
 .menuTitle {
-    margin: 0 0 0.5rem;
+    margin: 0 0 42px;
     padding: 0 1rem;
     font-family: Marianne;
     font-size: 0.875rem;
@@ -170,7 +169,7 @@ $stripe: repeating-linear-gradient(
 .menuItemLabel {
     font-family: Marianne;
     font-size: 0.875rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1.5rem;
     color: $title;
 }
@@ -181,6 +180,7 @@ $stripe: repeating-linear-gradient(
 
     .menuItemLabel {
         color: $teal;
+        font-weight: 700;
     }
 }
 
@@ -205,6 +205,20 @@ $stripe: repeating-linear-gradient(
     color: $subtle;
 }
 
+.menuFooter {
+    margin-top: 66px;
+    padding: 32px 1rem 0;
+    border-top: 1px solid $border;
+}
+
+.menuBackLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    background-image: none;
+}
+
 /* ===== Contenu ===== */
 .content {
     flex: 1;
@@ -223,25 +237,83 @@ $stripe: repeating-linear-gradient(
 }
 
 .sectionTitle {
+    position: relative;
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 3rem 0 2rem;
-    padding: 2rem 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 3rem 0 1rem;
+    padding: 1.5rem;
+    border: 1px solid $border;
     border-radius: 8px;
     background: $stripe;
+    overflow: hidden;
+    isolation: isolate;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0.5rem;
+        left: -3rem;
+        width: 364px;
+        height: 364px;
+        border-radius: 50%;
+        background: #d3edeb;
+    }
+}
+
+.sectionTitleHeading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .sectionTitleIcon {
     flex-shrink: 0;
-    width: 64px;
-    height: 64px;
+    width: 96px;
+    height: 96px;
 }
 
-.sectionTitleContent {
+.sectionCounters {
+    align-self: flex-end;
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: #ffffffcc;
+
+    @media screen and (max-width: 768px) {
+        align-self: flex-start;
+    }
+}
+
+.sectionCounter {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+
+    & + &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        width: 1px;
+        background: #dddddd;
+    }
+}
+
+.sectionCounterBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 0.375rem;
+    border-radius: 20rem;
 }
 
 /* ===== État vide ===== */
@@ -313,7 +385,7 @@ $stripe: repeating-linear-gradient(
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     padding: 0.75rem 2rem;
     background: #ffd1b4;
 }
@@ -356,35 +428,219 @@ $stripe: repeating-linear-gradient(
     overflow: hidden;
 }
 
-.recoTitle {
+/* Bande de couleur du niveau, à l'intérieur de la bordure grise (couleur en style inline) */
+.recoCardAccent {
+    flex-shrink: 0;
+    height: 6px;
+}
+
+.recoBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 2.5rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 1.5rem 1.25rem;
+    }
+}
+
+.levelTag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+.recoQuotes {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.questionQuote {
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0 0 0.5rem 1.5rem;
+    padding: 0.5rem 1.5rem 0.5rem calc(1.5rem + 5px);
+    border: 1px solid transparent;
+    border-radius: 0 4px 4px 0;
+    color: inherit;
+    text-decoration: none;
+    background-image: none;
+    /* Le DSFR applique var(--hover-tint) en fond au survol des liens */
+    --hover-tint: #fafafa;
+    --active-tint: #fafafa;
+    transition:
+        border-color 0.4s ease,
+        background-color 0.4s ease;
+
+    /* Barre latérale en pseudo-élément : une bordure gauche épaisse jointe aux
+       bordures fines haut/bas serait biseautée par le navigateur */
+    &::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        left: -1px;
+        width: 6px;
+        background: #e7e5e5;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+        padding: 0.5rem 1rem 0.5rem calc(1rem + 5px);
+    }
+}
+
+.questionQuoteText {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
     margin: 0;
-    padding: 2.5rem 2.5rem 0;
-    font-family: Marianne;
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.75rem;
-    color: $title;
+}
+
+/* Largeur réservée à l'icône + « Modifier » : le texte ne bouge pas au survol */
+.questionQuoteAction {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.375rem;
+    width: 6rem;
+    height: 1.5rem;
+    color: $teal;
+
+    svg {
+        flex-shrink: 0;
+    }
+
+    @media (hover: none) {
+        width: auto;
+    }
+}
+
+/* Sortie : le texte s'efface, puis l'icône revient à droite */
+.questionQuoteActionLabel {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transition:
+        opacity 0.25s ease,
+        max-width 0.4s ease 0.2s;
+}
+
+/* Entrée : l'icône glisse à gauche, puis le texte apparaît en fondu */
+.questionQuote:hover,
+.questionQuote:focus-visible {
+    border-color: $border;
+    background-color: #fafafa;
+
+    .questionQuoteActionLabel {
+        max-width: 5rem;
+        opacity: 1;
+        transition:
+            max-width 0.8s ease,
+            opacity 0.6s ease 0.2s;
+    }
+}
+
+.noAnswerHelpLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-left: 1.5rem;
+    color: $teal;
+    background-image: none;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0;
+    }
+}
+
+/* ===== Blocs de fin de page (connexion, aide « Je ne sais pas ») ===== */
+/* 92px avant « Haut de page », quel que soit le dernier bloc affiché */
+.roadmapEnd {
+    margin-bottom: 92px;
+}
+
+/* ===== Bloc de connexion (visiteur non connecté, bas de page) ===== */
+.loginBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 2.5rem 2rem;
+    border-radius: 4px;
+    background: #f6f6f6;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem 1.25rem;
+    }
+}
+
+/* ===== Bloc d'aide « Je ne sais pas » (bas de page) ===== */
+/* 150px sous le dernier bloc : padding de section (3rem) + marge de carte (1.5rem) + cette marge */
+.noAnswerHelp {
+    margin-top: calc(150px - 3rem - 1.5rem);
+    padding: 3.5rem 2rem 3rem;
+    border: 1px solid $border;
+    border-radius: 8px;
+    background: #ffffff;
+    scroll-margin-top: 2rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 2rem 1.25rem;
+    }
+}
+
+.noAnswerHelpContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 34rem;
+    margin: 0 auto;
+}
+
+.noAnswerHelpList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0;
+    padding-left: 1.25rem;
+    list-style: disc outside;
+
+    li {
+        list-style-type: disc;
+    }
+}
+
+.noAnswerHelpTextLink {
+    color: $teal;
+}
+
+.noAnswerHelpIllustration {
+    align-self: center;
+    height: auto;
 }
 
 .recoDescription {
-    margin: 0;
-    padding: 0.5rem 2.5rem 1.5rem;
-    font-family: Marianne;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    color: $body;
-
-    p {
-        margin: 0 0 1rem;
-    }
-
-    > *:last-child {
-        margin-bottom: 0;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .recoList {
-    margin: 0 0 1rem;
+    margin: 0;
     padding-left: 1.5rem;
     list-style: disc outside;
 
@@ -399,22 +655,6 @@ $stripe: repeating-linear-gradient(
     }
 }
 
-.recoQuestionLink {
-    padding: 0 2.5rem 2.5rem;
-}
-
-.questionLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: Marianne;
-    font-size: 1rem;
-    font-weight: 500;
-    color: $teal;
-    text-decoration: none;
-    background-image: none;
-}
-
 /* ===== Accordéon ressources ===== */
 .accordion {
     border-top: 1px solid $border;
@@ -424,11 +664,10 @@ $stripe: repeating-linear-gradient(
     display: block;
     text-align: left;
     font-family: Marianne;
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.5rem;
-    text-transform: uppercase;
-    color: $subtle;
+    color: $teal;
 }
 
 .accordionContent {
@@ -519,8 +758,8 @@ $stripe: repeating-linear-gradient(
 }
 
 .tagDonnees {
-    background: #f6f69b;
-    color: #5a5a10;
+    background: #f2e4ff;
+    color: #6e3f99;
 }
 
 .tagArticle {
@@ -529,8 +768,8 @@ $stripe: repeating-linear-gradient(
 }
 
 .tagReglementation {
-    background: #ffc9e4;
-    color: #971356;
+    background: #e7e5e5;
+    color: #4d4b4b;
 }
 
 .tagExempleDiagnostic {

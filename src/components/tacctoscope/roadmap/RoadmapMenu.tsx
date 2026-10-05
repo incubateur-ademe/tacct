@@ -2,8 +2,10 @@
 
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import cadenas from '@/assets/svg/custom/cadenas.svg';
+import { Body } from '@/design-system/base/Textes';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { AccesReserveModal, UnlockModal } from '../shared/Modales';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
@@ -52,7 +54,7 @@ export const RoadmapMenu = ({ items, isLoggedIn }: Props) => {
   return (
     <>
       <nav className={styles.menu}>
-        <p className={styles.menuTitle}>Critères</p>
+        <p className={styles.menuTitle}>Catégories</p>
         <ul className={styles.menuList}>
           {items.map((item) => {
             const isActive = !item.locked && activeSlug === item.slug;
@@ -86,6 +88,16 @@ export const RoadmapMenu = ({ items, isLoggedIn }: Props) => {
             );
           })}
         </ul>
+        <div className={styles.menuFooter}>
+          <Link href="/tacctoscope" className={styles.menuBackLink}>
+            <Body htmlTag="span" weight="medium" color="#038278" aria-hidden="true">
+              ←
+            </Body>
+            <Body htmlTag="span" weight="medium" color="#038278">
+              Retour au sommaire
+            </Body>
+          </Link>
+        </div>
       </nav>
 
       {isLoggedIn ? (

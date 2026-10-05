@@ -2,19 +2,30 @@
 
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
+import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
+import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { getRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
 import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
-import { getCriterionProgress, GlobalState } from '@/lib/tacctoscope/progress';
-import { AnswerMap } from '@/lib/tacctoscope/types';
+import {
+  getCriterionAnswerCounts,
+  getCriterionProgress,
+  GlobalState
+} from '@/lib/tacctoscope/progress';
+import { NoAnswerHelpBlock } from '@/components/tacctoscope/roadmap/NoAnswerHelpBlock';
+import { RoadmapLoginBlock } from '@/components/tacctoscope/roadmap/RoadmapLoginBlock';
+import { SectionQuestionRef } from '@/components/tacctoscope/roadmap/RoadmapBlockParts';
+import { AnswerMap, AnswerValue } from '@/lib/tacctoscope/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
-import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
-import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
-const QUALIFYING = new Set(['1', '2', '3']);
+/* Les points forts (4) sont regroupés dans un bloc à part, affiché en premier. */
+const RECOMMENDATION_ORDER: AnswerValue[] = ['3', '2', '1'];
+
+/* Nombre de « Je ne sais pas » à partir duquel le bloc d'aide (et ses liens) s'affiche */
+const NO_ANSWER_HELP_MIN = 3;
 
 interface Props {
   answers: AnswerMap;
@@ -103,53 +114,87 @@ export const FeuilleDeRouteView = ({
       (question) =>
         currentAnswers[buildQuestionKey(criterion.slug, question.id)] == null
     );
+    const answeredQuestions = criterion.questions.flatMap(
+      (question, index): SectionQuestionRef[] => {
+        const answer =
+          currentAnswers[buildQuestionKey(criterion.slug, question.id)];
+        return answer
+          ? [
+              {
+                questionId: question.id,
+                number: index + 1,
+                label: question.label,
+                answer
+              }
+            ]
+          : [];
+      }
+    );
     return {
       slug: criterion.slug,
       title: criterion.title,
       state,
+      counts: getCriterionAnswerCounts(criterion, currentAnswers),
       missingCount: total - answered,
       firstMissingId: firstMissing ? firstMissing.id : null,
-      recommendations: criterion.questions
-        .filter((question) =>
-          QUALIFYING.has(
-            currentAnswers[buildQuestionKey(criterion.slug, question.id)] ?? ''
-          )
-        )
-        .map((question) => {
-          const questionKey = buildQuestionKey(criterion.slug, question.id);
-          const answer = currentAnswers[questionKey];
-          const recommendation = answer
-            ? getRecommendation(questionKey, answer)
-            : null;
-          return recommendation
-            ? { questionId: question.id, recommendation }
-            : null;
+      strengths: answeredQuestions.filter((question) => question.answer === '4'),
+      unknowns: answeredQuestions.filter(
+        (question) => question.answer === 'ne_sais_pas'
+      ),
+      recommendations: answeredQuestions
+        .flatMap((question): SectionRecommendation[] => {
+          const recommendation = getRecommendation(
+            buildQuestionKey(criterion.slug, question.questionId),
+            question.answer
+          );
+          return recommendation ? [{ ...question, recommendation }] : [];
         })
-        .filter((item): item is SectionRecommendation => item !== null)
+        .sort(
+          (a, b) =>
+            RECOMMENDATION_ORDER.indexOf(a.answer) -
+            RECOMMENDATION_ORDER.indexOf(b.answer)
+        )
     };
   });
 
   const isEmpty = Object.keys(currentAnswers).length === 0;
+  const unknownCount = sections.reduce(
+    (count, section) => count + section.unknowns.length,
+    0
+  );
+  const showNoAnswerHelp = unknownCount >= NO_ANSWER_HELP_MIN;
 
   return (
-    <NewContainer size="xl">
+    <NewContainer size="xl" style={{ paddingTop: "1.5rem" }}>
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} isLoggedIn={isLoggedIn} />
         <div className={styles.content}>
           {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />
           ) : (
-            sections.map((section) => (
-              <RoadmapSection
-                key={section.slug}
-                slug={section.slug}
-                title={section.title}
-                state={section.state}
-                missingCount={section.missingCount}
-                firstMissingId={section.firstMissingId}
-                recommendations={section.recommendations}
-              />
-            ))
+            <>
+              {sections.map((section) => (
+                <RoadmapSection
+                  key={section.slug}
+                  slug={section.slug}
+                  title={section.title}
+                  state={section.state}
+                  counts={section.counts}
+                  missingCount={section.missingCount}
+                  firstMissingId={section.firstMissingId}
+                  strengths={section.strengths}
+                  recommendations={section.recommendations}
+                  unknowns={section.unknowns}
+                  showNoAnswerHelp={showNoAnswerHelp}
+                />
+              ))}
+              {(!isLoggedIn || showNoAnswerHelp) && (
+                <div className={styles.roadmapEnd}>
+                  {!isLoggedIn && <RoadmapLoginBlock />}
+                  {showNoAnswerHelp && <NoAnswerHelpBlock />}
+                </div>
+              )}
+            </>
           )}
           {hydrated && <HautDePage />}
         </div>

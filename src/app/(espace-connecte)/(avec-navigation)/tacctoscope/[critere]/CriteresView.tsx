@@ -2,16 +2,18 @@
 
 import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBanner';
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
+import { CriterionNextSteps } from '@/components/tacctoscope/criterion/CriterionNextSteps';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
-import {
-  AccesReserveModal,
-  SavePromptModal
-} from '@/components/tacctoscope/shared/Modales';
+import { AccesReserveModal } from '@/components/tacctoscope/shared/Modales';
 import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import { buildQuestionKey, isPublicCriterion } from '@/lib/tacctoscope/keys';
+import {
+  buildQuestionKey,
+  getCriterionBySlug,
+  isPublicCriterion
+} from '@/lib/tacctoscope/keys';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
 import {
   AnswerMap,
@@ -89,7 +91,7 @@ export const CriteresView = ({
   const [answeredKeys, setAnsweredKeys] = useState<Set<string>>(
     () => new Set(Object.keys(answers))
   );
-  const [savePromptOpen, setSavePromptOpen] = useState(false);
+  const [accesReserveOpen, setAccesReserveOpen] = useState(false);
   const [completionPrompted, setCompletionPrompted] = useState(false);
   const [openKey, setOpenKey] = useState<string | null>(() =>
     isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
@@ -103,24 +105,27 @@ export const CriteresView = ({
   };
 
   useEffect(() => {
-    if (!isAuthenticated && isPublicCriterion(criterion.slug)) {
-      setSavePromptOpen(true);
+    if (isLoggedIn && !isAuthenticated && isPublicCriterion(criterion.slug)) {
+      setAccesReserveOpen(true);
     }
-  }, [isAuthenticated, criterion]);
+  }, [isLoggedIn, isAuthenticated, criterion]);
 
   useEffect(() => {
     if (!hydrated) return;
-    if (isAuthenticated || !isPublicCriterion(criterion.slug)) return;
+    if (!isLoggedIn || isAuthenticated || !isPublicCriterion(criterion.slug)) {
+      return;
+    }
     if (answeredKeys.size < criterion.questions.length) {
       setCompletionPrompted(false);
       return;
     }
     if (completionPrompted) return;
     setCompletionPrompted(true);
-    setSavePromptOpen(true);
+    setAccesReserveOpen(true);
   }, [
     hydrated,
     completionPrompted,
+    isLoggedIn,
     isAuthenticated,
     criterion,
     answeredKeys
@@ -199,10 +204,8 @@ export const CriteresView = ({
       </div>
 
       <CriterionProgressBar
-        slug={criterion.slug}
         answered={answeredKeys.size}
         total={criterion.questions.length}
-        nextSlug={isAuthenticated ? nextSlug : null}
       />
 
       <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
@@ -237,6 +240,15 @@ export const CriteresView = ({
             />
           )}
 
+          <CriterionNextSteps
+            slug={criterion.slug}
+            nextCriterion={
+              isAuthenticated && nextSlug
+                ? getCriterionBySlug(nextSlug)
+                : undefined
+            }
+          />
+
           <CriterionFeedback criterionKey={criterion.slug} />
 
           <Link
@@ -247,25 +259,16 @@ export const CriteresView = ({
               ←
             </Body>
             <Body weight="medium" color="#038278">
-              Retour aux critères
+              Retour au sommaire
             </Body>
           </Link>
         </div>
       </NewContainer>
 
-      {isLoggedIn ? (
+      {isLoggedIn && (
         <AccesReserveModal
-          isOpen={savePromptOpen}
-          onClose={() => setSavePromptOpen(false)}
-        />
-      ) : (
-        <SavePromptModal
-          isOpen={savePromptOpen}
-          onClose={() => setSavePromptOpen(false)}
-          onConfirm={() => {
-            const returnTo = encodeURIComponent(`/tacctoscope/${criterion.slug}`);
-            window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
-          }}
+          isOpen={accesReserveOpen}
+          onClose={() => setAccesReserveOpen(false)}
         />
       )}
 
@@ -274,9 +277,7 @@ export const CriteresView = ({
         open={toastOpen}
         onClose={() => setToastOpen(false)}
         icon={<BulbIcon />}
-        text="Une piste d’amélioration ajoutée à vos recommandations !"
-        link={`/tacctoscope/feuille-de-route#${criterion.slug}`}
-        linkText="Voir la feuille de route"
+        text="Une piste d’amélioration ajoutée à vos recommandations !"
       />
     </>
   );

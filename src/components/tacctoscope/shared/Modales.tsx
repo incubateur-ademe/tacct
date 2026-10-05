@@ -217,14 +217,10 @@ interface UnlockModalProps {
 export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) => (
   <ConfirmModal
     isOpen={isOpen}
-    title="Voulez-vous accéder à tous les critères ?"
+    title="Connectez-vous pour continuer"
     message={
       <>
-        Inscrivez-vous ou connectez-vous pour poursuivre et sauvegarder votre
-        travail pour la prochaine fois.
-        <InfoBlock>
-          Les critères suivants sont réservés à certains profils d’utilisateurs.
-        </InfoBlock>
+        Accédez à l’ensemble du questionnaire et enregistrez vos réponses et votre feuille de route.
       </>
     }
     icon={<LockIcon />}
@@ -265,44 +261,4 @@ export const AccesReserveModal = ({ isOpen, onClose }: AccesReserveModalProps) =
     Si vous souhaitez en savoir plus, nous vous invitons à nous contacter, en
     précisant votre rôle et le contexte de votre demande.
   </Modal>
-);
-
-const SaveIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M7 19v-6h10v6h2V7.828L16.172 5H5v14h2zM4 3h13l4 4v13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm5 12v4h6v-4H9z"
-      fill="#161616"
-    />
-  </svg>
-);
-
-interface SavePromptModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-}
-
-export const SavePromptModal = ({
-  isOpen,
-  onClose,
-  onConfirm
-}: SavePromptModalProps) => (
-  <ConfirmModal
-    isOpen={isOpen}
-    title="Voulez-vous sauvegarder votre travail ?"
-    message={
-      <>
-        Si vous souhaitez enregistrer vos réponses, créez un compte ou
-        connectez-vous.
-        <InfoBlock>
-          Cette fonctionnalité est réservée à certains profils d'utilisateurs
-        </InfoBlock>
-      </>
-    }
-    icon={<SaveIcon />}
-    cancelLabel={'Non, pas pour\nl’instant'}
-    confirmLabel={'Oui, se connecter\nou créer un compte'}
-    onClose={onClose}
-    onConfirm={onConfirm}
-  />
 );

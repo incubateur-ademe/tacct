@@ -46,11 +46,13 @@
     }
 }
 
+/* 96px sous les boutons : 56px de marge + 40px d'écart du corps de page */
 .criterionViewBackLink {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     align-self: center;
+    margin-top: 3.5rem;
     text-decoration: none;
     background-image: none;
 }

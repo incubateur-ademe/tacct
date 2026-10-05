@@ -3,6 +3,7 @@
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { CustomAccordion } from '@/design-system/base/Accordion';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
+import { useState } from 'react';
 import { RessourceCard } from './RessourceCard';
 
 interface Props {
@@ -14,13 +15,20 @@ export const RessourcesAccordion = ({
   ressources,
   defaultOpen = false
 }: Props) => {
+  const [open, setOpen] = useState(defaultOpen);
+
   if (ressources.length === 0) return null;
 
   return (
     <div className={styles.accordion}>
       <CustomAccordion
-        defaultExpanded={defaultOpen}
-        label={<span className={styles.accordionLabel}>Ressources associées</span>}
+        isOpen={open}
+        onToggle={() => setOpen((value) => !value)}
+        label={
+          <span className={styles.accordionLabel}>
+            {open ? 'Masquer' : 'Afficher'} les ressources associées
+          </span>
+        }
       >
         <div className={styles.accordionContent}>
           {ressources.length > 0 && (
