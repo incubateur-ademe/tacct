@@ -2,6 +2,7 @@ import RessourceCritere1Q1Non from '@/assets/images/ressource-critere1-q1-non.we
 import RessourceCritere1Q2Non from '@/assets/images/ressource-critere1-q2-non.webp';
 import RessourceCritere1Q2Nonbis from '@/assets/images/ressource-critere1-q2-nonbis.webp';
 import RessourceCritere1Q2Nonter from '@/assets/images/ressource-critere1-q2-nonter.webp';
+import RessourceCritere1Q2Oui from '@/assets/images/ressource-critere1-q2-oui.webp';
 import RessourceCritere1Q5Non from '@/assets/images/ressource-critere1-q5-non.webp';
 import RessourceCritere2Q1Non from '@/assets/images/ressource-critere2-q1-non.webp';
 import RessourceCritere2Q2Non from '@/assets/images/ressource-critere2-q2-non.webp';
@@ -47,6 +48,17 @@ export interface QuestionRecommendations {
   absentPartiel: QuestionRecommendation;
   satisfaisant: QuestionRecommendation;
 }
+
+const PATCH_4C: RoadmapResource = {
+  tag: 'donnees',
+  title: 'Patch 4°C',
+  description:
+    'Il s’agit du patch 4°C, un nouveau jeu de données calculé par Météo France et basé sur la TRACC.',
+  url: 'https://tacct.ademe.fr/recherche-territoire-patch4',
+  utilite:
+    'Le patch 4°C calcule le tendanciel d’aggravation des aléas majeurs de votre territoire (à noter : les territoires ultramarins ont des projections de référence spécifiques et moins élevées). En fonction de l’aggravation, vous trouverez une liste de thématiques à traiter et des conseils pour renforcer votre diagnostic de vulnérabilité.',
+  image: RessourceCritere1Q2Oui
+};
 
 const DIAGNOSTIC_RENNES_METROPOLE: RoadmapResource = {
   tag: 'exemple-diagnostic',
@@ -112,7 +124,7 @@ const TEMOIGNAGE_RENNES_METROPOLE: RoadmapResource = {
     'Il s’agit de l’article “Réaliser votre diagnostic de vulnérabilité” qui reprend le témoignage de Clémence Noyau, chargée de mission adaptation au changement climatique à Rennes Métropole.',
   url: 'https://tacct.ademe.fr/ressources/demarrer-diagnostic-vulnerabilite/realiser-diagnostic-vulnerabilite',
   utilite:
-    'Il permet de comprendre la démarche suivie par une chargée de mission avec la place accordée à la donnée et aux temps de mobilisation. Cet article met en avant les apprentissages liés à la réalisation du diagnostic de vulnérabilité de la métropole et l’intérêt de mobiliser pour légitimer le diagnostic de vulnérabilité. “Pour moi, dans le diagnostic de vulnérabilité, le plus important, c’est le processus, c’est profiter de cette occasion pour aller rencontrer et mobiliser tout le monde sur ces questions” (Clémence Noyau).',
+    'Il permet de comprendre la démarche suivie par une chargée de mission avec la place accordée à la donnée et aux temps de mobilisation. Cet article met en avant les apprentissages liés à la réalisation du diagnostic de vulnérabilité de la métropole et l’intérêt de mobiliser pour légitimer le diagnostic de vulnérabilité. _“Pour moi, dans le diagnostic de vulnérabilité, le plus important, c’est le processus, c’est profiter de cette occasion pour aller rencontrer et mobiliser tout le monde sur ces questions”_ (Clémence Noyau).',
   image: RessourceCritere3Q4Non
 };
 
@@ -141,9 +153,9 @@ const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
 const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
   q1: {
     absentPartiel: {
-      title: 'Documenter le passé climatique du territoire',
+      title: 'Documenter le climat passé du territoire',
       description:
-        "Les éléments recueillis sur ce point sont encore trop parcellaires pour dresser un tableau clair de l’état du climat de votre territoire. Les données d'observation (évolution de la fréquence, de la durée, de l'intensité ou de la précocité de certains phénomènes) sont un bon point de départ pour établir ce constat et objectiver des tendances déjà à l'œuvre.\n\nAttention, pour pouvoir parler de tendances d’évolution du climat, qu’il soit global ou local, il est impératif de se baser sur des évolutions de long terme (30 ans). En deçà, la variabilité interannuelle naturelle du climat peut fausser l’évaluation de ces tendances.\n\nPar exemple, une succession de 3 ou 4 années de températures particulièrement basses n’indique pas une tendance au refroidissement.",
+        "D’après votre réponse, les éléments recueillis sur ce point sont encore trop peu nombreux pour dresser un tableau clair de l’état du climat de votre territoire.\n\nS’appuyer sur les **données d'observation est un bon point de départ**, elles permettent d'objectiver les tendances déjà à l'œuvre. Ainsi pour les fortes chaleurs : sont-elles plus nombreuses qu'il y a trente ans (**fréquence**) ? S'étirent-elles sur plus de jours d'affilée (**durée**) ? Les pics sont-ils plus élevés (**intensité**) ? Surviennent-elles plus tôt dans la saison (**précocité**) ?\n\nUn point de vigilance : pour parler d'une tendance d'évolution du climat — globale ou locale —, il faut **se baser sur le temps long**, au moins 30 ans. En deçà, le climat varie naturellement d'une année sur l'autre, et cette variabilité peut fausser l’analyse. Par exemple, s’il fait froid trois ou quatre années de suite, ce n’est pas nécessairement le signe d’une tendance de refroidissement.",
       ressources: [
         {
           tag: 'donnees',
@@ -158,9 +170,9 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       ]
     },
     satisfaisant: {
-      title: 'Explorer davantage le passé climatique du territoire',
+      title: 'Explorer davantage le climat passé du territoire',
       description:
-        "C’est un bon début, mais ce volet mérite peut-être d'être un peu étoffé pour être tout à fait convaincant. L'exploitation de données d'observation (évolution de la fréquence, de la durée, de l'intensité ou de la précocité de certains phénomènes) est importante pour mettre en évidence les caractéristiques du climat de votre territoire et peut permettre d'objectiver des tendances déjà à l'œuvre.",
+        "Votre diagnostic contient déjà quelques observations sur le climat passé du territoire. C'est un bon début, mais ce point pourrait être étoffé en s'appuyant sur des données d'observation.\n\nPrenons l'exemple des fortes chaleurs : sont-elles plus nombreuses qu'il y a trente ans (**fréquence**) ? S'étirent-elles sur plus de jours d'affilée (**durée**) ? Les pics sont-ils plus élevés (**intensité**) ? Surviennent-elles plus tôt dans la saison (**précocité**) ?\n\nVous pourrez ainsi mettre en évidence les caractéristiques du climat de votre territoire et objectiver les tendances déjà à l'œuvre.",
       ressources: []
     }
   },
@@ -168,7 +180,7 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
     absentPartiel: {
       title: 'Utiliser les projections climatiques de la TRACC',
       description:
-        "Depuis 2026, la prise en compte de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC) doit être intégrée dans tous les documents de planification.\n\nSi certains paramètres vous semblent manquants dans la TRACC, veillez à utiliser des projections provenant d’un scénario respectant un niveau de réchauffement équivalent au +4°C pour la métropole, et de pousser l’analyse jusqu’en fin de siècle (RCP 8.5 par exemple).",
+        "Depuis 2026, la prise en compte de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC) doit être intégrée dans tous les documents de planification.\n\nSi certains paramètres vous semblent manquants dans la TRACC, veillez à utiliser des projections provenant d’un scénario respectant un niveau de réchauffement équivalent au +4°C (*) pour la métropole, et de pousser l’analyse jusqu’en fin de siècle (RCP 8.5 par exemple).\n\n(*) Pour l'Outremer, les projections doivent provenir d'un scénario respectant un niveau de réchauffement en fin de siècle équivalent à :\n\n• +2,7°C pour les Antilles\n• +3,5°C pour la Guyane\n• +2,9°C pour La Réunion\n• +3°C pour Mayotte et la Nouvelle-Calédonie\n• +2,3°C pour la Polynésie française",
       ressources: [
         {
           tag: 'donnees',
@@ -206,21 +218,21 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       title:
         'Compléter avec des projections climatiques compatibles avec la TRACC',
       description:
-        "Le cas échéant, quelques ajustements suffiront.\n\nComplétez vos paramètres TRACC ; si certains vous semblent manquants, veillez à utiliser des projections provenant d’un scénario respectant un niveau de réchauffement équivalent à +4°C pour la métropole (RCP 8.5 par exemple), et de pousser l’analyse jusqu’en fin de siècle.\n\nRappel : depuis 2026, la prise en compte de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique n’est plus une option et doit être intégrée dans tous les documents de planification.",
-      ressources: []
+        "Le cas échéant, quelques ajustements suffiront.\n\nComplétez vos paramètres TRACC ; si certains vous semblent manquants, veillez à utiliser des projections provenant d’un scénario respectant un niveau de réchauffement équivalent à +4°C (*) pour la métropole (RCP 8.5 par exemple), et de pousser l’analyse jusqu’en fin de siècle.\n\n(*) Pour l'Outremer, les projections doivent provenir d'un scénario respectant un niveau de réchauffement en fin de siècle équivalent à :\n\n• +2,7°C pour les Antilles\n• +3,5°C pour la Guyane\n• +2,9°C pour La Réunion\n• +3°C pour Mayotte et la Nouvelle-Calédonie\n• +2,3°C pour la Polynésie française\n\nRappel : depuis 2026, la prise en compte de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique n’est plus une option et doit être intégrée dans tous les documents de planification.",
+      ressources: [PATCH_4C]
     }
   },
   q3: {
     absentPartiel: {
       title: 'Réduire la partie sur les données climatiques mondiales',
       description:
-        "Évitez l'écueil des généralités en reproduisant des constats déjà largement documentés à l'échelle globale. Les données mondiales, voire nationales, sont assez éloignées des réalités locales, même si, ponctuellement, les échelles intermédiaires (départementales, régionales) peuvent offrir un cadre de comparaison pertinent pour positionner votre territoire.\n\nSi nécessaire, rapprochez-vous du groupe régional d'experts sur le climat de votre région. Dosez intelligemment : assez de contexte pour comprendre, assez de local pour agir.",
+        "Évitez l'écueil des généralités en reproduisant des constats déjà largement documentés à l'échelle globale. **Les données mondiales, voire nationales, sont assez éloignées des réalités locales**, même si, ponctuellement, les échelles intermédiaires (départementales, régionales) peuvent offrir un cadre de comparaison pertinent pour positionner votre territoire.\n\nSi nécessaire, **rapprochez-vous du groupe régional d'experts sur le climat de votre région**. Dosez intelligemment : assez de contexte pour comprendre, assez de local pour agir.",
       ressources: []
     },
     satisfaisant: {
       title: 'Alléger la partie sur les données climatiques mondiales',
       description:
-        "Un petit effort de synthèse s’impose. Réorientez cette première partie de votre diagnostic pour être exploitable : elle doit aider les acteurs locaux à se projeter dans une réalité qui leur est directement lisible, plutôt que de reproduire des constats déjà largement documentés à l'échelle globale.\n\nDosez intelligemment : assez de contexte pour comprendre, assez de local pour agir.",
+        "Un petit effort de synthèse s’impose. Réorientez cette première partie de votre diagnostic pour être exploitable : elle doit **aider les acteurs locaux à se projeter** dans une réalité qui leur est directement lisible, plutôt que de reproduire des constats déjà largement documentés à l'échelle globale.\n\nDosez intelligemment : **assez de contexte pour comprendre, assez de local pour agir**.",
       ressources: []
     }
   },
@@ -235,29 +247,29 @@ const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
       title:
         'Restituer en priorité les paramètres climatiques reliés à des effets observables sur le territoire.',
       description:
-        "Un diagnostic n’est pas un inventaire, c'est le fruit d'une analyse. La recherche d'indicateurs de projections climatiques peut faire apparaître des aléas sans effet réel sur votre territoire.\n\nS’il est utile d’en conserver la trace dans vos documents de travail, mieux vaut ne restituer dans le diagnostic que les données climatiques reliées à des impacts locaux. Les lecteurs vous remercieront d’aller à l’essentiel !",
+        "Un diagnostic n’est pas un inventaire, c'est le fruit d'une analyse. La recherche d'indicateurs de projections climatiques peut faire apparaître des aléas sans effet réel sur votre territoire.\n\nS’il est utile d’en conserver la trace dans vos documents de travail, **mieux vaut ne restituer dans le diagnostic que les données climatiques reliées à des impacts locaux**. Les lecteurs vous remercieront d’aller à l’essentiel !",
       ressources: []
     }
   },
   q5: {
     absentPartiel: {
       title:
-        "Identifier les phénomènes climatiques qui ont le plus d'impacts sur le territoire, aujourd’hui, mais aussi demain",
+        "Identifier les aléas climatiques qui ont le plus d'impact sur le territoire, aujourd'hui et demain",
       description:
-        "Rassurez-vous, l’exercice n’est pas une évaluation scientifique nécessitant des connaissances poussées en climatologie. A l’image des codes couleurs (jaune, orange, rouge) de vigilance météorologique, il s'agit de qualifier la gravité des aléas les uns par rapport aux autres, en se dotant d'une convention partagée — pour ne pas dire « c'est grave » ou « ce n'est pas grave » chacun dans son coin.\n\nQuelques questions peuvent aider à réfléchir collectivement à l’importance des aléas les uns par rapport aux autres (fréquence, étendue sur le territoire, préoccupation déjà exprimée localement…). N'oubliez pas non plus de couvrir les deux temporalités de l'exercice : l'exposition passée et l'exposition future, à évaluer à l'aide de la TRACC.",
-      ressources: [DIAGNOSTIC_RENNES_METROPOLE]
+        "D'après votre réponse, aucun classement des aléas climatiques n'a encore été réalisé.\n\nRassurez-vous : pas besoin d'être expert en climatologie pour cet exercice. Il s'agit simplement de qualifier la gravité des aléas les uns par rapport aux autres, avec un **référentiel commun** que tout le monde lit de la même façon, à l'image des codes couleur de la vigilance météo (jaune, orange, rouge). L'objectif : **se mettre d'accord collectivement**, plutôt que chacun juge à sa façon si un aléa est grave ou non.\n\nPour vous aider à hiérarchiser, **posez-vous quelques questions simples** : cet aléa revient-il souvent ? Touche-t-il une grande partie du territoire ? Est-ce une préoccupation déjà exprimée localement ? Pensez aussi à couvrir les deux périodes : le passé déjà observé, et le futur que vous pouvez estimer grâce à la TRACC (trajectoire de réchauffement de référence pour l'adaptation au changement climatique).",
+      ressources: [DIAGNOSTIC_RENNES_METROPOLE, PATCH_4C]
     },
     satisfaisant: {
-      title: 'Compléter l’évaluation de l’exposition',
+      title: 'Compléter l’analyse de l’exposition aux aléas climatiques',
       description:
-        "A l’image des codes couleurs (jaune, orange, rouge) de vigilance météorologique, il s'agit de qualifier la gravité des aléas les uns par rapport aux autres, en se dotant d'une convention partagée — pour ne pas dire « c'est grave » ou « ce n'est pas grave » chacun dans son coin.\n\nLa qualification de la gravité des aléas reste incomplète ? Identifiez ce qui bloque :\n\n• une échelle trop binaire (aléa « grave » / « pas grave »), sans nuance intermédiaire, ni critères explicites (fréquence, étendue, préoccupation locale par exemple).\n• une couverture incomplète des aléas sans justification des omissions.\n• une seule temporalité traitée : la gravité a été évaluée sur la base des observations passées, sans anticipation de l'évolution future des aléas via la TRACC.\n• un exercice individuel plutôt que collectif : la qualification a été réalisée par un seul agent ou service, sans partage ni validation collective, ce qui questionne l’échelonnement des aléas retenus.",
-      ressources: []
+        "L'idée est de classer les aléas climatiques du territoire, du plus au moins grave. Pour y arriver, mieux vaut un référentiel commun avec des critères de gravité partagés par tous. Un peu comme les codes couleurs de la vigilance météo (jaune, orange, rouge) : une échelle que tout le monde lit de la même façon.\n\nQuelques réflexes utiles pour vous aider à compléter cet exercice :\n\n• **Sortir du tout ou rien.** Plutôt qu'un simple « grave / pas grave », prévoir des critères de notation pour nuancer : l'aléa revient-il souvent ? touche-t-il une grande partie du territoire ? inquiète-t-il d'ores et déjà les acteurs du territoire ?\n• **Passer tous les aléas en revue**. Regarder l'ensemble des aléas auxquels le territoire est, ou sera, exposé. Si certains sont écartés, vérifier que cela est justifié.\n• **Regarder aussi vers l'avenir.** Juger la gravité non seulement de ce qu’on a déjà observé, mais aussi la façon dont ces aléas vont évoluer. C'est ce que permet d’analyser la TRACC (trajectoire de réchauffement de référence adoptée par la France).\n• **Partager ce classement à plusieurs.** S'assurer que la hiérarchie retenue soit discutée, pour qu'elle fasse consensus.",
+      ressources: [PATCH_4C]
     }
   }
 };
 
 const IMPACTS_ANCRES_DESCRIPTION =
-  "Privilégiez les impacts pour lesquels un acteur local peut être consulté, plutôt que ceux uniquement documentés par la littérature scientifique. Un impact générique est vrai mais non discriminant : il s'applique partout, quel que soit le territoire. C'est souvent le cas des impacts qui se limitent à relater un phénomène physique, comme « recrudescence des dépérissements forestiers », sans préciser l'effet socio-économique qui en découle — ici, la fragilisation de la filière bois locale ou la perte de potentiel touristique.\n\nDans l’idéal, un impact bien décrit, c’est l'expression d’une évolution + un effet sur le territoire en lien avec un aléa. Par exemple “Baisse de fréquentation des commerces de centre-ville lors des épisodes de canicule”.\n\nCertains impacts ne sont pas quantifiables (pratiques fragilisées, dépendances locales, comportements…) ; seul le dialogue avec les acteurs permet de les faire émerger.";
+  "Privilégiez les impacts pour lesquels un acteur local peut être consulté, plutôt que ceux uniquement documentés par la littérature scientifique.\n\nUn impact générique est vrai mais non discriminant : il s'applique partout, quel que soit le territoire. C'est souvent le cas des impacts qui se limitent à relater un phénomène physique, comme « recrudescence des dépérissements forestiers », sans préciser l'effet socio-économique qui en découle — ici, la fragilisation de la filière bois locale ou la perte de potentiel touristique.\n\nDans l’idéal, **un impact bien décrit, c’est l'expression d’une évolution + un effet sur le territoire en lien avec un aléa**. Par exemple “Baisse de fréquentation des commerces de centre-ville lors des épisodes de canicule”.\n\nCertains impacts ne sont pas quantifiables (pratiques fragilisées, dépendances locales, comportements…) ; seul le dialogue avec les acteurs permet de les faire émerger.";
 
 const IMPACTS_ANCRES: QuestionRecommendation = {
   title: 'Décrire des impacts précis et ancrés dans le territoire',
@@ -275,9 +287,9 @@ const DONNEES_SOCIO_ECONOMIQUES: Record<string, QuestionRecommendations> = {
     },
     satisfaisant: {
       title:
-        'Si nécessaire, mettre en lumière les effets dominos entre impacts, au delà des silos sectoriels',
+        'Si nécessaire, mettre en lumière les effets dominos des impacts entre les différentes thématiques',
       description:
-        "L'analyse de la sensibilité couvre un large éventail de thématiques — ressources en eau, agriculture, santé, infrastructures, biodiversité, activités économiques… — car la vulnérabilité d'un territoire ne se limite jamais à un seul secteur.\n\nCes thématiques sont en outre étroitement liées entre elles : un aléa peut affecter plusieurs dimensions à la fois, et les impacts sur l'une peuvent en entraîner d'autres en cascade. C'est cette richesse d'interactions à explorer qui explique la place importante que prend naturellement cette partie dans le diagnostic.",
+        "La sensibilité s’analyse sur l’ensemble des thématiques — ressources en eau, agriculture, santé, infrastructures, biodiversité, activités économiques… D’autant que ces thématiques sont étroitement liées entre elles :\n\n• un même aléa peut toucher plusieurs thématiques à la fois, et\n• un impact peut entraîner de nouveaux impacts en cascade sur d'autres thématiques.\n\nLe cas échéant, **ces interactions gagneraient à être repérées et explicitées dans votre diagnostic**.",
       ressources: [DIAGNOSTIC_COEUR_DU_PAYS_HAUT]
     }
   },
@@ -291,7 +303,7 @@ const DONNEES_SOCIO_ECONOMIQUES: Record<string, QuestionRecommendations> = {
     satisfaisant: {
       title: 'Compléter les facteurs de sensibilité si besoin',
       description:
-        'Vous ne semblez pas pleinement satisfait : certaines données manquent de précision territoriale (par exemple : la répartition des essences en forêt à l’échelle de la région) ? Certains secteurs clés sont-ils sous représentés, voire non documentés ?',
+        "Le diagnostic recense déjà des facteurs de sensibilité, mais ce travail peut sans doute être complété.\n\nPuisqu'un facteur de sensibilité est ce qui fait qu'un même aléa produit des conséquences plus ou moins fortes selon les territoires, il doit être mesuré à l'aide de données assez fines.\n\nCertaines données manquent-elles de précision territoriale ? Par exemple, connaît-on la répartition des essences en forêt à l'échelle de votre territoire, ou seulement de la région ? Au-delà de la précision des données disponibles, certains secteurs clés sont-ils, eux, absents ou sous-représentés dans le diagnostic ?",
       ressources: [DONNEES_SENSIBILITE_TACCT]
     }
   },
@@ -315,16 +327,17 @@ const DONNEES_SOCIO_ECONOMIQUES: Record<string, QuestionRecommendations> = {
   },
   q5: {
     absentPartiel: {
-      title: 'Évaluer la gravité des impacts affectant le territoire',
+      title:
+        'Classer les impacts affectant le territoire en fonction de leur gravité',
       description:
-        "Rassurez-vous, l’exercice n’est pas une évaluation scientifique nécessitant des connaissances poussées. A l’image des codes couleurs (jaune, orange, rouge) de vigilance météorologique, il s'agit de qualifier la gravité des impacts les uns par rapport aux autres, en se dotant d'une convention partagée — pour ne pas dire « c'est grave » ou « ce n'est pas grave » chacun dans son coin.\n\nQuelques questions peuvent aider à réfléchir collectivement à l’importance des impacts les uns par rapport aux autres (nombre de personnes / activités concernées, étendue géographique de l’impact, délai avant que l’impact ne devienne critique, irréversibilité de l’impact…).",
+        "Aucun classement des impacts n'a encore été réalisé. Sans cette étape, votre territoire risque de se disperser ou de passer à côté de l'enjeu qui compte vraiment pour lui, sans pouvoir formuler d'objectifs stratégiques ciblés.\n\nRassurez-vous : pas besoin de connaissances scientifiques pour cet exercice. L'idée est de **classer les impacts sur le territoire, du plus au moins grave**. Pour y arriver, mieux vaut un **référentiel commun** — des critères de gravité partagés par tous — plutôt qu'un classement laissé au ressenti de chacun. Un peu comme les codes couleurs de la vigilance météo (jaune, orange, rouge) : une échelle que tout le monde lit de la même façon.\n\nPour vous aider à hiérarchiser les impacts, **posez-vous quelques questions** : combien de personnes sont touchées ? Dans quelle proportion les activités sont-elles concernées ? Quelle est son étendue géographique ? Va-t-il devenir critique et dans combien de temps ? Est-il réversible ? **Cette liste n'est pas exhaustive : à vous de la personnaliser avec vos propres critères**, du moment qu'ils sont partagés par tous.",
       ressources: []
     },
     satisfaisant: {
       title:
-        'Identifier ce qui manque dans l’évaluation de la gravité des impacts',
+        "Identifier ce qui pourrait être affiné dans l'évaluation de la gravité des impacts",
       description:
-        "A l’image des codes couleurs (jaune, orange, rouge) de vigilance météorologique, il s'agit de qualifier la gravité des impacts les uns par rapport aux autres, en se dotant d'une convention partagée — pour ne pas dire « c'est grave » ou « ce n'est pas grave » chacun dans son coin.\n\nLa qualification de la gravité des impacts reste incomplète ? Identifiez ce qui bloque :\n\n• une échelle trop binaire (impact « grave » / « pas grave »), sans nuance intermédiaire, ni critères explicites (nombre de personnes / activités concernées, étendue géographique de l’impact, délai avant que l’impact ne devienne critique, irréversibilité de l’impact…).\n• une couverture sectorielle incomplète.\n• un exercice individuel plutôt que collectif : la qualification a été réalisée par un seul agent ou service, sans partage ni validation collective, ce qui questionne l’échelonnement des impacts retenus.",
+        "Un classement des impacts a bien été établi mais le résultat vous semble incomplet.\n\nL'idée est de **classer collectivement les impacts sur le territoire, du plus au moins grave**. Pour y arriver, mieux vaut un **référentiel commun** — des critères de gravité partagés par tous — plutôt qu'un classement laissé au ressenti de chacun. Un peu comme les codes couleurs de la vigilance météo (jaune, orange, rouge) : une échelle que tout le monde lit de la même façon.\n\nQuelques réflexes utiles pour vous aider à compléter cet exercice :\n\n• **Affiner l'échelle de gravité.** Une échelle trop binaire (« grave » / « pas grave ») manque de nuance. Expliciter les critères d'évaluation des impacts : combien de personnes sont touchées ? Dans quelle proportion les activités sont-elles concernées ? Quelle est son étendue géographique ? Va-t-il devenir critique et dans combien de temps ? Est-il réversible ? Cette liste n'est pas exhaustive : à vous de la personnaliser avec d'autres critères, du moment qu'ils sont partagés.\n• **Réexaminer la liste des thématiques importantes.** Le climat comme le contexte socio-économique évoluent. Il est possible que certaines thématiques, peu touchées lors du dernier diagnostic de vulnérabilité, soient devenues essentielles depuis. C'est l'occasion de vérifier que la liste retenue correspond toujours à la réalité de votre territoire aujourd'hui.\n• **Croiser les avis sur le classement.** Si ce classement a été réalisé par une seule personne ou un seul service, c'est l'occasion d'en tenir compte pour le prochain exercice, en l'ouvrant à d'autres acteurs concernés du territoire. Un classement construit à plusieurs voix reflètera une vision partagée du territoire.",
       ressources: []
     }
   }
@@ -335,13 +348,13 @@ const DIALOGUE_ET_PARTAGE: Record<string, QuestionRecommendations> = {
     absentPartiel: {
       title: 'Décrire l’approche méthodologique',
       description:
-        "Décrire la méthodologie utilisée permet de rendre le diagnostic plus transparent et plus facile à interpréter pour ceux qui le liront sans avoir participé à son élaboration.\n\nExpliciter les choix méthodologiques (concepts retenus, sources mobilisées, critères de choix) permet de mieux justifier les priorités du diagnostic en montrant qu'elles reposent sur une démarche rigoureuse plutôt que sur des choix arbitraires.",
+        "Décrire la méthodologie utilisée permet de rendre le diagnostic plus transparent et plus facile à interpréter pour ceux qui le liront sans avoir participé à son élaboration.\n\nExpliciter les choix méthodologiques (**concepts retenus, sources mobilisées, critères de choix**) permet de mieux justifier les priorités du diagnostic en montrant qu'elles reposent sur une démarche rigoureuse plutôt que sur des choix arbitraires.",
       ressources: []
     },
     satisfaisant: {
       title: 'Compléter les descriptions méthodologiques, là où elles manquent',
       description:
-        "Vous avez pris soin de décrire l’approche méthodologique suivie, ce qui est loin d'être systématique et facilite grandement la lecture du diagnostic par des tiers. Cela permet de comprendre comment l'étude a été réalisée.\n\nSi vous n'avez répondu que « satisfaisant », c'est peut-être le signe que cette description pourrait encore gagner en précision. À la relecture, quels éléments vous auraient permis de répondre franchement « très satisfaisant » ?",
+        "L'approche méthodologique utilisée est déjà décrite dans le diagnostic, mais elle ne vous satisfait pas pleinement ?\n\nDécrire son approche méthodologique est loin d'être systématique. Pourtant, cet exercice facilite grandement la compréhension du diagnostic par des tiers : il permet de comprendre comment celui-ci a été réalisé. **Quels éléments manquent pour que cette description vous satisfasse ?** Lorsque vous ferez l'exercice, n'hésitez pas à faire relire ce passage par un collègue pour identifier ensemble les questions qui se posent encore.",
       ressources: []
     }
   },
@@ -349,14 +362,13 @@ const DIALOGUE_ET_PARTAGE: Record<string, QuestionRecommendations> = {
     absentPartiel: {
       title: 'Enrichir le diagnostic avec des verbatims',
       description:
-        "Un bon diagnostic reste solide sans verbatims, mais probablement un peu plus abstrait, avec un pouvoir de conviction moindre.\n\nLes verbatims apportent ce supplément d'ancrage dans le vécu réel qui rend le diagnostic plus mobilisateur, sans pour autant être indispensables à sa validité.",
+        "Un diagnostic reste valide sans verbatims : ils n'apportent rien à sa solidité méthodologique. En revanche, ils lui donnent un ancrage dans le vécu du territoire qui renforce sa force de conviction. Pensez à recueillir quelques verbatims auprès des acteurs du territoire : cela rendra le diagnostic plus mobilisateur.",
       ressources: []
     },
     satisfaisant: {
-      title:
-        'Conserver la bonne pratique d’illustrer le diagnostic avec des verbatims',
+      title: "Conserver la bonne pratique d'utiliser des verbatims",
       description:
-        "Votre diagnostic présente quelques verbatims, et c’est précieux : ce sont eux qui apportent ce supplément d'ancrage dans le vécu réel et rendent le diagnostic plus mobilisateur, car moins abstrait.\n\nConservez cette bonne pratique, votre pouvoir de conviction n’en sera que renforcé.",
+        "Votre diagnostic contient déjà quelques verbatims, et c'est précieux : ils ancrent le diagnostic dans le vécu réel du territoire, ce qui le rend plus parlant et plus mobilisateur. Continuez sur cette lancée.",
       ressources: []
     }
   },
@@ -364,13 +376,13 @@ const DIALOGUE_ET_PARTAGE: Record<string, QuestionRecommendations> = {
     absentPartiel: {
       title: 'Rechercher les actions déjà engagées sur le territoire',
       description:
-        "Contribuer au diagnostic peut avoir un effet anxiogène, en donnant l'impression d'un territoire démuni face au changement climatique. Évoquer les actions déjà menées permet de rééquilibrer ce récit en montrant que le territoire n'est pas passif, mais déjà engagé dans une dynamique d'adaptation.\n\nCela permet aussi de pondérer les ressentis : un territoire peut être sensible à un aléa tout en ayant déjà renforcé sa capacité de réponse. Il est intéressant de mener cette réflexion lors de l’exercice de qualification de la sensibilité. Le diagnostic gagne ainsi en richesse, sans minimiser les enjeux, mais sans céder au fatalisme non plus.\n\nSi aucune action n'apparaît dans le document, cela ne signifie pas nécessairement que le sujet n’a pas été abordé. Il a pu l’être en atelier sans être repris dans le document final. Considérez alors cette question comme une « enquête à mener » en allant vérifier, dans les comptes-rendus par exemple.",
+        "Contribuer au diagnostic peut avoir un effet anxiogène, en donnant l'impression d'un territoire démuni face au changement climatique. Évoquer les actions déjà menées permet de rééquilibrer ce récit en montrant que le territoire n'est pas passif, mais déjà engagé dans une dynamique d'adaptation.\n\nCela permet aussi de pondérer les ressentis : **un territoire peut être sensible à un aléa tout en ayant déjà renforcé sa capacité de réponse**. Il est intéressant de mener cette réflexion lors de l’exercice de qualification de la sensibilité. Le diagnostic gagne ainsi en richesse, sans minimiser les enjeux, mais sans céder au fatalisme non plus.\n\nSi aucune action n'apparaît dans le document, cela ne signifie pas nécessairement que le sujet n’a pas été abordé. Il a pu l’être en atelier sans être repris dans le document final. Il est possible que certaines réponses soient à chercher dans les archives du diagnostic (des comptes-rendus par exemple).",
       ressources: []
     },
     satisfaisant: {
       title: 'Citer les actions déjà menées',
       description:
-        "Avoir identifié quelques actions engagées sur le territoire est une bonne dynamique à poursuivre. Ce travail permet de rééquilibrer le récit du diagnostic, souvent focalisé sur les vulnérabilités, en montrant que le territoire n'est pas passif mais déjà en mouvement face au changement climatique.\n\nIl permet surtout de pondérer les ressentis : un territoire peut rester sensible à un aléa tout en ayant déjà renforcé sa capacité de réponse. C’est un élément important qui influencera directement les résultats de la qualification de la sensibilité.",
+        "Avoir identifié quelques actions engagées sur le territoire est une bonne dynamique à poursuivre. Ce travail permet de rééquilibrer le récit du diagnostic, souvent focalisé sur les vulnérabilités, en montrant que le territoire n'est pas passif mais déjà en mouvement face au changement climatique.\n\nIl permet surtout de pondérer les ressentis : **un territoire peut rester sensible à un aléa tout en ayant déjà renforcé sa capacité de réponse**. C’est un élément important qui influencera directement les résultats de la qualification de la sensibilité.",
       ressources: []
     }
   },
@@ -387,9 +399,9 @@ const DIALOGUE_ET_PARTAGE: Record<string, QuestionRecommendations> = {
     },
     satisfaisant: {
       title:
-        'Assumer le choix d’une consultation partielle : vous ne pourrez pas interroger tout le monde !',
+        "Assumer le choix d'une consultation partielle : vous ne pourrez pas interroger tout le monde",
       description:
-        "La co-construction avec les acteurs du territoire suppose un arbitrage : plus les temps d’échange sont nombreux, plus l'ancrage dans le réel se renforce, mais au prix d'un temps de mobilisation plus important pour la collectivité.\n\nUne consultation partielle n'invalide pas le diagnostic, mais elle en limite la portée : certaines thématiques resteront peut-être orphelines, faute d'avoir pu associer les acteurs concernés.\n\nUn diagnostic utile n’est cependant pas celui qui vise l’exhaustivité, mais celui qui crée déjà les conditions d’un débat stratégique.",
+        "Plus les temps d'échange sont nombreux, plus le diagnostic est ancré dans le réel, mais plus la mobilisation demande de temps à la collectivité. **C'est donc un arbitrage à assumer.**\n\nGardez seulement en tête que certaines thématiques risquent d'être moins documentées, faute d'avoir pu associer les acteurs concernés.\n\nL'essentiel : plutôt que de chercher à être exhaustif, **un diagnostic utile doit permettre de poser les bases d'un débat stratégique.**",
       ressources: [TEMOIGNAGE_RENNES_METROPOLE]
     }
   },
@@ -421,7 +433,7 @@ const PRIORISATION_DES_IMPACTS: Record<string, QuestionRecommendations> = {
       title:
         'Identifier ce qui manque à votre section consacrée à la vulnérabilité',
       description:
-        "Vous n'avez répondu que « satisfaisant » à cette question, plutôt que franchement « très satisfaisant ». Est-ce le contenu de la section qui vous semble perfectible, ou plutôt la place que cette analyse occupe dans le diagnostic ?\n\nLa suite de la feuille de route devrait vous aider à préciser ce qui manque dans le traitement de la vulnérabilité.",
+        "Une section est déjà consacrée à la vulnérabilité, mais il manque quelque chose... Est-ce une question de fond ou de forme ?\n\n• Le contenu de cette section gagnerait-il à être approfondi ?\n• Est-ce plutôt sa place dans le diagnostic qui pose problème — trop discrète, noyée dans d'autres sections, pas assez mise en avant ?",
       ressources: []
     }
   },
@@ -436,7 +448,7 @@ const PRIORISATION_DES_IMPACTS: Record<string, QuestionRecommendations> = {
       title:
         'Fonder la priorisation des enjeux sur une analyse, pas en la décrétant',
       description:
-        "Le diagnostic fait état d'une liste limitée d'enjeux prioritaires, mais votre réponse n'a pas été « très satisfaisant ».\n\nEst-ce la méthode de priorisation qui manque de clarté, les critères de choix qui restent implicites, ou la façon dont ces enjeux ont été arbitrés — par exemple sans réelle concertation avec les acteurs du territoire ? La suite de la feuille de route devrait vous aider à préciser ce qui manque.",
+        "Le diagnostic fait déjà état d'une liste d'enjeux prioritaires, sans pour autant vous satisfaire pleinement.\n\nPourquoi cette réserve ? La méthode de priorisation est-elle décrite de façon suffisamment claire ? Les critères de choix sont-ils explicites ? Les enjeux retenus vous semblent-ils issus d'une concertation suffisante avec les acteurs du territoire ?",
       ressources: []
     }
   },
@@ -445,13 +457,13 @@ const PRIORISATION_DES_IMPACTS: Record<string, QuestionRecommendations> = {
       title:
         'Évaluer l’exposition et la sensibilité pour réaliser la matrice de vulnérabilité',
       description:
-        "La matrice de vulnérabilité formalise, pour chaque impact identifié, le croisement entre exposition, sensibilité et capacité d'adaptation — les trois composantes qui déterminent le niveau de vulnérabilité du territoire face à cet impact.\n\nCe croisement transforme une liste d'impacts en une hiérarchie objectivée, qui ne repose pas sur un jugement isolé ou arbitraire. En rendant visible et comparable le niveau de vulnérabilité associé à chaque impact, la matrice permet aux enjeux prioritaires d'émerger directement de l'analyse, plutôt que d'être désignés a priori.\n\nIl est possible que l’exercice ait été fait sans figurer dans le document final. Considérez alors cette question comme une « enquête à mener » en allant vérifier dans les archives du diagnostic (comptes-rendus par exemple).",
+        "La matrice de vulnérabilité formalise, pour chaque impact identifié, **le croisement entre exposition, sensibilité et capacité d'adaptation** — les trois composantes qui déterminent le niveau de vulnérabilité du territoire face à cet impact. **Ce croisement transforme une liste d'impacts en une hiérarchie objectivée**, qui ne repose pas sur un jugement isolé ou arbitraire. En rendant visible et comparable le niveau de vulnérabilité associé à chaque impact, **la matrice permet aux enjeux prioritaires d'émerger directement de l'analyse**, plutôt que d'être désignés a priori.\n\nIl est possible que l’exercice ait été fait sans figurer dans le document final : certaines réponses sont à chercher dans les archives du diagnostic (comptes-rendus par exemple).",
       ressources: [DIAGNOSTIC_PNR_AUBRAC]
     },
     satisfaisant: {
       title: 'Identifier ce qui peut limiter la portée de la matrice existante',
       description:
-        "Vous avez réalisé la matrice de vulnérabilité, ce qui constitue déjà une base solide pour la priorisation des impacts et la détermination des enjeux, et pourtant vous n'avez pas répondu « très satisfaisant ». La matrice semble-t-elle incomplète, certains acteurs ayant manqué lors des échanges collectifs ? Le résultat de la matrice a-t-il fait émerger une hiérarchie qui ne correspondait pas totalement aux priorités politiques établies ?\n\nEst-il possible que la matrice n'ait pas été partagée ou débattue collectivement, ce qui limite son appropriation et sa légitimité ?\n\nIl est possible que certaines réponses soient à chercher dans les archives du diagnostic. Considérez alors cette question comme une « enquête à mener ».",
+        "La matrice de vulnérabilité figure dans le diagnostic — une base solide pour prioriser les impacts et déterminer les enjeux — sans pour autant que cela vous satisfasse pleinement.\n\n• La matrice semble-t-elle incomplète, certains acteurs ayant manqué lors des échanges collectifs ?\n• Le résultat de la matrice a-t-il fait émerger une hiérarchie qui ne correspondait pas totalement aux priorités politiques établies ?\n• Est-il possible que la matrice n'ait pas été partagée ou débattue collectivement, ce qui limite son appropriation et sa légitimité ?\n\nIl est possible que certaines réponses soient à chercher dans les archives du diagnostic.",
       ressources: [DIAGNOSTIC_PNR_AUBRAC]
     }
   }
@@ -463,13 +475,13 @@ const PROBLEMATISATION_ET_CONCLUSION: Record<string, QuestionRecommendations> =
       absentPartiel: {
         title: 'Orienter la conclusion vers la suite de la démarche',
         description:
-          "Le diagnostic n'est pas une fin en soi, mais une étape ; sa conclusion doit donc porter le lecteur vers la suite de la démarche plutôt que de considérer le sujet comme clos.",
+          "La conclusion du diagnostic ne mentionne pas encore de suite à donner, il se peut même qu'il n'y en ait pas.\n\nLe diagnostic n'est pas une fin en soi, mais une étape : sa conclusion doit orienter le lecteur vers ce qui vient ensuite, **l'élaboration de la stratégie**.\n\nConcrètement, elle peut ouvrir sur trois chantiers :\n\n• **Faire valider ce diagnostic** (et sa ou ses problématiques) **aux élus**, pour obtenir leur accord avant d'aller plus loin.\n• **Restituer les résultats aux acteurs mobilisés**, pour reconnaître leur contribution et les associer à la suite.\n• **Engager la phase de stratégie**, pour construire un plan d'action et des trajectoires d'adaptation à plus long terme.",
         ressources: []
       },
       satisfaisant: {
-        title: "Préparer vos lecteurs à l'étape suivante",
+        title: 'Préparer vos lecteurs à la suite de la démarche',
         description:
-          "Votre conclusion ouvre déjà sur la suite de la démarche — bravo. Elle donne au lecteur une direction claire plutôt qu'un simple bilan.\n\nCette formulation facilite la suite de la démarche : elle prépare déjà les esprits, notamment ceux des élus et des services techniques, à l'étape de la stratégie.",
+          "Votre conclusion ouvre sur la suite de la démarche — c'est une bonne base : elle donne au lecteur une direction claire plutôt qu'un simple bilan.\n\nCette ouverture prépare déjà les esprits, notamment ceux des élus et des services techniques, à l'étape suivante : celle de l'**élaboration de la stratégie**.",
         ressources: []
       }
     },
@@ -485,7 +497,7 @@ const PROBLEMATISATION_ET_CONCLUSION: Record<string, QuestionRecommendations> =
         title:
           'Faire valider la problématique par vos élus pour un mandat clair',
         description:
-          "La validation de votre (vos) problématique(s) marque un point d'étape important dans la démarche d'adaptation.\n\nElle signe le passage du constat (le diagnostic) à une posture agissante. Parce que ce passage fait basculer le registre du technique vers le politique — et qu'une problématique bien formulée engage et responsabilise là où un simple constat d'impacts peut paralyser ou décourager — il est recommandé de la faire valider par vos élus, afin d'obtenir un mandat clair pour l’élaboration de votre trajectoire d’adaptation.",
+          "Une ou plusieurs problématiques sont déjà identifiées — c'est une étape importante dans la démarche d'adaptation.\n\nUne problématique marque le passage du constat, porté par le diagnostic, à l'action. On quitte le registre technique pour entrer dans le registre politique. Là où un simple constat d'impacts peut décourager voire paralyser, **une problématique bien formulée engage et donne au contraire envie d'agir**.\n\nIl est très fortement recommandé de **faire valider la ou les problématiques par vos élus**. Vous obtiendrez ainsi un mandat clair pour construire votre trajectoire d'adaptation.",
         ressources: []
       }
     },
@@ -493,7 +505,7 @@ const PROBLEMATISATION_ET_CONCLUSION: Record<string, QuestionRecommendations> =
       absentPartiel: {
         title: "Restituer les résultats pour préparer l'action",
         description:
-          "Un diagnostic qui reste au stade du document produit risque de rester lettre morte. La restitution fait du diagnostic un objet vivant, partagé — elle redonne une vision d'ensemble à ceux qui l'ont construit, et le fait découvrir à ceux qui n'y étaient pas.\n\nC'est aussi l'occasion de donner à chacun un rôle clair dans la suite de la démarche, qu'il s'agisse pour les élus de valider une problématique ou pour les services techniques et les partenaires de s'engager dans l'élaboration de la trajectoire d'adaptation.\n\nSans ce temps de restitution, le passage du diagnostic à la stratégie risque de manquer d'élan et de portage partagé.",
+          "Si aucune restitution du diagnostic n'a lieu, le risque est qu'il finisse sur une étagère. La restitution fait du diagnostic un objet vivant et partagé : elle redonne une **vision d'ensemble** à ceux qui y ont contribué, et le fait découvrir à ceux qui n'y étaient pas.\n\nC'est aussi l'occasion de **donner à chacun un rôle clair dans la suite de la démarche** : aux élus de valider la problématique, aux services techniques et aux partenaires de s'engager dans l'élaboration de la trajectoire d'adaptation.\n\nSans ce temps de restitution, le passage du diagnostic à la stratégie risque de manquer d'élan et de portage partagé.",
         ressources: []
       },
       satisfaisant: {

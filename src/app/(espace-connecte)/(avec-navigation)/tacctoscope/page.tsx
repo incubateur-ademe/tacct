@@ -57,8 +57,7 @@ const TacctoscopePage = async () => {
               Le TACCToscope
             </H1>
             <Body weight="medium" style={{ color: '#038278' }}>
-              Votre diagnostic de vulnérabilité répond-il à ces
-              5 critères essentiels ?
+              Votre diagnostic de vulnérabilité est-il solide sur ces 5 catégories fondamentales ?
             </Body>
             <Body
               style={{
@@ -70,10 +69,10 @@ const TacctoscopePage = async () => {
             >
               Optimisez le temps et les ressources consacrés au diagnostic
               de vulnérabilité en capitalisant sur le travail réalisé
-              précédemment ! Posez un regard méthodique et lucide sur le
-              document existant, et évaluez par vous-même ce qui mérite
-              révision - avec des exemples concrets et pistes de retravail
-              ciblées pour plus d'efficacité.
+              précédemment ! Posez un regard méthodique et lucide sur
+              l’existant, et évaluez par vous-même ce qui mérite
+              révision - grâce à des exemples concrets et pistes de
+              retravail ciblées.
             </Body>
           </header>
         </NewContainer>

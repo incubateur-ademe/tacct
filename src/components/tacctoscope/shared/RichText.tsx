@@ -1,6 +1,7 @@
 import { Body } from '@/design-system/base/Textes';
 import { RichContent } from '@/lib/tacctoscope/types';
 import { CSSProperties } from 'react';
+import { FormattedText } from './FormattedText';
 import styles from './shared.module.scss';
 
 interface Props {
@@ -28,14 +29,14 @@ export const RichText = ({ content, size = 'md', color, style }: Props) => {
             {block.map((item, itemIndex) => (
               <li key={itemIndex}>
                 <Body htmlTag="span" size={size} color={color} style={style}>
-                  {item}
+                  <FormattedText text={item} />
                 </Body>
               </li>
             ))}
           </ul>
         ) : (
           <Body key={index} size={size} color={color} style={style}>
-            {block}
+            <FormattedText text={block} />
           </Body>
         )
       )}

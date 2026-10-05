@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { FormattedText } from '../shared/FormattedText';
 import { RessourceTag } from './RessourceTag';
 
 const CloseIcon = () => (
@@ -151,7 +152,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
                   Qu’est-ce que c’est ?
                 </Body>
                 <Body size="sm" color="#3d3d3d" style={{ lineHeight: 1.6 }}>
-                  {ressource.description}
+                  <FormattedText text={ressource.description} />
                 </Body>
               </div>
             )}
@@ -162,7 +163,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
                   Pourquoi est-ce utile ?
                 </Body>
                 <Body size="sm" color="#3d3d3d" style={{ lineHeight: 1.6 }}>
-                  {ressource.utilite}
+                  <FormattedText text={ressource.utilite} />
                 </Body>
               </div>
             )}

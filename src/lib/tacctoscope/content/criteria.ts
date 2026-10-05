@@ -21,7 +21,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q1',
         section: 'analyse',
         exampleKind: 'exemple',
-        label: 'Le diagnostic comprend des observations climatiques passées',
+        label:
+          'Le diagnostic comprend des observations sur le climat passé du territoire',
         text: "Il s'agit de données climatiques mesurées, ou de phénomènes observés, sur votre territoire (températures, précipitations, événements extrêmes, etc.).",
         example:
           'Lors des épisodes caniculaires de 2003 et 2023, 10 des 14 stations météorologiques du territoire ont enregistré les journées les plus chaudes depuis 1947.',
@@ -34,8 +35,11 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'analyse',
         exampleKind: 'contre-exemple',
         label:
-          'Les projections climatiques ont un horizon de réchauffement de +4°C à l’horizon 2100.',
-        text: "Le niveau de réchauffement de 4°C (pour la métropole) et l’horizon temporel de fin de siècle sont les deux caractéristiques de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC), adoptée par la France pour fixer une cible commune d'adaptation.",
+          'Les projections climatiques retenues sont issues ou compatibles avec la TRACC',
+        text: [
+          "Le niveau de réchauffement de 4°C (pour la métropole*) et l’horizon temporel de fin de siècle sont les deux caractéristiques de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC), adoptée par la France pour fixer une cible commune d'adaptation.",
+          '_(*) Territoires ultramarins et métropole ont chacun leurs propres projections climatiques, avec des niveaux de réchauffement inférieurs à 4°C dans les outre-mer._'
+        ],
         example:
           "Un certain nombre de diagnostics sont basés sur des scénarios climatiques fondés sur des hypothèses de réchauffement inférieures au +4°C retenus dans la TRACC pour la métropole. L’horizon temporel se limite souvent à 2050, ne permettant pas d'anticiper les évolutions attendues au-delà de cette échéance, désormais de court terme.",
         minHint:
@@ -47,8 +51,9 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q3',
         section: 'analyse',
         exampleKind: 'contre-exemple',
-        label: 'Décrire son territoire, plutôt que le climat global',
-        text: "Les projections à l'échelle mondiale, voire nationale, ne permettent pas aux acteurs locaux de se reconnaître. Le diagnostic de vulnérabilité doit se recentrer sur votre territoire.",
+        label:
+          'Le diagnostic décrit le climat du territoire (pas celui de la France ou du monde)',
+        text: "Les projections à l'échelle mondiale, voire nationale, apportent un cadre de référence mais elles restent peu mobilisatrices pour les acteurs locaux, qui peinent à s'y reconnaître. Le diagnostic de vulnérabilité doit se concentrer sur les spécificités de _votre_ territoire.",
         example: [
           '“Les continents et les latitudes élevées se réchauffent beaucoup plus vite. Ainsi, la température en Arctique pourrait augmenter jusqu’à +11°C en 2100.”',
           'Cette affirmation est vraie. Pour autant, quelle compréhension de votre territoire apporte-t-elle ?'
@@ -82,10 +87,10 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q5',
         section: 'enquete',
         exampleKind: 'exemple',
-        label: 'Un exercice de qualification de l’exposition a été mené',
-        text: "Cet exercice est destiné à identifier les aléas et les phénomènes climatiques qui ont le plus d'impacts sur votre territoire, en les priorisant entre eux.",
+        label: 'Un travail de hiérarchisation des aléas climatiques a été mené',
+        text: "Cet exercice consiste à classer, du plus au moins préoccupant, les aléas et les phénomènes climatiques auxquels le territoire est exposé. Ce travail a pu être mené à l'oral, en atelier par exemple, sans être mentionné dans le diagnostic. Les réponses seront alors à chercher dans les archives ou auprès des participants.",
         example:
-          'Diagnostic de vulnérabilité au changement climatique Rennes métropole - Janvier 2025',
+          'Extrait du diagnostic de vulnérabilité Rennes métropole - Janvier 2025',
         exampleAttachments: ['/preuve-critere1-q5.webp'],
         minHint: 'Il n’y a aucune évaluation de l’exposition.',
         maxHint: 'L’exposition passée et future a été évaluée.'
@@ -103,7 +108,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'exemple',
         label:
           'La majeure partie du diagnostic est dédiée à l’analyse des impacts',
-        text: 'L’analyse de la sensibilité vise à recenser de façon empirique les principales conséquences (ou impacts) observées ou pressenties de l’évolution du climat sur votre territoire. La table des matières de votre diagnostic permet de vérifier rapidement la place qui lui est accordée.',
+        text: "L'analyse de la sensibilité vise à recenser les principales conséquences — ou impacts — observées ou attendues de l'évolution du climat sur votre territoire. La table des matières de votre diagnostic permet de vérifier rapidement la place qui leur est accordée.",
         example:
           'Table des matières du diagnostic de vulnérabilité de la communauté de communes Cœur du Pays Haut - 2024',
         exampleAttachments: ['/preuve-critere2-q1.webp'],
@@ -150,8 +155,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q5',
         section: 'enquete',
-        label: 'Un exercice de qualification de la sensibilité a été mené',
-        text: 'Cet exercice est destiné à hiérarchiser les impacts au sein d’une même thématique, puis les thématiques entre elles.',
+        label: 'Un travail de hiérarchisation des impacts a été mené',
+        text: "Cet exercice est destiné à hiérarchiser les impacts au sein d’une même thématique, puis les thématiques entre elles. Il a pu être mené à l'oral, sans qu’il en reste de trace écrite.",
         minHint: 'Aucune évaluation de la gravité des impacts n’a été menée.',
         maxHint: 'La gravité des impacts a été évaluée.'
       }
@@ -170,10 +175,8 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
           "L'approche méthodologique utilisée est mentionnée dans le document",
         text: 'Par approche méthodologique, on entend l’ensemble des choix qui structurent le diagnostic : définition des concepts utilisés, partis pris méthodologique, logique d’ensemble, mais aussi types de sources et de données mobilisées, méthode de recueil, critères de priorisation...',
         example: [
-          [
-            'Approche méthodologique de Saint Brieuc Armor Agglomération (2025)',
-            'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)'
-          ]
+          'Approche méthodologique de Saint Brieuc Armor Agglomération (2025)',
+          'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)'
         ],
         exampleAttachments: [
           '/preuve-critere3-q1.webp',
@@ -185,8 +188,12 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
       {
         id: 'q2',
         section: 'analyse',
+        exampleKind: 'exemple',
         label: 'La description des impacts est accompagnée de verbatims',
         text: 'Un verbatim est la reproduction intégrale de propos prononcés ou écrits.',
+        example:
+          'Étude de vulnérabilité du Pays de la Déodatie, “_Les forêts face au changement climatique_”, Climate Adaptation Consulting, 2020',
+        exampleAttachments: ['/preuve-critere3-q2.webp'],
         minHint: 'Aucun verbatim ne figure dans le diagnostic.',
         maxHint: 'Des verbatims sont retranscrits.'
       },
@@ -233,7 +240,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Une trace des travaux menés reste consultable',
         text: 'Il peut s’agir de relevés de décision, de comptes-rendus d’ateliers ou d’entretiens, de tableurs de données, de supports de réunions, de rapports ayant servis de source, etc.',
         example:
-          'Annexe “CCBDP. (2023, mars). Compte rendu de l’atelier sur la sensibilité du territoire au changement climatique.” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
+          'Annexe “_CCBDP. (2023, mars). Compte rendu de l’atelier sur la sensibilité du territoire au changement climatique._” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
         exampleAttachments: ['/preuve-critere3-q5.webp'],
         minHint: 'Aucun document n’est consultable.',
         maxHint: 'Une trace des travaux est consultable.'
@@ -307,9 +314,9 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Une problématique claire est identifiée',
         text: "La problématique est la reformulation d'un enjeu constaté en un défi politique ouvert.",
         example: [
-          "Aléa → Les sécheresses estivales vont s'intensifier, avec des étiages de cours d'eau plus précoces et plus longs.",
-          "Impact → L'alimentation en eau potable de X communes sera menacée dès 2035. L'agriculture irriguée perdra Y% de sa capacité, etc.",
-          "Problématique → Comment garantir l'accès à l'eau pour tous les usages essentiels alors que la ressource va se raréfier et que les usages sont déjà en concurrence ?"
+          "**Aléa →** Les sécheresses estivales vont s'intensifier, avec des étiages de cours d'eau plus précoces et plus longs.",
+          "**Impact →** L'alimentation en eau potable de X communes sera menacée dès 2035. L'agriculture irriguée perdra Y% de sa capacité, etc.",
+          "**Problématique →** Comment garantir l'accès à l'eau pour tous les usages essentiels **alors que** la ressource va se raréfier et que les usages sont déjà en concurrence ?"
         ],
         minHint: 'Aucune problématique n’est identifiée.',
         maxHint: 'Une problématique est clairement identifiée.'

@@ -2,6 +2,7 @@ import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuill
 import { QuestionRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Link from 'next/link';
+import { FormattedText } from '../shared/FormattedText';
 import { RessourcesAccordion } from './RessourcesAccordion';
 
 const ReturnIcon = () => (
@@ -58,11 +59,15 @@ export const RecommendationBlock = ({
         block.type === 'list' ? (
           <ul key={index} className={styles.recoList}>
             {block.items.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <FormattedText text={item} />
+              </li>
             ))}
           </ul>
         ) : (
-          <p key={index}>{block.text}</p>
+          <p key={index}>
+            <FormattedText text={block.text} />
+          </p>
         )
       )}
     </div>

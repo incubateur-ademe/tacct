@@ -47,7 +47,7 @@ const SECTION_META: Record<SectionKind, { title: string; description: string }> 
 {
   analyse: {
     title: 'Analyse de votre diagnostic',
-    description: 'Les réponses à ces questions sont à trouver dans le document existant.'
+    description: 'Les réponses aux questions suivantes sont à trouver dans votre diagnostic existant.'
   },
   enquete: {
     title: 'Enquête à mener',
