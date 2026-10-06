@@ -31,7 +31,7 @@ interface Props {
   title: string;
   description: string;
   questions: SectionQuestion[];
-  openKey: string | null;
+  openKeys: Set<string>;
   onToggle: (questionKey: string) => void;
   onChanged: (questionKey: string, answered: boolean) => void;
   onRecommendationAdded: () => void;
@@ -44,7 +44,7 @@ export const CriterionSection = ({
   title,
   description,
   questions,
-  openKey,
+  openKeys,
   onToggle,
   onChanged,
   onRecommendationAdded,
@@ -78,7 +78,7 @@ export const CriterionSection = ({
           question={item.question}
           number={item.number}
           initialValue={item.initialValue}
-          openKey={openKey}
+          openKeys={openKeys}
           onToggle={onToggle}
           onChanged={onChanged}
           onRecommendationAdded={onRecommendationAdded}

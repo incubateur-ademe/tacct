@@ -164,7 +164,7 @@ export const FeuilleDeRouteView = ({
   return (
     <NewContainer size="xl" style={{ paddingTop: "1.5rem" }}>
       <div className={styles.body}>
-        <RoadmapMenu items={menuItems} isLoggedIn={isLoggedIn} />
+        <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
           {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />

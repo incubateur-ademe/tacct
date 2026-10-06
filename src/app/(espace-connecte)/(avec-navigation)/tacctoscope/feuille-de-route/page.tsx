@@ -3,7 +3,6 @@ import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
-import { estProfilDeverrouille } from '@/lib/segmentation';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -12,7 +11,7 @@ import styles from './roadmap.module.scss';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = { title: 'Ma feuille de route - TACCToscope' };
+export const metadata: Metadata = { title: 'Feuille de route TACCToscope' };
 
 const FeuilleDeRoutePage = async () => {
   const user = await getCurrentUserValide();
@@ -74,7 +73,7 @@ const FeuilleDeRoutePage = async () => {
 
       <FeuilleDeRouteView
         answers={answers}
-        isAuthenticated={estProfilDeverrouille(user?.profil)}
+        isAuthenticated={!!user}
         isLoggedIn={!!user}
       />
     </div>

@@ -76,16 +76,20 @@ export const CriteresView = ({
   const orderedKeys = criterion.questions.map((question) =>
     buildQuestionKey(criterion.slug, question.id)
   );
-  const firstOpenKey = (answered: Set<string>) =>
-    orderedKeys.find((key) => !answered.has(key)) ?? orderedKeys[0] ?? null;
+  const firstOpenKeys = (answered: Set<string>) => {
+    const key = orderedKeys.find((k) => !answered.has(k)) ?? orderedKeys[0];
+    return new Set<string>(key ? [key] : []);
+  };
 
   const [hydrated, setHydrated] = useState(isAuthenticated);
   const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
   const [answeredKeys, setAnsweredKeys] = useState<Set<string>>(
     () => new Set(Object.keys(answers))
   );
-  const [openKey, setOpenKey] = useState<string | null>(() =>
-    isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
+  const [openKeys, setOpenKeys] = useState<Set<string>>(() =>
+    isAuthenticated
+      ? firstOpenKeys(new Set(Object.keys(answers)))
+      : new Set<string>()
   );
   const [toastOpen, setToastOpen] = useState(false);
   const [toastKey, setToastKey] = useState(0);
@@ -108,7 +112,7 @@ export const CriteresView = ({
     const answeredSet = new Set(Object.keys(scopedAnswers));
     setCurrentAnswers(scopedAnswers);
     setAnsweredKeys(answeredSet);
-    setOpenKey(firstOpenKey(answeredSet));
+    setOpenKeys(firstOpenKeys(answeredSet));
     setHydrated(true);
   }, [isAuthenticated, criterion]);
 
@@ -120,14 +124,19 @@ export const CriteresView = ({
       (question) => `question-${criterion.slug}-${question.id}` === hash
     );
     if (!target) return;
-    setOpenKey(buildQuestionKey(criterion.slug, target.id));
+    setOpenKeys(new Set([buildQuestionKey(criterion.slug, target.id)]));
     requestAnimationFrame(() => {
       document.getElementById(hash)?.scrollIntoView({ block: 'start' });
     });
   }, [hydrated, criterion]);
 
   const handleToggle = (key: string) =>
-    setOpenKey((current) => (current === key ? null : key));
+    setOpenKeys((current) => {
+      const next = new Set(current);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
 
   const handleChanged = (questionKey: string, answered: boolean) =>
     setAnsweredKeys((current) => {
@@ -181,7 +190,7 @@ export const CriteresView = ({
               title={SECTION_META.analyse.title}
               description={SECTION_META.analyse.description}
               questions={analyse}
-              openKey={openKey}
+              openKeys={openKeys}
               onToggle={handleToggle}
               onChanged={handleChanged}
               onRecommendationAdded={showRecoToast}
@@ -196,7 +205,7 @@ export const CriteresView = ({
               title={SECTION_META.enquete.title}
               description={SECTION_META.enquete.description}
               questions={enquete}
-              openKey={openKey}
+              openKeys={openKeys}
               onToggle={handleToggle}
               onChanged={handleChanged}
               onRecommendationAdded={showRecoToast}

@@ -5,7 +5,6 @@ import { NewContainer } from "@/design-system/layout";
 import { getCurrentUserValide } from "@/lib/auth/getCurrentUser";
 import { getUserAnswers } from "@/lib/queries/tacctoscope";
 import { autresOutilsCartes } from "@/lib/ressources/cartes";
-import { estProfilDeverrouille } from "@/lib/segmentation";
 import { CRITERIA } from "@/lib/tacctoscope/content/criteria";
 import { getRecommendationCount } from "@/lib/tacctoscope/content/roadmapResources";
 import { getAllProgress } from "@/lib/tacctoscope/progress";
@@ -14,9 +13,7 @@ import styles from '../ressources.module.scss';
 
 export const BlocAutresOutils = async () => {
   const user = await getCurrentUserValide();
-  const deverrouille = estProfilDeverrouille(user?.profil);
-
-  const answers: AnswerMap = deverrouille ? await getUserAnswers() : {};
+  const answers: AnswerMap = user ? await getUserAnswers() : {};
   const progress = getAllProgress(answers);
   const completed = progress.filter(
     (criterion) => criterion.total > 0 && criterion.answered === criterion.total

@@ -8,7 +8,7 @@ import { useAnsweredCount } from '@/lib/tacctoscope/useAnsweredCount';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { AccesReserveModal, UnlockModal } from '../shared/Modales';
+import { UnlockModal } from '../shared/Modales';
 import { ProgressDots } from '../shared/ProgressDots';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
 import styles from './criterion.module.scss';
@@ -19,7 +19,6 @@ interface Props {
   total: number;
   locked: boolean;
   isAuthenticated: boolean;
-  isLoggedIn: boolean;
 }
 
 export const CriterionCard = ({
@@ -27,8 +26,7 @@ export const CriterionCard = ({
   answered,
   total,
   locked,
-  isAuthenticated,
-  isLoggedIn
+  isAuthenticated
 }: Props) => {
   const questionKeys = criterion.questions.map((question) =>
     buildQuestionKey(criterion.slug, question.id)
@@ -90,21 +88,14 @@ export const CriterionCard = ({
         >
           {content}
         </button>
-        {isLoggedIn ? (
-          <AccesReserveModal
-            isOpen={modalOpen}
-            onClose={() => setModalOpen(false)}
-          />
-        ) : (
-          <UnlockModal
-            isOpen={modalOpen}
-            onClose={() => setModalOpen(false)}
-            onConfirm={() => {
-              const returnTo = encodeURIComponent(window.location.pathname);
-              window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
-            }}
-          />
-        )}
+        <UnlockModal
+          isOpen={modalOpen}
+          onClose={() => setModalOpen(false)}
+          onConfirm={() => {
+            const returnTo = encodeURIComponent(window.location.pathname);
+            window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
+          }}
+        />
       </>
     );
   }

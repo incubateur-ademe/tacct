@@ -18,7 +18,7 @@ interface Props {
   question: Question;
   number: number;
   initialValue: AnswerValue | null;
-  openKey: string | null;
+  openKeys: Set<string>;
   onToggle: (questionKey: string) => void;
   onChanged: (questionKey: string, answered: boolean) => void;
   onRecommendationAdded: () => void;
@@ -30,7 +30,7 @@ export const QuestionAccordion = ({
   question,
   number,
   initialValue,
-  openKey,
+  openKeys,
   onToggle,
   onChanged,
   onRecommendationAdded,
@@ -94,7 +94,7 @@ export const QuestionAccordion = ({
       accent={question.section}
       highlighted={!answered}
       id={`question-${slug}-${question.id}`}
-      open={openKey === questionKey}
+      open={openKeys.has(questionKey)}
       onToggle={() => onToggle(questionKey)}
     >
       <div className={styles.criterionQuestionBody}>

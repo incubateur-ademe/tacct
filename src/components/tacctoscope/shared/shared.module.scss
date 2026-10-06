@@ -23,6 +23,10 @@
     background: #89cac6;
 }
 
+.accordionShellEnquete:not(.accordionShellHighlighted)::before {
+    background: #cccccc;
+}
+
 .accordionShellHeader {
     width: 100%;
     display: flex;

@@ -7,7 +7,7 @@ import { CriterionSlug } from '@/lib/tacctoscope/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { AccesReserveModal, UnlockModal } from '../shared/Modales';
+import { UnlockModal } from '../shared/Modales';
 import { CRITERION_ICONS } from '../shared/criterionIcons';
 
 export interface RoadmapMenuItem {
@@ -18,10 +18,9 @@ export interface RoadmapMenuItem {
 
 interface Props {
   items: RoadmapMenuItem[];
-  isLoggedIn: boolean;
 }
 
-export const RoadmapMenu = ({ items, isLoggedIn }: Props) => {
+export const RoadmapMenu = ({ items }: Props) => {
   const [activeSlug, setActiveSlug] = useState<string>('');
   const [unlockOpen, setUnlockOpen] = useState(false);
   const anchors = items.filter((item) => !item.locked).map((item) => item.slug);
@@ -100,21 +99,14 @@ export const RoadmapMenu = ({ items, isLoggedIn }: Props) => {
         </div>
       </nav>
 
-      {isLoggedIn ? (
-        <AccesReserveModal
-          isOpen={unlockOpen}
-          onClose={() => setUnlockOpen(false)}
-        />
-      ) : (
-        <UnlockModal
-          isOpen={unlockOpen}
-          onClose={() => setUnlockOpen(false)}
-          onConfirm={() => {
-            const returnTo = encodeURIComponent(window.location.pathname);
-            window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
-          }}
-        />
-      )}
+      <UnlockModal
+        isOpen={unlockOpen}
+        onClose={() => setUnlockOpen(false)}
+        onConfirm={() => {
+          const returnTo = encodeURIComponent(window.location.pathname);
+          window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;
+        }}
+      />
     </>
   );
 };

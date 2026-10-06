@@ -4,7 +4,6 @@ import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { getUserAnswers } from '@/lib/queries/tacctoscope';
-import { estProfilDeverrouille } from '@/lib/segmentation';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { isPublicCriterion } from '@/lib/tacctoscope/keys';
 import { getCriterionProgress } from '@/lib/tacctoscope/progress';
@@ -14,11 +13,11 @@ import styles from './tacctoscope.module.scss';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata: Metadata = { title: 'Le TACCToscope' };
+export const metadata: Metadata = { title: 'TACCToscope' };
 
 const TacctoscopePage = async () => {
   const user = await getCurrentUserValide();
-  const deverrouille = estProfilDeverrouille(user?.profil);
+  const deverrouille = !!user;
 
   const answers = await getUserAnswers();
 
@@ -79,11 +78,7 @@ const TacctoscopePage = async () => {
       </div>
 
       <NewContainer size="xl">
-        <HubGrid
-          items={items}
-          isAuthenticated={deverrouille}
-          isLoggedIn={!!user}
-        />
+        <HubGrid items={items} isAuthenticated={deverrouille} />
         <ResetAnswersButton isAuthenticated={deverrouille} />
       </NewContainer>
     </>
