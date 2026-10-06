@@ -186,42 +186,6 @@
     }
 }
 
-// Bloc titre
-
-.ressourcesTitreContainer {
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 12px,
-        var(--boutons-primaire-2) 12px,
-        var(--boutons-primaire-2) 14px
-    );
-    padding: 1.5rem 0rem;
-    height: 92px;
-    text-align: right;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: '';
-        position: absolute;
-        width: 364px;
-        height: 364px;
-        border-radius: 50%;
-        background-color: var(--boutons-primaire-2);
-        top: 120%;
-        left: 55%;
-        transform: translate(-50%, -50%);
-        z-index: 0;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .ressourcesTitreContainer {
-        display: none;
-    }
-}
-
 // Bloc Collections
 
 .ressourcesCollectionContainer {

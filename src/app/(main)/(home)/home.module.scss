@@ -24,18 +24,29 @@
 .heroBlocImageWrapper {
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 540px;
+    aspect-ratio: 631 / 432;
     flex-shrink: 0;
 }
 
 .heroBlocImg {
+    position: absolute;
+    top: 0;
+    left: 10.8%;
+    width: 83.2%;
+    height: auto;
+}
+
+.heroBlocLogo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: auto;
-    object-fit: contain;
 }
 
 .heroBlocDesktopOnly {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         display: none;
     }
 }
@@ -43,7 +54,7 @@
 .heroBlocMobileOnly {
     display: none;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         display: block;
     }
 }
@@ -54,9 +65,17 @@
     gap: 1.5rem;
     padding: 2rem;
 
-    .heroBlocImg {
-        max-width: 300px;
+    .heroBlocImageWrapper {
+        max-width: 360px;
         align-self: center;
+    }
+}
+
+.tacctoscopeBloc {
+    padding-top: 4.5rem;
+    background-color: var(--principales-vert);
+    @media screen and (max-width: 1280px) {
+        padding-inline: 2rem;
     }
 }
 
@@ -69,7 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     span {
         font-weight: 800;
     }
@@ -372,6 +391,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    min-width: 0;
     max-width: 788px;
 }
 
@@ -391,6 +411,9 @@
     .diagnosticCardContent {
         flex-direction: column;
         align-items: flex-start;
+    }
+    .diagnosticCardText {
+        width: 100%;
     }
     .diagnosticCardIllustration {
         align-self: center;

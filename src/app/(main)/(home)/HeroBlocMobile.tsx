@@ -1,4 +1,5 @@
-import TopImage from '@/assets/images/home_page1.png';
+import TopImage from '@/assets/images/logo-homepage.png';
+import TopLogo from '@/assets/images/logo2-homepage.png';
 import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { Body, H1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
@@ -17,13 +18,22 @@ export const HeroBlocMobile = () => {
             Avec TACCT, identifiez les vulnérabilités de votre territoire aux impacts du
             changement climatique.
           </Body>
-          <Image
-            alt=""
-            src={TopImage}
-            width={0}
-            height={0}
-            className={styles.heroBlocImg}
-          />
+          <div className={styles.heroBlocImageWrapper}>
+            <Image
+              alt=""
+              src={TopImage}
+              width={0}
+              height={0}
+              className={styles.heroBlocImg}
+            />
+            <Image
+              alt=""
+              src={TopLogo}
+              width={0}
+              height={0}
+              className={styles.heroBlocLogo}
+            />
+          </div>
           <BoutonSecondaireClassic
             size="lg"
             link="/recherche-territoire"

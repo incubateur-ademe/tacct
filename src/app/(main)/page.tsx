@@ -10,6 +10,7 @@ import { HeroBlocMobile } from './(home)/HeroBlocMobile';
 import styles from "./(home)/home.module.scss";
 import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
+import { TacctoscopeBloc } from './(home)/TacctoscopeBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacct-espace-connecte-fermee';
@@ -65,6 +66,7 @@ const Home = () => {
       )}
       <div className={styles.heroBlocDesktopOnly}><HeroBloc /></div>
       <div className={styles.heroBlocMobileOnly}><HeroBlocMobile /></div>
+      <TacctoscopeBloc />
       <TacctBloc />
       <DemarcheBloc />
       <PatchEtRessourcesBloc />

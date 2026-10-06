@@ -207,7 +207,7 @@ const HeaderComp = () => {
   );
 
   const navigationItems: NavItem[] =
-    params !== '/' && !isQuestionnaire
+    !isQuestionnaire
       ? [
         // {
         //   type: 'link',
