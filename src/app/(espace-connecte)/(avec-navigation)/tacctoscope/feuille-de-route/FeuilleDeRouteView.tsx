@@ -24,9 +24,6 @@ import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 /* Les points forts (4) sont regroupés dans un bloc à part, affiché en premier. */
 const RECOMMENDATION_ORDER: AnswerValue[] = ['3', '2', '1'];
 
-/* Nombre de « Je ne sais pas » à partir duquel le bloc d'aide (et ses liens) s'affiche */
-const NO_ANSWER_HELP_MIN = 3;
-
 interface Props {
   answers: AnswerMap;
   isAuthenticated: boolean;
@@ -162,7 +159,7 @@ export const FeuilleDeRouteView = ({
     (count, section) => count + section.unknowns.length,
     0
   );
-  const showNoAnswerHelp = unknownCount >= NO_ANSWER_HELP_MIN;
+  const showNoAnswerHelp = unknownCount > 0;
 
   return (
     <NewContainer size="xl" style={{ paddingTop: "1.5rem" }}>

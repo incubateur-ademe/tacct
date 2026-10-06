@@ -5,15 +5,10 @@ import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionF
 import { CriterionNextSteps } from '@/components/tacctoscope/criterion/CriterionNextSteps';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
 import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
-import { AccesReserveModal } from '@/components/tacctoscope/shared/Modales';
 import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
-import {
-  buildQuestionKey,
-  getCriterionBySlug,
-  isPublicCriterion
-} from '@/lib/tacctoscope/keys';
+import { buildQuestionKey, getCriterionBySlug } from '@/lib/tacctoscope/keys';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
 import {
   AnswerMap,
@@ -31,7 +26,6 @@ interface Props {
   answers: AnswerMap;
   nextSlug: CriterionSlug | null;
   isAuthenticated: boolean;
-  isLoggedIn: boolean;
 }
 
 const BulbIcon = () => (
@@ -77,8 +71,7 @@ export const CriteresView = ({
   criterion,
   answers,
   nextSlug,
-  isAuthenticated,
-  isLoggedIn
+  isAuthenticated
 }: Props) => {
   const orderedKeys = criterion.questions.map((question) =>
     buildQuestionKey(criterion.slug, question.id)
@@ -91,8 +84,6 @@ export const CriteresView = ({
   const [answeredKeys, setAnsweredKeys] = useState<Set<string>>(
     () => new Set(Object.keys(answers))
   );
-  const [accesReserveOpen, setAccesReserveOpen] = useState(false);
-  const [completionPrompted, setCompletionPrompted] = useState(false);
   const [openKey, setOpenKey] = useState<string | null>(() =>
     isAuthenticated ? firstOpenKey(new Set(Object.keys(answers))) : null
   );
@@ -103,33 +94,6 @@ export const CriteresView = ({
     setToastOpen(true);
     setToastKey((key) => key + 1);
   };
-
-  useEffect(() => {
-    if (isLoggedIn && !isAuthenticated && isPublicCriterion(criterion.slug)) {
-      setAccesReserveOpen(true);
-    }
-  }, [isLoggedIn, isAuthenticated, criterion]);
-
-  useEffect(() => {
-    if (!hydrated) return;
-    if (!isLoggedIn || isAuthenticated || !isPublicCriterion(criterion.slug)) {
-      return;
-    }
-    if (answeredKeys.size < criterion.questions.length) {
-      setCompletionPrompted(false);
-      return;
-    }
-    if (completionPrompted) return;
-    setCompletionPrompted(true);
-    setAccesReserveOpen(true);
-  }, [
-    hydrated,
-    completionPrompted,
-    isLoggedIn,
-    isAuthenticated,
-    criterion,
-    answeredKeys
-  ]);
 
   useEffect(() => {
     if (isAuthenticated) return;
@@ -264,13 +228,6 @@ export const CriteresView = ({
           </Link>
         </div>
       </NewContainer>
-
-      {isLoggedIn && (
-        <AccesReserveModal
-          isOpen={accesReserveOpen}
-          onClose={() => setAccesReserveOpen(false)}
-        />
-      )}
 
       <Toast
         key={toastKey}

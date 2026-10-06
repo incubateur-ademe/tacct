@@ -3,7 +3,7 @@
 import { Body } from '@/design-system/base/Textes';
 import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
 import { yieldsRecommendation } from '@/lib/tacctoscope/answers';
-import { buildQuestionKey, getCriterionNumber } from '@/lib/tacctoscope/keys';
+import { buildQuestionKey } from '@/lib/tacctoscope/keys';
 import { deleteLocalAnswer, saveLocalAnswer } from '@/lib/tacctoscope/localAnswers';
 import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
@@ -37,7 +37,6 @@ export const QuestionAccordion = ({
   isAuthenticated
 }: Props) => {
   const questionKey = buildQuestionKey(slug, question.id);
-  const downloadName = `critere${getCriterionNumber(slug)}-${question.id}`;
   const [value, setValue] = useState<AnswerValue | null>(initialValue);
   const [error, setError] = useState(false);
   const [, startTransition] = useTransition();
@@ -118,7 +117,6 @@ export const QuestionAccordion = ({
             <ExampleCallout
               kind="exemple"
               attachments={question.exampleAttachments}
-              downloadName={downloadName}
               answered={answered}
             >
               {question.example}
@@ -126,7 +124,6 @@ export const QuestionAccordion = ({
             <ExampleCallout
               kind="contre-exemple"
               attachments={question.counterExampleAttachments}
-              downloadName={`${downloadName}-contre-exemple`}
               answered={answered}
             >
               {question.counterExample}
@@ -136,7 +133,6 @@ export const QuestionAccordion = ({
           <ExampleCallout
             kind={question.exampleKind}
             attachments={question.exampleAttachments}
-            downloadName={downloadName}
             answered={answered}
           >
             {question.example}

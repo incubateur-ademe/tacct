@@ -37,11 +37,11 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           'Les projections climatiques retenues sont issues ou compatibles avec la TRACC',
         text: [
-          "Le niveau de réchauffement de 4°C (pour la métropole*) et l’horizon temporel de fin de siècle sont les deux caractéristiques de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC), adoptée par la France pour fixer une cible commune d'adaptation.",
-          '_(*) Territoires ultramarins et métropole ont chacun leurs propres projections climatiques, avec des niveaux de réchauffement inférieurs à 4°C dans les outre-mer._'
+          "Le niveau de réchauffement de 4° C (pour la métropole*) et l’horizon temporel de fin de siècle sont les deux caractéristiques de la trajectoire de réchauffement de référence pour l'adaptation au changement climatique (TRACC), adoptée par la France pour fixer une cible commune d'adaptation.",
+          '_(*) Territoires ultramarins et métropole ont chacun leurs propres projections climatiques, avec des niveaux de réchauffement inférieurs à 4° C dans les outre-mer._'
         ],
         example:
-          "Un certain nombre de diagnostics sont basés sur des scénarios climatiques fondés sur des hypothèses de réchauffement inférieures au +4°C retenus dans la TRACC pour la métropole. L’horizon temporel se limite souvent à 2050, ne permettant pas d'anticiper les évolutions attendues au-delà de cette échéance, désormais de court terme.",
+          "Un certain nombre de diagnostics sont basés sur des scénarios climatiques fondés sur des hypothèses de réchauffement inférieures au +4° C retenus dans la TRACC pour la métropole. L’horizon temporel se limite souvent à 2050, ne permettant pas d'anticiper les évolutions attendues au-delà de cette échéance, désormais de court terme.",
         minHint:
           'Les projections climatiques utilisées ne sont pas basées sur la TRACC.',
         maxHint:
@@ -55,7 +55,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
           'Le diagnostic décrit le climat du territoire (pas celui de la France ou du monde)',
         text: "Les projections à l'échelle mondiale, voire nationale, apportent un cadre de référence mais elles restent peu mobilisatrices pour les acteurs locaux, qui peinent à s'y reconnaître. Le diagnostic de vulnérabilité doit se concentrer sur les spécificités de _votre_ territoire.",
         example: [
-          '“Les continents et les latitudes élevées se réchauffent beaucoup plus vite. Ainsi, la température en Arctique pourrait augmenter jusqu’à +11°C en 2100.”',
+          '“Les continents et les latitudes élevées se réchauffent beaucoup plus vite. Ainsi, la température en Arctique pourrait augmenter jusqu’à +11° C en 2100.”',
           'Cette affirmation est vraie. Pour autant, quelle compréhension de votre territoire apporte-t-elle ?'
         ],
         minHint: 'Les données climatiques mondiales sont très détaillées.',
@@ -89,9 +89,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'exemple',
         label: 'Un travail de hiérarchisation des aléas climatiques a été mené',
         text: "Cet exercice consiste à classer, du plus au moins préoccupant, les aléas et les phénomènes climatiques auxquels le territoire est exposé. Ce travail a pu être mené à l'oral, en atelier par exemple, sans être mentionné dans le diagnostic. Les réponses seront alors à chercher dans les archives ou auprès des participants.",
-        example:
-          'Extrait du diagnostic de vulnérabilité Rennes métropole - Janvier 2025',
-        exampleAttachments: ['/preuve-critere1-q5.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Extrait du diagnostic de vulnérabilité Rennes métropole - Janvier 2025',
+            src: '/preuve-critere1-q5.webp'
+          }
+        ],
         minHint: 'Il n’y a aucune évaluation de l’exposition.',
         maxHint: 'L’exposition passée et future a été évaluée.'
       }
@@ -109,9 +113,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           'La majeure partie du diagnostic est dédiée à l’analyse des impacts',
         text: "L'analyse de la sensibilité vise à recenser les principales conséquences — ou impacts — observées ou attendues de l'évolution du climat sur votre territoire. La table des matières de votre diagnostic permet de vérifier rapidement la place qui leur est accordée.",
-        example:
-          'Table des matières du diagnostic de vulnérabilité de la communauté de communes Cœur du Pays Haut - 2024',
-        exampleAttachments: ['/preuve-critere2-q1.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Table des matières du diagnostic de vulnérabilité de la CC Cœur du Pays Haut - 2024',
+            src: '/preuve-critere2-q1.webp'
+          }
+        ],
         minHint:
           'La majeure partie du diagnostic est dédiée à l’analyse de l’exposition.',
         maxHint:
@@ -137,10 +145,20 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         text: 'Les impacts sont les conséquences observées ou attendues du changement climatique sur les populations, l’économie locale, les ressources naturelles, etc.',
         example:
           "Le diagnostic de vulnérabilité de la Vallée de Villé (2024) comprend une coupure de presse. Cet article ancré dans un cas réel rend le changement climatique concret et incarné. Même limité à un cas particulier, il illustre des décisions d'adaptation prises face à des contraintes réelles — ce qui aide bien mieux à se projeter qu'une liste d’impacts génériques du changement climatique sur l’arboriculture.",
-        exampleAttachments: ['/preuve-critere2-q3.webp'],
+        exampleAttachments: [
+          {
+            label: 'Voir la coupure de presse',
+            src: '/preuve-critere2-q3.webp'
+          }
+        ],
         counterExample:
           "Ces résultats du projet LACCAVE (INRA), rigoureux scientifiquement, sont souvent cités dans les diagnostics, y compris de territoires viticoles non concernés par les vignobles cités. Ces résultats décrivent un phénomène général (seuils de température et de stress hydrique) là où un entretien avec un expert local aurait sans doute été plus éclairant, en reliant ces phénomènes physiques à des impacts sur les pratiques viticoles du territoire — date de vendange, gestion de l'irrigation, palissage...",
-        counterExampleAttachments: ['/preuve-critere2-q3bis.webp'],
+        counterExampleAttachments: [
+          {
+            label: 'Voir les résultats du projet LACCAVE',
+            src: '/preuve-critere2-q3bis.webp'
+          }
+        ],
         minHint: 'Les impacts identifiés sont génériques.',
         maxHint: 'Les impacts identifiés sont spécifiques au territoire.'
       },
@@ -174,13 +192,17 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           "L'approche méthodologique utilisée est mentionnée dans le document",
         text: 'Par approche méthodologique, on entend l’ensemble des choix qui structurent le diagnostic : définition des concepts utilisés, partis pris méthodologique, logique d’ensemble, mais aussi types de sources et de données mobilisées, méthode de recueil, critères de priorisation...',
-        example: [
-          'Approche méthodologique de Saint Brieuc Armor Agglomération (2025)',
-          'Extrait du diagnostic territorial de la Communauté de communes Aygues-Ouvèze en Provence, p.94 (2025)'
-        ],
         exampleAttachments: [
-          '/preuve-critere3-q1.webp',
-          '/preuve-critere3-q1bis.webp'
+          {
+            label:
+              'Approche méthodologique de Saint Brieuc Armor Agglomération (2025)',
+            src: '/preuve-critere3-q1.webp'
+          },
+          {
+            label:
+              'Extrait du diagnostic territorial de la CC Aygues-Ouvèze en Provence, p.94 (2025)',
+            src: '/preuve-critere3-q1bis.webp'
+          }
         ],
         minHint: 'Aucune mention de l’approche méthodologique n’est présente.',
         maxHint: 'L’approche méthodologique utilisée est décrite.'
@@ -191,9 +213,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'exemple',
         label: 'La description des impacts est accompagnée de verbatims',
         text: 'Un verbatim est la reproduction intégrale de propos prononcés ou écrits.',
-        example:
-          'Étude de vulnérabilité du Pays de la Déodatie, “_Les forêts face au changement climatique_”, Climate Adaptation Consulting, 2020',
-        exampleAttachments: ['/preuve-critere3-q2.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Étude de vulnérabilité du Pays de la Déodatie, “_Les forêts face au changement climatique_”, Climate Adaptation Consulting, 2020',
+            src: '/preuve-critere3-q2.webp'
+          }
+        ],
         minHint: 'Aucun verbatim ne figure dans le diagnostic.',
         maxHint: 'Des verbatims sont retranscrits.'
       },
@@ -205,8 +231,14 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
           'Le diagnostic fait référence à des actions déjà menées sur le territoire',
         text: 'Il peut s’agir d’actions d’adaptation, de plans ou de dispositifs existants sur lesquels s’appuyer pour agir, menés par la collectivité ou par d’autres acteurs du territoire.',
         example:
-          'Face à l’impact « mise en tension des capacités des systèmes de santé » lors des fortes chaleurs, la ville de Marseille recense des dispositifs prêts à l’action pour en réduire les effets. Atelier Santé lors de la démarche d’adaptation au changement climatique de la ville de Marseille. (2026)',
-        exampleAttachments: ['/preuve-critere3-q3.webp'],
+          'Face à l’impact « mise en tension des capacités des systèmes de santé » lors des fortes chaleurs, la ville de Marseille recense des dispositifs prêts à l’action pour en réduire les effets.',
+        exampleAttachments: [
+          {
+            label:
+              'Atelier Santé lors de la démarche d’adaptation de la ville de Marseille. (2026)',
+            src: '/preuve-critere3-q3.webp'
+          }
+        ],
         minHint: 'Il n’est pas fait mention d’actions déjà menées.',
         maxHint:
           'Le diagnostic fait référence à des actions déjà menées sur le territoire.'
@@ -218,15 +250,17 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           'La construction du diagnostic s’est appuyée sur des temps d’échange avec les acteurs du territoire',
         text: "L’analyse des données doit être confrontée au ressenti des acteurs du territoire. Cette dimension d'échange n'est pas un simple complément méthodologique mais une nécessité.",
-        example: [
-          [
-            'La Ville de Marseille organise un atelier sur la thématique “Santé” avec les acteurs du secteur.',
-            'Extrait du Diagnostic de vulnérabilité de la Communauté de communes du Pays de Sainte Odile p.86'
-          ]
-        ],
         exampleAttachments: [
-          '/preuve-critere3-q4.webp',
-          '/preuve-critere3-q4bis.webp'
+          {
+            label:
+              'La Ville de Marseille organise un atelier sur la thématique “Santé” avec les acteurs du secteur.',
+            src: '/preuve-critere3-q4.webp'
+          },
+          {
+            label:
+              'Extrait du Diagnostic de vulnérabilité de la CC du Pays de Sainte Odile p.86',
+            src: '/preuve-critere3-q4bis.webp'
+          }
         ],
         minHint:
           'Le diagnostic a été mené sans apport des acteurs du territoire.',
@@ -240,8 +274,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Une trace des travaux menés reste consultable',
         text: 'Il peut s’agir de relevés de décision, de comptes-rendus d’ateliers ou d’entretiens, de tableurs de données, de supports de réunions, de rapports ayant servis de source, etc.',
         example:
-          'Annexe “_CCBDP. (2023, mars). Compte rendu de l’atelier sur la sensibilité du territoire au changement climatique._” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
-        exampleAttachments: ['/preuve-critere3-q5.webp'],
+          'Annexe “_CCBDP. (2023, mars)._” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
+        exampleAttachments: [
+          {
+            label: 'Compte rendu de l’atelier sur la sensibilité du territoire',
+            src: '/preuve-critere3-q5.webp'
+          }
+        ],
         minHint: 'Aucun document n’est consultable.',
         maxHint: 'Une trace des travaux est consultable.'
       }
@@ -259,9 +298,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label:
           'Une section de la table des matières mentionne ouvertement la vulnérabilité du territoire',
         text: "La vulnérabilité résulte du croisement entre l'exposition aux aléas climatiques et la sensibilité du territoire. Son analyse constitue une étape distincte des deux précédentes qui mérite une section dédiée.",
-        example:
-          'Table des matières du diagnostic de vulnérabilité de la Communauté de communes du Pays de Sainte Odile',
-        exampleAttachments: ['/preuve-critere4-q1.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Table des matières du diagnostic de vulnérabilité de la CC du Pays de Sainte Odile',
+            src: '/preuve-critere4-q1.webp'
+          }
+        ],
         minHint: 'Aucune section n’est dédiée à la vulnérabilité.',
         maxHint: 'Une section est consacrée à la vulnérabilité.'
       },
@@ -279,12 +322,21 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'both',
         label: 'Le diagnostic comporte une matrice de vulnérabilité',
         text: 'La matrice de vulnérabilité est le résultat du croisement entre exposition et sensibilité.',
-        example:
-          'Aubrac 2050 - Extrait du rapport de vulnérabilité climatique Communauté des Communes Aubrac - Carladez - Viadène, (pp.77-79)',
-        exampleAttachments: ['/preuve-critere4-q3.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Aubrac 2050 - Extrait du rapport de vulnérabilité climatique CC Aubrac - Carladez - Viadène, (pp.77-79)',
+            src: '/preuve-critere4-q3.webp'
+          }
+        ],
         counterExample:
-          'Ici, la section « vulnérabilité » est en fait consacrée aux aléas climatiques, donc à l’exposition.',
-        counterExampleAttachments: ['/preuve-critere4-q3bis.webp'],
+          'Dans ce contre-exemple, la section “vulnérabilité” est en fait consacrée aux aléas climatiques, donc à l’exposition.',
+        counterExampleAttachments: [
+          {
+            label: 'Voir le contre-exemple',
+            src: '/preuve-critere4-q3bis.webp'
+          }
+        ],
         minHint: 'Il n’y a pas de matrice de vulnérabilité.',
         maxHint: 'La matrice de vulnérabilité est présente.'
       }
@@ -301,9 +353,13 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         exampleKind: 'exemple',
         label:
           'La conclusion du diagnostic de vulnérabilité invite à poursuivre le travail vers la stratégie',
-        example:
-          'Approche méthodologique de Saint Brieuc Armor Agglomération - 2025',
-        exampleAttachments: ['/preuve-critere5-q1.webp'],
+        exampleAttachments: [
+          {
+            label:
+              'Approche méthodologique de Saint Brieuc Armor Agglomération - 2025',
+            src: '/preuve-critere5-q1.webp'
+          }
+        ],
         minHint: 'La conclusion ne mentionne pas de suite.',
         maxHint: 'La conclusion mentionne la suite de la démarche d’adaptation.'
       },

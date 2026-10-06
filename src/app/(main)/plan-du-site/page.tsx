@@ -56,13 +56,13 @@ const PlanDuSite = () => (
           </ul>
         </li>
         <li style={{ marginBottom: '0.75rem' }}>
-          Patch 4°C
+          Patch 4° C
           <ul style={{ listStyle: 'circle', paddingLeft: '1.5rem', marginTop: '0.5rem' }}>
             <li style={{ marginBottom: '0.5rem' }}>
               <a href="/recherche-territoire-patch4">Rechercher mon territoire</a>
             </li>
             <li style={{ marginBottom: '0.5rem' }}>
-              Patch 4°C <em>(territoire requis)</em>
+              Patch 4° C <em>(territoire requis)</em>
             </li>
           </ul>
         </li>

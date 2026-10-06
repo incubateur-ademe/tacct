@@ -136,14 +136,19 @@ export async function GET(request: NextRequest) {
 
     // Tant que le questionnaire de connexion n'est pas validé, il est le seul
     // point d'entrée possible du compte.
-    const returnTo = user.questionnaire_validated
-      ? (sanitizeReturnTo(
-          request.cookies.get(RETURN_TO_COOKIE)?.value ?? null
-        ) ?? '/mon-espace')
-      : '/questionnaire-compte';
-    const destination = new URL(returnTo, getBaseUrl());
+    const returnToCookie = sanitizeReturnTo(
+      request.cookies.get(RETURN_TO_COOKIE)?.value ?? null
+    );
+    const destination = new URL(
+      user.questionnaire_validated
+        ? (returnToCookie ?? '/mon-espace')
+        : '/questionnaire-compte',
+      getBaseUrl()
+    );
     if (user.questionnaire_validated) {
       destination.searchParams.set('login', 'success');
+    } else if (returnToCookie) {
+      destination.searchParams.set('returnTo', returnToCookie);
     }
 
     const response = NextResponse.redirect(destination.toString());

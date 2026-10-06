@@ -26,6 +26,11 @@ export interface Option {
   label: string;
 }
 
+export interface CasReel {
+  label: string;
+  src: string;
+}
+
 interface QuestionBase {
   id: string;
   label: string;
@@ -46,17 +51,17 @@ export type Question = QuestionBase &
       }
     | {
         exampleKind: CalloutKind;
-        example: RichContent;
-        exampleAttachments?: string[];
+        example?: RichContent;
+        exampleAttachments?: CasReel[];
         counterExample?: never;
         counterExampleAttachments?: never;
       }
     | {
         exampleKind: 'both';
-        example: RichContent;
-        exampleAttachments?: string[];
-        counterExample: RichContent;
-        counterExampleAttachments?: string[];
+        example?: RichContent;
+        exampleAttachments?: CasReel[];
+        counterExample?: RichContent;
+        counterExampleAttachments?: CasReel[];
       }
   );
 

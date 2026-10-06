@@ -1,7 +1,6 @@
 'use client';
 
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
-import JSZip from 'jszip';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -22,59 +21,28 @@ const TelechargerIcon = () => (
   </svg>
 );
 
-const triggerDownload = (href: string, filename: string) => {
+const triggerDownload = (src: string) => {
   const link = document.createElement('a');
-  link.href = href;
-  link.download = filename;
+  link.href = src;
+  link.download = src.split('/').pop() ?? src;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
-const downloadAttachments = async (
-  attachments: string[],
-  downloadName: string
-) => {
-  if (attachments.length === 1) {
-    const attachment = attachments[0];
-    triggerDownload(attachment, attachment.split('/').pop() ?? attachment);
-    return;
-  }
-
-  const zip = new JSZip();
-  for (const attachment of attachments) {
-    const blob = await (await fetch(attachment)).blob();
-    zip.file(attachment.split('/').pop() ?? attachment, blob);
-  }
-  const zipBlob = await zip.generateAsync({ type: 'blob' });
-  const zipUrl = URL.createObjectURL(zipBlob);
-  triggerDownload(zipUrl, `${downloadName}.zip`);
-  URL.revokeObjectURL(zipUrl);
-};
-
 interface Props {
-  attachments: string[];
-  accentColor: string;
-  downloadName: string;
-  isOpen: boolean;
+  src: string | null;
   onClose: () => void;
 }
 
-export const CasReelModal = ({
-  attachments,
-  accentColor,
-  downloadName,
-  isOpen,
-  onClose
-}: Props) => {
+export const CasReelModal = ({ src, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const isOpen = src !== null;
 
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!isOpen) return;
-    setActiveIndex(0);
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
     };
@@ -94,7 +62,7 @@ export const CasReelModal = ({
     };
   }, [isOpen, onClose]);
 
-  if (!mounted || !isOpen || attachments.length === 0) return null;
+  if (!mounted || src === null) return null;
 
   return createPortal(
     <div className={styles.casReelOverlay} onClick={onClose}>
@@ -116,7 +84,7 @@ export const CasReelModal = ({
 
         <div className={styles.casReelVisual}>
           <Image
-            src={attachments[activeIndex]}
+            src={src}
             alt=""
             fill
             sizes="90vw"
@@ -124,38 +92,11 @@ export const CasReelModal = ({
           />
         </div>
 
-        {attachments.length > 1 && (
-          <div className={styles.casReelThumbs}>
-            {attachments.map((attachment, index) => (
-              <button
-                key={attachment}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                aria-label={`Afficher l'image ${index + 1}`}
-                aria-current={index === activeIndex}
-                className={`${styles.casReelThumb} ${index === activeIndex ? styles.casReelThumbActive : ''
-                  }`}
-                style={
-                  index === activeIndex ? { borderColor: accentColor } : undefined
-                }
-              >
-                <Image
-                  src={attachment}
-                  alt=""
-                  fill
-                  sizes="120px"
-                  className={styles.casReelThumbImage}
-                />
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className={styles.casReelFooter}>
           <BoutonPrimaireClassic
             size="md"
             text="Télécharger"
-            onClick={() => void downloadAttachments(attachments, downloadName)}
+            onClick={() => triggerDownload(src)}
             iconeFin={<TelechargerIcon />}
           />
         </div>

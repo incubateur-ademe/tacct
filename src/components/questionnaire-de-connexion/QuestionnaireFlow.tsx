@@ -69,9 +69,14 @@ const TITRES: Record<EtapeQuestionnaire, string> = {
 interface Props {
   etatInitial: EtatQuestionnaire;
   etapeInitiale: EtapeQuestionnaire;
+  retourApresQuestionnaire: string;
 }
 
-export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
+export const QuestionnaireFlow = ({
+  etatInitial,
+  etapeInitiale,
+  retourApresQuestionnaire
+}: Props) => {
   const [etat, setEtat] = useState<EtatQuestionnaire>(etatInitial);
   const [ecran, setEcran] = useState<Ecran>(etapeInitiale);
   const [champEnErreur, setChampEnErreur] = useState<ChampEnErreur>(null);
@@ -524,7 +529,10 @@ export const QuestionnaireFlow = ({ etatInitial, etapeInitiale }: Props) => {
           )}
 
           {ecran === 'remerciement' && (
-            <EcranRemerciement titreRef={titreRef} />
+            <EcranRemerciement
+              titreRef={titreRef}
+              retourApresQuestionnaire={retourApresQuestionnaire}
+            />
           )}
 
           {champEnErreur === 'enregistrement' && (

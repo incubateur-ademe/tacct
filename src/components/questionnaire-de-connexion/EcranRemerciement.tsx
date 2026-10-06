@@ -17,9 +17,19 @@ const IconeCoche = () => (
 
 interface Props {
   titreRef: RefObject<HTMLHeadingElement | null>;
+  retourApresQuestionnaire: string;
 }
 
-export const EcranRemerciement = ({ titreRef }: Props) => (
+const lienAvecConnexionReussie = (chemin: string) => {
+  const url = new URL(chemin, 'http://localhost');
+  url.searchParams.set('login', 'success');
+  return `${url.pathname}${url.search}${url.hash}`;
+};
+
+export const EcranRemerciement = ({
+  titreRef,
+  retourApresQuestionnaire
+}: Props) => (
   <>
     <span className={styles.pastilleConfirmation} aria-hidden="true">
       <IconeCoche />
@@ -35,7 +45,7 @@ export const EcranRemerciement = ({ titreRef }: Props) => (
       <BoutonPrimaireClassic
         size="md"
         text="Accéder à mon compte  →"
-        link="/mon-espace?login=success"
+        link={lienAvecConnexionReussie(retourApresQuestionnaire)}
       />
     </div>
   </>

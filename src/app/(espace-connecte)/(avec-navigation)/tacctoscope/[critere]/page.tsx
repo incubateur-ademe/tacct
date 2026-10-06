@@ -51,7 +51,6 @@ const CriterionPage = async ({ params }: Params) => {
       answers={answers}
       nextSlug={getNextCriterionSlug(criterion.slug)}
       isAuthenticated={estProfilDeverrouille(user?.profil)}
-      isLoggedIn={!!user}
     />
   );
 };
