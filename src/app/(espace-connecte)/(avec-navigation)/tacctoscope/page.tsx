@@ -17,7 +17,7 @@ export const metadata: Metadata = { title: 'TACCToscope' };
 
 const TacctoscopePage = async () => {
   const user = await getCurrentUserValide();
-  const deverrouille = !!user;
+  const isAuthenticated = !!user;
 
   const answers = await getUserAnswers();
 
@@ -27,7 +27,7 @@ const TacctoscopePage = async () => {
       criterion,
       answered,
       total,
-      locked: !deverrouille && !isPublicCriterion(criterion.slug)
+      locked: !isAuthenticated && !isPublicCriterion(criterion.slug)
     };
   });
 
@@ -78,8 +78,8 @@ const TacctoscopePage = async () => {
       </div>
 
       <NewContainer size="xl">
-        <HubGrid items={items} isAuthenticated={deverrouille} />
-        <ResetAnswersButton isAuthenticated={deverrouille} />
+        <HubGrid items={items} isAuthenticated={isAuthenticated} />
+        <ResetAnswersButton isAuthenticated={isAuthenticated} />
       </NewContainer>
     </>
   );

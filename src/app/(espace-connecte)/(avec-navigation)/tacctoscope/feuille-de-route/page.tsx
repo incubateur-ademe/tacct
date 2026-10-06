@@ -74,7 +74,6 @@ const FeuilleDeRoutePage = async () => {
       <FeuilleDeRouteView
         answers={answers}
         isAuthenticated={!!user}
-        isLoggedIn={!!user}
       />
     </div>
   );

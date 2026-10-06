@@ -84,7 +84,12 @@ const MonEspace = async () => {
   const isComplete = completed === CRITERIA.length;
   const recommendationCount = isComplete ? getRecommendationCount(answers) : 0;
 
-  const sections = sectionsEspace(user.profil, user.validated);
+  const sections = sectionsEspace(user.profil);
+  const afficheAncienEspace =
+    user.validated &&
+    !estProfilAdminEtat(user.profil) &&
+    !estProfilEntreprise(user.profil) &&
+    !estProfilAutre(user.profil);
 
   const SECTIONS: Record<
     SectionEspace,
@@ -95,17 +100,15 @@ const MonEspace = async () => {
       labelMenu: 'Outils',
       contenu: (
         <div className={styles.sectionInner}>
-          {!estProfilBe(user.profil) && (
-            <TacctoscopeCard
-              hasAnswers={started > 0}
-              isComplete={isComplete}
-              recommendationCount={recommendationCount}
-              completed={completed}
-              started={started}
-              total={CRITERIA.length}
-            />
-          )}
-          {user.validated && <AncienEspaceCard validated={user.validated} />}
+          <TacctoscopeCard
+            hasAnswers={started > 0}
+            isComplete={isComplete}
+            recommendationCount={recommendationCount}
+            completed={completed}
+            started={started}
+            total={CRITERIA.length}
+          />
+          {afficheAncienEspace && <AncienEspaceCard validated={user.validated} />}
         </div>
       )
     },

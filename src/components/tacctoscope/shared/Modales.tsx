@@ -187,26 +187,6 @@ const LockIcon = () => (
   </svg>
 );
 
-const InfoIcon = () => (
-  <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M17 0H2C0.895431 0 0 0.895431 0 2V17C0 18.1046 0.895431 19 2 19H17C18.1046 19 19 18.1046 19 17V2C19 0.895431 18.1046 0 17 0ZM10.5 4.5H8.5V6.5H10.5V4.5ZM10.5 8.5H8.5V14.5H10.5V8.5Z"
-      fill="#038278"
-    />
-  </svg>
-);
-
-const InfoBlock = ({ children }: { children: ReactNode }) => (
-  <div className={styles.infoBlock}>
-    <span className={styles.infoBlockIcon}>
-      <InfoIcon />
-    </span>
-    <span>{children}</span>
-  </div>
-);
-
 interface UnlockModalProps {
   isOpen: boolean;
   onClose: () => void;

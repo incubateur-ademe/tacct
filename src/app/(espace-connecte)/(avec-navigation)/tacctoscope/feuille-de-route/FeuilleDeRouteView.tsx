@@ -27,14 +27,9 @@ const RECOMMENDATION_ORDER: AnswerValue[] = ['3', '2', '1'];
 interface Props {
   answers: AnswerMap;
   isAuthenticated: boolean;
-  isLoggedIn: boolean;
 }
 
-export const FeuilleDeRouteView = ({
-  answers,
-  isAuthenticated,
-  isLoggedIn
-}: Props) => {
+export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
   const [hydrated, setHydrated] = useState(isAuthenticated);
   const [currentAnswers, setCurrentAnswers] = useState<AnswerMap>(answers);
 
@@ -185,9 +180,9 @@ export const FeuilleDeRouteView = ({
                   showNoAnswerHelp={showNoAnswerHelp}
                 />
               ))}
-              {(!isLoggedIn || showNoAnswerHelp) && (
+              {(!isAuthenticated || showNoAnswerHelp) && (
                 <div className={styles.roadmapEnd}>
-                  {!isLoggedIn && <RoadmapLoginBlock />}
+                  {!isAuthenticated && <RoadmapLoginBlock />}
                   {showNoAnswerHelp && <NoAnswerHelpBlock />}
                 </div>
               )}
