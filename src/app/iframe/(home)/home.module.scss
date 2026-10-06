@@ -10,7 +10,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    padding: 0 2rem;
+    @media screen and (max-width: 1280px) {
+        padding: 0 2rem;
+    }
 }
 
 .heroBlocText {
@@ -22,18 +24,29 @@
 .heroBlocImageWrapper {
     position: relative;
     width: 100%;
-    max-width: 450px;
+    max-width: 540px;
+    aspect-ratio: 631 / 432;
     flex-shrink: 0;
 }
 
 .heroBlocImg {
+    position: absolute;
+    top: 0;
+    left: 10.8%;
+    width: 83.2%;
+    height: auto;
+}
+
+.heroBlocLogo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: auto;
-    object-fit: contain;
 }
 
 .heroBlocDesktopOnly {
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         display: none;
     }
 }
@@ -41,7 +54,7 @@
 .heroBlocMobileOnly {
     display: none;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         display: block;
     }
 }
@@ -52,9 +65,17 @@
     gap: 1.5rem;
     padding: 2rem;
 
-    .heroBlocImg {
-        max-width: 300px;
+    .heroBlocImageWrapper {
+        max-width: 360px;
         align-self: center;
+    }
+}
+
+.tacctoscopeBloc {
+    padding-top: 4.5rem;
+    background-color: var(--principales-vert);
+    @media screen and (max-width: 1280px) {
+        padding-inline: 2rem;
     }
 }
 
@@ -67,7 +88,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     span {
         font-weight: 800;
     }
@@ -141,7 +162,6 @@
     height: 100%;
 }
 
-
 @media screen and (max-width: 900px) {
     .demarcheHeader {
         padding: 2rem 1rem;
@@ -170,7 +190,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
-    min-height: 750px;
+    min-height: 640px;
 }
 .patch4Wrapper {
     display: flex;
@@ -256,6 +276,8 @@
     align-items: flex-start;
     gap: 2rem;
     .ressourcesText {
+        display: flex;
+        flex-direction: column;
         background-color: #ffffff;
         padding: 1.25rem;
         gap: 0.5rem;
@@ -280,7 +302,6 @@
         padding: 1.5rem;
     }
 }
-
 
 // Verbatim
 
@@ -323,5 +344,78 @@
             column-gap: 3rem;
             row-gap: 1rem;
         }
+    }
+}
+
+// Sous-bloc diagnostic (TACCToscope)
+.diagnosticCard {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 6px,
+            rgba(211, 237, 235, 0.5) 6px,
+            rgba(211, 237, 235, 0.5) 8px
+        ),
+        #ffffff;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 456px;
+        height: 456px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        top: 10px;
+        left: 10px;
+        z-index: 0;
+    }
+}
+
+.diagnosticCardContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.diagnosticCardText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    min-width: 0;
+    max-width: 788px;
+}
+
+.diagnosticCardIllustration {
+    flex-shrink: 0;
+
+    img {
+        height: 120px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .diagnosticCard {
+        padding: 1.5rem;
+    }
+    .diagnosticCardContent {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .diagnosticCardText {
+        width: 100%;
+    }
+    .diagnosticCardIllustration {
+        align-self: center;
     }
 }

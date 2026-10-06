@@ -89,12 +89,7 @@ const ToastVisuel = ({
             <p className={styles.text}>{text}</p>
           </div>
           {link && linkText && (
-            <Link
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.link}
-            >
+            <Link href={link} className={styles.link}>
               {linkText}
               <ArrowRightUpIcon />
             </Link>

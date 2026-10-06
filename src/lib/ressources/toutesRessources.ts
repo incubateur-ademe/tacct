@@ -997,5 +997,20 @@ export const toutesLesRessources: ToutesRessources[] = [
       description:
         'Cet exercice sert un objectif : comprendre les enjeux prioritaires du territoire. Pourtant, chaque impact est un sujet d’étude en soi. Comment se fixer des limites pour que le diagnostic reste opérationnel et utile ?'
     }
+  },
+  {
+    id: 51,
+    type: 'Support méthodo',
+    titre: 'TACCT : c’est aussi une méthode d’aide à la décision !',
+    lien: 'https://librairie.ademe.fr/changement-climatique/9614-structurer-l-adaptation-territoriale-en-incertitude-profonde-analyse-methodologique-de-la-demarche-tacct.html',
+    description:
+      'Prenez de la hauteur et découvrez comment la démarche TACCT vous aide à prendre des décisions pertinentes malgré les incertitudes liées au changement climatique.',
+    filtres: ['Support méthodo', 'Me former'],
+    collections: ['Adopter la bonne posture'],
+    tempsLecture: 4,
+    image: ImageTuileMethodo,
+    date: '2026-10-09',
+    ordre: 40,
+    ordreCollection: 4
   }
 ];

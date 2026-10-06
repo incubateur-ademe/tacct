@@ -23,6 +23,7 @@ import { SousTitre1 } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { requireQuestionnaireValide } from '@/lib/auth/requireQuestionnaireValide';
 import { prisma } from '@/lib/queries/db';
+import { getUserAnswers } from '@/lib/queries/tacctoscope';
 import {
   estProfilAdminEtat,
   estProfilAutre,
@@ -32,6 +33,9 @@ import {
   SectionEspace,
   sectionsEspace
 } from '@/lib/segmentation';
+import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
+import { getRecommendationCount } from '@/lib/tacctoscope/content/roadmapResources';
+import { getAllProgress } from '@/lib/tacctoscope/progress';
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -71,7 +75,21 @@ const MonEspace = async () => {
   });
   if (!user) redirect('/api/proconnect/login');
 
-  const sections = sectionsEspace(user.profil, user.validated);
+  const answers = await getUserAnswers();
+  const progress = getAllProgress(answers);
+  const completed = progress.filter(
+    (criterion) => criterion.total > 0 && criterion.answered === criterion.total
+  ).length;
+  const started = progress.filter((criterion) => criterion.answered > 0).length;
+  const isComplete = completed === CRITERIA.length;
+  const recommendationCount = isComplete ? getRecommendationCount(answers) : 0;
+
+  const sections = sectionsEspace(user.profil);
+  const afficheAncienEspace =
+    user.validated &&
+    !estProfilAdminEtat(user.profil) &&
+    !estProfilEntreprise(user.profil) &&
+    !estProfilAutre(user.profil);
 
   const SECTIONS: Record<
     SectionEspace,
@@ -82,8 +100,15 @@ const MonEspace = async () => {
       labelMenu: 'Outils',
       contenu: (
         <div className={styles.sectionInner}>
-          {!estProfilBe(user.profil) && <TacctoscopeCard />}
-          {user.validated && <AncienEspaceCard validated={user.validated} />}
+          <TacctoscopeCard
+            hasAnswers={started > 0}
+            isComplete={isComplete}
+            recommendationCount={recommendationCount}
+            completed={completed}
+            started={started}
+            total={CRITERIA.length}
+          />
+          {afficheAncienEspace && <AncienEspaceCard validated={user.validated} />}
         </div>
       )
     },

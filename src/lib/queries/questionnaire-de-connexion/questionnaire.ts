@@ -1,8 +1,10 @@
 'use server';
 
 import { randomUUID } from 'node:crypto';
+import { after } from 'next/server';
 import { getCurrentUser } from '@/lib/auth/getCurrentUser';
 import { encryptField } from '@/lib/crypto/user-crypto';
+import { envoyerMailBienvenue } from '@/lib/mail/bienvenue';
 import { prisma } from '@/lib/queries/db';
 import {
   Besoin,
@@ -112,10 +114,21 @@ const validerSiTermine = async (
   if (derniereEtape(etat.profil) !== etapeEnregistree) return false;
   if (!reponsesObligatoiresCompletes(etat)) return false;
 
-  await prisma.user.update({
-    where: { id: userId },
+  // Le filtre sur `questionnaire_validated: false` garantit un seul mail de
+  // bienvenue, même si la dernière étape est enregistrée deux fois.
+  const { count } = await prisma.user.updateMany({
+    where: { id: userId, questionnaire_validated: false },
     data: { questionnaire_validated: true, updated_at: new Date() }
   });
+  if (count === 1) {
+    after(async () => {
+      const ligne = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { email: true }
+      });
+      if (ligne?.email) await envoyerMailBienvenue(ligne.email);
+    });
+  }
   return true;
 };
 

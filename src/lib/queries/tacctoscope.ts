@@ -1,23 +1,16 @@
 'use server';
 
 import { randomUUID } from 'node:crypto';
-import { getCurrentUser } from '@/lib/auth/getCurrentUser';
-import { encryptField } from '@/lib/crypto/user-crypto';
+import { getCurrentUserValide } from '@/lib/auth/getCurrentUser';
 import { prisma } from '@/lib/queries/db';
+import { isAnswerValue, normalizeAnswers } from '@/lib/tacctoscope/answers';
 import { isKnownQuestionKey } from '@/lib/tacctoscope/keys';
-import {
-  ANSWER_VALUES,
-  AnswerMap,
-  AnswerValue
-} from '@/lib/tacctoscope/types';
+import { AnswerMap, AnswerValue } from '@/lib/tacctoscope/types';
 
 type ActionResult = { ok: boolean };
 
-const isAnswerValue = (value: string): value is AnswerValue =>
-  (ANSWER_VALUES as readonly string[]).includes(value);
-
 export const getUserAnswers = async (): Promise<AnswerMap> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return {};
 
   try {
@@ -25,8 +18,8 @@ export const getUserAnswers = async (): Promise<AnswerMap> => {
       where: { user_id: user.id },
       select: { question_key: true, value: true }
     });
-    return Object.fromEntries(
-      rows.map((row) => [row.question_key, row.value as AnswerValue])
+    return normalizeAnswers(
+      Object.fromEntries(rows.map((row) => [row.question_key, row.value]))
     );
   } catch (error) {
     console.error('getUserAnswers error', error);
@@ -38,7 +31,7 @@ export const saveAnswer = async (
   questionKey: string,
   value: AnswerValue
 ): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
   if (!isKnownQuestionKey(questionKey)) return { ok: false };
   if (!isAnswerValue(value)) return { ok: false };
@@ -66,7 +59,7 @@ export const saveAnswer = async (
 export const deleteAnswer = async (
   questionKey: string
 ): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
   if (!isKnownQuestionKey(questionKey)) return { ok: false };
 
@@ -82,7 +75,7 @@ export const deleteAnswer = async (
 };
 
 export const resetAllAnswers = async (): Promise<ActionResult> => {
-  const user = await getCurrentUser();
+  const user = await getCurrentUserValide();
   if (!user) return { ok: false };
 
   try {
@@ -94,29 +87,3 @@ export const resetAllAnswers = async (): Promise<ActionResult> => {
   }
 };
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-export const saveRecontactOptIn = async (
-  email: string
-): Promise<ActionResult> => {
-  const user = await getCurrentUser();
-  if (!user) return { ok: false };
-
-  const trimmed = email.trim();
-  if (!EMAIL_REGEX.test(trimmed)) return { ok: false };
-
-  try {
-    await prisma.user.update({
-      where: { id: user.id },
-      data: {
-        wants_beta_features: true,
-        recontact_email: encryptField(trimmed),
-        updated_at: new Date()
-      }
-    });
-    return { ok: true };
-  } catch (error) {
-    console.error('saveRecontactOptIn error', error);
-    return { ok: false };
-  }
-};

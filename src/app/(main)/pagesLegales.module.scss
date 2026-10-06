@@ -1,0 +1,27 @@
+.contenu {
+    max-width: 60rem;
+
+    table {
+        display: block;
+        overflow-x: auto;
+        border-collapse: collapse;
+        margin: 1rem 0 2rem;
+    }
+
+    th,
+    td {
+        border: 1px solid var(--gris-medium);
+        padding: 0.5rem 0.75rem;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: var(--gris-light);
+        font-weight: 700;
+    }
+
+    td a {
+        word-break: break-all;
+    }
+}

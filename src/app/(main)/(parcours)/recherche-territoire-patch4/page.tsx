@@ -1,4 +1,5 @@
 "use client";
+import { ScrollToTop } from "@/components/interactions/ScrollToTop";
 import { BarreDeRechercheSansFiltre } from "@/components/searchbar/BarreDeRechercheSansFiltre";
 import { getLastTerritory } from "@/components/searchbar/fonctions";
 import { Loader } from "@/components/ui/loader";
@@ -31,28 +32,31 @@ const RechercherSonTerritoire = () => {
   }
 
   return (
-    <NewContainer size="md">
-      <div style={{ margin: '5rem 0', padding: '0 1rem' }}>
-        <H1
-          style={{
-            textAlign: 'center',
-            fontSize: '2rem',
-            marginBottom: "2rem",
-            lineHeight: '40px',
-          }}>
-          Explorer les données de mon territoire
-        </H1>
-        <Body
-          size="lg"
-          style={{ textAlign: 'center', color: '#666666' }}
-        >
-          Saisir une commune, un EPCI/EPT, un PNR, un PETR ou un département
-        </Body>
-        <div style={{ marginTop: '2.5rem' }}>
-          <BarreDeRechercheSansFiltre page="patch4c" />
+    <>
+      <ScrollToTop />
+      <NewContainer size="md">
+        <div style={{ margin: '5rem 0', padding: '0 1rem' }}>
+          <H1
+            style={{
+              textAlign: 'center',
+              fontSize: '2rem',
+              marginBottom: "2rem",
+              lineHeight: '40px',
+            }}>
+            Explorer les données de mon territoire
+          </H1>
+          <Body
+            size="lg"
+            style={{ textAlign: 'center', color: '#666666' }}
+          >
+            Saisir une commune, un EPCI/EPT, un PNR, un PETR ou un département
+          </Body>
+          <div style={{ marginTop: '2.5rem' }}>
+            <BarreDeRechercheSansFiltre page="patch4c" />
+          </div>
         </div>
-      </div>
-    </NewContainer>
+      </NewContainer>
+    </>
   );
 }
 

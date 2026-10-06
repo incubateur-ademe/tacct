@@ -1,3 +1,4 @@
+import { ScrollToTop } from '@/components/interactions/ScrollToTop';
 import { collectionsCartes } from '@/lib/ressources/cartes';
 import { Metadata } from 'next';
 import { BlocAutresOutils } from './blocs/blocAutresOutils';
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 const Ressources = () => {
   return (
     <>
+      <ScrollToTop />
       <BlocTitre />
       <div className={styles.desktopOnly}>
         <BlocCollections collectionsCartes={collectionsCartes} />

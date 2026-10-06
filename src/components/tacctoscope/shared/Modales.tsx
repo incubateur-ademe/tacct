@@ -1,6 +1,5 @@
 'use client';
 
-import enveloppeIcon from '@/assets/icons/enveloppe_icon_white.svg';
 import {
   BoutonPrimaireClassic,
   BoutonSecondaireClassic
@@ -188,26 +187,6 @@ const LockIcon = () => (
   </svg>
 );
 
-const InfoIcon = () => (
-  <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M17 0H2C0.895431 0 0 0.895431 0 2V17C0 18.1046 0.895431 19 2 19H17C18.1046 19 19 18.1046 19 17V2C19 0.895431 18.1046 0 17 0ZM10.5 4.5H8.5V6.5H10.5V4.5ZM10.5 8.5H8.5V14.5H10.5V8.5Z"
-      fill="#038278"
-    />
-  </svg>
-);
-
-const InfoBlock = ({ children }: { children: ReactNode }) => (
-  <div className={styles.infoBlock}>
-    <span className={styles.infoBlockIcon}>
-      <InfoIcon />
-    </span>
-    <span>{children}</span>
-  </div>
-);
-
 interface UnlockModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -217,89 +196,13 @@ interface UnlockModalProps {
 export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) => (
   <ConfirmModal
     isOpen={isOpen}
-    title="Voulez-vous accéder à tous les critères ?"
+    title="Connectez-vous pour continuer"
     message={
       <>
-        Inscrivez-vous ou connectez-vous pour poursuivre et sauvegarder votre
-        travail pour la prochaine fois.
-        <InfoBlock>
-          Les critères suivants sont réservés à certains profils d’utilisateurs.
-        </InfoBlock>
+        Accédez à l’ensemble du questionnaire et enregistrez vos réponses et votre feuille de route.
       </>
     }
     icon={<LockIcon />}
-    cancelLabel={'Non, pas pour\nl’instant'}
-    confirmLabel={'Oui, se connecter\nou créer un compte'}
-    onClose={onClose}
-    onConfirm={onConfirm}
-  />
-);
-
-interface AccesReserveModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const LIEN_CONTACT = 'https://tally.so/r/mJGELz';
-
-export const AccesReserveModal = ({ isOpen, onClose }: AccesReserveModalProps) => (
-  <Modal
-    isOpen={isOpen}
-    onClose={onClose}
-    title="Accès réservé à certains profils d’utilisateurs"
-    icon={<LockIcon />}
-    compactFooter
-    footer={
-      <>
-        <BoutonSecondaireClassic size="md" text="Annuler" onClick={onClose} />
-        <BoutonPrimaireClassic
-          size="md"
-          link={LIEN_CONTACT}
-          rel="noopener noreferrer"
-          text="Contacter l’équipe"
-          icone={enveloppeIcon}
-        />
-      </>
-    }
-  >
-    Si vous souhaitez en savoir plus, nous vous invitons à nous contacter, en
-    précisant votre rôle et le contexte de votre demande.
-  </Modal>
-);
-
-const SaveIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M7 19v-6h10v6h2V7.828L16.172 5H5v14h2zM4 3h13l4 4v13a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1zm5 12v4h6v-4H9z"
-      fill="#161616"
-    />
-  </svg>
-);
-
-interface SavePromptModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  onConfirm: () => void;
-}
-
-export const SavePromptModal = ({
-  isOpen,
-  onClose,
-  onConfirm
-}: SavePromptModalProps) => (
-  <ConfirmModal
-    isOpen={isOpen}
-    title="Voulez-vous sauvegarder votre travail ?"
-    message={
-      <>
-        Si vous souhaitez enregistrer vos réponses, créez un compte ou
-        connectez-vous.
-        <InfoBlock>
-          Cette fonctionnalité est réservée à certains profils d'utilisateurs
-        </InfoBlock>
-      </>
-    }
-    icon={<SaveIcon />}
     cancelLabel={'Non, pas pour\nl’instant'}
     confirmLabel={'Oui, se connecter\nou créer un compte'}
     onClose={onClose}
