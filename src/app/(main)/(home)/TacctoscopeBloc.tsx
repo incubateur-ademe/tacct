@@ -1,5 +1,5 @@
-import sparklingIcon from '@/assets/icons/sparkling_icon_green.svg';
 import productLaunch from '@/assets/images/product-launch.png';
+import { SparklingIcon } from '@/assets/svg/home/homeIcones';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H3 } from '@/design-system/base/Textes';
@@ -27,7 +27,7 @@ export const TacctoscopeBloc = () => (
               couleur="#E3FAF9"
               couleurTexte="var(--boutons-primaire-3)"
               taille="small"
-              icone={<Image src={sparklingIcon} alt="" width={12} height={12} />}
+              icone={<SparklingIcon />}
             />
             <H3
               color="#038278"

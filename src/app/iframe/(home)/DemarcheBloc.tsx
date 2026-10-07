@@ -2,22 +2,24 @@
 
 import { StepCard } from '@/app/(main)/(home)/StepCard';
 import { StepCardMobile } from '@/app/(main)/(home)/StepCardMobile';
-import Etape1Background from "@/assets/svg/home/etape1background.svg";
-import Etape1Contour from "@/assets/svg/home/etape1contour.svg";
-import Etape1Foreground from "@/assets/svg/home/etape1foreground.svg";
 import Etape1Image from "@/assets/svg/home/etape1Image.svg";
-import Etape2Background from "@/assets/svg/home/etape2background.svg";
-import Etape2Contour from "@/assets/svg/home/etape2contour.svg";
-import Etape2Foreground from "@/assets/svg/home/etape2foreground.svg";
 import Etape2Image from "@/assets/svg/home/etape2image.svg";
-import Etape3Background from "@/assets/svg/home/etape3background.svg";
-import Etape3Contour from "@/assets/svg/home/etape3contour.svg";
-import Etape3Foreground from "@/assets/svg/home/etape3foreground.svg";
 import Etape3Image from "@/assets/svg/home/etape3image.svg";
-import Etape4Background from "@/assets/svg/home/etape4background.svg";
-import Etape4Contour from "@/assets/svg/home/etape4contour.svg";
-import Etape4Foreground from "@/assets/svg/home/etape4foreground.svg";
 import Etape4Image from "@/assets/svg/home/etape4image.svg";
+import {
+  Etape1Background,
+  Etape1Contour,
+  Etape1Foreground,
+  Etape2Background,
+  Etape2Contour,
+  Etape2Foreground,
+  Etape3Background,
+  Etape3Contour,
+  Etape3Foreground,
+  Etape4Background,
+  Etape4Contour,
+  Etape4Foreground
+} from "@/assets/svg/home/etapesFormes";
 import LeftLine from "@/assets/svg/home/leftLine";
 import { MiddleLine } from '@/assets/svg/home/middleLine';
 import { RightLine } from '@/assets/svg/home/rightLine';
@@ -59,10 +61,10 @@ export const DemarcheBloc = () => {
               {/* Background + Image superposés */}
               {(width && width <= 768) ? (
                 <StepCardMobile
-                  contour={Etape1Contour}
+                  contour={<Etape1Contour />}
                   image={Etape1Image}
-                  background={Etape1Background}
-                  foreground={Etape1Foreground}
+                  background={<Etape1Background />}
+                  foreground={<Etape1Foreground />}
                   texte={
                     <Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>
                       Une visio d'1h pour savoir <b>par où commencer</b>
@@ -74,10 +76,10 @@ export const DemarcheBloc = () => {
                 />
               ) : (
                 <StepCard
-                  contour={Etape1Contour}
+                  contour={<Etape1Contour />}
                   image={Etape1Image}
-                  background={Etape1Background}
-                  foreground={Etape1Foreground}
+                  background={<Etape1Background />}
+                  foreground={<Etape1Foreground />}
                   texte={
                     <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                       Une visio d'1h pour savoir <b>par où commencer</b>
@@ -102,10 +104,10 @@ export const DemarcheBloc = () => {
               </div>
               {(width && width <= 768) ? (
                 <StepCardMobile
-                  contour={Etape2Contour}
+                  contour={<Etape2Contour />}
                   image={Etape2Image}
-                  background={Etape2Background}
-                  foreground={Etape2Foreground}
+                  background={<Etape2Background />}
+                  foreground={<Etape2Foreground />}
                   texte={
                     <Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>
                       Un <b>démarrage à la carte</b>, avec tous les liens utiles
@@ -117,10 +119,10 @@ export const DemarcheBloc = () => {
                 />
               ) : (
                 <StepCard
-                  contour={Etape2Contour}
+                  contour={<Etape2Contour />}
                   image={Etape2Image}
-                  background={Etape2Background}
-                  foreground={Etape2Foreground}
+                  background={<Etape2Background />}
+                  foreground={<Etape2Foreground />}
                   texte={
                     <Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>
                       Un <b>démarrage à la carte</b>, avec tous les liens utiles
@@ -146,10 +148,10 @@ export const DemarcheBloc = () => {
               </div>
               {(width && width <= 768) ? (
                 <StepCardMobile
-                  contour={Etape3Contour}
+                  contour={<Etape3Contour />}
                   image={Etape3Image}
-                  background={Etape3Background}
-                  foreground={Etape3Foreground}
+                  background={<Etape3Background />}
+                  foreground={<Etape3Foreground />}
                   texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Chaque mois, <b>un retour d'expérience et une discussion</b> autour d'un sujet opérationnel</Body>}
                   numero={3}
                   maxWidth={235}
@@ -157,10 +159,10 @@ export const DemarcheBloc = () => {
                 />
               ) : (
                 <StepCard
-                  contour={Etape3Contour}
+                  contour={<Etape3Contour />}
                   image={Etape3Image}
-                  background={Etape3Background}
-                  foreground={Etape3Foreground}
+                  background={<Etape3Background />}
+                  foreground={<Etape3Foreground />}
                   texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Chaque mois, <b>un retour d'expérience et une discussion</b> autour d'un sujet opérationnel</Body>}
                   numero={3}
                   maxWidth={235}
@@ -181,10 +183,10 @@ export const DemarcheBloc = () => {
               </div>
               {(width && width <= 768) ? (
                 <StepCardMobile
-                  contour={Etape4Contour}
+                  contour={<Etape4Contour />}
                   image={Etape4Image}
-                  background={Etape4Background}
-                  foreground={Etape4Foreground}
+                  background={<Etape4Background />}
+                  foreground={<Etape4Foreground />}
                   texte={<Body style={{ color: "#2B4B49", fontSize: '0.875rem' }}>Une <b>communauté</b> de <b>400 chargés de mission</b> de tous types de territoires</Body>}
                   numero={4}
                   maxWidth={235}
@@ -192,10 +194,10 @@ export const DemarcheBloc = () => {
                 />
               ) : (
                 <StepCard
-                  contour={Etape4Contour}
+                  contour={<Etape4Contour />}
                   image={Etape4Image}
-                  background={Etape4Background}
-                  foreground={Etape4Foreground}
+                  background={<Etape4Background />}
+                  foreground={<Etape4Foreground />}
                   texte={<Body style={{ color: "#2B4B49", fontSize: (width && width < 900) ? '0.875rem' : '1rem' }}>Une <b>communauté</b> de <b>400 chargés de mission</b> de tous types de territoires</Body>}
                   numero={4}
                   maxWidth={235}

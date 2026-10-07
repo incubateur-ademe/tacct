@@ -5,10 +5,10 @@ import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 
 interface StepCardMobileProps {
-  contour: StaticImageData;
-  background: StaticImageData;
+  contour: ReactNode;
+  background: ReactNode;
   image: StaticImageData;
-  foreground: StaticImageData;
+  foreground: ReactNode;
   label: ReactNode;
   texte: ReactNode;
   numero: number;
@@ -114,14 +114,14 @@ export const StepCardMobile = ({
           opacity: active ? 0 : 1,
           transition: 'opacity 0.6s ease',
         }}>
-          <Image src={contour} alt="" fill style={{ objectFit: 'contain' }} />
+          {contour}
         </div>
         <div style={{
           position: 'absolute',
           inset: 0,
           transition: 'opacity 0.6s ease',
         }}>
-          <Image src={background} alt="" fill style={{ objectFit: 'contain' }} />
+          {background}
         </div>
         <div style={{
           position: 'absolute',
@@ -138,7 +138,7 @@ export const StepCardMobile = ({
           transform: active ? 'scale(1.05)' : 'scale(1)',
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}>
-          <Image src={foreground} alt="" fill style={{ objectFit: 'contain' }} />
+          {foreground}
         </div>
         <div style={{
           position: 'absolute',

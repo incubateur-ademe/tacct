@@ -6,10 +6,10 @@ import Image, { StaticImageData } from 'next/image';
 import { ReactNode, useState } from 'react';
 
 interface StepCardProps {
-  contour: StaticImageData;
-  background: StaticImageData;
+  contour: ReactNode;
+  background: ReactNode;
   image: StaticImageData;
-  foreground: StaticImageData;
+  foreground: ReactNode;
   label: ReactNode;
   texte: ReactNode;
   numero: number;
@@ -112,7 +112,7 @@ export const StepCard = ({
           opacity: hovered ? 0 : 1,
           transition: 'opacity 0.6s ease',
         }}>
-          <Image src={contour} alt="" fill style={{ objectFit: 'contain' }} />
+          {contour}
         </div>
         {/* Background */}
         <div style={{
@@ -120,7 +120,7 @@ export const StepCard = ({
           inset: 0,
           transition: 'opacity 0.6s ease',
         }}>
-          <Image src={background} alt="" fill style={{ objectFit: 'contain' }} />
+          {background}
         </div>
         {/* Image : visible sans hover, disparaît au hover */}
         <div style={{
@@ -139,7 +139,7 @@ export const StepCard = ({
           transform: hovered ? 'scale(1.05)' : 'scale(1)',
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}>
-          <Image src={foreground} alt="" fill style={{ objectFit: 'contain' }} />
+          {foreground}
         </div>
         {/* Texte : invisible sans hover, apparaît au hover */}
         <div style={{

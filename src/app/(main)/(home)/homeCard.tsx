@@ -1,26 +1,22 @@
 import { Body, H3 } from '@/design-system/base/Textes';
-import Image, { StaticImageData } from 'next/image';
+import { ComponentType } from 'react';
 import styles from './home.module.scss';
 
 type HomeCardProps = {
-  icone: StaticImageData;
+  icone: ComponentType;
   titre: string;
   description: string;
 }
 
 export const HomeCard = ({
-  icone,
+  icone: Icone,
   titre,
   description
 }: HomeCardProps) => {
   return (
     <div className={styles.homeCard}>
       <div className={styles.homeCardIcon}>
-        <Image
-          src={icone}
-          alt=""
-          className={styles.homeCardImage}
-        />
+        <Icone />
       </div>
       <H3
         style={{
