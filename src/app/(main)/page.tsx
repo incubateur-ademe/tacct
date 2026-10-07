@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react';
 import { useStyles } from 'tss-react/dsfr';
 import { DemarcheBloc } from './(home)/DemarcheBloc';
 import { HeroBloc } from './(home)/HeroBloc';
-import { HeroBlocMobile } from './(home)/HeroBlocMobile';
-import styles from "./(home)/home.module.scss";
 import { PatchEtRessourcesBloc } from './(home)/PatchEtRessourcesBloc';
 import { TacctBloc } from './(home)/TacctBloc';
 import { TacctoscopeBloc } from './(home)/TacctoscopeBloc';
@@ -64,8 +62,7 @@ const Home = () => {
           }
         />
       )}
-      <div className={styles.heroBlocDesktopOnly}><HeroBloc /></div>
-      <div className={styles.heroBlocMobileOnly}><HeroBlocMobile /></div>
+      <HeroBloc />
       <TacctoscopeBloc />
       <TacctBloc />
       <DemarcheBloc />
