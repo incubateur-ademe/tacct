@@ -51,13 +51,13 @@ const FeuilleDeRoutePage = async () => {
                 size="md"
                 color="#3d3d3d"
                 style={{
-                  maxWidth: 640,
+                  maxWidth: 850,
                   lineHeight: '1.5rem',
                   letterSpacing: 'normal'
                 }}
               >
                 Voici l’ensemble des recommandations alimentées par vos réponses
-                dans chacun des 5 critères d’analyse. Améliorez votre diagnostic
+                dans chacune des 5 catégories d’analyse. Améliorez votre diagnostic
                 de vulnérabilité à votre rythme !
               </Body>
               {/* <ExportPdfButton /> */}

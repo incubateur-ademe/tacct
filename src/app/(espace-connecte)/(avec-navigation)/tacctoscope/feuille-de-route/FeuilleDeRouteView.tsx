@@ -17,12 +17,18 @@ import {
 import { NoAnswerHelpBlock } from '@/components/tacctoscope/roadmap/NoAnswerHelpBlock';
 import { RoadmapLoginBlock } from '@/components/tacctoscope/roadmap/RoadmapLoginBlock';
 import { SectionQuestionRef } from '@/components/tacctoscope/roadmap/RoadmapBlockParts';
-import { AnswerMap, AnswerValue } from '@/lib/tacctoscope/types';
+import { AnswerMap, AnswerValue, CriterionSlug } from '@/lib/tacctoscope/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
 /* Les points forts (4) sont regroupés dans un bloc à part, affiché en premier. */
 const RECOMMENDATION_ORDER: AnswerValue[] = ['3', '2', '1'];
+
+const MENU_TITLES: Partial<Record<CriterionSlug, string>> = {
+  'donnees-socio-economiques': 'Données socio-éco',
+  'priorisation-des-impacts': 'Priorisation impacts',
+  'problematisation-et-conclusion': 'Problématisation'
+};
 
 interface Props {
   answers: AnswerMap;
@@ -92,7 +98,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
 
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
     slug: criterion.slug,
-    title: criterion.title,
+    title: MENU_TITLES[criterion.slug] ?? criterion.title,
     locked: !isAuthenticated && !isPublicCriterion(criterion.slug)
   }));
 

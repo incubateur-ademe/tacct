@@ -27,32 +27,32 @@ export const NoAnswerHelpBlock = () => (
           lineHeight: '1.75rem',
           letterSpacing: 'normal',
           textAlign: 'center',
-          margin: 0
+          margin: "0 0 0.5rem"
         }}
       >
-        Vous avez répondu “<em>Je ne sais pas</em>” à plusieurs questions
+        Vous avez répondu “<em>Je ne sais pas</em>” à une ou plusieurs questions
       </H2>
       <Body size="md" color="#3d3d3d" style={{ lineHeight: '1.5rem' }}>
         Voici des pistes pour trouver les réponses et compléter votre feuille de
-        route :
+        route :
       </Body>
       <ul className={styles.noAnswerHelpList}>
         <Item>
           <strong>Relisez vos documents</strong> de diagnostic, annexes incluses
         </Item>
         <Item>
-          <strong>Échangez avec l’ancienne équipe projet</strong> : certaines
+          <strong>Échangez avec l’ancienne équipe projet</strong> : certaines
           informations n’ont peut-être pas été écrites
         </Item>
         <Item>
-          <strong>Formez-vous à</strong> l’adaptation et la méthode TACCT -
+          <strong>Formez-vous</strong> à l’adaptation et la méthode TACCT :
           consultez notre collection thématique{' '}
           <Link href={LIEN_COLLECTION} className={styles.noAnswerHelpTextLink}>
             Démarrer le diagnostic de vulnérabilité
           </Link>
         </Item>
         <Item>
-          <strong>Posez-nous</strong> vos questions directement{' '}
+          <strong>Posez</strong> vos questions directement{' '}
           <a
             href={LIEN_CONTACT}
             target="_blank"

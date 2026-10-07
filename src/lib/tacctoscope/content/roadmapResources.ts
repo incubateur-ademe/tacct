@@ -55,7 +55,7 @@ const PATCH_4C: RoadmapResource = {
   title: 'Patch 4°C',
   description:
     'Il s’agit du patch 4°C, un nouveau jeu de données calculé par Météo France et basé sur la TRACC.',
-  url: 'https://tacct.ademe.fr/recherche-territoire-patch4',
+  url: '/recherche-territoire-patch4',
   utilite:
     'Le patch 4°C calcule le tendanciel d’aggravation des aléas majeurs de votre territoire (à noter : les territoires ultramarins ont des projections de référence spécifiques et moins élevées). En fonction de l’aggravation, vous trouverez une liste de thématiques à traiter et des conseils pour renforcer votre diagnostic de vulnérabilité.',
   image: RessourceCritere1Q2Oui
@@ -112,7 +112,7 @@ const DONNEES_SENSIBILITE_TACCT: RoadmapResource = {
   title: 'Les données de sensibilité sur le site TACCT',
   description:
     'La plateforme TACCT donne un accès direct à des données du territoire – socio-économiques, climatiques, environnementales.',
-  url: 'https://tacct.ademe.fr/recherche-territoire',
+  url: '/recherche-territoire',
   utilite:
     'Il s’agit d’une sélection d’indicateurs permettant d’engager rapidement le dialogue avec les acteurs locaux, sur une base commune, et d’identifier ensemble les vulnérabilités du territoire face au changement climatique.',
   image: RessourceCritere2Q2Non
@@ -123,7 +123,7 @@ const TEMOIGNAGE_RENNES_METROPOLE: RoadmapResource = {
   title: 'Témoignage de Rennes Métropole',
   description:
     'Il s’agit de l’article “Réaliser votre diagnostic de vulnérabilité” qui reprend le témoignage de Clémence Noyau, chargée de mission adaptation au changement climatique à Rennes Métropole.',
-  url: 'https://tacct.ademe.fr/ressources/demarrer-diagnostic-vulnerabilite/realiser-diagnostic-vulnerabilite',
+  url: '/ressources/demarrer-diagnostic-vulnerabilite/realiser-diagnostic-vulnerabilite',
   utilite:
     'Il permet de comprendre la démarche suivie par une chargée de mission avec la place accordée à la donnée et aux temps de mobilisation. Cet article met en avant les apprentissages liés à la réalisation du diagnostic de vulnérabilité de la métropole et l’intérêt de mobiliser pour légitimer le diagnostic de vulnérabilité. _“Pour moi, dans le diagnostic de vulnérabilité, le plus important, c’est le processus, c’est profiter de cette occasion pour aller rencontrer et mobiliser tout le monde sur ces questions”_ (Clémence Noyau).',
   image: RessourceCritere3Q4Non
@@ -134,7 +134,7 @@ const GUIDE_ENTRETIENS: RoadmapResource = {
   title: 'Exemple de guide d’entretiens',
   description:
     'Il s’agit de l’article “Entretiens de terrain : l’autre pilier du diagnostic de vulnérabilité” disponible dans notre collection “Associer les parties prenantes”.',
-  url: 'https://tacct.ademe.fr/ressources/associer-parties-prenantes/entretien-adaptation',
+  url: '/ressources/associer-parties-prenantes/entretien-adaptation',
   utilite:
     'Les bases de données ne révèlent pas tout : elles ne rendent pas compte des réalités vécues ni des signaux faibles qui émergent sur le terrain. Retrouvez ici les bonnes pratiques et un exemple de format simple pour mener des entretiens efficaces. Votre diagnostic de vulnérabilité parlera véritablement de votre territoire.',
   image: RessourceCritere3Q4Nonbis
@@ -145,7 +145,7 @@ const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
   title: 'Retours d’expérience sur les ateliers sensibilité',
   description:
     'Retrouvez nos deux retours d’expériences de territoires ayant animé des ateliers pour évaluer leur sensibilité, disponibles dans notre collection “Évaluer les impacts du changement climatique”.',
-  url: 'https://tacct.ademe.fr/ressources/evaluer-impacts-changement-climatique',
+  url: '/ressources/evaluer-impacts-changement-climatique',
   utilite:
     'Découvrez les apprentissages liés à la réalisation d’ateliers sensibilité. Ces deux retours d’expériences proposent des déroulés d’ateliers, à personnaliser à votre contexte, pour évaluer la sensibilité de votre territoire.',
   image: RessourceCritere3Q4Nonter

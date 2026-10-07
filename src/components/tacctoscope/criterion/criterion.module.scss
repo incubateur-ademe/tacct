@@ -17,11 +17,13 @@
 /* ===== CriterionProgressBar ===== */
 .criterionProgressBarOuter {
     position: sticky;
+    height: 84px;
     top: 0;
     z-index: 10;
     background: #ffffff;
     border-bottom: 1px solid #e7e5e5;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+    align-content: center;
 }
 
 .criterionProgressBarInner {
@@ -335,7 +337,7 @@
 .casReelOverlay {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 1200;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -387,4 +389,3 @@
     display: flex;
     justify-content: flex-end;
 }
-

@@ -141,7 +141,7 @@ $stripe: repeating-linear-gradient(
 .menuItem {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 7px;
     width: 100%;
     text-align: left;
     padding: 1rem 2rem 1rem 1rem;
@@ -168,8 +168,8 @@ $stripe: repeating-linear-gradient(
 
 .menuItemLabel {
     font-family: Marianne;
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.5rem;
     color: $title;
 }
@@ -607,7 +607,7 @@ $stripe: repeating-linear-gradient(
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 34rem;
+    max-width: 40rem;
     margin: 0 auto;
 }
 
@@ -668,6 +668,11 @@ $stripe: repeating-linear-gradient(
     font-weight: 500;
     line-height: 1.5rem;
     color: $teal;
+}
+
+.accordion :global(.fr-accordion__btn):hover .accordionLabel {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .accordionContent {

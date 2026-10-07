@@ -90,7 +90,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
 
   if (!mounted || !isOpen) return null;
 
-  const externe = ressource.url.startsWith('https');
+  const externe = !ressource.url.startsWith('/');
 
   // Navigation reprise ici : BoutonPrimaireClassic la court-circuite dès qu'un `onClick` est fourni.
   const handleRessourceClick = () => {
@@ -138,6 +138,8 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
               <Image
                 src={ressource.image}
                 alt=""
+                loading="eager"
+                placeholder="blur"
                 className={styles.ressourceModalVisualMedia}
               />
             ) : (

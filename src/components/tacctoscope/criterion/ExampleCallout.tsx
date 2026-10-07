@@ -90,7 +90,12 @@ export const ExampleCallout = ({
           className={styles.criterionExampleCalloutAttachment}
         >
           <DocIcon color={accentColor} />
-          <Body htmlTag="span" weight="medium" color={accentColor}>
+          <Body
+            htmlTag="span"
+            weight="medium"
+            color={accentColor}
+            style={{ textDecoration: 'underline' }}
+          >
             <FormattedText text={attachment.label} />
           </Body>
         </button>

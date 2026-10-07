@@ -11,21 +11,21 @@ interface Props {
 export const CriterionEmptyState = ({ slug, title }: Props) => (
   <div className={styles.emptyState}>
     <Body
-      weight="bold"
-      size="xl"
-      color="#666666">
-      Ce critère est vide pour le moment
-    </Body>
-    <Body
       size="md"
       color="#666666"
-      style={{ lineHeight: '1.5rem', paddingBottom: "1.5rem" }}
+      weight='medium'
+      style={{
+        lineHeight: '1.5rem',
+        paddingBottom: "1.5rem",
+        maxWidth: "30rem",
+        fontSize: "18px"
+      }}
     >
-      Répondez aux questions pour voir apparaître vos pistes d’amélioration ici
+      Renseignez le questionnaire pour voir apparaître vos pistes d’amélioration ici
     </Body>
     <BoutonPrimaireClassic
       link={`/tacctoscope/${slug}`}
-      text={`Commencer “${title}” →`}
+      text={`Répondre aux questions  →`}
       size="md"
       style={{ maxWidth: '100%', whiteSpace: 'normal', textAlign: 'center' }}
     />

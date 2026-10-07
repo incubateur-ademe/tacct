@@ -215,11 +215,8 @@ export const CriteresView = ({
 
           <CriterionNextSteps
             slug={criterion.slug}
-            nextCriterion={
-              isAuthenticated && nextSlug
-                ? getCriterionBySlug(nextSlug)
-                : undefined
-            }
+            nextCriterion={nextSlug ? getCriterionBySlug(nextSlug) : undefined}
+            nextLocked={!isAuthenticated}
           />
 
           <CriterionFeedback criterionKey={criterion.slug} />
