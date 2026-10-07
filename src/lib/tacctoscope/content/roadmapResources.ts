@@ -54,7 +54,7 @@ const PATCH_4C: RoadmapResource = {
   tag: 'donnees',
   title: 'Patch 4°C',
   description:
-    'Il s’agit du patch 4°C, un nouveau jeu de données calculé par Météo France et basé sur la TRACC.',
+    'Il s’agit du patch 4°C, un jeu de données calculé par Météo France et basé sur la TRACC.',
   url: '/recherche-territoire-patch4',
   utilite:
     'Le patch 4°C calcule le tendanciel d’aggravation des aléas majeurs de votre territoire (à noter : les territoires ultramarins ont des projections de référence spécifiques et moins élevées). En fonction de l’aggravation, vous trouverez une liste de thématiques à traiter et des conseils pour renforcer votre diagnostic de vulnérabilité.',
@@ -74,10 +74,9 @@ const DIAGNOSTIC_RENNES_METROPOLE: RoadmapResource = {
 
 const DIAGNOSTIC_COEUR_DU_PAYS_HAUT: RoadmapResource = {
   tag: 'exemple-diagnostic',
-  title:
-    'Diagnostic de la Communauté de communes Cœur du Pays Haut (Grand Est)',
+  title: 'Diagnostic de la CC Cœur du Pays Haut (Grand Est)',
   description:
-    'Il s’agit du diagnostic de vulnérabilité au changement climatique de la Communauté de communes Cœur du Pays Haut (région Grand Est), réalisé en 2023.',
+    'Il s’agit du diagnostic de vulnérabilité au changement climatique de la CC Cœur du Pays Haut (région Grand Est), réalisé en 2023.',
   url: 'https://coeurdupayshaut.fr/gedExt/contenu/RESILIENCE-CLIMATIQUE/DiagnosticVulnerabiliteCPH_.pdf',
   utilite:
     'C’est un exemple de diagnostic de vulnérabilité accordant une place centrale aux analyses de sensibilité et de vulnérabilité (voir les chapitres dédiés). De plus, ce document s’appuie sur le système de notation de la méthode TACCT (exposition actuelle, exposition future et sensibilité), ce qui permet d’identifier la vulnérabilité du territoire et de prioriser les enjeux clés.',
@@ -86,10 +85,9 @@ const DIAGNOSTIC_COEUR_DU_PAYS_HAUT: RoadmapResource = {
 
 const DIAGNOSTIC_BARONNIES: RoadmapResource = {
   tag: 'exemple-diagnostic',
-  title:
-    'Diagnostic de la Communauté de Communes des Baronnies en Drôme Provençale',
+  title: 'Diagnostic de la CC des Baronnies en Drôme Provençale',
   description:
-    'Il s’agit du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale.',
+    'Il s’agit du diagnostic de vulnérabilité de la CC des Baronnies en Drôme Provençale.',
   url: 'https://www.cc-bdp.fr/wp-content/uploads/2024/12/202412_02b-Diagnostic-de-vulnerabilite_PCAET_CCBDP.pdf',
   utilite:
     'Le diagnostic de vulnérabilité mentionne explicitement la gouvernance associée.\n\nUne partie du diagnostic de vulnérabilité est consacrée aux difficultés rencontrées et solutions apportées laissant une trace utile du processus de réalisation du document pour la future révision.\n\nL’annexe bibliographique permet de consulter le support utilisé en séance lors de l’atelier sur la sensibilité du territoire au changement climatique (p.78).',
