@@ -4,6 +4,7 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useModalFocus } from '../shared/useModalFocus';
 import styles from './criterion.module.scss';
 
 const CloseIcon = () => (
@@ -38,6 +39,7 @@ interface Props {
 export const CasReelModal = ({ src, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
   const isOpen = src !== null;
+  const dialogRef = useModalFocus(mounted && isOpen);
 
   useEffect(() => setMounted(true), []);
 
@@ -67,6 +69,7 @@ export const CasReelModal = ({ src, onClose }: Props) => {
   return createPortal(
     <div className={styles.casReelOverlay} onClick={onClose}>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label="Cas réel"

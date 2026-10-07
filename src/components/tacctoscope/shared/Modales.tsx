@@ -7,6 +7,7 @@ import {
 import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modales.module.scss';
+import { useModalFocus } from './useModalFocus';
 
 const CloseIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -41,6 +42,7 @@ export const Modal = ({
   largeTitle = false
 }: ModalProps) => {
   const [mounted, setMounted] = useState(false);
+  const dialogRef = useModalFocus(mounted && isOpen);
 
   useEffect(() => setMounted(true), []);
 
@@ -71,6 +73,7 @@ export const Modal = ({
   return createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={title}

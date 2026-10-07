@@ -152,6 +152,11 @@ $stripe: repeating-linear-gradient(
     &:not(.menuItemLocked):hover {
         background: $gray-light;
     }
+
+    &:focus-visible {
+        outline: 4px solid $teal;
+        outline-offset: 2px;
+    }
 }
 
 .menuItemIcon {
@@ -217,6 +222,11 @@ $stripe: repeating-linear-gradient(
     gap: 0.5rem;
     text-decoration: none;
     background-image: none;
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
 }
 
 /* ===== Contenu ===== */
@@ -491,6 +501,11 @@ $stripe: repeating-linear-gradient(
         left: -1px;
         width: 6px;
         background: #e7e5e5;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
     }
 
     @media screen and (max-width: 768px) {
@@ -882,6 +897,11 @@ $stripe: repeating-linear-gradient(
     border: none;
     background: none;
     cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
 }
 
 .ressourceModalHeader {

@@ -10,6 +10,7 @@ import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FormattedText } from '../shared/FormattedText';
+import { useModalFocus } from '../shared/useModalFocus';
 import { RessourceTag } from './RessourceTag';
 
 const CloseIcon = () => (
@@ -61,6 +62,7 @@ interface Props {
 
 export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
+  const dialogRef = useModalFocus(mounted && isOpen);
   const posthog = usePostHog();
   const router = useRouter();
 
@@ -110,6 +112,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   return createPortal(
     <div className={styles.ressourceModalOverlay} onClick={onClose}>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={ressource.title}

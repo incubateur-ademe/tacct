@@ -56,7 +56,7 @@ export const ExampleCallout = ({
 }: Props) => {
   const [openedSrc, setOpenedSrc] = useState<string | null>(null);
   const isExemple = kind === 'exemple';
-  const accentColor = isExemple ? '#095D55' : '#CE0041';
+  const accentColor = answered ? '#3D3D3D' : isExemple ? '#095D55' : '#CE0041';
   const titleColor = answered ? '#3D3D3D' : isExemple ? '#2b4b49' : '#ce0041';
   const textColor = answered || isExemple ? '#3D3D3D' : '#CE0041';
   return (
