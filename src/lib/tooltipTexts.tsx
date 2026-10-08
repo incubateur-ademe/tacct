@@ -416,11 +416,9 @@ export const SurfacesToujoursEnHerbeText = (
 // « Une commune peut appartenir à plusieurs PAT, par exemple un PAT intercommunal et un PAT départemental » : colonne projets_alimentaires_territoriaux de databases_v2.table_commune ; DGAL, document préparatoire à la reconnaissance de niveau 2, p. 10, https://draaf.bretagne.agriculture.gouv.fr/IMG/pdf/notice_de_reconnaissance_n2.pdf — « Dans le cas spécifique des PAT départementaux, organisation de l'articulation […] avec et entre les PAT infra »
 export const projetsAlimentairesTerritoriauxTooltipText = (
   <Body weight="bold" size="sm">
-    Un projet alimentaire territorial (PAT) est élaboré de manière concertée
-    avec l’ensemble des acteurs d’un territoire, pour structurer l’économie
-    agricole locale et mettre en œuvre un système alimentaire territorial. Il
-    s’appuie sur un diagnostic partagé de l’agriculture et de l’alimentation,
-    et sur des actions opérationnelles.
+    Un projet alimentaire territorial (PAT) vise à structurer
+    l'économie agricole et à mettre en œuvre un système alimentaire
+    à l'échelle d'un territoire.
     <br></br>
     <br></br>
     Les PAT sont recensés par l’Observatoire national des PAT (France PAT), à
@@ -553,9 +551,9 @@ export const moustiqueTigreTooltipText = (
       target="_blank"
       rel="noopener noreferrer">ministère de la Santé
     </a>. Les données débutent en 2004 et sont mises à jour annuellement.
-    Les indicateurs de la surveillance de la dengue, du chikungunya et du zika (cas 
-    importés et autochtones) sont construits à partir des informations de la déclaration 
-    obligatoire, transmises aux agences régionales de santé, puis centralisées par Santé 
+    Les indicateurs de la surveillance de la dengue, du chikungunya et du zika (cas
+    importés et autochtones) sont construits à partir des informations de la déclaration
+    obligatoire, transmises aux agences régionales de santé, puis centralisées par Santé
     publique France. Ils sont fournis depuis 2012 et mis à jour annuellement.
   </Body>
 );
