@@ -758,6 +758,10 @@ export const O3Text = () => (
 // Sources du texte :
 // « gaz irritant : inhalé, il peut provoquer des troubles respiratoires, déclencher des crises d’asthme et réduire la fonction pulmonaire » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 11 du PDF, § 2.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « L’ozone est un gaz irritant qui pénètre facilement jusqu’aux voies respiratoires les plus fines […] il peut provoquer des problèmes respiratoires, déclencher des crises d’asthme, diminuer la fonction pulmonaire »
 // « Contrairement au dioxyde d’azote et aux particules (PM10), ses dépassements de la valeur cible pour la santé concernent surtout les zones rurales et les agglomérations de petite et moyenne taille » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, p. 39 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « Contrairement au NO2 et aux PM10, les agglomérations les plus touchées sont celles de moyenne et de petite taille (moins de 50 000 habitants), de même que les zones rurales »
+// « les oxydes d’azote émis notamment par le trafic routier contribuent à former l’ozone, mais ils participent aussi à sa destruction » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 10 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « Si les oxydes d’azote contribuent à la formation de l’ozone lors de la journée, ils participent également à sa destruction. En effet, l’ozone réagit avec le monoxyde d’azote (NO) » ; Conseil national de l’air, L’ozone et ses impacts, octobre 2025, p. 2 du PDF, https://www.ecologie.gouv.fr/sites/default/files/documents/25084_Ozone-et-ses-impacts_vf.pdf — « les oxydes d’azote (NOx) issus du transport »
+// « là où ils sont le plus concentrés, au cœur des grandes agglomérations » : Airparif, p. 16 du PDF — « l’effet « puits d’ozone » caractéristique des grandes métropoles au centre desquelles se concentrent les sources d’oxydes d’azote (NOx), telles que le trafic routier et le chauffage résidentiel qui, par réaction avec l’ozone, consomment celui-ci »
+// « Porté par le vent » : Airparif, p. 10 du PDF — « L’ozone est un polluant qui voyage. […] La pollution issue de l’agglomération impacte les zones rurales alentours »
+// « atteint donc généralement ses niveaux les plus élevés hors des villes, dans les zones périurbaines et rurales » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, p. 35 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « Les concentrations maximales en O3 sont généralement observées en milieux rural et périurbain, compte tenu des mécanismes de formation de ce polluant »
 // « Les pics d’ozone surviennent par temps chaud et ensoleillé » : Atmo France, Canicule et ozone : bien s’informer pour mieux se protéger, 19 juin 2026, https://www.atmo-france.org/actualite/canicule-et-ozone-bien-sinformer-pour-mieux-se-proteger — « les concentrations d’ozone augmentent généralement lors des périodes estivales, particulièrement lorsque les conditions sont chaudes, ensoleillées et peu ventées »
 // « la chaleur en aggrave les effets sur la santé » : PNACC-3, mesure 18, action 2, p. 140, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « La chaleur aggravant les effets sanitaires de certains polluants » ; Santé publique France, Pollution atmosphérique : quels sont les risques ?, https://invs.santepubliquefrance.fr/air/pollution-atmospherique-quels-sont-les-risques — « le risque de décès associé à l’ozone et aux particules fines était plus important les jours chauds »
 // « La mesure 18 […] prévoit ainsi une expérimentation dans un département : dès la vigilance chaleur orange ou rouge, le préfet pourra y déclencher des mesures habituellement prises lors des épisodes de pollution » : PNACC-3, mesure 18, actions nouvelles, p. 139 — « Réaliser une expérimentation pendant une durée maximale de deux ans dans un département pour que le préfet examine le déclenchement de mesures, appliquées habituellement lors d’épisodes de pollution, en cas de vigilance chaleur orange ou rouge »
@@ -767,9 +771,21 @@ export const O3AirText = () => (
     <Body size="sm">
       L’ozone est un gaz irritant : inhalé, il peut provoquer des troubles
       respiratoires, déclencher des crises d’asthme et réduire la fonction
-      pulmonaire. Contrairement au dioxyde d’azote et aux particules (PM10),
-      ses dépassements de la valeur cible pour la santé concernent surtout les
-      zones rurales et les agglomérations de petite et moyenne taille.
+      pulmonaire. De façon contre-intuitive, et contrairement au dioxyde
+      d’azote et aux particules (PM10), ses dépassements de la valeur cible
+      pour la santé{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        concernent surtout les zones rurales et les agglomérations de petite et
+        moyenne taille
+      </ScrollToSourceTag>
+      . En effet, les oxydes d’azote émis notamment par le trafic routier
+      contribuent à former l’ozone, mais ils{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        participent aussi à sa destruction
+      </ScrollToSourceTag>{' '}
+      là où ils sont le plus concentrés, au cœur des grandes agglomérations.
+      Porté par le vent, l’ozone atteint donc généralement ses niveaux les plus
+      élevés hors des villes, dans les zones périurbaines et rurales.
     </Body>
     <Body size="sm" style={{ marginTop: '1rem' }}>
       Les pics d’ozone surviennent par temps chaud et ensoleillé, alors même

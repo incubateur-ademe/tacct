@@ -143,7 +143,7 @@ export const sommaireThematiques = {
         thematique: 'Biodiversité',
         icone: '🌼',
         sousCategories: ['Moustique tigre et arboviroses']
-      }      
+      }
     ]
   },
   Forêts: {
@@ -277,21 +277,21 @@ export const thematiquesInfo: {
     title: 'Santé',
     description: <div>
       <Body size="sm" style={{ marginBottom: '1rem' }}>
-          Le changement climatique ne menace pas la santé directement : il 
-          dégrade d'abord les conditions qui la rendent possible. Plus que 
-          les catastrophes, ce sont souvent des mécanismes lents et cumulatifs 
-          qui fragilisent la santé publique, à travers quatre grands canaux de 
-          dégradation progressive :
-        </Body>
-        <div className="flex flex-col">
-          <Body size="sm">💨 Qualité de l’air</Body>
-          <Body size="sm">🌼 Biodiversité</Body>
-          <Body size="sm">💧 Eau</Body>
-          <Body size="sm">🌡️ Confort thermique</Body>
-        </div>
-        <Body size="sm" margin="1rem 0">
-          👉 La santé des habitants se joue aussi dans la qualité de vos écosystèmes.
-        </Body>
+        Le changement climatique ne menace pas la santé directement : il
+        dégrade d'abord les conditions qui la rendent possible. Plus que
+        les catastrophes, ce sont souvent des mécanismes lents et cumulatifs
+        qui fragilisent la santé publique, à travers quatre grands canaux de
+        dégradation progressive :
+      </Body>
+      <div className="flex flex-col">
+        <Body size="sm">💨 Qualité de l’air</Body>
+        <Body size="sm">🌼 Biodiversité</Body>
+        <Body size="sm">💧 Eau</Body>
+        <Body size="sm">🌡️ Confort thermique</Body>
+      </div>
+      <Body size="sm" margin="1rem 0">
+        👉 La santé des habitants se joue aussi dans la qualité de vos écosystèmes.
+      </Body>
     </div>,
     link: 'Santé'
   },
@@ -355,18 +355,18 @@ export const thematiquesInfo: {
     description: (
       <div>
         <Body size="sm" style={{ marginBottom: '1rem' }}>
-          La qualité de l’air se joue à l’échelle d’un bassin de vie, pas
-          seulement des zones émettrices : polluants, chaleur et vents
-          déterminent où et quand l’air devient un enjeu. Deux domaines
-          révèlent l’exposition de votre territoire :
+          La qualité de l'air ne dépend pas seulement de ce que votre
+          territoire émet : la météo et les polluants venus d'ailleurs
+          comptent aussi, et le changement climatique rebat ces cartes.
+          Elle s'évalue à travers deux dimensions clés :
         </Body>
         <div className="flex flex-col">
           <Body size="sm">🏥 Santé</Body>
           <Body size="sm">🌼 Biodiversité</Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Ensemble, ils montrent à quel point la qualité de l’air de votre
-          territoire compte pour vos habitants et vos écosystèmes.
+          👉 Ensemble, ils montrent à quel point la qualité de
+          l'air de votre territoire compte pour vos habitants et vos écosystèmes.
         </Body>
       </div>
     ),

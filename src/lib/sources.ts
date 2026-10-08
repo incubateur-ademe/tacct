@@ -102,8 +102,13 @@ export const sourcesEtudes = {
   air: [
     {
       numero: 1,
-      url: "https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022",
-      texte: "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
+      url: "https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline",
+      texte: "SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025"
+    },
+    {
+      numero: 2,
+      url: "https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf",
+      texte: "Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022"
     }
   ],
   sante: [

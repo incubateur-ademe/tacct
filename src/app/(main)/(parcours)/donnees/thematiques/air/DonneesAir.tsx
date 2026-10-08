@@ -1,5 +1,6 @@
 'use client';
 import ScrollToHash from '@/components/interactions/ScrollToHash';
+import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import {
@@ -59,7 +60,8 @@ export const DonneesAir = ({ coordonneesCommunes, contoursCommunes }: Props) => 
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        TITRE
+        Les polluants de l'air agissent en silence, souvent loin de leurs
+        sources. À vous de repérer dans quelle mesure votre territoire est touché.
       </H1>
       {/* Introduction */}
       <section>
@@ -71,7 +73,7 @@ export const DonneesAir = ({ coordonneesCommunes, contoursCommunes }: Props) => 
           À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
         </Body>
       </section>
-      
+
       {/* Section Air */}
       <section className={styles.sectionType}>
         <H2
@@ -108,7 +110,7 @@ export const DonneesAir = ({ coordonneesCommunes, contoursCommunes }: Props) => 
       </section>
 
       {/* Sources */}
-      {/* <SourcesSection tag="h2" thematique="air" /> */}
+      <SourcesSection tag="h2" thematique="air" />
     </div>
   );
 };
