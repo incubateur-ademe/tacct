@@ -156,15 +156,17 @@ export const ProjetsAlimentairesTerritoriauxDynamicText = ({
 // « Sur 2020-2024 » : SDES, La pollution de l'air par l'ozone (O₃), mise à jour du 30 juin 2026, https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « Pour la protection de la végétation, la réglementation fixe une norme en moyenne sur cinq ans. Sur la période 2020-2024 […] » ; titre de la carte INERIS — « AOT 40 (moyenne sur 5 ans) de O3 pour l'année 2024 »
 // « l’exposition moyenne des cultures à l’ozone (AOT40) » : AEE, indicateur Exposure of Europe’s ecosystems to ozone, publié le 11/06/2026, section Methodology, https://www.eea.europa.eu/en/analysis/indicators/exposure-of-europes-ecosystems-to-ozone — « The period is from May to July for the protection of vegetation and crops. »
 // « atteint {moyenne} […] jusqu’à {max} » : moyenne et maximum de la propriété valeur des tuiles aot40, relevée tous les 1 km à l’intérieur du territoire, calculés par valeursSurTerritoire dans src/components/maps/valeursSurTerritoire.ts
-// « objectif à long terme de 6 000 µg/m³.h » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l'ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] Protection de la végétation […] 6 000 μg/m3 × h »
-// « aligné sur le niveau de protection des cultures » : AEE, même indicateur — « The long-term objective is in line with the critical level of ozone for the protection of crops defined by the United Nations Economic Commission for Europe (UNECE) Convention on Long-range Transboundary Air Pollution »
-// « valeur cible européenne de 18 000 µg/m³.h » : directive (UE) 2024/2881, annexe I, section 2 B — « 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « valeur cible européenne de 18 000 µg/m³.h » : directive (UE) 2024/2881 du Parlement européen et du Conseil du 23 octobre 2024 concernant la qualité de l’air ambiant et un air pur pour l’Europe (refonte), JO L du 20.11.2024, annexe I, section 2 B, p. 33, http://data.europa.eu/eli/dir/2024/2881/oj — « Protection de la végétation | De mai à juillet | AOT40 (calculée à partir de valeurs sur 1 heure) | 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « valeur cible » : directive (UE) 2024/2881, article 4, point 32, p. 12 — « un niveau fixé sur la base des meilleures connaissances scientifiques, dans le but d’éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine ou l’environnement, à atteindre dans la mesure du possible sur une période donnée »
+// Conditions « restent en deçà », « dépassée dans le secteur le plus exposé », « dépassée en moyenne » : identiques à AOT40DynamicText (src/lib/textesIndicateurs/biodiversiteDynamicTexts.tsx), même indicateur, même seuil
+// « objectif à long terme de 6 000 µg/m³.h, à atteindre au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C, p. 33 — « C. Objectifs à long terme pour l'ozone (O3) devant être atteints au plus tard le 1er janvier 2050 » ; « Protection de la végétation | De mai à juillet | AOT40 (calculée à partir de valeurs sur 1 heure) | 6 000 μg/m3 × h »
+// « objectif à long terme » : directive (UE) 2024/2881, article 4, point 39, p. 12 — « un niveau à atteindre à long terme, sauf lorsque cela n’est pas réalisable par des mesures proportionnées, afin d’assurer une protection efficace de la santé humaine et de l’environnement »
+// « pour la protection des cultures » : choix éditorial propre à la thématique Agriculture ; la directive écrit « Protection de la végétation » (annexe I, sections 2 B et 2 C, p. 33)
 // « France métropolitaine » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « sur l'ensemble du territoire métropolitain et la Corse »
 // « Il n’y a pas de données référencées […] » : formule standard du site, reprise de AOT40DynamicText
 // Points de vigilance :
-// L’objectif à long terme se calcule par année (Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 14 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « Objectif à long terme : 6 000 µg/m3.h-1 en moyenne sur une année »), alors que la donnée est une moyenne 2020-2024 : si cette moyenne dépasse 6 000, au moins une année l’a dépassé, d’où la formulation « dépasse ».
-// La moyenne porte sur tout le territoire (forêts et zones bâties comprises), alors que l’AEE ne retient que les surfaces agricoles : AEE, Exposure of agricultural areas to ozone in EEA member countries, https://www.eea.europa.eu/en/analysis/maps-and-charts/exposure-agricultural-areas-ozone/ — « The figure shows the percentage of agricultural areas in the EEA-32 countries exposed to ozone, expressed as AOT40. »
-// Piste non retenue pour l’instant (solution 2) : ajouter « Selon l’étude APollO, le blé tendre et les prairies sont, parmi les productions étudiées, les plus touchées par l’ozone en France. Sur votre territoire, les céréales et les surfaces toujours en herbe couvrent Z % de la surface agricole utile. » — APollO, synthèse, mai 2019, p. 17 du PDF, https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html — « les pertes les plus importantes (quantifiées sur la base des prix de vente des produits) ont été estimées pour le blé tendre et pour les prairies en France » ; données : superficie_sau_terres_arables_cereales et superficie_sau_herbe (recensement agricole 2020, échelle EPCI). Limites : les céréales incluent aussi le maïs et l’orge, moins sensibles ; donnée intercommunale uniquement ; secret statistique.
+// L’objectif à long terme de 6 000 µg/m³.h est cité sans être comparé à la valeur du territoire : la directive ne prévoit pour lui aucune moyenne pluriannuelle (annexe I, section 2 C), alors que la donnée affichée est une moyenne 2020-2024.
+// La moyenne porte sur tout le territoire (forêts et zones bâties comprises), et non sur les seules surfaces agricoles comme le fait l’AEE : AEE, Exposure of agricultural areas to ozone in EEA member countries, https://www.eea.europa.eu/en/analysis/maps-and-charts/exposure-agricultural-areas-ozone/ — « The figure shows the percentage of agricultural areas in the EEA-32 countries exposed to ozone, expressed as AOT40. »
 export const AOT40AgricultureDynamicText = ({
   valeurs,
   isOutreMer,
@@ -194,16 +196,11 @@ export const AOT40AgricultureDynamicText = ({
   const lieu = type === 'commune' ? 'votre commune' : 'votre territoire';
   const moyenne = Math.round(valeurs.moyenne);
   const max = Math.round(valeurs.max);
-  const comparaisonObjectif = max <= 6000
-    ? `${max > moyenne ? 'Ces valeurs restent' : 'Cette valeur reste'} sous l’objectif à long terme de 6 000 µg/m³.h, aligné sur le niveau de protection des cultures.`
-    : moyenne <= 6000
-      ? 'L’objectif à long terme de 6 000 µg/m³.h, aligné sur le niveau de protection des cultures, est dépassé dans le secteur le plus exposé.'
-      : 'Ce niveau dépasse l’objectif à long terme de 6 000 µg/m³.h, aligné sur le niveau de protection des cultures.';
   const comparaisonValeurCible = max <= 18000
-    ? ''
+    ? `${max > moyenne ? 'Ces valeurs restent' : 'Cette valeur reste'} en deçà de la valeur cible européenne de 18 000 µg/m³.h.`
     : moyenne <= 18000
-      ? ' La valeur cible européenne de 18 000 µg/m³.h est également dépassée dans le secteur le plus exposé.'
-      : ` La valeur cible européenne de 18 000 µg/m³.h est également dépassée en moyenne sur ${lieu}.`;
+      ? 'La valeur cible européenne de 18 000 µg/m³.h est dépassée dans le secteur le plus exposé.'
+      : `La valeur cible européenne de 18 000 µg/m³.h est dépassée en moyenne sur ${lieu}.`;
   return (
     <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
       Sur 2020-2024, l’exposition moyenne des cultures à l’ozone (AOT40)
@@ -215,8 +212,9 @@ export const AOT40AgricultureDynamicText = ({
         </>
       ) : null}
       .{' '}
-      {comparaisonObjectif}
-      {comparaisonValeurCible}
+      {comparaisonValeurCible} La directive européenne fixe par ailleurs, pour
+      la protection des cultures, un objectif à long terme de 6 000 µg/m³.h, à
+      atteindre au plus tard le 1er janvier 2050.
     </Body>
   );
 };

@@ -142,7 +142,6 @@ export const AOT40TooltipText = (
   </Body>
 );
 
-// TEXTE TEMPORAIRE : version longue, non validée en l’état (jugée trop longue), conservée avec toute sa documentation pour être reprise et raccourcie.
 // Sources du texte :
 // « exposition des cultures à l’ozone à l’aide de l’indicateur AOT40 » : AEE, indicateur Exposure of Europe’s ecosystems to ozone, publié le 11/06/2026, section Methodology, https://www.eea.europa.eu/en/analysis/indicators/exposure-of-europes-ecosystems-to-ozone — « The period is from May to July for the protection of vegetation and crops. »
 // « additionne, heure par heure, la part des concentrations d’ozone qui dépasse 80 µg/m³ (soit 40 parties par milliard), entre 8 h et 20 h (heure d’Europe centrale) » : directive (UE) 2024/2881, annexe I, section 2 A — « la somme des différences entre les concentrations horaires supérieures à 80 μg/m3 (= 40 parties par milliard) et le seuil de 80 μg/m3 durant une période donnée, en utilisant uniquement les valeurs sur 1 heure mesurées quotidiennement entre 8 h 00 et 20 h 00 (heure de l'Europe centrale) »
@@ -171,7 +170,7 @@ export const AOT40AgricultureTooltipText = (
     Cette donnée mesure l’exposition des cultures à l’ozone à l’aide de
     l’indicateur AOT40. Celui-ci additionne, heure par heure, la part des
     concentrations d’ozone qui dépasse 80 µg/m³ (soit 40 parties par
-    milliard), entre 8 h et 20 h (heure d’Europe centrale) et de mai à
+    milliard), entre 8 h et 20 h et de mai à
     juillet, en pleine période de végétation. Il s’exprime en µg/m³.h. La
     valeur présentée est une moyenne sur la période 2020-2024.
     <br></br>
@@ -180,17 +179,13 @@ export const AOT40AgricultureTooltipText = (
     l’air ambiant et un air pur pour l’Europe fixe une valeur cible(*) de
     18 000 µg/m³.h en moyenne sur 5 ans, ainsi qu’un objectif à long terme
     de 6 000 µg/m³.h sur une seule année, à atteindre au plus tard le 1er
-    janvier 2050. Selon l’Agence européenne pour l’environnement, cet
-    objectif à long terme est aligné sur le niveau critique défini par la
-    Commission économique des Nations unies pour l’Europe (CEE-ONU) pour
-    protéger les cultures.
+    janvier 2050.
     <br></br>
     <br></br>
     Ces données sont produites par l’Institut national de l’environnement
     industriel et des risques (Ineris), qui combine un modèle de qualité de
     l’air et les mesures des stations de fond, avec une résolution allant
-    jusqu’à 2 km, sur la France métropolitaine et la Corse. Elles
-    représentent la pollution dite « de fond » : les abords du trafic dense
+    jusqu’à 2 km. Elles représentent la pollution dite « de fond » : les abords du trafic dense
     et des sites industriels ne sont pas représentés. La carte est
     disponible sur le{' '}
     <a
@@ -201,17 +196,6 @@ export const AOT40AgricultureTooltipText = (
       site de l’Ineris
     </a>
     .
-    <br></br>
-    <br></br>
-    À noter : l’AOT40 mesure l’ozone présent dans l’air, et non la quantité
-    réellement absorbée par les plantes. Celle-ci dépend de l’ouverture de
-    leurs stomates, qui varie notamment avec la température, l’humidité de
-    l’air et l’eau disponible dans le sol : en période de sécheresse, la
-    plante ferme ses stomates et absorbe moins d’ozone. Une valeur élevée
-    signale donc un risque pour les cultures, et non une perte de rendement.
-    À l’inverse, dans le nord et l’ouest de la France, les conditions
-    climatiques favorisent l’absorption : l’ozone peut y avoir des effets
-    même lorsque l’AOT40 reste modéré.
     <br></br>
     <br></br>
     <i>

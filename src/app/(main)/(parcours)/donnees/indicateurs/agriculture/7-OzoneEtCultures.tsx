@@ -82,7 +82,7 @@ export const OzoneEtCultures = (props: {
             )}
             <CustomTooltipNouveauParcours
               title={AOT40AgricultureTooltipText}
-              texte="D'où vient ce chiffre ?"
+              texte="D'où vient ce chiffre ?"
             />
           </div>
         </div>
@@ -131,7 +131,7 @@ export const OzoneEtCultures = (props: {
                 }}
                 legend={
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-                    <Body weight='bold'>- O3 μg/m³.heure -</Body>
+                    <Body weight='bold'>- Ozone en μg/m³.heure -</Body>
                     <LegendCompColor legends={aot40Legends} />
                   </div>
                 }
@@ -146,7 +146,7 @@ export const OzoneEtCultures = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size='sm' style={{ color: "var(--gris-dark)" }}>
-          Source : INERIS, 2024 (consultée en mai 2026)
+          Source : INERIS, 2024 (consultée en mai 2026)
         </Body>
         {
           aot40.length && contoursCommunes ? (

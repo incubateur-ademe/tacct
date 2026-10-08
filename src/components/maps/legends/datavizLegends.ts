@@ -88,15 +88,15 @@ export const oldAot40Legends = [
 ];
 
 export const aot40Legends = [
-  { color: '#A4F5EE', value: '0-3000' },
-  { color: '#C4E8A3', value: '3000-6000' },
-  { color: '#F5E290', value: '6000-9000' },
-  { color: '#FFAB66', value: '9000-10000' },
-  { color: '#FC9999', value: '10000-11000' },
-  { color: '#F37D7D', value: '11000-12000' },
-  { color: '#E06060', value: '12000-15000' },
-  { color: '#C97189', value: '15000-18000' },
-  { color: '#B982B2', value: '≥ 18000' }
+  { color: '#A4F5EE', value: '0-3 000' },
+  { color: '#C4E8A3', value: '3 000-6 000' },
+  { color: '#F5E290', value: '6 000-9 000' },
+  { color: '#FFAB66', value: '9 000-10 000' },
+  { color: '#FC9999', value: '10 000-11 000' },
+  { color: '#F37D7D', value: '11 000-12 000' },
+  { color: '#E06060', value: '12 000-15 000' },
+  { color: '#C97189', value: '15 000-18 000' },
+  { color: '#B982B2', value: '≥ 18 000' }
 ];
 
 export const travailExterieurPieChartLegend = [

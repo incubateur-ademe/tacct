@@ -132,7 +132,7 @@ export const OzoneEtVegetation = (props: {
                 }}
                 legend={
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center', alignItems: 'center' }}>
-                    <Body weight='bold'>- O3 μg/m³.heure -</Body>
+                    <Body weight='bold'>- Ozone en μg/m³.heure -</Body>
                     <LegendCompColor legends={aot40Legends} />
                   </div>
                 }
