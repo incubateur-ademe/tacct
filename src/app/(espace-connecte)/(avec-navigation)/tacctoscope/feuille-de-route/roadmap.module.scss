@@ -122,7 +122,7 @@ $stripe: repeating-linear-gradient(
 }
 
 .menuTitle {
-    margin: 0 0 42px;
+    margin: 3rem 0 42px;
     padding: 0 1rem;
     font-family: Marianne;
     font-size: 0.875rem;
@@ -337,6 +337,7 @@ $stripe: repeating-linear-gradient(
     background: $gray-light;
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 3rem;
 }
 
 .emptyStateTitle {
