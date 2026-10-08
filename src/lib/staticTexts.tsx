@@ -361,6 +361,55 @@ export const AOT40Text = () => (
   </>
 );
 
+//https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html
+// Sources du texte :
+// « L’ozone pénètre dans les feuilles des cultures par leurs pores, les stomates » : CLRTAP/UBA, Manual on Methodologies and Criteria for Modelling and Mapping Critical Loads and Levels, chapitre 3 (ICP Vegetation), mise à jour 2024, Texte 123/2024, p. 74, § 3.3.1.1, https://www.umweltbundesamt.de/system/files/medien/11850/publikationen/123_2024_texte_manual_on_methodologies_and_criteria.pdf — « O3 enters leaves via the stomatal pores on the leaf surface » ; Chambres d’agriculture, fiche APollO « Coût économique pour l’agriculture des impacts de l’ozone en France », p. 2 du PDF — « Il pénètre dans les feuilles et provoque un stress oxydatif délétère »
+// « Il y endommage les cellules » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025, p. 11 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « L’absorption de ce polluant endommage les cellules végétales »
+// « réduit la photosynthèse et fait vieillir les feuilles plus tôt » : CLRTAP/UBA, manuel 2024, p. 74, § 3.3.1.1 — « negative impacts on plant metabolism, including photosynthesis » ; « Visible leaf damage and premature aging of leaves »
+// « les rendements baissent, en quantité comme en qualité » : SDES, Bilan 2024, p. 11 du PDF — « une baisse des rendements agricoles (quantitatifs et qualitatifs) »
+// « Le blé, le soja, les pois, les haricots, l’oignon et la laitue font partie des cultures les plus sensibles » : ICP Vegetation (Mills & Harmens, éd.), Ozone Pollution: A hidden threat to food security, septembre 2011, tableau 1, p. 6 du PDF, https://nora.nerc.ac.uk/id/eprint/15071/1/N015071CR.pdf — catégorie « Sensitive » : « Peas and beans (including peanut) (30) […] Onion (23) […] Lettuce (19) Wheat (18) Soybean (18) » (perte de rendement en % à 60 ppb par rapport à 30 ppb) ; Chambres d’agriculture, fiche APollO, p. 1 du PDF — « Exemple d’espèces cultivées sensibles à l’ozone […] blé, soja, catonnier, melon, légumes à gousses (haricots, pois, fèves...) navet, oignon, laitue, tomate »
+// « En France, l’ozone aurait ainsi réduit en 2010 le rendement du blé tendre de 15 %, et celui des prairies et des pommes de terre de 11 %, selon l’étude APollO » : ADEME/Ineris/Chambres d’agriculture, Coût économique pour l’agriculture des impacts de la pollution de l’air par l’ozone (APollO), synthèse, mai 2019 (mise en ligne le 13/01/2021), p. 15 du PDF, https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html — « Malgré la tendance à la baisse, les pertes en pourcentage agrégées sur la France restent importantes, avec en 2010, 15 % pour le blé tendre, 11 % pour les prairies et les pommes de terre »
+// « L’ozone culmine en été, en pleine période de végétation » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 8 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « les plus fortes concentrations d’ozone sont mesurées durant l’été » ; p. 14 du PDF, § 3.1 — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « ses concentrations sont généralement plus élevées dans les zones rurales et périurbaines qu’en ville » : SDES, Bilan 2024, p. 35 du PDF — « Les concentrations maximales en O3 sont généralement observées en milieux rural et périurbain, compte tenu des mécanismes de formation de ce polluant » ; Airparif, p. 9 du PDF — « les niveaux moyens d’ozone sont généralement plus soutenus en zone rurale que dans l’agglomération même »
+// « Son effet dépend aussi de l’eau : une culture irriguée garde ses stomates ouverts et absorbe davantage d’ozone » : ICP Vegetation 2011, p. 7 du PDF — « significant effects of ozone are likely where the crops are irrigated inducing stomatal opening, increasing ozone uptake and increasing impact » ; APollO, rapport complet, p. 41 du PDF — « de telles approches ont tendance à déplacer les plantations vers des périodes impliquant un besoin d’irrigation qui lui-même rend les cultures plus sensibles à l’ozone » ; CLRTAP/UBA, manuel 2024, p. 75 — « Stomata are physiologically controlled and respond to environmental conditions such as temperature, light, air humidity, and soil moisture »
+// « cet impact est peu connu du monde agricole » : APollO, rapport complet, p. 8 du PDF — « Paradoxalement, cet impact de l’ozone sur les productions agricoles est peu connu du secteur agricole » ; APollO, synthèse, p. 18 du PDF — « Face à la faible connaissance du sujet par les experts des chambres d’agriculture, représentatif du faible niveau de sensibilisation du secteur sur l’impact de l’ozone sur les productions agricoles »
+// « les exploitations disposent de peu de leviers » : APollO, synthèse, p. 18 du PDF — « les stratégies visant à réduire les impacts de l’ozone discutées de façon théorique dans la littérature ne sont pour la majorité pas jugées pertinentes sur le terrain (application des régulateurs de croissance et de fongicides contraires à la politique écophyto, l’irrigation non pertinente dans la plupart des régions pour le blé, remplacement par d’autres cultures limité par la demande sur les marchés (orge au lieu de blé tendre) » ; p. 19 du PDF — « l’enquête présentée dans ce projet montre qu’ils ne sont pas si nombreux et efficaces »
+// « la réduction des émissions des polluants à l’origine de l’ozone est jugée plus appropriée que l’adaptation des pratiques » : APollO, synthèse, p. 18 du PDF — « les stratégies de mitigation des émissions de polluants précurseurs de l’ozone sont certainement plus appropriées que les stratégies d’adaptation du secteur agricole et sylvicole »
+// « la sélection de variétés plus résistantes est une piste de recherche qui demande du temps » : APollO, synthèse, p. 18 du PDF — « en complément avec la recherche d’autres leviers d’action, comme par exemple le développement de la recherche variétale des espèces cultivées » ; Chambres d’agriculture, fiche APollO, p. 4 du PDF — « La sélection variétale qui intègre une meilleure résistance à l’ozone, qui demande du temps et des investissements »
+// Points de vigilance :
+// Chiffre 2010 : estimation APollO par la méthode du flux d’ozone absorbé par les stomates (POD), pas par l’AOT40. APollO, synthèse, p. 17 du PDF — « les incertitudes dans les résultats économiques doivent être considérées comme étant élevées, avec une tendance majorante » ; la pénalité climatique n’y est pas prise en compte (synthèse, p. 15). D’où le conditionnel « aurait réduit ».
+// Chiffre alternatif plus récent, non retenu car il ne couvre pas les prairies : Ineris pour l’AEE, ETC HE Report 2024/9, Wheat and potato yield loss in 2022 in Europe due to ozone exposure, novembre 2024, p. 48, https://www.eionet.europa.eu/etcs/etc-he/products/etc-he-products/etc-he-reports/etc-he-report-2024-9-wheat-and-potato-yield-loss-in-2022-in-europe-due-to-ozone-exposure — « losses in France in 2022 are estimated at 7 % for both wheat and potatoes » ; les pertes varient fortement selon les années (4,8 % pour le blé en France en 2019, ETC/ATNI Report 2021/17).
+// Sensibilité des cultures : les sources divergent pour l’orge et le colza (« moderately sensitive » pour ICP Vegetation 2011, « peu sensibles » pour l’ADEME, étude BEMEVO), et pour la tomate (« moderately sensitive » pour ICP Vegetation, « sensible » pour la fiche APollO) ; elles ne sont donc pas citées.
+// Volontairement écarté du texte : l’agriculture comme émettrice de précurseurs de l’ozone (Citepa, Secten 2026, p. 443 : 25 % des NOx, 39 % des COVNM, 71 % du CH4 en 2024), car les sources divergent sur le poids d’une action agricole locale sur l’ozone ; les limites de l’AOT40 (exposition et non dose absorbée), traitées dans le « D’où vient ce chiffre ? ».
+export const AOT40AgricultureText = () => (
+  <>
+    <Body size="sm">
+      L’ozone pénètre dans les feuilles des cultures par leurs pores, les
+      stomates. Il y endommage les cellules, réduit la photosynthèse et fait
+      vieillir les feuilles plus tôt : les rendements baissent, en quantité
+      comme en qualité. Le blé, le soja, les pois, les haricots, l’oignon et la
+      laitue font partie des cultures les plus sensibles. En France, l’ozone
+      aurait ainsi réduit en 2010{' '}
+      <ScrollToSourceTag sourceNumero={3}>
+        le rendement du blé tendre de 15 %
+      </ScrollToSourceTag>
+      , et celui des prairies et des pommes de terre de 11 %, selon l’étude
+      APollO.
+    </Body>
+    <Body size="sm"><br></br>
+      L’ozone culmine en été, en pleine période de végétation, et ses
+      concentrations sont généralement plus élevées dans les zones rurales et
+      périurbaines qu’en ville. Son effet dépend aussi de l’eau : une culture
+      irriguée garde ses stomates ouverts et absorbe davantage d’ozone. L’étude
+      APollO souligne que cet impact est peu connu du monde agricole et que les
+      exploitations disposent de peu de leviers : la réduction des émissions des
+      polluants à l’origine de l’ozone est jugée plus appropriée que
+      l’adaptation des pratiques, et la sélection de variétés plus résistantes
+      est une piste de recherche qui demande du temps.
+    </Body>
+  </>
+);
+
 export const PrelevementEauText = () => (
   <div className="pt-10">
     <Body size="sm">
@@ -822,18 +871,18 @@ export const SecheressesText = () => (
 export const MoustiqueTigreText = () => (
   <>
     <Body size="sm">
-      Le moustique tigre transmet des maladies infectieuses graves comme la dengue, 
-      le chikungunya et le zika (<DefinitionTooltip title={arbovirose}>arboviroses</DefinitionTooltip>) dont 
-      les cas doivent obligatoirement être déclarés aux agences régionales de santé. S’il est difficile de prévenir 
-      les cas importés, la multiplication de cas autochtones est notamment liée à 
-      une sous-déclaration ou à une déclaration tardive des cas. La précision du 
-      diagnostic et la rapidité de la déclaration sont donc essentielles pour 
+      Le moustique tigre transmet des maladies infectieuses graves comme la dengue,
+      le chikungunya et le zika (<DefinitionTooltip title={arbovirose}>arboviroses</DefinitionTooltip>) dont
+      les cas doivent obligatoirement être déclarés aux agences régionales de santé. S’il est difficile de prévenir
+      les cas importés, la multiplication de cas autochtones est notamment liée à
+      une sous-déclaration ou à une déclaration tardive des cas. La précision du
+      diagnostic et la rapidité de la déclaration sont donc essentielles pour
       limiter la transmission de ces maladies.
     </Body>
     <Body size="sm">
-      L’élévation des températures favorise la propagation du moustique tigre : il 
-      reste actif plus longtemps dans l’année, se reproduit plus vite et étend 
-      son implantation toujours plus au nord. Cette progression augmente 
+      L’élévation des températures favorise la propagation du moustique tigre : il
+      reste actif plus longtemps dans l’année, se reproduit plus vite et étend
+      son implantation toujours plus au nord. Cette progression augmente
       le risque de transmission de ces <DefinitionTooltip title={maladieVectorielle}>maladies vectorielles</DefinitionTooltip>.
     </Body>
   </>

@@ -107,6 +107,12 @@ export const sommaireThematiques = {
         thematique: 'Tourisme',
         icone: '🏖️',
         sousCategories: ['Appellations contrôlées']
+      },
+      {
+        id: 'section5',
+        thematique: 'Air',
+        icone: '💨',
+        sousCategories: ['Ozone et cultures']
       }
     ]
   },

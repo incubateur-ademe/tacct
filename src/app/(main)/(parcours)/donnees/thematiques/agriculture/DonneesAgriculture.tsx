@@ -6,9 +6,9 @@ import { LoaderText } from "@/components/ui/loader";
 import { BoutonPrimaireClassic } from "@/design-system/base/Boutons";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { handleRedirectionThematique } from "@/hooks/Redirections";
-import { AgricultureBio, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
+import { AgricultureBio, AOT40, SurfacesAgricolesModel, TableCommuneModel } from "@/lib/postgres/models";
 import { GetSurfacesAgricoles } from "@/lib/queries/databases/agriculture";
-import { GetAgricultureBio } from "@/lib/queries/databases/biodiversite";
+import { GetAgricultureBio, GetAOT40 } from "@/lib/queries/databases/biodiversite";
 import { GetTablecommune } from "@/lib/queries/databases/tableCommune";
 import { GetCommunesContours, GetCommunesCoordinates } from "@/lib/queries/postgis/cartographie";
 import Image from "next/image";
@@ -22,12 +22,14 @@ import { SuperficiesIrriguees } from '../../indicateurs/agriculture/3-Superficie
 import { SurfacesEnBio } from '../../indicateurs/agriculture/4-SurfacesEnBio';
 import { AiresAppellationsControlees } from '../../indicateurs/agriculture/5-AiresApellationsControlees';
 import { ProjetsAlimentairesTerritoriaux } from '../../indicateurs/agriculture/6-ProjetsAlimentairesTerritoriaux';
+import { OzoneEtCultures } from '../../indicateurs/agriculture/7-OzoneEtCultures';
 
 interface Props {
   coordonneesCommunes: { codes: string[], bbox: { minLng: number, minLat: number, maxLng: number, maxLat: number } } | null;
   contoursCommunes: { geometry: string } | null;
   surfacesAgricoles: SurfacesAgricolesModel[];
   agricultureBio: AgricultureBio[];
+  aot40: AOT40[];
   tableCommune: TableCommuneModel[];
 }
 
@@ -36,6 +38,7 @@ export const DonneesAgriculture = ({
   contoursCommunes,
   surfacesAgricoles,
   agricultureBio,
+  aot40,
   tableCommune
 }: Props) => {
   const searchParams = useSearchParams();
@@ -50,6 +53,7 @@ export const DonneesAgriculture = ({
     contoursCommunes,
     surfacesAgricoles,
     agricultureBio,
+    aot40,
     tableCommune
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -67,12 +71,14 @@ export const DonneesAgriculture = ({
         newContoursCommunes,
         newSurfacesAgricoles,
         newAgricultureBio,
+        newAOT40,
         newTableCommune
       ] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetCommunesContours(code, libelle, type),
         GetSurfacesAgricoles(code, libelle, type),
         GetAgricultureBio(libelle, type, code),
+        GetAOT40(),
         GetTablecommune(code, libelle, type)
       ]);
       setData({
@@ -80,6 +86,7 @@ export const DonneesAgriculture = ({
         contoursCommunes: newContoursCommunes,
         surfacesAgricoles: newSurfacesAgricoles,
         agricultureBio: newAgricultureBio,
+        aot40: newAOT40,
         tableCommune: newTableCommune
       });
       setIsLoading(false);
@@ -230,6 +237,32 @@ export const DonneesAgriculture = ({
             </div>
             <AiresAppellationsControlees
               tableCommune={data.tableCommune}
+            />
+          </div>
+        </section>
+        {/* Section Air */}
+        <section className={styles.sectionType}>
+          <H2 style={{
+            color: "var(--principales-rouge)",
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: "0 0 -1rem 0",
+            padding: "2rem 2rem 0",
+            fontWeight: 400
+          }}>
+            {ongletsMenu.thematiquesLiees[4].icone}{" "}{ongletsMenu.thematiquesLiees[4].thematique}
+          </H2>
+          {/* Ozone et cultures */}
+          <div id="Ozone-et-cultures" className={styles.indicateurMapWrapper}>
+            <div className={styles.h3Titles}>
+              <H3 style={{ color: "var(--principales-vert)", fontSize: '1.25rem' }}>
+                Exposition des cultures à l’ozone (moyenne 2020-2024)
+              </H3>
+            </div>
+            <OzoneEtCultures
+              aot40={data.aot40}
+              contoursCommunes={data.contoursCommunes}
+              coordonneesCommunes={data.coordonneesCommunes}
             />
           </div>
         </section>

@@ -11,6 +11,12 @@ export const sourcesEtudes = {
       url: 'https://www.inrae.fr/dossiers/lagriculture-va-t-elle-manquer-deau/irriguer-differemment',
       texte:
         'INRAE, Changement climatique et risques, Irriguer différemment, 3 juin 2022'
+    },
+    {
+      numero: 3,
+      url: 'https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html',
+      texte:
+        'ADEME, Coût économique pour l’agriculture des impacts de la pollution de l’air par l’ozone (étude APollO), mai 2019'
     }
   ],
   agricultureImpact: [
