@@ -11,9 +11,9 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { TacctoscopeBloc } from './(home)/TacctoscopeBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
-const NOTICE_KEY = 'notice-tacct-espace-connecte-fermee';
-const NOTICE_START = new Date('2026-09-22');
-const NOTICE_END = new Date('2026-10-03T23:59:59');
+const NOTICE_KEY = 'notice-tacctoscope-revision-fermee';
+const NOTICE_START = new Date('2026-10-12');
+const NOTICE_END = new Date('2026-10-23T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
@@ -37,27 +37,27 @@ const Home = () => {
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
-            backgroundColor: 'var(--gris-medium)',
-            color: 'black'
+            backgroundColor: '#ECFFFD',
+            color: '#038278'
           })}
           isClosable={true}
           onClose={handleCloseNotice}
-          title={"Nouveautés !"}
+          title={
+            <>
+              Vous révisez un diagnostic de vulnérabilité&nbsp;? Ne repartez
+              pas de zéro&nbsp;!
+            </>
+          }
           description={
             <>
-              <br></br>Votre compte s’adapte à vos besoins : en fonction de
-              votre profil, vous pourrez découvrir des liens utiles sur votre
-              espace connecté (nous ajouterons progressivement des contenus) :
-              renseignez dès maintenant vos informations professionnelles ! Et
-              pour ceux qui n’ont pas pu assister au wébinaire de juin,
-              découvrez maintenant{" "}
-              <Link
-                href="/ressources/demarrer-diagnostic-vulnerabilite/diagnostic-exhaustivite-concision"
-                rel="noopener noreferrer"
-              >
-                comment réaliser un diagnostic utile plutôt que parfait
+              Le <Link href="/tacctoscope">TACCToscope</Link> est là pour vous
+              aider à cibler le retravail&nbsp;: 5 catégories de questions, des
+              pistes d’améliorations sur mesure et une feuille de route prête à
+              l’emploi <span aria-hidden="true">⇒</span>{" "}
+              <Link href="/tacctoscope">
+                Je commence dès maintenant la révision de mon diagnostic
               </Link>{" "}
-              (retour d’expérience de la Ville de Marseille).
+              <span aria-hidden="true">🎯</span>
             </>
           }
         />

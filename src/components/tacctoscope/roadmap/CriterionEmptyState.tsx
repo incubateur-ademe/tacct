@@ -5,10 +5,9 @@ import { CriterionSlug } from '@/lib/tacctoscope/types';
 
 interface Props {
   slug: CriterionSlug;
-  title: string;
 }
 
-export const CriterionEmptyState = ({ slug, title }: Props) => (
+export const CriterionEmptyState = ({ slug }: Props) => (
   <div className={styles.emptyState}>
     <Body
       size="md"

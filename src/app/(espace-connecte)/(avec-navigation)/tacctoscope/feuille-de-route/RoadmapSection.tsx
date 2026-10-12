@@ -99,7 +99,7 @@ export const RoadmapSection = ({
     </div>
 
     {state === 'vide' ? (
-      <CriterionEmptyState slug={slug} title={title} />
+      <CriterionEmptyState slug={slug} />
     ) : strengths.length === 0 &&
       recommendations.length === 0 &&
       unknowns.length === 0 ? (
