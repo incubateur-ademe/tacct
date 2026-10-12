@@ -371,14 +371,14 @@ export const AOT40Text = () => (
 // « En France, l’ozone aurait ainsi réduit en 2010 le rendement du blé tendre de 15 %, et celui des prairies et des pommes de terre de 11 %, selon l’étude APollO » : ADEME/Ineris/Chambres d’agriculture, Coût économique pour l’agriculture des impacts de la pollution de l’air par l’ozone (APollO), synthèse, mai 2019 (mise en ligne le 13/01/2021), p. 15 du PDF, https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html — « Malgré la tendance à la baisse, les pertes en pourcentage agrégées sur la France restent importantes, avec en 2010, 15 % pour le blé tendre, 11 % pour les prairies et les pommes de terre » ; le lien [3] porte sur « l’étude APollO » et renvoie à la source n° 3 de la thématique agriculture dans src/lib/sources.ts
 // « L’ozone culmine en été » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 8 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « même si ce polluant est présent toute l’année, les plus fortes concentrations d’ozone sont mesurées durant l’été, lorsque que les températures et l’ensoleillement sont les plus forts »
 // « au moment où les cultures sont en pleine croissance » : Airparif, p. 14 du PDF, § 3.1 — « la réglementation intègre des objectifs de qualité et des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
-// « La quantité qu’elles en absorbent dépend de l’ouverture de leurs stomates » : ICP Vegetation 2011, p. 5 du PDF — « The more open the stomata are, the more ozone will enter the plant. »
+// « La quantité qu’elles absorbent dépend de l’ouverture de leurs stomates » : ICP Vegetation 2011, p. 5 du PDF — « The more open the stomata are, the more ozone will enter the plant. »
 // « qui varie notamment avec la température, la lumière, l’humidité de l’air et l’eau disponible dans le sol » : CLRTAP/UBA, manuel 2024, p. 75 — « Stomata are physiologically controlled and respond to environmental conditions such as temperature, light, air humidity, and soil moisture, as well as plant growth stage. »
 // « en période de sécheresse, la plante ferme ses stomates et absorbe moins d’ozone » : CLRTAP/UBA, manuel 2024, p. 75 — « For example, under hot and dry conditions, plants close their stomata to reduce water loss and as a consequence O3 uptake is reduced. »
-// « alors qu’une culture irriguée les garde ouverts et en absorbe davantage » : ICP Vegetation 2011, p. 7 du PDF — « However, significant effects of ozone are likely where the crops are irrigated inducing stomatal opening, increasing ozone uptake and increasing impact. »
+// « une culture irriguée les garde ouverts et en absorbe davantage » : ICP Vegetation 2011, p. 7 du PDF — « However, significant effects of ozone are likely where the crops are irrigated inducing stomatal opening, increasing ozone uptake and increasing impact. »
 // « L’irrigation, envisagée pour faire face aux sécheresses » : texte TACCT « Superficies irriguées » (SurfacesIrrigueesText, même fichier) — « elle pourrait devenir un outil d’adaptation au changement climatique » ; « l’irrigation “de résilience” visant à stabiliser les récoltes »
-// « peut donc accroître l’absorption d’ozone par les cultures » : APollO, rapport complet, p. 41 du PDF — « de telles approches ont tendance à déplacer les plantations vers des périodes impliquant un besoin d’irrigation qui lui-même rend les cultures plus sensibles à l’ozone » ; ICP Vegetation 2011, p. 7 du PDF (voir ci-dessus)
+// « peut ainsi accroître l’absorption d’ozone » : APollO, rapport complet, p. 41 du PDF — « de telles approches ont tendance à déplacer les plantations vers des périodes impliquant un besoin d’irrigation qui lui-même rend les cultures plus sensibles à l’ozone » ; ICP Vegetation 2011, p. 7 du PDF (voir ci-dessus)
 // « l’étude APollO souligne que les mesures prises pour faire face au changement climatique ne réduisent pas toujours les effets de l’ozone » : APollO, synthèse, p. 19 du PDF — « de tels travaux pourraient aussi s’inspirer des études sur les stratégies d’adaptation au changement climatique, même si les mesures conçues pour atténuer les impacts du changement climatique ne seront pas toujours synonymes d’atténuation en ce qui concerne les niveaux et effets de l’ozone » ; même phrase dans le rapport complet, p. 106 du PDF
-// « La sélection de variétés plus résistantes à l’ozone est une autre piste, mais elle demande du temps et des investissements » : Chambres d’agriculture, fiche APollO, p. 4 du PDF — « Au niveau de la plante : La sélection variétale qui intègre une meilleure résistance à l’ozone, qui demande du temps et des investissements » ; ICP Vegetation 2011, p. 5 du PDF — « Sensitivity to ozone varies between cultivars, which means that there is scope for exploiting ozone resistance within breeding programmes »
+// « la sélection de variétés plus résistantes constitue une piste d’adaptation, mais elle demande du temps et des investissements » : Chambres d’agriculture, fiche APollO, p. 4 du PDF — « Au niveau de la plante : La sélection variétale qui intègre une meilleure résistance à l’ozone, qui demande du temps et des investissements » ; ICP Vegetation 2011, p. 5 du PDF — « Sensitivity to ozone varies between cultivars, which means that there is scope for exploiting ozone resistance within breeding programmes »
 // Points de vigilance :
 // Chiffre 2010 : estimation APollO par la méthode du flux d’ozone absorbé par les stomates (POD), pas par l’AOT40. APollO, synthèse, p. 17 du PDF — « les incertitudes dans les résultats économiques doivent être considérées comme étant élevées, avec une tendance majorante » ; la pénalité climatique n’y est pas prise en compte (synthèse, p. 15). D’où le conditionnel « aurait réduit ».
 // Chiffre alternatif plus récent, non retenu car il ne couvre pas les prairies : Ineris pour l’AEE, ETC HE Report 2024/9, Wheat and potato yield loss in 2022 in Europe due to ozone exposure, novembre 2024, p. 48, https://www.eionet.europa.eu/etcs/etc-he/products/etc-he-products/etc-he-reports/etc-he-report-2024-9-wheat-and-potato-yield-loss-in-2022-in-europe-due-to-ozone-exposure — « losses in France in 2022 are estimated at 7 % for both wheat and potatoes » ; les pertes varient fortement selon les années (4,8 % pour le blé en France en 2019, ETC/ATNI Report 2021/17).
@@ -404,17 +404,16 @@ export const AOT40AgricultureText = () => (
     </Body>
     <Body size="sm"><br></br>
       L’ozone culmine en été, au moment où les cultures sont en pleine
-      croissance. La quantité qu’elles en absorbent dépend de l’ouverture de
+      croissance. La quantité qu’elles absorbent dépend de l’ouverture de
       leurs stomates, qui varie notamment avec la température, la lumière,
       l’humidité de l’air et l’eau disponible dans le sol : en période de
-      sécheresse, la plante ferme ses stomates et absorbe moins d’ozone, alors
-      qu’une culture irriguée les garde ouverts et en absorbe davantage.
-      L’irrigation, envisagée pour faire face aux sécheresses, peut donc
-      accroître l’absorption d’ozone par les cultures : l’étude APollO souligne
-      justement que les mesures prises pour faire face au changement climatique ne
-      réduisent pas toujours les effets de l’ozone. La sélection de variétés
-      plus résistantes à l’ozone est une autre piste, mais elle demande du
-      temps et des investissements.
+      sécheresse, la plante ferme ses stomates et absorbe moins d’ozone ; une
+      culture irriguée les garde ouverts et en absorbe davantage.
+      L’irrigation, envisagée pour faire face aux sécheresses, peut ainsi
+      accroître l’absorption d’ozone. Tant que les émissions de précurseurs de
+      l’ozone ne diminuent pas suffisamment, la sélection de variétés plus
+      résistantes constitue une piste d’adaptation, mais elle demande du temps
+      et des investissements.
     </Body>
   </>
 );
