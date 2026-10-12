@@ -10,10 +10,17 @@ import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { FormattedText } from '../shared/FormattedText';
+import { useModalFocus } from '../shared/useModalFocus';
 import { RessourceTag } from './RessourceTag';
 
 const CloseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12 5.636 7.05 7.05 5.636z"
       fill="#038278"
@@ -22,7 +29,13 @@ const CloseIcon = () => (
 );
 
 const ExternalLinkIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M10 6v2H5v11h11v-5h2v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z"
       fill="#ffffff"
@@ -31,7 +44,13 @@ const ExternalLinkIcon = () => (
 );
 
 const ArrowRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
       fill="#ffffff"
@@ -61,6 +80,7 @@ interface Props {
 
 export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
+  const dialogRef = useModalFocus(mounted && isOpen);
   const posthog = usePostHog();
   const router = useRouter();
 
@@ -74,7 +94,8 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
     document.addEventListener('keydown', onKeyDown);
 
     // Compense la barre de défilement masquée, sinon le contenu centré se décale.
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
     const previousPaddingRight = document.body.style.paddingRight;
     document.body.style.overflow = 'hidden';
     if (scrollbarWidth > 0) {
@@ -90,7 +111,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
 
   if (!mounted || !isOpen) return null;
 
-  const externe = ressource.url.startsWith('https');
+  const externe = !ressource.url.startsWith('/');
 
   // Navigation reprise ici : BoutonPrimaireClassic la court-circuite dès qu'un `onClick` est fourni.
   const handleRessourceClick = () => {
@@ -110,6 +131,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   return createPortal(
     <div className={styles.ressourceModalOverlay} onClick={onClose}>
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={ressource.title}
@@ -138,6 +160,8 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
               <Image
                 src={ressource.image}
                 alt=""
+                loading="eager"
+                placeholder="blur"
                 className={styles.ressourceModalVisualMedia}
               />
             ) : (
@@ -174,7 +198,9 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
           <div className={styles.ressourceModalFooter}>
             <BoutonPrimaireClassic
               size="md"
-              text={externe ? 'Accéder à la ressource' : 'Consulter la ressource'}
+              text={
+                externe ? 'Accéder à la ressource' : 'Consulter la ressource'
+              }
               link={ressource.url}
               rel={externe ? 'noopener noreferrer' : undefined}
               onClick={handleRessourceClick}

@@ -72,7 +72,13 @@ export const RoadmapSection = ({
       <ul className={styles.sectionCounters}>
         {ANSWER_LEVELS.map((level) => (
           <li key={level} className={styles.sectionCounter}>
-            <Body htmlTag="span" size="lg" weight="medium" color="#038278">
+            <Body
+              htmlTag="span"
+              size="lg"
+              weight="medium"
+              color="#038278"
+              style={{ letterSpacing: 0 }}
+            >
               {ANSWER_LEVEL_DISPLAY[level].counter}
             </Body>
             <span
@@ -94,7 +100,7 @@ export const RoadmapSection = ({
     </div>
 
     {state === 'vide' ? (
-      <CriterionEmptyState slug={slug} title={title} />
+      <CriterionEmptyState slug={slug} />
     ) : strengths.length === 0 &&
       recommendations.length === 0 &&
       unknowns.length === 0 ? (

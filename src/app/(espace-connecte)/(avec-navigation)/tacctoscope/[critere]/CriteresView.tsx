@@ -4,7 +4,10 @@ import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBan
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
 import { CriterionNextSteps } from '@/components/tacctoscope/criterion/CriterionNextSteps';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
-import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
+import {
+  CriterionSection,
+  SectionQuestion
+} from '@/components/tacctoscope/criterion/CriterionSection';
 import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
@@ -29,7 +32,13 @@ interface Props {
 }
 
 const BulbIcon = () => (
-  <svg width="16" height="21" viewBox="0 0 16 21" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="21"
+    viewBox="0 0 16 21"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -39,11 +48,14 @@ const BulbIcon = () => (
   </svg>
 );
 
-const SECTION_META: Record<SectionKind, { title: string; description: string }> =
-{
+const SECTION_META: Record<
+  SectionKind,
+  { title: string; description: string }
+> = {
   analyse: {
     title: 'Analyse de votre diagnostic',
-    description: 'Les réponses aux questions suivantes sont à trouver dans votre diagnostic existant.'
+    description:
+      'Les réponses aux questions suivantes sont à trouver dans votre diagnostic existant.'
   },
   enquete: {
     title: 'Enquête à mener',
@@ -154,7 +166,10 @@ export const CriteresView = ({
 
   return (
     <>
-      <NewContainer size="xl" style={{ padding: 0, zIndex: 1, position: "relative" }}>
+      <NewContainer
+        size="xl"
+        style={{ padding: 0, zIndex: 1, position: 'relative' }}
+      >
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
             currentPageLabel={criterion.title}
@@ -167,7 +182,7 @@ export const CriteresView = ({
         </div>
       </NewContainer>
       <div className={styles.criterionBannerOuter}>
-        <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
+        <NewContainer size="xl" style={{ position: 'relative', zIndex: 1 }}>
           <CriterionBanner
             slug={criterion.slug}
             title={criterion.title}
@@ -181,7 +196,7 @@ export const CriteresView = ({
         total={criterion.questions.length}
       />
 
-      <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
+      <NewContainer size="xl" style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.criterionViewBody}>
           {analyse.length > 0 && (
             <CriterionSection
@@ -215,20 +230,19 @@ export const CriteresView = ({
 
           <CriterionNextSteps
             slug={criterion.slug}
-            nextCriterion={
-              isAuthenticated && nextSlug
-                ? getCriterionBySlug(nextSlug)
-                : undefined
-            }
+            nextCriterion={nextSlug ? getCriterionBySlug(nextSlug) : undefined}
+            nextLocked={!isAuthenticated}
           />
 
           <CriterionFeedback criterionKey={criterion.slug} />
 
-          <Link
-            href="/tacctoscope"
-            className={styles.criterionViewBackLink}
-          >
-            <Body htmlTag="span" weight="medium" color="#038278" aria-hidden="true">
+          <Link href="/tacctoscope" className={styles.criterionViewBackLink}>
+            <Body
+              htmlTag="span"
+              weight="medium"
+              color="#038278"
+              aria-hidden="true"
+            >
               ←
             </Body>
             <Body weight="medium" color="#038278">

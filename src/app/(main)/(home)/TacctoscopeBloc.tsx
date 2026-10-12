@@ -1,5 +1,5 @@
-import sparklingIcon from '@/assets/icons/sparkling_icon_green.svg';
 import productLaunch from '@/assets/images/product-launch.png';
+import { SparklingIcon } from '@/assets/svg/home/homeIcones';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { TagsSimples } from '@/design-system/base/Tags';
 import { Body, H3 } from '@/design-system/base/Textes';
@@ -8,7 +8,13 @@ import Image from 'next/image';
 import styles from './home.module.scss';
 
 const ArrowRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden="true"
+  >
     <path
       d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
       fill="currentColor"
@@ -27,7 +33,7 @@ export const TacctoscopeBloc = () => (
               couleur="#E3FAF9"
               couleurTexte="var(--boutons-primaire-3)"
               taille="small"
-              icone={<Image src={sparklingIcon} alt="" width={12} height={12} />}
+              icone={<SparklingIcon />}
             />
             <H3
               color="#038278"

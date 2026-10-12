@@ -13,12 +13,42 @@
     @media screen and (max-width: 1280px) {
         padding: 0 2rem;
     }
+    // Mobile : titre, texte, image puis bouton empilés
+    @media screen and (max-width: 1024px) {
+        --hero-texte-marge: 1rem 0 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 1.5rem;
+        padding: 2rem;
+
+        .heroBlocText {
+            display: contents;
+
+            > :last-child {
+                order: 1;
+                align-self: center;
+            }
+        }
+
+        .heroBlocImageWrapper {
+            max-width: 360px;
+            align-self: center;
+        }
+    }
 }
 
 .heroBlocText {
     display: flex;
     flex-direction: column;
     flex: 1;
+}
+
+.heroBlocInsecable {
+    white-space: nowrap;
+    @media screen and (max-width: 1024px) {
+        white-space: normal;
+    }
 }
 
 .heroBlocImageWrapper {
@@ -43,32 +73,6 @@
     left: 0;
     width: 100%;
     height: auto;
-}
-
-.heroBlocDesktopOnly {
-    @media screen and (max-width: 1024px) {
-        display: none;
-    }
-}
-
-.heroBlocMobileOnly {
-    display: none;
-
-    @media screen and (max-width: 1024px) {
-        display: block;
-    }
-}
-
-.heroBlocMobileInner {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
-
-    .heroBlocImageWrapper {
-        max-width: 360px;
-        align-self: center;
-    }
 }
 
 .tacctoscopeBloc {

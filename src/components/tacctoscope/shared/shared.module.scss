@@ -54,7 +54,7 @@
 .accordionShellTitle {
     flex: 1;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .accordionShellChevron {
@@ -216,7 +216,6 @@
     border-color: #b3b3b3;
 }
 
-.radioScaleOption:hover .radioScaleBullet,
 .radioScaleOptionSelected .radioScaleBullet {
     border-color: #038278;
 }
@@ -227,6 +226,23 @@
     inset: 6px;
     border-radius: 50%;
     background: #038278;
+}
+
+.radioScaleOption:hover .radioScaleBullet {
+    border-color: #095d55;
+}
+
+.radioScaleOption:hover .radioScaleBullet::after {
+    background: #095d55;
+}
+
+.radioScaleOption:focus-visible {
+    outline: none;
+}
+
+.radioScaleOption:focus-visible .radioScaleBullet {
+    outline: 4px solid #038278;
+    outline-offset: 2px;
 }
 
 /* ===== Mobile ===== */

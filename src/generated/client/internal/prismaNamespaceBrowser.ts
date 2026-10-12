@@ -707,7 +707,8 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   agriculture_part_over_55: 'agriculture_part_over_55',
   couverture_lcz: 'couverture_lcz',
   aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
-  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe'
+  aires_appellations_controlees_signe: 'aires_appellations_controlees_signe',
+  projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]

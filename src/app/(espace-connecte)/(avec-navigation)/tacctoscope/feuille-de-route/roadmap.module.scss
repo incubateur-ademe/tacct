@@ -122,7 +122,7 @@ $stripe: repeating-linear-gradient(
 }
 
 .menuTitle {
-    margin: 0 0 42px;
+    margin: 3rem 0 42px;
     padding: 0 1rem;
     font-family: Marianne;
     font-size: 0.875rem;
@@ -141,7 +141,7 @@ $stripe: repeating-linear-gradient(
 .menuItem {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 7px;
     width: 100%;
     text-align: left;
     padding: 1rem 2rem 1rem 1rem;
@@ -151,6 +151,11 @@ $stripe: repeating-linear-gradient(
 
     &:not(.menuItemLocked):hover {
         background: $gray-light;
+    }
+
+    &:focus-visible {
+        outline: 4px solid $teal;
+        outline-offset: 2px;
     }
 }
 
@@ -168,8 +173,8 @@ $stripe: repeating-linear-gradient(
 
 .menuItemLabel {
     font-family: Marianne;
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 500;
     line-height: 1.5rem;
     color: $title;
 }
@@ -217,6 +222,11 @@ $stripe: repeating-linear-gradient(
     gap: 0.5rem;
     text-decoration: none;
     background-image: none;
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
 }
 
 /* ===== Contenu ===== */
@@ -327,6 +337,7 @@ $stripe: repeating-linear-gradient(
     background: $gray-light;
     text-align: center;
     margin-bottom: 2rem;
+    margin-top: 3rem;
 }
 
 .emptyStateTitle {
@@ -493,6 +504,11 @@ $stripe: repeating-linear-gradient(
         background: #e7e5e5;
     }
 
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
+
     @media screen and (max-width: 768px) {
         margin-left: 0;
         padding: 0.5rem 1rem 0.5rem calc(1rem + 5px);
@@ -607,7 +623,7 @@ $stripe: repeating-linear-gradient(
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    max-width: 34rem;
+    max-width: 40rem;
     margin: 0 auto;
 }
 
@@ -668,6 +684,11 @@ $stripe: repeating-linear-gradient(
     font-weight: 500;
     line-height: 1.5rem;
     color: $teal;
+}
+
+.accordion :global(.fr-accordion__btn):hover .accordionLabel {
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
 
 .accordionContent {
@@ -877,6 +898,11 @@ $stripe: repeating-linear-gradient(
     border: none;
     background: none;
     cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid $teal;
+        outline-offset: 2px;
+    }
 }
 
 .ressourceModalHeader {

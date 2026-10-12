@@ -152,7 +152,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
           }
         ],
         counterExample:
-          "Ces résultats du projet LACCAVE (INRA), rigoureux scientifiquement, sont souvent cités dans les diagnostics, y compris de territoires viticoles non concernés par les vignobles cités. Ces résultats décrivent un phénomène général (seuils de température et de stress hydrique) là où un entretien avec un expert local aurait sans doute été plus éclairant, en reliant ces phénomènes physiques à des impacts sur les pratiques viticoles du territoire — date de vendange, gestion de l'irrigation, palissage...",
+          "Les résultats du projet LACCAVE (INRA), rigoureux scientifiquement, sont souvent cités dans les diagnostics, y compris de territoires viticoles non concernés par les vignobles cités. Ces résultats décrivent un phénomène général (seuils de température et de stress hydrique) là où un entretien avec un expert local aurait sans doute été plus éclairant, en reliant ces phénomènes physiques à des impacts sur les pratiques viticoles du territoire — date de vendange, gestion de l'irrigation, palissage...",
         counterExampleAttachments: [
           {
             label: 'Voir les résultats du projet LACCAVE',
@@ -274,10 +274,10 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         label: 'Une trace des travaux menés reste consultable',
         text: 'Il peut s’agir de relevés de décision, de comptes-rendus d’ateliers ou d’entretiens, de tableurs de données, de supports de réunions, de rapports ayant servis de source, etc.',
         example:
-          'Annexe “_CCBDP. (2023, mars)._” extraite de la bibliographie du diagnostic de vulnérabilité de la Communauté de Communes des Baronnies en Drôme Provençale',
+          'Le compte-rendu de l’atelier sur la sensibilité du territoire au changement climatique de la CC des Baronnies en Drôme provençale est disponible en annexe, dans la bibliographie de leur diagnostic de vulnérabilité.',
         exampleAttachments: [
           {
-            label: 'Compte rendu de l’atelier sur la sensibilité du territoire',
+            label: 'Compte rendu de l’atelier de sensibilité (mars 2023)',
             src: '/preuve-critere3-q5.webp'
           }
         ],

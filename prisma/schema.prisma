@@ -645,6 +645,7 @@ model databases_v2_table_commune {
   couverture_lcz                      String?
   aires_appellations_controlees_nom   String[]
   aires_appellations_controlees_signe String[]
+  projets_alimentaires_territoriaux   String[]
 
   @@index([index], map: "ix_table_commune_index")
   @@index([code_geographique], map: "table_commune_communes_index")

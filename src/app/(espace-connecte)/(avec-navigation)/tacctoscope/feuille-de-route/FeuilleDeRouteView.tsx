@@ -3,7 +3,10 @@
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
-import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
+import {
+  RoadmapMenu,
+  RoadmapMenuItem
+} from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { getRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
@@ -17,12 +20,18 @@ import {
 import { NoAnswerHelpBlock } from '@/components/tacctoscope/roadmap/NoAnswerHelpBlock';
 import { RoadmapLoginBlock } from '@/components/tacctoscope/roadmap/RoadmapLoginBlock';
 import { SectionQuestionRef } from '@/components/tacctoscope/roadmap/RoadmapBlockParts';
-import { AnswerMap, AnswerValue } from '@/lib/tacctoscope/types';
+import { AnswerMap, AnswerValue, CriterionSlug } from '@/lib/tacctoscope/types';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { RoadmapSection, SectionRecommendation } from './RoadmapSection';
 
 /* Les points forts (4) sont regroupés dans un bloc à part, affiché en premier. */
 const RECOMMENDATION_ORDER: AnswerValue[] = ['3', '2', '1'];
+
+const MENU_TITLES: Partial<Record<CriterionSlug, string>> = {
+  'donnees-socio-economiques': 'Données socio-éco',
+  'priorisation-des-impacts': 'Priorisation impacts',
+  'problematisation-et-conclusion': 'Problématisation'
+};
 
 interface Props {
   answers: AnswerMap;
@@ -92,7 +101,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
 
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
     slug: criterion.slug,
-    title: criterion.title,
+    title: MENU_TITLES[criterion.slug] ?? criterion.title,
     locked: !isAuthenticated && !isPublicCriterion(criterion.slug)
   }));
 
@@ -129,7 +138,9 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
       counts: getCriterionAnswerCounts(criterion, currentAnswers),
       missingCount: total - answered,
       firstMissingId: firstMissing ? firstMissing.id : null,
-      strengths: answeredQuestions.filter((question) => question.answer === '4'),
+      strengths: answeredQuestions.filter(
+        (question) => question.answer === '4'
+      ),
       unknowns: answeredQuestions.filter(
         (question) => question.answer === 'ne_sais_pas'
       ),
@@ -157,7 +168,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
   const showNoAnswerHelp = unknownCount > 0;
 
   return (
-    <NewContainer size="xl" style={{ paddingTop: "1.5rem" }}>
+    <NewContainer size="xl" style={{ paddingTop: '1.5rem' }}>
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
