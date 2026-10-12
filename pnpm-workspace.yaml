@@ -10,6 +10,11 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - nodemailer@10.0.12
 
+# Correctifs de sécurité sur des dépendances transitives (nivo, maplibre)
+overrides:
+  'lodash@<4.18.1': ^4.18.1
+  'protocol-buffers-schema@<3.6.1': ^3.6.1
+
 nodeLinker: hoisted
 
 # Refuse d'installer des packages publiés il y a moins de 7 jours (10080 minutes)
