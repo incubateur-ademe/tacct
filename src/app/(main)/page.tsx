@@ -37,8 +37,8 @@ const Home = () => {
       {isWithinNoticePeriod && !noticeClosed && (
         <Notice
           className={css({
-            backgroundColor: '#ECFFFD',
-            color: '#038278'
+            backgroundColor: "var(--gris-medium)",
+            color: 'black'
           })}
           isClosable={true}
           onClose={handleCloseNotice}
