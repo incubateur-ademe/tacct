@@ -49,11 +49,12 @@ const pool = new Pool({
 
 const COLONNES = `id, email, username, firstname, lastname, authenticated_id,
                   validated, validated_terms_of_use, roles, commune_id,
-                  study_office_id, encryption_version, created_at, updated_at, last_login_at`;
+                  study_office_id, encryption_version, created_at, updated_at, last_login_at, questionnaire_validated`;
 
-const estUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-    identifiant
-);
+const estUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        identifiant
+    );
 
 // Ordre d'essai selon la forme de l'identifiant. Le premier qui renvoie une ligne gagne.
 const strategies = identifiant.includes('@')
@@ -61,11 +62,19 @@ const strategies = identifiant.includes('@')
     : estUuid
       ? [
             ['user.id (colonne en clair)', 'id = $1', identifiant],
-            ['sub ProConnect (authenticated_id_bidx)', 'authenticated_id_bidx = $1', bidx(identifiant)]
+            [
+                'sub ProConnect (authenticated_id_bidx)',
+                'authenticated_id_bidx = $1',
+                bidx(identifiant)
+            ]
         ]
       : [
             ['email (email_bidx)', 'email_bidx = $1', bidx(identifiant)],
-            ['sub ProConnect (authenticated_id_bidx)', 'authenticated_id_bidx = $1', bidx(identifiant)]
+            [
+                'sub ProConnect (authenticated_id_bidx)',
+                'authenticated_id_bidx = $1',
+                bidx(identifiant)
+            ]
         ];
 
 const afficherUtilisateur = async (r) => {
@@ -84,7 +93,8 @@ const afficherUtilisateur = async (r) => {
         encryption_version: r.encryption_version,
         created_at: r.created_at,
         updated_at: r.updated_at,
-        last_login_at: r.last_login_at
+        last_login_at: r.last_login_at,
+        questionnaire_validated: r.questionnaire_validated
     });
 
     // Études associées via la table de jointure user_study (non chiffrées)
@@ -145,7 +155,8 @@ if (!trouve && !estUuid) {
     const contient = (v) => (decrypt(v) ?? '').toLowerCase().includes(fragment);
     const { rows } = await pool.query(`SELECT ${COLONNES} FROM tacct."user"`);
     const correspondances = rows.filter(
-        (r) => contient(r.email) || contient(r.lastname) || contient(r.firstname)
+        (r) =>
+            contient(r.email) || contient(r.lastname) || contient(r.firstname)
     );
 
     if (correspondances.length > 0) {
