@@ -12,13 +12,14 @@ import { TacctoscopeBloc } from './(home)/TacctoscopeBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
 const NOTICE_KEY = 'notice-tacctoscope-revision-fermee';
-const NOTICE_START = new Date('2026-10-12');
+const NOTICE_START = new Date('2026-10-13');
 const NOTICE_END = new Date('2026-10-23T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
   const [noticeClosed, setNoticeClosed] = useState(true);
-  const isWithinNoticePeriod = Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
+  const isWithinNoticePeriod =
+    Date.now() >= NOTICE_START.getTime() && Date.now() <= NOTICE_END.getTime();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -44,8 +45,8 @@ const Home = () => {
           onClose={handleCloseNotice}
           title={
             <>
-              Vous révisez un diagnostic de vulnérabilité&nbsp;? Ne repartez
-              pas de zéro&nbsp;!
+              Vous révisez un diagnostic de vulnérabilité&nbsp;? Ne repartez pas
+              de zéro&nbsp;!
             </>
           }
           description={
@@ -53,10 +54,10 @@ const Home = () => {
               Le <Link href="/tacctoscope">TACCToscope</Link> est là pour vous
               aider à cibler le retravail&nbsp;: 5 catégories de questions, des
               pistes d’améliorations sur mesure et une feuille de route prête à
-              l’emploi <span aria-hidden="true">⇒</span>{" "}
+              l’emploi <span aria-hidden="true">⇒</span>{' '}
               <Link href="/tacctoscope">
                 Je commence dès maintenant la révision de mon diagnostic
-              </Link>{" "}
+              </Link>{' '}
               <span aria-hidden="true">🎯</span>
             </>
           }
