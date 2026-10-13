@@ -51,7 +51,7 @@ const Home = () => {
           }
           description={
             <>
-              Le <Link href="/tacctoscope">TACCToscope</Link> est là pour vous
+              Le TACCToscope est là pour vous
               aider à cibler le retravail&nbsp;: 5 catégories de questions, des
               pistes d’améliorations sur mesure et une feuille de route prête à
               l’emploi <span aria-hidden="true">⇒</span>{' '}
