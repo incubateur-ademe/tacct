@@ -76,7 +76,7 @@ export const ProjetsAlimentairesTerritoriaux = (props: {
       </div>
       <div className={styles.sourcesExportMapWrapper}>
         <Body size="sm" style={{ color: "var(--gris-dark)" }}>
-          Source :
+          Source : France PAT, 2026 (consultée en octobre 2026)
         </Body>
         <ExportButton
           data={exportData}
