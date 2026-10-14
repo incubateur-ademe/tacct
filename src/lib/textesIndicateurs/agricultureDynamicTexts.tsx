@@ -212,8 +212,8 @@ export const AOT40AgricultureDynamicText = ({
         </>
       ) : null}
       .{' '}
-      {comparaisonValeurCible} La directive européenne fixe par ailleurs, pour
-      la protection des cultures, un objectif à long terme de 6 000 µg/m³.h, à
+      {comparaisonValeurCible} La directive européenne prévoit également un
+      objectif à long terme de 6 000 µg/m³.h, à
       atteindre au plus tard le 1er janvier 2050.
     </Body>
   );
