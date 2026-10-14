@@ -371,7 +371,7 @@ export const thematiquesInfo: {
           <Body size="sm">🌼 Biodiversité</Body>
         </div>
         <Body size="sm" margin="1rem 0">
-          👉 Ensemble, ils montrent à quel point la qualité de
+          👉 Ensemble, elles montrent à quel point la qualité de
           l'air de votre territoire compte pour vos habitants et vos écosystèmes.
         </Body>
       </div>

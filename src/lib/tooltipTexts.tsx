@@ -581,7 +581,7 @@ export const O3AirTooltipText = (
     <br></br>
     <br></br>
     <i>
-      (*) Valeur cible : niveau à atteindre, dans la mesure du possible, afin
+      (*) Valeur cible : niveau maximal à ne pas dépasser, dans la mesure du possible, afin
       d’éviter, de prévenir ou de réduire les effets nocifs sur la santé
       humaine.
     </i>
