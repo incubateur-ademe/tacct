@@ -85,11 +85,6 @@ const MonEspace = async () => {
   const recommendationCount = isComplete ? getRecommendationCount(answers) : 0;
 
   const sections = sectionsEspace(user.profil);
-  const afficheAncienEspace =
-    user.validated &&
-    !estProfilAdminEtat(user.profil) &&
-    !estProfilEntreprise(user.profil) &&
-    !estProfilAutre(user.profil);
 
   const SECTIONS: Record<
     SectionEspace,
@@ -108,7 +103,7 @@ const MonEspace = async () => {
             started={started}
             total={CRITERIA.length}
           />
-          {afficheAncienEspace && <AncienEspaceCard validated={user.validated} />}
+          {user.validated && <AncienEspaceCard validated={user.validated} />}
         </div>
       )
     },
