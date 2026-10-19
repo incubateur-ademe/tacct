@@ -1,3 +1,4 @@
+import departementsNoms from '@/lib/data/departements.json';
 import {
   AgeBatiDto,
   GrandAgeDto,
@@ -762,6 +763,15 @@ export const IndicatorExportTransformations = {
           Département: el.departement,
           'Nombre de cas autochtones': el.nb_cas_autochtones,
           'Nombre de cas importés': el.nb_cas_importes
+        };
+      });
+    },
+    Ambroisie: (presence: Record<string, string>) => {
+      return Object.entries(presence).map(([code, classe]) => {
+        return {
+          'Code département': code,
+          Département: (departementsNoms as Record<string, string>)[code],
+          'Nombre de communes avec au moins un signalement (2005-2025)': classe
         };
       });
     }

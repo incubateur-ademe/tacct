@@ -122,6 +122,16 @@ export const sourcesEtudes = {
       numero: 1,
       url: "https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022",
       texte: "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
+    },
+    {
+      numero: 2,
+      url: "https://www.auvergne-rhone-alpes.ars.sante.fr/ambroisie-en-auvergne-rhone-alpes-161-des-habitants-allergiques-dans-la-region-la-plus-touchee-de",
+      texte: "ARS Auvergne-Rhône-Alpes, Ambroisie en Auvergne-Rhône-Alpes : 16,1 % des habitants allergiques dans la région la plus touchée de France, 30 juin 2026"
+    },
+    {
+      numero: 3,
+      url: "https://www.anses.fr/fr/system/files/AIR2018SA0088Ra.pdf",
+      texte: "Anses, Impacts sanitaires et coûts associés à l’ambroisie à feuilles d’armoise en France, avis et rapport d’expertise collective, octobre 2020"
     }
   ]
 };
