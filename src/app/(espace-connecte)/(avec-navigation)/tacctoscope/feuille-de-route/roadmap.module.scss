@@ -299,7 +299,7 @@ $stripe: repeating-linear-gradient(
     background: #ffffffcc;
 
     @media screen and (max-width: 768px) {
-        align-self: flex-start;
+        justify-content: flex-end;
     }
 }
 
@@ -318,6 +318,10 @@ $stripe: repeating-linear-gradient(
         bottom: 0.5rem;
         width: 1px;
         background: #dddddd;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
     }
 }
 
