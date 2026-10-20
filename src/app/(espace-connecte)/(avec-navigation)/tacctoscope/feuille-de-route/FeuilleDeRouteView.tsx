@@ -3,7 +3,11 @@
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
-import { RoadmapMenu, RoadmapMenuItem } from '@/components/tacctoscope/roadmap/RoadmapMenu';
+import {
+  RetourSommaire,
+  RoadmapMenu,
+  RoadmapMenuItem
+} from '@/components/tacctoscope/roadmap/RoadmapMenu';
 import { NewContainer } from '@/design-system/layout';
 import { CRITERIA } from '@/lib/tacctoscope/content/criteria';
 import { getRecommendation } from '@/lib/tacctoscope/content/roadmapResources';
@@ -167,6 +171,9 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
+          <div className={styles.backLinkMobile}>
+            <RetourSommaire />
+          </div>
           {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />
           ) : (

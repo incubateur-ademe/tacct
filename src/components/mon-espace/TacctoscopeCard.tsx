@@ -141,12 +141,14 @@ export const TacctoscopeCard = ({
                     ? 'Continuer l’analyse  →'
                     : 'Commencer l’analyse du diagnostic  →'
                 }
+                style={{ width: 'auto', textAlign: 'center' }}
               />
             )}
             {hasAnswers && (
               <BoutonSecondaireClassic
                 size="md"
                 link="/tacctoscope/feuille-de-route"
+                style={{ width: 'auto', textAlign: 'center' }}
                 text="Voir ma feuille de route  →"
               />
             )}

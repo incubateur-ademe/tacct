@@ -113,11 +113,16 @@ $stripe: repeating-linear-gradient(
     flex-shrink: 0;
 
     @media screen and (max-width: 992px) {
-        position: relative;
-        top: 0;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid $border;
+        display: none;
+    }
+}
+
+.menuMobile,
+.backLinkMobile {
+    display: none;
+
+    @media screen and (max-width: 992px) {
+        display: block;
     }
 }
 
