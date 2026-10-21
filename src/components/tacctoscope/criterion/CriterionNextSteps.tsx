@@ -5,18 +5,17 @@ import {
   BoutonPrimaireClassic,
   BoutonSecondaireClassic
 } from '@/design-system/base/Boutons';
-import { Criterion, CriterionSlug } from '@/lib/tacctoscope/types';
+import { Criterion } from '@/lib/tacctoscope/types';
 import { useState } from 'react';
 import { UnlockModal } from '../shared/Modales';
 import styles from './criterion.module.scss';
 
 interface Props {
-  slug: CriterionSlug;
   nextCriterion?: Criterion;
   nextLocked: boolean;
 }
 
-export const CriterionNextSteps = ({ slug, nextCriterion, nextLocked }: Props) => {
+export const CriterionNextSteps = ({ nextCriterion, nextLocked }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -33,7 +32,7 @@ export const CriterionNextSteps = ({ slug, nextCriterion, nextLocked }: Props) =
         )}
         <BoutonPrimaireClassic
           size="md"
-          link={`/tacctoscope/feuille-de-route#${slug}`}
+          link="/tacctoscope/feuille-de-route"
           text="Voir ma feuille de route"
           iconeFin={<FlecheDroiteIcon />}
         />

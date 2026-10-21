@@ -5,7 +5,6 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -64,7 +63,6 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
   const dialogRef = useModalFocus(mounted && isOpen);
   const posthog = usePostHog();
-  const router = useRouter();
 
   useEffect(() => setMounted(true), []);
 
@@ -102,11 +100,12 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
       ressource_titre: ressource.title,
       ressource_tag: ressource.tag
     });
-    if (externe) {
-      window.open(ressource.url, '_blank', 'noopener,noreferrer');
-    } else {
-      router.push(ressource.url);
-    }
+    // Interne : sans `noreferrer`, pour garder la page d'origine dans les stats PostHog.
+    window.open(
+      ressource.url,
+      '_blank',
+      externe ? 'noopener,noreferrer' : 'noopener'
+    );
   };
 
   return createPortal(

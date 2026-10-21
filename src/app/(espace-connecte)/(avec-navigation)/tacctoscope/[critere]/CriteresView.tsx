@@ -214,7 +214,6 @@ export const CriteresView = ({
           )}
 
           <CriterionNextSteps
-            slug={criterion.slug}
             nextCriterion={nextSlug ? getCriterionBySlug(nextSlug) : undefined}
             nextLocked={!isAuthenticated}
           />

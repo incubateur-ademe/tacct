@@ -1,7 +1,6 @@
 import './global.css';
 
 import { ErudaDevConsole } from '@/components/dev/ErudaDevConsole';
-import { DefilementVersAncre } from '@/components/utils/DefilementVersAncre';
 import { DsfrProvider, StartDsfrOnHydration } from '@/design-system';
 import { DsfrHead, getHtmlAttributes } from '@/design-system/server-only-index';
 import { cx } from '@codegouvfr/react-dsfr/tools/cx';
@@ -34,7 +33,6 @@ const RootLayout = ({ children }: PropsWithChildren) => {
             <StartDsfrOnHydration />
             <ErudaDevConsole />
             {children}
-            <DefilementVersAncre />
           </DsfrProvider>
         </body>
       </PHProvider>
