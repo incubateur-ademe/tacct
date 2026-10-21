@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "24.20.0"
+    "node": "24.22.1"
   },
   "packageManager": "pnpm@12.4.2+sha512.08adc6613180275c7c9edada39dcf08c9c61ad4e7eaf330a4f3461f102b0f907423454d117f98e72d47fef0616070644d7bffc973a6a57f5090a6d7c368b07c9",
   "scripts": {
@@ -69,13 +69,13 @@
     "jszip": "^3.10.1",
     "leaflet": "^1.9.4",
     "maplibre-gl": "^5.14.0",
-    "next": "16.3.8",
+    "next": "16.4.2",
     "next-auth": "5.0.0-beta.32",
     "nodemailer": "10.0.12",
     "pg": "8.23.0",
     "posthog-js": "^1.433.2",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "react-leaflet": "^5.0.0",
     "react-leaflet-cluster": "^3.1.1",
     "rehype-katex": "^7.0.1",
@@ -109,7 +109,7 @@
     "autoprefixer": "^10.4.23",
     "eruda": "^3.4.3",
     "eslint": "10.10.0",
-    "eslint-config-next": "16.3.5",
+    "eslint-config-next": "16.4.2",
     "eslint-config-prettier": "^9.1.2",
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
