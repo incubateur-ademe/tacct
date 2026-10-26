@@ -1,6 +1,6 @@
 'use server';
 import { InondationsDebordementTerritoire } from '@/lib/postgres/models';
-import { ColumnLibelleCheck } from '../columns';
+import { ColumnCodeCheck } from '../columns';
 import { prisma } from '../db';
 
 export const GetInondationsDebordement = async (
@@ -18,10 +18,10 @@ export const GetInondationsDebordement = async (
       if (!libelle || !type || (!code && type !== 'petr')) return null;
       const communes = await prisma.databases_v2_table_commune.findMany({
         select: { epci: true, departement: true },
-        where:
-          type === 'commune'
-            ? { code_geographique: code }
-            : { [ColumnLibelleCheck(type)]: libelle }
+        where: {
+          [ColumnCodeCheck(type)]:
+            type === 'petr' || type === 'ept' ? libelle : code
+        }
       });
       if (!communes.length) return null;
       // Un territoire peut couvrir plusieurs EPCI : on affiche celui qui y compte le plus de communes

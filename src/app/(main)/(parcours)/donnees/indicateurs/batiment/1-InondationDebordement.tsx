@@ -8,7 +8,6 @@ import {
 } from '@/components/charts/batiment/inondationDebordementBarChart';
 import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
-import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { InondationsDebordementTerritoire } from '@/lib/postgres/models';
@@ -62,14 +61,15 @@ export const InondationDebordement = ({
       <div className={styles.datavizContainer}>
         <div className={styles.dataTextWrapper}>
           <div className={styles.chiffreDynamiqueWrapper}>
+            <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+              TEXTE DYNAMIQUE
+            </Body>
             <CustomTooltipNouveauParcours
               title={inondationDebordementTooltipText}
               texte="D'où vient ce chiffre ?"
             />
           </div>
-          <ReadMoreFade maxHeight={430}>
-            <InondationDebordementText />
-          </ReadMoreFade>
+          <InondationDebordementText />
         </div>
         <div
           className={styles.datavizWrapper}

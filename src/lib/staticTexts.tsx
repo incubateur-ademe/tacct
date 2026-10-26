@@ -955,7 +955,7 @@ export const AmbroisieText = () => (
 );
 
 export const InondationDebordementText = () => (
-  <>
+  <div className="pt-10">
     <Body size="sm">
       L’inondation est le{' '}
       <ScrollToSourceTag sourceNumero={1}>
@@ -970,11 +970,11 @@ export const InondationDebordementText = () => (
         couvre 15,2 % du territoire, mais concentre 26,5 % de la population et
         28,1 % des logements
       </ScrollToSourceTag>
-      . Parmi ces logements, les maisons de plain-pied, posent un problème
+      . Parmi ces logements, les maisons de plain-pied posent un problème
       particulier : elles ne permettent pas de mettre leurs occupants hors
       d’eau en attendant leur évacuation par les secours.
     </Body>
-    <Body size="sm" style={{ marginTop: '1rem' }}>
+    <Body size="sm">
       Les collectivités disposent de leviers sur les constructions futures
       comme sur les logements existants. Elles peuvent adapter leurs documents
       d’urbanisme et instruire les demandes de construction en tenant compte
@@ -985,5 +985,5 @@ export const InondationDebordementText = () => (
       pour diagnostiquer leur vulnérabilité et réaliser des travaux, comme
       l’aménagement d’un espace refuge.
     </Body>
-  </>
+  </div>
 );

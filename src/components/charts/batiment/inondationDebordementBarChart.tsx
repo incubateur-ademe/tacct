@@ -40,9 +40,10 @@ export const InondationDebordementBarChart = ({
   return (
     <div
       style={{
-        height: "450px",
+        height: "500px",
         width: '100%',
-        backgroundColor: "white"
+        backgroundColor: "white",
+        borderRadius: "1rem"
       }}>
       <NivoBarChart
         graphData={graphData}

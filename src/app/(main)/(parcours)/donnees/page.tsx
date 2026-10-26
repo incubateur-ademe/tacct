@@ -7,6 +7,7 @@ import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
 import AirServerPage from './thematiques/air/AirServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
+import BatimentServerPage from './thematiques/batiment/BatimentServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
 import EauServerPage from './thematiques/eau/EauServerPage';
@@ -56,6 +57,8 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             <ForetServerPage searchParams={props.searchParams} />
           ) : thematique === "Air" ? (
             <AirServerPage searchParams={props.searchParams} />
+          ) : thematique === "Bâtiment" ? (
+            <BatimentServerPage searchParams={props.searchParams} />
           ) : ""}
         </>
       }
