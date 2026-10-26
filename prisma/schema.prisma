@@ -502,46 +502,6 @@ model databases_v2_patch4c {
   @@schema("databases_v2")
 }
 
-model databases_v2_prelevements_eau {
-  index                Int     @id
-  code_geographique    String
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  libelle_departement  String
-  region               Int
-  ept                  String?
-  libelle_petr         String?
-  code_pnr             String?
-  libelle_pnr          String?
-  libelle_sous_champ   String?
-  A2020                String?
-  A2019                String?
-  A2018                String?
-  A2017                String?
-  A2016                String?
-  A2015                String?
-  A2014                String?
-  A2013                String?
-  A2012                String?
-  A2011                String?
-  A2010                String?
-  A2009                String?
-  A2008                String?
-  sous_champ           String?
-
-  @@index([index], map: "ix_prelevements_eau_index")
-  @@index([code_geographique], map: "prelevements_eau_communes_index")
-  @@index([departement], map: "prelevements_eau_departement_index")
-  @@index([epci], map: "prelevements_eau_epci_index")
-  @@index([ept], map: "prelevements_eau_ept_index")
-  @@index([libelle_petr], map: "prelevements_eau_petr_index")
-  @@index([code_pnr], map: "prelevements_eau_pnr_index")
-  @@map("prelevements_eau")
-  @@schema("databases_v2")
-}
-
 model databases_v2_qualite_sites_baignade {
   index    Int     @id
   DEP_NOM  String

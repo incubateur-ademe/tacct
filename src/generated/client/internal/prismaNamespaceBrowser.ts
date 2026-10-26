@@ -64,7 +64,6 @@ export const ModelName = {
   databases_v2_feux_foret: 'databases_v2_feux_foret',
   databases_v2_lcz_couverture: 'databases_v2_lcz_couverture',
   databases_v2_patch4c: 'databases_v2_patch4c',
-  databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
   databases_v2_table_commune: 'databases_v2_table_commune',
@@ -585,39 +584,6 @@ export const Databases_v2_patch4cScalarFieldEnum = {
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
-
-
-export const Databases_v2_prelevements_eauScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  libelle_sous_champ: 'libelle_sous_champ',
-  A2020: 'A2020',
-  A2019: 'A2019',
-  A2018: 'A2018',
-  A2017: 'A2017',
-  A2016: 'A2016',
-  A2015: 'A2015',
-  A2014: 'A2014',
-  A2013: 'A2013',
-  A2012: 'A2012',
-  A2011: 'A2011',
-  A2010: 'A2010',
-  A2009: 'A2009',
-  A2008: 'A2008',
-  sous_champ: 'sous_champ'
-} as const
-
-export type Databases_v2_prelevements_eauScalarFieldEnum = (typeof Databases_v2_prelevements_eauScalarFieldEnum)[keyof typeof Databases_v2_prelevements_eauScalarFieldEnum]
 
 
 export const Databases_v2_qualite_sites_baignadeScalarFieldEnum = {

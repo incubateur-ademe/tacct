@@ -410,7 +410,6 @@ export const ModelName = {
   databases_v2_feux_foret: 'databases_v2_feux_foret',
   databases_v2_lcz_couverture: 'databases_v2_lcz_couverture',
   databases_v2_patch4c: 'databases_v2_patch4c',
-  databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
   databases_v2_table_commune: 'databases_v2_table_commune',
@@ -496,7 +495,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_prelevements_eau" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1459,80 +1458,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.databases_v2_patch4cCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.Databases_v2_patch4cCountAggregateOutputType> | number
-        }
-      }
-    }
-    databases_v2_prelevements_eau: {
-      payload: Prisma.$databases_v2_prelevements_eauPayload<ExtArgs>
-      fields: Prisma.databases_v2_prelevements_eauFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.databases_v2_prelevements_eauFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.databases_v2_prelevements_eauFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        findFirst: {
-          args: Prisma.databases_v2_prelevements_eauFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.databases_v2_prelevements_eauFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        findMany: {
-          args: Prisma.databases_v2_prelevements_eauFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>[]
-        }
-        create: {
-          args: Prisma.databases_v2_prelevements_eauCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        createMany: {
-          args: Prisma.databases_v2_prelevements_eauCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.databases_v2_prelevements_eauCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>[]
-        }
-        delete: {
-          args: Prisma.databases_v2_prelevements_eauDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        update: {
-          args: Prisma.databases_v2_prelevements_eauUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        deleteMany: {
-          args: Prisma.databases_v2_prelevements_eauDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.databases_v2_prelevements_eauUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.databases_v2_prelevements_eauUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>[]
-        }
-        upsert: {
-          args: Prisma.databases_v2_prelevements_eauUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$databases_v2_prelevements_eauPayload>
-        }
-        aggregate: {
-          args: Prisma.Databases_v2_prelevements_eauAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDatabases_v2_prelevements_eau>
-        }
-        groupBy: {
-          args: Prisma.databases_v2_prelevements_eauGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Databases_v2_prelevements_eauGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.databases_v2_prelevements_eauCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.Databases_v2_prelevements_eauCountAggregateOutputType> | number
         }
       }
     }
@@ -7157,39 +7082,6 @@ export const Databases_v2_patch4cScalarFieldEnum = {
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
 
 
-export const Databases_v2_prelevements_eauScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  libelle_sous_champ: 'libelle_sous_champ',
-  A2020: 'A2020',
-  A2019: 'A2019',
-  A2018: 'A2018',
-  A2017: 'A2017',
-  A2016: 'A2016',
-  A2015: 'A2015',
-  A2014: 'A2014',
-  A2013: 'A2013',
-  A2012: 'A2012',
-  A2011: 'A2011',
-  A2010: 'A2010',
-  A2009: 'A2009',
-  A2008: 'A2008',
-  sous_champ: 'sous_champ'
-} as const
-
-export type Databases_v2_prelevements_eauScalarFieldEnum = (typeof Databases_v2_prelevements_eauScalarFieldEnum)[keyof typeof Databases_v2_prelevements_eauScalarFieldEnum]
-
-
 export const Databases_v2_qualite_sites_baignadeScalarFieldEnum = {
   index: 'index',
   DEP_NOM: 'DEP_NOM',
@@ -8636,7 +8528,6 @@ export type GlobalOmitConfig = {
   databases_v2_feux_foret?: Prisma.databases_v2_feux_foretOmit
   databases_v2_lcz_couverture?: Prisma.databases_v2_lcz_couvertureOmit
   databases_v2_patch4c?: Prisma.databases_v2_patch4cOmit
-  databases_v2_prelevements_eau?: Prisma.databases_v2_prelevements_eauOmit
   databases_v2_qualite_sites_baignade?: Prisma.databases_v2_qualite_sites_baignadeOmit
   databases_v2_surfaces_agricoles?: Prisma.databases_v2_surfaces_agricolesOmit
   databases_v2_table_commune?: Prisma.databases_v2_table_communeOmit

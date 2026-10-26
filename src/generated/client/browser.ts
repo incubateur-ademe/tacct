@@ -83,11 +83,6 @@ export type databases_v2_lcz_couverture = Prisma.databases_v2_lcz_couvertureMode
  */
 export type databases_v2_patch4c = Prisma.databases_v2_patch4cModel
 /**
- * Model databases_v2_prelevements_eau
- * 
- */
-export type databases_v2_prelevements_eau = Prisma.databases_v2_prelevements_eauModel
-/**
  * Model databases_v2_qualite_sites_baignade
  * 
  */
