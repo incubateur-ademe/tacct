@@ -108,30 +108,53 @@ export const sourcesEtudes = {
   air: [
     {
       numero: 1,
-      url: "https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline",
-      texte: "SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025"
+      url: 'https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline',
+      texte:
+        'SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025'
     },
     {
       numero: 2,
-      url: "https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf",
-      texte: "Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022"
+      url: 'https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf',
+      texte:
+        'Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022'
     }
   ],
   sante: [
     {
       numero: 1,
-      url: "https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022",
-      texte: "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
+      url: 'https://www.notre-environnement.gouv.fr/actualites/breves/article/qualite-de-l-air-combien-d-agglomerations-ont-depasse-les-seuils-en-2022',
+      texte:
+        "Qualité de l'air : combien d'agglomérations ont dépassé les seuils en 2022 ?"
     },
     {
       numero: 2,
-      url: "https://www.auvergne-rhone-alpes.ars.sante.fr/ambroisie-en-auvergne-rhone-alpes-161-des-habitants-allergiques-dans-la-region-la-plus-touchee-de",
-      texte: "ARS Auvergne-Rhône-Alpes, Ambroisie en Auvergne-Rhône-Alpes : 16,1 % des habitants allergiques dans la région la plus touchée de France, 30 juin 2026"
+      url: 'https://www.auvergne-rhone-alpes.ars.sante.fr/ambroisie-en-auvergne-rhone-alpes-161-des-habitants-allergiques-dans-la-region-la-plus-touchee-de',
+      texte:
+        'ARS Auvergne-Rhône-Alpes, Ambroisie en Auvergne-Rhône-Alpes : 16,1 % des habitants allergiques dans la région la plus touchée de France, 30 juin 2026'
     },
     {
       numero: 3,
-      url: "https://www.anses.fr/fr/system/files/AIR2018SA0088Ra.pdf",
-      texte: "Anses, Impacts sanitaires et coûts associés à l’ambroisie à feuilles d’armoise en France, avis et rapport d’expertise collective, octobre 2020"
+      url: 'https://www.anses.fr/fr/system/files/AIR2018SA0088Ra.pdf',
+      texte:
+        'Anses, Impacts sanitaires et coûts associés à l’ambroisie à feuilles d’armoise en France, avis et rapport d’expertise collective, octobre 2020'
+    }
+  ],
+  batiment: [
+    {
+      numero: 1,
+      url: 'https://www.georisques.gouv.fr/minformer-sur-un-risque/inondation',
+      texte: 'Géorisques, Inondation : le premier risque naturel en France'
+    },
+    {
+      numero: 2,
+      url: 'https://files.georisques.fr/onrn/2024_ONRN_Cours_eau.pdf',
+      texte:
+        'SDES, Fiche indicateur ONRN « Exposition des logements et des personnes au risque d’inondation par débordement de cours d’eau », décembre 2024'
+    },
+    {
+      numero: 3,
+      url: 'https://www.georisques.gouv.fr/etre-accompagne/le-soutien-financier-du-fonds-barnier-0',
+      texte: 'Géorisques, Le soutien financier du fonds Barnier'
     }
   ]
 };

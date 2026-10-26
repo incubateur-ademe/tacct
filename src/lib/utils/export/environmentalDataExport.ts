@@ -14,6 +14,7 @@ import {
   ExportCoursDeau,
   IncendiesForet,
   InconfortThermique,
+  InondationsDebordementModel,
   Patch4,
   PrelevementsEauParsed,
   QualiteSitesBaignadeModel,
@@ -774,6 +775,29 @@ export const IndicatorExportTransformations = {
           'Nombre de communes avec au moins un signalement (2005-2025)': classe
         };
       });
+    }
+  },
+  batiment: {
+    InondationDebordement: (donnees: InondationsDebordementModel[]) => {
+      const valeur = (epci: string, indicateur: string) =>
+        donnees.find(
+          (el) => el.epci === epci && el.indicateur_exposition === indicateur
+        )?.valeur_exposition ?? 'secret statistique';
+      return [...new Map(donnees.map((el) => [el.epci, el.libelle_epci]))].map(
+        ([epci, libelleEpci]) => {
+          return {
+            'Code EPCI': epci,
+            EPCI: libelleEpci,
+            'Surface exposée (km²)': valeur(epci, 'Surface_exposee_km2'),
+            'Part de la surface exposée (%)': valeur(epci, 'Part_surface_exposee'),
+            'Population exposée': valeur(epci, 'Pop_exposee'),
+            'Part de la population exposée (%)': valeur(epci, 'Part_pop_exposee'),
+            'Logements exposés': valeur(epci, 'Logements_exposes'),
+            'Part des logements exposés (%)': valeur(epci, 'Part_logements_exposes'),
+            'Logements sans étage exposés': valeur(epci, 'Logements_sans_etage_exposes')
+          };
+        }
+      );
     }
   }
 };

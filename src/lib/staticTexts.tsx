@@ -953,3 +953,37 @@ export const AmbroisieText = () => (
     </Body>
   </>
 );
+
+export const InondationDebordementText = () => (
+  <>
+    <Body size="sm">
+      L’inondation est le{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        premier risque naturel en France
+      </ScrollToSourceTag>
+      , par le nombre de personnes exposées et l’importance des dommages
+      qu’elle provoque. La surface, la population et les logements situés dans
+      l’emprise potentielle des inondations extrêmes par débordement de cours
+      d’eau donnent la mesure de l’impact qu’une telle inondation pourrait
+      avoir sur un territoire. En France métropolitaine, cette emprise{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        couvre 15,2 % du territoire, mais concentre 26,5 % de la population et
+        28,1 % des logements
+      </ScrollToSourceTag>
+      . Parmi ces logements, les maisons de plain-pied, posent un problème
+      particulier : elles ne permettent pas de mettre leurs occupants hors
+      d’eau en attendant leur évacuation par les secours.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Les collectivités disposent de leviers sur les constructions futures
+      comme sur les logements existants. Elles peuvent adapter leurs documents
+      d’urbanisme et instruire les demandes de construction en tenant compte
+      des risques identifiés. En contractualisant avec l’État un programme
+      d’actions de prévention des inondations (PAPI), elles permettent aussi
+      aux propriétaires des logements exposés de bénéficier de{' '}
+      <ScrollToSourceTag sourceNumero={3}>financements de l’État</ScrollToSourceTag>{' '}
+      pour diagnostiquer leur vulnérabilité et réaliser des travaux, comme
+      l’aménagement d’un espace refuge.
+    </Body>
+  </>
+);

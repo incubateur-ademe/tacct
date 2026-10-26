@@ -1110,3 +1110,18 @@ export type ArboviroseModel = {
   nb_cas_importes: number;
   nb_cas_autochtones: number;
 };
+
+export type InondationsDebordementModel = {
+  index: number;
+  epci: string;
+  libelle_epci: string;
+  indicateur_exposition: string;
+  valeur_exposition: number | null;
+};
+
+export type InondationsDebordementTerritoire = {
+  epciAffiche: string;
+  departementEpciAffiche: string;
+  nombreEpci: number;
+  donnees: InondationsDebordementModel[];
+};

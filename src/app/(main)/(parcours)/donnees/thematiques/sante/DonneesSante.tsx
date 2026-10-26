@@ -24,7 +24,7 @@ interface Props {
 
 export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
   const searchParams = useSearchParams();
-  const thematique = searchParams.get('thematique') as 'Gestion des risques';
+  const thematique = searchParams.get('thematique') as 'Santé';
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;

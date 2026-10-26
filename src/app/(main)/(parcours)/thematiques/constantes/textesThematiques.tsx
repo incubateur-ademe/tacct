@@ -171,6 +171,18 @@ export const sommaireThematiques = {
         sousCategories: ['Pollution à l’ozone']
       }
     ]
+  },
+  "Bâtiment": {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Gestion des risques',
+        icone: '🚧',
+        sousCategories: [
+          'Inondation par débordement des cours d’eau'
+        ]
+      },
+    ]
   }
 };
 
@@ -212,7 +224,7 @@ export const thematiquesInfo: {
   Bâtiment: {
     title: 'Bâtiment',
     description: <div></div>,
-    link: ''
+    link: 'Bâtiment'
   },
   Aménagement: {
     title: 'Aménagement',

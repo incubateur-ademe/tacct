@@ -38,8 +38,8 @@ export const nomThematiques = [
     xOffset: 17,
     yOffset: -20,
     icon: '🏠',
-    disabled: true,
-    liens: []
+    disabled: false,
+    liens: ['']
   },
   {
     label: 'Continuité des services',
@@ -48,7 +48,7 @@ export const nomThematiques = [
     yOffset: -38,
     icon: '🛠️',
     disabled: true,
-    liens: []
+    liens: ['Confort thermique', 'Gestion des risques', 'Santé']
   },
   {
     label: 'Santé',
@@ -424,6 +424,25 @@ export const liensEntreThematiques = [
     curve: 1,
     curveRadius: 0.15
   },
+  //Bâtiment
+  {
+    source: 'Bâtiment',
+    target: 'Gestion des risques',
+    curve: 1,
+    curveRadius: 0.25 //0.5
+  },
+  {
+    source: 'Bâtiment',
+    target: 'Confort thermique',
+    curve: 1,
+    curveRadius: 0.5
+  },
+  {
+    source: 'Bâtiment',
+    target: 'Santé',
+    curve: 1,
+    curveRadius: 0.6
+  }
 ];
 
 // Grouper les nœuds par catégorie avec leurs indices d'origine

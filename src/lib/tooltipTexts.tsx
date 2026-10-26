@@ -653,6 +653,20 @@ export const ambroisieTooltipText = (
   </Body>
 );
 
+export const inondationDebordementTooltipText = (
+  <Body weight="bold" size="sm">
+    Ce chiffre est calculé par le Service des données et études statistiques
+    (SDES). Il croise les zones qu’une crue exceptionnelle des cours d’eau
+    pourrait inonder, délimitées par l’État en 2011, avec les données de
+    l’Insee sur les logements et la population en 2021. Les logements comptent
+    tous les types de résidence, résidences secondaires comprises. Ces zones
+    sont volontairement larges : elles visent les crues extrêmes, sans en
+    préciser la fréquence, et ne tiennent pas compte des digues. Ce ne sont
+    donc pas les zones inondables réglementaires des plans de prévention des
+    risques d’inondation (PPRI).
+  </Body>
+);
+
 export const HauteurCanopeeTooltipText = (
   <>
     <Body weight="bold" size="sm">
