@@ -91,7 +91,7 @@
   },
   "devDependencies": {
     "@creedengo/eslint-plugin": "3.0.0",
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "^9.39.5",
     "@mdx-js/loader": "^3.1.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@types/bcrypt": "^5.0.2",
@@ -108,7 +108,7 @@
     "@typescript-eslint/parser": "8.58.2",
     "autoprefixer": "^10.4.23",
     "eruda": "^3.4.3",
-    "eslint": "10.10.0",
+    "eslint": "9.39.5",
     "eslint-config-next": "16.4.2",
     "eslint-config-prettier": "^9.1.2",
     "eslint-import-resolver-typescript": "^3.10.1",
