@@ -81,7 +81,12 @@ normalized AS (
     END AS code_norm,
 
     NULLIF(replace(COALESCE(p_libelle, ''), '+', ' '), '')    AS libelle_norm,
-    NULLIF(replace(COALESCE(p_thematique, ''), '+', ' '), '') AS thematique
+    -- thématiques renommées : l'ancien et le nouveau nom ne doivent compter qu'une fois
+    CASE replace(COALESCE(p_thematique, ''), '+', ' ')
+      WHEN 'Inconfort thermique' THEN 'Confort thermique'
+      WHEN 'Ressources en eau'   THEN 'Eau'
+      ELSE NULLIF(replace(COALESCE(p_thematique, ''), '+', ' '), '')
+    END AS thematique
   FROM params
 ),
 
@@ -103,7 +108,6 @@ eligible_sessions AS (
         MIN(event_timestamp) FILTER (WHERE path_norm = '/thematiques')
         <
         LEAST(
-          COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/thematiques'), 'infinity'::timestamp),
           COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/donnees-territoriales'), 'infinity'::timestamp),
           COALESCE(MIN(event_timestamp) FILTER (WHERE path_norm = '/donnees'), 'infinity'::timestamp)
         )

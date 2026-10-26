@@ -14,33 +14,79 @@ interface StatOutput {
   stats: Stat[];
 }
 
-interface Periodicity {
-  periodicity: 'day' | 'week' | 'month' | 'year';
-}
+const PERIODICITIES = ['day', 'week', 'month', 'year'] as const;
+type Periodicity = (typeof PERIODICITIES)[number];
+
+const isPeriodicity = (value: string): value is Periodicity =>
+  (PERIODICITIES as readonly string[]).includes(value);
+
+// La requête North Star prend ~30 s alors que son résultat ne change qu'au
+// passage de l'ETL ou au changement de jour : on ne la rejoue que dans ces cas.
+let cache: { key: string; stats: Promise<Stat[]> } | null = null;
+
+const getCacheKey = async (): Promise<string> => {
+  const [row] = await PrismaPostgres.$queryRaw<
+    { max_ts: string | null; today: string }[]
+  >`
+    SELECT MAX(event_timestamp)::text AS max_ts,
+           (now() AT TIME ZONE 'Europe/Paris')::date::text AS today
+    FROM analytics.all_pageview_raw
+  `;
+  return `${row.max_ts}|${row.today}`;
+};
+
+const fetchDailyStats = async (): Promise<Stat[]> => {
+  const sql = readFileSync(
+    join(process.cwd(), 'src/app/api/stats/north_star.sql'),
+    'utf8'
+  );
+  const results = (await PrismaPostgres.$queryRawUnsafe(sql)) as Array<{
+    day: Date;
+    north_star: bigint;
+  }>;
+  return results.map((row) => ({
+    value: Number(row.north_star),
+    date: new Date(
+      Date.UTC(row.day.getFullYear(), row.day.getMonth(), row.day.getDate())
+    )
+  }));
+};
+
+const getDailyStats = async (): Promise<Stat[]> => {
+  const key = await getCacheKey();
+  if (cache?.key === key) {
+    return cache.stats;
+  }
+  const stats = fetchDailyStats();
+  cache = { key, stats };
+  stats.catch(() => {
+    if (cache?.stats === stats) {
+      cache = null;
+    }
+  });
+  return stats;
+};
 
 export const GET = async (request: NextRequest) => {
-  try {
-    const sql = readFileSync(
-      join(process.cwd(), 'src/app/api/stats/north_star.sql'),
-      'utf8'
+  const since = request.nextUrl.searchParams.get('since');
+  const sinceNum = since === null ? null : Number(since);
+  if (sinceNum !== null && !(Number.isInteger(sinceNum) && sinceNum > 0)) {
+    return NextResponse.json(
+      { error: '`since` doit être un entier strictement positif' },
+      { status: 400 }
     );
-    const results = (await PrismaPostgres.$queryRawUnsafe(sql)) as Array<{
-      day: Date;
-      north_star: bigint;
-    }>;
-    const rawData: Stat[] = results.map((row) => ({
-      value: Number(row.north_star),
-      date: new Date(
-        Date.UTC(row.day.getFullYear(), row.day.getMonth(), row.day.getDate())
-      )
-    }));
+  }
+  const periodicity =
+    request.nextUrl.searchParams.get('periodicity') ?? 'month';
+  if (!isPeriodicity(periodicity)) {
+    return NextResponse.json(
+      { error: `\`periodicity\` doit valoir : ${PERIODICITIES.join(', ')}` },
+      { status: 400 }
+    );
+  }
 
-    const since = request.nextUrl.searchParams.get('since');
-    const sinceNum = since ? Number(since) : null;
-    const periodicityParam = request.nextUrl.searchParams.get('periodicity');
-    const periodicity: Periodicity = periodicityParam
-      ? { periodicity: periodicityParam as 'day' | 'week' | 'month' | 'year' }
-      : { periodicity: 'month' };
+  try {
+    const rawData = await getDailyStats();
 
     // Agrégation des données selon la périodicité
     const aggregatedData: Stat[] = [];
@@ -52,7 +98,7 @@ export const GET = async (request: NextRequest) => {
       const month = stat.date.getUTCMonth();
       const day = stat.date.getUTCDate();
       const dayOfWeek = stat.date.getUTCDay();
-      switch (periodicity.periodicity) {
+      switch (periodicity) {
         case 'day':
           key = `${year}-${month}-${day}`;
           periodDate = new Date(Date.UTC(year, month, day));
@@ -72,9 +118,6 @@ export const GET = async (request: NextRequest) => {
           key = `${year}`;
           periodDate = new Date(Date.UTC(year, 0, 1));
           break;
-        default:
-          key = `${year}-${month}-${day}`;
-          periodDate = new Date(Date.UTC(year, month, day));
       }
       if (!aggregated.has(key)) {
         aggregated.set(key, { date: periodDate, value: 0 });
@@ -109,9 +152,6 @@ export const GET = async (request: NextRequest) => {
     return response;
   } catch (error) {
     console.error('API Error:', error);
-    return NextResponse.json(
-      { error: error instanceof Error ? error.message : String(error) },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Erreur interne' }, { status: 500 });
   }
 };
