@@ -1,0 +1,59 @@
+description: >
+  TACCT — application Next.js 16 (Prisma/PostgreSQL), auth fédérée
+  AgentConnect (OIDC). Environnement LOCAL de dev uniquement, base de données
+  jetable. NE PAS pointer vers la production ni la préprod.
+
+rules_of_engagement: |
+  - Limiter à moins de 5 requêtes par seconde par endpoint.
+  - Plafonner les tentatives de login à 5 par compte.
+  - Ne jamais émettre de requêtes vers des domaines tiers (IdP AgentConnect,
+    APIs externes) : rester strictement sur l'hôte local cible.
+
+# --- Authentification -------------------------------------------------------
+# Choix retenu : 1er scan NON authentifié -> bloc authentication désactivé.
+# (L'app utilise AgentConnect / OIDC fédéré : Shannon ne peut pas piloter un
+# login chez un IdP tiers qu'on ne possède pas.)
+#
+# authentication:
+#   login_type: form
+#   login_url: "http://host.docker.internal:3000/login-test"
+#   credentials:
+#     username: "test@example.com"
+#     password: "CHANGEME"
+#   login_flow:
+#     - "Type $username into the email field"
+#     - "Type $password into the password field"
+#     - "Click the 'Se connecter' button"
+#   success_condition:
+#     type: url_contains
+#     value: "/"
+
+# --- Portée -----------------------------------------------------------------
+rules:
+  avoid:
+    - description: 'Ne pas déclencher le logout (invalide la session)'
+      type: url_path
+      value: '/logout'
+    - description: "Ne pas solliciter l'IdP AgentConnect (tiers, hors périmètre)"
+      type: url_path
+      value: '/api/auth'
+  focus:
+    - description: 'Prioriser les routes API'
+      type: url_path
+      value: '/api'
+
+# SAST agentique (analyse du code source en plus de l'exploitation dynamique)
+agentic_sast:
+  enabled: 'true'
+
+# Phase d'exploitation désactivée pour ce 1er run Haiku :
+# - tant que l'org n'a pas l'accès Red Team (CVP), vous êtes au mieux en tier
+#   Defense, qui ne couvre PAS l'exécution d'exploits -> éviterait un blocage
+#   par les classifiers en plein scan ;
+# - évite aussi de muter la base (création de comptes, soumission de formulaires).
+# Repasser à "true" (ou supprimer cette ligne) une fois l'accès Red Team obtenu
+# pour valider les failles avec PoC.
+exploit: 'false'
+
+report:
+  min_severity: low
