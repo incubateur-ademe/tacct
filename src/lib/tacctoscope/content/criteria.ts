@@ -15,7 +15,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   'donnees-climatiques': {
     title: 'Données climatiques',
     chapeau:
-      "Le diagnostic s'appuie-t-il sur des données climatiques pertinentes et territorialisées ?",
+      "Votre diagnostic s'appuie-t-il sur des données climatiques pertinentes et territorialisées ?",
     questions: [
       {
         id: 'q1',
@@ -183,7 +183,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   'dialogue-et-partage': {
     title: 'Dialogue et partage',
     chapeau:
-      'Le diagnostic a-t-il été construit collectivement avec les parties prenantes du territoire ?',
+      'Votre diagnostic a-t-il été construit collectivement avec les parties prenantes du territoire ?',
     questions: [
       {
         id: 'q1',
@@ -345,7 +345,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
   'problematisation-et-conclusion': {
     title: 'Problématisation et conclusion',
     chapeau:
-      "Plus qu'un simple constat, le diagnostic identifie-t-il des problématiques territoriales parlantes ?",
+      "Plus qu'un simple constat, votre diagnostic identifie-t-il des problématiques territoriales parlantes ?",
     questions: [
       {
         id: 'q1',
