@@ -90,7 +90,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
 
   if (!mounted || !isOpen) return null;
 
-  const externe = !ressource.url.startsWith('/');
+  const externe = ressource.url; // On enlève .startsWith('/') pour que ce soit uniforme entre les ressources qui s'ouvrent dans un nouvel onglet
 
   // Navigation reprise ici : BoutonPrimaireClassic la court-circuite dès qu'un `onClick` est fourni.
   const handleRessourceClick = () => {
