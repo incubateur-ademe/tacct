@@ -1,15 +1,13 @@
 "use client";
-import { Button } from '@mui/material';
+import { BoutonSecondaireClassic } from '@/design-system/base/Boutons';
 import { signOut } from 'next-auth/react';
 
 export default function DisconnectButton() {
   return (
-    <Button
-      variant="outlined"
-      color="secondary"
+    <BoutonSecondaireClassic
+      text="Se déconnecter"
+      size="md"
       onClick={() => signOut({ callbackUrl: '/' })}
-    >
-      Se déconnecter
-    </Button>
+    />
   );
 }

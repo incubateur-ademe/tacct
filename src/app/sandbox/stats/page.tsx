@@ -1,7 +1,9 @@
+import { Body, H1 } from '@/design-system/base/Textes';
+import { NewContainer } from '@/design-system/layout';
 import { auth } from '@/lib/auth/authOptions';
 import { redirect } from 'next/navigation';
 import DisconnectButton from './DisconnectButton';
-import MetabaseComponent from './metabaseComponent';
+import OngletsDashboards from './ongletsDashboards';
 
 const SandboxUserPage = async () => {
   const session = await auth();
@@ -9,13 +11,18 @@ const SandboxUserPage = async () => {
     redirect('/');
   }
   return (
-    <div className="p-8">
-      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem' }}>
+    <NewContainer size="xl" style={{ padding: "3rem 1rem" }}>
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <DisconnectButton />
       </div>
-      <h1>Bienvenue dans l'espace privé TACCT</h1>
-      <MetabaseComponent />
-    </div>
+      <H1 style={{ margin: "1rem 0 1.5rem" }}>Bienvenue dans l'espace privé TACCT</H1>
+      <Body>
+        <i>
+          Cette page présente les statistiques d’utilisation du site TACCT.
+        </i>
+      </Body>
+      <OngletsDashboards />
+    </NewContainer>
   );
 }
 
