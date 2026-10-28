@@ -123,7 +123,17 @@ export const ProjetsAlimentairesTerritoriauxDynamicText = ({
 
   return (
     <>
-      <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
+      {pluriel && (
+        <Body htmlTag="div" weight="bold" style={{ color: "var(--gris-dark)", margin: "0 0 1.5rem 0" }}>
+          Voici la liste des PAT présents sur votre territoire :
+          <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
+            {pats.map((pat) => (
+              <li key={pat}>{pat}</li>
+            ))}
+          </ul>
+        </Body>
+      )}
+      <Body style={{ color: "var(--gris-dark)" }}>
         {debut} : un atout pour votre démarche d’adaptation.{' '}
         {pluriel ? 'Ces projets reposent' : 'Ce projet repose'} sur un
         diagnostic partagé de l’agriculture et de l’alimentation locales : une
@@ -138,16 +148,7 @@ export const ProjetsAlimentairesTerritoriauxDynamicText = ({
         {couverturePartielle}
         {cooperation}
       </Body>
-      {pluriel && (
-        <Body htmlTag="div" weight="bold" style={{ color: "var(--gris-dark)" }}>
-          <br></br>Voici la liste des PAT présents sur votre territoire :
-          <ul style={{ margin: "0.5rem 0 0 1.5rem" }}>
-            {pats.map((pat) => (
-              <li key={pat}>{pat}</li>
-            ))}
-          </ul>
-        </Body>
-      )}
+      
     </>
   );
 };

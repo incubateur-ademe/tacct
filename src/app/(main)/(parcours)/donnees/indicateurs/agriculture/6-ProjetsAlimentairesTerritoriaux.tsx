@@ -54,7 +54,7 @@ export const ProjetsAlimentairesTerritoriaux = (props: {
                 valeur={pats.length}
                 ariaLabel="Nombre de projets alimentaires territoriaux sur votre territoire"
               />
-              <div className={styles.text}>
+              <div className={styles.text} >
                 <ProjetsAlimentairesTerritoriauxDynamicText
                   pats={pats}
                   toutesCommunesCouvertes={patsParCommune.every(p => p.length > 0)}
