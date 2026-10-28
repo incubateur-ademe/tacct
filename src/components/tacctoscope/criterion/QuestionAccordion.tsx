@@ -5,13 +5,28 @@ import { deleteAnswer, saveAnswer } from '@/lib/queries/tacctoscope';
 import { yieldsRecommendation } from '@/lib/tacctoscope/answers';
 import { buildQuestionKey } from '@/lib/tacctoscope/keys';
 import { deleteLocalAnswer, saveLocalAnswer } from '@/lib/tacctoscope/localAnswers';
-import { AnswerValue, CriterionSlug, Question } from '@/lib/tacctoscope/types';
+import {
+  AnswerValue,
+  CriterionSlug,
+  Question,
+  RichContent
+} from '@/lib/tacctoscope/types';
 import { useState, useTransition } from 'react';
 import { AccordionShell } from '../shared/AccordionShell';
 import { RadioScale } from '../shared/RadioScale';
 import { RichText } from '../shared/RichText';
 import styles from './criterion.module.scss';
 import { ExampleCallout } from './ExampleCallout';
+
+const ENQUETE_TEXT =
+  "Ce travail peut avoir été mené sans laisser de trace écrite, n’hésitez pas à mener l'enquête !";
+
+const buildText = (question: Question): RichContent | undefined => {
+  if (question.section !== 'enquete') return question.text;
+  const blocks =
+    typeof question.text === 'string' ? [question.text] : (question.text ?? []);
+  return [...blocks, ENQUETE_TEXT];
+};
 
 interface Props {
   slug: CriterionSlug;
@@ -91,7 +106,6 @@ export const QuestionAccordion = ({
           </Body>
         </>
       }
-      accent={question.section}
       highlighted={!answered}
       id={`question-${slug}-${question.id}`}
       open={openKeys.has(questionKey)}
@@ -107,7 +121,7 @@ export const QuestionAccordion = ({
           </div>
         )}
         <RichText
-          content={question.text}
+          content={buildText(question)}
           size="md"
           color="#3d3d3d"
           style={{ lineHeight: 1.6 }}
