@@ -55,6 +55,13 @@ export const authConfig: NextAuthConfig = {
           return null;
         }
 
+        if (bcrypt.getRounds(user.password) > 12) {
+          await prisma.sandbox_users.update({
+            where: { pk: user.pk },
+            data: { password: await bcrypt.hash(credentials.password as string, 12) }
+          });
+        }
+
         return {
           id: user.pk.toString(),
           name: user.username,

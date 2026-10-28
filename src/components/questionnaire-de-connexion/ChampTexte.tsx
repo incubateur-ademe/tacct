@@ -10,10 +10,11 @@ interface Props {
   placeholder?: string;
   value: string;
   onChange: (valeur: string) => void;
-  type?: 'text' | 'email';
+  type?: 'text' | 'email' | 'password';
   erreur?: string;
   icone?: ReactNode;
   autoFocus?: boolean;
+  autoComplete?: string;
 }
 
 export const ChampTexte = ({
@@ -24,7 +25,8 @@ export const ChampTexte = ({
   type = 'text',
   erreur,
   icone,
-  autoFocus = false
+  autoFocus = false,
+  autoComplete
 }: Props) => {
   const id = useId();
   const idErreur = `${id}-erreur`;
@@ -51,6 +53,7 @@ export const ChampTexte = ({
           placeholder={placeholder}
           value={value}
           autoFocus={autoFocus}
+          autoComplete={autoComplete}
           aria-invalid={!!erreur}
           aria-describedby={erreur ? idErreur : undefined}
           onChange={(event) => onChange(event.target.value)}

@@ -2,7 +2,7 @@ import { prisma } from '@/lib/queries/db';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
-  // Secure token check
+  // Ne jamais ajouter SANDBOX_ADMIN_TOKEN aux environnements serveur : sans lui, cette route refuse toute création de compte.
   const token = request.headers.get('x-sandbox-admin-token');
   if (!token || token !== process.env.SANDBOX_ADMIN_TOKEN) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
     const bcrypt = require('bcryptjs');
-    const hashedPassword = await bcrypt.hash(password, 16);
+    const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = await prisma.sandbox_users.create({
       data: {
         username: username,

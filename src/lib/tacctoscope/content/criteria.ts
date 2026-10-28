@@ -88,7 +88,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         section: 'enquete',
         exampleKind: 'exemple',
         label: 'Un travail de hiérarchisation des aléas climatiques a été mené',
-        text: "Cet exercice consiste à classer, du plus au moins préoccupant, les aléas et les phénomènes climatiques auxquels le territoire est exposé. Ce travail a pu être mené à l'oral, en atelier par exemple, sans être mentionné dans le diagnostic. Les réponses seront alors à chercher dans les archives ou auprès des participants.",
+        text: "Cet exercice consiste à classer, du plus au moins préoccupant, les aléas et les phénomènes climatiques auxquels le territoire est exposé.",
         exampleAttachments: [
           {
             label:
@@ -174,7 +174,7 @@ const CRITERIA_CONTENT: Record<CriterionSlug, CriterionContent> = {
         id: 'q5',
         section: 'enquete',
         label: 'Un travail de hiérarchisation des impacts a été mené',
-        text: "Cet exercice est destiné à hiérarchiser les impacts au sein d’une même thématique, puis les thématiques entre elles. Il a pu être mené à l'oral, sans qu’il en reste de trace écrite.",
+        text: "Cet exercice est destiné à hiérarchiser les impacts au sein d’une même thématique, puis les thématiques entre elles.",
         minHint: 'Aucune évaluation de la gravité des impacts n’a été menée.',
         maxHint: 'La gravité des impacts a été évaluée.'
       }

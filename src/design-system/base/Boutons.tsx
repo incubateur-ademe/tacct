@@ -18,7 +18,8 @@ export const BoutonPrimaireClassic = ({
   style,
   posthogEventName,
   thematique,
-  ariaPressed
+  ariaPressed,
+  type = 'button'
 }: {
   link?: string;
   text: string;
@@ -33,6 +34,7 @@ export const BoutonPrimaireClassic = ({
   thematique?: string;
   /** Restitue l'état sélectionné aux technologies d'assistance (RGAA 7.1). */
   ariaPressed?: boolean;
+  type?: 'button' | 'submit';
 }) => {
   const posthog = usePostHog();
   const router = useRouter();
@@ -108,7 +110,7 @@ export const BoutonPrimaireClassic = ({
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={handleClick}
       disabled={disabled}
       style={buttonStyle}
