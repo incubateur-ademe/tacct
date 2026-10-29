@@ -86,7 +86,8 @@ export const sommaireThematiques = {
         icone: '🌾',
         sousCategories: [
           'Part des chefs d’exploitation séniors',
-          'Types de culture'
+          'Types de culture',
+          'Projets alimentaires territoriaux'
         ]
       },
       {
@@ -106,6 +107,12 @@ export const sommaireThematiques = {
         thematique: 'Tourisme',
         icone: '🏖️',
         sousCategories: ['Appellations contrôlées']
+      },
+      {
+        id: 'section5',
+        thematique: 'Air',
+        icone: '💨',
+        sousCategories: ['Ozone et cultures']
       }
     ]
   },
@@ -152,6 +159,16 @@ export const sommaireThematiques = {
         thematique: 'Forêts',
         icone: '🌲',
         sousCategories: ['Hauteur de la canopée']
+      }
+    ]
+  },
+  Air: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Santé',
+        icone: '🏥',
+        sousCategories: ['Pollution à l’ozone']
       }
     ]
   }
@@ -341,8 +358,25 @@ export const thematiquesInfo: {
   },
   Air: {
     title: 'Air',
-    description: <div></div>,
-    link: ''
+    description: (
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          La qualité de l'air ne dépend pas seulement de ce que votre
+          territoire émet : la météo et les polluants venus d'ailleurs
+          comptent aussi, et le changement climatique rebat ces cartes.
+          Elle s'évalue à travers deux dimensions clés :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">🏥 Santé</Body>
+          <Body size="sm">🌼 Biodiversité</Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Ensemble, elles montrent à quel point la qualité de
+          l'air de votre territoire compte pour vos habitants et vos écosystèmes.
+        </Body>
+      </div>
+    ),
+    link: 'Air'
   },
   Entreprises: {
     title: 'Entreprises',

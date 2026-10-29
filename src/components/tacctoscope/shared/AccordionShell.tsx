@@ -1,12 +1,10 @@
 'use client';
 
-import { SectionKind } from '@/lib/tacctoscope/types';
 import { ReactNode, useId, useState } from 'react';
 import styles from './shared.module.scss';
 
 interface Props {
   title: ReactNode;
-  accent?: SectionKind;
   highlighted?: boolean;
   defaultOpen?: boolean;
   id?: string;
@@ -37,7 +35,6 @@ const ChevronIcon = ({ open }: { open: boolean }) => (
 
 export const AccordionShell = ({
   title,
-  accent = 'analyse',
   highlighted = false,
   defaultOpen = false,
   id,
@@ -59,7 +56,7 @@ export const AccordionShell = ({
     <div
       id={id}
       className={`${styles.accordionShellItem} ${highlighted ? styles.accordionShellHighlighted : ''
-        } ${accent === 'enquete' ? styles.accordionShellEnquete : ''}`}
+        }`}
     >
       <button
         type="button"

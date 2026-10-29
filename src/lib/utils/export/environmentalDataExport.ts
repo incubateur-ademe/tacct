@@ -21,6 +21,7 @@ import {
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
+import { parsePostgresArray } from '../reusableFunctions/parsePostgresArray';
 import { Round } from '../reusableFunctions/round';
 
 export const Patch4Export = ({
@@ -65,6 +66,28 @@ export const IndicatorExportTransformations = {
               return 'secret statistique';
             return Number(commune.part_irr_sau_2020);
           })()
+        };
+      }),
+    projetsAlimentairesTerritoriaux: (tableCommune: TableCommuneModel[]) =>
+      tableCommune.map((commune) => {
+        return {
+          code_geographique: commune.code_geographique,
+          libelle_geographique: commune.libelle_geographique,
+          code_epci: commune.epci,
+          libelle_epci: commune.libelle_epci,
+          code_departement: commune.departement,
+          libelle_departement: commune.libelle_departement,
+          region: commune.region,
+          ept: commune.ept,
+          code_pnr: commune.code_pnr,
+          libelle_pnr: commune.libelle_pnr,
+          libelle_petr: commune.libelle_petr,
+          projets_alimentaires_territoriaux: (Array.isArray(
+            commune.projets_alimentaires_territoriaux
+          )
+            ? commune.projets_alimentaires_territoriaux
+            : parsePostgresArray(commune.projets_alimentaires_territoriaux)
+          ).join(' ; ')
         };
       }),
     agricultureBio: (agricultureBio: AgricultureBio[]) =>
@@ -592,10 +615,9 @@ export const IndicatorExportTransformations = {
       return aot40.map((el) => {
         return {
           nom_site: el.nom_site,
-          type_d_implantation: el.type_d_implantation,
-          'valeur brute (µg/m³)': el.valeur_brute,
-          latitude: el.Latitude,
-          longitude: el.Longitude
+          'valeur brute (µg/m³)': el.valeur,
+          latitude: el.latitude,
+          longitude: el.longitude
         };
       });
     }

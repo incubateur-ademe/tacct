@@ -11,6 +11,12 @@ export const sourcesEtudes = {
       url: 'https://www.inrae.fr/dossiers/lagriculture-va-t-elle-manquer-deau/irriguer-differemment',
       texte:
         'INRAE, Changement climatique et risques, Irriguer différemment, 3 juin 2022'
+    },
+    {
+      numero: 3,
+      url: 'https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html',
+      texte:
+        'ADEME, Coût économique pour l’agriculture des impacts de la pollution de l’air par l’ozone (étude APollO), mai 2019'
     }
   ],
   agricultureImpact: [
@@ -97,6 +103,20 @@ export const sourcesEtudes = {
       numero: 3,
       url: 'https://files.georisques.fr/ial/Fiche_OLD.pdf',
       texte: 'Fiche d’information sur les obligations de débroussaillement'
+    }
+  ],
+  air: [
+    {
+      numero: 1,
+      url: 'https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline',
+      texte:
+        'SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025'
+    },
+    {
+      numero: 2,
+      url: 'https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf',
+      texte:
+        'Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022'
     }
   ],
   sante: [

@@ -113,11 +113,16 @@ $stripe: repeating-linear-gradient(
     flex-shrink: 0;
 
     @media screen and (max-width: 992px) {
-        position: relative;
-        top: 0;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid $border;
+        display: none;
+    }
+}
+
+.menuMobile,
+.backLinkMobile {
+    display: none;
+
+    @media screen and (max-width: 992px) {
+        display: block;
     }
 }
 
@@ -294,7 +299,7 @@ $stripe: repeating-linear-gradient(
     background: #ffffffcc;
 
     @media screen and (max-width: 768px) {
-        align-self: flex-start;
+        justify-content: flex-end;
     }
 }
 
@@ -313,6 +318,10 @@ $stripe: repeating-linear-gradient(
         bottom: 0.5rem;
         width: 1px;
         background: #dddddd;
+
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
     }
 }
 

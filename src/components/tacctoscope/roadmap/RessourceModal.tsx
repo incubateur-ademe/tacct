@@ -5,7 +5,6 @@ import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -14,13 +13,7 @@ import { useModalFocus } from '../shared/useModalFocus';
 import { RessourceTag } from './RessourceTag';
 
 const CloseIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12 5.636 7.05 7.05 5.636z"
       fill="#038278"
@@ -29,13 +22,7 @@ const CloseIcon = () => (
 );
 
 const ExternalLinkIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M10 6v2H5v11h11v-5h2v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h6zm11-3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z"
       fill="#ffffff"
@@ -44,13 +31,7 @@ const ExternalLinkIcon = () => (
 );
 
 const ArrowRightIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
       fill="#ffffff"
@@ -82,7 +63,6 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
   const [mounted, setMounted] = useState(false);
   const dialogRef = useModalFocus(mounted && isOpen);
   const posthog = usePostHog();
-  const router = useRouter();
 
   useEffect(() => setMounted(true), []);
 
@@ -94,8 +74,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
     document.addEventListener('keydown', onKeyDown);
 
     // Compense la barre de défilement masquée, sinon le contenu centré se décale.
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     const previousPaddingRight = document.body.style.paddingRight;
     document.body.style.overflow = 'hidden';
     if (scrollbarWidth > 0) {
@@ -111,7 +90,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
 
   if (!mounted || !isOpen) return null;
 
-  const externe = !ressource.url.startsWith('/');
+  const externe = ressource.url; // On enlève .startsWith('/') pour que ce soit uniforme entre les ressources qui s'ouvrent dans un nouvel onglet
 
   // Navigation reprise ici : BoutonPrimaireClassic la court-circuite dès qu'un `onClick` est fourni.
   const handleRessourceClick = () => {
@@ -121,11 +100,12 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
       ressource_titre: ressource.title,
       ressource_tag: ressource.tag
     });
-    if (externe) {
-      window.open(ressource.url, '_blank', 'noopener,noreferrer');
-    } else {
-      router.push(ressource.url);
-    }
+    // Interne : sans `noreferrer`, pour garder la page d'origine dans les stats PostHog.
+    window.open(
+      ressource.url,
+      '_blank',
+      externe ? 'noopener,noreferrer' : 'noopener'
+    );
   };
 
   return createPortal(
@@ -198,9 +178,7 @@ export const RessourceModal = ({ ressource, isOpen, onClose }: Props) => {
           <div className={styles.ressourceModalFooter}>
             <BoutonPrimaireClassic
               size="md"
-              text={
-                externe ? 'Accéder à la ressource' : 'Consulter la ressource'
-              }
+              text={externe ? 'Accéder à la ressource' : 'Consulter la ressource'}
               link={ressource.url}
               rel={externe ? 'noopener noreferrer' : undefined}
               onClick={handleRessourceClick}

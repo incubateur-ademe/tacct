@@ -329,14 +329,91 @@ export const EtatCoursEauRessourcesEauText = () => (
   </div>
 );
 
+// Sources du texte :
+// « cinq principales pressions » : IPBES, communiqué du rapport mondial, 5 mai 2019, https://www.ipbes.net/news/Media-Release-Global-Assessment-Fr — « (1) les changements d'usage des terres et de la mer ; (2) l'exploitation directe de certains organismes ; (3) le changement climatique ; (4) la pollution et (5) les espèces exotiques envahissantes »
+// « Très oxydant » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 7 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « un impact néfaste sur la santé et sur l'environnement, du fait de son caractère oxydant »
+// « aussi bien les cultures que la végétation naturelle » : Airparif, p. 11, § 2.2 — « L'ozone touche à la fois la végétation naturelle (en particulier, les forêts et les zones d'intérêt écologique), mais également des cultures (notamment les céréales) »
+// « en altérant les tissus des feuilles […] rendements agricoles » : Airparif, p. 11, § 2.2 — « l'ozone conduit à la formation de nécroses sur les feuilles, ce qui limite la photosynthèse […] et provoque, à terme, des baisses de rendement pour les cultures »
+// « capacité des végétaux à absorber le CO₂ » : Airparif, p. 12, § 2.3 — « en réduisant l'activité photosynthétique des plantes, des cultures, des forêts, celles-ci seront ainsi moins capables de consommer le CO2 atmosphérique »
+// « polluant secondaire […] sous l'effet du soleil et de la chaleur, par réaction chimique entre d'autres polluants » : Airparif, p. 7, § 1 — « Il s'agit d'un polluant secondaire. Il est principalement formé chimiquement dans l'atmosphère, par oxydation des Composés Organiques Volatils (COV) en présence d'oxydes d'azote (NOx), sous l'effet du rayonnement solaire et de fortes températures »
+// « comme ceux émis par les transports » : Conseil national de l'air, L'ozone et ses impacts, octobre 2025, p. 2 du PDF, https://www.ecologie.gouv.fr/sites/default/files/documents/25084_Ozone-et-ses-impacts_vf.pdf — « les oxydes d'azote (NOx) issus du transport »
+// « Ses concentrations culminent donc en été » : Airparif, p. 8 — « les plus fortes concentrations d'ozone sont mesurées durant l'été, lorsque que les températures et l'ensoleillement sont les plus forts »
+// « en pleine période de végétation » : Airparif, p. 14, § 3.1 — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « Portée par le vent […] en subissent les effets » : texte TACCT précédent, conservé ; Airparif, p. 10 — « L'ozone est un polluant qui voyage. […] La pollution issue de l'agglomération impacte les zones rurales alentours »
 export const AOT40Text = () => (
   <>
     <Body size="sm">
-      La pollution figure parmi les cinq principales pressions à l’origine de
-      l’effondrement de la biodiversité. Portée par le vent, la pollution à
-      l’ozone ne s'arrête pas aux frontières des agglomérations. La dispersion
-      peut s’étendre sur plusieurs centaines de kilomètres. Même les territoires
-      éloignés des sources de pollution en subissent les effets.
+      La pollution figure parmi les cinq principales pressions à l'origine de
+      l'effondrement de la biodiversité. Très oxydant, l'ozone touche aussi
+      bien les cultures que la végétation naturelle : en altérant les tissus
+      des feuilles, il limite la photosynthèse, ce qui réduit les rendements
+      agricoles et la capacité des végétaux à absorber le CO₂.
+    </Body>
+    <Body size="sm"><br></br>
+      L'ozone n'est pas rejeté directement dans l'air : c’est un polluant
+      secondaire qui se forme sous l'effet du soleil et de la chaleur, par
+      réaction chimique entre d'autres polluants comme ceux émis par les
+      transports. Ses concentrations culminent donc en été, en pleine période
+      de végétation. Portée par le vent, la pollution à l'ozone ne s'arrête pas
+      aux frontières des agglomérations : même les territoires éloignés des
+      sources de pollution en subissent les effets.
+    </Body>
+  </>
+);
+
+//https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html
+// Sources du texte :
+// « L’ozone pénètre dans les feuilles des cultures par leurs pores, les stomates » : CLRTAP/UBA, Manual on Methodologies and Criteria for Modelling and Mapping Critical Loads and Levels, chapitre 3 (ICP Vegetation), mise à jour 2024, Texte 123/2024, p. 74, § 3.3.1.1, https://www.umweltbundesamt.de/system/files/medien/11850/publikationen/123_2024_texte_manual_on_methodologies_and_criteria.pdf — « O3 enters leaves via the stomatal pores on the leaf surface » ; Chambres d’agriculture, fiche APollO « Coût économique pour l’agriculture des impacts de l’ozone en France », p. 2 du PDF — « Il pénètre dans les feuilles et provoque un stress oxydatif délétère »
+// « Il y endommage les cellules » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, octobre 2025, p. 11 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « L’absorption de ce polluant endommage les cellules végétales »
+// « réduit la photosynthèse et fait vieillir les feuilles plus tôt » : CLRTAP/UBA, manuel 2024, p. 74, § 3.3.1.1 — « negative impacts on plant metabolism, including photosynthesis » ; « Visible leaf damage and premature aging of leaves »
+// « les rendements baissent, en quantité comme en qualité » : SDES, Bilan 2024, p. 11 du PDF — « une baisse des rendements agricoles (quantitatifs et qualitatifs) »
+// « Le blé, le soja, les pois, les haricots, l’oignon et la laitue font partie des cultures les plus sensibles » : ICP Vegetation (Mills & Harmens, éd.), Ozone Pollution: A hidden threat to food security, septembre 2011, tableau 1, p. 6 du PDF, https://nora.nerc.ac.uk/id/eprint/15071/1/N015071CR.pdf — catégorie « Sensitive » : « Peas and beans (including peanut) (30) […] Onion (23) […] Lettuce (19) Wheat (18) Soybean (18) » (perte de rendement en % à 60 ppb par rapport à 30 ppb) ; Chambres d’agriculture, fiche APollO, p. 1 du PDF — « Exemple d’espèces cultivées sensibles à l’ozone […] blé, soja, catonnier, melon, légumes à gousses (haricots, pois, fèves...) navet, oignon, laitue, tomate »
+// « En France, l’ozone aurait ainsi réduit en 2010 le rendement du blé tendre de 15 %, et celui des prairies et des pommes de terre de 11 %, selon l’étude APollO » : ADEME/Ineris/Chambres d’agriculture, Coût économique pour l’agriculture des impacts de la pollution de l’air par l’ozone (APollO), synthèse, mai 2019 (mise en ligne le 13/01/2021), p. 15 du PDF, https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html — « Malgré la tendance à la baisse, les pertes en pourcentage agrégées sur la France restent importantes, avec en 2010, 15 % pour le blé tendre, 11 % pour les prairies et les pommes de terre » ; le lien [3] porte sur « l’étude APollO » et renvoie à la source n° 3 de la thématique agriculture dans src/lib/sources.ts
+// « L’ozone culmine en été » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 8 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « même si ce polluant est présent toute l’année, les plus fortes concentrations d’ozone sont mesurées durant l’été, lorsque que les températures et l’ensoleillement sont les plus forts »
+// « au moment où les cultures sont en pleine croissance » : Airparif, p. 14 du PDF, § 3.1 — « la réglementation intègre des objectifs de qualité et des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « La quantité qu’elles absorbent dépend de l’ouverture de leurs stomates » : ICP Vegetation 2011, p. 5 du PDF — « The more open the stomata are, the more ozone will enter the plant. »
+// « qui varie notamment avec la température, la lumière, l’humidité de l’air et l’eau disponible dans le sol » : CLRTAP/UBA, manuel 2024, p. 75 — « Stomata are physiologically controlled and respond to environmental conditions such as temperature, light, air humidity, and soil moisture, as well as plant growth stage. »
+// « en période de sécheresse, la plante ferme ses stomates et absorbe moins d’ozone » : CLRTAP/UBA, manuel 2024, p. 75 — « For example, under hot and dry conditions, plants close their stomata to reduce water loss and as a consequence O3 uptake is reduced. »
+// « une culture irriguée les garde ouverts et en absorbe davantage » : ICP Vegetation 2011, p. 7 du PDF — « However, significant effects of ozone are likely where the crops are irrigated inducing stomatal opening, increasing ozone uptake and increasing impact. »
+// « L’irrigation, envisagée pour faire face aux sécheresses » : texte TACCT « Superficies irriguées » (SurfacesIrrigueesText, même fichier) — « elle pourrait devenir un outil d’adaptation au changement climatique » ; « l’irrigation “de résilience” visant à stabiliser les récoltes »
+// « peut ainsi accroître l’absorption d’ozone » : APollO, rapport complet, p. 41 du PDF — « de telles approches ont tendance à déplacer les plantations vers des périodes impliquant un besoin d’irrigation qui lui-même rend les cultures plus sensibles à l’ozone » ; ICP Vegetation 2011, p. 7 du PDF (voir ci-dessus)
+// « l’étude APollO souligne que les mesures prises pour faire face au changement climatique ne réduisent pas toujours les effets de l’ozone » : APollO, synthèse, p. 19 du PDF — « de tels travaux pourraient aussi s’inspirer des études sur les stratégies d’adaptation au changement climatique, même si les mesures conçues pour atténuer les impacts du changement climatique ne seront pas toujours synonymes d’atténuation en ce qui concerne les niveaux et effets de l’ozone » ; même phrase dans le rapport complet, p. 106 du PDF
+// « la sélection de variétés plus résistantes constitue une piste d’adaptation, mais elle demande du temps et des investissements » : Chambres d’agriculture, fiche APollO, p. 4 du PDF — « Au niveau de la plante : La sélection variétale qui intègre une meilleure résistance à l’ozone, qui demande du temps et des investissements » ; ICP Vegetation 2011, p. 5 du PDF — « Sensitivity to ozone varies between cultivars, which means that there is scope for exploiting ozone resistance within breeding programmes »
+// Points de vigilance :
+// Chiffre 2010 : estimation APollO par la méthode du flux d’ozone absorbé par les stomates (POD), pas par l’AOT40. APollO, synthèse, p. 17 du PDF — « les incertitudes dans les résultats économiques doivent être considérées comme étant élevées, avec une tendance majorante » ; la pénalité climatique n’y est pas prise en compte (synthèse, p. 15). D’où le conditionnel « aurait réduit ».
+// Chiffre alternatif plus récent, non retenu car il ne couvre pas les prairies : Ineris pour l’AEE, ETC HE Report 2024/9, Wheat and potato yield loss in 2022 in Europe due to ozone exposure, novembre 2024, p. 48, https://www.eionet.europa.eu/etcs/etc-he/products/etc-he-products/etc-he-reports/etc-he-report-2024-9-wheat-and-potato-yield-loss-in-2022-in-europe-due-to-ozone-exposure — « losses in France in 2022 are estimated at 7 % for both wheat and potatoes » ; les pertes varient fortement selon les années (4,8 % pour le blé en France en 2019, ETC/ATNI Report 2021/17).
+// Sensibilité des cultures : les sources divergent pour l’orge et le colza (« moderately sensitive » pour ICP Vegetation 2011, « peu sensibles » pour l’ADEME, étude BEMEVO), et pour la tomate (« moderately sensitive » pour ICP Vegetation, « sensible » pour la fiche APollO) ; elles ne sont donc pas citées.
+// Ouverture des stomates : l’eau n’est qu’un des facteurs ; la liste du texte, introduite par « notamment », reprend ceux du manuel CLRTAP (p. 75), sauf le stade de croissance. Les dégâts dépendent aussi de la concentration et de la durée d’exposition, et de la capacité de la plante à neutraliser l’ozone : ICP Vegetation 2011, p. 5 du PDF — « The results of these damaging effects depend on both the concentration and duration of ozone exposure. Plants are able to detoxify low concentrations of ozone but only to a certain threshold level. »
+// Irrigation : le blé est rarement irrigué ; le point concerne surtout les cultures irriguées. APollO, rapport complet, p. 105 du PDF — « Une irrigation non pertinente dans la plupart des régions pour le blé ». ICP Vegetation 2011 (p. 9 du PDF) évoque aussi de suspendre l’irrigation pendant les pics d’ozone (« withholding irrigation during episodes of peak ozone concentrations »), piste non reprise par une source française.
+// Retiré du texte lors de la reprise du second paragraphe :
+// « ses concentrations sont généralement plus élevées dans les zones rurales et périurbaines qu’en ville » (SDES, Bilan 2024, p. 35 du PDF ; Airparif, p. 9 du PDF) : information sans lien avec la lecture du chiffre par un lecteur agricole.
+// « cet impact est peu connu du monde agricole » : APollO, rapport complet, p. 8 du PDF — « Paradoxalement, cet impact de l’ozone sur les productions agricoles est peu connu du secteur agricole » ; repose sur un questionnaire de novembre 2018 aux conseillers des chambres d’agriculture, avec un taux de réponse de 8 % (rapport complet).
+// « les exploitations disposent de peu de leviers : la réduction des émissions des polluants à l’origine de l’ozone est jugée plus appropriée que l’adaptation des pratiques » : APollO, synthèse, p. 18 du PDF — « les stratégies de mitigation des émissions de polluants précurseurs de l’ozone sont certainement plus appropriées que les stratégies d’adaptation du secteur agricole et sylvicole » ; conclusion principale d’APollO, retirée pour centrer le texte sur l’adaptation.
+// Volontairement écarté du texte : l’agriculture comme émettrice de précurseurs de l’ozone (Citepa, Secten 2026, p. 443 : 25 % des NOx, 39 % des COVNM, 71 % du CH4 en 2024), car les sources divergent sur le poids d’une action agricole locale sur l’ozone ; les limites de l’AOT40 (exposition et non dose absorbée), traitées dans le « D’où vient ce chiffre ? ».
+export const AOT40AgricultureText = () => (
+  <>
+    <Body size="sm">
+      L’ozone pénètre dans les feuilles des cultures par leurs pores, les
+      stomates. Il y endommage les cellules, réduit la photosynthèse et fait
+      vieillir les feuilles plus tôt : les rendements baissent, en quantité
+      comme en qualité. Le blé, le soja, les pois, les haricots, l’oignon et la
+      laitue font partie des cultures les plus sensibles. En France, l’ozone
+      aurait ainsi réduit en 2010 le rendement du blé tendre de 15 %, et
+      celui des prairies et des pommes de terre de 11 %, selon{' '}
+      <ScrollToSourceTag sourceNumero={3}>l’étude APollO</ScrollToSourceTag>.
+    </Body>
+    <Body size="sm"><br></br>
+      L’ozone culmine en été, au moment où les cultures sont en pleine
+      croissance. La quantité qu’elles absorbent dépend de l’ouverture de
+      leurs stomates, qui varie notamment avec la température, la lumière,
+      l’humidité de l’air et l’eau disponible dans le sol : en période de
+      sécheresse, la plante ferme ses stomates et absorbe moins d’ozone ; une
+      culture irriguée les garde ouverts et en absorbe davantage.
+      L’irrigation, envisagée pour faire face aux sécheresses, peut ainsi
+      accroître l’absorption d’ozone. Tant que les émissions de précurseurs de
+      l’ozone ne diminuent pas suffisamment, la sélection de variétés plus
+      résistantes constitue une piste d’adaptation, mais elle demande du temps
+      et des investissements.
     </Body>
   </>
 );
@@ -696,21 +773,80 @@ export const DebroussaillementText = ({
 );
 
 export const O3Text = () => (
-  <Body size="sm">
-    <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
-    (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
-    une réglementation et des seuils conduisant aux déclenchement de procédures
-    préfectorales. Si les pics de pollution aiguë provoquent des symptômes
-    respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
-    plus préoccupant : elle est associée à des effets à long terme, même à des
-    concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
-    l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
-    recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
-    plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
-      agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
-      en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
-        appliquées </ScrollToSourceTag>.</b>
-  </Body>
+  <>
+    <Body size="sm">
+      <DefinitionTooltip title={ozone}>L’ozone</DefinitionTooltip>{' '}
+      (O3) fait partie des 4 polluants atmosphériques pour lesquels il existe
+      une réglementation et des seuils conduisant aux déclenchement de procédures
+      préfectorales. Si les pics de pollution aiguë provoquent des symptômes
+      respiratoires immédiats, l’exposition chronique constitue un enjeu sanitaire
+      plus préoccupant : elle est associée à des effets à long terme, même à des
+      concentrations ne déclenchant pas nécessairement d’alerte. C’est notamment pourquoi
+      l’<DefinitionTooltip title={OMS}>OMS</DefinitionTooltip> {" "}
+      recommande <DefinitionTooltip title={valeursGuidesO3}>des valeurs guides </DefinitionTooltip>
+      plus strictes que le seuil européen actuel. À titre d’exemple, en 2022, <b>seules 12 % des
+        agglomérations françaises le dépassaient alors que 95 % d’entre elles auraient été
+        en dépassement si les <ScrollToSourceTag sourceNumero={1}>valeurs guides de l’OMS avaient été
+          appliquées </ScrollToSourceTag>.</b>
+    </Body>
+    <Body weight="bold" size="sm" style={{ marginTop: '1rem' }}>
+      Pas de stations sur votre territoire ?
+    </Body>
+    <Body size="sm" style={{ marginTop: '0.5rem' }}>
+      Les concentrations d’ozone les plus importantes ne sont pas toujours
+      mesurées au cœur des zones émettrices (centres villes, zones
+      industrielles) mais parfois à 50, 100 ou 150 km de là, sous le vent des
+      émetteurs. Là où, en milieu urbain, l’ozone produit la journée disparaît
+      en grande partie pendant la nuit ou sous l’effet d’autres polluants, dans
+      les zones rurales en revanche, la moindre présence de polluants
+      destructeurs peut favoriser son accumulation et générer des
+      concentrations plus élevées qu’en ville.
+    </Body>
+  </>
+);
+
+// Sources du texte :
+// « gaz irritant : inhalé, il peut provoquer des troubles respiratoires, déclencher des crises d’asthme et réduire la fonction pulmonaire » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 11 du PDF, § 2.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « L’ozone est un gaz irritant qui pénètre facilement jusqu’aux voies respiratoires les plus fines […] il peut provoquer des problèmes respiratoires, déclencher des crises d’asthme, diminuer la fonction pulmonaire »
+// « Contrairement au dioxyde d’azote et aux particules (PM10), ses dépassements de la valeur cible pour la santé concernent surtout les zones rurales et les agglomérations de petite et moyenne taille » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, p. 39 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « Contrairement au NO2 et aux PM10, les agglomérations les plus touchées sont celles de moyenne et de petite taille (moins de 50 000 habitants), de même que les zones rurales »
+// « les oxydes d’azote émis notamment par le trafic routier contribuent à former l’ozone, mais ils participent aussi à sa destruction » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 10 du PDF, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « Si les oxydes d’azote contribuent à la formation de l’ozone lors de la journée, ils participent également à sa destruction. En effet, l’ozone réagit avec le monoxyde d’azote (NO) » ; Conseil national de l’air, L’ozone et ses impacts, octobre 2025, p. 2 du PDF, https://www.ecologie.gouv.fr/sites/default/files/documents/25084_Ozone-et-ses-impacts_vf.pdf — « les oxydes d’azote (NOx) issus du transport »
+// « là où ils sont le plus concentrés, au cœur des grandes agglomérations » : Airparif, p. 16 du PDF — « l’effet « puits d’ozone » caractéristique des grandes métropoles au centre desquelles se concentrent les sources d’oxydes d’azote (NOx), telles que le trafic routier et le chauffage résidentiel qui, par réaction avec l’ozone, consomment celui-ci »
+// « Porté par le vent » : Airparif, p. 10 du PDF — « L’ozone est un polluant qui voyage. […] La pollution issue de l’agglomération impacte les zones rurales alentours »
+// « atteint donc généralement ses niveaux les plus élevés hors des villes, dans les zones périurbaines et rurales » : SDES, Bilan de la qualité de l’air extérieur en France en 2024, p. 35 du PDF, https://www.statistiques.developpement-durable.gouv.fr/media/8742/download?inline — « Les concentrations maximales en O3 sont généralement observées en milieux rural et périurbain, compte tenu des mécanismes de formation de ce polluant »
+// « Les pics d’ozone surviennent par temps chaud et ensoleillé » : Atmo France, Canicule et ozone : bien s’informer pour mieux se protéger, 19 juin 2026, https://www.atmo-france.org/actualite/canicule-et-ozone-bien-sinformer-pour-mieux-se-proteger — « les concentrations d’ozone augmentent généralement lors des périodes estivales, particulièrement lorsque les conditions sont chaudes, ensoleillées et peu ventées »
+// « la chaleur en aggrave les effets sur la santé » : PNACC-3, mesure 18, action 2, p. 140, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « La chaleur aggravant les effets sanitaires de certains polluants » ; Santé publique France, Pollution atmosphérique : quels sont les risques ?, https://invs.santepubliquefrance.fr/air/pollution-atmospherique-quels-sont-les-risques — « le risque de décès associé à l’ozone et aux particules fines était plus important les jours chauds »
+// « La mesure 18 […] prévoit ainsi une expérimentation dans un département : dès la vigilance chaleur orange ou rouge, le préfet pourra y déclencher des mesures habituellement prises lors des épisodes de pollution » : PNACC-3, mesure 18, actions nouvelles, p. 139 — « Réaliser une expérimentation pendant une durée maximale de deux ans dans un département pour que le préfet examine le déclenchement de mesures, appliquées habituellement lors d’épisodes de pollution, en cas de vigilance chaleur orange ou rouge »
+// « comme la réduction de vitesse des transports ou la limitation du trafic » : PNACC-3, mesure 18, action 2, p. 140 — « des limitations, reports de trafic ou réduction de vitesse pour le secteur des transports »
+export const O3AirText = () => (
+  <>
+    <Body size="sm">
+      L’ozone est un gaz irritant : inhalé, il peut provoquer des troubles
+      respiratoires, déclencher des crises d’asthme et réduire la fonction
+      pulmonaire. De façon contre-intuitive, et contrairement au dioxyde
+      d’azote et aux particules (PM10), ses dépassements de la valeur cible
+      pour la santé{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        concernent surtout les zones rurales et les agglomérations de petite et
+        moyenne taille
+      </ScrollToSourceTag>
+      . En effet, les oxydes d’azote émis notamment par le trafic routier
+      contribuent à former l’ozone, mais ils{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        participent aussi à sa destruction
+      </ScrollToSourceTag>{' '}
+      là où ils sont le plus concentrés, au cœur des grandes agglomérations.
+      Porté par le vent, l’ozone atteint donc généralement ses niveaux les plus
+      élevés hors des villes, dans les zones périurbaines et rurales.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Les pics d’ozone surviennent par temps chaud et ensoleillé, alors même
+      que la chaleur en aggrave les effets sur la santé. La mesure 18 du Plan
+      National d’Adaptation au Changement Climatique (PNACC-3) prévoit ainsi
+      une expérimentation dans un département : dès la vigilance chaleur
+      orange ou rouge, le préfet pourra y déclencher des mesures
+      habituellement prises lors des épisodes de pollution, comme la réduction
+      de vitesse des transports ou la limitation du trafic.
+    </Body>
+  </>
 );
 
 export const SecheressesText = () => (

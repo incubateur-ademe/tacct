@@ -164,7 +164,7 @@ export const GetAOT40 = async (): Promise<AOT40[]> => {
   );
   const dbQuery = (async () => {
     try {
-      const value = await prisma.databases_v2_aot_40.findMany();
+      const value = await prisma.aot_40_new.findMany();
       return value;
     } catch (error) {
       console.error(error);

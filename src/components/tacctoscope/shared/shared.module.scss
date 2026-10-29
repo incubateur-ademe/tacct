@@ -13,20 +13,6 @@
     border-color: #038278;
 }
 
-.accordionShellEnquete::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 8px;
-    background: #89cac6;
-}
-
-.accordionShellEnquete:not(.accordionShellHighlighted)::before {
-    background: #cccccc;
-}
-
 .accordionShellHeader {
     width: 100%;
     display: flex;

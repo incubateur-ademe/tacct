@@ -4,6 +4,7 @@ import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuill
 import { HautDePage } from '@/components/mon-espace/HautDePage';
 import { RoadmapEmptyState } from '@/components/tacctoscope/roadmap/RoadmapEmptyState';
 import {
+  RetourSommaire,
   RoadmapMenu,
   RoadmapMenuItem
 } from '@/components/tacctoscope/roadmap/RoadmapMenu';
@@ -52,53 +53,6 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
     setHydrated(true);
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    if (!hydrated) return;
-    const hash = decodeURIComponent(window.location.hash.slice(1));
-    if (!hash) return;
-
-    let handle = 0;
-    let frames = 0;
-    let stableFrames = 0;
-    let previousTop: number | null = null;
-    let cancelled = false;
-
-    const cancel = () => {
-      cancelled = true;
-      cancelAnimationFrame(handle);
-    };
-
-    const align = () => {
-      if (cancelled) return;
-      const target = document.getElementById(hash);
-      if (target) {
-        const top = target.getBoundingClientRect().top;
-        stableFrames =
-          previousTop !== null && Math.abs(top - previousTop) < 1
-            ? stableFrames + 1
-            : 0;
-        previousTop = top;
-        target.scrollIntoView({ block: 'start' });
-      }
-      frames += 1;
-      if (stableFrames < 10 && frames < 180) {
-        handle = requestAnimationFrame(align);
-      }
-    };
-
-    handle = requestAnimationFrame(align);
-    window.addEventListener('wheel', cancel, { passive: true });
-    window.addEventListener('touchstart', cancel, { passive: true });
-    window.addEventListener('keydown', cancel);
-
-    return () => {
-      cancel();
-      window.removeEventListener('wheel', cancel);
-      window.removeEventListener('touchstart', cancel);
-      window.removeEventListener('keydown', cancel);
-    };
-  }, [hydrated]);
-
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
     slug: criterion.slug,
     title: MENU_TITLES[criterion.slug] ?? criterion.title,
@@ -138,9 +92,7 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
       counts: getCriterionAnswerCounts(criterion, currentAnswers),
       missingCount: total - answered,
       firstMissingId: firstMissing ? firstMissing.id : null,
-      strengths: answeredQuestions.filter(
-        (question) => question.answer === '4'
-      ),
+      strengths: answeredQuestions.filter((question) => question.answer === '4'),
       unknowns: answeredQuestions.filter(
         (question) => question.answer === 'ne_sais_pas'
       ),
@@ -168,10 +120,13 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
   const showNoAnswerHelp = unknownCount > 0;
 
   return (
-    <NewContainer size="xl" style={{ paddingTop: '1.5rem' }}>
+    <NewContainer size="xl" style={{ paddingTop: "1.5rem" }}>
       <div className={styles.body}>
         <RoadmapMenu items={menuItems} />
         <div className={styles.content}>
+          <div className={styles.backLinkMobile}>
+            <RetourSommaire />
+          </div>
           {!hydrated ? null : isEmpty ? (
             <RoadmapEmptyState />
           ) : (

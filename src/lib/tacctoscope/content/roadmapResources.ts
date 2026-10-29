@@ -11,6 +11,7 @@ import RessourceCritere3Q4Nonbis from '@/assets/images/ressource-critere3-q4-non
 import RessourceCritere3Q4Nonter from '@/assets/images/ressource-critere3-q4-nonter.webp';
 import RessourceCritere3Q5Non from '@/assets/images/ressource-critere3-q5-non.webp';
 import RessourceCritere4Q3Non from '@/assets/images/ressource-critere4-q3-non.webp';
+import RessourceCritere5Q3Non from '@/assets/images/ressource-critere5-q3-non.webp';
 import type { StaticImageData } from 'next/image';
 import { yieldsRecommendation } from '../answers';
 import { buildQuestionKey } from '../keys';
@@ -147,6 +148,17 @@ const RETOURS_ATELIERS_SENSIBILITE: RoadmapResource = {
   utilite:
     'Découvrez les apprentissages liés à la réalisation d’ateliers sensibilité. Ces deux retours d’expériences proposent des déroulés d’ateliers, à personnaliser à votre contexte, pour évaluer la sensibilité de votre territoire.',
   image: RessourceCritere3Q4Nonter
+};
+
+const RETOURS_RESTITUTION_DIAGNOSTIC: RoadmapResource = {
+  tag: 'article',
+  title: 'Retours d’expériences sur la restitution d’un diagnostic',
+  description:
+    "Notre collection « Restituer mon diagnostic de vulnérabilité » centralise les retours d'expérience des territoires sur les différentes manières de restituer un diagnostic de vulnérabilité.",
+  url: '/ressources/restituer-diagnostic-vulnerabilite',
+  utilite:
+    "Un diagnostic n’a d’intérêt que s'il est partagé et compris, et chaque territoire développe sa propre approche. Cette collection vous permet de découvrir les meilleures pratiques pour faire de la restitution un temps qui fédère, alerte et mobilise !",
+  image: RessourceCritere5Q3Non
 };
 
 const DONNEES_CLIMATIQUES: Record<string, QuestionRecommendations> = {
@@ -505,13 +517,13 @@ const PROBLEMATISATION_ET_CONCLUSION: Record<string, QuestionRecommendations> =
         title: "Restituer les résultats pour préparer l'action",
         description:
           "Si aucune restitution du diagnostic n'a lieu, le risque est qu'il finisse sur une étagère. La restitution fait du diagnostic un objet vivant et partagé : elle redonne une **vision d'ensemble** à ceux qui y ont contribué, et le fait découvrir à ceux qui n'y étaient pas.\n\nC'est aussi l'occasion de **donner à chacun un rôle clair dans la suite de la démarche** : aux élus de valider la problématique, aux services techniques et aux partenaires de s'engager dans l'élaboration de la trajectoire d'adaptation.\n\nSans ce temps de restitution, le passage du diagnostic à la stratégie risque de manquer d'élan et de portage partagé.",
-        ressources: []
+        ressources: [RETOURS_RESTITUTION_DIAGNOSTIC]
       },
       satisfaisant: {
         title: "Assortir la restitution d'un appel à l'action clair",
         description:
           'Vérifier que ces restitutions ont comporté des appels à l’action clair pour les participants. Par exemple :\n\n• Pour un élu, valider une problématique.\n• Pour un collègue des services techniques ou un partenaire, participer à la phase de stratégie pour l’élaboration de la trajectoire.',
-        ressources: []
+        ressources: [RETOURS_RESTITUTION_DIAGNOSTIC]
       }
     }
   };

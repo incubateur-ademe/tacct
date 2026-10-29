@@ -662,10 +662,9 @@ export type EtatCoursDeau = {
 export type AOT40 = {
   index: number;
   nom_site: string;
-  type_d_implantation: string;
-  valeur_brute: number;
-  Latitude: number;
-  Longitude: number;
+  valeur: number;
+  latitude: number;
+  longitude: number;
 };
 
 export type O3 = {
@@ -941,6 +940,7 @@ export type TableCommuneModel = {
   couverture_lcz: string | null;
   aires_appellations_controlees_nom: string[] | null;
   aires_appellations_controlees_signe: string[] | null;
+  projets_alimentaires_territoriaux: string[] | null;
 };
 
 export type DebroussaillementModel = {

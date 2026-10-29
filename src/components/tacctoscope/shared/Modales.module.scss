@@ -85,8 +85,20 @@
     }
 }
 
-.footer.footerCompact > * {
-    flex: 0 0 auto;
+.footer.footerCompact {
+    > * {
+        flex: 0 0 auto;
+    }
+
+    @media screen and (max-width: 575px) {
+        flex-direction: column;
+
+        // !important : écrase le width: fit-content inline des boutons du design-system
+        > * {
+            width: 100% !important;
+            text-align: center;
+        }
+    }
 }
 
 .footer.footerGapTight {
