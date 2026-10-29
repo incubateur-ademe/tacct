@@ -617,6 +617,11 @@ export const SurfacesAgricolesText = () => (
   </div>
 );
 
+// Sources du texte :
+// « 93 zones géographiques : 88 aires urbaines de l’Hexagone, la Guadeloupe, la Martinique, La Réunion, Mayotte et le littoral nord-ouest de la Guyane » : Cerema, actualité du 15 septembre 2026, https://www.cerema.fr/fr/actualites/cartographie-lcz-outil-villes-plus-fraiches-cerema-presente — « Une cartographie en ligne des LCZ sur 93 zones géographiques […] En France Hexagonale, 88 aires urbaines de plus de 50 000 habitants sont couvertes. En Outre-Mer, cette couverture concerne les îles de Guadeloupe, Martinique, La Réunion et Mayotte, et le littoral nord-ouest de Guyane. »
+// « 12 110 communes couvertes » : Cerema, même page — « La cartographie est disponible en ligne pour 12 110 communes (sur 34 955) »
+// « plus de 5 millions d’habitants vivent dans des quartiers à forte sensibilité aux fortes chaleurs » : Cerema, même page, rubrique « Enseignements » — « Plus de 5 millions d’habitants vivent dans des quartiers à forte sensibilité aux fortes chaleurs »
+// « cahier du Cerema « Cartographie des LCZ : un outil pour des villes plus fraîches » » : Cerema, collection « Les cahiers », 2026, https://doc.cerema.fr/Default/doc/SYRACUSE/616032/cartographie-des-lcz-un-outil-pour-des-villes-plus-fraiches — titre du document
 export const LCZCeremaText1 = () => (
   <>
     <Body weight="bold">Comment lire cette carte ?</Body>
@@ -633,21 +638,23 @@ export const LCZCeremaText1 = () => (
         cette cartographie n’est pas une modélisation de l’îlot de chaleur
         urbain.
       </b>{' '}
-      Ces données, fournies par le CEREMA, couvrent 88 aires urbaines en France
-      métropolitaine. Sur les 12 000 communes étudiées, plus de 5 millions
-      d’habitants vivent dans des quartiers très sensibles aux fortes chaleurs.
+      Ces données, fournies par le CEREMA, couvrent 93 zones géographiques :
+      88 aires urbaines de l’Hexagone, la Guadeloupe, la Martinique,
+      La Réunion, Mayotte et le littoral nord-ouest de la Guyane. Sur les
+      12 110 communes couvertes, plus de 5 millions d’habitants vivent dans
+      des quartiers à forte sensibilité aux fortes chaleurs.
     </Body>
 
     <Body style={{ marginTop: '1rem', color: 'var(--gris-dark)' }}>
-      Rendez-vous sur le site du{' '}
+      Pour prendre en main cette cartographie, consultez le cahier du{' '}
       <a
-        href="https://doc.cerema.fr/Default/doc/SYRACUSE/600739/cartographie-nationale-de-donnees-de-zones-climatiques-locales-guide-utilisateurs"
+        href="https://doc.cerema.fr/Default/doc/SYRACUSE/616032/cartographie-des-lcz-un-outil-pour-des-villes-plus-fraiches"
         target="_blank"
         rel="noreferrer"
       >
         Cerema
       </a>{' '}
-      pour en savoir plus sur leur méthodologie.
+      « Cartographie des LCZ : un outil pour des villes plus fraîches ».
     </Body>
   </>
 );

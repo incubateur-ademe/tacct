@@ -152,7 +152,7 @@
     position: absolute;
     top: calc(100% + 0.5rem);
     right: 0;
-    z-index: 601;
+    z-index: calc(var(--ground) + 1000);
     min-width: 240px;
     background: #ffffff;
     border: 1px solid #e7e5e5;

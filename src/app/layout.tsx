@@ -14,6 +14,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       {...getHtmlAttributes({ lang: 'fr' })}
       className={cx(styles.app)}
       title=""
+      data-scroll-behavior="smooth"
     >
       <head>
         <DsfrHead
