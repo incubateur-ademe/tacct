@@ -11,9 +11,9 @@ import { TacctBloc } from './(home)/TacctBloc';
 import { TacctoscopeBloc } from './(home)/TacctoscopeBloc';
 import { VerbatimBloc } from './(home)/VerbatimBloc';
 
-const NOTICE_KEY = 'notice-tacctoscope-revision-fermee';
-const NOTICE_START = new Date('2026-10-12');
-const NOTICE_END = new Date('2026-10-23T23:59:59');
+const NOTICE_KEY = 'notice-pollution-ozone-fermee';
+const NOTICE_START = new Date('2026-10-29');
+const NOTICE_END = new Date('2026-11-12T23:59:59');
 
 const Home = () => {
   const { css } = useStyles();
@@ -40,24 +40,21 @@ const Home = () => {
             backgroundColor: "var(--gris-medium)",
             color: 'black'
           })}
+          classes={{ title: css({ fontWeight: 400 }) }}
           isClosable={true}
           onClose={handleCloseNotice}
           title={
             <>
-              Vous révisez un diagnostic de vulnérabilité&nbsp;? Ne repartez
-              pas de zéro&nbsp;!
-            </>
-          }
-          description={
-            <>
-              Le <Link href="/tacctoscope">TACCToscope</Link> est là pour vous
-              aider à cibler le retravail&nbsp;: 5 catégories de questions, des
-              pistes d’améliorations sur mesure et une feuille de route prête à
-              l’emploi <span aria-hidden="true">⇒</span>{" "}
-              <Link href="/tacctoscope">
-                Je commence dès maintenant la révision de mon diagnostic
-              </Link>{" "}
-              <span aria-hidden="true">🎯</span>
+              TACCT enrichit ses données sur la <b>pollution à l’ozone</b>&nbsp;:
+              publication de la thématique <b>Air</b>&nbsp;; ajout de
+              l’<b>exposition de vos cultures</b> (thématique Agriculture)&nbsp;;
+              et mise à jour des données concernant l’<b>impact sur vos
+              végétaux</b> (thématique Biodiversité). Découvrez également si
+              votre territoire dispose d’un <b>projet alimentaire
+              territorial</b> (Agriculture) <span aria-hidden="true">⇒</span>{' '}
+              <Link href="/recherche-territoire">
+                j’explore les nouvelles données
+              </Link>
             </>
           }
         />
