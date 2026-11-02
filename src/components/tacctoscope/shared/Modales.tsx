@@ -23,7 +23,7 @@ interface ModalProps {
   onClose: () => void;
   title: string;
   icon?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   footer?: ReactNode;
   compactFooter?: boolean;
   tightFooterGap?: boolean;
@@ -98,7 +98,7 @@ export const Modal = ({
           </p>
         </div>
 
-        <div className={styles.body}>{children}</div>
+        {children && <div className={styles.body}>{children}</div>}
 
         {footer && (
           <div
@@ -117,7 +117,7 @@ export const Modal = ({
 interface ConfirmModalProps {
   isOpen: boolean;
   title: string;
-  message: ReactNode;
+  message?: ReactNode;
   icon?: ReactNode;
   confirmLabel?: string;
   cancelLabel?: string;
@@ -127,6 +127,7 @@ interface ConfirmModalProps {
   largeTitle?: boolean;
   onConfirm: () => void;
   onClose: () => void;
+  onCancel?: () => void;
 }
 
 export const ConfirmModal = ({
@@ -141,7 +142,8 @@ export const ConfirmModal = ({
   tightFooterGap = false,
   largeTitle = false,
   onConfirm,
-  onClose
+  onClose,
+  onCancel
 }: ConfirmModalProps) => (
   <Modal
     isOpen={isOpen}
@@ -156,7 +158,7 @@ export const ConfirmModal = ({
         <BoutonSecondaireClassic
           size="md"
           text={cancelLabel}
-          onClick={onClose}
+          onClick={onCancel ?? onClose}
           disabled={pending}
           style={{ whiteSpace: 'pre-line' }}
         />

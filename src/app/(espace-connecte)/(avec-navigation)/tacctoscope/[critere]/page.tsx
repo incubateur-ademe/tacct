@@ -44,8 +44,10 @@ const CriterionPage = async ({ params }: Params) => {
     if (value != null) answers[key] = value;
   }
 
+  // Remonte la vue si les réponses changent au rafraîchissement (import des réponses locales).
   return (
     <CriteresView
+      key={JSON.stringify(answers)}
       criterion={criterion}
       answers={answers}
       nextSlug={getNextCriterionSlug(criterion.slug)}
