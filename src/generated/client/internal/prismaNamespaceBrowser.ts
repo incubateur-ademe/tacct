@@ -53,7 +53,6 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   databases_v2_agriculture: 'databases_v2_agriculture',
   databases_v2_agriculture_bio: 'databases_v2_agriculture_bio',
-  databases_v2_aot_40: 'databases_v2_aot_40',
   databases_v2_arretes_catnat: 'databases_v2_arretes_catnat',
   databases_v2_atlas_biodiversite: 'databases_v2_atlas_biodiversite',
   databases_v2_collectivites_searchbar: 'databases_v2_collectivites_searchbar',
@@ -62,7 +61,6 @@ export const ModelName = {
   databases_v2_export_cours_d_eau: 'databases_v2_export_cours_d_eau',
   databases_v2_lcz_couverture: 'databases_v2_lcz_couverture',
   databases_v2_patch4c: 'databases_v2_patch4c',
-  databases_v2_prelevements_eau: 'databases_v2_prelevements_eau',
   databases_v2_qualite_sites_baignade: 'databases_v2_qualite_sites_baignade',
   databases_v2_rga: 'databases_v2_rga',
   databases_v2_surfaces_agricoles: 'databases_v2_surfaces_agricoles',
@@ -207,18 +205,6 @@ export const Databases_v2_agriculture_bioScalarFieldEnum = {
 } as const
 
 export type Databases_v2_agriculture_bioScalarFieldEnum = (typeof Databases_v2_agriculture_bioScalarFieldEnum)[keyof typeof Databases_v2_agriculture_bioScalarFieldEnum]
-
-
-export const Databases_v2_aot_40ScalarFieldEnum = {
-  index: 'index',
-  nom_site: 'nom_site',
-  type_d_implantation: 'type_d_implantation',
-  valeur_brute: 'valeur_brute',
-  Latitude: 'Latitude',
-  Longitude: 'Longitude'
-} as const
-
-export type Databases_v2_aot_40ScalarFieldEnum = (typeof Databases_v2_aot_40ScalarFieldEnum)[keyof typeof Databases_v2_aot_40ScalarFieldEnum]
 
 
 export const Databases_v2_arretes_catnatScalarFieldEnum = {
@@ -537,39 +523,6 @@ export const Databases_v2_patch4cScalarFieldEnum = {
 } as const
 
 export type Databases_v2_patch4cScalarFieldEnum = (typeof Databases_v2_patch4cScalarFieldEnum)[keyof typeof Databases_v2_patch4cScalarFieldEnum]
-
-
-export const Databases_v2_prelevements_eauScalarFieldEnum = {
-  index: 'index',
-  code_geographique: 'code_geographique',
-  libelle_geographique: 'libelle_geographique',
-  epci: 'epci',
-  libelle_epci: 'libelle_epci',
-  departement: 'departement',
-  libelle_departement: 'libelle_departement',
-  region: 'region',
-  ept: 'ept',
-  libelle_petr: 'libelle_petr',
-  code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr',
-  libelle_sous_champ: 'libelle_sous_champ',
-  A2020: 'A2020',
-  A2019: 'A2019',
-  A2018: 'A2018',
-  A2017: 'A2017',
-  A2016: 'A2016',
-  A2015: 'A2015',
-  A2014: 'A2014',
-  A2013: 'A2013',
-  A2012: 'A2012',
-  A2011: 'A2011',
-  A2010: 'A2010',
-  A2009: 'A2009',
-  A2008: 'A2008',
-  sous_champ: 'sous_champ'
-} as const
-
-export type Databases_v2_prelevements_eauScalarFieldEnum = (typeof Databases_v2_prelevements_eauScalarFieldEnum)[keyof typeof Databases_v2_prelevements_eauScalarFieldEnum]
 
 
 export const Databases_v2_qualite_sites_baignadeScalarFieldEnum = {

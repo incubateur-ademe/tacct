@@ -52,11 +52,6 @@ export type databases_v2_agriculture = Prisma.databases_v2_agricultureModel
  */
 export type databases_v2_agriculture_bio = Prisma.databases_v2_agriculture_bioModel
 /**
- * Model databases_v2_aot_40
- * 
- */
-export type databases_v2_aot_40 = Prisma.databases_v2_aot_40Model
-/**
  * Model databases_v2_arretes_catnat
  * 
  */
@@ -96,11 +91,6 @@ export type databases_v2_lcz_couverture = Prisma.databases_v2_lcz_couvertureMode
  * 
  */
 export type databases_v2_patch4c = Prisma.databases_v2_patch4cModel
-/**
- * Model databases_v2_prelevements_eau
- * 
- */
-export type databases_v2_prelevements_eau = Prisma.databases_v2_prelevements_eauModel
 /**
  * Model databases_v2_qualite_sites_baignade
  * 

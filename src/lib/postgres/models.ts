@@ -257,36 +257,6 @@ export type RessourcesEau = {
   A2020: number;
 };
 
-export type PrelevementsEau = {
-  libelle_sous_champ: string | null;
-  sous_champ: string | null;
-  code_geographique: string;
-  departement: string;
-  libelle_departement: string;
-  epci: string;
-  index: number;
-  libelle_epci: string;
-  libelle_geographique: string;
-  ept: string | null;
-  libelle_petr: string | null;
-  code_pnr: string | null;
-  libelle_pnr: string | null;
-  region: number;
-  A2008: string | null;
-  A2009: string | null;
-  A2010: string | null;
-  A2011: string | null;
-  A2012: string | null;
-  A2013: string | null;
-  A2014: string | null;
-  A2015: string | null;
-  A2016: string | null;
-  A2017: string | null;
-  A2018: string | null;
-  A2019: string | null;
-  A2020: string | null;
-};
-
 export type PrelevementsEauParsed = {
   libelle_sous_champ: string | null;
   sous_champ: string | null;
