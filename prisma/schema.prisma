@@ -1889,3 +1889,24 @@ model tacctoscope_ressources {
   @@unique([event_timestamp, session_id, person_id, ressource_url], map: "uq_tacctoscope_ressources_natural")
   @@schema("analytics")
 }
+
+model forets_communales {
+  index                                    Int     @id
+  code_geographique                        String
+  libelle_geographique                     String
+  epci                                     String
+  libelle_epci                             String
+  departement                              String
+  libelle_departement                      String
+  region                                   Float
+  ept                                      String?
+  libelle_petr                             String?
+  code_pnr                                 String?
+  libelle_pnr                              String?
+  surface_foret_possedee_ha                Float?
+  surface_foret_possedee_sur_territoire_ha Float?
+  surface_commune_ha                       Float?
+
+  @@index([index], map: "ix_forets_communales_index")
+  @@schema("databases_v2")
+}

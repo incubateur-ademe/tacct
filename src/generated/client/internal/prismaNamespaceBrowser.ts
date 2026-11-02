@@ -133,7 +133,8 @@ export const ModelName = {
   user_study: 'user_study',
   tacctoscope_answer: 'tacctoscope_answer',
   user_besoin: 'user_besoin',
-  tacctoscope_ressources: 'tacctoscope_ressources'
+  tacctoscope_ressources: 'tacctoscope_ressources',
+  forets_communales: 'forets_communales'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1729,6 +1730,27 @@ export const Tacctoscope_ressourcesScalarFieldEnum = {
 } as const
 
 export type Tacctoscope_ressourcesScalarFieldEnum = (typeof Tacctoscope_ressourcesScalarFieldEnum)[keyof typeof Tacctoscope_ressourcesScalarFieldEnum]
+
+
+export const Forets_communalesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  surface_foret_possedee_ha: 'surface_foret_possedee_ha',
+  surface_foret_possedee_sur_territoire_ha: 'surface_foret_possedee_sur_territoire_ha',
+  surface_commune_ha: 'surface_commune_ha'
+} as const
+
+export type Forets_communalesScalarFieldEnum = (typeof Forets_communalesScalarFieldEnum)[keyof typeof Forets_communalesScalarFieldEnum]
 
 
 export const SortOrder = {

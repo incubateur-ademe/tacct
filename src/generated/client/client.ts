@@ -456,3 +456,8 @@ export type user_besoin = Prisma.user_besoinModel
  * 
  */
 export type tacctoscope_ressources = Prisma.tacctoscope_ressourcesModel
+/**
+ * Model forets_communales
+ * 
+ */
+export type forets_communales = Prisma.forets_communalesModel
