@@ -14,9 +14,7 @@ export const useModalFocus = (isOpen: boolean) => {
     if (!isOpen || !dialog) return;
 
     const trigger =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const getFocusables = () =>
       Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE));
 

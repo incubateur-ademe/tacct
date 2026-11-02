@@ -18,11 +18,8 @@ const FeuilleDeRoutePage = async () => {
   const answers = user ? await getUserAnswers() : {};
 
   return (
-    <div style={{ paddingBottom: '90px' }}>
-      <NewContainer
-        size="xl"
-        style={{ padding: 0, position: 'relative', zIndex: 1 }}
-      >
+    <div style={{ paddingBottom: "90px" }}>
+      <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
             currentPageLabel="Feuille de route"
@@ -36,10 +33,7 @@ const FeuilleDeRoutePage = async () => {
       </NewContainer>
 
       <div className={styles.bannerOuter}>
-        <NewContainer
-          size="xl"
-          style={{ padding: 0, position: 'relative', zIndex: 1 }}
-        >
+        <NewContainer size="xl" style={{ padding: 0, position: "relative", zIndex: 1 }}>
           <header className={styles.banner}>
             <div className={styles.bannerText}>
               <H1
@@ -63,8 +57,8 @@ const FeuilleDeRoutePage = async () => {
                 }}
               >
                 Voici l’ensemble des recommandations alimentées par vos réponses
-                dans chacune des 5 catégories d’analyse. Améliorez votre
-                diagnostic de vulnérabilité à votre rythme !
+                dans chacune des 5 catégories d’analyse. Améliorez votre diagnostic
+                de vulnérabilité à votre rythme !
               </Body>
               {/* <ExportPdfButton /> */}
             </div>
@@ -77,7 +71,10 @@ const FeuilleDeRoutePage = async () => {
         </NewContainer>
       </div>
 
-      <FeuilleDeRouteView answers={answers} isAuthenticated={!!user} />
+      <FeuilleDeRouteView
+        answers={answers}
+        isAuthenticated={!!user}
+      />
     </div>
   );
 };

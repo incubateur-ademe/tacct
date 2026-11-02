@@ -10,13 +10,7 @@ import styles from './Modales.module.scss';
 import { useModalFocus } from './useModalFocus';
 
 const CloseIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path
       d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12 5.636 7.05 7.05 5.636z"
       fill="#038278"
@@ -60,8 +54,7 @@ export const Modal = ({
     document.addEventListener('keydown', onKeyDown);
 
     // Compense la barre de défilement masquée, sinon le contenu centré se décale.
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     const previousPaddingRight = document.body.style.paddingRight;
     document.body.style.overflow = 'hidden';
     if (scrollbarWidth > 0) {
@@ -109,9 +102,8 @@ export const Modal = ({
 
         {footer && (
           <div
-            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''} ${
-              tightFooterGap ? styles.footerGapTight : ''
-            }`}
+            className={`${styles.footer} ${compactFooter ? styles.footerCompact : ''} ${tightFooterGap ? styles.footerGapTight : ''
+              }`}
           >
             {footer}
           </div>
@@ -183,13 +175,7 @@ export const ConfirmModal = ({
 );
 
 const LockIcon = () => (
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <rect
       x="4"
       y="10"
@@ -210,18 +196,13 @@ interface UnlockModalProps {
   onConfirm: () => void;
 }
 
-export const UnlockModal = ({
-  isOpen,
-  onClose,
-  onConfirm
-}: UnlockModalProps) => (
+export const UnlockModal = ({ isOpen, onClose, onConfirm }: UnlockModalProps) => (
   <ConfirmModal
     isOpen={isOpen}
     title="Connectez-vous pour continuer"
     message={
       <>
-        Accédez à l’ensemble du questionnaire et enregistrez vos réponses et
-        votre feuille de route.
+        Accédez à l’ensemble du questionnaire et enregistrez vos réponses et votre feuille de route.
       </>
     }
     icon={<LockIcon />}

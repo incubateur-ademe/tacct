@@ -16,13 +16,7 @@ interface Props {
 }
 
 const DocIcon = ({ color }: { color: string }) => (
-  <svg
-    width="18"
-    height="20"
-    viewBox="0 0 18 20"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="18" height="20" viewBox="0 0 18 20" fill="none" aria-hidden="true">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -33,13 +27,7 @@ const DocIcon = ({ color }: { color: string }) => (
 );
 
 const ThumbUpIcon = ({ color }: { color: string }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -50,13 +38,7 @@ const ThumbUpIcon = ({ color }: { color: string }) => (
 );
 
 const ThumbDownIcon = ({ color }: { color: string }) => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -79,11 +61,10 @@ export const ExampleCallout = ({
   const textColor = answered || isExemple ? '#3D3D3D' : '#CE0041';
   return (
     <div
-      className={`${styles.criterionExampleCallout} ${
-        isExemple
+      className={`${styles.criterionExampleCallout} ${isExemple
           ? styles.criterionExampleCalloutExemple
           : styles.criterionExampleCalloutContre
-      } ${answered ? styles.criterionExampleCalloutAnswered : ''}`}
+        } ${answered ? styles.criterionExampleCalloutAnswered : ''}`}
     >
       <div className={styles.criterionExampleCalloutTitle}>
         {isExemple ? (

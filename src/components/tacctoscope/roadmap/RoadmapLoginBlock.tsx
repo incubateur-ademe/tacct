@@ -37,7 +37,7 @@ export const RoadmapLoginBlock = () => (
       size="md"
       text="Se connecter ou créer un compte"
       iconeFin={<FlecheDroiteIcon />}
-      style={{ marginTop: '0.75rem' }}
+      style={{ marginTop: '0.75rem', width: 'auto', textAlign: 'center' }}
       onClick={() => {
         const returnTo = encodeURIComponent(RETOUR_APRES_CONNEXION);
         window.location.href = `/api/proconnect/login?returnTo=${returnTo}`;

@@ -12,16 +12,15 @@ export const CriterionEmptyState = ({ slug }: Props) => (
     <Body
       size="md"
       color="#666666"
-      weight="medium"
+      weight='medium'
       style={{
         lineHeight: '1.5rem',
-        paddingBottom: '1.5rem',
-        maxWidth: '30rem',
-        fontSize: '18px'
+        paddingBottom: "1.5rem",
+        maxWidth: "30rem",
+        fontSize: "18px"
       }}
     >
-      Renseignez le questionnaire pour voir apparaître vos pistes d’amélioration
-      ici
+      Renseignez le questionnaire pour voir apparaître vos pistes d’amélioration ici
     </Body>
     <BoutonPrimaireClassic
       link={`/tacctoscope/${slug}`}

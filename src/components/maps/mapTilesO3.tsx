@@ -3,6 +3,7 @@
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
+import type { Geometry } from 'geojson';
 import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
@@ -10,6 +11,7 @@ import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import styles from './maps.module.scss';
 import { mapTransformRequest } from './mapTransformRequest';
 import { getO3Color, O3Tooltip } from './subcomponents/tooltips';
+import { valeursSurTerritoire, type ValeursTerritoire } from './valeursSurTerritoire';
 
 export const MapTilesO3 = (props: {
   coordonneesCommunes: {
@@ -24,6 +26,8 @@ export const MapTilesO3 = (props: {
   legend?: React.ReactNode;
   style?: React.CSSProperties;
   onLoadingChange?: (isLoading: boolean) => void;
+  territoireGeometry?: Geometry | null;
+  onValeursTerritoire?: (valeurs: ValeursTerritoire) => void;
 }) => {
   const {
     coordonneesCommunes,
@@ -34,7 +38,9 @@ export const MapTilesO3 = (props: {
     layer,
     paint,
     legend,
-    onLoadingChange
+    onLoadingChange,
+    territoireGeometry,
+    onValeursTerritoire
   } = props;
   const popupRef = useRef<maplibregl.Popup | null>(null);
 
@@ -61,7 +67,29 @@ export const MapTilesO3 = (props: {
     });
     mapRef.current = map;
 
+    const sourceId = `${bucketUrl}-tiles`;
+    let carteChargee = false;
+    let valeursCalculees = !(territoireGeometry && onValeursTerritoire);
+    const terminerChargement = () => {
+      if (!carteChargee || !valeursCalculees) return;
+      setIsTilesLoading(false);
+      onLoadingChange?.(false);
+    };
+    const calculerValeurs = () => {
+      if (valeursCalculees || !territoireGeometry || !onValeursTerritoire) return;
+      map.off('sourcedata', calculerSiSourceChargee);
+      onValeursTerritoire(
+        map.getSource(sourceId) ? valeursSurTerritoire(map, sourceId, layer, territoireGeometry) : null
+      );
+      valeursCalculees = true;
+      terminerChargement();
+    };
+    const calculerSiSourceChargee = () => {
+      if (map.isSourceLoaded(sourceId)) calculerValeurs();
+    };
+
     const loadingTimeout = setTimeout(() => {
+      calculerValeurs();
       setIsTilesLoading(false);
       onLoadingChange?.(false);
     }, 10000);
@@ -79,6 +107,13 @@ export const MapTilesO3 = (props: {
             ],
             { padding: 20 }
           );
+          if (!valeursCalculees) {
+            map.once('moveend', () => {
+              map.on('sourcedata', calculerSiSourceChargee);
+              map.once('render', calculerSiSourceChargee);
+              map.triggerRepaint();
+            });
+          }
         }, 100);
       }
 
@@ -168,9 +203,9 @@ export const MapTilesO3 = (props: {
 
       map.on('idle', () => {
         if (!hasLoadedOnce.current) {
-          setIsTilesLoading(false);
-          onLoadingChange?.(false);
           hasLoadedOnce.current = true;
+          carteChargee = true;
+          terminerChargement();
         }
       });
     });

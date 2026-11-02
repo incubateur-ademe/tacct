@@ -9,9 +9,9 @@ import { mapStyles } from 'carte-facile';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
-import { AOT40Tooltip } from './subcomponents/tooltips';
-import './maps.css';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
+import './maps.css';
+import { AOT40Tooltip } from './subcomponents/tooltips';
 
 const color = (valeur: number) => {
   return valeur > 36000
@@ -57,11 +57,10 @@ export const MapAOT40 = (props: {
   const aot40Data = useMemo(() => {
     return aot40.map((aot) => {
       return {
-        coordinates: [aot.Longitude, aot.Latitude],
-        value: aot.valeur_brute,
+        coordinates: [aot.longitude, aot.latitude],
+        value: aot.valeur,
         nom_site: aot.nom_site,
-        type_implantation: aot.type_d_implantation,
-        color: color(aot.valeur_brute!)
+        color: color(aot.valeur)
       };
     });
   }, [aot40]);
@@ -98,17 +97,16 @@ export const MapAOT40 = (props: {
 
   const aot40GeoJson = useMemo(() => {
     return {
-      type: "FeatureCollection" as "FeatureCollection",
+      type: "FeatureCollection" as const,
       features: aot40Data.map((aot, index) => ({
-        type: "Feature" as "Feature",
+        type: "Feature" as const,
         geometry: {
-          type: "Point" as "Point",
+          type: "Point" as const,
           coordinates: aot.coordinates
         },
         properties: {
           nom_site: aot.nom_site,
           value: aot.value,
-          type_implantation: aot.type_implantation,
           color: aot.color
         },
         id: index
@@ -131,6 +129,10 @@ export const MapAOT40 = (props: {
       container: mapContainer.current,
       style: mapStyles.desaturated,
       attributionControl: false,
+      cooperativeGestures: typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches,
+      locale: {
+        'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
+      },
     });
     mapRef.current = map;
     // s'assure que le zoom au scroll est désactivé immédiatement pour éviter de capturer les défilements de page
@@ -325,7 +327,7 @@ export const MapAOT40 = (props: {
             try {
               const features = await source.getClusterLeaves(clusterId, 100, 0);
               if (!features) return;
-              const sitesInCluster = features.map((f: any) => f.properties?.nom_site).filter(Boolean);
+              const sitesInCluster = features.map((f) => f.properties?.nom_site).filter(Boolean);
               const containerHeight = mapContainer.current?.clientHeight || 500;
               const mouseY = e.point.y;
               const placement = (mouseY > containerHeight / 2) ? 'bottom' : 'top';

@@ -4,21 +4,13 @@ import { CriterionBanner } from '@/components/tacctoscope/criterion/CriterionBan
 import { CriterionFeedback } from '@/components/tacctoscope/criterion/CriterionFeedback';
 import { CriterionNextSteps } from '@/components/tacctoscope/criterion/CriterionNextSteps';
 import { CriterionProgressBar } from '@/components/tacctoscope/criterion/CriterionProgressBar';
-import {
-  CriterionSection,
-  SectionQuestion
-} from '@/components/tacctoscope/criterion/CriterionSection';
+import { CriterionSection, SectionQuestion } from '@/components/tacctoscope/criterion/CriterionSection';
 import { Toast } from '@/components/utils/Toast';
 import { Body } from '@/design-system/base/Textes';
 import { NewContainer } from '@/design-system/layout';
 import { buildQuestionKey, getCriterionBySlug } from '@/lib/tacctoscope/keys';
 import { getLocalAnswers } from '@/lib/tacctoscope/localAnswers';
-import {
-  AnswerMap,
-  Criterion,
-  CriterionSlug,
-  SectionKind
-} from '@/lib/tacctoscope/types';
+import { AnswerMap, Criterion, CriterionSlug } from '@/lib/tacctoscope/types';
 import Breadcrumb from '@codegouvfr/react-dsfr/Breadcrumb';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -32,13 +24,7 @@ interface Props {
 }
 
 const BulbIcon = () => (
-  <svg
-    width="16"
-    height="21"
-    viewBox="0 0 16 21"
-    fill="none"
-    aria-hidden="true"
-  >
+  <svg width="16" height="21" viewBox="0 0 16 21" fill="none" aria-hidden="true">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -48,36 +34,20 @@ const BulbIcon = () => (
   </svg>
 );
 
-const SECTION_META: Record<
-  SectionKind,
-  { title: string; description: string }
-> = {
-  analyse: {
-    title: 'Analyse de votre diagnostic',
-    description:
-      'Les réponses aux questions suivantes sont à trouver dans votre diagnostic existant.'
-  },
-  enquete: {
-    title: 'Enquête à mener',
-    description:
-      "Si les réponses aux questions suivantes ne figurent pas dans le diagnostic existant, enquêtez auprès de l’ancienne équipe projet, dans les documents de travail, comptes-rendus d'atelier, etc."
-  }
-};
+const SECTION_TITLE = 'Analyse de votre diagnostic';
+const SECTION_DESCRIPTION =
+  'Les réponses se trouvent dans votre diagnostic final ou les documents de travail. En cas de doute, enquêtez aussi auprès des équipes : certains travaux peuvent avoir été menés sans trace écrite !';
 
 const buildSectionQuestions = (
   criterion: Criterion,
-  kind: SectionKind,
   answers: AnswerMap
 ): SectionQuestion[] =>
-  criterion.questions
-    .map((question, index) => ({ question, number: index + 1 }))
-    .filter(({ question }) => question.section === kind)
-    .map(({ question, number }) => ({
-      question,
-      number,
-      initialValue:
-        answers[buildQuestionKey(criterion.slug, question.id)] ?? null
-    }));
+  criterion.questions.map((question, index) => ({
+    question,
+    number: index + 1,
+    initialValue:
+      answers[buildQuestionKey(criterion.slug, question.id)] ?? null
+  }));
 
 export const CriteresView = ({
   criterion,
@@ -161,15 +131,11 @@ export const CriteresView = ({
 
   if (!hydrated) return null;
 
-  const analyse = buildSectionQuestions(criterion, 'analyse', currentAnswers);
-  const enquete = buildSectionQuestions(criterion, 'enquete', currentAnswers);
+  const questions = buildSectionQuestions(criterion, currentAnswers);
 
   return (
     <>
-      <NewContainer
-        size="xl"
-        style={{ padding: 0, zIndex: 1, position: 'relative' }}
-      >
+      <NewContainer size="xl" style={{ padding: 0, zIndex: 1, position: "relative" }}>
         <div className={styles.breadcrumbWrapper}>
           <Breadcrumb
             currentPageLabel={criterion.title}
@@ -182,7 +148,7 @@ export const CriteresView = ({
         </div>
       </NewContainer>
       <div className={styles.criterionBannerOuter}>
-        <NewContainer size="xl" style={{ position: 'relative', zIndex: 1 }}>
+        <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
           <CriterionBanner
             slug={criterion.slug}
             title={criterion.title}
@@ -196,30 +162,14 @@ export const CriteresView = ({
         total={criterion.questions.length}
       />
 
-      <NewContainer size="xl" style={{ position: 'relative', zIndex: 1 }}>
+      <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
         <div className={styles.criterionViewBody}>
-          {analyse.length > 0 && (
+          {questions.length > 0 && (
             <CriterionSection
               slug={criterion.slug}
-              kind="analyse"
-              title={SECTION_META.analyse.title}
-              description={SECTION_META.analyse.description}
-              questions={analyse}
-              openKeys={openKeys}
-              onToggle={handleToggle}
-              onChanged={handleChanged}
-              onRecommendationAdded={showRecoToast}
-              isAuthenticated={isAuthenticated}
-            />
-          )}
-
-          {enquete.length > 0 && (
-            <CriterionSection
-              slug={criterion.slug}
-              kind="enquete"
-              title={SECTION_META.enquete.title}
-              description={SECTION_META.enquete.description}
-              questions={enquete}
+              title={SECTION_TITLE}
+              description={SECTION_DESCRIPTION}
+              questions={questions}
               openKeys={openKeys}
               onToggle={handleToggle}
               onChanged={handleChanged}
@@ -229,20 +179,17 @@ export const CriteresView = ({
           )}
 
           <CriterionNextSteps
-            slug={criterion.slug}
             nextCriterion={nextSlug ? getCriterionBySlug(nextSlug) : undefined}
             nextLocked={!isAuthenticated}
           />
 
           <CriterionFeedback criterionKey={criterion.slug} />
 
-          <Link href="/tacctoscope" className={styles.criterionViewBackLink}>
-            <Body
-              htmlTag="span"
-              weight="medium"
-              color="#038278"
-              aria-hidden="true"
-            >
+          <Link
+            href="/tacctoscope"
+            className={styles.criterionViewBackLink}
+          >
+            <Body htmlTag="span" weight="medium" color="#038278" aria-hidden="true">
               ←
             </Body>
             <Body weight="medium" color="#038278">

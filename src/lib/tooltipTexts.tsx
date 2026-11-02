@@ -86,26 +86,121 @@ export const agricultureBioTooltipText = (
   </Body>
 );
 
+// Sources du texte :
+// « L'exposition de la végétation à l'ozone est évaluée par l'indicateur AOT40 » : INERIS, Quelques enseignements sur l'évolution de la qualité de l'air de 2000 à 2019, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air-0 — « Les indicateurs d'exposition des écosystèmes (AOT40) »
+// « Accumulated Exposure Over Threshold 40 » : texte TACCT précédent, conservé ; SDES, Normes réglementaires relatives à l'ozone, p. 1, https://www.statistiques.developpement-durable.gouv.fr/media/4861/download?inline — « AOT40 : Accumulated Exposure Over Threshold 40 »
+// « au-delà du seuil de 40 parties par milliard, soit 80 µg/m³ […] somme des écarts […] entre 8 h et 20 h » : directive (UE) 2024/2881, annexe I, section 2 A — « la somme des différences entre les concentrations horaires supérieures à 80 μg/m3 (= 40 parties par milliard) et le seuil de 80 μg/m3 durant une période donnée, en utilisant uniquement les valeurs sur 1 heure mesurées quotidiennement entre 8 h 00 et 20 h 00 (heure de l'Europe centrale) »
+// « de mai à juillet » : directive (UE) 2024/2881, annexe I, section 2 B — « Protection de la végétation — De mai à juillet »
+// « période de pleine végétation » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 14 du PDF, § 3.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « valeur cible de 18 000 µg/m³ × h, en moyenne calculée sur 5 ans » : directive (UE) 2024/2881, annexe I, section 2 B — « 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « directive 2024/2881 du 23 octobre 2024 concernant la qualité de l'air ambiant et un air pur pour l'Europe » : Légifrance, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050712855 — titre du texte
+// « objectif à long terme de 6 000 µg/m³ × h […] au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l'ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] Protection de la végétation […] 6 000 μg/m3 × h »
+// « calculé sur une seule année » : Airparif, p. 14 du PDF, § 3.1 — « Objectif à long terme : 6 000 µg/m3.h-1 en moyenne sur une année »
+// « moyenne 2020-2024 » : SDES, La pollution de l'air par l'ozone (O₃), mise à jour du 30 juin 2026, https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « Pour la protection de la végétation, la réglementation fixe une norme en moyenne sur cinq ans. Sur la période 2020-2024 […] » ; titre de la carte INERIS — « AOT 40 (moyenne sur 5 ans) de O3 pour l'année 2024 »
+// « en combinant un modèle numérique de qualité de l'air et les mesures des stations de fond » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « combinaison de données modélisées et de données d'observation » ; « n'incluent que les stations urbaines, périurbaines, rurales de fond »
+// « grille d'environ 2 km » : INERIS, méthodologie, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air — « raffinée à 2km pour les années après 2018 »
+// « France métropolitaine » : INERIS, cartothèque — « sur l'ensemble du territoire métropolitain et la Corse »
+// « pollution dite « de fond » […] trafic dense et des sites industriels » : INERIS, cartothèque — « Ces cartes ne sont donc pas représentatives de situations de proximité de sources spécifiques (zones de trafic dense ou activités industrielles notamment) »
+// « (*) Valeur cible » : texte TACCT précédent, conservé ; SDES, Normes réglementaires relatives à l'ozone, p. 2 — « un niveau de concentration de substances polluantes fixé dans le but d'éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine et/ou l'environnement dans son ensemble, à atteindre dans la mesure du possible sur une période donnée »
 export const AOT40TooltipText = (
   <Body weight="bold" size="sm">
-    Un seuil critique de toxicité de l’ozone pour la végétation est défini par
-    l’indicateur AOT40 (Accumulated Exposure Over Threshold 40). Celui-ci
-    représente l’accumulation d’exposition à l’ozone au-delà du seuil de 40
-    parties par milliard, soit 80 µg/m³. Son calcul repose sur la somme des
-    écarts entre les concentrations horaires d’ozone dépassant 80 µg/m³ et ce
-    seuil de 80 µg/m³. Les mesures sont effectuées chaque jour entre 8 h et
-    20 h, sur la période de mai à juillet, afin de coïncider avec la phase
-    active de photosynthèse.
+    L’exposition de la végétation à l’ozone est évaluée par l’indicateur AOT40
+    (Accumulated Exposure Over Threshold 40). Celui-ci représente
+    l’accumulation d’exposition à l’ozone au-delà du seuil de 40 parties par
+    milliard, soit 80 µg/m³. Son calcul repose sur la somme des écarts entre
+    les concentrations horaires d’ozone dépassant 80 µg/m³ et ce seuil de
+    80 µg/m³. Seules les concentrations horaires entre 8 h et 20 h sont
+    prises en compte, de mai à juillet, période de pleine végétation.
     <br></br>
     <br></br>
-    Une valeur cible(*) de 18 000 µg/m³ par heure, en moyenne calculée sur 5
+    Une valeur cible(*) de 18 000 µg/m³.h, en moyenne calculée sur 5
     ans, est fixée dans la directive 2024/2881 du 23 octobre 2024 concernant la
-    qualité de l’air ambiant et un air pur pour l’Europe.
+    qualité de l’air ambiant et un air pur pour l’Europe. Cette directive fixe
+    également un objectif à long terme de 6 000 µg/m³.h, calculé sur
+    une seule année et à atteindre au plus tard le 1er janvier 2050.
+    <br></br>
+    <br></br>
+    Les données proposées sont calculées par l’Institut
+    national de l’environnement industriel et des risques (Ineris).
+    Elles représentent la pollution dite « de fond » : les abords
+    du trafic dense et des sites industriels ne sont pas représentés. La carte
+    est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
     <br></br>
     <br></br>
     <i>
       (*) Valeur cible : niveau à atteindre, dans la mesure du possible, afin
       d'éviter, de prévenir ou de réduire les effets nocifs sur l'environnement.
+    </i>
+  </Body>
+);
+
+// Sources du texte :
+// « exposition des cultures à l’ozone à l’aide de l’indicateur AOT40 » : AEE, indicateur Exposure of Europe’s ecosystems to ozone, publié le 11/06/2026, section Methodology, https://www.eea.europa.eu/en/analysis/indicators/exposure-of-europes-ecosystems-to-ozone — « The period is from May to July for the protection of vegetation and crops. »
+// « additionne, heure par heure, la part des concentrations d’ozone qui dépasse 80 µg/m³ (soit 40 parties par milliard), entre 8 h et 20 h (heure d’Europe centrale) » : directive (UE) 2024/2881, annexe I, section 2 A — « la somme des différences entre les concentrations horaires supérieures à 80 μg/m3 (= 40 parties par milliard) et le seuil de 80 μg/m3 durant une période donnée, en utilisant uniquement les valeurs sur 1 heure mesurées quotidiennement entre 8 h 00 et 20 h 00 (heure de l'Europe centrale) »
+// « de mai à juillet » : directive (UE) 2024/2881, annexe I, section 2 B — « Protection de la végétation — De mai à juillet »
+// « en pleine période de végétation » : Airparif, Ozone, état des connaissances en Île-de-France, juillet 2022, p. 14 du PDF, § 3.1, https://www.airparif.fr/sites/default/files/pdf/Note_O3.pdf — « des valeurs cibles calés sur les périodes de pleine végétation et de cultures situées au printemps et en été »
+// « moyenne sur la période 2020-2024 » : titre de la carte INERIS — « AOT 40 (moyenne sur 5 ans) de O3 pour l'année 2024 » ; SDES, La pollution de l'air par l'ozone (O₃), mise à jour du 30 juin 2026, https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « Pour la protection de la végétation, la réglementation fixe une norme en moyenne sur cinq ans. Sur la période 2020-2024 […] »
+// « valeur cible de 18 000 µg/m³.h en moyenne sur 5 ans » : directive (UE) 2024/2881, annexe I, section 2 B — « 18 000 μg/m3 × h, moyenne calculée sur cinq ans »
+// « directive (UE) 2024/2881 du 23 octobre 2024 concernant la qualité de l’air ambiant et un air pur pour l’Europe » : Légifrance, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050712855 — titre du texte
+// « objectif à long terme de 6 000 µg/m³.h […] au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l'ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] Protection de la végétation […] 6 000 μg/m3 × h »
+// « sur une seule année » : Airparif, p. 14 du PDF, § 3.1 — « Objectif à long terme : 6 000 µg/m3.h-1 en moyenne sur une année »
+// « aligné sur le niveau critique défini par la CEE-ONU pour protéger les cultures » : AEE, indicateur Exposure of Europe’s ecosystems to ozone — « The long-term objective is in line with the critical level of ozone for the protection of crops defined by the United Nations Economic Commission for Europe (UNECE) Convention on Long-range Transboundary Air Pollution »
+// « combine un modèle de qualité de l’air et les mesures des stations de fond » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « Ces cartographies résultent de la combinaison de données modélisées et de données d'observation réparties sur le territoire » ; « Les observations utilisées n'incluent que les stations urbaines, périurbaines, rurales de fond »
+// « résolution allant jusqu’à 2 km » : INERIS, cartothèque — « allant jusqu'à 2 km » (résolution spatiale du modèle CHIMERE)
+// « France métropolitaine et la Corse » : INERIS, cartothèque — « sur l'ensemble du territoire métropolitain et la Corse »
+// « pollution dite « de fond » […] trafic dense et des sites industriels » : INERIS, cartothèque — « Ces cartes ne sont donc pas représentatives de situations de proximité de sources spécifiques (zones de trafic dense ou activités industrielles notamment) »
+// « l’AOT40 mesure l’ozone présent dans l’air, et non la quantité réellement absorbée par les plantes » : CLRTAP/UBA, Manual on Methodologies and Criteria for Modelling and Mapping Critical Loads and Levels, chapitre 3 (ICP Vegetation), mise à jour 2024, Texte 123/2024, p. 76, https://www.umweltbundesamt.de/system/files/medien/11850/publikationen/123_2024_texte_manual_on_methodologies_and_criteria.pdf — « AOT40 accounts for the atmospheric O3 concentration above the leaf surface and is therefore biologically less relevant for O3 impact assessment than PODY as it does not take into account how O3 uptake is affected by climate, soil, and plant factors » ; p. 130 — « AOT40-based critical levels only consider the O3 concentration at the top of the canopy »
+// « dépend de l’ouverture de leurs stomates, qui varie notamment avec la température, l’humidité de l’air et l’eau disponible dans le sol : en période de sécheresse, la plante ferme ses stomates et absorbe moins d’ozone » : CLRTAP/UBA, manuel 2024, p. 75 — « Stomata are physiologically controlled and respond to environmental conditions such as temperature, light, air humidity, and soil moisture, as well as plant growth stage. For example, under hot and dry conditions, plants close their stomata to reduce water loss and as a consequence O3 uptake is reduced. » ; APollO, synthèse, mai 2019, p. 4 du PDF, https://librairie.ademe.fr/air/327-cout-economique-pour-l-agriculture-des-impacts-de-la-pollution-de-l-air-par-l-ozone.html — « cet indicateur ne prend pas en compte les mécanismes d'exposition dont l'état de stress hydrique de la plante (souvent concomitant des pics de pollutions à l'ozone) qui conduit cette dernière à réduire ses flux stomatiques et donc son exposition à l'ozone »
+// « Une valeur élevée signale donc un risque pour les cultures, et non une perte de rendement » : ICP Vegetation, Scientific Background Document A, octobre 2018, p. 48, https://icpvegetation.ceh.ac.uk/sites/default/files/ScientificBackgroundDocumentAOct2018.pdf — « It is not recommended that exceedance of the concentration-based critical level for agricultural crops is converted into economic loss; it should only be used as an indication of ecological risk »
+// « dans le nord et l’ouest de la France, les conditions climatiques favorisent l’absorption : l’ozone peut y avoir des effets même lorsque l’AOT40 reste modéré » : ICP Vegetation (Mills & Harmens, éd.), Ozone Pollution: A hidden threat to food security, septembre 2011, p. 17 du PDF, https://nora.nerc.ac.uk/id/eprint/15071/1/N015071CR.pdf — « In areas such as northern France, Belgium, the Netherlands, southern UK and parts of Scandinavia, climatic conditions are highly conducive to ozone uptake (flux) and even modest ozone concentrations can be expected to have an impact » ; Ineris pour l’AEE, ETC HE Report 2024/9, novembre 2024, p. 16, https://www.eionet.europa.eu/etcs/etc-he/products/etc-he-products/etc-he-reports/etc-he-report-2024-9-wheat-and-potato-yield-loss-in-2022-in-europe-due-to-ozone-exposure — « medium-high levels of POD6SPEC in the west and north of France, the north of Belgium, the Netherlands, Germany and Denmark that are not shown in the AOT 40 map »
+// « (*) Valeur cible » : SDES, Normes réglementaires relatives à l'ozone, p. 2, https://www.statistiques.developpement-durable.gouv.fr/media/4861/download?inline — « un niveau de concentration de substances polluantes fixé dans le but d'éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine et/ou l'environnement dans son ensemble, à atteindre dans la mesure du possible sur une période donnée »
+// Écarté :
+// Perte de 5 % du rendement du blé au niveau critique : CLRTAP/UBA, manuel 2024, tableau 3.17, p. 123 — « Crops — Agricultural — Grain yield (5%; based on wheat) — 3 [ppm h] — 3 months ». Retiré car le niveau critique CEE-ONU n'est pas calculé comme l'AOT40 de la directive (heures de jour et 3 mois centrés sur la floraison du blé, contre 8 h-20 h de mai à juillet) : le lecteur pourrait conclure à tort à 5 % de perte dès 6 000 µg/m³.h.
+// Surestimation en zone méditerranéenne, sous-estimation en Europe du Nord : APollO, rapport complet, p. 8 du PDF — « il évite une surestimation des dommages imputés à l'ozone dans les régions méditerranéennes et une sous-estimation dans les zones de l'Europe du Nord, souvent induites par l'AOT40 (Simpson et al., 2007) ». Remplacé par les deux sources qui citent explicitement la France.
+export const AOT40AgricultureTooltipText = (
+  <Body weight="bold" size="sm">
+    Cette donnée mesure l’exposition des cultures à l’ozone à l’aide de
+    l’indicateur AOT40. Celui-ci additionne, heure par heure, la part des
+    concentrations d’ozone qui dépasse 80 µg/m³ (soit 40 parties par
+    milliard), entre 8 h et 20 h et de mai à
+    juillet, en pleine période de végétation. Il s’exprime en µg/m³.h. La
+    valeur présentée est une moyenne sur la période 2020-2024.
+    <br></br>
+    <br></br>
+    La directive (UE) 2024/2881 du 23 octobre 2024 concernant la qualité de
+    l’air ambiant et un air pur pour l’Europe fixe une valeur cible(*) de
+    18 000 µg/m³.h en moyenne sur 5 ans, ainsi qu’un objectif à long terme
+    de 6 000 µg/m³.h sur une seule année, à atteindre au plus tard le 1er
+    janvier 2050.
+    <br></br>
+    <br></br>
+    Ces données sont produites par l’Institut national de l’environnement
+    industriel et des risques (Ineris), qui combine un modèle de qualité de
+    l’air et les mesures des stations de fond, avec une résolution allant
+    jusqu’à 2 km. Elles représentent la pollution dite « de fond » : les abords du trafic dense
+    et des sites industriels ne sont pas représentés. La carte est
+    disponible sur le{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site de l’Ineris
+    </a>
+    .
+    <br></br>
+    <br></br>
+    <i>
+      (*) Valeur cible : niveau à atteindre dans la mesure du possible, fixé
+      pour éviter, prévenir ou réduire les effets nocifs sur l’environnement.
     </i>
   </Body>
 );
@@ -374,6 +469,31 @@ export const SurfacesToujoursEnHerbeText = (
   </Body>
 );
 
+// Sources du texte :
+// « vise à structurer l’économie agricole et à mettre en œuvre un système alimentaire à l’échelle d’un territoire » : Code rural et de la pêche maritime, article L111-2-2, premier alinéa, https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978779 — « répondent à l'objectif de structuration de l'économie agricole et de mise en œuvre d'un système alimentaire territorial »
+// « recensés par l’Observatoire national des PAT (France PAT), à partir de fiches renseignées par leurs animateurs et relues par les DRAAF » : France PAT, Vademecum de l'Observatoire, juin 2025, https://france-pat.fr/app/uploads/2025/06/France-PAT_Vademecum_Observatoire.pdf — fiches « produites par les animateurs PAT » et « relues par les DRAAF »
+// « Ce recensement porte sur les PAT reconnus par le ministère de l’Agriculture » : France PAT, Vademecum de l'Observatoire — « Cet Observatoire, depuis 2024 et le passage à France PAT, recense uniquement les PAT reconnus par le Ministère »
+// « au niveau 1 (PAT émergents) ou au niveau 2 (PAT opérationnels) » : DGAL, Reconnaissance officielle des PAT, p. 3, https://agriculture.gouv.fr/telecharger/125564 — « Niveau 1 : PAT émergent » ; « Niveau 2 : PAT opérationnel »
+// « ainsi que sur quelques projets en attente de reconnaissance » : France PAT, fichier pats-20250710, colonne niveaux_de_labelisation, https://www.data.gouv.fr/datasets/pat-projets-alimentaires-territoriaux-description — 12 PAT sur 460 en « Labellisation en attente »
+// « Une commune peut appartenir à plusieurs PAT, par exemple un PAT intercommunal et un PAT départemental » : colonne projets_alimentaires_territoriaux de databases_v2.table_commune ; DGAL, document préparatoire à la reconnaissance de niveau 2, p. 10, https://draaf.bretagne.agriculture.gouv.fr/IMG/pdf/notice_de_reconnaissance_n2.pdf — « Dans le cas spécifique des PAT départementaux, organisation de l'articulation […] avec et entre les PAT infra »
+export const projetsAlimentairesTerritoriauxTooltipText = (
+  <Body weight="bold" size="sm">
+    Un projet alimentaire territorial (PAT) vise à structurer
+    l'économie agricole et à mettre en œuvre un système alimentaire
+    à l'échelle d'un territoire.
+    <br></br>
+    <br></br>
+    Les PAT sont recensés par l’Observatoire national des PAT (France PAT), à
+    partir de fiches renseignées par leurs animateurs et relues par les
+    directions régionales de l’alimentation, de l’agriculture et de la forêt
+    (DRAAF). Ce recensement porte sur les PAT reconnus par le ministère de
+    l’Agriculture, au niveau 1 (PAT émergents) ou au niveau 2 (PAT
+    opérationnels), ainsi que sur quelques projets en attente de
+    reconnaissance. Une commune peut appartenir à plusieurs PAT, par exemple un
+    PAT intercommunal et un PAT départemental.
+  </Body>
+);
+
 export const airesAppellationsControleesTooltipText = (
   <>
     <Body weight="bold" size="sm">
@@ -399,7 +519,7 @@ export const airesAppellationsControleesTooltipText = (
 
 export const O3TooltipText = (
   <Body weight="bold" size="sm">
-    Les données de la carte sont calculées par l’Institut national de l'environnement industriel
+    Ces chiffres sont calculés par l’Institut national de l'environnement industriel
     et des risques (Ineris) d'après des concentrations analysées, combinant modèle et observations.
     La carte est visible sur leur{' '}
     <a
@@ -410,6 +530,61 @@ export const O3TooltipText = (
       site
     </a>
     .
+  </Body>
+);
+
+// Sources du texte :
+// « Pour chaque jour, on calcule la concentration moyenne d’ozone sur 8 heures consécutives, heure par heure, et on retient la plus élevée » : directive (UE) 2024/2881, annexe I, note (3), https://eur-lex.europa.eu/eli/dir/2024/2881/oj — « Le maximum journalier de la concentration moyenne sur 8 heures est sélectionné après examen des moyennes glissantes sur 8 heures, calculées à partir des données horaires et actualisées toutes les heures »
+// « le nombre de jours où cette valeur dépasse 120 µg/m³ » : INERIS, méthodologie, tableau « Synthèse des indicateurs statistiques cartographiés », https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/20-ans-evolution-qualite-air — « Nombre de jours pour lesquels la moyenne glissante sur 8h dépasse 120 µg.m-3 (en moyenne sur 3 ans) »
+// « en moyenne annuelle sur 2022-2024 » : SDES, La pollution de l’air par l’ozone (O₃), mise à jour du 30 juin 2026, section « Les concentrations d’O₃ au regard de la réglementation pour la protection de la santé, en cartes », https://www.statistiques.developpement-durable.gouv.fr/la-pollution-de-lair-par-lozone-o3 — « En moyenne sur 2022-2024 » ; fichier INERIS Reanalysed_FRA_2024_O3_t120_3y, attribut Times_bnds — « 20220101 ; 20241231 »
+// « la directive 2024/2881 du 23 octobre 2024 concernant la qualité de l’air ambiant et un air pur pour l’Europe » : Légifrance, https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050712855 — titre du texte
+// « ne doivent pas être dépassés plus de 25 jours par an, en moyenne calculée sur 3 ans » : directive (UE) 2024/2881, annexe I, note (5) — « Jusqu’au 1er janvier 2030, 120 μg/m3 à ne pas dépasser plus de 25 jours par année civile, moyenne calculée sur trois ans »
+// « puis plus de 18 jours à partir du 1er janvier 2030 » : directive (UE) 2024/2881, annexe I, section 2 B — « 120 μg/m3 à ne pas dépasser plus de 18 jours par année civile, moyenne calculée sur trois ans »
+// « objectif à long terme : ne pas dépasser 100 µg/m³ plus de 3 jours par an, au plus tard le 1er janvier 2050 » : directive (UE) 2024/2881, annexe I, section 2 C — « Objectifs à long terme pour l’ozone (O3) devant être atteints au plus tard le 1er janvier 2050 […] 100 μg/m3 à ne pas dépasser plus de 3 jours par année civile (99e percentile) »
+// « seuil d’information et de recommandation (180 µg/m³ en moyenne horaire) […] seuil d’alerte (240 µg/m³ en moyenne horaire) » : Code de l’environnement, article R221-1, 5° e) et f), https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000022964539 — « Seuil de recommandation et d’information : 180 µg/m³ en moyenne horaire » ; « Seuil d’alerte pour une protection sanitaire pour toute la population : 240 µg/m³ en moyenne horaire »
+// « dont le dépassement caractérise un épisode de pollution » : SDES, La pollution de l’air par l’ozone (O₃), section « Les épisodes de pollution en O₃ en France » — « Un épisode de pollution est caractérisé par le dépassement de certaines normes réglementaires de qualité de l’air pour la protection de la santé humaine à court terme (seuil d’information et de recommandation et seuil d’alerte) »
+// « Les données sont calculées par l’Institut national de l’environnement industriel et des risques (Ineris) » : INERIS, cartothèque, https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine — « Données issues de la Cartothèque de Qualité de l’Air de l’Ineris »
+// « (*) Valeur cible » : directive (UE) 2024/2881, article 4, point 32 — « un niveau fixé sur la base des meilleures connaissances scientifiques, dans le but d’éviter, de prévenir ou de réduire les effets nocifs sur la santé humaine ou l’environnement, à atteindre dans la mesure du possible sur une période donnée »
+export const O3AirTooltipText = (
+  <Body weight="bold" size="sm">
+    Pour chaque jour, on calcule la concentration moyenne d’ozone sur
+    8&nbsp;heures consécutives, heure par heure, et on retient la plus élevée.
+    Le chiffre correspond au nombre de jours où cette valeur dépasse
+    120&nbsp;µg/m³, en moyenne annuelle sur 2022-2024.
+    <br></br>
+    <br></br>
+    Pour protéger la santé humaine, la directive 2024/2881 du 23 octobre 2024
+    concernant la qualité de l’air ambiant et un air pur pour l’Europe fixe une
+    valeur cible(*) : ces 120&nbsp;µg/m³ ne doivent pas être dépassés plus de
+    25&nbsp;jours par an, en moyenne calculée sur 3&nbsp;ans, puis plus de
+    18&nbsp;jours à partir du 1er janvier 2030. Elle fixe également un objectif
+    à long terme : ne pas dépasser 100&nbsp;µg/m³ plus de 3&nbsp;jours par an,
+    au plus tard le 1er janvier 2050.
+    <br></br>
+    <br></br>
+    Cette valeur cible ne doit pas être confondue avec le seuil d’information
+    et de recommandation (180&nbsp;µg/m³ en moyenne horaire) ni avec le seuil
+    d’alerte (240&nbsp;µg/m³ en moyenne horaire), dont le dépassement
+    caractérise un épisode de pollution.
+    <br></br>
+    <br></br>
+    Les données sont calculées par l’Institut national de l’environnement
+    industriel et des risques (Ineris). La carte est visible sur leur{' '}
+    <a
+      href="https://www.ineris.fr/fr/recherche-appui/risques-chroniques/mesure-prevision-qualite-air/qualite-air-france-metropolitaine"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site
+    </a>
+    .
+    <br></br>
+    <br></br>
+    <i>
+      (*) Valeur cible : niveau maximal à ne pas dépasser, dans la mesure du possible, afin
+      d’éviter, de prévenir ou de réduire les effets nocifs sur la santé
+      humaine.
+    </i>
   </Body>
 );
 

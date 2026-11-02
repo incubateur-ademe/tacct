@@ -72,8 +72,7 @@ export const RoadmapSection = ({
       <ul className={styles.sectionCounters}>
         {ANSWER_LEVELS.map((level) => (
           <li key={level} className={styles.sectionCounter}>
-            <Body
-              htmlTag="span"
+            <Body htmlTag="span"
               size="lg"
               weight="medium"
               color="#038278"

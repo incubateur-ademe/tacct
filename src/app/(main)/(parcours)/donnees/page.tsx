@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { SearchParams } from '../../types';
 import { DisclaimerPNR } from './DisclaimerPNR';
 import AgricultureServerPage from './thematiques/agriculture/AgricultureServerPage';
+import AirServerPage from './thematiques/air/AirServerPage';
 import AmenagementServerPage from './thematiques/amenagement/AmenagementServerPage';
 import BiodiversiteServerPage from './thematiques/biodiversite/BiodiversiteServerPage';
 import ConfortThermiqueServerPage from './thematiques/confortThermique/ConfortThermiqueServerPage';
@@ -46,6 +47,8 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             <GestionRisquesServerPage searchParams={props.searchParams} />
           ) : thematique === "Santé" ? (
             <SanteServerPage searchParams={props.searchParams} />
+          ) : thematique === "Air" ? (
+            <AirServerPage searchParams={props.searchParams} />
           ) : ""}
         </Suspense>
       }

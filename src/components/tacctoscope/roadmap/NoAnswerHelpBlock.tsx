@@ -11,12 +11,7 @@ const LIEN_CONTACT = 'https://tally.so/r/mJGELz';
 
 const Item = ({ children }: { children: ReactNode }) => (
   <li>
-    <Body
-      htmlTag="span"
-      size="md"
-      color="#3d3d3d"
-      style={{ lineHeight: '1.5rem' }}
-    >
+    <Body htmlTag="span" size="md" color="#3d3d3d" style={{ lineHeight: '1.5rem' }}>
       {children}
     </Body>
   </li>
@@ -32,7 +27,7 @@ export const NoAnswerHelpBlock = () => (
           lineHeight: '1.75rem',
           letterSpacing: 'normal',
           textAlign: 'center',
-          margin: '0 0 0.5rem'
+          margin: "0 0 0.5rem"
         }}
       >
         Vous avez répondu “<em>Je ne sais pas</em>” à une ou plusieurs questions

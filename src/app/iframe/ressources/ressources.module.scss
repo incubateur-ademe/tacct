@@ -712,6 +712,7 @@
 
 .collectionTopBlocContainer {
     background-color: var(--principales-vert);
+    overflow-x: clip;
 }
 
 .collectionTopBlocWrapper {

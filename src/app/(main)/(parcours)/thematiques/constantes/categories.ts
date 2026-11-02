@@ -103,8 +103,8 @@ export const nomThematiques = [
     xOffset: -30,
     yOffset: 20,
     icon: '💨',
-    disabled: true,
-    liens: []
+    disabled: false,
+    liens: ['Santé', 'Biodiversité']
   },
   {
     label: 'Biodiversité',
@@ -400,6 +400,20 @@ export const liensEntreThematiques = [
   {
     source: 'Santé',
     target: 'Air',
+    curve: 1,
+    curveRadius: 0.15
+  },
+
+  // Air
+  {
+    source: 'Air',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 1
+  },
+  {
+    source: 'Air',
+    target: 'Santé',
     curve: 1,
     curveRadius: 0.15
   },
