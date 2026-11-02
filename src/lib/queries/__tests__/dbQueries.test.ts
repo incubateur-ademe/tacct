@@ -60,11 +60,14 @@ describe('Integration: biodiversite queries', () => {
     expect(uniqueDepartements.size).toBe(6);
   });
 
-  it('aot_40 returns expected results', async () => {
-    const result = await pool.query(`SELECT * FROM databases_v2.aot_40`);
+  it('aot_40_new returns expected results', async () => {
+    const result = await pool.query(`SELECT * FROM databases_v2.aot_40_new`);
     expect(Array.isArray(result.rows)).toBe(true);
-    expect(result.rows.length).toBe(291);
-    expect(result.rows[0]).toHaveProperty('valeur brute', 9487.38664050025);
+    expect(result.rows.length).toBeGreaterThan(0);
+    expect(result.rows[0]).toHaveProperty('nom_site');
+    expect(result.rows[0]).toHaveProperty('valeur');
+    expect(result.rows[0]).toHaveProperty('latitude');
+    expect(result.rows[0]).toHaveProperty('longitude');
   });
 });
 

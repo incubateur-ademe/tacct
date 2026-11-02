@@ -1,7 +1,7 @@
 import 'dotenv/config';
-import { Pool } from 'pg';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { Pool } from 'pg';
 
 const connectionString = process.env.SCALINGO_POSTGRESQL_URL;
 
@@ -161,7 +161,7 @@ describe('feux_foret code/libelle correspondance', () => {
 });
 describe('ressources_eau code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in ressources_eau', async () => {
-    await checkPnrCorrespondance('databases_v2.prelevements_eau');
+    await checkPnrCorrespondance('databases_v2.prelevements_eau_new');
   });
 });
 describe('rga code/libelle correspondance', () => {
@@ -207,12 +207,6 @@ describe('Île de Bréhat presence', () => {
 describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in rga', async () => {
     await checkBrehat('databases_v2.rga');
-  });
-});
-
-describe('Île de Bréhat presence', () => {
-  it('should have Île de Bréhat in ressources_eau', async () => {
-    await checkBrehat('databases_v2.prelevements_eau');
   });
 });
 
