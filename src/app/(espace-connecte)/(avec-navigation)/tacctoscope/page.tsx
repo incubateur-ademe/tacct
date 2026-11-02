@@ -38,12 +38,14 @@ const TacctoscopePage = async () => {
           <Breadcrumb
             currentPageLabel="TACCToscope"
             homeLinkProps={{ href: '/' }}
-            segments={[{ label: 'Boîte à outils', linkProps: { href: '/ressources' } }]}
+            segments={[
+              { label: 'Boîte à outils', linkProps: { href: '/ressources' } }
+            ]}
           />
         </div>
       </NewContainer>
       <div className={styles.introOuter}>
-        <NewContainer size="xl" style={{ position: "relative", zIndex: 1 }}>
+        <NewContainer size="xl" style={{ position: 'relative', zIndex: 1 }}>
           <header className={styles.intro}>
             <H1
               style={{
@@ -56,7 +58,8 @@ const TacctoscopePage = async () => {
               Le TACCToscope
             </H1>
             <Body weight="medium" style={{ color: '#038278' }}>
-              Votre diagnostic de vulnérabilité est-il solide sur ces 5 catégories fondamentales ?
+              Votre ancien diagnostic de vulnérabilité est-il solide sur ces 5
+              catégories fondamentales ?
             </Body>
             <Body
               style={{
@@ -66,12 +69,11 @@ const TacctoscopePage = async () => {
                 maxWidth: '760px'
               }}
             >
-              Optimisez le temps et les ressources consacrés au diagnostic
-              de vulnérabilité en capitalisant sur le travail réalisé
+              Optimisez le temps et les ressources consacrés au diagnostic de
+              vulnérabilité en capitalisant sur le travail réalisé
               précédemment ! Posez un regard méthodique et lucide sur
-              l’existant, et évaluez par vous-même ce qui mérite
-              révision - grâce à des exemples concrets et pistes de
-              retravail ciblées.
+              l’existant, et évaluez par vous-même ce qui mérite révision -
+              grâce à des exemples concrets et pistes de retravail ciblées.
             </Body>
           </header>
         </NewContainer>
