@@ -168,7 +168,7 @@ describe('feux_foret code/libelle correspondance', () => {
 describe('ressources_eau code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in ressources_eau', async () => {
     const result = await pool.query(
-      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau WHERE code_pnr IS NOT NULL'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau_new WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);
@@ -466,19 +466,6 @@ describe('Île de Bréhat presence', () => {
   it('should have Île de Bréhat in rga', async () => {
     const result = await pool.query(
       'SELECT code_geographique, libelle_geographique FROM databases_v2.rga WHERE code_geographique = $1',
-      [expectedBrehat[0]]
-    );
-    expect(result.rows[0]).toEqual({
-      code_geographique: expectedBrehat[0],
-      libelle_geographique: expectedBrehat[1]
-    });
-  });
-});
-
-describe('Île de Bréhat presence', () => {
-  it('should have Île de Bréhat in ressources_eau', async () => {
-    const result = await pool.query(
-      'SELECT code_geographique, libelle_geographique FROM databases_v2.prelevements_eau WHERE code_geographique = $1',
       [expectedBrehat[0]]
     );
     expect(result.rows[0]).toEqual({

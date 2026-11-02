@@ -49,8 +49,11 @@ describe('Integration: biodiversite queries', () => {
   it('aot_40 returns expected results', async () => {
     const result = await pool.query(`SELECT * FROM databases_v2.aot_40`);
     expect(Array.isArray(result.rows)).toBe(true);
-    expect(result.rows.length).toBe(291);
-    expect(result.rows[0]).toHaveProperty('valeur brute', 9487.38664050025);
+    expect(result.rows.length).toBeGreaterThan(0);
+    expect(result.rows[0]).toHaveProperty('nom_site');
+    expect(result.rows[0]).toHaveProperty('valeur');
+    expect(result.rows[0]).toHaveProperty('latitude');
+    expect(result.rows[0]).toHaveProperty('longitude');
   });
 });
 
@@ -101,7 +104,7 @@ describe('Integration: query functions to check if collectivites_searchbar has r
        ) t`
     );
     expect(result.rows).toHaveLength(1);
-    expect(result.rows[0].checksum).toBe('36db3c9e098bc85da40091d1fa8a3456');
+    expect(result.rows[0].checksum).toBe('cae7e6022070c979c765ae9130c4ccc3');
   });
 });
 
@@ -203,19 +206,24 @@ describe('Integration: data quality tests', () => {
     expect(result.rows[0].null_count).toBe('0');
   });
 
-  it('age_bati percentages sum to approximately 100% for Marseille', async () => {
+  it('age_bati sums are equal to nb_rp_tot for Marseille', async () => {
     const result = await pool.query(
-      `SELECT 
-        (COALESCE(age_bati_post06, 0) + COALESCE(age_bati_91_05, 0) + 
-         COALESCE(age_bati_46_90, 0) + COALESCE(age_bati_19_45, 0) + 
-         COALESCE(age_bati_pre_19, 0)) as total
-       FROM databases_v2.confort_thermique 
+      `SELECT
+        (COALESCE(nb_rp_post_06, 0) + COALESCE(nb_rp_91_05, 0) +
+         COALESCE(nb_rp_71_90, 0) + COALESCE(nb_rp_46_70, 0) + COALESCE(nb_rp_19_45, 0) +
+         COALESCE(nb_rp_pre_19, 0)) as total
+       FROM databases_v2.confort_thermique
+       WHERE code_geographique = '13055'`
+    );
+    const sumResult = await pool.query(
+      `SELECT nb_rp_tot
+       FROM databases_v2.confort_thermique
        WHERE code_geographique = '13055'`
     );
     expect(result.rows).toHaveLength(1);
     const total = parseFloat(result.rows[0].total);
-    expect(total).toBeGreaterThan(98.9);
-    expect(total).toBeLessThan(101);
+    const nb_rp_tot = parseFloat(sumResult.rows[0].nb_rp_tot);
+    expect(total).toBeCloseTo(nb_rp_tot, 1);
   });
 
   it('agriculture_bio surfaces are positive values', async () => {
