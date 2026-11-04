@@ -36,7 +36,7 @@ export const ForetsCommunalesDynamicText = ({
     if (surface < 0.01) {
       return (
         <Body weight="bold" style={style}>
-          Votre commune ne possède pas de forêt, comme une commune sur cinq.
+          Votre commune ne possède pas de forêt, comme une commune sur cinq sur le territoire français.
         </Body>
       );
     }
