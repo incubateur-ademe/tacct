@@ -94,7 +94,7 @@ export const ForetsCommunales = ({
           </div>
         </div>
         <div className="mt-4 pr-5">
-          <ReadMoreFade maxHeight={100}>
+          <ReadMoreFade maxHeight={150}>
             <ForetsCommunalesText />
           </ReadMoreFade>
         </div>
