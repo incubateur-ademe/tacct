@@ -11,6 +11,7 @@ import {
   maladieVectorielle,
   OMS,
   ozone,
+  regimeForestier,
   valeursGuidesO3
 } from '@/lib/definitions';
 
@@ -986,4 +987,63 @@ export const InondationDebordementText = () => (
       l’aménagement d’un espace refuge.
     </Body>
   </div>
+);
+
+{
+  /* Sylviculture */
+}
+
+// Sources du texte :
+// « est maître de la gestion de ce patrimoine et en assume les responsabilités » : ONF, Préserver votre forêt avec le régime forestier, https://www.onf.fr/aux-cotes-des-territoires/lonf-et-les-communes-forestieres/+/42::preserver-votre-foret-avec-regime-forestier.html — « La collectivité reste maître de la gestion de son patrimoine et continue à assumer ses responsabilités de propriétaire »
+// « même lorsque l’Office national des forêts (ONF) en est le gestionnaire au titre du régime forestier » : FNCOFOR et ONF, Convention FNCOFOR-ONF 2022-2025, décembre 2022, p. 9, https://www.ofme.org/documents/actualite/202212/convention-fncofor-onf-web.pdf — « En application du Régime forestier, le gestionnaire ONF doit au propriétaire la présentation chaque année d’un programme de coupes et travaux »
+// « Les recettes de la forêt lui reviennent » : ONF, L’ONF, un partenaire engagé pour la gestion des forêts communales, https://www.onf.fr/aux-cotes-des-territoires/lonf-et-les-communes-forestieres/+/2a::onf-un-partenaire-engage-pour-la-gestion-des-forets-communales.html — « gèrent la commercialisation du bois, dont le produit revient à la commune »
+// « pour une grande majorité des forêts des collectivités, la vente des bois en assure l’essentiel » ; « Ces recettes financent les investissements en forêt et procurent un revenu » : Convention FNCOFOR-ONF, p. 12 — « à ce jour, la vente des bois assure, pour une grande majorité de forêts des collectivités, l’essentiel des recettes permettant les investissements en forêt et un revenu pour la collectivité » ; le lien [1] renvoie à la source n° 1 de la thématique sylviculture dans src/lib/sources.ts
+// « une part importante des recettes de fonctionnement de nombreuses communes, d’autant plus que celles-ci sont peu peuplées » : CGAAER et IGA, Impact des scolytes sur le budget des communes forestières de l’Est de la France et adaptation au changement climatique, rapport n° 21023, juin 2021, https://agriculture.gouv.fr/impact-des-scolytes-sur-le-budget-des-communes-forestieres-de-lest-de-la-france-et-adaptation-au — « Pour de nombreuses communes, les recettes de ventes de coupes de bois sont régulières et représentent une part importante de leurs recettes de fonctionnement » ; « La dépendance aux recettes forestières est en général d’autant plus grande que les communes ont un faible nombre d’habitants » ; le lien [2] renvoie à la source n° 2 de la thématique sylviculture
+// « Les sécheresses répétées, auxquelles s’ajoutent désormais des attaques régulières d’insectes comme les scolytes sur les résineux, provoquent des dépérissements massifs » : Cour des comptes, L’Office national des forêts et le défi de la transition écologique, septembre 2024, p. 9 du PDF, https://www.ccomptes.fr/sites/default/files/2024-09/20240919-ONF-au%20defi-de-la-transition-ecologique.pdf — « d’autant plus qu’ils s’accompagnent désormais d’épisodes réguliers de prolifération d’insectes qui s’attaquent aux arbres (cas des scolytes sur les résineux), conduisant à des phénomènes de dépérissements massifs »
+// « 25 000 hectares de forêts des collectivités ont ainsi été détruits entre 2018 et 2021 » : Cour des comptes, p. 9 du PDF — « 25 000 hectares de forêt domaniale et autant de forêt des collectivités ont ainsi été détruits entre 2018 et 2021 » ; le lien [3] renvoie à la source n° 3 de la thématique sylviculture
+// « Avec les incendies et les tempêtes, ces crises imposent de reconstituer des peuplements ou d’en anticiper le renouvellement » : Convention FNCOFOR-ONF, p. 10 — « Les crises sanitaires, les aléas naturels (incendies, tempêtes...) et les facteurs abiotiques induits par les effets du changement climatique nécessitent la reconstitution ou un renouvellement anticipé des peuplements forestiers »
+// « Le renouvellement des forêts des collectivités est habituellement payé par les communes » : Cour des comptes, p. 89 du PDF — « S’agissant des forêts des collectivités, l’ONF renouvelle habituellement 5 000 ha par an, payés par les communes »
+// « La surface de forêt que possède une commune indique ainsi sur quelle étendue elle est directement concernée » : demande de l’équipe, rubrique « Pourquoi cette donnée »
+// Définition au survol « régime forestier » (regimeForestier, src/lib/definitions.tsx) : ONF, Préserver votre forêt avec le régime forestier
+// Points de vigilance :
+// CGAAER : la source écrit « en général d’autant plus grande » ; le texte ne reprend pas « en général ».
+// 25 000 ha : toutes collectivités confondues, et non les seules communes.
+export const ForetsCommunalesText = () => (
+  <>
+    <Body size="sm">
+      Une commune propriétaire d’une forêt est maître de la gestion de ce
+      patrimoine et en assume les responsabilités, même lorsque l’Office
+      national des forêts (ONF) en est le gestionnaire au titre du{' '}
+      <DefinitionTooltip title={regimeForestier}>
+        régime forestier
+      </DefinitionTooltip>
+      . Les recettes de la forêt lui reviennent : pour une grande majorité des
+      forêts des collectivités,{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        la vente des bois en assure l’essentiel
+      </ScrollToSourceTag>
+      . Ces recettes financent les investissements en forêt et procurent un
+      revenu qui représente{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        une part importante des recettes de fonctionnement de nombreuses
+        communes
+      </ScrollToSourceTag>
+      , d’autant plus que celles-ci sont peu peuplées.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Les sécheresses répétées, auxquelles s’ajoutent désormais des attaques
+      régulières d’insectes comme les scolytes sur les résineux, provoquent des
+      dépérissements massifs :{' '}
+      <ScrollToSourceTag sourceNumero={3}>
+        25&nbsp;000 hectares de forêts des collectivités ont ainsi été détruits
+        entre 2018 et 2021
+      </ScrollToSourceTag>
+      . Avec les incendies et les tempêtes, ces crises imposent de reconstituer
+      des peuplements ou d’en anticiper le renouvellement. Le renouvellement des
+      forêts des collectivités est habituellement payé par les communes. La
+      surface de forêt que possède une commune indique ainsi sur quelle étendue
+      elle est directement concernée, par ses recettes de bois comme par le
+      renouvellement de sa forêt.
+    </Body>
+  </>
 );

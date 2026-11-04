@@ -77,6 +77,32 @@ export const SurfacesIrrigueesTooltip = (communeName: string, surfacesIrriguees:
   `;
 };
 
+export const ForetsCommunalesTooltip = (
+  communeName: string,
+  surface: number | null,
+  surfaceExterieur: number | null
+) => {
+  const hectares = (valeur: number | null) =>
+    valeur === null
+      ? 'Aucune donnée'
+      : valeur < 0.01
+        ? '0 ha'
+        : valeur < 1
+          ? 'moins d’1 ha'
+          : `${Round(valeur, 0)} ha`;
+  return `
+      <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 0; width: max-content;">
+        <p style="font-size: 1rem; font-family: Marianne; font-weight: 700; margin: 0 0 0.5rem">${communeName}</p>
+        <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
+          Forêt appartenant à la commune : <b>${hectares(surface)}</b>
+        </p>
+        ${surfaceExterieur !== null && surfaceExterieur >= 0.01 ? `<p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
+          Dont forêt située sur d’autres communes : <b>${hectares(surfaceExterieur)}</b>
+        </p>` : ''}
+      </div>
+  `;
+};
+
 export const FragiliteEconomiqueTooltip = (communeName: string, value: number) => {
   return `
       <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 0; width: max-content;">

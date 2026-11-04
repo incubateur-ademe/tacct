@@ -674,3 +674,19 @@ export const HauteurCanopeeTooltipText = (
     </Body>
   </>
 );
+
+// Sources du texte :
+// « publié chaque année par la DGFiP à partir du cadastre », « au 1er janvier 2025 » : DGFiP, Fichiers des locaux et des parcelles des personnes morales, https://www.data.gouv.fr/datasets/fichiers-des-locaux-et-des-parcelles-des-personnes-morales
+// « surface de forêt dont la commune, ou l’une de ses sections, est propriétaire », « forêts situées sur d’autres communes » : description de la table databases_v2.forets_communales
+// « une commune peut en avoir acquis ailleurs, parfois il y a plusieurs siècles » : Ville de Strasbourg, Les forêts de production, https://www.strasbourg.eu/forets-production — forêts du Hohwald et de l’Oedenwald acquises au XVIe siècle, du Herrenwald (Brumath) en 1967
+// « ou en posséder en commun avec d’autres communes » : Code général des collectivités territoriales, art. L5222-1, https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006393271 — biens ou droits indivis entre plusieurs communes
+export const foretsCommunalesTooltipText = (
+  <Body weight="bold" size="sm">
+    Ce chiffre, publié chaque année par la Direction générale des Finances
+    publiques (DGFiP) à partir du cadastre, correspond à la surface de forêt
+    dont la commune, ou l’une de ses sections, est propriétaire au 1er janvier
+    2025. Il comprend les forêts situées sur d’autres communes : une commune
+    peut en avoir acquis ailleurs, parfois il y a plusieurs siècles, ou en
+    posséder en commun avec d’autres communes.
+  </Body>
+);

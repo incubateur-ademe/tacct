@@ -905,3 +905,17 @@ export const ambroisieMapLegend = [
     color: '#0C4E67'
   }
 ];
+
+// Teintes intermédiaires interpolées entre vert[3] et vert[5] : contraste de 1,63:1 entre classes voisines
+export const foretsCommunalesClasses = [
+  { min: 0, value: 'Aucune forêt', color: 'white' },
+  { min: 0.01, value: 'Moins de 1 ha', color: '#c1e9c3' },
+  { min: 1, value: '1 à 10 ha', color: '#83b985' },
+  { min: 10, value: '10 à 100 ha', color: '#468749' },
+  { min: 100, value: '100 à 1 000 ha', color: '#326334' },
+  { min: 1000, value: '1 000 ha et plus', color: couleurs.graphiques.vert[5] }
+];
+
+export const foretsCommunalesLegend = foretsCommunalesClasses.map(
+  ({ value, color }) => ({ value, color })
+);

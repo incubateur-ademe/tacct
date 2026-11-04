@@ -119,6 +119,16 @@ export const arbovirose = (
   </span>
 );
 
+export const regimeForestier = (
+  <span>
+    Ensemble de principes, établis en application du Code forestier, qui visent
+    à assurer la conservation et la mise en valeur des forêts de l’État, des
+    collectivités et des établissements publics. Il s’applique à une forêt
+    communale sur arrêté du préfet. Sa mise en œuvre est confiée par la loi à
+    l’ONF.
+  </span>
+);
+
 export const maladieVectorielle = (
   <span>
     Maladie véhiculée et inoculée par un vecteur (moustique, tique, punaise...),

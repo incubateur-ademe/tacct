@@ -156,5 +156,24 @@ export const sourcesEtudes = {
       url: 'https://www.georisques.gouv.fr/etre-accompagne/le-soutien-financier-du-fonds-barnier-0',
       texte: 'Géorisques, Le soutien financier du fonds Barnier'
     }
+  ],
+  sylviculture: [
+    {
+      numero: 1,
+      url: 'https://www.ofme.org/documents/actualite/202212/convention-fncofor-onf-web.pdf',
+      texte: 'FNCOFOR et ONF, Convention FNCOFOR-ONF 2022-2025, décembre 2022'
+    },
+    {
+      numero: 2,
+      url: 'https://agriculture.gouv.fr/impact-des-scolytes-sur-le-budget-des-communes-forestieres-de-lest-de-la-france-et-adaptation-au',
+      texte:
+        'CGAAER et IGA, Impact des scolytes sur le budget des communes forestières de l’Est de la France et adaptation au changement climatique, juin 2021'
+    },
+    {
+      numero: 3,
+      url: 'https://www.ccomptes.fr/sites/default/files/2024-09/20240919-ONF-au%20defi-de-la-transition-ecologique.pdf',
+      texte:
+        'Cour des comptes, L’Office national des forêts et le défi de la transition écologique, septembre 2024'
+    }
   ]
 };

@@ -12,6 +12,7 @@ import {
   ArreteCatNat,
   ConsommationNAF,
   ExportCoursDeau,
+  ForetsCommunalesModel,
   IncendiesForet,
   InconfortThermique,
   InondationsDebordementModel,
@@ -798,6 +799,29 @@ export const IndicatorExportTransformations = {
           };
         }
       );
+    }
+  },
+  sylviculture: {
+    ForetsCommunales: (foretsCommunales: ForetsCommunalesModel[]) => {
+      return foretsCommunales.map((el) => {
+        return {
+          'Code commune': el.code_geographique,
+          Commune: el.libelle_geographique,
+          'Code EPCI': el.epci,
+          EPCI: el.libelle_epci,
+          'Surface de forêt possédée (ha)': el.surface_foret_possedee_ha,
+          'Dont surface sur la commune (ha)': el.surface_foret_possedee_sur_territoire_ha,
+          'Dont surface sur d’autres communes (ha)':
+            el.surface_foret_possedee_ha === null ||
+            el.surface_foret_possedee_sur_territoire_ha === null
+              ? null
+              : Math.round(
+                  (el.surface_foret_possedee_ha -
+                    el.surface_foret_possedee_sur_territoire_ha) *
+                    100
+                ) / 100
+        };
+      });
     }
   }
 };

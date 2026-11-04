@@ -1125,3 +1125,12 @@ export type InondationsDebordementTerritoire = {
   nombreEpci: number;
   donnees: InondationsDebordementModel[];
 };
+
+export type ForetsCommunalesModel = {
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  surface_foret_possedee_ha: number | null;
+  surface_foret_possedee_sur_territoire_ha: number | null;
+};

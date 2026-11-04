@@ -157,7 +157,7 @@ export const sommaireThematiques = {
       {
         id: 'section1',
         thematique: 'Forêts',
-        icone: '🌲',
+        icone: '🪵',
         sousCategories: ['Hauteur de la canopée']
       }
     ]
@@ -182,6 +182,16 @@ export const sommaireThematiques = {
           'Inondation par débordement des cours d’eau'
         ]
       },
+    ]
+  },
+  Sylviculture: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Sylviculture',
+        icone: '🪵',
+        sousCategories: ['Forêts communales']
+      }
     ]
   }
 };
@@ -424,6 +434,6 @@ export const thematiquesInfo: {
   Sylviculture: {
     title: 'Sylviculture',
     description: <div></div>,
-    link: ''
+    link: 'Sylviculture'
   }
 };
