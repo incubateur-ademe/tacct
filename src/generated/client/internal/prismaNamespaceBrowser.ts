@@ -134,7 +134,8 @@ export const ModelName = {
   tacctoscope_answer: 'tacctoscope_answer',
   user_besoin: 'user_besoin',
   tacctoscope_ressources: 'tacctoscope_ressources',
-  forets_communales: 'forets_communales'
+  forets_communales: 'forets_communales',
+  stations_ski: 'stations_ski'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1751,6 +1752,30 @@ export const Forets_communalesScalarFieldEnum = {
 } as const
 
 export type Forets_communalesScalarFieldEnum = (typeof Forets_communalesScalarFieldEnum)[keyof typeof Forets_communalesScalarFieldEnum]
+
+
+export const Stations_skiScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  stations_id: 'stations_id',
+  stations_nom: 'stations_nom',
+  stations_moment_puissance: 'stations_moment_puissance',
+  stations_taille: 'stations_taille',
+  stations_age_parc: 'stations_age_parc',
+  stations_part_puissance_30_ans: 'stations_part_puissance_30_ans'
+} as const
+
+export type Stations_skiScalarFieldEnum = (typeof Stations_skiScalarFieldEnum)[keyof typeof Stations_skiScalarFieldEnum]
 
 
 export const SortOrder = {

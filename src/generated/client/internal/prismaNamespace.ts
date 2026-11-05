@@ -480,7 +480,8 @@ export const ModelName = {
   tacctoscope_answer: 'tacctoscope_answer',
   user_besoin: 'user_besoin',
   tacctoscope_ressources: 'tacctoscope_ressources',
-  forets_communales: 'forets_communales'
+  forets_communales: 'forets_communales',
+  stations_ski: 'stations_ski'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -496,7 +497,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources" | "forets_communales"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources" | "forets_communales" | "stations_ski"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6684,6 +6685,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    stations_ski: {
+      payload: Prisma.$stations_skiPayload<ExtArgs>
+      fields: Prisma.stations_skiFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.stations_skiFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.stations_skiFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        findFirst: {
+          args: Prisma.stations_skiFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.stations_skiFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        findMany: {
+          args: Prisma.stations_skiFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>[]
+        }
+        create: {
+          args: Prisma.stations_skiCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        createMany: {
+          args: Prisma.stations_skiCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.stations_skiCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>[]
+        }
+        delete: {
+          args: Prisma.stations_skiDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        update: {
+          args: Prisma.stations_skiUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        deleteMany: {
+          args: Prisma.stations_skiDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.stations_skiUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.stations_skiUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>[]
+        }
+        upsert: {
+          args: Prisma.stations_skiUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$stations_skiPayload>
+        }
+        aggregate: {
+          args: Prisma.Stations_skiAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStations_ski>
+        }
+        groupBy: {
+          args: Prisma.stations_skiGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Stations_skiGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.stations_skiCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Stations_skiCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -8323,6 +8398,30 @@ export const Forets_communalesScalarFieldEnum = {
 export type Forets_communalesScalarFieldEnum = (typeof Forets_communalesScalarFieldEnum)[keyof typeof Forets_communalesScalarFieldEnum]
 
 
+export const Stations_skiScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  stations_id: 'stations_id',
+  stations_nom: 'stations_nom',
+  stations_moment_puissance: 'stations_moment_puissance',
+  stations_taille: 'stations_taille',
+  stations_age_parc: 'stations_age_parc',
+  stations_part_puissance_30_ans: 'stations_part_puissance_30_ans'
+} as const
+
+export type Stations_skiScalarFieldEnum = (typeof Stations_skiScalarFieldEnum)[keyof typeof Stations_skiScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -8695,6 +8794,7 @@ export type GlobalOmitConfig = {
   user_besoin?: Prisma.user_besoinOmit
   tacctoscope_ressources?: Prisma.tacctoscope_ressourcesOmit
   forets_communales?: Prisma.forets_communalesOmit
+  stations_ski?: Prisma.stations_skiOmit
 }
 
 /* Types for Logging */

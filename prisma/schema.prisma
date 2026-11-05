@@ -1910,3 +1910,33 @@ model forets_communales {
   @@index([index], map: "ix_forets_communales_index")
   @@schema("databases_v2")
 }
+
+model stations_ski {
+  index                          Int     @id
+  code_geographique              String
+  libelle_geographique           String
+  epci                           String
+  libelle_epci                   String
+  departement                    String
+  libelle_departement            String
+  region                         Float
+  ept                            String?
+  libelle_petr                   String?
+  code_pnr                       String?
+  libelle_pnr                    String?
+  stations_id                    String
+  stations_nom                   String
+  stations_moment_puissance      String
+  stations_taille                String
+  stations_age_parc              String
+  stations_part_puissance_30_ans String
+
+  @@index([index], map: "ix_stations_ski_index")
+  @@index([code_geographique], map: "stations_ski_communes_index")
+  @@index([departement], map: "stations_ski_departement_index")
+  @@index([ept], map: "stations_ski_dept_index")
+  @@index([epci], map: "stations_ski_epci_index")
+  @@index([libelle_petr], map: "stations_ski_petr_index")
+  @@index([code_pnr], map: "stations_ski_pnr_index")
+  @@schema("databases_v2")
+}

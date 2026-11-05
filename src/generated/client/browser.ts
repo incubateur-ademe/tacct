@@ -437,3 +437,8 @@ export type tacctoscope_ressources = Prisma.tacctoscope_ressourcesModel
  * 
  */
 export type forets_communales = Prisma.forets_communalesModel
+/**
+ * Model stations_ski
+ * 
+ */
+export type stations_ski = Prisma.stations_skiModel
