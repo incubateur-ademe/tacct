@@ -193,6 +193,16 @@ export const sommaireThematiques = {
         sousCategories: ['Forêts communales']
       }
     ]
+  },
+  Tourisme: {
+    thematiquesLiees: [
+      {
+        id: 'section1',
+        thematique: 'Tourisme',
+        icone: '🏖️',
+        sousCategories: ['Stations de ski']
+      }
+    ]
   }
 };
 
@@ -408,7 +418,7 @@ export const thematiquesInfo: {
   Tourisme: {
     title: 'Tourisme',
     description: <div></div>,
-    link: ''
+    link: 'Tourisme'
   },
   Agriculture: {
     title: 'Agriculture',

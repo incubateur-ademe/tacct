@@ -919,3 +919,15 @@ export const foretsCommunalesClasses = [
 export const foretsCommunalesLegend = foretsCommunalesClasses.map(
   ({ value, color }) => ({ value, color })
 );
+
+export const stationsSkiTailleClasses = [
+  { value: 'Petite station', color: couleurs.graphiques.bleu[3] },
+  { value: 'Station moyenne', color: couleurs.graphiques.bleu[2] },
+  { value: 'Grande station', color: couleurs.graphiques.bleu[1] },
+  { value: 'Très grande station', color: couleurs.graphiques.bleu[5] }
+];
+
+export const stationsSkiTailleLegend = [
+  { value: 'Aucune station', color: 'white' },
+  ...stationsSkiTailleClasses
+];

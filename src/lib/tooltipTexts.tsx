@@ -690,3 +690,26 @@ export const foretsCommunalesTooltipText = (
     posséder en commun avec d’autres communes.
   </Body>
 );
+
+// Sources du texte :
+// « l’âge moyen des remontées mécaniques d’une station, pondéré par leur moment de puissance » : INRAE, formule de l’âge du parc (somme des âges multipliés par le moment de puissance, divisée par la somme des moments de puissance) ; notebook stations_ski, cellule 7
+// « le produit de leur débit horaire par leur dénivelée » : STRMTG, Rapport annuel 2025/2026, § 1.1.1, p. 9, https://www.strmtg.developpement-durable.gouv.fr/IMG/pdf/rapport_complet_rm_2026-09-23.pdf — « le produit du débit horaire autorisé de l’appareil, exprimé en p/h, par sa dénivelée »
+// « Cet indicateur résume donc à lui seul plusieurs caractéristiques d’une station » : INRAE (LESSEM), courriel du 06/11/2026 — « beaucoup de colinéarité entre l’âge du parc et d’autres indicateurs de la BD »
+// « le calcul porte sur l’ensemble de leurs remontées » : moyenne des âges des stations du territoire pondérée par leur moment de puissance, chaque station comptée une fois
+// « Une remontée remplacée compte comme un appareil neuf » : INRAE (LESSEM), courriel du 06/11/2026 — « une nouvelle RM avec un nouvel identifiant est crée avec une nouvelle année de pose »
+// « une modernisation ne rajeunit pas forcément le parc » : INRAE (LESSEM), courriel du 06/11/2026 — pour les appareils fortement modifiés ou rachetés, « il ne me semble pas avoir l’information sur ces cas-là »
+export const stationsSkiTooltipText = (
+  <Body weight="bold" size="sm">
+    L’âge du parc est l’âge moyen des remontées mécaniques d’une station,
+    pondéré par leur moment de puissance, c’est-à-dire le produit de leur
+    débit horaire par leur dénivelée. Un appareil pèse ainsi d’autant plus
+    qu’il peut transporter de skieurs sur un grand dénivelé. Cet indicateur
+    résume donc à lui seul plusieurs caractéristiques d’une station. Pour un
+    territoire qui compte plusieurs stations, le calcul porte sur l’ensemble
+    de leurs remontées.
+    <br></br>
+    <br></br>
+    Une remontée remplacée compte comme un appareil neuf, mais une
+    modernisation ne rajeunit pas forcément le parc.
+  </Body>
+);

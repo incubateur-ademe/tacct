@@ -1047,3 +1047,47 @@ export const ForetsCommunalesText = () => (
     </Body>
   </>
 );
+
+{
+  /* Tourisme */
+}
+
+// Sources du texte :
+// « Une station de ski vit de la neige, et avec elle une partie de l’économie de son territoire » : Cour des comptes, Les stations de montagne face au changement climatique, février 2024, p. 8, https://www.ccomptes.fr/sites/default/files/2024-02/20240206-Stations-de-montagne-face-au-changement-climatique.pdf — « fragiliser l’équilibre financier des remontées mécaniques et l’économie locale qui en découle pour partie »
+// « le réchauffement réduit l’enneigement » : Cour des comptes, p. 8 — « des conséquences plus marquées sur l’enneigement […] Ce constat s’applique tant aux précipitations neigeuses qu’à la neige produite » ; PNACC-3, mesure 35, p. 1, https://www.ecologie.gouv.fr/sites/default/files/documents/Mesure35%20-%20%C3%A9conomie%20-%20tourisme.pdf — « diminution de l’enneigement »
+// « rend la production de neige moins efficace à mesure que les températures montent : la neige de culture offre un répit, sans lever cette dépendance » : Cour des comptes, p. 9 — « La production de neige permet de fiabiliser l’enneigement à court terme. Mais, elle ne constitue qu’une protection relative et transitoire […] son efficacité tend à se réduire avec la hausse des températures »
+// « Toutes les stations en ressentiront les effets d’ici 2050, mais pas au même degré […] remontées mécaniques » : Cour des comptes, p. 8 — « Inégalement vulnérables en fonction de leur exposition au risque climatique, du poids de l’activité économique et de la surface financière de l’autorité organisatrice, toutes les stations seront plus ou moins touchées à horizon de 2050 » ; p. 16, note 9 — « L’autorité organisatrice est la collectivité territoriale compétente pour organiser le service public »
+// « La taille de la station, établie d’après la capacité de ses remontées mécaniques et étroitement liée à l’offre d’hébergement touristique » : Cour des comptes, p. 20 — « sur la base de la capacité de leurs remontées mécaniques, calculée par l’intensité du moment de puissance » ; p. 31, note 35 — « Le coefficient de corrélation entre l’offre d’hébergement et le moment puissance pour les 217 stations testées est de 0,83 »
+// « Un parc récent traduit une station qui renouvelle ses appareils, voire étend son domaine ; un parc ancien annonce des remplacements prochains, à moins que la station n’ait cessé de renouveler son parc » : INRAE (LESSEM), courriel du 06/11/2026 — « Age jeune (0-20) : récente ou en constante évolution, ou en agrandissement » ; « Age ancien (30-40) : peu ou plus de renouvellement, ni d’ajout »
+// « chaque remplacement engage la collectivité sur une quinzaine d’années, le temps de l’amortir : décidé sans tenir compte de l’enneigement attendu sur cette période, il risque de lui laisser la charge d’un équipement non amorti » : Cour des comptes, p. 52 — « la plupart des équipements de remontées mécaniques doivent être amortis sur des durées évaluées à 15 ans en moyenne par la Cour […] Il est donc essentiel que les collectivités n’engagent aujourd’hui que les investissements compatibles avec les perspectives du changement climatique. […] À défaut, les investissements non amortis constitueront une charge future pour la collectivité » ; le lien [1] renvoie à la source n° 1 de la thématique tourisme dans src/lib/sources.ts
+export const StationsSkiText = () => (
+  <>
+    <Body size="sm">
+      Une station de ski vit de la neige, et avec elle une partie de
+      l’économie de son territoire. Or le réchauffement réduit l’enneigement
+      et rend la production de neige moins efficace à mesure que les
+      températures montent : la neige de culture offre un répit, sans lever
+      cette dépendance. Toutes les stations en ressentiront les effets d’ici
+      2050, mais pas au même degré : cela dépendra de leur exposition, du
+      poids du ski dans l’économie locale et des moyens de la collectivité qui
+      organise l’exploitation des remontées mécaniques.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Pour un territoire, tout l’enjeu est donc de savoir jusqu’où son
+      économie dépend du ski, et à quelle échéance il devra décider de
+      réinvestir, ou non, dans ses remontées. La taille de la station, établie
+      d’après la capacité de ses remontées mécaniques et étroitement liée à
+      l’offre d’hébergement touristique, donne la mesure de cette dépendance ;
+      l’âge de son parc en situe l’échéance. Un parc récent traduit une
+      station qui renouvelle ses appareils, voire étend son domaine ; un parc
+      ancien annonce des remplacements prochains, à moins que la station n’ait
+      cessé de renouveler son parc. Or chaque remplacement engage la
+      collectivité sur une quinzaine d’années, le temps de l’amortir :{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        décidé sans tenir compte de l’enneigement attendu sur cette période, il
+        risque de lui laisser la charge d’un équipement non amorti
+      </ScrollToSourceTag>
+      .
+    </Body>
+  </>
+);

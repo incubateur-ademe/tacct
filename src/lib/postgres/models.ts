@@ -1134,3 +1134,19 @@ export type ForetsCommunalesModel = {
   surface_foret_possedee_ha: number | null;
   surface_foret_possedee_sur_territoire_ha: number | null;
 };
+
+export type StationSki = {
+  id: string;
+  nom: string;
+  momentPuissance: number;
+  taille: string;
+  ageParc: number;
+};
+
+export type StationsSkiModel = {
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  stations: StationSki[];
+};

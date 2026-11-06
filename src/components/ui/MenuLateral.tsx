@@ -6,6 +6,7 @@ import DoubleChevronIcon from '@/assets/icons/double_chevron_icon_black.svg';
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
+import { GetStationsSki } from '@/lib/queries/databases/tourisme';
 import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -32,7 +33,14 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [urlAnchor, setUrlAnchor] = useState<string | null>(null);
   const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
+  const [isStationsSki, setIsStationsSki] = useState<boolean>(false);
   const [isContentVisible, setIsContentVisible] = useState<boolean>(!isCollapsed);
+  const sectionsEtape1 = ongletsMenuEtape1?.thematiquesLiees
+    .map((section) => ({
+      ...section,
+      sousCategories: section.sousCategories.filter((item) => item !== 'Stations de ski' || isStationsSki)
+    }))
+    .filter((section) => section.sousCategories.length > 0);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -53,6 +61,12 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
         setIsErosionCotiere(true);
       } else setIsErosionCotiere(false);
     })()
+    if (searchParams.get('thematique') === 'Tourisme') {
+      void (async () => {
+        const stationsSki = await GetStationsSki(code, libelle, type);
+        setIsStationsSki(stationsSki.length > 0);
+      })();
+    }
   }, [libelle]);
 
   // Mesurer la hauteur de la div de navigation
@@ -269,7 +283,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
                   </Body>
                 </button>
                 <div className={thematique === "Confort thermique" ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
-                  {openEtape1 && ongletsMenuEtape1?.thematiquesLiees.map((thematique, id) => (
+                  {openEtape1 && sectionsEtape1?.map((thematique, id) => (
                     <div key={id} className="mb-4">
                       <SousTitre2
                         style={{

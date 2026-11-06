@@ -1,0 +1,112 @@
+'use client';
+import ScrollToHash from '@/components/interactions/ScrollToHash';
+import { SourcesSection } from '@/components/interactions/scrollToSource';
+import { LoaderText } from '@/components/ui/loader';
+import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
+import { StationsSkiModel } from '@/lib/postgres/models';
+import { GetStationsSki } from '@/lib/queries/databases/tourisme';
+import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
+import { useSearchParams } from 'next/navigation';
+import { useLayoutEffect, useState } from 'react';
+import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
+import styles from '../../explorerDonnees.module.scss';
+import { StationsSki } from '../../indicateurs/tourisme/1-StationsSki';
+
+interface Props {
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
+  stationsSki: StationsSkiModel[];
+}
+
+export const DonneesTourisme = ({ coordonneesCommunes, stationsSki }: Props) => {
+  const searchParams = useSearchParams();
+  const thematique = searchParams.get('thematique') as 'Tourisme';
+  const code = searchParams.get('code')!;
+  const libelle = searchParams.get('libelle')!;
+  const type = searchParams.get('type')!;
+  const [data, setData] = useState({ coordonneesCommunes, stationsSki });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const ongletsMenu = sommaireThematiques[thematique];
+
+  useLayoutEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false);
+      return;
+    }
+    setIsLoading(true);
+    void (async () => {
+      const [newCoordonneesCommunes, newStationsSki] = await Promise.all([
+        GetCommunesCoordinates(code, libelle, type),
+        GetStationsSki(code, libelle, type)
+      ]);
+      setData({
+        coordonneesCommunes: newCoordonneesCommunes,
+        stationsSki: newStationsSki
+      });
+      setIsLoading(false);
+    })();
+  }, [libelle]);
+
+  return isLoading ? (
+    <LoaderText text="Mise à jour des données" />
+  ) : (
+    <div className={styles.explorerMesDonneesContainer}>
+      <ScrollToHash />
+      <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
+        TITRE
+      </H1>
+      {/* Introduction */}
+      <section>
+        <Body size="lg">
+          Ces données vous aideront à poser les bonnes questions,
+          le terrain vous donnera les vraies réponses.
+        </Body>
+        <Body size="lg" style={{ fontStyle: "italic", marginTop: "1rem" }}>
+          À noter : Ces données représentent les informations les plus récentes disponibles à l'échelle nationale.
+        </Body>
+      </section>
+
+      {data.stationsSki.length > 0 && (
+        <>
+          {/* Section Tourisme */}
+          <section className={styles.sectionType}>
+            <H2
+              style={{
+                color: 'var(--principales-rouge)',
+                textTransform: 'uppercase',
+                fontSize: '1.75rem',
+                margin: '0 0 -1rem 0',
+                padding: '2rem 2rem 0',
+                fontWeight: 400
+              }}
+            >
+              {ongletsMenu.thematiquesLiees[0].icone}{' '}
+              {ongletsMenu.thematiquesLiees[0].thematique}
+            </H2>
+
+            {/* Stations de ski */}
+            <div id="Stations-de-ski" className={styles.indicateurMapWrapper}>
+              <div className={styles.h3Titles}>
+                <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
+                  Stations de ski
+                </H3>
+              </div>
+              <StationsSki
+                stationsSki={data.stationsSki}
+                coordonneesCommunes={data.coordonneesCommunes}
+              />
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* Sources */}
+      {data.stationsSki.length > 0 && (
+        <SourcesSection tag="h2" thematique="tourisme" />
+      )}
+    </div>
+  );
+};

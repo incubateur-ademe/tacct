@@ -4,6 +4,7 @@ import { sommaireImpacts, sommaireThematiques } from '@/app/(main)/(parcours)/th
 import retourIcon from '@/assets/icons/retour_icon_black.svg';
 import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
+import { GetStationsSki } from '@/lib/queries/databases/tourisme';
 import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -25,12 +26,19 @@ export const MenuMobileDrawer = () => {
   const [activeAnchorEtape1, setActiveAnchorEtape1] = useState<string>('');
   const [activeAnchorEtape2, setActiveAnchorEtape2] = useState<string>('');
   const [isErosionCotiere, setIsErosionCotiere] = useState<boolean>(false);
+  const [isStationsSki, setIsStationsSki] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const fabRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const ongletsMenuEtape1 = sommaireThematiques[thematique];
   const ongletsMenuEtape2 = sommaireImpacts[thematique];
+  const sectionsEtape1 = ongletsMenuEtape1?.thematiquesLiees
+    .map((section) => ({
+      ...section,
+      sousCategories: section.sousCategories.filter((item) => item !== 'Stations de ski' || isStationsSki)
+    }))
+    .filter((section) => section.sousCategories.length > 0);
 
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
@@ -44,6 +52,12 @@ export const MenuMobileDrawer = () => {
       const erosionCotiere = await GetErosionCotiere(code, libelle, type);
       setIsErosionCotiere(erosionCotiere.length > 0 && Array.isArray(erosionCotiere[0]) && erosionCotiere[0].length > 0);
     })();
+    if (searchParams.get('thematique') === 'Tourisme') {
+      void (async () => {
+        const stationsSki = await GetStationsSki(code, libelle, type);
+        setIsStationsSki(stationsSki.length > 0);
+      })();
+    }
   }, [libelle]);
 
   useEffect(() => {
@@ -214,7 +228,7 @@ export const MenuMobileDrawer = () => {
           </button>
 
           <div className={thematique === 'Confort thermique' ? styles.menuEtapeDonnees : styles.menuEtapeDonneesSansImpact}>
-            {openEtape1 && ongletsMenuEtape1.thematiquesLiees.map((them, id) => (
+            {openEtape1 && sectionsEtape1.map((them, id) => (
               <div key={id} className="mb-4">
                 <SousTitre2 style={{ color: 'var(--principales-rouge)', padding: '0 0 0.5rem' }}>
                   {them.icone} {them.thematique}

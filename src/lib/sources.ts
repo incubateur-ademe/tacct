@@ -175,5 +175,13 @@ export const sourcesEtudes = {
       texte:
         'Cour des comptes, L’Office national des forêts et le défi de la transition écologique, septembre 2024'
     }
+  ],
+  tourisme: [
+    {
+      numero: 1,
+      url: 'https://www.ccomptes.fr/sites/default/files/2024-02/20240206-Stations-de-montagne-face-au-changement-climatique.pdf',
+      texte:
+        'Cour des comptes, Les stations de montagne face au changement climatique, février 2024'
+    }
   ]
 };

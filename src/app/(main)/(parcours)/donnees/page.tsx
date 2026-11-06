@@ -15,6 +15,7 @@ import ForetServerPage from './thematiques/foret/ForetServerPage';
 import GestionRisquesServerPage from './thematiques/gestionRisques/GestionRisquesServerPage';
 import SanteServerPage from './thematiques/sante/SanteServerPage';
 import SylvicultureServerPage from './thematiques/sylviculture/SylvicultureServerPage';
+import TourismeServerPage from './thematiques/tourisme/TourismeServerPage';
 
 export const dynamic = 'force-dynamic';
 
@@ -62,6 +63,8 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
             <BatimentServerPage searchParams={props.searchParams} />
           ) : thematique === "Sylviculture" ? (
             <SylvicultureServerPage searchParams={props.searchParams} />
+          ) : thematique === "Tourisme" ? (
+            <TourismeServerPage searchParams={props.searchParams} />
           ) : ""}
         </>
       }

@@ -1,3 +1,4 @@
+import { StationSki } from "@/lib/postgres/models";
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from "@/lib/utils/reusableFunctions/sum";
 
@@ -99,6 +100,24 @@ export const ForetsCommunalesTooltip = (
         ${surfaceExterieur !== null && surfaceExterieur >= 0.01 ? `<p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
           Dont forêt située sur d’autres communes : <b>${hectares(surfaceExterieur)}</b>
         </p>` : ''}
+      </div>
+  `;
+};
+
+export const StationsSkiTooltip = (communeName: string, stations: StationSki[]) => {
+  const lignes = stations.length
+    ? stations
+        .map(
+          (station) => `<p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
+          ${station.nom} : <b>${station.taille.toLowerCase()}</b>, parc de <b>${station.ageParc} ans</b>
+        </p>`
+        )
+        .join('')
+    : `<p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">Aucune station de ski</p>`;
+  return `
+      <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 0; width: max-content;">
+        <p style="font-size: 1rem; font-family: Marianne; font-weight: 700; margin: 0 0 0.5rem">${communeName}</p>
+        ${lignes}
       </div>
   `;
 };

@@ -21,6 +21,7 @@ import {
   QualiteSitesBaignadeModel,
   RGAdb,
   SecheressesPasseesModel,
+  StationsSkiModel,
   SurfacesAgricolesModel,
   TableCommuneModel
 } from '@/lib/postgres/models';
@@ -822,6 +823,22 @@ export const IndicatorExportTransformations = {
                 ) / 100
         };
       });
+    }
+  },
+  tourisme: {
+    StationsSki: (stationsSki: StationsSkiModel[]) => {
+      return stationsSki.flatMap((el) =>
+        el.stations.map((station) => ({
+          'Code commune': el.code_geographique,
+          Commune: el.libelle_geographique,
+          'Code EPCI': el.epci,
+          EPCI: el.libelle_epci,
+          Station: station.nom,
+          'Taille de la station': station.taille,
+          'Moment de puissance de la station (km·skieurs/h)': station.momentPuissance,
+          'Âge du parc de remontées mécaniques (ans)': station.ageParc
+        }))
+      );
     }
   }
 };

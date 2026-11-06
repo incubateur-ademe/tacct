@@ -128,7 +128,7 @@ export const nomThematiques = [
     xOffset: 35,
     yOffset: 27,
     icon: '🏖️',
-    disabled: true,
+    disabled: false,
     liens: []
   },
   {
