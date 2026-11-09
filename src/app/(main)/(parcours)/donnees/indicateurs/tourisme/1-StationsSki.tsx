@@ -123,8 +123,18 @@ export const StationsSki = ({
               />
               <div
                 className={styles.legend}
-                style={{ width: 'auto', justifyContent: 'center' }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 8,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign: 'center'
+                }}
               >
+                <Body weight="bold">
+                  - Taille de la station de ski -
+                </Body>
                 <LegendCompColor legends={stationsSkiTailleLegend} />
               </div>
             </Suspense>

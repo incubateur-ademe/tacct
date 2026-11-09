@@ -56,7 +56,8 @@ export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: P
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        TITRE
+        La forêt de votre territoire restera-t-elle une ressource ? Découvrez
+        les facteurs qui la fragilisent face au changement climatique.
       </H1>
       {/* Introduction */}
       <section>
@@ -86,7 +87,7 @@ export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: P
         </H2>
 
         {/* Forêts communales */}
-        <div id="Forêts-communales" className={styles.indicateurWrapper}>
+        <div id="Forêts-communales" className={styles.indicateurMapWrapper}>
           <div className={styles.h3Titles}>
             <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
               Forêts communales

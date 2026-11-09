@@ -443,7 +443,21 @@ export const thematiquesInfo: {
   },
   Sylviculture: {
     title: 'Sylviculture',
-    description: <div></div>,
+    description: <div>
+      <Body size="sm" style={{ marginBottom: '1rem' }}>
+        Les forêts d'aujourd'hui seront-elles encore exploitables demain ? Aléas
+        climatiques et crises sanitaires obligent déjà à reconstituer des
+        peuplements ou à en anticiper le renouvellement, et bousculent les
+        activités liées à la forêt. Plusieurs thématiques entrent en jeu :
+      </Body>
+      <div className="flex flex-col">
+        <Body size="sm">thématique 1</Body>
+        <Body size="sm">thématique 2</Body>
+      </div>
+      <Body size="sm" margin="1rem 0">
+        👉 Explorez les facteurs qui feront la différence pour les activités forestières de votre territoire.
+      </Body>
+    </div>,
     link: 'Sylviculture'
   }
 };
