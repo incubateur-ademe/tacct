@@ -23,7 +23,7 @@ export const HauteurCanopeeLegend = () => {
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '290px', marginLeft: '1.5rem' }}>
         <Body>0 m</Body>
-        <Body>&gt;=30 m</Body>
+        <Body>&gt;=35 m</Body>
       </div>
     </div>
   );

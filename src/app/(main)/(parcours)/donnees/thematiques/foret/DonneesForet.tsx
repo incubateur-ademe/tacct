@@ -2,7 +2,7 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { GetCommunesContours, GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
+import { GetCommunesContours, GetCommunesCoordinates, GetContoursEpciDeLaCommune } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
@@ -44,7 +44,9 @@ export const DonneesForet = (
     void (async () => {
       const [newCoordonneesCommunes, newContoursCommunes] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        GetCommunesContours(code, libelle, type),
+        type === 'commune'
+          ? GetContoursEpciDeLaCommune(code)
+          : GetCommunesContours(code, libelle, type),
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,

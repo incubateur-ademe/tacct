@@ -584,6 +584,37 @@ export const GetCommunesContours = async (
   return Promise.race([dbQuery, timeoutPromise]);
 };
 
+// Même emprise que GetCommunesCoordinates pour une commune : l'EPCI entier
+export const GetContoursEpciDeLaCommune = async (
+  code: string
+): Promise<{ geometry: string } | null> => {
+  const timeoutPromise = new Promise<null>((resolve) =>
+    setTimeout(() => {
+      resolve(null);
+    }, 6000)
+  );
+  const dbQuery = (async () => {
+    try {
+      if (!code) return null;
+      const result = await prisma.$queryRaw<Array<{ geometry: string }>>`
+        SELECT ST_AsGeoJSON(
+          ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
+        ) as geometry
+        FROM postgis_v2."communes_drom"
+        WHERE epci = (SELECT epci FROM postgis_v2."communes_drom" WHERE code_geographique = ${code} LIMIT 1)
+      `;
+      if (!result || result.length === 0 || !result[0].geometry) return null;
+      return { geometry: result[0].geometry };
+    } catch (error) {
+      console.error(error);
+      console.error('Database connection error occurred.');
+      return null;
+    }
+  })();
+
+  return Promise.race([dbQuery, timeoutPromise]);
+};
+
 export const GetCommunesGeometries = async (
   code: string,
   libelle: string,

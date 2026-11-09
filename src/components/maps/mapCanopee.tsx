@@ -12,11 +12,11 @@ import { HauteurCanopeeLegend } from './legends/legendCanopee';
 import styles from './maps.module.scss';
 import { CanopeeTooltip } from './subcomponents/tooltips';
 
-const COG_PATH = '/canopee/France_Forest_COG.tif';
+const COG_PATH = '/canopee/FORMS-T_2024_Forest_COG.tif';
 const TARGET_RESOLUTION_M = 10;
 const MAX_CANVAS_SIZE = 1024;
 const MIN_CANVAS_SIZE = 512;
-const MAX_CANOPY_HEIGHT = 30;
+const MAX_CANOPY_HEIGHT = 35;
 const COLOR_LOW: [number, number, number] = [217, 255, 217];
 const COLOR_HIGH: [number, number, number] = [26, 107, 24];
 
@@ -139,7 +139,7 @@ const renderCogToCanvas = async (
     for (let i = 0; i < pixelCount; i++) {
       const v = band[i];
       const isNoData = noDataValue !== null && v === noDataValue;
-      if (isNoData || v === 0 || v > MAX_CANOPY_HEIGHT) {
+      if (isNoData || v === 0) {
         imageData.data[i * 4 + 3] = 0;
       } else {
         if (v > maxObservedVal) maxObservedVal = v;
@@ -320,7 +320,7 @@ export const MapCanopee = (props: {
             const px = Math.floor(((lng - rd.bbox.minLng) / (rd.bbox.maxLng - rd.bbox.minLng)) * rd.width);
             const py = Math.floor(((rd.bbox.maxLat - lat) / (rd.bbox.maxLat - rd.bbox.minLat)) * rd.height);
             const val = rd.band[py * rd.width + px];
-            if (val === undefined || val === 0 || val > MAX_CANOPY_HEIGHT || (rd.noDataValue !== null && val === rd.noDataValue)) {
+            if (val === undefined || val === 0 || (rd.noDataValue !== null && val === rd.noDataValue)) {
               popupRef.current?.remove();
               map.getCanvas().style.cursor = '';
               return;
