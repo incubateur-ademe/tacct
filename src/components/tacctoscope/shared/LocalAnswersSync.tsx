@@ -23,7 +23,7 @@ const conflictMessage = ({ count, criteria }: Conflict) => {
   const questions = count > 1 ? `${count} questions` : '1 question';
   const quoted = criteria.map((title) => `« ${title} »`).join(', ');
   const scope =
-    criteria.length > 1 ? `des critères ${quoted}` : `du critère ${quoted}`;
+    criteria.length > 1 ? `des critères ${quoted}` : `de la catégorie ${quoted}`;
   return `Pour ${questions} ${scope}, ces réponses diffèrent de celles enregistrées dans votre compte.`;
 };
 
