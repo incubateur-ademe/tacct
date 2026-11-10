@@ -895,3 +895,61 @@ export const MoustiqueTigreText = () => (
     </Body>
   </>
 );
+
+// Sources du texte :
+// « plante envahissante » : instruction interministérielle n° DGS/EA1/DGCL/DGALN/DGITM/DGAL/2018/201 du 20 août 2018, BO Santé 2018/9, résumé, p. 1 du PDF, https://sante.gouv.fr/fichiers/bo/2018/18-09/ste_20180009_0000_0078.pdf — « ces végétaux envahissants à pollen très allergisant »
+// « originaire d’Amérique du Nord » : instruction du 20 août 2018, § I, p. 2 du PDF — « Certaines espèces d’ambroisie originaires d’Amérique du Nord, introduites involontairement en France à la fin du XIXe siècle »
+// « émis de la fin juillet à octobre » : instruction du 20 août 2018, annexe 10, p. 33 du PDF — « Le pollen est émis durant la floraison, globalement entre fin juillet et octobre. »
+// « transporté par le vent sur plusieurs kilomètres » : ARS Auvergne-Rhône-Alpes, communiqué du 30 juin 2026, https://www.auvergne-rhone-alpes.ars.sante.fr/ambroisie-en-auvergne-rhone-alpes-161-des-habitants-allergiques-dans-la-region-la-plus-touchee-de — « Son pollen, transporté par le vent sur plusieurs kilomètres »
+// « quelques grains par mètre cube d’air suffisent » : instruction du 20 août 2018, annexe 10, p. 33 du PDF — « il suffit de quelques grains de pollen par m3 d’air pour que les symptômes apparaissent »
+// « une rhinite ou une conjonctivite chez les personnes sensibles […] provoquer ou aggraver l’asthme » : instruction du 20 août 2018, annexe 9, p. 29 du PDF — « chez les personnes sensibles, des symptômes d’allergie tels que la rhinite, la conjonctivite, la trachéite, l’eczéma et l’urticaire. L’exposition au pollen d’ambroisie peut également entraîner l’apparition ou l’aggravation de l’asthme »
+// « région la plus touchée, 16,1 % des habitants sont allergiques, et 19,3 % dans les zones les plus exposées » : ARS Auvergne-Rhône-Alpes, communiqué du 30 juin 2026 (enquête ORS-ARS menée en 2025 auprès de 2 590 ménages représentant 6 107 habitants) — « région la plus touchée de France » ; « 16,1 % des personnes interrogées présentent une allergie à l’ambroisie » ; « Elle atteint 19,3 % dans les zones les plus exposées contre 11,4 % dans les zones les moins exposées » ; le lien [2] renvoie à la source n° 2 de la thématique santé dans src/lib/sources.ts
+// « Dans les cultures d’été, l’ambroisie concurrence les plantes cultivées » : instruction du 20 août 2018, § 3.2, p. 6 du PDF — « plantes adventices concurrentielles se développant préférentiellement dans certaines cultures (tournesol, soja, chaumes de céréales d’hiver, etc.) » ; Observatoire des ambroisies, Ambroisie et agriculture, https://ambroisie-risque.info/ambroisie-et-agriculture/ — « Pour les cultures estivales, la difficulté est que le développement est situé à l’optimum du cycle de l’ambroisie »
+// « jusqu’aux deux tiers pour le tournesol et au tiers pour le soja » : Anses, Impacts sanitaires et coûts associés à l’ambroisie à feuilles d’armoise en France, rapport d’expertise collective, octobre 2020, p. 201 du PDF, https://www.anses.fr/fr/system/files/AIR2018SA0088Ra.pdf — « Selon l’analyse économique des espèces exotiques envahissantes en France menée par le Commissariat Général au Développement Durable, jusqu’à deux tiers de perte de rendement peuvent être observées sur le tournesol et jusqu’à un tiers sur le soja, le sorgho, et le pois (Wittmann et Flores-Ferrer 2015) » ; le lien [3] renvoie à la source n° 3 de la thématique santé
+// « terrains nus ou retournés, dont ceux que gèrent les collectivités, comme les bords de route et les chantiers » : instruction du 20 août 2018, § 3.2, p. 6 du PDF — « terrains nus ou peu couverts ou retournés (parcelles cultivées, bords de route, zones de travaux, chantiers, friches, berges de rivière, parcs, jardins, etc.) » ; « en tant que propriétaire, locataire, gestionnaire de terrains bâtis et non bâtis, maître d’ouvrage, maître d’œuvre, les collectivités territoriales sont tenues de mettre en œuvre les mesures de lutte fixées par l’arrêté préfectoral »
+// « surtout dispersées par le transport de terre et les engins » : Anses, avis du 20 octobre 2020 (saisine 2018-SA-0088), p. 4/29, même PDF — la dispersion naturelle « est considérée d’importance faible » ; vecteurs d’origine anthropique (« semences agricoles, alimentation animale, semences pour oiseaux, machines agricoles, sols contaminés, etc. ») : « Leur importance est majeure » ; instruction du 20 août 2018, annexe 10, p. 33 du PDF — « le déplacement de terres infestées, les roues de véhicules (engins agricoles, de travaux public, etc.) »
+// « restent viables de nombreuses années dans le sol » : Observatoire des ambroisies, Ambroisie et agriculture — « Elles vivent de nombreuses années dans le sol ce qui implique une gestion pluriannuelle pour faire baisser le stock de graines »
+// « plus la plante s’étend, plus sa gestion devient difficile et coûteuse » : instruction du 20 août 2018, § I, p. 3 du PDF — « plus les ambroisies se répandent dans les milieux et plus la situation devient difficile à gérer (notamment compte tenu des stocks de semences qui s’accumulent dans les sols) et coûteuse en termes de lutte »
+// « Selon l’Anses, sa propagation vers le nord de l’Europe, notamment du fait du changement climatique, est une prévision robuste » : Anses, avis du 20 octobre 2020, p. 18/29, même PDF — « Cependant, la prédiction de propagation de la plante vers le Nord de l’Europe, notamment du fait du changement climatique, par rapport aux implantations actuelles apparaît robuste » ; le lien [3] renvoie à la source n° 3 de la thématique santé
+// « Le Plan National d’Adaptation au Changement Climatique (PNACC-3) prévoit, dans sa mesure 16 […] » : PNACC-3, mesure 16, action 4, p. 131, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « Prévenir et lutter contre les espèces porteuses de risques pour la santé (moustiques, punaises de lit, ambroisie, chenilles processionnaires, etc.) par des méthodes compatibles avec la préservation de la santé, de l’environnement et de la biodiversité »
+// Points de vigilance :
+// Rendements : maximums tirés d’une analyse du CGDD de 2015, cités par l’Anses ; l’étude du CGDD n’a pas été consultée, l’année et le pays des observations d’origine ne sont pas connus. L’Anses écrit juste avant qu’il manque des données françaises robustes par culture (rapport, p. 201 du PDF) — « la transposition de données étrangères au cas français n’apparait pas pertinente ».
+// 16,1 % : enquête déclarative (cas certains, probables et suspectés), valable pour la seule région Auvergne-Rhône-Alpes.
+// Période d’émission du pollen : les sources divergent ; l’instruction écrit aussi « principalement d’août à octobre avec un pic en septembre » (annexe 1, p. 12 du PDF). Retenu : annexe 10.
+export const AmbroisieText = () => (
+  <>
+    <Body size="sm">
+      L’ambroisie à feuilles d’armoise est une plante envahissante originaire
+      d’Amérique du Nord. Son pollen, émis de la fin juillet à octobre et
+      transporté par le vent sur plusieurs kilomètres, est très allergisant :
+      quelques grains par mètre cube d’air suffisent à déclencher une rhinite
+      ou une conjonctivite chez les personnes sensibles, et l’exposition peut
+      provoquer ou aggraver l’asthme. En Auvergne-Rhône-Alpes, région la plus
+      touchée,{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        16,1 % des habitants sont allergiques, et 19,3 % dans les zones
+        les plus exposées
+      </ScrollToSourceTag>
+      .
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Dans les cultures d’été, l’ambroisie concurrence les plantes cultivées et
+      fait baisser les rendements,{' '}
+      <ScrollToSourceTag sourceNumero={3}>
+        jusqu’aux deux tiers pour le tournesol et jusqu'à un tiers pour le soja
+      </ScrollToSourceTag>
+      . Elle colonise aussi les terrains nus ou retournés, dont ceux que gèrent
+      les collectivités, comme les bords de route et les chantiers. Ses graines,
+      surtout dispersées par le transport de terre et les engins, restent
+      viables de nombreuses années dans le sol : plus la plante s’étend,
+      plus sa gestion devient difficile et coûteuse. Selon l’Anses, sa
+      propagation vers le nord de l’Europe, notamment du fait du changement
+      climatique, est une{' '}
+      <ScrollToSourceTag sourceNumero={3}>prévision robuste</ScrollToSourceTag>
+      . Le Plan National d’Adaptation au Changement Climatique (PNACC-3)
+      prévoit, dans sa mesure 16, de lutter contre les espèces porteuses de
+      risques pour la santé, dont l’ambroisie, par des méthodes compatibles
+      avec la préservation de la biodiversité.
+    </Body>
+  </>
+);

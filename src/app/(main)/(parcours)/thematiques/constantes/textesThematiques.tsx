@@ -148,8 +148,8 @@ export const sommaireThematiques = {
         id: 'section2',
         thematique: 'Biodiversité',
         icone: '🌼',
-        sousCategories: ['Moustique tigre et arboviroses']
-      }      
+        sousCategories: ['Moustique tigre et arboviroses', 'Ambroisie à feuilles d’armoise']
+      }
     ]
   },
   Forêts: {

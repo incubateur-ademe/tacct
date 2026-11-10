@@ -31,18 +31,21 @@ const casToCouleur = (cas: number): string => {
 export const MapJson = (props: {
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
-  annee: number;
+  annee?: number;
   casParDepartement?: Record<string, number>;
+  classesParDepartement?: Record<string, { couleur: string; libelle: string }>;
   ariaLabel: string;
 }) => {
-  const { mapRef, mapContainer, annee, casParDepartement, ariaLabel } = props;
+  const { mapRef, mapContainer, annee, casParDepartement, classesParDepartement, ariaLabel } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   const popupRef = useRef<maplibregl.Popup | null>(null);
   const hoveredFeatureRef = useRef<string | null>(null);
   const anneeRef = useRef(annee);
   const casParDepartementRef = useRef(casParDepartement);
+  const classesParDepartementRef = useRef(classesParDepartement);
   anneeRef.current = annee;
   casParDepartementRef.current = casParDepartement;
+  classesParDepartementRef.current = classesParDepartement;
 
   useEffect(() => {
     if (!mapContainer.current) return;
@@ -96,10 +99,22 @@ export const MapJson = (props: {
 
         const nom = `${(departementsNoms as Record<string, string>)[code]} (${code})`;
         const currentCas = casParDepartementRef.current;
+        const currentClasses = classesParDepartementRef.current;
         const currentAnnee = anneeRef.current;
-        const valeur = currentCas
-          ? `${currentCas[code] ?? 0} cas`
-          : `${(e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 'Présence' : 'Absence'}`;
+        const valeur = currentClasses
+          ? currentClasses[code]?.libelle ?? 'Aucune donnée'
+          : currentCas
+            ? `${currentCas[code] ?? 0} cas`
+            : `${(e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 'Présence' : 'Absence'}`;
+        const couleur = currentClasses
+          ? currentClasses[code]?.couleur ?? '#ffffff'
+          : currentCas ? casToCouleur(
+            currentCas
+              ? currentCas[code] ?? 0
+              : (e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 1 : 0
+          ) : (e.features[0].properties?.annees)?.includes(String(currentAnnee))
+            ? COULEUR_PRESENT
+            : COULEUR_ABSENT;
 
         if (hoveredFeatureRef.current !== code) {
           hoveredFeatureRef.current = code;
@@ -110,33 +125,11 @@ export const MapJson = (props: {
             maxWidth: 'none'
           })
             .setLngLat(e.lngLat)
-            .setHTML(MoustiqueTigreTooltip(
-              nom,
-              valeur,
-              currentCas ? casToCouleur(
-                currentCas
-                  ? currentCas[code] ?? 0
-                  : (e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 1 : 0
-              ) : (e.features[0].properties?.annees)?.includes(String(currentAnnee))
-                ? COULEUR_PRESENT
-                : COULEUR_ABSENT
-            ))
+            .setHTML(MoustiqueTigreTooltip(nom, valeur, couleur))
             .addTo(map);
         } else if (popupRef.current) {
           popupRef.current.setLngLat(e.lngLat);
-          popupRef.current.setHTML(
-            MoustiqueTigreTooltip(
-              nom,
-              valeur,
-              currentCas ? casToCouleur(
-                currentCas
-                  ? currentCas[code] ?? 0
-                  : (e.features[0].properties?.annees)?.includes(String(currentAnnee)) ? 1 : 0
-              ) : (e.features[0].properties?.annees)?.includes(String(currentAnnee))
-                ? COULEUR_PRESENT
-                : COULEUR_ABSENT
-            )
-          );
+          popupRef.current.setHTML(MoustiqueTigreTooltip(nom, valeur, couleur));
         }
       });
 
@@ -180,7 +173,14 @@ export const MapJson = (props: {
 
     let colorExpression: ExpressionSpecification | string;
 
-    if (casParDepartement) {
+    if (classesParDepartement) {
+      const matchArgs: (ExpressionSpecification | string)[] = ['match', ['get', 'code']];
+      for (const [code, classe] of Object.entries(classesParDepartement)) {
+        matchArgs.push(code, classe.couleur);
+      }
+      matchArgs.push('#ffffff');
+      colorExpression = matchArgs as unknown as ExpressionSpecification;
+    } else if (casParDepartement) {
       const entries = Object.entries(casParDepartement);
       if (entries.length === 0) {
         colorExpression = '#ffffff';
@@ -202,7 +202,8 @@ export const MapJson = (props: {
     }
 
     mapRef.current.setPaintProperty('departements-fill', 'fill-color', colorExpression);
-  }, [annee, isLoaded, casParDepartement]);
+    mapRef.current.setPaintProperty('departements-fill', 'fill-opacity', classesParDepartement ? 1 : 0.8);
+  }, [annee, isLoaded, casParDepartement, classesParDepartement]);
 
   return (
     <>

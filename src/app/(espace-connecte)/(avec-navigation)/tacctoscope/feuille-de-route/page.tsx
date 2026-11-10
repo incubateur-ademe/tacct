@@ -71,7 +71,9 @@ const FeuilleDeRoutePage = async () => {
         </NewContainer>
       </div>
 
+      {/* Remonte la vue si les réponses changent au rafraîchissement (import des réponses locales). */}
       <FeuilleDeRouteView
+        key={JSON.stringify(answers)}
         answers={answers}
         isAuthenticated={!!user}
       />

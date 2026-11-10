@@ -620,6 +620,39 @@ export const moustiqueTigreTooltipText = (
   </Body>
 );
 
+// Sources du texte :
+// « nombre de communes du département où l’ambroisie à feuilles d’armoise a été signalée au moins une fois » : Observatoire des ambroisies – FREDON France, Vade-mecum d’aide à l’élaboration de plan local d’action contre l’Ambroisie à feuilles d’armoise, version actualisée juillet 2024, fiche technique 4, p. 28, https://ambroisie-risque.info/wp-content/uploads/2023/06/Vade-mecum_ambroisie.pdf — « Les zones définies représentent, par département, le nombre de communes dans lesquelles il y a eu au moins un signalement d’Ambroisie à feuilles d’armoise. »
+// « entre 2005 et 2025 » : carte nationale V7, titre, https://ambroisie-risque.info/wp-content/uploads/2026/05/carte-nationale-artemisiifolia-V7-scaled.png — « Etat des connaissances sur la présence de l’Ambroisie à feuilles d’armoise (Ambrosia artemisiifolia) en France entre 2005 et 2025 »
+// « publié par classes par l’Observatoire des ambroisies – FREDON France » : carte nationale V7, légende et crédit — « Nombre de communes touchées dans le département » : « 1 - 10 », « 11 - 50 », « 51 - 100 », « 100 ou plus » ; « Carte réalisée par l’Observatoire des ambroisies - FREDON France - mars 2026 »
+// « les signalements validés de la plateforme nationale Signalement ambroisie » : Observatoire des ambroisies, Où se trouve l’ambroisie en France ?, panneau « Carte Ambroisie à feuilles d’armoise 2025 », https://ambroisie-risque.info/ou-se-trouve-lambroisie-en-france/ — « Données validées de la Plateforme de signalement ambroisie de 2015 à 2025 (Atlasanté) »
+// « ouverte à tous » : instruction interministérielle n° DGS/EA1/DGCL/DGALN/DGITM/DGAL/2018/201 du 20 août 2018, annexe 7, p. 26 du PDF, https://sante.gouv.fr/fichiers/bo/2018/18-09/ste_20180009_0000_0078.pdf — « un outil coopératif ouvert à tous »
+// « les observations des conservatoires botaniques nationaux et d’autres partenaires de terrain » : carte nationale V7, pied — « Sources : plateforme de signalement ambroisie Atlasanté, INPN-plateforme nationale du SINP, réseau des Conservatoires botaniques nationaux et partenaires, réseau FREDON , réseau des CPIE, Observatoire de la biodiversité végétale de Nouvelle-Aquitaine (OBV-NA) – Conservatoires Botaniques Nationaux. [extraction du 09/03/2026] »
+// « ni sa densité » : Anses, Impacts sanitaires et coûts associés à l’ambroisie à feuilles d’armoise en France, rapport d’expertise collective, octobre 2020, recommandations, p. 233 du PDF, https://www.anses.fr/fr/system/files/AIR2018SA0088Ra.pdf — « il apparaît important de documenter en particulier la densité de l’infestation au-delà de la simple indication de présence »
+// « ni la quantité de pollen dans l’air » : FREDON France, Ambroisie en France : ce que révèlent les données de surveillance, 15 octobre 2026, https://ambroisie-risque.info/ambroisie-en-france-ce-que-revelent-les-donnees-de-surveillance/ — « La cartographie indique où la plante est signalée et confirmée. Les mesures polliniques indiquent ce que les populations respirent réellement dans l’air. »
+// « Une commune sans signalement n’est pas forcément exempte d’ambroisie » : Observatoire des ambroisies, Où se trouve l’ambroisie en France ?, panneau « Archives » — « Concernant les zones où l’ambroisie est indiquée comme absente sur les cartes, il peut s’agir, en fait, soit d’une absence de données (par exemple, dans le cas de secteurs non encore investigués par des botanistes), soit d’une réelle absence de la plante. »
+// Point de vigilance : cet avertissement accompagne les cartes 2011-2016 de la Fédération des conservatoires botaniques nationaux, pas l’édition 2025 ; il vaut pour toute donnée de présence.
+export const ambroisieTooltipText = (
+  <Body weight="bold" size="sm">
+    Ce chiffre correspond au nombre de communes du département où l’ambroisie
+    à feuilles d’armoise a été signalée au moins une fois entre 2005 et 2025.
+    Il est publié par classes par l’Observatoire des ambroisies – FREDON
+    France, qui rassemble deux types de données : les signalements validés
+    de la plateforme nationale Signalement ambroisie, ouverte à tous, et les
+    observations des conservatoires botaniques nationaux et d’autres
+    partenaires de terrain. Il indique la présence de la plante, mais ni sa
+    densité ni la quantité de pollen dans l’air. Une commune sans signalement
+    n’est pas forcément exempte d’ambroisie. La carte est disponible sur le{' '}
+    <a
+      href="https://ambroisie-risque.info/ou-se-trouve-lambroisie-en-france/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      site de l’Observatoire
+    </a>
+    .
+  </Body>
+);
+
 export const HauteurCanopeeTooltipText = (
   <>
     <Body weight="bold" size="sm">

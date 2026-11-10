@@ -12,6 +12,7 @@ import { sommaireThematiques } from '../../../thematiques/constantes/textesThema
 import styles from '../../explorerDonnees.module.scss';
 import { SeuilsReglementairesO3 } from '../../indicateurs/sante/1-o3';
 import { Arbovirose } from '../../indicateurs/sante/2-Arbovirose';
+import { Ambroisie } from '../../indicateurs/sante/3-Ambroisie';
 
 interface Props {
   coordonneesCommunes: {
@@ -129,6 +130,7 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
         <div
           id="Moustique-tigre-et-arboviroses"
           className={styles.indicateurMultipleMapsWrapper}
+          style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
           <div className={styles.h3Titles}>
             <H3
@@ -138,6 +140,21 @@ export const DonneesSante = ({ coordonneesCommunes, arbovirose }: Props) => {
             </H3>
           </div>
           <Arbovirose arbovirose={arbovirose} />
+        </div>
+
+        {/* Ambroisie à feuilles d’armoise */}
+        <div
+          id="Ambroisie-à-feuilles-d’armoise"
+          className={styles.indicateurMultipleMapsWrapper}
+        >
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem', padding: "0 2rem" }}
+            >
+              Ambroisie à feuilles d’armoise
+            </H3>
+          </div>
+          <Ambroisie coordonneesCommunes={data.coordonneesCommunes} />
         </div>
       </section>
 

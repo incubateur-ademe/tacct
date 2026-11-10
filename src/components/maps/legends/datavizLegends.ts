@@ -306,11 +306,12 @@ export const ressourcesEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
+    value:
+      'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production hydro-électriques",
+    value: 'Production hydro-électriques',
     color: couleurs.graphiques.orange[2]
   },
   {
@@ -494,11 +495,12 @@ export const prelevementEauBarChartLegend = [
     color: couleurs.graphiques.bleu[2]
   },
   {
-    value: 'Industries et autres usages économiques (hors irrigation, hors énergie)',
+    value:
+      'Industries et autres usages économiques (hors irrigation, hors énergie)',
     color: couleurs.graphiques.violet[2]
   },
   {
-    value: "Production hydro-électriques",
+    value: 'Production hydro-électriques',
     color: couleurs.graphiques.orange[2]
   },
   {
@@ -797,47 +799,47 @@ export const debroussaillementLegend = [
 export const secheressesBarChartLegend = [
   {
     value: 'Vigilance',
-    color: "#FFFF00"
+    color: '#FFFF00'
   },
   {
     value: 'Alerte',
-    color: "#FF9900"
+    color: '#FF9900'
   },
   {
     value: 'Alerte renforcée',
-    color: "#EA4335"
+    color: '#EA4335'
   },
   {
     value: 'Crise',
-    color: "#980000"
-  },
+    color: '#980000'
+  }
 ];
 
 export const secheressesSaisonsChartLegend = [
   {
     value: '2020',
-    color: "#FFC9E4"
+    color: '#FFC9E4'
   },
   {
     value: '2021',
-    color: "#FFA3D2"
+    color: '#FFA3D2'
   },
   {
     value: '2022',
-    color: "#FD57AB"
+    color: '#FD57AB'
   },
   {
     value: '2023',
-    color: "#CA307E"
+    color: '#CA307E'
   },
   {
     value: '2024',
-    color: "#971356"
+    color: '#971356'
   },
   {
     value: '2025',
-    color: "#640234"
-  },
+    color: '#640234'
+  }
 ];
 
 export const arboviroseBarChartLegend = [
@@ -848,43 +850,58 @@ export const arboviroseBarChartLegend = [
   {
     value: 'Cas autochtones',
     color: couleurs.graphiques.bleu[1]
-  },
+  }
 ];
 
 export const arboviroseMapMoustiqueTigreLegend = [
   {
-    value: "Absence",
+    value: 'Absence',
     color: '#ffffff'
   },
   {
-    value: "Présence",
+    value: 'Présence',
     color: '#FF8094'
-  },
+  }
 ];
 
 export const arboviroseMapAutochtonesLegend = [
   {
-    value: "0",
+    value: '0',
     color: '#ffffff'
   },
   {
-    value: "1",
+    value: '1',
     color: '#FFCD72'
   },
   {
-    value: "2 à 9",
+    value: '2 à 9',
     color: '#F8B334'
   },
   {
-    value: "10 à 19",
+    value: '10 à 19',
     color: '#CF911E'
   },
   {
-    value: "20 à 39",
+    value: '20 à 39',
     color: '#A6710E'
   },
   {
-    value: "40 ou plus",
+    value: '40 ou plus',
     color: '#7E5202'
+  }
+];
+
+export const ambroisieMapLegend = [
+  {
+    value: '1 à 10',
+    color: '#b7d2df'
+  },
+  {
+    value: '11 à 50',
+    color: '#51879E'
+  },
+  {
+    value: '51 ou plus',
+    color: '#0C4E67'
   }
 ];

@@ -49,10 +49,12 @@ const Home = () => {
               TACCT enrichit ses données sur la <b>pollution à l’ozone</b>&nbsp;:
               publication de la thématique <b>Air</b>&nbsp;; ajout de
               l’<b>exposition de vos cultures</b> (thématique Agriculture)&nbsp;;
-              et mise à jour des données concernant l’<b>impact sur vos
-              végétaux</b> (thématique Biodiversité). Découvrez également si
-              votre territoire dispose d’un <b>projet alimentaire
-              territorial</b> (Agriculture) <span aria-hidden="true">⇒</span>{' '}
+              mise à jour des données concernant l’<b>impact sur vos
+              végétaux</b> (Biodiversité). Découvrez également si
+              votre territoire dispose d’un <b>PAT</b> (Agriculture)&nbsp;; 
+              et si l’<b>ambroisie</b>, plante envahissante et allergisante, a 
+              été signalée dans votre département (Santé)&nbsp;
+              <span aria-hidden="true">⇒</span>{' '}
               <Link href="/recherche-territoire">
                 j’explore les nouvelles données
               </Link>

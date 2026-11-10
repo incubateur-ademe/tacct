@@ -1,6 +1,7 @@
 'use client';
 
 import { getLastTerritory } from '@/components/searchbar/fonctions';
+import { LocalAnswersSync } from '@/components/tacctoscope/shared/LocalAnswersSync';
 import { handleRedirection } from '@/hooks/Redirections';
 import useWindowDimensions from '@/hooks/windowDimensions';
 import { appliquerSuperProprietesUtilisateur } from '@/lib/analytics/superProprietes';
@@ -469,6 +470,7 @@ const HeaderComp = () => {
         icon={<CheckIcon />}
         text="Vous êtes connecté·e"
       />
+      <LocalAnswersSync isAuthenticated={!!user} />
     </>
   );
 };
