@@ -56,6 +56,7 @@ export const nomThematiques = [
     yOffset: -15,
     icon: '🏥',
     disabled: false,
+    nouveaute: { titre: 'Nouvel indicateur disponible', texte: "Ambroisie à feuilles d'armoise" },
     liens: ['Confort thermique', 'Eau', "Qualité de l'air", 'Biodiversité']
   },
   {
@@ -88,6 +89,8 @@ export const nomThematiques = [
     labelRadius: 260,
     icon: '🌳',
     disabled: false,
+    nouveaute: { titre: 'Nouvel indicateur disponible', texte: "Hauteur de la canopée" },
+
     liens: []
   },
   {
@@ -129,6 +132,7 @@ export const nomThematiques = [
     yOffset: 27,
     icon: '🏖️',
     disabled: false,
+    nouveaute: { titre: 'Nouvelle thématique disponible' },
     liens: []
   },
   {

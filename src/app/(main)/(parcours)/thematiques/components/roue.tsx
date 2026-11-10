@@ -11,6 +11,7 @@ import CircleType from 'circletype';
 import { categoriesNoeuds, liensEntreThematiques, nodeCategoryMapping, nomThematiques, PositionArcsDonut } from "../constantes/categories";
 import { categoryColors, categorySelectedBorderColors, categorySelectedColors } from "../constantes/colors";
 import { categorieTextParametres, DistanceTextes } from "../constantes/textesSVG";
+import styles from "../roue.module.scss";
 
 type NoeudRoue = {
   id: string;
@@ -48,6 +49,21 @@ const getDisabledTooltipContent = (label: string) => {
   return `La thématique "${label}" n'est pas encore disponible.`;
 };
 
+const getCouleurTitreNouveaute = (label: string) => {
+  const category = nodeCategoryMapping[label as keyof typeof nodeCategoryMapping];
+  return category ? categorySelectedBorderColors[category as keyof typeof categorySelectedBorderColors] : "#800020";
+};
+
+const ContenuNouveaute = ({ titre, texte, couleur }: { titre: string; texte?: string; couleur: string }) => (
+  <div className={styles.contenuNouveaute}>
+    <span aria-hidden="true" className={styles.iconeNouveaute} style={{ backgroundColor: couleur }}>!</span>
+    <span className={styles.texteNouveaute}>
+      <span className={styles.titreNouveaute} style={{ color: couleur }}>{texte ? `${titre} :` : titre}</span>
+      {texte && <span>{texte}</span>}
+    </span>
+  </div>
+);
+
 const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -57,6 +73,8 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
   const [selectedThematique, setSelectedThematique] = useState<string | null>(selectedItem || null);
   const [scale, setScale] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [nouveauteOuverte, setNouveauteOuverte] = useState<string | null>(null);
+  const fermetureNouveauteRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const radiusRoueSytemique = 180;
   const defaultLabelRadius = radiusRoueSytemique + 70;
   const NoeudsRoue: NoeudRoue[] = [];
@@ -110,6 +128,25 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
     if (onItemSelect) {
       onItemSelect(item);
     }
+  };
+
+  const annulerFermetureNouveaute = () => {
+    if (fermetureNouveauteRef.current) clearTimeout(fermetureNouveauteRef.current);
+  };
+
+  const ouvrirNouveaute = (label: string) => {
+    annulerFermetureNouveaute();
+    setNouveauteOuverte(label);
+  };
+
+  const planifierFermetureNouveaute = () => {
+    annulerFermetureNouveaute();
+    fermetureNouveauteRef.current = setTimeout(() => setNouveauteOuverte(null), 150);
+  };
+
+  const fermerNouveaute = () => {
+    annulerFermetureNouveaute();
+    setNouveauteOuverte(null);
   };
 
   // Get tous les noeuds liés au nœud sélectionné
@@ -381,6 +418,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .on("mouseenter", function (event: Any, d: NoeudRoue) {
         const thematique = nomThematiques.find(t => t.label === d.label);
         if (thematique?.disabled) return;
+        if (thematique?.nouveaute) ouvrirNouveaute(d.label);
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
           const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
@@ -394,6 +432,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .on("mouseleave", function (event: Any, d: NoeudRoue) {
         const thematique = nomThematiques.find(t => t.label === d.label);
         if (thematique?.disabled) return;
+        if (thematique?.nouveaute) planifierFermetureNouveaute();
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           d3.select(this).select("rect")
             .transition()
@@ -407,7 +446,12 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         return thematique?.disabled ? "-1" : "0";
       })
       .attr("role", "button")
-      .attr("aria-label", (d: NoeudRoue) => d.label)
+      .attr("aria-label", (d: NoeudRoue) => {
+        const thematique = nomThematiques.find(t => t.label === d.label);
+        return thematique?.nouveaute && !thematique.disabled
+          ? [d.label, [thematique.nouveaute.titre, thematique.nouveaute.texte].filter(Boolean).join(" : ")].join(". ")
+          : d.label;
+      })
       .attr("aria-pressed", (d: NoeudRoue) => selectedThematique === d.label ? "true" : "false")
       .on("keydown", (event: Any, d: NoeudRoue) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -421,6 +465,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .on("focus", function (event: Any, d: NoeudRoue) {
         const thematique = nomThematiques.find(t => t.label === d.label);
         if (thematique?.disabled) return;
+        if (thematique?.nouveaute) ouvrirNouveaute(d.label);
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           const category = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
           const hoverColor = category ? categoryColors[category as keyof typeof categoryColors] : "#E5E5E5";
@@ -434,6 +479,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .on("blur", function (event: Any, d: NoeudRoue) {
         const thematique = nomThematiques.find(t => t.label === d.label);
         if (thematique?.disabled) return;
+        if (thematique?.nouveaute) fermerNouveaute();
         if (selectedThematique !== d.label && !(selectedThematique && getThematiquesLiees(selectedThematique).includes(d.label))) {
           d3.select(this).select("rect")
             .transition()
@@ -502,7 +548,14 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
         }
         const boxWidth = maxLineWidth + paddingX * 2;
         const boxHeight = lines.length * fontSize + paddingY * 2;
-        d3.select(this)
+        const categorie = nodeCategoryMapping[d.label as keyof typeof nodeCategoryMapping];
+        const conteneur = thematique?.nouveaute && !thematique.disabled
+          ? d3.select(this)
+            .append("g")
+            .attr("class", styles.etiquetteNouveaute)
+            .style("--couleur-nouveaute", categorie ? categorySelectedColors[categorie as keyof typeof categorySelectedColors] : "#D76D8E")
+          : d3.select(this);
+        conteneur
           .append("rect")
           .attr("x", -boxWidth / 2)
           .attr("y", -boxHeight / 2)
@@ -514,7 +567,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           .attr("stroke-dasharray", strokeDasharray)
           .attr("rx", lines.length > 1 ? 22 : 15)
           .attr("ry", lines.length > 1 ? 22 : 50);
-        const textElem = d3.select(this)
+        const textElem = conteneur
           .append("text")
           .attr("text-anchor", "middle")
           .attr("fill", textFill)
@@ -544,10 +597,15 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             style={{ position: 'absolute', top: 0, left: 0, zIndex: 1, overflow: 'visible' }}
           />
 
-          {/* Tooltip pour les thématiques indisponibles */}
           {NoeudsRoue.map((node, index) => {
             const thematique = nomThematiques.find(t => t.label === node.label);
-            if (!thematique?.disabled) return null;
+            const nouveaute = thematique && !thematique.disabled ? thematique.nouveaute : undefined;
+            if (!thematique?.disabled && !nouveaute) return null;
+            const proprietesNouveaute = nouveaute ? {
+              open: nouveauteOuverte === node.label,
+              onClose: fermerNouveaute,
+              slotProps: { popper: { onMouseEnter: annulerFermetureNouveaute } }
+            } : {};
             const labelRadius = node.labelRadius ? node.labelRadius : defaultLabelRadius;
             const xOffset = node.xOffset ? node.xOffset : 0;
             const yOffset = node.yOffset ? node.yOffset : 0;
@@ -558,8 +616,15 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             return (
               <HtmlTooltip
                 key={`tooltip-${index}`}
-                title={getDisabledTooltipContent(node.label)}
+                title={nouveaute ? (
+                  <ContenuNouveaute
+                    titre={nouveaute.titre}
+                    texte={nouveaute.texte}
+                    couleur={getCouleurTitreNouveaute(node.label)}
+                  />
+                ) : getDisabledTooltipContent(node.label)}
                 placement="top"
+                {...proprietesNouveaute}
               >
                 <div
                   style={{

@@ -70,3 +70,60 @@
     justify-content: center;
     transition: all 1000ms ease-in-out;
 }
+
+.etiquetteNouveaute {
+    rect {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: haloNouveaute 3.5s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        rect {
+            animation: none;
+            filter: drop-shadow(0 0 4px var(--couleur-nouveaute));
+        }
+    }
+}
+
+@keyframes haloNouveaute {
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 1px var(--couleur-nouveaute));
+    }
+    50% {
+        transform: scale(1.04);
+        filter: drop-shadow(0 0 7px var(--couleur-nouveaute));
+    }
+}
+
+.contenuNouveaute {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    max-width: 300px;
+}
+
+.iconeNouveaute {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.0625rem;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.texteNouveaute {
+    display: flex;
+    flex-direction: column;
+}
+
+.titreNouveaute {
+    font-weight: 700;
+}
