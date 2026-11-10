@@ -1,9 +1,10 @@
 'use client';
 
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import type { Geometry } from 'geojson';
-import maplibregl, { FillLayerSpecification } from 'maplibre-gl';
+import { FillLayerSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

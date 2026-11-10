@@ -1,6 +1,6 @@
 'use client';
 
-import maplibregl from 'maplibre-gl';
+import maplibregl from '@/lib/maplibre';
 import { RefObject } from 'react';
 
 interface ServiceStatus {

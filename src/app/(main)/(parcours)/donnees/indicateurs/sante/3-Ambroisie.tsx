@@ -13,6 +13,7 @@ import { AmbroisieText } from '@/lib/staticTexts';
 import { AmbroisieDynamicText } from '@/lib/textesIndicateurs/santeDynamicTexts';
 import { ambroisieTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';

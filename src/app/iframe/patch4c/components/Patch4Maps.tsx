@@ -4,7 +4,7 @@ import { ExportPngMaplibreSimple } from '@/components/exports/ExportPng';
 import { CopyLinkClipboard } from "@/components/interactions/CopyLinkClipboard";
 import { MapPatch4 } from "@/components/maps/mapPatch4";
 import { Body } from '@/design-system/base/Textes';
-import maplibregl from 'maplibre-gl';
+import maplibregl from '@/lib/maplibre';
 import { useSearchParams } from "next/navigation";
 import { RefObject, useRef, useState } from 'react';
 import CursorVisualization from "../cursorVisualization";

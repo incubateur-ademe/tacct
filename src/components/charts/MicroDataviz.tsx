@@ -4,6 +4,7 @@ import WaterDropIcon from "@/assets/icons/water_drop_blue.svg";
 import { Body } from "@/design-system/base/Textes";
 import couleurs from "@/design-system/couleurs";
 import { CommunesContoursDto, CommunesIndicateursDto } from '@/lib/dto';
+import maplibregl from '@/lib/maplibre';
 import { MapContainer } from '@/lib/react-leaflet';
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import * as turf from '@turf/turf';
@@ -19,7 +20,6 @@ import {
 // We load it lazily in hooks where needed.
 import { GeoJSON } from '@/lib/react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";

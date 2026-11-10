@@ -1,8 +1,8 @@
 "use client";
 
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

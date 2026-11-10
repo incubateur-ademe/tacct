@@ -1,12 +1,12 @@
 'use client';
 
 import { RetardScroll } from '@/hooks/RetardScroll';
+import maplibregl from '@/lib/maplibre';
 import { AOT40 } from '@/lib/postgres/models';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Any } from '@/lib/utils/types';
 import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

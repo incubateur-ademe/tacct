@@ -17,6 +17,7 @@ import { AOT40TooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { Skeleton } from 'antd';
 import type { Geometry } from 'geojson';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';

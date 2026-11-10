@@ -11,6 +11,7 @@ import { Body } from '@/design-system/base/Textes';
 import { O3Text } from '@/lib/staticTexts';
 import { O3DynamicText } from '@/lib/textesIndicateurs/biodiversiteDynamicTexts';
 import { O3TooltipText } from '@/lib/tooltipTexts';
+import type * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';

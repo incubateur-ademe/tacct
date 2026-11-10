@@ -17,6 +17,7 @@ import { ArboviroseModel } from '@/lib/postgres/models';
 import { MoustiqueTigreText } from '@/lib/staticTexts';
 import { moustiqueTigreTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from 'next/navigation';
 import { useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';

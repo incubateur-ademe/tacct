@@ -1,10 +1,10 @@
 'use client';
 
+import maplibregl from '@/lib/maplibre';
 import * as turf from '@turf/turf';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import { Feature, Geometry, LineString, Polygon } from 'geojson';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

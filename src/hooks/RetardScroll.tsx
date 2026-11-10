@@ -1,4 +1,4 @@
-import maplibregl from 'maplibre-gl';
+import maplibregl from '@/lib/maplibre';
 import { RefObject, useEffect } from 'react';
 
 export type RetardScrollProps = {

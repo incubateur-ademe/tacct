@@ -1,10 +1,11 @@
 'use client';
 
 import CeremaLogo from '@/assets/images/Logo-cerema.jpg';
+import maplibregl from '@/lib/maplibre';
 import { LCZselectionTerritoires } from '@/lib/territoireData/LCZselectionTerritoires';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import maplibregl, { MapSourceDataEvent } from 'maplibre-gl';
+import { ErrorEvent, MapSourceDataEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -233,7 +234,7 @@ export const MapLCZ = ({
           xmin, ymin, xmax, ymax
         }));
 
-        const url = `https://cartagene.cerema.fr/server/rest/services/l_lcz_spot_000_2022_mil/MapServer/0/query?f=json&geometry=${geometry}&maxAllowableOffset=4.777314267945864&outFields=are,bsr,bur,hre,identifier,lcz,ror,ver,vhr,war,FID&spatialRel=esriSpatialRelIntersects&where=1%3D1&geometryType=esriGeometryEnvelope&inSR=102100&outSR=102100`;
+        const url = `https://cartagene.cerema.fr/server/rest/services/l_lcz_spot_000_2022_mil/MapServer/0/query?f=json&geometry=${geometry}&maxAllowableOffset=4.777314267945864&outFields=are,bsr,bur,hre,identifier,lcz,ror,ver,vhr,war&spatialRel=esriSpatialRelIntersects&where=1%3D1&geometryType=esriGeometryEnvelope&inSR=102100&outSR=102100`;
 
         try {
           const response = await fetch(url);
@@ -242,7 +243,6 @@ export const MapLCZ = ({
             const props = data.features[0].attributes;
             const labels: Record<string, string> = {
               are: 'Surface moyenne des bâtiments (m²)',
-              FID: 'FID',
               lcz: 'LCZ',
               bur: 'Taux de surface bâtie (%)',
               hre: 'Hauteur moyenne des bâtiments (m)',

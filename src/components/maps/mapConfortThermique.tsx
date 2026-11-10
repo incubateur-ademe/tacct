@@ -2,10 +2,11 @@
 
 import { LoaderText } from '@/components/ui/loader';
 import couleurs from '@/design-system/couleurs';
+import maplibregl from '@/lib/maplibre';
 import { listeVillesAvecArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

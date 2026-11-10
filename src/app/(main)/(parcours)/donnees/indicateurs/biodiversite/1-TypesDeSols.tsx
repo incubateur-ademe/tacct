@@ -14,6 +14,7 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { exportAsZip } from '@/lib/utils/export/exportZipGeneric';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';

@@ -15,6 +15,7 @@ import { O3AirDynamicText } from '@/lib/textesIndicateurs/airDynamicTexts';
 import { O3AirTooltipText } from '@/lib/tooltipTexts';
 import { Skeleton } from 'antd';
 import type { Geometry } from 'geojson';
+import type * as maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useMemo, useRef, useState } from 'react';

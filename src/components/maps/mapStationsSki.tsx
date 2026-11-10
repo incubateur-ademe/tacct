@@ -1,9 +1,10 @@
 'use client';
 
+import maplibregl from '@/lib/maplibre';
 import { StationSki } from '@/lib/postgres/models';
 import { listeArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
-import maplibregl, { ExpressionSpecification, MapLayerMouseEvent } from 'maplibre-gl';
+import { ExpressionSpecification, MapLayerMouseEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

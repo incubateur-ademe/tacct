@@ -8,6 +8,7 @@ import { Body } from '@/design-system/base/Textes';
 import { useHasMapData } from '@/hooks/useHasMapData';
 import { DebroussaillementText } from '@/lib/staticTexts';
 import { debroussaillementTooltipText } from '@/lib/tooltipTexts';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';

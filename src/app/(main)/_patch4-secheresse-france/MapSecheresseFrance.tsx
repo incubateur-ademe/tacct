@@ -5,9 +5,10 @@ import { LegendBlockColor } from '@/components/maps/legends/legendBlocks';
 import { mapTransformRequest } from '@/components/maps/mapTransformRequest';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import { Body } from '@/design-system/base/Textes';
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
 import html2canvas from 'html2canvas';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useRef, useState } from 'react';
 

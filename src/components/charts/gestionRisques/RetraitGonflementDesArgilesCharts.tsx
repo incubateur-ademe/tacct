@@ -13,6 +13,7 @@ import useWindowDimensions from "@/hooks/windowDimensions";
 import { RGAdb } from '@/lib/postgres/models';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { BarDatum } from '@nivo/bar';
+import type * as maplibregl from 'maplibre-gl';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { RefObject, useEffect, useLayoutEffect, useState } from "react";

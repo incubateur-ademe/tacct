@@ -1,10 +1,10 @@
 'use client';
 
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
 import type { TypedArray, TypedArrayArrayWithDimensions } from 'geotiff';
 import { fromUrl } from 'geotiff';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
@@ -344,7 +344,7 @@ export const MapCanopee = (props: {
               .addTo(map);
           });
 
-          map.on('mouseleave', () => {
+          map.on('mouseout', () => {
             popupRef.current?.remove();
             map.getCanvas().style.cursor = '';
           });

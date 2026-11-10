@@ -9,6 +9,7 @@ import { Body } from '@/design-system/base/Textes';
 import { GetLczCouverture } from '@/lib/queries/databases/confortThermique';
 import { LCZCeremaText1, LCZText, LCZText2 } from '@/lib/staticTexts';
 import { LCZTooltipText } from '@/lib/tooltipTexts';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from 'next/navigation';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';

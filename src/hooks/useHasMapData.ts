@@ -1,6 +1,6 @@
 'use client';
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
-import maplibregl from 'maplibre-gl';
 import { useEffect, useState } from 'react';
 
 export const useHasMapData = (params: {

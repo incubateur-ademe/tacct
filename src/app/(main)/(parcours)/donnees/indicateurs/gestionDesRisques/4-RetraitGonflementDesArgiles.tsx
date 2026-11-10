@@ -16,6 +16,7 @@ import { numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Average } from '@/lib/utils/reusableFunctions/average';
 import { Round } from "@/lib/utils/reusableFunctions/round";
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
 import styles from '../../explorerDonnees.module.scss';

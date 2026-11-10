@@ -3,6 +3,7 @@ import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import DataNotFoundForGraph from "@/components/graphDataNotFound";
 import { Loader } from '@/components/ui/loader';
 import { Body } from "@/design-system/base/Textes";
+import type * as maplibregl from 'maplibre-gl';
 import { useSearchParams } from "next/navigation";
 import { lazy, Suspense, useRef } from 'react';
 import styles from '../../explorerDonnees.module.scss';

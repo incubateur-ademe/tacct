@@ -1,10 +1,10 @@
 "use client";
 import { RetardScroll } from '@/hooks/RetardScroll';
 import { EtatCoursDeauDto } from '@/lib/dto';
+import maplibregl from '@/lib/maplibre';
 import { QualiteSitesBaignadeModel } from '@/lib/postgres/models';
 import { mapStyles } from 'carte-facile';
 import { Feature, GeoJsonProperties, Geometry } from 'geojson';
-import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

@@ -1,9 +1,10 @@
 'use client';
 
 import { CatnatTypes } from '@/app/(main)/types';
+import maplibregl from '@/lib/maplibre';
 import { mapStyles } from 'carte-facile';
 import 'carte-facile/carte-facile.css';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useRef } from 'react';

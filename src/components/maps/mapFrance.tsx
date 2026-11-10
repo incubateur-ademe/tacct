@@ -3,9 +3,10 @@
 import { MoustiqueTigreTooltip } from '@/components/maps/subcomponents/tooltips';
 import departementsNoms from '@/lib/data/departements.json';
 import moustiqueTigreGeoJSON from '@/lib/data/moustique_tigre_departements.json';
+import maplibregl from '@/lib/maplibre';
 import 'carte-facile/carte-facile.css';
 import { FeatureCollection, GeoJsonProperties, Geometry } from 'geojson';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';

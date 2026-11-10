@@ -1,8 +1,9 @@
 
 import couleurs from '@/design-system/couleurs';
+import maplibregl from '@/lib/maplibre';
 import { listeArrondissements } from '@/lib/territoireData/arrondissements';
 import { mapStyles } from 'carte-facile';
-import maplibregl, { ExpressionSpecification } from 'maplibre-gl';
+import { ExpressionSpecification } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import { useEffect, useMemo, useRef } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
