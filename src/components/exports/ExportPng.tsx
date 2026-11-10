@@ -4,6 +4,7 @@ import ExporterIcon from '@/assets/icons/export_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
 import ExportDataTrigger from '@/hooks/ExportDataTrigger';
 import html2canvas from 'html2canvas';
+import type * as maplibregl from 'maplibre-gl';
 import { usePostHog } from 'posthog-js/react';
 import { RefObject, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import styles from '../components.module.scss';
