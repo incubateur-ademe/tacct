@@ -24,7 +24,9 @@ export const metadata: Metadata = {
 const CookiePolicyPage = () => {
   return (
     <div className={fr.cx('fr-container', 'fr-my-4w')}>
-      <Suspense>
+      {/* Le fallback réserve la hauteur pour que le pied de page ne s'affiche
+          pas en haut d'écran avant l'arrivée du contenu (décalage de mise en page). */}
+      <Suspense fallback={<div style={{ minHeight: '100dvh' }} />}>
         <CookiesPolicy
           analyticTool={{
             name: 'Posthog',

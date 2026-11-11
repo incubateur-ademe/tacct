@@ -45,7 +45,7 @@ export const FaqAllGroups = ({ grouped }: { grouped: GroupedFaq }) => {
               {categorie}
             </H2>
             <div style={{ width: '3rem', borderBottom: '1px solid #DDDDDD', marginBottom: '1.5rem' }} />
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <div>
               {sorted.map((item) => (
                 <CustomAccordion
                   label={item.question}
@@ -56,7 +56,7 @@ export const FaqAllGroups = ({ grouped }: { grouped: GroupedFaq }) => {
                   <RichText richText={item.reponse} />
                 </CustomAccordion>
               ))}
-            </ul>
+            </div>
           </section>
         );
       })}

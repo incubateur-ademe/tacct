@@ -158,7 +158,13 @@ export const renderBlock = async (el: Block, i: number) => {
         textAlign: 'left'
       };
       return (
-        <div key={i} style={{ margin: '2rem 0', overflowX: 'auto' }}>
+        <div
+          key={i}
+          tabIndex={0}
+          role="region"
+          aria-label="Tableau"
+          style={{ margin: '2rem 0', overflowX: 'auto' }}
+        >
           <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ddd' }}>
             {tableHeaderRow && (
               <thead>

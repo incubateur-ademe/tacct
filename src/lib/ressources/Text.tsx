@@ -69,7 +69,9 @@ export const Text = ({ text }: Props) => {
     ].join(' ');
     const spanStyle = { color: color !== 'default' ? color : undefined };
 
-    if (textObj.link) {
+    // Un segment Notion fait uniquement d'espaces mais porteur d'un lien
+    // produirait un lien sans intitulé (RGAA 6.2) : on le rend en texte simple.
+    if (textObj.link && normalizedContent.trim() !== '') {
       return (
         <span key={index} className={spanClassName} style={spanStyle}>
           <a
