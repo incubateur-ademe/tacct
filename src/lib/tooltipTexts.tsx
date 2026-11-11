@@ -675,6 +675,12 @@ export const HauteurCanopeeTooltipText = (
   </>
 );
 
+export const SurfaceForetTooltipText = (
+  <Body weight="bold" size="sm">
+    TOOLTIP
+  </Body>
+);
+
 // Sources du texte :
 // « publié chaque année par la DGFiP à partir du cadastre », « au 1er janvier 2025 » : DGFiP, Fichiers des locaux et des parcelles des personnes morales, https://www.data.gouv.fr/datasets/fichiers-des-locaux-et-des-parcelles-des-personnes-morales
 // « surface de forêt dont la commune, ou l’une de ses sections, est propriétaire », « forêts situées sur d’autres communes » : description de la table databases_v2.forets_communales

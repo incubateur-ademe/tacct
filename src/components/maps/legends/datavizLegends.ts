@@ -920,6 +920,18 @@ export const foretsCommunalesLegend = foretsCommunalesClasses.map(
   ({ value, color }) => ({ value, color })
 );
 
+export const surfaceForetClasses = [
+  { min: 0, value: 'Moins de 10 %', color: '#c1e9c3' },
+  { min: 0.1, value: '10 à 25 %', color: '#83b985' },
+  { min: 0.25, value: '25 à 50 %', color: '#468749' },
+  { min: 0.5, value: '50 à 75 %', color: '#326334' },
+  { min: 0.75, value: '75 % et plus', color: couleurs.graphiques.vert[5] }
+];
+
+export const surfaceForetLegend = surfaceForetClasses.map(
+  ({ value, color }) => ({ value, color })
+);
+
 export const stationsSkiTailleClasses = [
   { value: 'Petite station', color: couleurs.graphiques.bleu[3] },
   { value: 'Station moyenne', color: couleurs.graphiques.bleu[2] },

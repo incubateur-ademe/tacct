@@ -56,7 +56,7 @@ const ExplorerTerritoirePage = async (props: { searchParams: SearchParams }) => 
           ) : thematique === "Santé" ? (
             <SanteServerPage searchParams={props.searchParams} />
           ) : thematique === "Forêts" ? (
-            <ForetServerPage searchParams={props.searchParams} />
+            <ForetServerPage searchParams={props.searchParams} tableCommune={dbTableCommune} />
           ) : thematique === "Air" ? (
             <AirServerPage searchParams={props.searchParams} />
           ) : thematique === "Bâtiment" ? (

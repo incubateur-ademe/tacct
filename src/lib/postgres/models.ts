@@ -941,6 +941,8 @@ export type TableCommuneModel = {
   aires_appellations_controlees_nom: string[] | null;
   aires_appellations_controlees_signe: string[] | null;
   projets_alimentaires_territoriaux: string[] | null;
+  surface_commune_ha: number | null;
+  surface_foret_ha: number | null;
 };
 
 export type DebroussaillementModel = {

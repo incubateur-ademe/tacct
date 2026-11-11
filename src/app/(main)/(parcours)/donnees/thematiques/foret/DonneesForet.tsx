@@ -2,12 +2,15 @@
 import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
+import { TableCommuneModel } from '@/lib/postgres/models';
+import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetCommunesContours, GetCommunesCoordinates, GetContoursEpciDeLaCommune } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { HauteurCanopee } from '../../indicateurs/foret/1-HauteurCanopee';
+import { SurfaceForet } from '../../indicateurs/foret/3-SurfaceForet';
 
 interface Props {
   coordonneesCommunes: {
@@ -15,12 +18,14 @@ interface Props {
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   contoursCommunes: { geometry: string } | null;
+  tableCommune: TableCommuneModel[];
 }
 
 export const DonneesForet = (
   {
     coordonneesCommunes,
-    contoursCommunes
+    contoursCommunes,
+    tableCommune
   }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Forêts';
@@ -29,7 +34,8 @@ export const DonneesForet = (
   const type = searchParams.get('type')!;
   const [data, setData] = useState({
     coordonneesCommunes,
-    contoursCommunes
+    contoursCommunes,
+    tableCommune
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -42,15 +48,17 @@ export const DonneesForet = (
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newContoursCommunes] = await Promise.all([
+      const [newCoordonneesCommunes, newContoursCommunes, newTableCommune] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         type === 'commune'
           ? GetContoursEpciDeLaCommune(code)
           : GetCommunesContours(code, libelle, type),
+        GetTablecommune(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        contoursCommunes: newContoursCommunes
+        contoursCommunes: newContoursCommunes,
+        tableCommune: newTableCommune
       });
       setIsLoading(false);
     })();
@@ -90,6 +98,23 @@ export const DonneesForet = (
           {ongletsMenu.thematiquesLiees[0].icone}{' '}
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
+        {/* Surface de forêt */}
+        <div
+          id="Surface-de-forêt"
+          className={styles.indicateurMapWrapper}
+          style={{ borderBottom: '1px solid var(--gris-medium)' }}
+        >
+          <div className={styles.h3Titles}>
+            <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
+              Surface de forêt
+            </H3>
+          </div>
+          <SurfaceForet
+            tableCommune={data.tableCommune}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
+        </div>
+
         {/* Hauteur de la canopée */}
         <div
           id="Hauteur-de-la-canopée"

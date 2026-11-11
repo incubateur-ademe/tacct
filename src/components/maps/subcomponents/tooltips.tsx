@@ -104,6 +104,24 @@ export const ForetsCommunalesTooltip = (
   `;
 };
 
+export const SurfaceForetTooltip = (
+  communeName: string,
+  surfaceForet: number | null,
+  taux: number | null
+) => {
+  return `
+      <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 0; width: max-content;">
+        <p style="font-size: 1rem; font-family: Marianne; font-weight: 700; margin: 0 0 0.5rem">${communeName}</p>
+        <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
+          Surface de forêt : <b>${surfaceForet === null ? 'Aucune donnée' : `${Round(surfaceForet, 0)} ha`}</b>
+        </p>
+        <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
+          Taux de boisement : <b>${taux === null ? 'Aucune donnée' : `${Round(taux * 100, 0)} %`}</b>
+        </p>
+      </div>
+  `;
+};
+
 export const StationsSkiTooltip = (communeName: string, stations: StationSki[]) => {
   const lignes = stations.length
     ? stations

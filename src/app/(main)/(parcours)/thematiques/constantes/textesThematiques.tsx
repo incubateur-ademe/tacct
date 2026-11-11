@@ -158,7 +158,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Forêts',
         icone: '🌳',
-        sousCategories: ['Hauteur de la canopée']
+        sousCategories: ['Surface de forêt', 'Hauteur de la canopée']
       }
     ]
   },
