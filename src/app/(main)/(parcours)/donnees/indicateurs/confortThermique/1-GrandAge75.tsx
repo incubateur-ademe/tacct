@@ -45,7 +45,8 @@ export const GrandAge75 = ({
   const percentTerritoireSup = Round(
     (100 * sumProperty(territoireSup, 'over_75_sum_2022')) /
       (sumProperty(territoireSup, 'to_75_sum_2022') +
-        sumProperty(territoireSup, 'under_4_sum_2022')),
+        sumProperty(territoireSup, 'under_4_sum_2022') +
+        sumProperty(territoireSup, 'over_75_sum_2022')),
     2
   );
   const grandAgeTerritoire =
@@ -95,7 +96,7 @@ export const GrandAge75 = ({
             <MicroCircleGrid
               pourcentage={Number(yData.over_75_2022_percent)}
               arrondi={2}
-              ariaLabel="Pourcentage des personnes âgées de plus de 80 ans"
+              ariaLabel="Pourcentage des personnes âgées de plus de 75 ans"
             />
             {!Object.values(yData).slice(0, -2).includes('NaN') && (
               <>
