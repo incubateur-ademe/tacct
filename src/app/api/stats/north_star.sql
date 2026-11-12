@@ -14,36 +14,28 @@ WITH base AS (
      OR current_url ILIKE '%/donnees%'
 ),
 
-kv AS (
-  -- 2) Querystring → paires key=value
-  SELECT
-    b.session_id, b.person_id, b.event_timestamp, b.current_url, b.properties, b.raw_path, b.qs,
-    regexp_split_to_table(COALESCE(b.qs, ''), '&') AS pair
-  FROM base b
-),
-
-kv_parsed AS (
-  -- 3) Séparation clé / valeur
-  SELECT
-    session_id, person_id, event_timestamp, current_url, properties, raw_path,
-    lower(split_part(pair, '=', 1)) AS k,
-    NULLIF(split_part(pair, '=', 2), '') AS v
-  FROM kv
-),
-
 params AS (
   -- 4) Pivot des clés utiles
   SELECT
-    session_id, person_id, event_timestamp, current_url, properties,
-    regexp_replace(raw_path, '/+$', '') AS path_norm,
-    MAX(v) FILTER (WHERE k = 'type')                       AS p_type,
-    MAX(v) FILTER (WHERE k = 'code')                       AS p_code,
-    MAX(v) FILTER (WHERE k = 'libelle')                    AS p_libelle,
-    MAX(v) FILTER (WHERE k IN ('thematique','thématique')) AS p_thematique,
-    MAX(v) FILTER (WHERE k = 'codgeo')                     AS p_codgeo,
-    MAX(v) FILTER (WHERE k = 'codepci')                    AS p_codepci
-  FROM kv_parsed
-  GROUP BY session_id, person_id, event_timestamp, current_url, properties, raw_path
+    b.session_id, b.person_id, b.event_timestamp, b.current_url, b.properties,
+    regexp_replace(b.raw_path, '/+$', '') AS path_norm,
+    p.p_type, p.p_code, p.p_libelle, p.p_thematique, p.p_codgeo, p.p_codepci
+  FROM base b
+  CROSS JOIN LATERAL (
+    SELECT
+      MAX(v) FILTER (WHERE k = 'type')                       AS p_type,
+      MAX(v) FILTER (WHERE k = 'code')                       AS p_code,
+      MAX(v) FILTER (WHERE k = 'libelle')                    AS p_libelle,
+      MAX(v) FILTER (WHERE k IN ('thematique','thématique')) AS p_thematique,
+      MAX(v) FILTER (WHERE k = 'codgeo')                     AS p_codgeo,
+      MAX(v) FILTER (WHERE k = 'codepci')                    AS p_codepci
+    FROM (
+      SELECT
+        lower(split_part(pair, '=', 1)) AS k,
+        NULLIF(split_part(pair, '=', 2), '') AS v
+      FROM regexp_split_to_table(COALESCE(b.qs, ''), '&') AS pair
+    ) kv
+  ) p
 ),
 
 normalized AS (
@@ -53,7 +45,6 @@ normalized AS (
     person_id,
     event_timestamp,
     current_url,
-    properties,
     path_norm,
 
     -- prev pathname normalisé depuis 3 sources
@@ -192,19 +183,22 @@ cumulative AS (
     d.type,
     d.territory_key,
     d.session_day AS day,
-    SUM(d.sessions_day) OVER (
-      PARTITION BY d.type, d.territory_key
-      ORDER BY d.session_day
-      ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-    ) AS cum_sessions,
-    (
-      SELECT COUNT(*)
-      FROM themes_first_day tf
-      WHERE tf.type = d.type
-        AND tf.territory_key = d.territory_key
-        AND tf.theme_first_day <= d.session_day
-    ) AS cum_thematiques
+    SUM(d.sessions_day) OVER w AS cum_sessions,
+    SUM(COALESCE(nt.new_themes, 0)) OVER w AS cum_thematiques
   FROM sessions_by_day d
+  LEFT JOIN (
+    SELECT type, territory_key, theme_first_day, COUNT(*) AS new_themes
+    FROM themes_first_day
+    GROUP BY type, territory_key, theme_first_day
+  ) nt
+    ON nt.type = d.type
+   AND nt.territory_key = d.territory_key
+   AND nt.theme_first_day = d.session_day
+  WINDOW w AS (
+    PARTITION BY d.type, d.territory_key
+    ORDER BY d.session_day
+    ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+  )
 ),
 
 -- 12) Premier jour (unlock_day) où le territoire atteint les 2 seuils

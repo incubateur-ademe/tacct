@@ -1,3 +1,8 @@
+// GET /api/stats
+// GET /api/stats?periodicity=day&since=30
+// GET /api/stats?periodicity=week&since=12
+// GET /api/stats?periodicity=year
+
 import { readFileSync } from 'fs';
 import { NextRequest, NextResponse } from 'next/server';
 import { join } from 'path';
