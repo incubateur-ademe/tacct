@@ -1,42 +1,81 @@
 'use client';
+import { OngletsGraphiqueCarte } from '@/components/charts/inconfortThermique/ongletsGraphiqueCarte';
 import { PieChartTravailExt } from '@/components/charts/inconfortThermique/pieChartTravailExt';
 import { MicroPieChart } from '@/components/charts/MicroDataviz';
 import { ExportButton } from '@/components/exports/ExportButton';
+import { emploisExterieursClasses } from '@/components/maps/legends/datavizLegends';
 import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
 import { travailExtMapper } from '@/lib/mapper/inconfortThermique';
 import { ConfortThermique } from '@/lib/postgres/models';
 import { TravailExterieurText } from '@/lib/staticTexts';
+import { sansDoublonArrondissements } from '@/lib/territoireData/arrondissements';
 import { travailExterieurTooltipText } from '@/lib/tooltipTexts';
 import { IndicatorExportTransformations } from '@/lib/utils/export/environmentalDataExport';
 import { eptRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 import styles from '../../explorerDonnees.module.scss';
-import { sumProperty } from '../fonctions';
+import { aUneValeurParCode, carteParCommune, sumProperty } from '../fonctions';
 import { EmploisEnExterieurPieChartData } from '../graphData';
 import { SourceExport } from '../SourceExport';
 
 export const EmploisEnExterieur = ({
-  inconfortThermique
+  inconfortThermique,
+  coordonneesCommunes
 }: {
   inconfortThermique: ConfortThermique[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const travailExterieurMapped = inconfortThermique.map(travailExtMapper);
+  const partsParCommune = useMemo(
+    () =>
+      inconfortThermique.map(travailExtMapper).map((e) => {
+        const emplois =
+          e.NA5AZ_sum + e.NA5BE_sum + e.NA5FZ_sum + e.NA5GU_sum + e.NA5OQ_sum;
+        return {
+          code: e.code_geographique,
+          name: e.libelle_geographique,
+          part:
+            emplois > 0 ? (100 * (e.NA5AZ_sum + e.NA5FZ_sum)) / emplois : null
+        };
+      }),
+    [inconfortThermique]
+  );
   const travailExterieurTerritoire =
     type === 'commune'
       ? travailExterieurMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && eptRegex.test(libelle)
-        ? travailExterieurMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !eptRegex.test(libelle)
-          ? travailExterieurMapped.filter((e) => e.epci === code)
-          : travailExterieurMapped;
+      : sansDoublonArrondissements(
+          type === 'ept' && eptRegex.test(libelle)
+            ? travailExterieurMapped.filter((e) => e.ept === libelle)
+            : type === 'epci' && !eptRegex.test(libelle)
+              ? travailExterieurMapped.filter((e) => e.epci === code)
+              : travailExterieurMapped,
+          (e) => e.code_geographique,
+          aUneValeurParCode(partsParCommune)
+        );
+  const carte = useMemo(
+    () =>
+      carteParCommune(type, coordonneesCommunes, partsParCommune, {
+        classes: emploisExterieursClasses,
+        titreLegende:
+          'Part des emplois dans l’agriculture et la construction en 2021',
+        libelleInfobulle: 'Part des emplois dans l’agriculture et la construction',
+        ariaLabel:
+          'Carte représentant la part des emplois dans l’agriculture et la construction dans chaque commune de votre territoire en 2021'
+      }),
+    [type, coordonneesCommunes, partsParCommune]
+  );
 
   const sums = {
     sumAgriculture: sumProperty(travailExterieurTerritoire, 'NA5AZ_sum'),
@@ -87,9 +126,15 @@ export const EmploisEnExterieur = ({
         </div>
         <div className={styles.datavizWrapper}>
           {graphData ? (
-            <PieChartTravailExt
-              graphData={graphData}
-              travailExterieurTerritoire={travailExterieurTerritoire}
+            <OngletsGraphiqueCarte
+              ongletGraphique="Répartition"
+              carte={carte}
+              graphique={
+                <PieChartTravailExt
+                  graphData={graphData}
+                  travailExterieurTerritoire={travailExterieurTerritoire}
+                />
+              }
             />
           ) : (
             <Loader />

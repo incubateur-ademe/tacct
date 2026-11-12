@@ -2,9 +2,11 @@
 import WarningIcon from '@/assets/icons/exclamation_point_icon_black.png';
 import DataNotFound from '@/assets/images/no_data_on_territory.svg';
 import { LineChartGrandAge } from '@/components/charts/inconfortThermique/lineChartGrandAge';
+import { OngletsGraphiqueCarte } from '@/components/charts/inconfortThermique/ongletsGraphiqueCarte';
 import { MicroCircleGrid } from '@/components/charts/MicroDataviz';
 import { ExportButton } from '@/components/exports/ExportButton';
 import DataNotFoundForGraph from '@/components/graphDataNotFound';
+import { grandAgeClasses } from '@/components/maps/legends/datavizLegends';
 import { Loader } from '@/components/ui/loader';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -16,16 +18,21 @@ import { eptRegex, numberWithSpacesRegex } from '@/lib/utils/regex';
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
-import { sumProperty } from '../fonctions';
+import { carteParCommune, sumProperty } from '../fonctions';
 import { GrandAge75LineChartYData } from '../graphData';
 import { SourceExport } from '../SourceExport';
 
 export const GrandAge75 = ({
-  confortThermique
+  confortThermique,
+  coordonneesCommunes
 }: {
   confortThermique: ConfortThermique[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
@@ -45,7 +52,8 @@ export const GrandAge75 = ({
   const percentTerritoireSup = Round(
     (100 * sumProperty(territoireSup, 'over_75_sum_2022')) /
       (sumProperty(territoireSup, 'to_75_sum_2022') +
-        sumProperty(territoireSup, 'under_4_sum_2022')),
+        sumProperty(territoireSup, 'under_4_sum_2022') +
+        sumProperty(territoireSup, 'over_75_sum_2022')),
     2
   );
   const grandAgeTerritoire =
@@ -75,6 +83,36 @@ export const GrandAge75 = ({
   const methodeCalcul =
     'Nombre de personnes de plus de 75 ans divisé par la population totale à chaque recensement INSEE.';
 
+  const carte = useMemo(
+    () =>
+      carteParCommune(
+        type,
+        coordonneesCommunes,
+        confortThermique.map((c) => {
+          const population =
+            (c.under_4_sum_2022 ?? 0) +
+            (c['4_to_75_sum_2022'] ?? 0) +
+            (c.over_75_sum_2022 ?? 0);
+          return {
+            code: c.code_geographique,
+            name: c.libelle_geographique,
+            part:
+              c.over_75_sum_2022 === null || population === 0
+                ? null
+                : (100 * c.over_75_sum_2022) / population
+          };
+        }),
+        {
+          classes: grandAgeClasses,
+          titreLegende: 'Part des 75 ans et plus en 2022',
+          libelleInfobulle: 'Part des 75 ans et plus',
+          ariaLabel:
+            'Carte représentant la part des personnes de 75 ans et plus dans chaque commune de votre territoire en 2022'
+        }
+      ),
+    [type, coordonneesCommunes, confortThermique]
+  );
+
   useEffect(() => {
     if (type === 'epci' && code) {
       const departements = confortThermique.map((item) => item.departement);
@@ -95,7 +133,7 @@ export const GrandAge75 = ({
             <MicroCircleGrid
               pourcentage={Number(yData.over_75_2022_percent)}
               arrondi={2}
-              ariaLabel="Pourcentage des personnes âgées de plus de 80 ans"
+              ariaLabel="Pourcentage des personnes âgées de plus de 75 ans"
             />
             {!Object.values(yData).slice(0, -2).includes('NaN') && (
               <>
@@ -138,46 +176,50 @@ export const GrandAge75 = ({
             <div
               style={{
                 backgroundColor: 'white',
-                height: !Object.values(yData).slice(0, -2).includes('NaN')
-                  ? '500px'
-                  : 'max-content',
+                height: 'max-content',
                 width: '100%',
                 borderRadius: '1rem 0 0 0'
               }}
             >
               {!Object.values(yData).slice(0, -2).includes('NaN') ? (
-                <>
-                  <LineChartGrandAge
-                    xData={xData}
-                    yData={yGraphData}
-                    disclaimer={multipleDepartements.length > 1}
-                  />
-                  {multipleDepartements.length > 1 && (
-                    <div
-                      style={{
-                        minWidth: '450px',
-                        backgroundColor: 'white',
-                        padding: '1em',
-                        transform: 'translateY(-80px)'
-                      }}
-                    >
-                      <div className="flex flex-row items-center justify-center">
-                        <Image
-                          src={WarningIcon}
-                          alt="Attention"
-                          width={24}
-                          height={24}
-                          style={{ marginRight: '0.5em', alignItems: 'center' }}
-                        />
-                        <Body style={{ fontSize: 12 }}>
-                          L'EPCI sélectionné s'étend sur plusieurs départements.
-                          La comparaison proposée est effectuée avec :{' '}
-                          {libelleDepartement}
-                        </Body>
-                      </div>
+                <OngletsGraphiqueCarte
+                  ongletGraphique="Évolution"
+                  carte={carte}
+                  graphique={
+                    <div style={{ height: '500px', width: '100%' }}>
+                      <LineChartGrandAge
+                        xData={xData}
+                        yData={yGraphData}
+                        disclaimer={multipleDepartements.length > 1}
+                      />
+                      {multipleDepartements.length > 1 && (
+                        <div
+                          style={{
+                            minWidth: '450px',
+                            backgroundColor: 'white',
+                            padding: '1em',
+                            transform: 'translateY(-80px)'
+                          }}
+                        >
+                          <div className="flex flex-row items-center justify-center">
+                            <Image
+                              src={WarningIcon}
+                              alt="Attention"
+                              width={24}
+                              height={24}
+                              style={{ marginRight: '0.5em', alignItems: 'center' }}
+                            />
+                            <Body style={{ fontSize: 12 }}>
+                              L'EPCI sélectionné s'étend sur plusieurs
+                              départements. La comparaison proposée est
+                              effectuée avec : {libelleDepartement}
+                            </Body>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </>
+                  }
+                />
               ) : (
                 <div className="p-10 flex flex-row justify-center">
                   <DataNotFoundForGraph image={DataNotFound} />

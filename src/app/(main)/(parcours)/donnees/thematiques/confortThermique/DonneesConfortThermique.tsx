@@ -131,7 +131,10 @@ const DonneesConfortThermique = ({
               Évolution de la part des 75 ans et plus dans la population
             </H3>
           </div>
-          <GrandAge75 confortThermique={data.confortThermique} />
+          <GrandAge75
+            confortThermique={data.confortThermique}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
         </div>
 
         {/* Précarité énergétique */}
@@ -164,7 +167,10 @@ const DonneesConfortThermique = ({
               Part des emplois par grands secteurs d’activité
             </H3>
           </div>
-          <EmploisEnExterieur inconfortThermique={data.confortThermique} />
+          <EmploisEnExterieur
+            inconfortThermique={data.confortThermique}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
         </div>
       </section>
 
@@ -194,6 +200,7 @@ const DonneesConfortThermique = ({
           </div>
           <DateConstructionResidences
             confortThermique={data.confortThermique}
+            coordonneesCommunes={data.coordonneesCommunes}
           />
         </div>
       </section>

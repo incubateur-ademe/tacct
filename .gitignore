@@ -53,3 +53,5 @@ next-env.d.ts
 /.specstory
 
 .mcp*
+
+static_analysis_*/

@@ -10,3 +10,24 @@ export const listeArrondissements = [
 ];
 
 export const listeVillesAvecArrondissements = ['13055', '75056', '69123'];
+
+const villeDeLArrondissement = (code: string) =>
+  code.startsWith('75') ? '75056' : code.startsWith('69') ? '69123' : '13055';
+
+export const sansDoublonArrondissements = <T>(
+  elements: T[],
+  codeDe: (element: T) => string,
+  aUneValeur: (code: string) => boolean
+): T[] => {
+  const villesDetaillees = new Set<string>(
+    listeArrondissements.filter(aUneValeur).map(villeDeLArrondissement)
+  );
+  return elements.filter((element) => {
+    const code = codeDe(element);
+    if (listeVillesAvecArrondissements.includes(code)) {
+      return !villesDetaillees.has(code);
+    }
+    if (listeArrondissements.includes(code)) return aUneValeur(code);
+    return true;
+  });
+};

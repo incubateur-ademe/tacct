@@ -932,6 +932,30 @@ export const surfaceForetLegend = surfaceForetClasses.map(
   ({ value, color }) => ({ value, color })
 );
 
+export const grandAgeClasses = [
+  { min: 0, value: 'Moins de 5 %', color: couleurs.graphiques.violet[4] },
+  { min: 5, value: '5 à 10 %', color: couleurs.graphiques.violet[3] },
+  { min: 10, value: '10 à 15 %', color: couleurs.graphiques.violet[2] },
+  { min: 15, value: '15 à 20 %', color: couleurs.graphiques.violet[1] },
+  { min: 20, value: '20 % et plus', color: couleurs.graphiques.violet[5] }
+];
+
+export const emploisExterieursClasses = [
+  { min: 0, value: 'Moins de 10 %', color: couleurs.graphiques.violet[4] },
+  { min: 10, value: '10 à 25 %', color: couleurs.graphiques.violet[3] },
+  { min: 25, value: '25 à 50 %', color: couleurs.graphiques.violet[2] },
+  { min: 50, value: '50 à 75 %', color: couleurs.graphiques.violet[1] },
+  { min: 75, value: '75 % et plus', color: couleurs.graphiques.violet[5] }
+];
+
+export const ageBatiClasses = [
+  { min: 0, value: 'Moins de 80 %', color: couleurs.graphiques.violet[4] },
+  { min: 80, value: '80 à 85 %', color: couleurs.graphiques.violet[3] },
+  { min: 85, value: '85 à 90 %', color: couleurs.graphiques.violet[2] },
+  { min: 90, value: '90 à 95 %', color: couleurs.graphiques.violet[1] },
+  { min: 95, value: '95 % et plus', color: couleurs.graphiques.violet[5] }
+];
+
 export const stationsSkiTailleClasses = [
   { value: 'Petite station', color: couleurs.graphiques.bleu[3] },
   { value: 'Station moyenne', color: couleurs.graphiques.bleu[2] },

@@ -1,40 +1,78 @@
 "use client";
 import { BarChartAgeBatiNouveauParcours } from '@/components/charts/inconfortThermique/BarChartAgeBatiNouveauParcours';
+import { OngletsGraphiqueCarte } from '@/components/charts/inconfortThermique/ongletsGraphiqueCarte';
 import { MicroCircleGrid } from "@/components/charts/MicroDataviz";
 import { ExportButton } from "@/components/exports/ExportButton";
+import { ageBatiClasses } from '@/components/maps/legends/datavizLegends';
 import { Loader } from "@/components/ui/loader";
 import { Body } from "@/design-system/base/Textes";
 import { ageBatiMapper } from "@/lib/mapper/inconfortThermique";
 import { ConfortThermique } from "@/lib/postgres/models";
 import { AgeBatiText } from '@/lib/staticTexts';
+import { sansDoublonArrondissements } from '@/lib/territoireData/arrondissements';
 import { IndicatorExportTransformations } from "@/lib/utils/export/environmentalDataExport";
 import { eptRegex } from "@/lib/utils/regex";
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import { useSearchParams } from "next/navigation";
+import { useMemo } from 'react';
 import styles from '../../explorerDonnees.module.scss';
-import { sumProperty } from '../fonctions';
+import { aUneValeurParCode, carteParCommune, sumProperty } from '../fonctions';
 import { DateConstructionResidencesBarChartData } from '../graphData';
 import { SourceExport } from '../SourceExport';
 
 export const DateConstructionResidences = ({
-  confortThermique
+  confortThermique,
+  coordonneesCommunes
 }: {
   confortThermique: ConfortThermique[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
   const ageBatiMapped = confortThermique.map(ageBatiMapper);
+  const partsParCommune = useMemo(
+    () =>
+      confortThermique.map(ageBatiMapper).map((e) => {
+        const avant2006 =
+          e.nb_rp_pre_19 + e.nb_rp_19_45 + e.nb_rp_46_70 + e.nb_rp_71_90 + e.nb_rp_91_05;
+        return {
+          code: e.code_geographique,
+          name: e.libelle_geographique,
+          part:
+            e.nb_rp_tot > 0 ? Math.min(100, (100 * avant2006) / e.nb_rp_tot) : null
+        };
+      }),
+    [confortThermique]
+  );
   const ageBatiTerritoire =
     type === 'commune'
       ? ageBatiMapped.filter((e) => e.code_geographique === code)
-      : type === 'ept' && eptRegex.test(libelle)
-        ? ageBatiMapped.filter((e) => e.ept === libelle)
-        : type === 'epci' && !eptRegex.test(libelle)
-          ? ageBatiMapped.filter((e) => e.epci === code)
-          : ageBatiMapped;
+      : sansDoublonArrondissements(
+          type === 'ept' && eptRegex.test(libelle)
+            ? ageBatiMapped.filter((e) => e.ept === libelle)
+            : type === 'epci' && !eptRegex.test(libelle)
+              ? ageBatiMapped.filter((e) => e.epci === code)
+              : ageBatiMapped,
+          (e) => e.code_geographique,
+          aUneValeurParCode(partsParCommune)
+        );
+  const carte = useMemo(
+    () =>
+      carteParCommune(type, coordonneesCommunes, partsParCommune, {
+        classes: ageBatiClasses,
+        titreLegende: 'Part des résidences principales construites avant 2006',
+        libelleInfobulle: 'Part construite avant 2006',
+        ariaLabel:
+          'Carte représentant la part des résidences principales construites avant 2006 dans chaque commune de votre territoire'
+      }),
+    [type, coordonneesCommunes, partsParCommune]
+  );
 
   const totalNbRp = sumProperty(ageBatiTerritoire, 'nb_rp_tot');
   const pourcentagesDatesConstruction = {
@@ -76,7 +114,15 @@ export const DateConstructionResidences = ({
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          {chartData ? <BarChartAgeBatiNouveauParcours chartData={chartData} /> : <Loader />}
+          {chartData ? (
+            <OngletsGraphiqueCarte
+              ongletGraphique="Répartition"
+              carte={carte}
+              graphique={<BarChartAgeBatiNouveauParcours chartData={chartData} />}
+            />
+          ) : (
+            <Loader />
+          )}
           <SourceExport
             source="INSEE, RP2022 (consultée en avril 2026)"
             condition={Sum(chartData.map(el => Number(el["Votre territoire"]))) !== 0 && !isNaN(Sum(chartData.map(el => Number(el["Votre territoire"]))))}

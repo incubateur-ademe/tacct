@@ -15,47 +15,56 @@ export const GrandAge75LineChartYData = (
     over_75_1968_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_1968'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_1968') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1968')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1968') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_1968')
     ),
     over_75_1975_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_1975'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_1975') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1975')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1975') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_1975')
     ),
     over_75_1982_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_1982'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_1982') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1982')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1982') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_1982')
     ),
     over_75_1990_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_1990'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_1990') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1990')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1990') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_1990')
     ),
     over_75_1999_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_1999'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_1999') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_1999')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_1999') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_1999')
     ),
     over_75_2006_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_2006'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_2006') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2006')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2006') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_2006')
     ),
     over_75_2011_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_2011'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_2011') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2011')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2011') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_2011')
     ),
     over_75_2016_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_2016'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_2016') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2016')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2016') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_2016')
     ),
     over_75_2022_percent: calculatePercent(
       sumProperty(grandAgeTerritoire, 'over_75_sum_2022'),
       sumProperty(grandAgeTerritoire, 'to_75_sum_2022') +
-        sumProperty(grandAgeTerritoire, 'under_4_sum_2022')
+        sumProperty(grandAgeTerritoire, 'under_4_sum_2022') +
+        sumProperty(grandAgeTerritoire, 'over_75_sum_2022')
     )
   };
 };
