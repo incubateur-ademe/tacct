@@ -1,4 +1,4 @@
-import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
+import LienExterneIcon from "@/assets/icons/external_link_icon.svg";
 import { Body } from "@/design-system/base/Textes";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";

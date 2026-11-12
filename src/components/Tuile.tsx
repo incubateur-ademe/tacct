@@ -2,7 +2,7 @@
 
 import ClockIcon from "@/assets/icons/clock_icon_black.svg";
 import DocIcon from "@/assets/icons/doc_icon_white.png";
-import LienExterneIcon from "@/assets/icons/fr-icon-external-link-line.png";
+import LienExterneIcon from "@/assets/icons/external_link_icon.svg";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { MinuteToHours } from "@/lib/utils/reusableFunctions/MinuteToHours";
 import Image, { StaticImageData } from "next/image";
