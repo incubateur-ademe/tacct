@@ -56,7 +56,7 @@ const getCouleurTitreNouveaute = (label: string) => {
 
 const ContenuNouveaute = ({ titre, texte, couleur }: { titre: string; texte?: string; couleur: string }) => (
   <div className={styles.contenuNouveaute}>
-    <span aria-hidden="true" className={styles.iconeNouveaute} style={{ backgroundColor: couleur }}>!</span>
+    <span aria-hidden="true" className={styles.iconeNouveaute}>✨</span>
     <span className={styles.texteNouveaute}>
       <span className={styles.titreNouveaute} style={{ color: couleur }}>{texte ? `${titre} :` : titre}</span>
       {texte && <span>{texte}</span>}
@@ -412,6 +412,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
       .on("click", (event: Any, d: NoeudRoue) => {
         const thematique = nomThematiques.find(t => t.label === d.label);
         if (!thematique?.disabled) {
+          fermerNouveaute();
           handleItemSelect(selectedThematique === d.label ? null : d.label);
         }
       })
@@ -458,6 +459,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
           event.preventDefault();
           const thematique = nomThematiques.find(t => t.label === d.label);
           if (!thematique?.disabled) {
+            fermerNouveaute();
             handleItemSelect(selectedThematique === d.label ? null : d.label);
           }
         }
@@ -602,7 +604,7 @@ const RoueSystemique = ({ onItemSelect, selectedItem }: RoueSystemiqueProps) => 
             const nouveaute = thematique && !thematique.disabled ? thematique.nouveaute : undefined;
             if (!thematique?.disabled && !nouveaute) return null;
             const proprietesNouveaute = nouveaute ? {
-              open: nouveauteOuverte === node.label,
+              open: nouveauteOuverte === node.label && selectedThematique !== node.label,
               onClose: fermerNouveaute,
               slotProps: { popper: { onMouseEnter: annulerFermetureNouveaute } }
             } : {};
