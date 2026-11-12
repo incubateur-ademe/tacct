@@ -18,8 +18,16 @@ export const RETURN_TO_COOKIE = 'pc_return_to';
 // Seuls les chemins internes sont acceptés, pour écarter tout open redirect.
 export function sanitizeReturnTo(value: string | null): string | null {
   if (!value || !value.startsWith('/')) return null;
-  if (value.startsWith('//') || value.startsWith('/\\')) return null;
-  return value;
+  const base = 'http://localhost';
+  let url: URL;
+  try {
+    url = new URL(value, base);
+  } catch {
+    return null;
+  }
+  if (url.origin !== base) return null;
+  const chemin = url.pathname + url.search + url.hash;
+  return chemin.startsWith('//') ? null : chemin;
 }
 
 export interface AdemeIdTokenClaims extends JWTPayload {

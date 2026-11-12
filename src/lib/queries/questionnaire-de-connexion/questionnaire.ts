@@ -261,6 +261,7 @@ export const enregistrerBeta = async (
   const user = await getCurrentUser();
   if (!user) return ECHEC;
   const adresse = email.trim();
+  if (optIn && adresse.length > 254) return ECHEC;
   if (optIn && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(adresse)) return ECHEC;
 
   try {

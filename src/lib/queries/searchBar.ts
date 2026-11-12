@@ -13,10 +13,17 @@ import {
   PNR
 } from './territoiresQueries';
 
+const LONGUEUR_MAX_RECHERCHE = 200;
+
+const rechercheValide = (collectivite: unknown): collectivite is string =>
+  typeof collectivite === 'string' &&
+  collectivite.length <= LONGUEUR_MAX_RECHERCHE;
+
 export const GetCollectivite = async (
   typeTerritoire: string | undefined,
   collectivite: string
 ): Promise<CollectivitesSearchbar[]> => {
+  if (!rechercheValide(collectivite)) return [];
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
@@ -71,6 +78,7 @@ export const GetCollectivite = async (
 export const GetAllTerritoires = async (
   collectivite: string
 ): Promise<CollectivitesSearchbarWithType[]> => {
+  if (!rechercheValide(collectivite)) return [];
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
