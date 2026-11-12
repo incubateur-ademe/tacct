@@ -125,6 +125,7 @@ export const DonneesAmenagement = ({
             />
             <ConsommationEspacesNAFAmenagement
               consommationNAF={data.consommationNAF}
+              coordonneesCommunes={data.coordonneesCommunes}
             />
           </div>
 

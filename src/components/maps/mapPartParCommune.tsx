@@ -1,6 +1,7 @@
 'use client';
 
 import maplibregl from '@/lib/maplibre';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 import { mapStyles } from 'carte-facile';
 import { ExpressionSpecification, MapLayerMouseEvent } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
@@ -28,13 +29,25 @@ export type CarteParCommune = {
   titreLegende: string;
   libelleInfobulle: string;
   ariaLabel: string;
+  formatValeur?: (valeur: number) => string;
+  valeurSiAbsente?: number;
 };
+
+const formatPourcentage = (valeur: number) => `${Round(valeur, 1)} %`;
 
 export const MapPartParCommune = (props: {
   carte: CarteParCommune;
 }) => {
-  const { communesCodes, donnees, bbox, classes, libelleInfobulle, ariaLabel } =
-    props.carte;
+  const {
+    communesCodes,
+    donnees,
+    bbox,
+    classes,
+    libelleInfobulle,
+    ariaLabel,
+    formatValeur = formatPourcentage,
+    valeurSiAbsente
+  } = props.carte;
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<maplibregl.Map | null>(null);
   const popupRef = useRef<maplibregl.Popup | null>(null);
@@ -52,6 +65,11 @@ export const MapPartParCommune = (props: {
       if (part === null) return 'white';
       const classe = [...classes].reverse().find((c) => part >= c.min);
       return classe ? classe.color : 'white';
+    };
+
+    const valeurDe = (code: string) => {
+      const commune = donneesParCommune.get(code);
+      return commune ? commune.part : (valeurSiAbsente ?? null);
     };
 
     const map = new maplibregl.Map({
@@ -90,11 +108,11 @@ export const MapPartParCommune = (props: {
           return;
         }
       }
-      const commune = donneesParCommune.get(code);
+      const valeur = valeurDe(code);
       const tooltipContent = PartCommuneTooltip(
-        commune?.name || properties?.libelle_geographique || 'Commune inconnue',
+        donneesParCommune.get(code)?.name || properties?.libelle_geographique || 'Commune inconnue',
         libelleInfobulle,
-        commune?.part ?? null
+        valeur === null ? 'Aucune donnée' : formatValeur(valeur)
       );
       popupRef.current?.remove();
       popupRef.current = new maplibregl.Popup({
@@ -122,13 +140,14 @@ export const MapPartParCommune = (props: {
         promoteId: 'code_geographique'
       });
 
-      let colorExpression: ExpressionSpecification | string = 'white';
+      const couleurParDefaut = couleurPart(valeurSiAbsente ?? null);
+      let colorExpression: ExpressionSpecification | string = couleurParDefaut;
       if (donneesParCommune.size) {
         const matchArgs: (ExpressionSpecification | string)[] = ['match', ['get', 'code_geographique']];
         donneesParCommune.forEach((d) => {
           matchArgs.push(d.code, couleurPart(d.part));
         });
-        matchArgs.push('white');
+        matchArgs.push(couleurParDefaut);
         colorExpression = matchArgs as unknown as ExpressionSpecification;
       }
 
@@ -177,7 +196,7 @@ export const MapPartParCommune = (props: {
         mapRef.current = null;
       }
     };
-  }, [communesCodes, donneesParCommune, bbox, classes, libelleInfobulle]);
+  }, [communesCodes, donneesParCommune, bbox, classes, libelleInfobulle, formatValeur, valeurSiAbsente]);
 
   return (
     <>

@@ -16,10 +16,7 @@ export const carteParCommune = (
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null,
   donnees: PartCommune[],
-  config: Pick<
-    CarteParCommune,
-    'classes' | 'titreLegende' | 'libelleInfobulle' | 'ariaLabel'
-  >
+  config: Omit<CarteParCommune, 'communesCodes' | 'donnees' | 'bbox'>
 ): CarteParCommune | null => {
   if (type === 'commune' || !coordonneesCommunes) return null;
   return {

@@ -125,13 +125,13 @@ export const SurfaceForetTooltip = (
 export const PartCommuneTooltip = (
   communeName: string,
   libelle: string,
-  part: number | null
+  valeur: string
 ) => {
   return `
       <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 0; width: max-content;">
         <p style="font-size: 1rem; font-family: Marianne; font-weight: 700; margin: 0 0 0.5rem">${communeName}</p>
         <p style="font-size: 0.875rem; font-family: Marianne; font-weight: 400; margin: 0">
-          ${libelle} : <b>${part === null ? 'Aucune donnée' : `${Round(part, 1)} %`}</b>
+          ${libelle} : <b>${valeur}</b>
         </p>
       </div>
   `;

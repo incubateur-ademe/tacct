@@ -18,8 +18,12 @@ import { SourceExport } from '../SourceExport';
 
 export const ConsommationEspacesNAFAmenagement = (props: {
   consommationNAF: ConsommationNAF[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
-  const { consommationNAF } = props;
+  const { consommationNAF, coordonneesCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -64,7 +68,10 @@ export const ConsommationEspacesNAFAmenagement = (props: {
           </div>
         </div>
         <div className={styles.datavizWrapper}>
-          <ConsommationEspacesNAFCharts consommationNAF={consommationNAF} />
+          <ConsommationEspacesNAFCharts
+            consommationNAF={consommationNAF}
+            coordonneesCommunes={coordonneesCommunes}
+          />
           <SourceExport
             source="CEREMA, 2026 (consultée en septembre 2026)"
             condition={sumNaf !== 0}

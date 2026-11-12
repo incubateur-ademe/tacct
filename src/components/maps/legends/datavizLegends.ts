@@ -956,6 +956,33 @@ export const ageBatiClasses = [
   { min: 95, value: '95 % et plus', color: couleurs.graphiques.violet[5] }
 ];
 
+export const feuxForetClasses = [
+  { min: 0, value: 'Aucun départ', color: 'white' },
+  { min: 1, value: '1 départ', color: '#D3EDEB' },
+  { min: 2, value: '2 à 5 départs', color: '#91D1CC' },
+  { min: 6, value: '6 à 20 départs', color: '#038278' },
+  { min: 21, value: '21 à 50 départs', color: '#095D55' },
+  { min: 51, value: 'Plus de 50 départs', color: '#05413B' }
+];
+
+export const prelevementsEauClasses = [
+  { min: 0, value: 'Aucun prélèvement déclaré', color: 'white' },
+  { min: Number.MIN_VALUE, value: 'Moins de 0,05 Mm³', color: couleurs.graphiques.bleu[4] },
+  { min: 50000, value: '0,05 à 0,5 Mm³', color: couleurs.graphiques.bleu[3] },
+  { min: 500000, value: '0,5 à 5 Mm³', color: couleurs.graphiques.bleu[2] },
+  { min: 5000000, value: '5 à 50 Mm³', color: couleurs.graphiques.bleu[1] },
+  { min: 50000000, value: 'Plus de 50 Mm³', color: couleurs.graphiques.bleu[5] }
+];
+
+export const secheressesClasses = [
+  { min: 0, value: 'Aucune restriction', color: 'white' },
+  { min: Number.MIN_VALUE, value: 'Moins de 5 jours', color: couleurs.graphiques.violet[4] },
+  { min: 5, value: '5 à 10 jours', color: couleurs.graphiques.violet[3] },
+  { min: 10, value: '10 à 15 jours', color: couleurs.graphiques.violet[2] },
+  { min: 15, value: '15 à 20 jours', color: couleurs.graphiques.violet[1] },
+  { min: 20, value: '20 jours et plus', color: couleurs.graphiques.violet[5] }
+];
+
 export const stationsSkiTailleClasses = [
   { value: 'Petite station', color: couleurs.graphiques.bleu[3] },
   { value: 'Station moyenne', color: couleurs.graphiques.bleu[2] },

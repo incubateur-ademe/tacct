@@ -1,5 +1,7 @@
 'use client';
 
+import { CarteParCommuneAvecLegende } from '@/components/maps/carteParCommuneAvecLegende';
+import type { CarteParCommune } from '@/components/maps/mapPartParCommune';
 import RangeSlider from '@/components/Slider';
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from '@/design-system/base/Textes';
@@ -15,10 +17,11 @@ type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   ressourcesEau: PrelevementsEauParsed[];
+  carte: CarteParCommune | null;
 };
 
 const EauCharts = (props: Props) => {
-  const { datavizTab, setDatavizTab, ressourcesEau } = props;
+  const { datavizTab, setDatavizTab, ressourcesEau, carte } = props;
   const searchParams = useSearchParams();
   const type = searchParams.get('type')!;
   const [sliderValue, setSliderValue] = useState<number[]>([2008, 2023]);
@@ -62,13 +65,15 @@ const EauCharts = (props: Props) => {
           )}
         <div className={styles.graphTabsWrapper}>
           <SubTabs
-            data={['Répartition', 'Évolution']}
+            data={['Répartition', 'Évolution', ...(carte ? ['Cartographie'] : [])]}
             defaultTab={datavizTab}
             setValue={setDatavizTab}
           />
         </div>
       </div>
-      {datavizTab === 'Répartition' ? (
+      {datavizTab === 'Cartographie' && carte ? (
+        <CarteParCommuneAvecLegende carte={carte} />
+      ) : datavizTab === 'Répartition' ? (
         <>
           {type === 'pnr' || type === 'departement' ? (
             <PrelevementEauProgressBarsPNR

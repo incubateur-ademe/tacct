@@ -4,6 +4,7 @@ import WarningIcon from '@/assets/icons/exclamation_point_icon_black.png';
 import { MicroCube } from '@/components/charts/MicroDataviz';
 import EauCharts from '@/components/charts/ressourcesEau/EauCharts';
 import { ExportButton } from '@/components/exports/ExportButton';
+import { prelevementsEauClasses } from '@/components/maps/legends/datavizLegends';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -15,9 +16,15 @@ import { Round } from '@/lib/utils/reusableFunctions/round';
 import { Sum } from '@/lib/utils/reusableFunctions/sum';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+import { carteParCommune } from '../fonctions';
 import { SourceExport } from '../SourceExport';
+
+const formatVolume = (volume: number) =>
+  volume < 1000000
+    ? `${Round(volume, 0)} m³`
+    : `${Round(volume / 1000000, 2)} Mm³`;
 
 const sousChampsNew = [
   { param: 'aep' as const, libelle: 'Eau potable' },
@@ -30,8 +37,12 @@ const sousChampsNew = [
 
 export const PrelevementsEnEau = (props: {
   prelevementsEau: PrelevementsEauModel[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
 }) => {
-  const { prelevementsEau } = props;
+  const { prelevementsEau, coordonneesCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
@@ -39,6 +50,33 @@ export const PrelevementsEnEau = (props: {
   const departement =
     type === 'epci' ? prelevementsEau[0]?.libelle_departement : '';
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const carte = useMemo(
+    () =>
+      carteParCommune(
+        type,
+        coordonneesCommunes,
+        prelevementsEau
+          .map((item) => ({
+            code: item.code_geographique,
+            name: item.libelle_geographique,
+            part: sousChampsNew.reduce(
+              (total, { param }) => total + (item[`annee_2023_${param}`] ?? 0),
+              0
+            )
+          }))
+          .filter((commune) => commune.part > 0),
+        {
+          classes: prelevementsEauClasses,
+          titreLegende: 'Volume d’eau prélevé en 2023',
+          libelleInfobulle: 'Volume prélevé en 2023',
+          ariaLabel:
+            'Carte représentant le volume d’eau prélevé en 2023 dans chaque commune de votre territoire',
+          formatValeur: formatVolume,
+          valeurSiAbsente: 0
+        }
+      ),
+    [type, coordonneesCommunes, prelevementsEau]
+  );
   const [multipleDepartements, setMultipleDepartements] = useState<string[]>(
     []
   );
@@ -154,6 +192,7 @@ export const PrelevementsEnEau = (props: {
             datavizTab={datavizTab}
             setDatavizTab={setDatavizTab}
             ressourcesEau={prelevementsParsed}
+            carte={carte}
           />
           {multipleDepartements.length > 1 && datavizTab === 'Répartition' && (
             <div className={styles.warningBox}>

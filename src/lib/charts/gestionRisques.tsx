@@ -61,6 +61,37 @@ export const calculerMoyenneJoursMensuelleAvecRestriction = ({
   return { moyenne: Math.round(somme / 12), annee: anneeMax };
 };
 
+type RestrictionSecheresse = {
+  AEP: string | null;
+  SOU: string | null;
+  SUP: string | null;
+  end_date: string;
+  start_date: string;
+};
+
+export const joursDeRestrictionParMois = (
+  secheresse: SecheressesPasseesModel,
+  annee: number
+) => {
+  const restrictions: RestrictionSecheresse[] = secheresse.restrictions
+    ? JSON.parse(secheresse.restrictions.replace(/None/g, 'null').replace(/'/g, '"'))
+    : [];
+  const debutAnnee = new Date(`${annee}-01-01`);
+  const finAnnee = new Date(`${annee}-12-31`);
+  const jours = new Set<string>();
+
+  restrictions.forEach(({ AEP, SOU, SUP, start_date, end_date }) => {
+    if (!AEP && !SOU && !SUP) return;
+    const dateDebut = new Date(Math.max(new Date(start_date).getTime(), debutAnnee.getTime()));
+    const dateFin = new Date(Math.min(new Date(end_date).getTime(), finAnnee.getTime()));
+    for (let d = dateDebut; d <= dateFin; d.setDate(d.getDate() + 1)) {
+      jours.add(d.toISOString().slice(0, 10));
+    }
+  });
+
+  return jours.size / 12;
+};
+
 const ORDRE_GRAVITE: TypeRestrictions[] = ['vigilance', 'alerte', 'alerte_renforcee', 'crise'];
 
 const graviteMax = (a: TypeRestrictions, b: TypeRestrictions): TypeRestrictions => {

@@ -90,7 +90,10 @@ export const DonneesEau = ({
                 Répartition des prélèvements d’eau par usage
               </H3>
             </div>
-            <PrelevementsEnEau prelevementsEau={data.prelevementsEau} />
+            <PrelevementsEnEau
+              prelevementsEau={data.prelevementsEau}
+              coordonneesCommunes={coordonneesCommunes}
+            />
           </div>
 
           {/* État écologique des cours d'eau */}

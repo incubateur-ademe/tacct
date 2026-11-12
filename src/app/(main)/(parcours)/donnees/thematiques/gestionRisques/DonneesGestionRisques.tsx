@@ -194,7 +194,10 @@ export const DonneesGestionRisques = ({
               Départs de feux et surfaces brûlées depuis 2006
             </H3>
           </div>
-          <FeuxDeForet incendiesForet={data.incendiesForet} />
+          <FeuxDeForet
+            incendiesForet={data.incendiesForet}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
         </div>
 
         {/* Débroussaillement */}
@@ -222,7 +225,10 @@ export const DonneesGestionRisques = ({
               Sécheresses passées
             </H3>
           </div>
-          <SecheressesPassees secheresses={data.secheressesPassees} />
+          <SecheressesPassees
+            secheresses={data.secheressesPassees}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
         </div>
       </section>
 

@@ -1,3 +1,5 @@
+import { CarteParCommuneAvecLegende } from '@/components/maps/carteParCommuneAvecLegende';
+import type { CarteParCommune } from '@/components/maps/mapPartParCommune';
 import SubTabs from '@/components/ui/SubTabs';
 import { transformerRestrictionsParAnneeUnique, transformerRestrictionsSaisons } from '@/lib/charts/gestionRisques';
 import { SecheressesPasseesModel } from '@/lib/postgres/models';
@@ -9,6 +11,7 @@ type Props = {
   datavizTab: string;
   setDatavizTab: (value: string) => void;
   secheresses: SecheressesPasseesModel[];
+  carte: CarteParCommune | null;
 };
 
 
@@ -17,6 +20,7 @@ const SecheressesCharts = (props: Props) => {
     datavizTab,
     setDatavizTab,
     secheresses,
+    carte
   } = props;
 
   const toutesLesRestrictions = secheresses.flatMap(s =>
@@ -30,7 +34,7 @@ const SecheressesCharts = (props: Props) => {
     <div className={styles.dataWrapper}>
       <div className={styles.graphTabsWrapper}>
         <SubTabs
-          data={['Intensité', 'Saisonnalité']}
+          data={['Intensité', 'Saisonnalité', ...(carte ? ['Cartographie'] : [])]}
           defaultTab={datavizTab}
           setValue={setDatavizTab}
         />
@@ -39,6 +43,8 @@ const SecheressesCharts = (props: Props) => {
         <SecheressesBarChart restrictionsParAnnee={restrictionsParAnnee} />
       ) : datavizTab === 'Saisonnalité' ? (
         <SecheressesSaisonsBarChart restrictionsParSaison={restrictionsParSaison} />
+      ) : datavizTab === 'Cartographie' && carte ? (
+        <CarteParCommuneAvecLegende carte={carte} />
       ) : (
         ''
       )}

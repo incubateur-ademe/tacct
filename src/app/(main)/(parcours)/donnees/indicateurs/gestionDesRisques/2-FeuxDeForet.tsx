@@ -2,6 +2,8 @@
 import GraphNotFound from '@/assets/images/zero_data_found.png';
 import { MicroNumberCircle } from '@/components/charts/MicroDataviz';
 import { ExportButton } from '@/components/exports/ExportButton';
+import { feuxForetClasses } from '@/components/maps/legends/datavizLegends';
+import type { PartCommune } from '@/components/maps/mapPartParCommune';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -12,19 +14,52 @@ import { IndicatorExportTransformations } from '@/lib/utils/export/environmental
 import { Round } from '@/lib/utils/reusableFunctions/round';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { lazy, useState } from 'react';
+import { lazy, useMemo, useState } from 'react';
 import styles from '../../explorerDonnees.module.scss';
+import { carteParCommune } from '../fonctions';
 import { SourceExport } from '../SourceExport';
 
 const FeuxForetCharts = lazy(() => import('@/components/charts/gestionRisques/feuxForetCharts').then(m => ({ default: m.default })));
 
-export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
-  const { incendiesForet } = props;
+const formatDeparts = (departs: number) => `${departs}`;
+
+export const FeuxDeForet = (props: {
+  incendiesForet: IncendiesForet[];
+  coordonneesCommunes: {
+    codes: string[];
+    bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
+  } | null;
+}) => {
+  const { incendiesForet, coordonneesCommunes } = props;
   const searchParams = useSearchParams();
   const code = searchParams.get('code')!;
   const type = searchParams.get('type')!;
   const libelle = searchParams.get('libelle')!;
   const [datavizTab, setDatavizTab] = useState<string>('Répartition');
+  const carte = useMemo(() => {
+    const departsParCommune = new Map<string, PartCommune>();
+    incendiesForet.forEach((feu) => {
+      const commune = departsParCommune.get(feu.code_geographique);
+      if (commune) {
+        commune.part = (commune.part ?? 0) + 1;
+      } else {
+        departsParCommune.set(feu.code_geographique, {
+          code: feu.code_geographique,
+          name: feu.libelle_geographique,
+          part: 1
+        });
+      }
+    });
+    return carteParCommune(type, coordonneesCommunes, [...departsParCommune.values()], {
+      classes: feuxForetClasses,
+      titreLegende: 'Nombre de départs de feux depuis 2006',
+      libelleInfobulle: 'Départs de feux depuis 2006',
+      ariaLabel:
+        'Carte représentant le nombre de départs de feux de forêt depuis 2006 dans chaque commune de votre territoire',
+      formatValeur: formatDeparts,
+      valeurSiAbsente: 0
+    });
+  }, [type, coordonneesCommunes, incendiesForet]);
   // surface en km²
   const surfaceTotale = incendiesForet
     .map((el) => el.surface_parcourue)
@@ -73,6 +108,7 @@ export const FeuxDeForet = (props: { incendiesForet: IncendiesForet[] }) => {
               datavizTab={datavizTab}
               setDatavizTab={setDatavizTab}
               incendiesForet={incendiesForet}
+              carte={carte}
             />
           ) : (
             <div className={styles.dataNotFoundForMap}>
