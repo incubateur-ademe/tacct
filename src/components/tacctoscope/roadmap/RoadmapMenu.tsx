@@ -5,6 +5,7 @@ import cadenas from '@/assets/svg/custom/cadenas.svg';
 import drawerStyles from '@/components/components.module.scss';
 import { Body } from '@/design-system/base/Textes';
 import { CriterionSlug } from '@/lib/tacctoscope/types';
+import { remplacerAncreSansNavigationNext } from '@/lib/utils/browser';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -125,6 +126,7 @@ export const RoadmapMenu = ({ items }: Props) => {
     document
       .getElementById(item.slug)
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    remplacerAncreSansNavigationNext(item.slug);
   };
 
   return (

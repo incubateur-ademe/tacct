@@ -1,5 +1,6 @@
 import ShareIcon from '@/assets/icons/share_icon_white.svg';
 import { BoutonPrimaireClassic } from '@/design-system/base/Boutons';
+import { remplacerAncreSansNavigationNext } from '@/lib/utils/browser';
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 export const CopyLinkClipboard = ({
@@ -20,9 +21,7 @@ export const CopyLinkClipboard = ({
   }, []);
 
   const handleCopy = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const url = new URL(window.location.href);
-    url.hash = `#${anchor}`;
-    navigator.clipboard.writeText(url.toString());
+    navigator.clipboard.writeText(remplacerAncreSansNavigationNext(anchor));
     setCopied(true);
     e.currentTarget.blur();
     if (timeoutRef.current) clearTimeout(timeoutRef.current);

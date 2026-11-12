@@ -53,6 +53,13 @@ export const FeuilleDeRouteView = ({ answers, isAuthenticated }: Props) => {
     setHydrated(true);
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (!hydrated || !window.location.hash) return;
+    document
+      .getElementById(window.location.hash.slice(1))
+      ?.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }, [hydrated]);
+
   const menuItems: RoadmapMenuItem[] = CRITERIA.map((criterion) => ({
     slug: criterion.slug,
     title: MENU_TITLES[criterion.slug] ?? criterion.title,

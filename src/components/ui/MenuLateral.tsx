@@ -8,6 +8,7 @@ import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
 import { GetStationsSki } from '@/lib/queries/databases/tourisme';
 import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { remplacerAncreSansNavigationNext } from '@/lib/utils/browser';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
@@ -175,6 +176,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     setUrlAnchor(item);
     setActiveAnchorEtape2('');
     scrollToAnchor(toAnchorId(item));
+    remplacerAncreSansNavigationNext(toAnchorId(item));
   };
   const handleItemClickEtape2 = (item: { id: string; titre: string }) => {
     if (params !== "/impacts") {
@@ -195,6 +197,7 @@ export const MenuLateral = ({ isCollapsed, onToggleCollapse }: { isCollapsed: bo
     setUrlAnchor(item.id);
     setActiveAnchorEtape1('');
     scrollToAnchor(item.id);
+    remplacerAncreSansNavigationNext(item.id);
   };
   const handleEtape1Toggle = () => {
     setOpenEtape1(!openEtape1);

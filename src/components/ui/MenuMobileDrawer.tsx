@@ -6,6 +6,7 @@ import { Body, H2, SousTitre2 } from '@/design-system/base/Textes';
 import { handleRedirection, handleRedirectionThematique } from '@/hooks/Redirections';
 import { GetStationsSki } from '@/lib/queries/databases/tourisme';
 import { GetErosionCotiere } from '@/lib/queries/postgis/cartographie';
+import { remplacerAncreSansNavigationNext } from '@/lib/utils/browser';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { usePostHog } from 'posthog-js/react';
@@ -137,6 +138,7 @@ export const MenuMobileDrawer = () => {
     } else {
       setActiveAnchorEtape2('');
       scrollToAnchor(toAnchorId(item));
+      remplacerAncreSansNavigationNext(toAnchorId(item));
     }
     setIsOpen(false);
   };
@@ -152,6 +154,7 @@ export const MenuMobileDrawer = () => {
     } else {
       setActiveAnchorEtape1('');
       scrollToAnchor(item.id);
+      remplacerAncreSansNavigationNext(item.id);
     }
     setIsOpen(false);
   };
