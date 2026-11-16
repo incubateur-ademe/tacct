@@ -408,12 +408,61 @@ export const liensEntreThematiques = [
     curveRadius: 0.15
   },
   // Forêts
-  // {
-  //   source: 'Forêts',
-  //   target: 'Gestion des risques',
-  //   curve: 1,
-  //   curveRadius: 1
-  // },
+  {
+    source: 'Forêts',
+    target: 'Sylviculture',
+    curve: 1,
+    curveRadius: 0.15
+  },
+  {
+    source: 'Forêts',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 0.4
+  },
+  {
+    source: 'Forêts',
+    target: 'Gestion des risques',
+    curve: 1,
+    curveRadius: 1
+  },
+  {
+    source: 'Forêts',
+    target: 'Santé',
+    curve: 1,
+    curveRadius: 0.28
+  },
+  {
+    source: 'Forêts',
+    target: 'Eau',
+    curve: 1,
+    curveRadius: 1
+  },
+  {
+    source: 'Forêts',
+    target: 'Tourisme',
+    curve: 1,
+    curveRadius: 0.28
+  },
+  // Sylviculture
+  {
+    source: 'Sylviculture',
+    target: 'Biodiversité',
+    curve: 1,
+    curveRadius: 0.4
+  },
+  {
+    source: 'Sylviculture',
+    target: 'Forêts',
+    curve: 1,
+    curveRadius: 0.15
+  },
+  {
+    source: 'Sylviculture',
+    target: 'Entreprises',
+    curve: 1,
+    curveRadius: 1
+  },
 
   // Air
   {

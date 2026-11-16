@@ -70,7 +70,8 @@ export const DonneesForet = (
     <div className={styles.explorerMesDonneesContainer}>
       <ScrollToHash />
       <H1 style={{ color: 'var(--principales-vert)', fontSize: '2rem' }}>
-        La forêt en France
+        Ce que la forêt apporte à votre territoire dépend de sa vigueur. À vous
+        d'évaluer ce qui la fragilise face au changement climatique.
       </H1>
       {/* Introduction */}
       <section>

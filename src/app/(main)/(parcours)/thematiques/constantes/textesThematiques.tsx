@@ -335,7 +335,27 @@ export const thematiquesInfo: {
   },
   Forêts: {
     title: 'Forêts',
-    description: <div></div>,
+    description:
+      <div>
+        <Body size="sm" style={{ marginBottom: '1rem' }}>
+          Que perd votre territoire lorsque sa forêt s'affaiblit ? Bien plus que
+          du bois : de la fraîcheur lors des fortes chaleurs, des sols
+          protégés, une attractivité touristique... Ces services reposent
+          tous sur la santé des arbres, désormais fragilisée par un climat
+          qui change. Pour en prendre la mesure, plusieurs thématiques se croisent :
+        </Body>
+        <div className="flex flex-col">
+          <Body size="sm">🪵 Sylviculture</Body>
+          <Body size="sm">🌼 Biodiversité</Body>
+          <Body size="sm">🚧 Gestion des risques</Body>
+          <Body size="sm">🏥 Santé</Body>
+          <Body size="sm">💧 Eau</Body>
+          <Body size="sm">🏖️ Tourisme</Body>
+        </div>
+        <Body size="sm" margin="1rem 0">
+          👉 Explorez ce qui fragilise la forêt de votre territoire.
+        </Body>
+      </div>,
     link: 'Forêts'
   },
   Eau: {
@@ -451,8 +471,9 @@ export const thematiquesInfo: {
         activités liées à la forêt. Plusieurs thématiques entrent en jeu :
       </Body>
       <div className="flex flex-col">
-        <Body size="sm">thématique 1</Body>
-        <Body size="sm">thématique 2</Body>
+        <Body size="sm">🌳 Forêts</Body>
+        <Body size="sm">🌼 Biodiversité</Body>
+        <Body size="sm">🏢 Entreprises</Body>
       </div>
       <Body size="sm" margin="1rem 0">
         👉 Explorez les facteurs qui feront la différence pour les activités forestières de votre territoire.
