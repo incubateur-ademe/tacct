@@ -118,6 +118,7 @@ export const DateConstructionResidences = ({
             <OngletsGraphiqueCarte
               ongletGraphique="Répartition"
               carte={carte}
+              varianteOnglets="classeur"
               graphique={<BarChartAgeBatiNouveauParcours chartData={chartData} />}
             />
           ) : (

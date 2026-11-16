@@ -1,0 +1,101 @@
+.listeOnglets {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-bottom: 1px solid var(--gris-medium);
+}
+
+.onglet {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gris-dark);
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:focus-visible {
+        outline: 2px solid var(--principales-vert);
+        outline-offset: 2px;
+    }
+
+    &[aria-selected='true'] {
+        color: var(--principales-vert);
+    }
+}
+
+.icone {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    background-color: currentColor;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+}
+
+// Réserve la largeur du libellé en gras pour éviter le décalage au changement d'onglet
+.libelle {
+    display: inline-grid;
+
+    &::after {
+        content: attr(data-libelle);
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        font-family: 'Marianne';
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+    }
+}
+
+.souligne {
+    gap: 2rem;
+    padding: 0 1.25rem;
+
+    .onglet {
+        padding: 1.25rem 0 0.875rem;
+        border: none;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -1px;
+
+        &:not([aria-selected='true']):hover {
+            color: #23282b;
+            border-bottom-color: var(--gris-medium-dark);
+        }
+
+        &[aria-selected='true'] {
+            border-bottom-color: var(--principales-vert);
+        }
+    }
+}
+
+.classeur {
+    align-items: flex-end;
+    gap: 0.25rem;
+    padding: 0.75rem 1.25rem 0;
+
+    .onglet {
+        padding: 0.625rem 1.25rem;
+        background-color: var(--gris-light);
+        border: 1px solid var(--gris-medium);
+        border-bottom: none;
+        border-radius: 0.5rem 0.5rem 0 0;
+
+        &:not([aria-selected='true']):hover {
+            color: #23282b;
+            background-color: white;
+        }
+
+        &[aria-selected='true'] {
+            background-color: white;
+            margin-bottom: -1px;
+            padding-bottom: calc(0.625rem + 1px);
+            box-shadow: inset 0 3px 0 var(--principales-vert);
+        }
+    }
+}

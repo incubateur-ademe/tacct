@@ -941,11 +941,11 @@ export const grandAgeClasses = [
 ];
 
 export const emploisExterieursClasses = [
-  { min: 0, value: 'Moins de 10 %', color: couleurs.graphiques.violet[4] },
-  { min: 10, value: '10 à 25 %', color: couleurs.graphiques.violet[3] },
-  { min: 25, value: '25 à 50 %', color: couleurs.graphiques.violet[2] },
-  { min: 50, value: '50 à 75 %', color: couleurs.graphiques.violet[1] },
-  { min: 75, value: '75 % et plus', color: couleurs.graphiques.violet[5] }
+  { min: 0, value: 'Moins de 10 %', color: '#FFE5B7' },
+  { min: 10, value: '10 à 25 %', color: '#F8B334' },
+  { min: 25, value: '25 à 50 %', color: '#CF911E' },
+  { min: 50, value: '50 à 75 %', color: '#AB740E' },
+  { min: 75, value: '75 % et plus', color: '#704900' }
 ];
 
 export const ageBatiClasses = [
@@ -967,7 +967,11 @@ export const feuxForetClasses = [
 
 export const prelevementsEauClasses = [
   { min: 0, value: 'Aucun prélèvement déclaré', color: 'white' },
-  { min: Number.MIN_VALUE, value: 'Moins de 0,05 Mm³', color: couleurs.graphiques.bleu[4] },
+  {
+    min: Number.MIN_VALUE,
+    value: 'Moins de 0,05 Mm³',
+    color: couleurs.graphiques.bleu[4]
+  },
   { min: 50000, value: '0,05 à 0,5 Mm³', color: couleurs.graphiques.bleu[3] },
   { min: 500000, value: '0,5 à 5 Mm³', color: couleurs.graphiques.bleu[2] },
   { min: 5000000, value: '5 à 50 Mm³', color: couleurs.graphiques.bleu[1] },
@@ -976,7 +980,11 @@ export const prelevementsEauClasses = [
 
 export const secheressesClasses = [
   { min: 0, value: 'Aucune restriction', color: 'white' },
-  { min: Number.MIN_VALUE, value: 'Moins de 5 jours', color: couleurs.graphiques.violet[4] },
+  {
+    min: Number.MIN_VALUE,
+    value: 'Moins de 5 jours',
+    color: couleurs.graphiques.violet[4]
+  },
   { min: 5, value: '5 à 10 jours', color: couleurs.graphiques.violet[3] },
   { min: 10, value: '10 à 15 jours', color: couleurs.graphiques.violet[2] },
   { min: 15, value: '15 à 20 jours', color: couleurs.graphiques.violet[1] },
