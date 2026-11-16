@@ -9,13 +9,15 @@ const ForetServerPage = async (props: {
 }) => {
   const { code, libelle, type } = await props.searchParams;
   const coordonneesCommunes = await GetCommunesCoordinates(code, libelle, type);
+  const contourTerritoire = await GetCommunesContours(code, libelle, type);
   const contoursCommunes = type === 'commune'
     ? await GetContoursEpciDeLaCommune(code)
-    : await GetCommunesContours(code, libelle, type);
+    : contourTerritoire;
 
   return <DonneesForet
     coordonneesCommunes={coordonneesCommunes}
     contoursCommunes={contoursCommunes}
+    contourTerritoire={contourTerritoire}
     tableCommune={props.tableCommune}
   />
 };

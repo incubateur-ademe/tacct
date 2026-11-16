@@ -9,6 +9,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { AccessibleMapWrapper } from './AccessibleMapWrapper';
 import { HauteurCanopeeLegend } from './legends/legendCanopee';
+import { mapTransformRequest } from './mapTransformRequest';
 import styles from './maps.module.scss';
 import { CanopeeTooltip } from './subcomponents/tooltips';
 
@@ -21,6 +22,8 @@ const COLOR_LOW: [number, number, number] = [217, 255, 217];
 const COLOR_HIGH: [number, number, number] = [26, 107, 24];
 
 type BBox = { minLng: number; minLat: number; maxLng: number; maxLat: number };
+
+export type HauteurMoyenneCanopee = number | 'aucune-foret' | 'indisponible';
 
 type GeoJSONGeometry =
   | { type: 'Polygon'; coordinates: number[][][] }
@@ -39,6 +42,7 @@ type CogRenderResult = {
   rasterData: RasterData | null;
   maxVal: number;
   maxObservedVal: number;
+  hauteurMoyenne: HauteurMoyenneCanopee;
 };
 
 const computeCanvasSize = (bbox: BBox): { width: number; height: number } => {
@@ -53,7 +57,7 @@ const computeCanvasSize = (bbox: BBox): { width: number; height: number } => {
   };
 }
 
-const applyClipPath = (
+const tracerContour = (
   ctx: CanvasRenderingContext2D,
   geometry: GeoJSONGeometry,
   bbox: BBox,
@@ -77,7 +81,44 @@ const applyClipPath = (
       ctx.closePath();
     }
   }
+}
+
+const applyClipPath = (
+  ctx: CanvasRenderingContext2D,
+  geometry: GeoJSONGeometry,
+  bbox: BBox,
+  width: number,
+  height: number
+): void => {
+  tracerContour(ctx, geometry, bbox, width, height);
   ctx.clip('evenodd');
+}
+
+const hauteurMoyenneDansContour = (
+  band: TypedArray,
+  noDataValue: number | null,
+  geometry: GeoJSONGeometry,
+  bbox: BBox,
+  width: number,
+  height: number
+): HauteurMoyenneCanopee => {
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return 'indisponible';
+  tracerContour(ctx, geometry, bbox, width, height);
+  ctx.fill('evenodd');
+  const masque = ctx.getImageData(0, 0, width, height).data;
+  let somme = 0;
+  let nbPixels = 0;
+  for (let i = 0; i < width * height; i++) {
+    const v = band[i];
+    if (masque[i * 4 + 3] < 128 || v === 0 || (noDataValue !== null && v === noDataValue)) continue;
+    somme += v;
+    nbPixels++;
+  }
+  return nbPixels ? somme / nbPixels : 'aucune-foret';
 }
 
 const heightToRGBA = (intensity: number): [number, number, number, number] => {
@@ -93,6 +134,7 @@ const renderCogToCanvas = async (
   cogUrl: string,
   bbox: BBox,
   geometry: GeoJSONGeometry | null,
+  geometryTerritoire: GeoJSONGeometry | null,
   signal: AbortSignal
 ): Promise<CogRenderResult | null> => {
   const { width: canvasW, height: canvasH } = computeCanvasSize(bbox);
@@ -152,8 +194,11 @@ const renderCogToCanvas = async (
     }
     rasterData = { band, noDataValue, bbox, width: canvasW, height: canvasH };
     tempCtx.putImageData(imageData, 0, 0);
+    const hauteurMoyenne = geometryTerritoire
+      ? hauteurMoyenneDansContour(band, noDataValue, geometryTerritoire, bbox, canvasW, canvasH)
+      : 'indisponible';
 
-    if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal };
+    if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal, hauteurMoyenne };
 
     const clippedCanvas = document.createElement('canvas');
     clippedCanvas.width = canvasW;
@@ -164,12 +209,12 @@ const renderCogToCanvas = async (
     applyClipPath(clippedCtx, geometry, bbox, canvasW, canvasH);
     clippedCtx.drawImage(tempCanvas, 0, 0);
 
-    return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal };
+    return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal, hauteurMoyenne };
   }
 
   tempCtx.putImageData(imageData, 0, 0);
 
-  if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal: maxVal };
+  if (!geometry) return { canvas: tempCanvas, rasterData, maxVal, maxObservedVal: maxVal, hauteurMoyenne: 'indisponible' };
 
   const clippedCanvas = document.createElement('canvas');
   clippedCanvas.width = canvasW;
@@ -180,7 +225,7 @@ const renderCogToCanvas = async (
   applyClipPath(clippedCtx, geometry, bbox, canvasW, canvasH);
   clippedCtx.drawImage(tempCanvas, 0, 0);
 
-  return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal: maxVal };
+  return { canvas: clippedCanvas, rasterData, maxVal, maxObservedVal: maxVal, hauteurMoyenne: 'indisponible' };
 }
 
 export const MapCanopee = (props: {
@@ -189,20 +234,24 @@ export const MapCanopee = (props: {
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   contoursCommunes: { geometry: string } | null;
+  contourTerritoire?: { geometry: string } | null;
   mapRef: RefObject<maplibregl.Map | null>;
   mapContainer: RefObject<HTMLDivElement | null>;
   legend?: React.ReactNode;
   style?: React.CSSProperties;
   onLoadingChange?: (isLoading: boolean) => void;
+  onHauteurMoyenne?: (hauteurMoyenne: HauteurMoyenneCanopee) => void;
 }) => {
   const {
     coordonneesCommunes,
     contoursCommunes,
+    contourTerritoire,
     mapRef,
     mapContainer,
     style,
     legend,
-    onLoadingChange
+    onLoadingChange,
+    onHauteurMoyenne
   } = props;
 
   const [isLoading, setIsLoading] = useState(true);
@@ -229,6 +278,8 @@ export const MapCanopee = (props: {
       locale: {
         'CooperativeGesturesHandler.MobileHelpText': 'Utilisez deux doigts pour déplacer la carte',
       },
+      transformRequest: mapTransformRequest,
+      canvasContextAttributes: { preserveDrawingBuffer: true }
     });
     mapRef.current = map;
 
@@ -275,11 +326,16 @@ export const MapCanopee = (props: {
         const geometry = contoursCommunes
           ? (JSON.parse(contoursCommunes.geometry) as GeoJSONGeometry)
           : null;
+        const geometryTerritoire = contourTerritoire
+          ? (JSON.parse(contourTerritoire.geometry) as GeoJSONGeometry)
+          : null;
 
         const cogUrl = `${process.env.NEXT_PUBLIC_SCALEWAY_BUCKET_URL}${COG_PATH}`;
-        const result = await renderCogToCanvas(cogUrl, bbox, geometry, abortController.signal);
+        const result = await renderCogToCanvas(cogUrl, bbox, geometry, geometryTerritoire, abortController.signal);
 
         if (!mapRef.current || abortController.signal.aborted) return;
+
+        onHauteurMoyenne?.(result ? result.hauteurMoyenne : 'indisponible');
 
         if (result) {
           rasterDataRef.current = result.rasterData;
@@ -352,6 +408,7 @@ export const MapCanopee = (props: {
       } catch (error) {
         if (!abortController.signal.aborted) {
           console.error('Erreur chargement COG canopée :', error);
+          onHauteurMoyenne?.('indisponible');
         }
       } finally {
         if (!abortController.signal.aborted) {
@@ -373,7 +430,7 @@ export const MapCanopee = (props: {
         mapRef.current = null;
       }
     };
-  }, [coordonneesCommunes, contoursCommunes]);
+  }, [coordonneesCommunes, contoursCommunes, contourTerritoire]);
 
   return (
     <AccessibleMapWrapper
@@ -390,11 +447,6 @@ export const MapCanopee = (props: {
           }
         }
       `}</style>
-      {maxObservedVal !== null && (
-        <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.875rem' }}>
-          Hauteur maximale observée : <strong>{maxObservedVal} m</strong>
-        </p>
-      )}
       <div ref={mapContainer} style={{ height: '500px', width: '100%' }} />
       {isLoading && (
         <div className={styles.tileLoadingWrapper}>
@@ -414,7 +466,7 @@ export const MapCanopee = (props: {
         </div>
       )}
       <div
-        className={`${styles.legendRGA} legendWrapper`}
+        className={`${styles.legendRGA} canopeeLegendWrapper`}
         style={{ width: 'auto', justifyContent: 'center' }}
       >
         <HauteurCanopeeLegend />

@@ -183,5 +183,12 @@ export const sourcesEtudes = {
       texte:
         'Cour des comptes, Les stations de montagne face au changement climatique, février 2024'
     }
+  ],
+  foret: [
+    {
+      numero: 1,
+      url: 'https://hal.science/hal-04556088/document',
+      texte: 'Gril et al. 2023 (Remote Sensing of Environment)'
+    }
   ]
 };

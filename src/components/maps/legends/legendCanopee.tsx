@@ -1,5 +1,10 @@
 import { Body } from "@/design-system/base/Textes";
 
+const HAUTEUR_MAX = 35;
+
+// Mêmes couleurs et opacités que heightToRGBA dans mapCanopee.tsx
+const DEGRADE = 'linear-gradient(to right, rgba(217, 255, 217, 0.78), rgb(26, 107, 24))';
+
 export const HauteurCanopeeLegend = () => {
   return (
     <div
@@ -11,19 +16,17 @@ export const HauteurCanopeeLegend = () => {
         alignItems: 'center',
       }}
     >
-      <Body weight="bold">- Hauteur de canopée (m) -</Body>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
+      <Body weight="bold">- Hauteur de la canopée -</Body>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginTop: '0.5rem' }}>
+        <Body style={{ whiteSpace: 'nowrap' }}>0 m</Body>
         <div style={{
-          width: '250px',
-          height: '12px',
+          width: 'min(350px, 50vw)',
+          height: '14px',
           borderRadius: '2px',
-          background: 'linear-gradient(to right, #D9FFDA, #1A6B18)',
+          background: DEGRADE,
           border: '0.5px solid #ccc'
         }} />
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', width: '290px', marginLeft: '1.5rem' }}>
-        <Body>0 m</Body>
-        <Body>&gt;=35 m</Body>
+        <Body style={{ whiteSpace: 'nowrap' }}>≥ {HAUTEUR_MAX} m</Body>
       </div>
     </div>
   );

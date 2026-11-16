@@ -667,12 +667,29 @@ export const inondationDebordementTooltipText = (
   </Body>
 );
 
+// Sources du texte :
+// « la hauteur moyenne de la canopée » : moyenne des pixels de forêt du COG FORMS-T_2024_Forest_COG.tif situés dans le contour du territoire, hauteurMoyenneDansContour, src/components/maps/mapCanopee.tsx
+// « c’est-à-dire de la cime des arbres » : Schwartz et al., Retrieving yearly forest growth from satellite data: A deep learning based approach, Remote Sensing of Environment 330, 2025, § 2.1.1, https://hal.inrae.fr/hal-05528811/document — « RH95, which we used as a proxy for canopy dominant height »
+// « calculée en 2024 » : canopee.ipynb, cellule 18 — « Height_2024.tif » ; Zenodo, FORMS-T, https://zenodo.org/records/15489231 — fichier « Height_2024.tif »
+// « Le Laboratoire des sciences du climat et de l’environnement (LSCE) » : catalogue STAC Theia, collection forms-t, https://api.stac.teledetection.fr/collections/forms-t — « Laboratoire des Sciences du Climat et de l'Environnement », rôle « producer »
+// « par carrés de 10 m de côté » : Zenodo, FORMS-T, description — « Canopy height map at 10 m resolution »
+// « à partir d’images satellitaires calées sur des mesures laser de la hauteur des arbres » : Schwartz et al. 2025, résumé — « a deep learning framework, coupling data from Sentinel-1 (S1), Sentinel-2 (S2) and from the Global Ecosystem Dynamics Investigation (GEDI) mission » ; § 2.1.1 — « collects information on the vertical structure of the world's forests using full-waveform LiDAR »
+// « Seules les surfaces que l’IGN identifie comme forêt sont prises en compte » : canopee.ipynb, cellule 23 (hauteur gardée seulement dans le Masque Forêt v1 rasterisé) ; IGN, Masque Forêt, https://www.data.gouv.fr/datasets/masque-foret — « permettant de localiser les surfaces de forêt présentes en France métropolitaine »
+// « Comparée aux mesures de terrain de l’Inventaire forestier national » : Schwartz et al. 2025, § 3.2 — « we compared our height estimates over France with NFI heights from ground measurements for the same year »
+// « l’estimation s’en écarte en moyenne de 3 m » : Schwartz et al. 2025, tableau 1 — « Height MAE (m) […] Average 3.07 »
+// « et sous-estime plutôt les arbres les plus hauts » : Schwartz et al. 2025, § 4.2 — « our maps tend to underestimate higher height, biomass, and volume values »
+// Point de vigilance : l’écart de 3 m est mesuré sur 2018-2023 ; 2024 n’a pas pu être validée (tableau 1 — « The measurements from the 2024 NFI campaign were not yet available »).
 export const HauteurCanopeeTooltipText = (
-  <>
-    <Body weight="bold" size="sm">
-      TOOLTIP
-    </Body>
-  </>
+  <Body weight="bold" size="sm">
+    Ce chiffre est la hauteur moyenne de la canopée, c’est-à-dire de la cime
+    des arbres, calculée en 2024. Le Laboratoire des sciences du climat et de
+    l’environnement (LSCE) estime cette hauteur par carrés de 10&nbsp;m de
+    côté, à partir d’images satellitaires calées sur des mesures laser de la
+    hauteur des arbres. Seules les surfaces que l’IGN identifie comme forêt
+    sont prises en compte. Comparée aux mesures de terrain de l’Inventaire
+    forestier national, l’estimation s’en écarte en moyenne de 3&nbsp;m et
+    sous-estime plutôt les arbres les plus hauts.
+  </Body>
 );
 
 export const SurfaceForetTooltipText = (

@@ -990,6 +990,52 @@ export const InondationDebordementText = () => (
 );
 
 {
+  /* Forêts */
+}
+
+// Sources du texte :
+// « Lors des fortes chaleurs, l’air reste plus frais sous un couvert forestier haut et dense qu’à découvert » : Zellweger et al. 2019, résumé, https://hal.science/hal-02357312 ; Gril et al. 2023, § 3.2, https://hal.science/hal-04556088/document
+// « la forêt atténue les extrêmes de température, offre un refuge aux espèces qui y vivent » : Zellweger et al. 2019, résumé ; Gril et al. 2023, résumé
+// « et, près des villes, un lieu de fraîcheur aux habitants pendant les canicules » : Gril et al. 2023, résumé
+// « Cet effet dépend en grande partie de la hauteur de la végétation » : Gril et al. 2023, § 3.2 ; le lien [1] renvoie à la source n° 1 de la thématique forêts
+// « et ce sont les premiers mètres qui comptent le plus » : Gril et al. 2023, discussion
+// « un peuplement bas et clairsemé, comme une coupe rase ou une jeune régénération, n’atténue pas la chaleur et peut même l’accentuer » : Gril et al. 2023, discussion et résumé
+// « Ce qui fait la valeur d’une forêt haute la rend aussi plus vulnérable » : transition, sans source propre
+// « face aux tempêtes, un peuplement devient d’autant plus instable que ses arbres sont hauts » : Académie d’agriculture de France, fiche 5.02, point v, https://www.academie-agriculture.fr/system/files_force/publications/notes-synthese/fiche502tempetesfinal.pdf?download=1 ; Bonnesoeur et al. 2013, résumé, https://hal.archives-ouvertes.fr/hal-01001037
+// « et lors des sécheresses, la mortalité des grands arbres augmente souvent davantage que celle des petits » : Bennett et al. 2015, résumé, https://pubs.usgs.gov/publication/70160726 ; Stovall et al. 2019, résumé, https://pmc.ncbi.nlm.nih.gov/articles/PMC6763443/
+// « Une canopée basse peut, elle, signaler une forêt jeune » : Schwartz et al. 2025, § 4.3, https://hal.inrae.fr/hal-05528811/document
+// « ou la trace d’une coupe, d’une tempête, d’attaques de ravageurs ou d’un incendie » : Schwartz et al. 2025, § 2.3
+// « c’est-à-dire une forêt qui ne protège pas encore, ou plus, de la chaleur » : Gril et al. 2023, résumé, https://hal.science/hal-04556088/document — « 2.7 % was amplified, especially in road verges, clear-cut and regeneration areas » ; § 3.2 (cartographie) — « Areas with low or sparse canopies (2.7 %) even showed the reverse trend, an amplification of temperature »
+export const HauteurCanopeeText = () => (
+  <>
+    <Body size="sm">
+      Lors des fortes chaleurs, l’air reste plus frais sous un couvert
+      forestier haut et dense qu’à découvert : la forêt atténue les extrêmes de
+      température, offre un refuge aux espèces qui y vivent et, près des
+      villes, un lieu de fraîcheur aux habitants pendant les canicules. Cet
+      effet{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        dépend en grande partie de la hauteur de la végétation
+      </ScrollToSourceTag>
+      , et ce sont les premiers mètres qui comptent le plus : un peuplement bas
+      et clairsemé, comme une coupe rase ou une jeune régénération, n’atténue
+      pas la chaleur et peut même l’accentuer.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Ce qui fait la valeur d’une forêt haute la rend aussi plus vulnérable :
+      face aux tempêtes, un peuplement devient d’autant plus instable que ses
+      arbres sont hauts, et lors des sécheresses, la mortalité des grands arbres
+      augmente souvent davantage que celle des petits. Une canopée basse peut,
+      elle, signaler une forêt jeune ou la trace d’une coupe, d’une tempête,
+      d’attaques de ravageurs ou d’un incendie, c’est-à-dire une forêt qui ne
+      protège pas encore, ou plus, de la chaleur. La hauteur de la canopée
+      éclaire ainsi à la fois ce que la forêt apporte au territoire et ce que
+      celui-ci risque de perdre avec elle.
+    </Body>
+  </>
+);
+
+{
   /* Sylviculture */
 }
 

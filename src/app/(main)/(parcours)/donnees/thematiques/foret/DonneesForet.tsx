@@ -1,5 +1,6 @@
 'use client';
 import ScrollToHash from '@/components/interactions/ScrollToHash';
+import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
 import { TableCommuneModel } from '@/lib/postgres/models';
@@ -18,6 +19,7 @@ interface Props {
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   contoursCommunes: { geometry: string } | null;
+  contourTerritoire: { geometry: string } | null;
   tableCommune: TableCommuneModel[];
 }
 
@@ -25,6 +27,7 @@ export const DonneesForet = (
   {
     coordonneesCommunes,
     contoursCommunes,
+    contourTerritoire,
     tableCommune
   }: Props) => {
   const searchParams = useSearchParams();
@@ -35,6 +38,7 @@ export const DonneesForet = (
   const [data, setData] = useState({
     coordonneesCommunes,
     contoursCommunes,
+    contourTerritoire,
     tableCommune
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -48,16 +52,16 @@ export const DonneesForet = (
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newContoursCommunes, newTableCommune] = await Promise.all([
+      const [newCoordonneesCommunes, newContourTerritoire, newContoursEpci, newTableCommune] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
-        type === 'commune'
-          ? GetContoursEpciDeLaCommune(code)
-          : GetCommunesContours(code, libelle, type),
+        GetCommunesContours(code, libelle, type),
+        type === 'commune' ? GetContoursEpciDeLaCommune(code) : null,
         GetTablecommune(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        contoursCommunes: newContoursCommunes,
+        contoursCommunes: type === 'commune' ? newContoursEpci : newContourTerritoire,
+        contourTerritoire: newContourTerritoire,
         tableCommune: newTableCommune
       });
       setIsLoading(false);
@@ -103,7 +107,6 @@ export const DonneesForet = (
         <div
           id="Surface-de-forêt"
           className={styles.indicateurMapWrapper}
-          style={{ borderBottom: '1px solid var(--gris-medium)' }}
         >
           <div className={styles.h3Titles}>
             <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
@@ -115,6 +118,23 @@ export const DonneesForet = (
             coordonneesCommunes={data.coordonneesCommunes}
           />
         </div>
+      </section>
+
+      {/* Section Santé */}
+      <section className={styles.sectionType}>
+        <H2
+          style={{
+            color: 'var(--principales-rouge)',
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: '0 0 -1rem 0',
+            padding: '2rem 2rem 0',
+            fontWeight: 400
+          }}
+        >
+          {ongletsMenu.thematiquesLiees[1].icone}{' '}
+          {ongletsMenu.thematiquesLiees[1].thematique}
+        </H2>
 
         {/* Hauteur de la canopée */}
         <div
@@ -131,6 +151,7 @@ export const DonneesForet = (
           <HauteurCanopee
             coordonneesCommunes={data.coordonneesCommunes}
             contoursCommunes={data.contoursCommunes}
+            contourTerritoire={data.contourTerritoire}
           />
         </div>
 
@@ -148,6 +169,8 @@ export const DonneesForet = (
         </div> */}
       </section>
 
+      {/* Sources */}
+      <SourcesSection tag="h2" thematique="foret" />
     </div>
   );
 };

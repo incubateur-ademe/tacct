@@ -47,7 +47,8 @@ export const SourcesSection = ({
   | 'air'
   | 'batiment'
   | 'sylviculture'
-  | 'tourisme';
+  | 'tourisme'
+  | 'foret';
 }) => {
   return (
     <section
