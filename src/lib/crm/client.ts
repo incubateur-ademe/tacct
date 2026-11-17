@@ -26,6 +26,15 @@ function getClientSecret(): string {
   return secret;
 }
 
+export function isCrmConfigured(): boolean {
+  return Boolean(
+    process.env.MULESOFT_ENV &&
+      process.env.MULESOFT_CLIENT_ID &&
+      process.env.MULESOFT_CLIENT_SECRET &&
+      process.env.MULESOFT_SOURCE
+  );
+}
+
 export function getAuthMode(): CrmAuthMode {
   return process.env.MULESOFT_AUTH_MODE === 'basic' ? 'basic' : 'headers';
 }
@@ -82,6 +91,13 @@ export class CrmError extends Error {
 export function toCrmDate(date: Date): string {
   const pad = (n: number) => String(n).padStart(2, '0');
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T00:00:00`;
+}
+
+/** `yyyy-MM-ddTHH:mm:ss` à l'heure de Paris, quel que soit le fuseau du serveur. */
+export function toCrmDateTime(date: Date): string {
+  return date
+    .toLocaleString('sv-SE', { timeZone: 'Europe/Paris' })
+    .replace(' ', 'T');
 }
 
 /** La doc interdit d'envoyer des balises vides. */

@@ -1,10 +1,13 @@
 import 'server-only';
 import {
+  CrmError,
   crmRequest,
   getOriginTags,
   getSource,
+  isCrmConfigured,
   stripEmpty,
-  toCrmDate
+  toCrmDate,
+  toCrmDateTime
 } from './client';
 import type {
   CrmContact,
@@ -70,8 +73,41 @@ export function contactFromAuth(
     nom: user.familyName,
     siret: user.siret,
     acceptationRGPD: user.acceptationRGPD,
-    dateCreation: toCrmDate(now)
+    dateCreation: toCrmDateTime(now)
   };
+}
+
+function describeError(err: unknown): string {
+  if (err instanceof CrmError) {
+    const correlationId = /"correlationId"\s*:\s*"([^"]+)"/.exec(err.body)?.[1];
+    return `HTTP ${err.status}${correlationId ? ` (correlationId ${correlationId})` : ''}`;
+  }
+  return err instanceof Error ? err.message : String(err);
+}
+
+/** Ne lève jamais : un échec CRM ne doit pas bloquer l'appelant. */
+export async function creerContactSiAbsent(
+  user: AuthenticatedUser,
+  now: Date
+): Promise<void> {
+  if (!user.email || !isCrmConfigured()) return;
+
+  try {
+    await getContact(user.email);
+    return;
+  } catch (err) {
+    if (!(err instanceof CrmError && err.status === 404)) {
+      console.error('[CRM] lecture du contact échouée :', describeError(err));
+      return;
+    }
+  }
+
+  try {
+    const res = await createContact(contactFromAuth(user, now));
+    console.info(`[CRM] contact mis en file (correlationId ${res.correlationId})`);
+  } catch (err) {
+    console.error('[CRM] création du contact échouée :', describeError(err));
+  }
 }
 
 export function connectionUpdate(email: string, now: Date): CrmContactInput {

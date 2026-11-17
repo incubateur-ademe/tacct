@@ -11,10 +11,11 @@ import {
   USERS_SESSION_MAX_AGE,
   verifyIdToken
 } from '@/lib/auth/moncompteademe';
+import { creerContactSiAbsent } from '@/lib/crm/contact';
 import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
 import { randomUUID } from 'crypto';
-import { NextRequest, NextResponse } from 'next/server';
+import { after, NextRequest, NextResponse } from 'next/server';
 
 interface TokenResponse {
   access_token?: string;
@@ -122,6 +123,17 @@ export async function GET(request: NextRequest) {
           updated_at: now
         }
       });
+      after(() =>
+        creerContactSiAbsent(
+          {
+            email,
+            givenName: idClaims.given_name,
+            familyName: idClaims.family_name,
+            acceptationRGPD: true
+          },
+          now
+        )
+      );
     }
 
     // `updated_at` reste inchangé : il marque les modifications du compte, pas les connexions.
