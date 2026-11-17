@@ -31,7 +31,7 @@ if (new URL(base).host !== RECETTE_HOST) {
 
 const toCrmDate = (date) => {
     const pad = (n) => String(n).padStart(2, '0');
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T00:00:00`;
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 };
 
 const stripEmpty = (payload) =>
@@ -54,6 +54,7 @@ const body = stripEmpty({
     prenom,
     nom,
     dateCreation: toCrmDate(new Date()),
+    acceptationRGPD: true,
     source,
     rubriques: Array.from(new Set(originTags))
 });
