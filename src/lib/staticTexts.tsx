@@ -994,10 +994,65 @@ export const InondationDebordementText = () => (
 }
 
 // Sources du texte :
+// « La forêt rend de nombreux services au territoire » : Feuille de route pour l’adaptation des forêts au changement climatique, décembre 2020, p. 3, https://agriculture.gouv.fr/telecharger/123421 — « La forêt est essentielle pour la société par les multiples services qu’elle rend »
+// « elle contribue à réguler le climat local, protège les sols » : IGN, Observatoire des forêts françaises, critère 5 « Fonctions de protection des forêts », introduction, https://observatoire.foret.gouv.fr/indicateurs-gestion-durable/fonctions-de-protection-des-forets — « Elles contribuent à la régulation du climat local, à la protection des sols contre l’érosion »
+// « joue un rôle clef dans le cycle de l’eau, abrite une biodiversité riche et stocke du carbone » : PNACC-3, mesure 38, « Contexte », p. 288, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « elle constitue un stock important de carbone à renouveler […] elle préserve la biodiversité et les sols, et joue un rôle clef dans le cycle de l’eau »
+// « une biodiversité riche » : IGN, Indicateurs de gestion durable des forêts françaises, millésime 2025, livret, juillet 2026, p. 6 du PDF, https://www.ign.fr/files/default/2026-07/260701_IGN_Livret_Forets_VDEF.pdf — « Les forêts françaises sont des écosystèmes complexes, riches en biodiversité. »
+// « Elle participe à l’épuration de l’eau autour des captages » : Feuille de route pour l’adaptation des forêts, p. 6 — « la régression du couvert forestier dans des bassins versants ou autour des zones de captage pourrait diminuer la fonction épuratrice de la forêt »
+// « en montagne, protège contre […] les glissements de terrain ou les avalanches » : IGN, Observatoire des forêts françaises, indicateur 5.1 « Forêts de protection », https://observatoire.foret.gouv.fr/indicateurs-gestion-durable/5-1-forets-de-protection — « à protéger les biens et les personnes contre les risques naturels (avalanches, érosion, chutes de blocs, glissements de terrain, etc.) »
+// « les crues torrentielles » : IGN, critère 5 « Fonctions de protection des forêts » — « diminuer la violence des crues dans les torrents de montagne »
+// « Lieu de promenade et de loisirs » : IGN, Observatoire des forêts françaises, indicateur 6.10 « Accès du public aux forêts », https://observatoire.foret.gouv.fr/indicateurs-gestion-durable/6-10-acces-du-public-aux-forets — « Le milieu forestier est en effet un support privilégié pour la pratique d’activités de loisirs dans un cadre naturel : promenade, randonnée pédestre ou équestre »
+// « elle contribue aussi à l’attractivité touristique du territoire » : Académie d’agriculture de France, Encyclopédie, fiche 4.07 « Les activités récréatives en forêt : quelle place leur donnent les Français ? », p. 3, https://academie-agriculture.fr/sites/default/files/publications/encyclopedie/4.07.loisirs.v3.amg_.pdf — « les retombées indirectes ou directes de la présence de ces espaces sur l’attractivité du territoire » ; « la visite en forêt peut s’intégrer dans un séjour touristique qui procure des retombées économiques plus directes sur le territoire »
+// « Fortes chaleurs, sécheresses, feux et attaques d’insectes comme les scolytes rendent toutefois les forêts plus vulnérables » : PNACC-3, mesure 38, p. 288 — « épisodes de chaleur et de sécheresse très intenses, feux de forêt, dépérissements liés aux agents pathogènes tels que les scolytes sur les épicéas, sont autant de phénomènes qui rendent nos forêts plus vulnérables » ; « insectes » plutôt qu’« agents pathogènes », comme dans ForetsCommunalesText ; le lien [1] renvoie à la source n° 1 de la thématique forêts dans src/lib/sources.ts
+// « Le taux de boisement indique la place qu’occupe la forêt sur le territoire, mais pas la façon dont elle s’y répartit » : surface_foret_ha / surface_commune_ha (databases_v2.table_commune) ; IGN, Observatoire des forêts françaises, indicateur 4.7 « Fragmentation des massifs forestiers », https://observatoire.foret.gouv.fr/indicateurs-gestion-durable/4-7--fragmentation-des-massifs-forestiers — « distinguer les régions où sont situées des unités boisées plus fragmentées »
+// « la fragmentation des milieux naturels, due notamment aux infrastructures de transport et à l’urbanisation, limite les déplacements des espèces » : SDES, Fragmentation des milieux naturels terrestres : quels constats pour les territoires français ?, 3 juillet 2026, introduction, https://www.statistiques.developpement-durable.gouv.fr/fragmentation-des-milieux-naturels-terrestres-quels-constats-pour-les-territoires-francais — « Le développement des infrastructures de transport et l’urbanisation des territoires créent des séparations entre les différents milieux naturels terrestres : ils entravent la continuité entre les habitats naturels et limitent les déplacements des espèces. Ce phénomène est appelé fragmentation. »
+// « et isole leurs populations » : SDES, La fragmentation des milieux naturels terrestres en France – Définitions, cadre conceptuel, méthodologie et résultats détaillés, section « Synthèse », https://www.statistiques.developpement-durable.gouv.fr/la-fragmentation-des-milieux-naturels-terrestres-en-france-definitions-cadre-conceptuel — « En entravant les continuités écologiques, elle limite les déplacements des espèces, perturbe leurs cycles de vie (alimentation, reproduction, dispersion), isole les populations et réduit leur diversité génétique. »
+// « alors même que pouvoir se déplacer réduit leur vulnérabilité au changement climatique » : PNACC-3, mesure 43, « Actions déjà engagées », p. 323 — « la fragmentation des habitats qui limite la circulation des espèces dans un contexte de changement climatique. La mesure 20 de la SNB prévoit donc des actions en faveur des trames écologiques, essentielles pour favoriser le déplacement des espèces et réduire leur vulnérabilité au changement climatique »
+// « Beaucoup de plantes propres au cœur des forêts se dispersent mal » : GIP Ecofor, Lisières, connectivité, colonisation : la biodiversité dans l’espace et le temps forestiers, synthèse BGF n° 1/3, 2014, p. 3, https://ofme.org/documents/Accueil/2014_GIP-Ecofor_biodiv-espace-temps.pdf — « les espèces de cœur de massif, le plus souvent typiques de forêts anciennes et à faible capacité de dispersion »
+// « pour qu’elles colonisent de nouveaux boisements, mieux vaut étendre une forêt existante que créer des boisements séparés » : GIP Ecofor 2014, p. 5 — « Pour favoriser la colonisation des boisements récents par les espèces forestières, à l’échelle paysagère, la recommandation principale reste bien de préférer l’accrétion forestière aux corridors en “pas japonais”, formés de fragments forestiers disjoints » ; le lien [2] renvoie à la source n° 2 de la thématique forêts
+// Points de vigilance :
+// « fragmentation » et non « morcellement » : en forêt, le morcellement désigne la propriété foncière (IGN, IGD 2025, indicateur 6.1), la fragmentation les massifs (indicateur 4.7).
+// Le texte ne dit pas qu’une forêt fragmentée est moins riche en biodiversité : les lisières sont « généralement plus riches en diversité végétale et animale que l’intérieur forestier » (GIP Ecofor 2014, p. 2). Pour les oiseaux forestiers, c’est surtout la surface de forêt alentour qui compte, pas la fragmentation (GIP Ecofor 2014, p. 4 — « il y a d’autant plus d’espèces d’oiseaux forestiers que la surface totale de forêt à proximité est grande »).
+// Écarté : la dégradation de l’eau et la hausse des risques en montagne en cas de recul ou de dépérissement de la forêt (Feuille de route, p. 6), retirées pour alléger le texte ; les chiffres nationaux (445 000 ha de forêt dans les périmètres de captage, IGD 5.1 ; carbone stocké, IGD 1.4 ; 55 % de la forêt en massifs de plus de 100 000 ha, IGD 4.7).
+export const SurfaceForetText = () => (
+  <>
+    <Body size="sm">
+      La forêt rend de nombreux services au territoire : elle contribue à
+      réguler le climat local, protège les sols, joue un rôle clef dans le
+      cycle de l’eau, abrite une biodiversité riche et stocke du carbone. Elle
+      participe à l’épuration de l’eau autour des captages et, en montagne,
+      protège contre les crues torrentielles, les glissements de terrain ou les
+      avalanches. Lieu de promenade et de loisirs, elle contribue aussi à
+      l’attractivité touristique du territoire. Fortes chaleurs, sécheresses,
+      feux et attaques d’insectes comme les scolytes{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        rendent toutefois les forêts plus vulnérables
+      </ScrollToSourceTag>
+      .
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Le taux de boisement indique la place qu’occupe la forêt sur le
+      territoire, mais pas la façon dont elle s’y répartit : une même surface
+      peut former un massif d’un seul tenant ou des boisements dispersés. Cette
+      répartition compte : la fragmentation des milieux naturels, due notamment
+      aux infrastructures de transport et à l’urbanisation, limite les
+      déplacements des espèces et isole leurs populations, alors même que
+      pouvoir se déplacer réduit leur vulnérabilité au changement climatique.
+      Beaucoup de plantes propres au cœur des forêts se dispersent mal : pour
+      qu’elles colonisent de nouveaux boisements,{' '}
+      <ScrollToSourceTag sourceNumero={2}>
+        mieux vaut étendre une forêt existante que créer des boisements séparés
+      </ScrollToSourceTag>
+      .
+    </Body>
+  </>
+);
+
+// Sources du texte :
 // « Lors des fortes chaleurs, l’air reste plus frais sous un couvert forestier haut et dense qu’à découvert » : Zellweger et al. 2019, résumé, https://hal.science/hal-02357312 ; Gril et al. 2023, § 3.2, https://hal.science/hal-04556088/document
 // « la forêt atténue les extrêmes de température, offre un refuge aux espèces qui y vivent » : Zellweger et al. 2019, résumé ; Gril et al. 2023, résumé
 // « et, près des villes, un lieu de fraîcheur aux habitants pendant les canicules » : Gril et al. 2023, résumé
-// « Cet effet dépend en grande partie de la hauteur de la végétation » : Gril et al. 2023, § 3.2 ; le lien [1] renvoie à la source n° 1 de la thématique forêts
+// « Cet effet dépend en grande partie de la hauteur de la végétation » : Gril et al. 2023, § 3.2 ; le lien [3] renvoie à la source n° 3 de la thématique forêts
 // « et ce sont les premiers mètres qui comptent le plus » : Gril et al. 2023, discussion
 // « un peuplement bas et clairsemé, comme une coupe rase ou une jeune régénération, n’atténue pas la chaleur et peut même l’accentuer » : Gril et al. 2023, discussion et résumé
 // « Ce qui fait la valeur d’une forêt haute la rend aussi plus vulnérable » : transition, sans source propre
@@ -1014,7 +1069,7 @@ export const HauteurCanopeeText = () => (
       température, offre un refuge aux espèces qui y vivent et, près des
       villes, un lieu de fraîcheur aux habitants pendant les canicules. Cet
       effet{' '}
-      <ScrollToSourceTag sourceNumero={1}>
+      <ScrollToSourceTag sourceNumero={3}>
         dépend en grande partie de la hauteur de la végétation
       </ScrollToSourceTag>
       , et ce sont les premiers mètres qui comptent le plus : un peuplement bas

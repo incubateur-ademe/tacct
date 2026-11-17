@@ -103,14 +103,14 @@ export const DonneesForet = (
           {ongletsMenu.thematiquesLiees[0].icone}{' '}
           {ongletsMenu.thematiquesLiees[0].thematique}
         </H2>
-        {/* Surface de forêt */}
+        {/* Taux de boisement */}
         <div
-          id="Surface-de-forêt"
+          id="Taux-de-boisement"
           className={styles.indicateurMapWrapper}
         >
           <div className={styles.h3Titles}>
             <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
-              Surface de forêt
+              Taux de boisement
             </H3>
           </div>
           <SurfaceForet

@@ -692,9 +692,23 @@ export const HauteurCanopeeTooltipText = (
   </Body>
 );
 
+// Sources du texte :
+// « la part de la surface du territoire couverte de forêt » : surface_foret_ha / surface_commune_ha (databases_v2.table_commune), calculé dans src/app/(main)/(parcours)/donnees/indicateurs/foret/3-SurfaceForet.tsx ; IGN, Masque Forêt v1 – Descriptif de contenu et de livraison, septembre 2025, § 1.1.2, p. 3, https://data.geopf.fr/annexes/ressources/documentation/DC_DL_Masque_Foret_v1.pdf — « estimer un taux de couvert forestier à la commune, à l’intercommunalité, ou au département »
+// « dès 0,5 ha et 20 m de large, avec des arbres de plus de 5 m couvrant plus de 10 % du sol, ou qui atteindront ces seuils une fois adultes » : IGN, Descriptif de contenu, § 1.1.1, p. 3 — « terres occupant une superficie de plus de 0,5 hectare (5 000 m²) et de plus de 20 m de large avec des arbres atteignant une hauteur supérieure à 5 m et un couvert forestier de plus de 10 %, ou avec des arbres capables de remplir ces critères à maturité in situ »
+// « Les coupes rases, les jeunes peuplements […] en font partie » : IGN, notice du Masque Forêt (catalogue CSW, généalogie), https://data.geopf.fr/csw?service=CSW&version=2.0.2&request=GetRecordById&id=IGNF_MASQUE-FORET&outputSchema=http://www.isotc211.org/2005/gmd&elementSetName=full — « Les peupleraies, les coupes rases, les jeunes peuplements et les zones de forêts incendiées ou dévastées par la tempête ou les bioagresseurs sont normalement intégrées au masque forêt »
+// « les bois pâturés et les forêts urbaines » : IGN, Descriptif de contenu, § 1.1.1, p. 3 — « les espaces arborés ayant un usage agricole déclaré (zone d’agroforesterie) et les espaces arborés pouvant être qualifiés de forêts urbaines » ; § 1.2.6, p. 5 — code RPG « BOP (Bois pâturé) » ; inclus dans le calcul : canopee.ipynb, cellules 18 et 29 (CLASSES_GARDEES = {1, 2, 3})
+// « mais pas les vergers ni les pépinières » : IGN, Descriptif de contenu, § 1.1.1, p. 3 — « à l’exception de celles dont l’usage est strictement agricole tels que les vergers, les taillis à rotation courte, les pépinières et les truffières »
+// Points de vigilance :
+// La définition de la FAO n’est pas citée : elle exclut les terres à usage agricole ou urbain (IGN, Qu’est-ce qu’une forêt ?, https://www.ign.fr/mag/quest-ce-quune-foret — « une utilisation qui n’est ni agricole, ni urbaine »), alors que le chiffre inclut les bois pâturés et les forêts urbaines ; la notice IGN écrit que le masque « respecte en partie la définition internationale de la Forêt de la FAO ».
+// Producteur et millésimes (IGN, photos aériennes BD ORTHO® 2021, 2022 ou 2023 selon le département) : portés par la ligne source. Méthode : « produit principalement par IA […] Une étape de reprises manuelles par photo-interprétation est réalisée dans un second temps afin de corriger les principales erreurs constatées » (Descriptif de contenu, § 1.2.2, p. 4). Outre-mer non couvert (§ 1.2.4, p. 4).
 export const SurfaceForetTooltipText = (
   <Body weight="bold" size="sm">
-    TOOLTIP
+    Le taux de boisement est la part de la surface du territoire couverte de
+    forêt. Une surface compte comme forêt dès 0,5&nbsp;ha et 20&nbsp;m de
+    large, avec des arbres de plus de 5&nbsp;m couvrant plus de 10&nbsp;% du
+    sol, ou qui atteindront ces seuils une fois adultes. Les coupes rases, les
+    jeunes peuplements, les bois pâturés et les forêts urbaines en font
+    partie, mais pas les vergers ni les pépinières.
   </Body>
 );
 

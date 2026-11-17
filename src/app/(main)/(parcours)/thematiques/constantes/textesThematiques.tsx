@@ -158,7 +158,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Forêts',
         icone: '🌳',
-        sousCategories: ['Surface de forêt']
+        sousCategories: ['Taux de boisement']
       },
       {
         id: 'section2',

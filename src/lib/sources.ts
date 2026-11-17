@@ -187,6 +187,18 @@ export const sourcesEtudes = {
   foret: [
     {
       numero: 1,
+      url: 'https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf',
+      texte:
+        'Plan national d’adaptation au changement climatique (PNACC-3), mesure 38, mars 2025'
+    },
+    {
+      numero: 2,
+      url: 'https://ofme.org/documents/Accueil/2014_GIP-Ecofor_biodiv-espace-temps.pdf',
+      texte:
+        'GIP Ecofor, Lisières, connectivité, colonisation : la biodiversité dans l’espace et le temps forestiers, 2014'
+    },
+    {
+      numero: 3,
       url: 'https://hal.science/hal-04556088/document',
       texte: 'Gril et al. 2023 (Remote Sensing of Environment)'
     }
