@@ -1,0 +1,6 @@
+/waf/                         @incubateur-ademe/secops
+/.github/CODEOWNERS           @incubateur-ademe/secops
+/.github/workflows/waf-lint.yml @incubateur-ademe/secops
+/.gitmodules                  @incubateur-ademe/secops
+/.gitattributes               @incubateur-ademe/secops
+/.lfsconfig                   @incubateur-ademe/secops
