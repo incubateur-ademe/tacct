@@ -85,28 +85,46 @@ function describeError(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
-/** Ne lève jamais : un échec CRM ne doit pas bloquer l'appelant. */
-export async function creerContactSiAbsent(
+/**
+ * Contact absent → POST. Contact existant (autre service ADEME) → PUT sans nom
+ * ni prénom : la source s'ajoute à la liste et les champs non envoyés sont conservés.
+ * Ne lève jamais : un échec CRM ne doit pas bloquer l'appelant.
+ */
+export async function synchroniserContact(
   user: AuthenticatedUser,
   now: Date
 ): Promise<void> {
   if (!user.email || !isCrmConfigured()) return;
 
+  let existe: boolean;
   try {
     await getContact(user.email);
-    return;
+    existe = true;
   } catch (err) {
     if (!(err instanceof CrmError && err.status === 404)) {
       console.error('[CRM] lecture du contact échouée :', describeError(err));
       return;
     }
+    existe = false;
   }
 
   try {
-    const res = await createContact(contactFromAuth(user, now));
-    console.info(`[CRM] contact mis en file (correlationId ${res.correlationId})`);
+    if (existe) {
+      const res = await updateContact({
+        email: user.email,
+        acceptationRGPD: user.acceptationRGPD,
+        dateModification: toCrmDateTime(now)
+      });
+      console.info(`[CRM] contact existant mis à jour en file (correlationId ${res.correlationId})`);
+    } else {
+      const res = await createContact(contactFromAuth(user, now));
+      console.info(`[CRM] contact créé en file (correlationId ${res.correlationId})`);
+    }
   } catch (err) {
-    console.error('[CRM] création du contact échouée :', describeError(err));
+    console.error(
+      `[CRM] ${existe ? 'mise à jour' : 'création'} du contact échouée :`,
+      describeError(err)
+    );
   }
 }
 

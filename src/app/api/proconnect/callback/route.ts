@@ -11,7 +11,7 @@ import {
   USERS_SESSION_MAX_AGE,
   verifyIdToken
 } from '@/lib/auth/moncompteademe';
-import { creerContactSiAbsent } from '@/lib/crm/contact';
+import { synchroniserContact } from '@/lib/crm/contact';
 import { blindIndex, encryptField } from '@/lib/crypto/user-crypto';
 import { prisma } from '@/lib/queries/db';
 import { randomUUID } from 'crypto';
@@ -124,7 +124,7 @@ export async function GET(request: NextRequest) {
         }
       });
       after(() =>
-        creerContactSiAbsent(
+        synchroniserContact(
           {
             email,
             givenName: idClaims.given_name,
