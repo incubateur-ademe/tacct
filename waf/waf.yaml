@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/incubateur-ademe/waf-base/main/policy/waf.schema.json
+version: 1
+contacts: []
+rate_limits:
+  # Toutes les requêtes d'une même IP, hors zones ci-dessous. Zone par_ip du Caddyfile de tacct-nginx.
+  default: { events: 40, window: 1s }
+  zones:
+    # Une carte charge ses tuiles par rafales de 60 à 80 requêtes par seconde. Avec la
+    # limite générale, une partie des tuiles recevrait un 429 et la carte aurait des trous.
+    # Le 10/11/2026, avec 40/s, deux visiteurs ont perdu 39 et 60 tuiles ; pic mesuré à 79/s.
+    # Ne pas monter au-dessus de 100 sans ajouter un conteneur à tacct-prod : avec un seul
+    # conteneur, la prod accepte environ 100 requêtes simultanées, et au-delà le routeur
+    # Scalingo répond 503 à tous les visiteurs (test du 10/11/2026 avec une limite à 150).
+    # Toute nouvelle route qui sert des tuiles s'ajoute à paths.
+    - name: tuiles
+      paths: ["/api/map-proxy"]
+      events: 100
+      window: 1s
+      reason: "Proxy de tuiles cartographiques, zone tuiles_par_ip du Caddyfile de tacct-nginx"
