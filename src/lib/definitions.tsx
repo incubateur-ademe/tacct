@@ -129,6 +129,13 @@ export const regimeForestier = (
   </span>
 );
 
+export const canopee = (
+  <span>
+    La canopée désigne l’étage supérieur d’une forêt, formé par la cime des
+    arbres les plus hauts, directement exposée au soleil et à l’atmosphère.
+  </span>
+);
+
 export const maladieVectorielle = (
   <span>
     Maladie véhiculée et inoculée par un vecteur (moustique, tique, punaise...),

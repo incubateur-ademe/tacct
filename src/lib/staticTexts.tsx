@@ -1050,11 +1050,9 @@ export const SurfaceForetText = () => (
 
 // Sources du texte :
 // « Lors des fortes chaleurs, l’air reste plus frais sous un couvert forestier haut et dense qu’à découvert » : Zellweger et al. 2019, résumé, https://hal.science/hal-02357312 ; Gril et al. 2023, § 3.2, https://hal.science/hal-04556088/document
-// « la forêt atténue les extrêmes de température, offre un refuge aux espèces qui y vivent » : Zellweger et al. 2019, résumé ; Gril et al. 2023, résumé
-// « et, près des villes, un lieu de fraîcheur aux habitants pendant les canicules » : Gril et al. 2023, résumé
-// « Cet effet dépend en grande partie de la hauteur de la végétation » : Gril et al. 2023, § 3.2 ; le lien [3] renvoie à la source n° 3 de la thématique forêts
-// « et ce sont les premiers mètres qui comptent le plus » : Gril et al. 2023, discussion
-// « un peuplement bas et clairsemé, comme une coupe rase ou une jeune régénération, n’atténue pas la chaleur et peut même l’accentuer » : Gril et al. 2023, discussion et résumé
+// « qui atténue les extrêmes de température » : Zellweger et al. 2019, résumé ; Gril et al. 2023, résumé
+// « et fait de la forêt un lieu de fraîcheur pour les habitants pendant les canicules » : Gril et al. 2023, résumé
+// « un peuplement bas et clairsemé, comme une coupe rase ou une jeune régénération, protège peu et peut même les accentuer » : Gril et al. 2023, discussion et résumé ; le lien [3] renvoie à la source n° 3 de la thématique forêts
 // « Ce qui fait la valeur d’une forêt haute la rend aussi plus vulnérable » : transition, sans source propre
 // « face aux tempêtes, un peuplement devient d’autant plus instable que ses arbres sont hauts » : Académie d’agriculture de France, fiche 5.02, point v, https://www.academie-agriculture.fr/system/files_force/publications/notes-synthese/fiche502tempetesfinal.pdf?download=1 ; Bonnesoeur et al. 2013, résumé, https://hal.archives-ouvertes.fr/hal-01001037
 // « et lors des sécheresses, la mortalité des grands arbres augmente souvent davantage que celle des petits » : Bennett et al. 2015, résumé, https://pubs.usgs.gov/publication/70160726 ; Stovall et al. 2019, résumé, https://pmc.ncbi.nlm.nih.gov/articles/PMC6763443/
@@ -1065,16 +1063,15 @@ export const HauteurCanopeeText = () => (
   <>
     <Body size="sm">
       Lors des fortes chaleurs, l’air reste plus frais sous un couvert
-      forestier haut et dense qu’à découvert : la forêt atténue les extrêmes de
-      température, offre un refuge aux espèces qui y vivent et, près des
-      villes, un lieu de fraîcheur aux habitants pendant les canicules. Cet
-      effet{' '}
+      forestier haut et dense qu’à découvert. Son feuillage abondant et étagé
+      agit comme un isolant multicouche épais, qui atténue les extrêmes de
+      température et fait de la forêt un lieu de fraîcheur pour les habitants
+      pendant les canicules. À l’inverse, un peuplement bas et clairsemé, comme
+      une coupe rase ou une jeune régénération,{' '}
       <ScrollToSourceTag sourceNumero={3}>
-        dépend en grande partie de la hauteur de la végétation
+        protège peu et peut même les accentuer
       </ScrollToSourceTag>
-      , et ce sont les premiers mètres qui comptent le plus : un peuplement bas
-      et clairsemé, comme une coupe rase ou une jeune régénération, n’atténue
-      pas la chaleur et peut même l’accentuer.
+      .
     </Body>
     <Body size="sm" style={{ marginTop: '1rem' }}>
       Ce qui fait la valeur d’une forêt haute la rend aussi plus vulnérable :

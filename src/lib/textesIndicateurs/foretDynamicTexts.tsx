@@ -1,5 +1,7 @@
 import type { HauteurMoyenneCanopee } from '@/components/maps/mapCanopee';
+import { DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
+import { canopee } from '@/lib/definitions';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
 
 {
@@ -115,7 +117,9 @@ export const HauteurCanopeeDynamicText = ({
   }
   return (
     <Body weight="bold" style={style}>
-      Dans les forêts de {lieu}, la canopée mesure en moyenne{' '}
+      Dans les forêts de {lieu}, la{' '}
+      <DefinitionTooltip title={canopee}>canopée</DefinitionTooltip> mesure en
+      moyenne{' '}
       {Math.round(hauteurMoyenne)}&nbsp;m de haut.
     </Body>
   );
