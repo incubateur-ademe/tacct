@@ -1,6 +1,6 @@
 import { CarteParCommuneAvecLegende } from '@/components/maps/carteParCommuneAvecLegende';
 import type { CarteParCommune } from '@/components/maps/mapPartParCommune';
-import SubTabs from '@/components/ui/SubTabs';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import { transformerRestrictionsParAnneeUnique, transformerRestrictionsSaisons } from '@/lib/charts/gestionRisques';
 import { SecheressesPasseesModel } from '@/lib/postgres/models';
 import styles from './gestionRisquesCharts.module.scss';
@@ -32,22 +32,21 @@ const SecheressesCharts = (props: Props) => {
   const restrictionsParSaison = transformerRestrictionsSaisons(toutesLesRestrictions);
   return (
     <div className={styles.dataWrapper}>
-      <div className={styles.graphTabsWrapper}>
-        <SubTabs
-          data={['Intensité', 'Saisonnalité', ...(carte ? ['Cartographie'] : [])]}
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
-      </div>
-      {datavizTab === 'Intensité' ? (
-        <SecheressesBarChart restrictionsParAnnee={restrictionsParAnnee} />
-      ) : datavizTab === 'Saisonnalité' ? (
-        <SecheressesSaisonsBarChart restrictionsParSaison={restrictionsParSaison} />
-      ) : datavizTab === 'Cartographie' && carte ? (
-        <CarteParCommuneAvecLegende carte={carte} />
-      ) : (
-        ''
-      )}
+      <OngletsDataviz
+        libelles={['Intensité', 'Saisonnalité', ...(carte ? ['Cartographie'] : [])]}
+        ongletActif={datavizTab}
+        onChange={setDatavizTab}
+      >
+        {datavizTab === 'Intensité' ? (
+          <SecheressesBarChart restrictionsParAnnee={restrictionsParAnnee} />
+        ) : datavizTab === 'Saisonnalité' ? (
+          <SecheressesSaisonsBarChart restrictionsParSaison={restrictionsParSaison} />
+        ) : datavizTab === 'Cartographie' && carte ? (
+          <CarteParCommuneAvecLegende carte={carte} />
+        ) : (
+          ''
+        )}
+      </OngletsDataviz>
     </div>
   );
 };

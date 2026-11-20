@@ -78,18 +78,6 @@
     }
 }
 
-// onglets de navigation en dataviz + filtres
-
-.graphTabsWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 1.25rem;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--gris-medium);
-    width: 100%;
-}
-
 .sliderWrapper {
     display: flex;
     padding: 1.25rem 2.25rem;

@@ -4,17 +4,6 @@
     width: 100%;
 }
 
-.graphTabsWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 1.25rem;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--gris-medium);
-    width: 100%;
-    flex-wrap: wrap;
-}
-
 .tooltipEvolutionWrapper {
     font-family: 'Marianne';
     background-color: #ffffff;

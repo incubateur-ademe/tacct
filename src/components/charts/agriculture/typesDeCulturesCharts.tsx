@@ -3,7 +3,7 @@
 import WarningIcon from "@/assets/icons/exclamation_point_icon_black.png";
 import { PieChartAgriculture } from '@/components/charts/agriculture/pieChartAgriculture';
 import SurfacesAgricolesProgressBar from '@/components/charts/agriculture/surfacesAgricolesProgressBar';
-import SubTabs from '@/components/ui/SubTabs';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import { Body } from "@/design-system/base/Textes";
 import { SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
@@ -32,55 +32,54 @@ const TypesDeCulturesCharts = (props: Props) => {
 
   return (
     <div className={styles.dataWrapper}>
-      <div className={styles.graphTabsWrapper}>
-        <SubTabs
-          data={['Détail par culture', 'Répartition']}
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
-      </div>
-      {datavizTab === 'Répartition' ? (
-        <PieChartAgriculture surfacesAgricoles={surfacesAgricoles} />
-      ) : datavizTab === 'Détail par culture' ? (
-        <SurfacesAgricolesProgressBar surfacesAgricoles={surfacesAgricoles} />
-      ) : (
-        ''
-      )}
-      {
-        territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 ? (
-          <div className={styles.warningBox}>
-            <div className='flex flex-row items-center justify-center'>
-              <Image
-                src={WarningIcon}
-                alt="Attention"
-                width={24}
-                height={24}
-                style={{ marginRight: '0.5em', alignItems: 'center' }}
-              />
-              <Body size="sm">
-                {territoiresPartiellementCouverts.length} EPCI{" "}
-                {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"} de votre territoire et
-                certaines données sont sous secret statistique.
-              </Body>
-            </div>
-          </div>
+      <OngletsDataviz
+        libelles={['Détail par culture', 'Répartition']}
+        ongletActif={datavizTab}
+        onChange={setDatavizTab}
+      >
+        {datavizTab === 'Répartition' ? (
+          <PieChartAgriculture surfacesAgricoles={surfacesAgricoles} />
+        ) : datavizTab === 'Détail par culture' ? (
+          <SurfacesAgricolesProgressBar surfacesAgricoles={surfacesAgricoles} />
         ) : (
-          <div className={styles.warningBox}>
-            <div className='flex flex-row items-center justify-center'>
-              <Image
-                src={WarningIcon}
-                alt="Attention"
-                width={24}
-                height={24}
-                style={{ marginRight: '0.5em', alignItems: 'center' }}
-              />
-              <Body size="sm">
-                Certaines données de votre territoire sont sous secret statistique.
-              </Body>
+          ''
+        )}
+        {
+          territoiresPartiellementCouverts && territoiresPartiellementCouverts.length > 0 ? (
+            <div className={styles.warningBox}>
+              <div className='flex flex-row items-center justify-center'>
+                <Image
+                  src={WarningIcon}
+                  alt="Attention"
+                  width={24}
+                  height={24}
+                  style={{ marginRight: '0.5em', alignItems: 'center' }}
+                />
+                <Body size="sm">
+                  {territoiresPartiellementCouverts.length} EPCI{" "}
+                  {territoiresPartiellementCouverts.length === 1 ? "déborde" : "débordent"} de votre territoire et
+                  certaines données sont sous secret statistique.
+                </Body>
+              </div>
             </div>
-          </div>
-        )
-      }
+          ) : (
+            <div className={styles.warningBox}>
+              <div className='flex flex-row items-center justify-center'>
+                <Image
+                  src={WarningIcon}
+                  alt="Attention"
+                  width={24}
+                  height={24}
+                  style={{ marginRight: '0.5em', alignItems: 'center' }}
+                />
+                <Body size="sm">
+                  Certaines données de votre territoire sont sous secret statistique.
+                </Body>
+              </div>
+            </div>
+          )
+        }
+      </OngletsDataviz>
     </div>
   );
 };

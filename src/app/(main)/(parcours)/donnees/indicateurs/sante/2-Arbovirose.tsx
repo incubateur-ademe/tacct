@@ -8,7 +8,7 @@ import { arboviroseMapAutochtonesLegend, arboviroseMapMoustiqueTigreLegend } fro
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import { MapJson } from '@/components/maps/mapFrance';
 import { SliderAnnees } from '@/components/SliderAnnees';
-import SubTabs from '@/components/ui/SubTabs';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import { ReadMoreFade } from '@/components/utils/ReadMoreFade';
 import { CustomTooltipNouveauParcours, DefinitionTooltip } from '@/components/utils/Tooltips';
 import { Body } from '@/design-system/base/Textes';
@@ -92,92 +92,91 @@ export const Arbovirose = (props: {
             <MoustiqueTigreText />
           </ReadMoreFade>
         </div>
-        <div className={styles.graphiquesWrapper}>
-          <div className={styles.tabsWrapper}>
-            <SubTabs
-              data={['Cartographie', 'Évolution']}
-              defaultTab={datavizTab}
-              setValue={setDatavizTab}
-            />
-          </div>
-          {
-            datavizTab === 'Cartographie' ? (
-              <>
-                <div className={styles.slider}>
-                  <SliderAnnees anneeDebut={2004} anneeFin={2024} onChange={setSelectedAnnee} />
-                </div>
-                <div className={styles.doubleMaps}>
-                  <div className={styles.singleMaps}>
-                    <Body size='sm' style={{ textAlign: "center" }}>
-                      Présence du moustique tigre
-                    </Body>
-                    <MapJson
-                      ariaLabel="Carte de France représentant la présence du moustique tigre par département"
-                      mapRef={mapRef1}
-                      mapContainer={mapContainer1}
-                      annee={selectedAnnee}
-                    />
-                    <div
-                      className={styles.legend}
-                      style={{ width: 'auto', justifyContent: 'center' }}
-                    >
-                      <LegendCompColor legends={arboviroseMapMoustiqueTigreLegend} style={{ gap: "0.5rem 1rem" }} />
-                    </div>
+        <OngletsDataviz
+          libelles={['Cartographie', 'Évolution']}
+          ongletActif={datavizTab}
+          onChange={setDatavizTab}
+        >
+          <div className={styles.graphiquesWrapper}>
+            {
+              datavizTab === 'Cartographie' ? (
+                <>
+                  <div className={styles.slider}>
+                    <SliderAnnees anneeDebut={2004} anneeFin={2024} onChange={setSelectedAnnee} />
                   </div>
-                  <div className={styles.singleMaps}>
-                    <Body size='sm' style={{ textAlign: "center" }}>
-                      Cas autochtones de dengue, de chikungunya et de zika (cumulés)
-                    </Body>
-                    <div style={{ position: 'relative' }}>
-                      {selectedAnnee < 2012 && (
-                        <div style={{
-                          position: 'absolute',
-                          inset: 0,
-                          backdropFilter: 'blur(4px)',
-                          backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: '4px',
-                          zIndex: 10
-                        }}>
-                          <Body size='sm' weight='bold'>
-                            Aucune donnée disponible avant 2012
-                          </Body>
-                        </div>
-                      )}
+                  <div className={styles.doubleMaps}>
+                    <div className={styles.singleMaps}>
+                      <Body size='sm' style={{ textAlign: "center" }}>
+                        Présence du moustique tigre
+                      </Body>
                       <MapJson
-                        ariaLabel="Carte de France représentant le nombre de cas autochtones de dengue, chikungunya et zika par département"
-                        mapRef={mapRef2}
-                        mapContainer={mapContainer2}
+                        ariaLabel="Carte de France représentant la présence du moustique tigre par département"
+                        mapRef={mapRef1}
+                        mapContainer={mapContainer1}
                         annee={selectedAnnee}
-                        casParDepartement={casParDepartement}
                       />
                       <div
                         className={styles.legend}
                         style={{ width: 'auto', justifyContent: 'center' }}
                       >
-                        <LegendCompColor legends={arboviroseMapAutochtonesLegend} style={{ gap: "0.5rem 1rem" }} />
+                        <LegendCompColor legends={arboviroseMapMoustiqueTigreLegend} style={{ gap: "0.5rem 1rem" }} />
+                      </div>
+                    </div>
+                    <div className={styles.singleMaps}>
+                      <Body size='sm' style={{ textAlign: "center" }}>
+                        Cas autochtones de dengue, de chikungunya et de zika (cumulés)
+                      </Body>
+                      <div style={{ position: 'relative' }}>
+                        {selectedAnnee < 2012 && (
+                          <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            backdropFilter: 'blur(4px)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.6)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: '4px',
+                            zIndex: 10
+                          }}>
+                            <Body size='sm' weight='bold'>
+                              Aucune donnée disponible avant 2012
+                            </Body>
+                          </div>
+                        )}
+                        <MapJson
+                          ariaLabel="Carte de France représentant le nombre de cas autochtones de dengue, chikungunya et zika par département"
+                          mapRef={mapRef2}
+                          mapContainer={mapContainer2}
+                          annee={selectedAnnee}
+                          casParDepartement={casParDepartement}
+                        />
+                        <div
+                          className={styles.legend}
+                          style={{ width: 'auto', justifyContent: 'center' }}
+                        >
+                          <LegendCompColor legends={arboviroseMapAutochtonesLegend} style={{ gap: "0.5rem 1rem" }} />
+                        </div>
                       </div>
                     </div>
                   </div>
+                </>
+              ) : datavizTab === 'Évolution' ? (
+                <div className={styles.dataWrapper}>
+                  {
+                    arbovirose.length > 0 ? (
+                      <ArboviroseBarChart arbovirose={aggregatedArbovirose} />
+                    ) : (
+                      <div className='p-10 flex flex-row justify-center'>
+                        <DataNotFoundForGraph image={DataNotFound} />
+                      </div>
+                    )
+                  }
                 </div>
-              </>
-            ) : datavizTab === 'Évolution' ? (
-              <div className={styles.dataWrapper}>
-                {
-                  arbovirose.length > 0 ? (
-                    <ArboviroseBarChart arbovirose={aggregatedArbovirose} />
-                  ) : (
-                    <div className='p-10 flex flex-row justify-center'>
-                      <DataNotFoundForGraph image={DataNotFound} />
-                    </div>
-                  )
-                }
-              </div>
-            ) : null
-          }
-        </div>
+              ) : null
+            }
+          </div>
+        </OngletsDataviz>
       </div>
       <div className={styles.datavizWrapper} style={{ borderRadius: "1rem 0 0 1rem", height: "fit-content" }}>
         <div

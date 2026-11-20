@@ -7,6 +7,7 @@ import { espacesNAFBarChartLegend, espacesNAFDatavizLegend } from '@/components/
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import RangeSlider from '@/components/Slider';
 import { Loader } from '@/components/ui/loader';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import SubTabs from '@/components/ui/SubTabs';
 import { Body } from '@/design-system/base/Textes';
 import { ConsommationNAF } from '@/lib/postgres/models';
@@ -49,88 +50,92 @@ export const ConsommationEspacesNAFCharts = (props: {
     [coordonneesCommunes]
   );
 
+  const contenu =
+    afficherCarte && datavizTab === 'Cartographie' ? (
+      <Suspense
+        fallback={
+          <div className="flex justify-center w-full">
+            <Loader height="500px" />
+          </div>
+        }
+      >
+        <div className="w-full">
+          <MapEspacesNaf
+            consommationNAF={consommationNAF}
+            communesCodes={coordonneesCommunes?.codes ?? []}
+            boundingBox={boundingBox}
+          />
+        </div>
+        <div
+          className={styles.legend}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+            alignItems: 'center',
+            textAlign: 'center'
+          }}
+        >
+          <Body weight="bold">
+            - Nombre d’hectares d’espaces naturels, agricoles ou forestiers consommés -
+          </Body>
+          <LegendCompColor legends={espacesNAFDatavizLegend} />
+        </div>
+      </Suspense>
+    ) : (
+      <>
+        <div className={styles.graphTabsWrapper}>
+          <SubTabs
+            data={[
+              'Tous types',
+              'Habitat',
+              'Activité',
+              'Mixte',
+              'Routes',
+              'Ferroviaire',
+              'Inconnu'
+            ]}
+            defaultTab={typeValue}
+            setValue={setTypeValue}
+          />
+        </div>
+        <div className={styles.sliderWrapper}>
+          <RangeSlider
+            firstValue={2011}
+            lastValue={2025}
+            minDist={1}
+            setSliderValue={setSliderValue}
+            sliderValue={sliderValue}
+          />
+        </div>
+        <ConsommationEspacesNAFBarChart
+          consommationEspacesNAF={filteredConsommationNAF}
+          sliderValue={sliderValue}
+          filterValue={typeValue}
+        />
+        <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
+          <LegendCompColor legends={espacesNAFBarChartLegend} />
+        </div>
+      </>
+    );
+
   return (
     <>
       {
         filteredConsommationNAF.length > 0 ? (
-          <div className={styles.dataWrapper}>
-            {afficherCarte && (
-              <div className={styles.graphTabsWrapper} style={{ justifyContent: 'flex-end' }}>
-                <SubTabs
-                  data={['Évolution', 'Cartographie']}
-                  defaultTab={datavizTab}
-                  setValue={setDatavizTab}
-                />
-              </div>
-            )}
-            {afficherCarte && datavizTab === 'Cartographie' ? (
-              <Suspense
-                fallback={
-                  <div className="flex justify-center w-full">
-                    <Loader height="500px" />
-                  </div>
-                }
+          afficherCarte ? (
+            <div>
+              <OngletsDataviz
+                libelles={['Évolution', 'Cartographie']}
+                ongletActif={datavizTab}
+                onChange={setDatavizTab}
               >
-                <div className="w-full">
-                  <MapEspacesNaf
-                    consommationNAF={consommationNAF}
-                    communesCodes={coordonneesCommunes?.codes ?? []}
-                    boundingBox={boundingBox}
-                  />
-                </div>
-                <div
-                  className={styles.legend}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 8,
-                    alignItems: 'center',
-                    textAlign: 'center'
-                  }}
-                >
-                  <Body weight="bold">
-                    - Nombre d’hectares d’espaces naturels, agricoles ou forestiers consommés -
-                  </Body>
-                  <LegendCompColor legends={espacesNAFDatavizLegend} />
-                </div>
-              </Suspense>
-            ) : (
-              <>
-                <div className={styles.graphTabsWrapper}>
-                  <SubTabs
-                    data={[
-                      'Tous types',
-                      'Habitat',
-                      'Activité',
-                      'Mixte',
-                      'Routes',
-                      'Ferroviaire',
-                      'Inconnu'
-                    ]}
-                    defaultTab={typeValue}
-                    setValue={setTypeValue}
-                  />
-                </div>
-                <div className={styles.sliderWrapper}>
-                  <RangeSlider
-                    firstValue={2011}
-                    lastValue={2025}
-                    minDist={1}
-                    setSliderValue={setSliderValue}
-                    sliderValue={sliderValue}
-                  />
-                </div>
-                <ConsommationEspacesNAFBarChart
-                  consommationEspacesNAF={filteredConsommationNAF}
-                  sliderValue={sliderValue}
-                  filterValue={typeValue}
-                />
-                <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
-                  <LegendCompColor legends={espacesNAFBarChartLegend} />
-                </div>
-              </>
-            )}
-          </div>
+                <div className={styles.dataWrapper}>{contenu}</div>
+              </OngletsDataviz>
+            </div>
+          ) : (
+            <div className={styles.dataWrapper}>{contenu}</div>
+          )
         ) : (
           <div className='p-6 flex flex-col justify-center h-full'>
             <DataNotFoundForGraph image={DataNotFound} />

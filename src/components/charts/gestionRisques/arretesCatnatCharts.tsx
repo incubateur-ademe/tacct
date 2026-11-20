@@ -4,6 +4,7 @@ import PieChartCatnat from '@/components/charts/gestionRisques/pieChartCatnat';
 import { LegendCatnat } from '@/components/maps/legends/legendCatnat';
 import RangeSlider from '@/components/Slider';
 import { Loader } from '@/components/ui/loader';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import SubTabs from '@/components/ui/SubTabs';
 import { ArreteCatNat } from '@/lib/postgres/models';
 import { useSearchParams } from 'next/navigation';
@@ -62,82 +63,81 @@ const ArretesCatnatCharts = (props: Props) => {
 
   return (
     <div className={styles.dataWrapper}>
-      <div className={styles.graphTabsWrapper}>
-        <SubTabs
-          data={
-            type === "commune"
-              ? ['Répartition', 'Évolution']
-              : ['Répartition', 'Évolution', 'Cartographie']
-          }
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
-      </div>
-      {datavizTab === 'Répartition' ? (
-        <>
-          <div className={styles.sliderWrapper}>
-            <RangeSlider
-              firstValue={1982}
-              lastValue={2025}
-              minDist={1}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
-            />
-          </div>
-          <PieChartCatnat gestionRisques={gestionRisquesPieChart} />
-        </>
-      ) : datavizTab === 'Évolution' ? (
-        <>
-          <div className={styles.graphTabsWrapper} style={{ justifyContent: 'flex-start' }}>
-            <SubTabs
-              data={['Tous types', ...typesRisques]}
-              defaultTab={typeRisqueValue}
-              setValue={setTypeRisqueValue}
-              maxWidth="65%"
-              borderRight="solid 1px #D6D6F0"
-            />
-          </div>
-          <div className={styles.sliderWrapper}>
-            <RangeSlider
-              firstValue={1982}
-              lastValue={2025}
-              minDist={1}
-              setSliderValue={setSliderValue}
-              sliderValue={sliderValue}
-            />
-          </div>
-          <BarChartCatnat gestionRisques={gestionRisquesBarChart} />
-        </>
-      ) : datavizTab === 'Cartographie' ? (
-        <>
-          <div className={styles.graphTabsWrapper} style={{ justifyContent: 'flex-start' }}>
-            <SubTabs
-              data={['Tous types', ...typesRisques]}
-              defaultTab={typeRisqueValue}
-              setValue={setTypeRisqueValue}
-            />
-          </div>
-          <Suspense fallback={<Loader />}>
-            <MapCatnat
-              catnatData={catnatData}
-              coordonneesCommunes={coordonneesCommunes}
-              typeRisqueValue={typeRisqueValue}
-            />
-          </Suspense>
-          <div
-            className={styles.legend}
-            style={{ width: 'auto', justifyContent: 'center' }}
-          >
-            <LegendCatnat
-              data={'catnat'}
-              typeRisqueValue={typeRisqueValue}
-              catnatData={catnatData}
-            />
-          </div>
-        </>
-      ) : (
-        ''
-      )}
+      <OngletsDataviz
+        libelles={
+          type === "commune"
+            ? ['Répartition', 'Évolution']
+            : ['Répartition', 'Évolution', 'Cartographie']
+        }
+        ongletActif={datavizTab}
+        onChange={setDatavizTab}
+      >
+        {datavizTab === 'Répartition' ? (
+          <>
+            <div className={styles.sliderWrapper}>
+              <RangeSlider
+                firstValue={1982}
+                lastValue={2025}
+                minDist={1}
+                setSliderValue={setSliderValue}
+                sliderValue={sliderValue}
+              />
+            </div>
+            <PieChartCatnat gestionRisques={gestionRisquesPieChart} />
+          </>
+        ) : datavizTab === 'Évolution' ? (
+          <>
+            <div className={styles.graphTabsWrapper} style={{ justifyContent: 'flex-start' }}>
+              <SubTabs
+                data={['Tous types', ...typesRisques]}
+                defaultTab={typeRisqueValue}
+                setValue={setTypeRisqueValue}
+                maxWidth="65%"
+                borderRight="solid 1px #D6D6F0"
+              />
+            </div>
+            <div className={styles.sliderWrapper}>
+              <RangeSlider
+                firstValue={1982}
+                lastValue={2025}
+                minDist={1}
+                setSliderValue={setSliderValue}
+                sliderValue={sliderValue}
+              />
+            </div>
+            <BarChartCatnat gestionRisques={gestionRisquesBarChart} />
+          </>
+        ) : datavizTab === 'Cartographie' ? (
+          <>
+            <div className={styles.graphTabsWrapper} style={{ justifyContent: 'flex-start' }}>
+              <SubTabs
+                data={['Tous types', ...typesRisques]}
+                defaultTab={typeRisqueValue}
+                setValue={setTypeRisqueValue}
+              />
+            </div>
+            <Suspense fallback={<Loader />}>
+              <MapCatnat
+                catnatData={catnatData}
+                coordonneesCommunes={coordonneesCommunes}
+                typeRisqueValue={typeRisqueValue}
+              />
+            </Suspense>
+            <div
+              className={styles.legend}
+              style={{ width: 'auto', justifyContent: 'center' }}
+            >
+              <LegendCatnat
+                data={'catnat'}
+                typeRisqueValue={typeRisqueValue}
+                catnatData={catnatData}
+              />
+            </div>
+          </>
+        ) : (
+          ''
+        )}
+      </OngletsDataviz>
     </div>
   );
 };

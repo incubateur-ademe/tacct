@@ -7,7 +7,7 @@ import { RgaEvolutionLegend, RgaMapLegend, RgaRepartitionLegend } from '@/compon
 import { LegendCompColor } from "@/components/maps/legends/legendComp";
 import { MapRGAExport } from "@/components/maps/mapRGAExport";
 import { MapTiles } from "@/components/maps/mapTiles";
-import SubTabs from '@/components/ui/SubTabs';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import { Body } from "@/design-system/base/Textes";
 import useWindowDimensions from "@/hooks/windowDimensions";
 import { RGAdb } from '@/lib/postgres/models';
@@ -180,123 +180,122 @@ const RetraitGonflementDesArgilesCharts = (props: Props) => {
           opacity: ${isTransitioning ? '0' : '1'};
         }
       `}</style>
-      <div className={styles.graphTabsWrapper}>
-        <SubTabs
-          data={
-            (type === "commune" || type === "epci") ?
-              ['Comparaison', 'Répartition', 'Cartographie'] :
-              ['Répartition', 'Cartographie']
-          }
-          defaultTab={datavizTab}
-          setValue={setDatavizTab}
-        />
-      </div>
-      {datavizTab === 'Comparaison' ? (
-        <>
-          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
-            <NivoBarChart
-              colors={RgaRepartitionLegend.map(e => e.couleur)}
-              graphData={repartitionRga as BarDatum[]}
-              keys={RgaRepartitionLegend.map(e => e.variable)}
-              indexBy="alea"
-              showLegend={false}
-              axisLeftLegend="Part du territoire (%)"
-              groupMode="grouped"
-              tooltip={(data) => RgaRepartitionTooltip({ data, type })}
-              bottomTickValues={repartitionRga.map(el => el.alea)}
-              tickRotation={window.width! < 600 ? -50 : undefined}
-              graphMarginBottom={window.width! < 600 ? 180 : undefined}
-              isMobile={window.width! < 600}
-              xMargins={window.width! < 600 ? 45 : 80}
-            />
-            <div style={{ position: "relative", top: "-40px" }}>
-              <LegendCompColor
-                legends={RgaRepartitionLegend
-                  .map((legend, index) => ({
-                    id: index,
-                    value: legend.variable === "territoire" && type === "commune" ?
-                      "Commune" :
-                      legend.variable === "territoire" && type === "epci" ?
-                        "EPCI" :
-                        legend.variable === "territoireSup" && type === "commune" ?
+      <OngletsDataviz
+        libelles={
+          (type === "commune" || type === "epci") ?
+            ['Comparaison', 'Répartition', 'Cartographie'] :
+            ['Répartition', 'Cartographie']
+        }
+        ongletActif={datavizTab}
+        onChange={setDatavizTab}
+      >
+        {datavizTab === 'Comparaison' ? (
+          <>
+            <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
+              <NivoBarChart
+                colors={RgaRepartitionLegend.map(e => e.couleur)}
+                graphData={repartitionRga as BarDatum[]}
+                keys={RgaRepartitionLegend.map(e => e.variable)}
+                indexBy="alea"
+                showLegend={false}
+                axisLeftLegend="Part du territoire (%)"
+                groupMode="grouped"
+                tooltip={(data) => RgaRepartitionTooltip({ data, type })}
+                bottomTickValues={repartitionRga.map(el => el.alea)}
+                tickRotation={window.width! < 600 ? -50 : undefined}
+                graphMarginBottom={window.width! < 600 ? 180 : undefined}
+                isMobile={window.width! < 600}
+                xMargins={window.width! < 600 ? 45 : 80}
+              />
+              <div style={{ position: "relative", top: "-40px" }}>
+                <LegendCompColor
+                  legends={RgaRepartitionLegend
+                    .map((legend, index) => ({
+                      id: index,
+                      value: legend.variable === "territoire" && type === "commune" ?
+                        "Commune" :
+                        legend.variable === "territoire" && type === "epci" ?
                           "EPCI" :
-                          legend.variable === "territoireSup" && type === "epci" ?
-                            "Département" : "",
-                    color: legend.couleur,
-                  }))} />
-            </div>
-          </div>
-          {
-            multipleDepartements.length > 1 &&
-            <div className={styles.warningBox}>
-              <div className='flex flex-row items-center justify-center'>
-                <Image
-                  src={WarningIcon}
-                  alt="Attention"
-                  width={24}
-                  height={24}
-                  style={{ marginRight: '0.5em', alignItems: 'center' }}
-                />
-                <Body style={{ fontSize: 12 }}>
-                  L’EPCI sélectionné s’étend sur
-                  plusieurs départements. La comparaison proposée est
-                  effectuée avec : {departement}
-                </Body>
+                          legend.variable === "territoireSup" && type === "commune" ?
+                            "EPCI" :
+                            legend.variable === "territoireSup" && type === "epci" ?
+                              "Département" : "",
+                      color: legend.couleur,
+                    }))} />
               </div>
             </div>
-          }
-        </>
-      ) : datavizTab === 'Répartition' ? (
-        <>
-          <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
-            <NivoBarChart
-              colors={RgaEvolutionLegend.map(e => e.couleur)}
-              graphData={evolutionRga}
-              keys={RgaEvolutionLegend.map(e => e.variable)}
-              indexBy="annee"
-              showLegend={false}
-              axisLeftLegend="Nombre de logements"
-              tooltip={RgaEvolutionTooltip}
-              tickRotation={window.width! < 600 ? -60 : undefined}
-              graphMarginBottom={window.width! < 600 ? 160 : undefined}
-              isMobile={window.width! < 600}
-              xMargins={window.width! < 600 ? 45 : 80}
-            />
-            <div style={{ position: "relative", top: "-70px" }}>
-              <LegendCompColor
-                legends={RgaEvolutionLegend
-                  .map((legend, index) => ({
-                    id: index,
-                    value: legend.texteRaccourci,
-                    color: legend.couleur,
-                  }))} />
+            {
+              multipleDepartements.length > 1 &&
+              <div className={styles.warningBox}>
+                <div className='flex flex-row items-center justify-center'>
+                  <Image
+                    src={WarningIcon}
+                    alt="Attention"
+                    width={24}
+                    height={24}
+                    style={{ marginRight: '0.5em', alignItems: 'center' }}
+                  />
+                  <Body style={{ fontSize: 12 }}>
+                    L’EPCI sélectionné s’étend sur
+                    plusieurs départements. La comparaison proposée est
+                    effectuée avec : {departement}
+                  </Body>
+                </div>
+              </div>
+            }
+          </>
+        ) : datavizTab === 'Répartition' ? (
+          <>
+            <div className={`rga-charts-wrapper ${styles.barChartContainer}`}>
+              <NivoBarChart
+                colors={RgaEvolutionLegend.map(e => e.couleur)}
+                graphData={evolutionRga}
+                keys={RgaEvolutionLegend.map(e => e.variable)}
+                indexBy="annee"
+                showLegend={false}
+                axisLeftLegend="Nombre de logements"
+                tooltip={RgaEvolutionTooltip}
+                tickRotation={window.width! < 600 ? -60 : undefined}
+                graphMarginBottom={window.width! < 600 ? 160 : undefined}
+                isMobile={window.width! < 600}
+                xMargins={window.width! < 600 ? 45 : 80}
+              />
+              <div style={{ position: "relative", top: "-70px" }}>
+                <LegendCompColor
+                  legends={RgaEvolutionLegend
+                    .map((legend, index) => ({
+                      id: index,
+                      value: legend.texteRaccourci,
+                      color: legend.couleur,
+                    }))} />
+              </div>
             </div>
-          </div>
-        </>
-      ) : datavizTab === 'Cartographie' ? (
-        <MapTiles
-          ariaLabel="Cartographie des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
-          coordonneesCommunes={coordonneesCommunes}
-          mapRef={mapRef}
-          mapContainer={mapContainer}
-          bucketUrl="rga"
-          layer="rga"
-          paint={{
-            'fill-color': [
-              'match',
-              ['get', 'alea'],
-              'Moyen', '#F66E19',
-              'Faible', '#FFCF5E',
-              'Fort', '#E8323B',
-              'white'
-            ],
-            'fill-opacity': 0.45
-          }}
-          legend={<LegendCompColor legends={RgaMapLegend} />}
-        />
-      ) : (
-        ''
-      )}
+          </>
+        ) : datavizTab === 'Cartographie' ? (
+          <MapTiles
+            ariaLabel="Cartographie des zones d'exposition au retrait-gonflement des argiles (aléa faible, moyen ou fort) par commune sur votre territoire"
+            coordonneesCommunes={coordonneesCommunes}
+            mapRef={mapRef}
+            mapContainer={mapContainer}
+            bucketUrl="rga"
+            layer="rga"
+            paint={{
+              'fill-color': [
+                'match',
+                ['get', 'alea'],
+                'Moyen', '#F66E19',
+                'Faible', '#FFCF5E',
+                'Fort', '#E8323B',
+                'white'
+              ],
+              'fill-opacity': 0.45
+            }}
+            legend={<LegendCompColor legends={RgaMapLegend} />}
+          />
+        ) : (
+          ''
+        )}
+      </OngletsDataviz>
       {/* Génère une map cachée pour l'export */}
       <MapRGAExport
         coordonneesCommunes={coordonneesCommunes}

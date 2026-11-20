@@ -8,7 +8,7 @@ import DataNotFoundForGraph from '@/components/graphDataNotFound';
 import { agricultureBioBarChartLegend } from '@/components/maps/legends/datavizLegends';
 import { LegendCompColor } from '@/components/maps/legends/legendComp';
 import RangeSlider from '@/components/Slider';
-import SubTabs from '@/components/ui/SubTabs';
+import { OngletsDataviz } from '@/components/ui/OngletsDataviz';
 import { Body } from '@/design-system/base/Textes';
 import { AgricultureBio } from '@/lib/postgres/models';
 import { multipleEpciBydepartementLibelle } from '@/lib/territoireData/multipleEpciBydepartement';
@@ -44,81 +44,82 @@ const SurfacesEnBioCharts = ({
   return (
     <>
       {agricultureBio.length !== 0 ? (
-        <div className={styles.dataWrapper}>
-          <div className={styles.graphTabsWrapper}>
-            <SubTabs
-              data={['Répartition', 'Évolution']}
-              defaultTab={datavizTab}
-              setValue={setDatavizTab}
-            />
-          </div>
-          {datavizTab === 'Répartition' ? (
-            <>
-              <AgricultureBioPieCharts agricultureBio={agricultureBio} />
-              {territoiresPartiellementCouverts &&
-                territoiresPartiellementCouverts.length > 0 && (
-                  <div className={styles.warningBox}>
-                    <div className="flex flex-row items-center justify-center">
-                      <Image
-                        src={WarningIcon}
-                        alt="Attention"
-                        width={24}
-                        height={24}
-                        style={{ marginRight: '0.5em', alignItems: 'center' }}
-                      />
-                      <Body size="xs">
-                        {territoiresPartiellementCouverts.length} EPCI{' '}
-                        {territoiresPartiellementCouverts.length === 1
-                          ? 'déborde'
-                          : 'débordent'}{' '}
-                        de votre périmètre
-                      </Body>
-                    </div>
+        <div>
+          <OngletsDataviz
+            libelles={['Répartition', 'Évolution']}
+            ongletActif={datavizTab}
+            onChange={setDatavizTab}
+          >
+            <div className={styles.dataWrapper}>
+              {datavizTab === 'Répartition' ? (
+                <>
+                  <AgricultureBioPieCharts agricultureBio={agricultureBio} />
+                  {territoiresPartiellementCouverts &&
+                    territoiresPartiellementCouverts.length > 0 && (
+                      <div className={styles.warningBox}>
+                        <div className="flex flex-row items-center justify-center">
+                          <Image
+                            src={WarningIcon}
+                            alt="Attention"
+                            width={24}
+                            height={24}
+                            style={{ marginRight: '0.5em', alignItems: 'center' }}
+                          />
+                          <Body size="xs">
+                            {territoiresPartiellementCouverts.length} EPCI{' '}
+                            {territoiresPartiellementCouverts.length === 1
+                              ? 'déborde'
+                              : 'débordent'}{' '}
+                            de votre périmètre
+                          </Body>
+                        </div>
+                      </div>
+                    )}
+                </>
+              ) : (
+                <>
+                  <div className={styles.sliderWrapper}>
+                    <RangeSlider
+                      firstValue={2008}
+                      lastValue={2023}
+                      minDist={1}
+                      setSliderValue={setSliderValue}
+                      sliderValue={sliderValue}
+                    />
                   </div>
-                )}
-            </>
-          ) : (
-            <>
-              <div className={styles.sliderWrapper}>
-                <RangeSlider
-                  firstValue={2008}
-                  lastValue={2023}
-                  minDist={1}
-                  setSliderValue={setSliderValue}
-                  sliderValue={sliderValue}
-                />
-              </div>
-              <AgricultureBioBarChart
-                agricultureBio={agricultureBio}
-                sliderValue={sliderValue}
-              />
-              <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
-                <LegendCompColor legends={agricultureBioBarChartLegend} />
-              </div>
-              {territoiresPartiellementCouverts &&
-                territoiresPartiellementCouverts.length > 0 && (
-                  <div className={styles.warningBox}>
-                    <div className="flex flex-row items-center justify-center">
-                      <Image
-                        src={WarningIcon}
-                        alt="Attention"
-                        width={24}
-                        height={24}
-                        style={{ marginRight: '0.5em', alignItems: 'center' }}
-                      />
-                      <Body size="xs">
-                        Attention, {territoiresPartiellementCouverts.length}{' '}
-                        EPCI ne{' '}
-                        {territoiresPartiellementCouverts.length === 1
-                          ? 'fait'
-                          : 'font'}{' '}
-                        que partiellement partie de votre territoire
-                      </Body>
-                    </div>
+                  <AgricultureBioBarChart
+                    agricultureBio={agricultureBio}
+                    sliderValue={sliderValue}
+                  />
+                  <div className={styles.legend} style={{ paddingBottom: '1rem' }}>
+                    <LegendCompColor legends={agricultureBioBarChartLegend} />
                   </div>
-                )}
-            </>
-          )}
+                  {territoiresPartiellementCouverts &&
+                    territoiresPartiellementCouverts.length > 0 && (
+                      <div className={styles.warningBox}>
+                        <div className="flex flex-row items-center justify-center">
+                          <Image
+                            src={WarningIcon}
+                            alt="Attention"
+                            width={24}
+                            height={24}
+                            style={{ marginRight: '0.5em', alignItems: 'center' }}
+                          />
+                          <Body size="xs">
+                            Attention, {territoiresPartiellementCouverts.length}{' '}
+                            EPCI ne{' '}
+                            {territoiresPartiellementCouverts.length === 1
+                              ? 'fait'
+                              : 'font'}{' '}
+                            que partiellement partie de votre territoire
+                          </Body>
+                        </div>
+                      </div>
+                    )}
+                </>
+              )}
+            </div>
+          </OngletsDataviz>
         </div>
       ) : (
         <div className={styles.dataWrapper} style={{ padding: '1rem' }}>

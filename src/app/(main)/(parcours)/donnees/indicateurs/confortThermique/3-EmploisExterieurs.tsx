@@ -129,7 +129,6 @@ export const EmploisEnExterieur = ({
             <OngletsGraphiqueCarte
               ongletGraphique="Répartition"
               carte={carte}
-              varianteOnglets="souligne"
               graphique={
                 <PieChartTravailExt
                   graphData={graphData}

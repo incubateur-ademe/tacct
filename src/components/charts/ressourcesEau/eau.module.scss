@@ -21,57 +21,41 @@
     }
 }
 
-// onglets de navigation en dataviz + filtres
-
-.graphTabsLegend {
+.legendWrapper {
+    padding: 1rem 1rem 0.6rem 2rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--gris-medium);
-    width: 100%;
-    .legendWrapper {
-        padding: 1rem 1rem 0.6rem 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        gap: 0.5rem;
-        @media (max-width: 600px) {
-            display: none;
-        }
-        .progressBar {
-            position: relative;
-            width: 70px;
-            height: 9px;
-            bottom: 7px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-        }
-        .greyBar {
-            position: absolute;
-            left: -1px;
-            top: -1px;
-            width: 38px;
-            height: 9px;
-            background-color: var(--gris-medium-dark);
-            border-radius: 25px;
-        }
-        .cursor {
-            position: absolute;
-            left: 48px;
-            top: -5px;
-            width: 2px;
-            height: 18px;
-            background-color: black;
-        }
-    }
-}
-.graphTabsWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 1.25rem;
+    align-items: flex-end;
     gap: 0.5rem;
+    @media (max-width: 600px) {
+        display: none;
+    }
+    .progressBar {
+        position: relative;
+        width: 70px;
+        height: 9px;
+        bottom: 7px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 25px;
+    }
+    .greyBar {
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        width: 38px;
+        height: 9px;
+        background-color: var(--gris-medium-dark);
+        border-radius: 25px;
+    }
+    .cursor {
+        position: absolute;
+        left: 48px;
+        top: -5px;
+        width: 2px;
+        height: 18px;
+        background-color: black;
+    }
 }
 
 .sliderWrapper {
