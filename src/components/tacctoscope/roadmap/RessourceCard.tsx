@@ -2,6 +2,7 @@
 
 import styles from '@/app/(espace-connecte)/(avec-navigation)/tacctoscope/feuille-de-route/roadmap.module.scss';
 import { RoadmapResource } from '@/lib/tacctoscope/content/roadmapResources';
+import { usePostHog } from 'posthog-js/react';
 import { useState } from 'react';
 import { RessourceModal } from './RessourceModal';
 import { RessourceTag } from './RessourceTag';
@@ -21,13 +22,24 @@ interface Props {
 
 export const RessourceCard = ({ ressource }: Props) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const posthog = usePostHog();
+
+  const handleOpen = () => {
+    posthog.capture('tacctoscope_ressource_modale_ouverte', {
+      date: new Date(),
+      ressource_url: ressource.url,
+      ressource_titre: ressource.title,
+      ressource_tag: ressource.tag
+    });
+    setModalOpen(true);
+  };
 
   return (
     <>
       <button
         type="button"
         className={styles.ressourceCard}
-        onClick={() => setModalOpen(true)}
+        onClick={handleOpen}
       >
         <span className={styles.ressourceCardText}>
           <span className={styles.ressourceCardTag}>

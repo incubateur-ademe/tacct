@@ -1729,7 +1729,8 @@ export const Tacctoscope_ressourcesScalarFieldEnum = {
   ressource_url: 'ressource_url',
   ressource_titre: 'ressource_titre',
   ressource_tag: 'ressource_tag',
-  ingested_at: 'ingested_at'
+  ingested_at: 'ingested_at',
+  event: 'event'
 } as const
 
 export type Tacctoscope_ressourcesScalarFieldEnum = (typeof Tacctoscope_ressourcesScalarFieldEnum)[keyof typeof Tacctoscope_ressourcesScalarFieldEnum]

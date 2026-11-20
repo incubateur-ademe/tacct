@@ -1887,8 +1887,9 @@ model tacctoscope_ressources {
   ressource_titre String?
   ressource_tag   String?
   ingested_at     DateTime @default(now()) @db.Timestamptz(6)
+  event           String
 
-  @@unique([event_timestamp, session_id, person_id, ressource_url], map: "uq_tacctoscope_ressources_natural")
+  @@unique([event, event_timestamp, session_id, person_id, ressource_url], map: "uq_tacctoscope_ressources_natural")
   @@schema("analytics")
 }
 

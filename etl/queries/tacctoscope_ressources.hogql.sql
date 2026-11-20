@@ -1,8 +1,8 @@
-select timestamp, `$session_id`, person_id, properties.ressource_url, properties.ressource_titre, properties.ressource_tag
+select event, timestamp, `$session_id`, person_id, properties.ressource_url, properties.ressource_titre, properties.ressource_tag
 from events
 where
 and(
-    event = 'tacctoscope_ressource_consultée',
+    in(event, tuple('tacctoscope_ressource_consultée', 'tacctoscope_ressource_modale_ouverte')),
     notIn(
         properties.$host, tuple(
             'facili-tacct-preprod.osc-fr1.scalingo.io',

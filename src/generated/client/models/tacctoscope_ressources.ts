@@ -43,6 +43,7 @@ export type Tacctoscope_ressourcesMinAggregateOutputType = {
   ressource_titre: string | null
   ressource_tag: string | null
   ingested_at: Date | null
+  event: string | null
 }
 
 export type Tacctoscope_ressourcesMaxAggregateOutputType = {
@@ -54,6 +55,7 @@ export type Tacctoscope_ressourcesMaxAggregateOutputType = {
   ressource_titre: string | null
   ressource_tag: string | null
   ingested_at: Date | null
+  event: string | null
 }
 
 export type Tacctoscope_ressourcesCountAggregateOutputType = {
@@ -65,6 +67,7 @@ export type Tacctoscope_ressourcesCountAggregateOutputType = {
   ressource_titre: number
   ressource_tag: number
   ingested_at: number
+  event: number
   _all: number
 }
 
@@ -86,6 +89,7 @@ export type Tacctoscope_ressourcesMinAggregateInputType = {
   ressource_titre?: true
   ressource_tag?: true
   ingested_at?: true
+  event?: true
 }
 
 export type Tacctoscope_ressourcesMaxAggregateInputType = {
@@ -97,6 +101,7 @@ export type Tacctoscope_ressourcesMaxAggregateInputType = {
   ressource_titre?: true
   ressource_tag?: true
   ingested_at?: true
+  event?: true
 }
 
 export type Tacctoscope_ressourcesCountAggregateInputType = {
@@ -108,6 +113,7 @@ export type Tacctoscope_ressourcesCountAggregateInputType = {
   ressource_titre?: true
   ressource_tag?: true
   ingested_at?: true
+  event?: true
   _all?: true
 }
 
@@ -206,6 +212,7 @@ export type Tacctoscope_ressourcesGroupByOutputType = {
   ressource_titre: string | null
   ressource_tag: string | null
   ingested_at: Date
+  event: string
   _count: Tacctoscope_ressourcesCountAggregateOutputType | null
   _avg: Tacctoscope_ressourcesAvgAggregateOutputType | null
   _sum: Tacctoscope_ressourcesSumAggregateOutputType | null
@@ -240,6 +247,7 @@ export type tacctoscope_ressourcesWhereInput = {
   ressource_titre?: Prisma.StringNullableFilter<"tacctoscope_ressources"> | string | null
   ressource_tag?: Prisma.StringNullableFilter<"tacctoscope_ressources"> | string | null
   ingested_at?: Prisma.DateTimeFilter<"tacctoscope_ressources"> | Date | string
+  event?: Prisma.StringFilter<"tacctoscope_ressources"> | string
 }
 
 export type tacctoscope_ressourcesOrderByWithRelationInput = {
@@ -251,11 +259,12 @@ export type tacctoscope_ressourcesOrderByWithRelationInput = {
   ressource_titre?: Prisma.SortOrderInput | Prisma.SortOrder
   ressource_tag?: Prisma.SortOrderInput | Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  event?: Prisma.SortOrder
 }
 
 export type tacctoscope_ressourcesWhereUniqueInput = Prisma.AtLeast<{
   id?: bigint | number
-  event_timestamp_session_id_person_id_ressource_url?: Prisma.tacctoscope_ressourcesEvent_timestampSession_idPerson_idRessource_urlCompoundUniqueInput
+  event_event_timestamp_session_id_person_id_ressource_url?: Prisma.tacctoscope_ressourcesEventEvent_timestampSession_idPerson_idRessource_urlCompoundUniqueInput
   AND?: Prisma.tacctoscope_ressourcesWhereInput | Prisma.tacctoscope_ressourcesWhereInput[]
   OR?: Prisma.tacctoscope_ressourcesWhereInput[]
   NOT?: Prisma.tacctoscope_ressourcesWhereInput | Prisma.tacctoscope_ressourcesWhereInput[]
@@ -266,7 +275,8 @@ export type tacctoscope_ressourcesWhereUniqueInput = Prisma.AtLeast<{
   ressource_titre?: Prisma.StringNullableFilter<"tacctoscope_ressources"> | string | null
   ressource_tag?: Prisma.StringNullableFilter<"tacctoscope_ressources"> | string | null
   ingested_at?: Prisma.DateTimeFilter<"tacctoscope_ressources"> | Date | string
-}, "id" | "event_timestamp_session_id_person_id_ressource_url">
+  event?: Prisma.StringFilter<"tacctoscope_ressources"> | string
+}, "id" | "event_event_timestamp_session_id_person_id_ressource_url">
 
 export type tacctoscope_ressourcesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -277,6 +287,7 @@ export type tacctoscope_ressourcesOrderByWithAggregationInput = {
   ressource_titre?: Prisma.SortOrderInput | Prisma.SortOrder
   ressource_tag?: Prisma.SortOrderInput | Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  event?: Prisma.SortOrder
   _count?: Prisma.tacctoscope_ressourcesCountOrderByAggregateInput
   _avg?: Prisma.tacctoscope_ressourcesAvgOrderByAggregateInput
   _max?: Prisma.tacctoscope_ressourcesMaxOrderByAggregateInput
@@ -296,6 +307,7 @@ export type tacctoscope_ressourcesScalarWhereWithAggregatesInput = {
   ressource_titre?: Prisma.StringNullableWithAggregatesFilter<"tacctoscope_ressources"> | string | null
   ressource_tag?: Prisma.StringNullableWithAggregatesFilter<"tacctoscope_ressources"> | string | null
   ingested_at?: Prisma.DateTimeWithAggregatesFilter<"tacctoscope_ressources"> | Date | string
+  event?: Prisma.StringWithAggregatesFilter<"tacctoscope_ressources"> | string
 }
 
 export type tacctoscope_ressourcesCreateInput = {
@@ -307,6 +319,7 @@ export type tacctoscope_ressourcesCreateInput = {
   ressource_titre?: string | null
   ressource_tag?: string | null
   ingested_at?: Date | string
+  event: string
 }
 
 export type tacctoscope_ressourcesUncheckedCreateInput = {
@@ -318,6 +331,7 @@ export type tacctoscope_ressourcesUncheckedCreateInput = {
   ressource_titre?: string | null
   ressource_tag?: string | null
   ingested_at?: Date | string
+  event: string
 }
 
 export type tacctoscope_ressourcesUpdateInput = {
@@ -329,6 +343,7 @@ export type tacctoscope_ressourcesUpdateInput = {
   ressource_titre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ressource_tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  event?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type tacctoscope_ressourcesUncheckedUpdateInput = {
@@ -340,6 +355,7 @@ export type tacctoscope_ressourcesUncheckedUpdateInput = {
   ressource_titre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ressource_tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  event?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type tacctoscope_ressourcesCreateManyInput = {
@@ -351,6 +367,7 @@ export type tacctoscope_ressourcesCreateManyInput = {
   ressource_titre?: string | null
   ressource_tag?: string | null
   ingested_at?: Date | string
+  event: string
 }
 
 export type tacctoscope_ressourcesUpdateManyMutationInput = {
@@ -362,6 +379,7 @@ export type tacctoscope_ressourcesUpdateManyMutationInput = {
   ressource_titre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ressource_tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  event?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type tacctoscope_ressourcesUncheckedUpdateManyInput = {
@@ -373,9 +391,11 @@ export type tacctoscope_ressourcesUncheckedUpdateManyInput = {
   ressource_titre?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ressource_tag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  event?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type tacctoscope_ressourcesEvent_timestampSession_idPerson_idRessource_urlCompoundUniqueInput = {
+export type tacctoscope_ressourcesEventEvent_timestampSession_idPerson_idRessource_urlCompoundUniqueInput = {
+  event: string
   event_timestamp: Date | string
   session_id: string
   person_id: string
@@ -391,6 +411,7 @@ export type tacctoscope_ressourcesCountOrderByAggregateInput = {
   ressource_titre?: Prisma.SortOrder
   ressource_tag?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  event?: Prisma.SortOrder
 }
 
 export type tacctoscope_ressourcesAvgOrderByAggregateInput = {
@@ -406,6 +427,7 @@ export type tacctoscope_ressourcesMaxOrderByAggregateInput = {
   ressource_titre?: Prisma.SortOrder
   ressource_tag?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  event?: Prisma.SortOrder
 }
 
 export type tacctoscope_ressourcesMinOrderByAggregateInput = {
@@ -417,6 +439,7 @@ export type tacctoscope_ressourcesMinOrderByAggregateInput = {
   ressource_titre?: Prisma.SortOrder
   ressource_tag?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  event?: Prisma.SortOrder
 }
 
 export type tacctoscope_ressourcesSumOrderByAggregateInput = {
@@ -434,6 +457,7 @@ export type tacctoscope_ressourcesSelect<ExtArgs extends runtime.Types.Extension
   ressource_titre?: boolean
   ressource_tag?: boolean
   ingested_at?: boolean
+  event?: boolean
 }, ExtArgs["result"]["tacctoscope_ressources"]>
 
 export type tacctoscope_ressourcesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -445,6 +469,7 @@ export type tacctoscope_ressourcesSelectCreateManyAndReturn<ExtArgs extends runt
   ressource_titre?: boolean
   ressource_tag?: boolean
   ingested_at?: boolean
+  event?: boolean
 }, ExtArgs["result"]["tacctoscope_ressources"]>
 
 export type tacctoscope_ressourcesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -456,6 +481,7 @@ export type tacctoscope_ressourcesSelectUpdateManyAndReturn<ExtArgs extends runt
   ressource_titre?: boolean
   ressource_tag?: boolean
   ingested_at?: boolean
+  event?: boolean
 }, ExtArgs["result"]["tacctoscope_ressources"]>
 
 export type tacctoscope_ressourcesSelectScalar = {
@@ -467,9 +493,10 @@ export type tacctoscope_ressourcesSelectScalar = {
   ressource_titre?: boolean
   ressource_tag?: boolean
   ingested_at?: boolean
+  event?: boolean
 }
 
-export type tacctoscope_ressourcesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "event_timestamp" | "session_id" | "person_id" | "ressource_url" | "ressource_titre" | "ressource_tag" | "ingested_at", ExtArgs["result"]["tacctoscope_ressources"]>
+export type tacctoscope_ressourcesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "event_timestamp" | "session_id" | "person_id" | "ressource_url" | "ressource_titre" | "ressource_tag" | "ingested_at" | "event", ExtArgs["result"]["tacctoscope_ressources"]>
 
 export type $tacctoscope_ressourcesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "tacctoscope_ressources"
@@ -483,6 +510,7 @@ export type $tacctoscope_ressourcesPayload<ExtArgs extends runtime.Types.Extensi
     ressource_titre: string | null
     ressource_tag: string | null
     ingested_at: Date
+    event: string
   }, ExtArgs["result"]["tacctoscope_ressources"]>
   composites: {}
 }
@@ -914,6 +942,7 @@ export interface tacctoscope_ressourcesFieldRefs {
   readonly ressource_titre: Prisma.FieldRef<"tacctoscope_ressources", 'String'>
   readonly ressource_tag: Prisma.FieldRef<"tacctoscope_ressources", 'String'>
   readonly ingested_at: Prisma.FieldRef<"tacctoscope_ressources", 'DateTime'>
+  readonly event: Prisma.FieldRef<"tacctoscope_ressources", 'String'>
 }
     
 

@@ -256,14 +256,15 @@ async function insertThematique(client, rows) {
 async function insertTacctoscopeRessources(client, rows) {
     const sql = `
     INSERT INTO analytics.tacctoscope_ressources
-      (event_timestamp, session_id, person_id, ressource_url, ressource_titre, ressource_tag)
-    VALUES ($1::timestamptz, $2::text, $3::text, $4::text, $5::text, $6::text)
+      (event, event_timestamp, session_id, person_id, ressource_url, ressource_titre, ressource_tag)
+    VALUES ($1::text, $2::timestamptz, $3::text, $4::text, $5::text, $6::text, $7::text)
     ON CONFLICT ON CONSTRAINT uq_tacctoscope_ressources_natural DO NOTHING
   `;
     let inserted = 0;
     for (const row of rows) {
         if (!Array.isArray(row)) continue;
         const [
+            event,
             ts,
             session_id,
             person_id,
@@ -272,6 +273,7 @@ async function insertTacctoscopeRessources(client, rows) {
             ressource_tag
         ] = row;
         await client.query(sql, [
+            event ?? '',
             ts,
             session_id ?? '',
             person_id ?? '',
@@ -361,7 +363,7 @@ function injectWindow(hogql, startIso) {
             table: 'tacctoscope_ressources',
             insertFunction: insertTacctoscopeRessources,
             description:
-                'Clics sur les ressources de la feuille de route du tacctoscope'
+                'Ouvertures de modale et clics sur les ressources de la feuille de route du tacctoscope'
         }
     ];
 
