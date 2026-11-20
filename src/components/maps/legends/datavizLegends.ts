@@ -933,62 +933,54 @@ export const surfaceForetLegend = surfaceForetClasses.map(
 );
 
 export const grandAgeClasses = [
-  { min: 0, value: 'Moins de 5 %', color: couleurs.graphiques.violet[4] },
-  { min: 5, value: '5 à 10 %', color: couleurs.graphiques.violet[3] },
-  { min: 10, value: '10 à 15 %', color: couleurs.graphiques.violet[2] },
-  { min: 15, value: '15 à 20 %', color: couleurs.graphiques.violet[1] },
-  { min: 20, value: '20 % et plus', color: couleurs.graphiques.violet[5] }
+  { min: 0, value: 'Moins de 5 %', color: '#F2E4FF' },
+  { min: 5, value: '5 à 10 %', color: '#D2A1FF' },
+  { min: 10, value: '10 à 15 %', color: '#A764E3' },
+  { min: 15, value: '15 à 20 %', color: '#6E3F99' },
+  { min: 20, value: '20 % et plus', color: '#42255C' }
 ];
 
 export const emploisExterieursClasses = [
-  { min: 0, value: 'Moins de 10 %', color: '#FFE5B7' },
-  { min: 10, value: '10 à 25 %', color: '#F8B334' },
-  { min: 25, value: '25 à 50 %', color: '#CF911E' },
-  { min: 50, value: '50 à 75 %', color: '#AB740E' },
-  { min: 75, value: '75 % et plus', color: '#704900' }
+  { min: 0, value: 'Moins de 10 %', color: '#D7EFFE' },
+  { min: 10, value: '10 à 25 %', color: '#9CD5FE' },
+  { min: 25, value: '25 à 50 %', color: '#FEA247' },
+  { min: 50, value: '50 à 75 %', color: '#C95D00' },
+  { min: 75, value: '75 % et plus', color: '#7A330E' }
 ];
 
 export const ageBatiClasses = [
-  { min: 0, value: 'Moins de 80 %', color: couleurs.graphiques.violet[4] },
-  { min: 80, value: '80 à 85 %', color: couleurs.graphiques.violet[3] },
-  { min: 85, value: '85 à 90 %', color: couleurs.graphiques.violet[2] },
-  { min: 90, value: '90 à 95 %', color: couleurs.graphiques.violet[1] },
-  { min: 95, value: '95 % et plus', color: couleurs.graphiques.violet[5] }
+  { min: 0, value: 'Moins de 80 %', color: '#E4FFE6' },
+  { min: 80, value: '80 à 85 %', color: '#AEEABA' },
+  { min: 85, value: '85 à 90 %', color: '#FFA4D8' },
+  { min: 90, value: '90 à 95 %', color: '#BA5799' },
+  { min: 95, value: '95 % et plus', color: '#6A1D55' }
 ];
 
 export const feuxForetClasses = [
-  { min: 0, value: 'Aucun départ', color: 'white' },
-  { min: 1, value: '1 départ', color: '#D3EDEB' },
-  { min: 2, value: '2 à 5 départs', color: '#91D1CC' },
-  { min: 6, value: '6 à 20 départs', color: '#038278' },
-  { min: 21, value: '21 à 50 départs', color: '#095D55' },
-  { min: 51, value: 'Plus de 50 départs', color: '#05413B' }
+  { min: 0, value: 'Aucun départ', color: '#FFFFFF' },
+  { min: 1, value: '1 départ', color: '#FFEBB6' },
+  { min: 2, value: '2 à 5 départs', color: '#FFAF72' },
+  { min: 6, value: '6 à 20 départs', color: '#F66E19' },
+  { min: 21, value: '21 à 50 départs', color: '#BC5765' },
+  { min: 51, value: 'Plus de 50 départs', color: '#873984' }
 ];
 
 export const prelevementsEauClasses = [
-  { min: 0, value: 'Aucun prélèvement déclaré', color: 'white' },
-  {
-    min: Number.MIN_VALUE,
-    value: 'Moins de 0,05 Mm³',
-    color: couleurs.graphiques.bleu[4]
-  },
-  { min: 50000, value: '0,05 à 0,5 Mm³', color: couleurs.graphiques.bleu[3] },
-  { min: 500000, value: '0,5 à 5 Mm³', color: couleurs.graphiques.bleu[2] },
-  { min: 5000000, value: '5 à 50 Mm³', color: couleurs.graphiques.bleu[1] },
-  { min: 50000000, value: 'Plus de 50 Mm³', color: couleurs.graphiques.bleu[5] }
+  { min: 0, value: 'Aucun prélèvement déclaré', color: '#FFFFFF' },
+  { min: Number.MIN_VALUE, value: 'Moins de 0,05 Mm³', color: '#D8EFFA' },
+  { min: 50000, value: '0,05 à 0,5 Mm³', color: '#70D4FF' },
+  { min: 500000, value: '0,5 à 5 Mm³', color: '#0E93E1' },
+  { min: 5000000, value: '5 à 50 Mm³', color: '#055FA5' },
+  { min: 50000000, value: 'Plus de 50 Mm³', color: '#093454' }
 ];
 
 export const secheressesClasses = [
-  { min: 0, value: 'Aucune restriction', color: 'white' },
-  {
-    min: Number.MIN_VALUE,
-    value: 'Moins de 5 jours',
-    color: couleurs.graphiques.violet[4]
-  },
-  { min: 5, value: '5 à 10 jours', color: couleurs.graphiques.violet[3] },
-  { min: 10, value: '10 à 15 jours', color: couleurs.graphiques.violet[2] },
-  { min: 15, value: '15 à 20 jours', color: couleurs.graphiques.violet[1] },
-  { min: 20, value: '20 jours et plus', color: couleurs.graphiques.violet[5] }
+  { min: 0, value: 'Aucune restriction', color: '#FFFFFF' },
+  { min: Number.MIN_VALUE, value: 'Moins de 5 jours', color: '#FFEBB6' },
+  { min: 5, value: '5 à 10 jours', color: '#F4B030' },
+  { min: 10, value: '10 à 15 jours', color: '#C98103' },
+  { min: 15, value: '15 à 20 jours', color: '#955904' },
+  { min: 20, value: '20 jours et plus', color: '#613701' }
 ];
 
 export const stationsSkiTailleClasses = [
