@@ -3,7 +3,8 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { TableCommuneModel } from '@/lib/postgres/models';
+import { IncendiesForet, TableCommuneModel } from '@/lib/postgres/models';
+import { GetIncendiesForet } from '@/lib/queries/databases/gestionRisques';
 import { GetTablecommune } from '@/lib/queries/databases/tableCommune';
 import { GetCommunesContours, GetCommunesCoordinates, GetContoursEpciDeLaCommune } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
@@ -12,6 +13,7 @@ import { sommaireThematiques } from '../../../thematiques/constantes/textesThema
 import styles from '../../explorerDonnees.module.scss';
 import { HauteurCanopee } from '../../indicateurs/foret/1-HauteurCanopee';
 import { SurfaceForet } from '../../indicateurs/foret/3-SurfaceForet';
+import { FeuxDeForet } from '../../indicateurs/foret/4-FeuxDeForet';
 
 interface Props {
   coordonneesCommunes: {
@@ -21,6 +23,7 @@ interface Props {
   contoursCommunes: { geometry: string } | null;
   contourTerritoire: { geometry: string } | null;
   tableCommune: TableCommuneModel[];
+  incendiesForet: IncendiesForet[];
 }
 
 export const DonneesForet = (
@@ -28,7 +31,8 @@ export const DonneesForet = (
     coordonneesCommunes,
     contoursCommunes,
     contourTerritoire,
-    tableCommune
+    tableCommune,
+    incendiesForet
   }: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Forêts';
@@ -39,7 +43,8 @@ export const DonneesForet = (
     coordonneesCommunes,
     contoursCommunes,
     contourTerritoire,
-    tableCommune
+    tableCommune,
+    incendiesForet
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -52,17 +57,19 @@ export const DonneesForet = (
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newContourTerritoire, newContoursEpci, newTableCommune] = await Promise.all([
+      const [newCoordonneesCommunes, newContourTerritoire, newContoursEpci, newTableCommune, newIncendiesForet] = await Promise.all([
         GetCommunesCoordinates(code, libelle, type),
         GetCommunesContours(code, libelle, type),
         type === 'commune' ? GetContoursEpciDeLaCommune(code) : null,
-        GetTablecommune(code, libelle, type)
+        GetTablecommune(code, libelle, type),
+        GetIncendiesForet(code, libelle, type)
       ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
         contoursCommunes: type === 'commune' ? newContoursEpci : newContourTerritoire,
         contourTerritoire: newContourTerritoire,
-        tableCommune: newTableCommune
+        tableCommune: newTableCommune,
+        incendiesForet: newIncendiesForet
       });
       setIsLoading(false);
     })();
@@ -167,6 +174,38 @@ export const DonneesForet = (
             contoursCommunes={data.contoursCommunes}
           />
         </div> */}
+      </section>
+
+      {/* Section Gestion des risques */}
+      <section className={styles.sectionType}>
+        <H2
+          style={{
+            color: 'var(--principales-rouge)',
+            textTransform: 'uppercase',
+            fontSize: '1.75rem',
+            margin: '0 0 -1rem 0',
+            padding: '2rem 2rem 0',
+            fontWeight: 400
+          }}
+        >
+          {ongletsMenu.thematiquesLiees[2].icone}{' '}
+          {ongletsMenu.thematiquesLiees[2].thematique}
+        </H2>
+
+        {/* Feux de forêt */}
+        <div id="Feux-de-forêt" className={styles.indicateurWrapper}>
+          <div className={styles.h3Titles}>
+            <H3
+              style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}
+            >
+              Départs de feux et surfaces brûlées depuis 2006
+            </H3>
+          </div>
+          <FeuxDeForet
+            incendiesForet={data.incendiesForet}
+            coordonneesCommunes={data.coordonneesCommunes}
+          />
+        </div>
       </section>
 
       {/* Sources */}

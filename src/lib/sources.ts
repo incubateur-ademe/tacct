@@ -201,6 +201,18 @@ export const sourcesEtudes = {
       numero: 3,
       url: 'https://hal.science/hal-04556088/document',
       texte: 'Gril et al. 2023 (Remote Sensing of Environment)'
+    },
+    {
+      numero: 4,
+      url: 'https://www.inrae.fr/actualites/passer-travers-flammes-arbres-ont-leur-strategie',
+      texte:
+        'INRAE, Pour passer à travers les flammes, les arbres ont leur stratégie, juillet 2013'
+    },
+    {
+      numero: 5,
+      url: 'https://www.ign.fr/files/default/2026-07/260701_IGN_Livret_Forets_VDEF.pdf',
+      texte:
+        'IGN, Les indicateurs de gestion durable des forêts françaises, millésime 2025, juillet 2026'
     }
   ]
 };

@@ -165,6 +165,12 @@ export const sommaireThematiques = {
         thematique: 'Santé',
         icone: '🏥',
         sousCategories: ['Hauteur de la canopée']
+      },
+      {
+        id: 'section3',
+        thematique: 'Gestion des risques',
+        icone: '🚧',
+        sousCategories: ['Feux de forêt']
       }
     ]
   },

@@ -1087,6 +1087,65 @@ export const HauteurCanopeeText = () => (
   </>
 );
 
+// Sources du texte :
+// « La forêt rend de nombreux services au territoire » : SurfaceForetText (même thématique) ; PNACC-3, mesure 38, p. 288, https://www.ecologie.gouv.fr/sites/default/files/documents/PNACC3.pdf — « elle préserve la biodiversité et les sols, et joue un rôle clef dans le cycle de l’eau »
+// « le feu y trouve d’autant plus de quoi prendre et se propager qu’elle s’étend et accumule du bois, vivant ou mort » : CGAAER-IGEDD-IGA, Politique de prévention et de lutte contre l’incendie de forêt…, tome 1, février 2023, p. 12, https://agriculture.gouv.fr/telecharger/140348 — « L’extension des surfaces forestières, l’augmentation du volume de bois sur pied, du dépérissement et du bois mort entraînent une augmentation de la masse ligneuse pouvant s’enflammer et propager le feu. »
+// « certaines essences, comme le chêne-liège, résistent mieux que d’autres aux incendies » : INRAE, Pour passer à travers les flammes, les arbres ont leur stratégie, 30/07/2013, https://www.inrae.fr/actualites/passer-travers-flammes-arbres-ont-leur-strategie — « le chêne-liège avec son écorce très épaisse […] pour protéger de la chaleur les tissus vivants du tronc » ; CNPF (projet eforOwn), Mesures sylvicoles préventives contre le risque des feux de forêt, 2019, p. 2, https://www.cnpf.fr/sites/socle/files/2024-05/30_Mesures_sylvicoles_preventives_contre_feux_forets.pdf — « Le chêne-liège a recours à une stratégie de résistance. »
+// « là où les arbres n’ont pas survécu, il faut parfois plusieurs décennies pour que la forêt se reconstitue » : CGAAER-CGEDD, Changement climatique et extension des zones sensibles aux feux de forêts, juillet 2010, p. 18, https://agriculture.gouv.fr/sites/minagri/files/documents//rapport1796_changements_climatiques_et_feux_de_foret.pdf — « Actuellement 34 ans après, peuplement presque monospécifique de bouleau » ; « progressivement recolonisé après plusieurs décennies par des semis de sapin et épicéa »
+// « Le danger vient surtout de feux trop rapprochés » : CRPF PACA, SRGS, fiche 315001, p. 1, https://www.ofme.org/documents/ForetPrivee/srgs/315001.pdf — « C’est donc la fréquence des feux, qui met en danger la pérennité des peuplements forestiers. » ; Sénat, rapport n° 856 (2021-2022), p. 52, https://www.senat.fr/rap/r21-856/r21-8561.pdf — « la nouveauté et la menace résident dans l’accélération de la fréquence des événements »
+// « s’ils reviennent aux mêmes endroits avant qu’elle ait pu se régénérer » : INRAE 2013 — « trop fréquents aux mêmes endroits, les feux empêchent les pins de parvenir à maturité sexuelle » ; Sénat n° 856, p. 53 — « une fréquence de feu trop élevée pour permettre aux arbres d’atteindre la maturité sexuelle et se régénérer après un feu »
+// « laisser durablement place à une garrigue ou à un maquis » : INRAE 2013 — « Les arbres disparaissent et laissent place durablement à une garrigue ou un maquis. » ; Sénat n° 856, p. 53 — « le stade forestier peut basculer durablement vers des formations ligneuses basses » ; le lien [4] renvoie à la source n° 4 de la thématique forêts dans src/lib/sources.ts
+// « et le territoire perd alors pour longtemps les services qu’elle lui rendait » : Feuille de route pour l’adaptation des forêts au changement climatique, décembre 2020, p. 6, https://agriculture.gouv.fr/telecharger/123421 — « Dans les cas extrêmes de perturbations plus intenses ou plus fréquentes (ex. incendies), c’est l’écosystème forestier dans son ensemble qui disparaîtrait brutalement dans certains territoires » ; « la régression du couvert forestier […] pourrait diminuer la fonction épuratrice de la forêt »
+// « Ce risque reste concentré en région méditerranéenne, qui totalise 75 % des surfaces incendiées entre 2000 et 2024 » : IGN, Les indicateurs de gestion durable des forêts françaises, millésime 2025, livret, juillet 2026, p. 4 du PDF, https://www.ign.fr/files/default/2026-07/260701_IGN_Livret_Forets_VDEF.pdf — « 15 000 ha incendiés par an » (2000-2024) ; « Dont 75 % en région méditerranéenne » ; le lien [5] renvoie à la source n° 5 de la thématique forêts
+// « mais il s’étend vers l’Ouest et le Nord, à des massifs jusqu’ici peu confrontés au feu » : PNACC-3, mesure 7, p. 80 et p. 84 — « extension vers l’Ouest et le Nord » ; « préparer les acteurs des territoires historiquement peu confrontés aux feux de forêts »
+// « L’anticiper fait donc partie de l’adaptation de la forêt » : Feuille de route pour l’adaptation des forêts, p. 13, priorité 6 — « Conforter le dispositif DFCI dans les régions actuellement exposées et le développer dans celles qui pourraient le devenir »
+// « la gestion forestière peut limiter l’intensité des feux en réduisant la végétation combustible » : CNPF (eforOwn), p. 4 — « seul le combustible peut être modifié afin de réduire le risque de grands incendies de forêt » ; CRFB Nouvelle-Aquitaine, 21/11/2023, p. 5, https://draaf.nouvelle-aquitaine.agriculture.gouv.fr/IMG/pdf/3-itineraires_sylvicoles_cnpf-onf.pdf — « La réduction de la masse de combustible a un effet sur l’intensité du feu (PNUE 2022) »
+// « même si elle a peu d’effet face aux incendies les plus extrêmes » : CGAAER-IGEDD-IGA, tome 1, p. 76 — « pour les feux d’intensité faible à moyenne, mais auront peu d’effets pour les feux exceptionnels en condition extrême de chaleur et de sécheresse »
+// « reconstituer une forêt plus diversifiée et plus résiliente » : PNACC-3, mesure 38, p. 289-290 — « reconstituer les forêts touchées par des sinistres tels que […] les incendies » ; « un renouvellement forestier diversifié et résilient » ; loi n° 2023-580 du 10 juillet 2023, titre VIII — « Financer la reconstitution de forêts plus résilientes après un incendie » ; le lien [1] renvoie à la source n° 1 de la thématique forêts
+// « le nombre de départs de feux et les surfaces parcourues depuis 2006 » : databases_v2.feux_foret (une ligne par départ de feu, surface_parcourue, annee)
+// Points de vigilance :
+// CRFB 2023 : attribution CNPF-ONF déduite du seul nom de fichier ; la fiche CNPF suffit à justifier la phrase.
+// IGN : l’infographie ne précise pas son périmètre (hexagone et Corse ou outre-mer compris) ; le texte ne dit donc pas « en France ».
+// Écarté : régénération par graines ou par rejets, cônes des pins, scolytes, hêtre et chênes atlantiques (relèvent d’un futur indicateur sur les essences) ; érosion des sols (déjà dans FeuxForetText, effet sur la fertilité « controversé » selon le SRGS PACA, p. 4) ; forêt puits/source de carbone (« ne doit donc pas être surestimé », Sénat p. 55) ; lien dépérissement-inflammabilité (« pas aussi évident », CGAAER-IGEDD-IGA tome 1, p. 74).
+export const FeuxForetForetText = () => (
+  <>
+    <Body size="sm">
+      La forêt rend de nombreux services au territoire, mais elle peut aussi
+      brûler, et le feu y trouve d’autant plus de quoi prendre et se propager
+      qu’elle s’étend et accumule du bois, vivant ou mort. Les dégâts varient
+      d’une forêt à l’autre : certaines essences, comme le chêne-liège,
+      résistent mieux que d’autres aux incendies, mais là où les arbres n’ont
+      pas survécu, il faut parfois plusieurs décennies pour que la forêt se
+      reconstitue. Le danger vient surtout de feux trop rapprochés : s’ils
+      reviennent aux mêmes endroits avant qu’elle ait pu se régénérer, elle
+      peut{' '}
+      <ScrollToSourceTag sourceNumero={4}>
+        laisser durablement place à une garrigue ou à un maquis
+      </ScrollToSourceTag>
+      , et le territoire perd alors pour longtemps les services qu’elle lui
+      rendait.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Ce risque reste concentré en région méditerranéenne, qui totalise{' '}
+      <ScrollToSourceTag sourceNumero={5}>
+        75&nbsp;% des surfaces incendiées entre 2000 et 2024
+      </ScrollToSourceTag>
+      , mais il s’étend vers l’Ouest et le Nord, à des massifs jusqu’ici peu
+      confrontés au feu. L’anticiper fait donc partie de l’adaptation de la
+      forêt, avant comme après un incendie. En amont, la gestion forestière
+      peut limiter l’intensité des feux en réduisant la végétation
+      combustible, même si elle a peu d’effet face aux incendies les plus
+      extrêmes ; une fois le feu passé, il s’agit de{' '}
+      <ScrollToSourceTag sourceNumero={1}>
+        reconstituer une forêt plus diversifiée et plus résiliente
+      </ScrollToSourceTag>
+      . Pour situer le territoire, le nombre de départs de feux et les
+      surfaces parcourues depuis 2006 indiquent à quelle fréquence et sur
+      quelle étendue le feu l’a déjà touché.
+    </Body>
+  </>
+);
+
 {
   /* Sylviculture */
 }
