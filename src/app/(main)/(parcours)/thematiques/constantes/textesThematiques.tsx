@@ -346,7 +346,7 @@ export const thematiquesInfo: {
         <Body size="sm" style={{ marginBottom: '1rem' }}>
           Que perd votre territoire lorsque sa forêt s'affaiblit ? Bien plus que
           du bois : de la fraîcheur lors des fortes chaleurs, des sols
-          protégés, une attractivité touristique... Ces services reposent
+          protégés, son attractivité touristique... Ces services reposent
           tous sur la santé des arbres, désormais fragilisée par un climat
           qui change. Pour en prendre la mesure, plusieurs thématiques se croisent :
         </Body>
