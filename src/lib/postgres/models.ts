@@ -1137,6 +1137,16 @@ export type ForetsCommunalesModel = {
   surface_foret_possedee_sur_territoire_ha: number | null;
 };
 
+export type EmploisSylvicultureModel = {
+  code_geographique: string;
+  libelle_geographique: string;
+  epci: string;
+  libelle_epci: string;
+  postes_sylviculture: number | null;
+  postes_travail_bois: number | null;
+  postes_total: number | null;
+};
+
 export type StationSki = {
   id: string;
   nom: string;

@@ -1943,3 +1943,30 @@ model stations_ski {
   @@index([code_pnr], map: "stations_ski_pnr_index")
   @@schema("databases_v2")
 }
+
+model emplois_sylviculture {
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  postes_sylviculture  Float?
+  postes_travail_bois  Float?
+  postes_total         Float?
+
+  @@index([code_geographique], map: "emplois_sylviculture_communes_index")
+  @@index([departement], map: "emplois_sylviculture_departement_index")
+  @@index([epci], map: "emplois_sylviculture_epci_index")
+  @@index([ept], map: "emplois_sylviculture_ept_index")
+  @@index([libelle_petr], map: "emplois_sylviculture_petr_index")
+  @@index([code_pnr], map: "emplois_sylviculture_pnr_index")
+  @@index([index], map: "ix_emplois_sylviculture_index")
+  @@schema("databases_v2")
+}

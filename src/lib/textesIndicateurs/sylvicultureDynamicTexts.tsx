@@ -1,5 +1,6 @@
 import { Body } from '@/design-system/base/Textes';
 import { numberWithSpacesRegex } from '@/lib/utils/regex';
+import { Round } from '@/lib/utils/reusableFunctions/round';
 
 {
   /* Sylviculture */
@@ -98,6 +99,65 @@ export const ForetsCommunalesDynamicText = ({
           302&nbsp;ha.
         </>
       )}
+    </Body>
+  );
+};
+
+// Sources du texte (Insee, Flores 2024, DS_FLORES_A88_2024, mesure EMPL3112, divisions 02 + 16, téléchargé en novembre 2026) :
+// « En France, cette part est de 0,3 % » : (23 920 + 61 778) / 26 604 745 = 0,32 %
+// « moins de 0,1 % » : 90 EPCI entre 0 et 0,05 %, qui s’afficheraient 0,0 % au dixième
+// « Aucun poste salarié […] n’est recensé » : 95 EPCI sans poste dans les divisions 02 et 16
+// « Cette donnée n’est fiable que pour des territoires de plusieurs milliers de salariés » : Insee, https://www.insee.fr/fr/statistiques/8266010 — « à cette échelle géographique, les données n’ont pas fait l’objet d’une validation par des experts » ; « les analyses doivent porter sur des territoires « de taille suffisante » (plusieurs milliers de salariés) » ; à l’échelle de la commune, part et postes sont ceux de l’EPCI
+// « dans votre commune » : communes sans EPCI (table databases_v2.emplois_sylviculture, epci = 'ZZZZZZZZZ', libelle_epci « Sans objet ») : Île-de-Bréhat (22016), Île-de-Sein (29083), Ouessant (29155), L’Île-d’Yeu (85113) ; part et postes sont ceux de la commune
+// « Il n’y a pas de données référencées […] » : formule standard du site
+export const EmploisSylvicultureDynamicText = ({
+  part,
+  postes,
+  type,
+  sansEpci
+}: {
+  part: number | null;
+  postes: number | null;
+  type: string;
+  sansEpci: boolean;
+}) => {
+  const style = { color: 'var(--gris-dark)' };
+  const lieu =
+    type !== 'commune'
+      ? 'sur votre territoire'
+      : sansEpci
+        ? 'dans votre commune'
+        : 'dans votre EPCI';
+  if (part === null || postes === null) {
+    return (
+      <Body weight="bold" style={style}>
+        Il n’y a pas de données référencées sur le territoire que vous avez
+        sélectionné
+      </Body>
+    );
+  }
+  const avertissementCommune =
+    type === 'commune'
+      ? 'Cette donnée n’est fiable que pour des territoires de plusieurs milliers de salariés. '
+      : '';
+  if (postes === 0) {
+    return (
+      <Body weight="bold" style={style}>
+        {avertissementCommune}Aucun poste salarié de la sylviculture, de
+        l’exploitation forestière ou du travail du bois n’est recensé {lieu}. En
+        France, ces secteurs représentent 0,3&nbsp;% des postes salariés.
+      </Body>
+    );
+  }
+  return (
+    <Body weight="bold" style={style}>
+      {avertissementCommune}
+      {lieu.charAt(0).toUpperCase() + lieu.slice(1)}, la
+      sylviculture, l’exploitation forestière et le travail du bois
+      représentent {part < 0.1 ? 'moins de 0,1' : Round(part, 1)}&nbsp;% des
+      postes salariés, soit {numberWithSpacesRegex(postes)}{' '}
+      {postes === 1 ? 'poste' : 'postes'}. En France, cette part est de
+      0,3&nbsp;%.
     </Body>
   );
 };

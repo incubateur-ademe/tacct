@@ -11,6 +11,7 @@ import {
   ArboviroseModel,
   ArreteCatNat,
   ConsommationNAF,
+  EmploisSylvicultureModel,
   ExportCoursDeau,
   ForetsCommunalesModel,
   IncendiesForet,
@@ -821,6 +822,20 @@ export const IndicatorExportTransformations = {
                     el.surface_foret_possedee_sur_territoire_ha) *
                     100
                 ) / 100
+        };
+      });
+    },
+    EmploisSylviculture: (emploisSylviculture: EmploisSylvicultureModel[]) => {
+      return emploisSylviculture.map((el) => {
+        return {
+          'Code commune': el.code_geographique,
+          Commune: el.libelle_geographique,
+          'Code EPCI': el.epci,
+          EPCI: el.libelle_epci,
+          'Postes salariés en sylviculture et exploitation forestière':
+            el.postes_sylviculture,
+          'Postes salariés en travail du bois': el.postes_travail_bois,
+          'Postes salariés, tous secteurs': el.postes_total
         };
       });
     }

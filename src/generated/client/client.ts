@@ -466,3 +466,8 @@ export type forets_communales = Prisma.forets_communalesModel
  * 
  */
 export type stations_ski = Prisma.stations_skiModel
+/**
+ * Model emplois_sylviculture
+ * 
+ */
+export type emplois_sylviculture = Prisma.emplois_sylvicultureModel

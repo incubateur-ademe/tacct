@@ -729,6 +729,35 @@ export const foretsCommunalesTooltipText = (
 );
 
 // Sources du texte :
+// « La base de données Flores de l’Insee recense les postes salariés de chaque secteur d’activité » : Insee, Flores 2024, présentation, https://www.insee.fr/fr/metadonnees/source/operation/s2289/presentation — « Flores permet de décrire les emplois salariés et leurs établissements, par localisation géographique, secteur d’activité et type d’employeur »
+// « à partir des déclarations sociales des employeurs » : Insee, Flores 2024, processus statistique, https://www.insee.fr/fr/metadonnees/source/operation/s2289/processus-statistique — « issue d’une synthèse de sources administratives : déclarations sociales nominatives (DSN) »
+// « Sylviculture et exploitation forestière » ; « Travail du bois » (hors fabrication de meubles) : divisions 02 et 16 de la NAF dans DS_FLORES_A88_2024 — « Travail du bois et fabrication d’articles en bois et en liège, à l’exception des meubles ; fabrication d’articles en vannerie et sparterie »
+// « Chaque poste est rattaché à l’établissement employeur, et non à la parcelle ou au chantier où l’on travaille » : Insee, Flores 2024, présentation, « Concepts et définitions statistiques » — « Un poste de travail est défini comme le croisement entre une personne salariée et un établissement lieu de travail »
+// « près de 3 800 postes de la sylviculture sont rattachés à un seul établissement de Maisons-Alfort » : DS_FLORES_A88_2024, commune 94046, division 02 — EMPL3112 = 3 759, UNIT_LOC = 1
+// « où se trouve le siège de l’Office national des forêts (ONF) » : Plan national d’actions scolytes & bois de crise, avril 2024, p. 4 (p. 5 du PDF), https://agriculture.gouv.fr/telecharger/142886 — « Le siège de l’ONF à Maisons-Alfort »
+// « Les chefs d’entreprise indépendants ne sont pas comptés » : Insee, Flores 2024, présentation — Flores décrit « les emplois salariés »
+// « deux sur trois travaillent sans salarié » : ministère de l’Agriculture, Entreprises de travaux forestiers : quels profils à l’avenir ?, décembre 2021, p. 45 (données MSA 2019), https://agriculture.gouv.fr/telecharger/129139 — « Ils sont seulement 33 % dans le secteur de l’exploitation de bois à disposer de main d’œuvre, et 32 % dans le secteur de la sylviculture »
+// Point de vigilance : la donnée ne nomme pas l’employeur de Maisons-Alfort ; le texte juxtapose les deux faits sans affirmer qu’il s’agit de l’ONF.
+export const emploisSylvicultureTooltipText = (
+  <Body weight="bold" size="sm">
+    La base de données Flores de l’Insee recense les postes salariés de chaque
+    secteur d’activité, à partir des déclarations sociales des employeurs.
+    Deux secteurs sont retenus ici : « Sylviculture et exploitation
+    forestière » et « Travail du bois » (hors fabrication de meubles). Chaque
+    poste est rattaché à l’établissement employeur, et non à la parcelle ou au
+    chantier où l’on travaille. Ainsi, près de 3&nbsp;800 postes de la
+    sylviculture sont rattachés à un seul établissement de Maisons-Alfort
+    (Val-de-Marne), où se trouve le siège de l’Office national des forêts
+    (ONF).
+    <br></br>
+    <br></br>
+    Les chefs d’entreprise indépendants ne sont pas comptés. Or, dans la
+    sylviculture et l’exploitation forestière, deux sur trois travaillent sans
+    salarié : leur activité n’apparaît donc pas dans la donnée.
+  </Body>
+);
+
+// Sources du texte :
 // « l’âge moyen des remontées mécaniques d’une station, pondéré par leur moment de puissance » : INRAE, formule de l’âge du parc (somme des âges multipliés par le moment de puissance, divisée par la somme des moments de puissance) ; notebook stations_ski, cellule 7
 // « le produit de leur débit horaire par leur dénivelée » : STRMTG, Rapport annuel 2025/2026, § 1.1.1, p. 9, https://www.strmtg.developpement-durable.gouv.fr/IMG/pdf/rapport_complet_rm_2026-09-23.pdf — « le produit du débit horaire autorisé de l’appareil, exprimé en p/h, par sa dénivelée »
 // « Cet indicateur résume donc à lui seul plusieurs caractéristiques d’une station » : INRAE (LESSEM), courriel du 06/11/2026 — « beaucoup de colinéarité entre l’âge du parc et d’autres indicateurs de la BD »

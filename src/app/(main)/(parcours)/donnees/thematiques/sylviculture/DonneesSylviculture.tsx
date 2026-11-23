@@ -3,14 +3,18 @@ import ScrollToHash from '@/components/interactions/ScrollToHash';
 import { SourcesSection } from '@/components/interactions/scrollToSource';
 import { LoaderText } from '@/components/ui/loader';
 import { Body, H1, H2, H3 } from '@/design-system/base/Textes';
-import { ForetsCommunalesModel } from '@/lib/postgres/models';
-import { GetForetsCommunales } from '@/lib/queries/databases/sylviculture';
+import { EmploisSylvicultureModel, ForetsCommunalesModel } from '@/lib/postgres/models';
+import {
+  GetEmploisSylviculture,
+  GetForetsCommunales
+} from '@/lib/queries/databases/sylviculture';
 import { GetCommunesCoordinates } from '@/lib/queries/postgis/cartographie';
 import { useSearchParams } from 'next/navigation';
 import { useLayoutEffect, useState } from 'react';
 import { sommaireThematiques } from '../../../thematiques/constantes/textesThematiques';
 import styles from '../../explorerDonnees.module.scss';
 import { ForetsCommunales } from '../../indicateurs/sylviculture/1-ForetsCommunales';
+import { EmploisSylviculture } from '../../indicateurs/sylviculture/2-EmploisSylviculture';
 
 interface Props {
   coordonneesCommunes: {
@@ -18,15 +22,24 @@ interface Props {
     bbox: { minLng: number; minLat: number; maxLng: number; maxLat: number };
   } | null;
   foretsCommunales: ForetsCommunalesModel[];
+  emploisSylviculture: EmploisSylvicultureModel[];
 }
 
-export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: Props) => {
+export const DonneesSylviculture = ({
+  coordonneesCommunes,
+  foretsCommunales,
+  emploisSylviculture
+}: Props) => {
   const searchParams = useSearchParams();
   const thematique = searchParams.get('thematique') as 'Sylviculture';
   const code = searchParams.get('code')!;
   const libelle = searchParams.get('libelle')!;
   const type = searchParams.get('type')!;
-  const [data, setData] = useState({ coordonneesCommunes, foretsCommunales });
+  const [data, setData] = useState({
+    coordonneesCommunes,
+    foretsCommunales,
+    emploisSylviculture
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const ongletsMenu = sommaireThematiques[thematique];
@@ -38,13 +51,16 @@ export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: P
     }
     setIsLoading(true);
     void (async () => {
-      const [newCoordonneesCommunes, newForetsCommunales] = await Promise.all([
-        GetCommunesCoordinates(code, libelle, type),
-        GetForetsCommunales(code, libelle, type)
-      ]);
+      const [newCoordonneesCommunes, newForetsCommunales, newEmploisSylviculture] =
+        await Promise.all([
+          GetCommunesCoordinates(code, libelle, type),
+          GetForetsCommunales(code, libelle, type),
+          GetEmploisSylviculture(code, libelle, type)
+        ]);
       setData({
         coordonneesCommunes: newCoordonneesCommunes,
-        foretsCommunales: newForetsCommunales
+        foretsCommunales: newForetsCommunales,
+        emploisSylviculture: newEmploisSylviculture
       });
       setIsLoading(false);
     })();
@@ -87,7 +103,11 @@ export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: P
         </H2>
 
         {/* Forêts communales */}
-        <div id="Forêts-communales" className={styles.indicateurMapWrapper}>
+        <div
+          id="Forêts-communales"
+          className={styles.indicateurMapWrapper}
+          style={{ borderBottom: '1px solid var(--gris-medium)' }}
+        >
           <div className={styles.h3Titles}>
             <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
               Forêts communales
@@ -97,6 +117,16 @@ export const DonneesSylviculture = ({ coordonneesCommunes, foretsCommunales }: P
             foretsCommunales={data.foretsCommunales}
             coordonneesCommunes={data.coordonneesCommunes}
           />
+        </div>
+
+        {/* Emplois de la sylviculture */}
+        <div id="Emplois-de-la-sylviculture" className={styles.indicateurWrapper}>
+          <div className={styles.h3Titles}>
+            <H3 style={{ color: 'var(--principales-vert)', fontSize: '1.25rem' }}>
+              Emplois de la sylviculture
+            </H3>
+          </div>
+          <EmploisSylviculture emploisSylviculture={data.emploisSylviculture} />
         </div>
       </section>
 

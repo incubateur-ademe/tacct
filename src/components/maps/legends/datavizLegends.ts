@@ -994,3 +994,18 @@ export const stationsSkiTailleLegend = [
   { value: 'Aucune station', color: 'white' },
   ...stationsSkiTailleClasses
 ];
+
+export const emploisSylviculturePieChartLegend = [
+  {
+    value: 'Sylviculture et exploitation forestière',
+    color: couleurs.graphiques.vert[1]
+  },
+  {
+    value: 'Travail du bois',
+    color: couleurs.graphiques.orange[1]
+  },
+  {
+    value: 'Autres secteurs',
+    color: couleurs.gris.medium
+  }
+];

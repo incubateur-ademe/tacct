@@ -1146,6 +1146,41 @@ export const ForetsCommunalesText = () => (
   </>
 );
 
+// Sources du texte :
+// « dépendent directement de la ressource forestière » ; « Une perte de forêt les prive d’une partie de leur matière première » : Feuille de route pour l’adaptation des forêts au changement climatique, décembre 2020, p. 6, https://agriculture.gouv.fr/telecharger/123421 — « cette mortalité d’essences forestières engendre une perte sèche de matière première sur le moyen terme pour la filière bois »
+// « et compromet leur approvisionnement » : Feuille de route 2020, p. 6 — « l’afflux de bois, conséquence de ces dépérissements brutaux, désorganise les marchés sur le court terme et hypothèque les approvisionnements des entreprises à plus long terme »
+// « avec des conséquences sur l’industrie du bois et sur les emplois qui y sont liés » : PNACC-3, mesure 38 « Assurer la résilience des forêts, des services associés et de l’économie de la filière bois », contexte, https://www.ecologie.gouv.fr/sites/default/files/documents/Fiches_Axe_3_PNACC-3.pdf — « en prévenir les conséquences pour l’aval de la filière et l’industrie du bois »
+// « souvent de petite taille » : Insee Première n° 2035, janvier 2025, p. 2, https://www.insee.fr/fr/statistiques/8341258 — sylviculture : « six salariés en moyenne » ; travail du bois : « Seulement 4 500 d’entre eux emploient les 54 400 salariés en ETP du segment »
+// « nombreuses à être implantées à proximité des forêts exploitées » : Insee Première n° 2035, p. 2 et 3 — « concentrés dans les départements les plus boisés et où la forêt est exploitée » ; « de nombreux établissements sont localisés à proximité des forêts productives »
+// « l’activité liée à une forêt se répartit ainsi entre plusieurs communes voisines » : demande de l’équipe experte — « l’économie se déverse (est dispatchée) sur les communes alentours »
+// « cette activité représente donc souvent une part faible » : Insee, Flores 2024 (DS_FLORES_A88_2024), divisions 02 + 16 — part inférieure à 0,38 % pour la moitié des 1 253 EPCI
+// « qui ne rend pas forcément compte de son importance » : demande de l’équipe experte — « Des petits chiffres ne sont pas forcément négligeables »
+// « les entreprises d’exploitation forestière […] sont des maillons indispensables de la filière » : CGAAER et IGEDD, Valorisation des bois de crise et résilience de la filière forêt-bois : vers une culture du risque, rapport n° 24073, février 2025, p. 42-43, § 4.1.2, https://agriculture.gouv.fr/telecharger/151063 — « Les entreprises d’exploitation forestière sont le maillon primordial pour préserver une capacité de la filière forêt-bois durant les crises » ; « le tissu des ETF, pourtant indispensable à la filière forêt-bois »
+// « comme les scieries […], entre la forêt et l’industrie qui transforme son bois » : ministère de l’Agriculture, Entreprises de travaux forestiers : quels profils à l’avenir ?, décembre 2021, p. 25, encart n° 3, https://agriculture.gouv.fr/telecharger/129139 — « Les scieries, un autre maillon indispensable, à l’intersection de l’amont et de l’aval »
+// Point de vigilance : la Feuille de route et le PNACC-3 ne parlent pas d’emplois, mais d’« approvisionnements des entreprises » et d’« économie de la filière bois ».
+export const EmploisSylvicultureText = () => (
+  <>
+    <Body size="sm">
+      Les entreprises qui exploitent la forêt et transforment son bois
+      dépendent directement de la ressource forestière. Une perte de forêt les
+      prive d’une partie de leur matière première et compromet leur
+      approvisionnement, avec des conséquences sur l’industrie du bois et sur
+      les emplois qui y sont liés.
+    </Body>
+    <Body size="sm" style={{ marginTop: '1rem' }}>
+      Ces entreprises, souvent de petite taille, sont nombreuses à être
+      implantées à proximité des forêts exploitées, sans être nécessairement
+      situées dans la commune où se trouve la forêt : l’activité liée à une
+      forêt se répartit ainsi entre plusieurs communes voisines. Rapportée à
+      l’emploi salarié d’un seul territoire, cette activité représente donc
+      souvent une part faible, qui ne rend pas forcément compte de son
+      importance : les entreprises d’exploitation forestière comme les scieries
+      sont des maillons indispensables de la filière, entre la forêt et
+      l’industrie qui transforme son bois.
+    </Body>
+  </>
+);
+
 {
   /* Tourisme */
 }

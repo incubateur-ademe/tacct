@@ -196,7 +196,7 @@ export const sommaireThematiques = {
         id: 'section1',
         thematique: 'Sylviculture',
         icone: '🪵',
-        sousCategories: ['Forêts communales']
+        sousCategories: ['Forêts communales', 'Emplois de la sylviculture']
       }
     ]
   },

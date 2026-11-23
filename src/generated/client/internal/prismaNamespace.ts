@@ -481,7 +481,8 @@ export const ModelName = {
   user_besoin: 'user_besoin',
   tacctoscope_ressources: 'tacctoscope_ressources',
   forets_communales: 'forets_communales',
-  stations_ski: 'stations_ski'
+  stations_ski: 'stations_ski',
+  emplois_sylviculture: 'emplois_sylviculture'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -497,7 +498,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources" | "forets_communales" | "stations_ski"
+    modelProps: "sandbox_users" | "databases_v2_agriculture" | "databases_v2_agriculture_bio" | "databases_v2_aot_40" | "databases_v2_arretes_catnat" | "databases_v2_atlas_biodiversite" | "databases_v2_collectivites_searchbar" | "databases_v2_confort_thermique" | "databases_v2_consommation_espaces_naf" | "databases_v2_export_cours_d_eau" | "databases_v2_feux_foret" | "databases_v2_lcz_couverture" | "databases_v2_patch4c" | "databases_v2_qualite_sites_baignade" | "databases_v2_surfaces_agricoles" | "databases_v2_table_commune" | "databases_v2_table_territoires" | "databases_v2_rga" | "postgis_v2_communes_drom" | "postgis_v2_erosion_cotiere" | "postgis_v2_etat_cours_d_eau" | "spatial_ref_sys" | "all_autocapture_raw" | "all_pageview_raw" | "baserow_evenements" | "baserow_territoires" | "boutons_export_raw" | "boutons_homepage" | "couverture_population" | "north_star_metric" | "ressources_consultees" | "thematique" | "secheresses" | "o3_seuils" | "qualite_sites_baignade_new" | "prelevements_eau_new" | "arbovirose" | "inondations_par_debordement" | "climate" | "climate_hazard" | "climate_hazard_category" | "climate_hazard_category_department" | "command_migration" | "command_process" | "commune" | "config" | "department" | "doctrine_migration_versions" | "domain" | "file" | "future_climate" | "future_exposure" | "impact" | "impact_action" | "impact_action_review" | "impact_climate_hazard" | "impact_competence" | "impact_level" | "impact_review_criteria" | "impact_strategy" | "impact_theme" | "impact_trajectory" | "impact_trajectory_impact_action" | "messenger_messages" | "observed_exposure" | "observed_exposure_impact" | "old_region" | "page" | "page_info" | "project_sheet_detail" | "project_sheet_detail_relation" | "project_sheet_question" | "region" | "skill_territory" | "study" | "study_office" | "thematic" | "token" | "user" | "user_study" | "tacctoscope_answer" | "user_besoin" | "tacctoscope_ressources" | "forets_communales" | "stations_ski" | "emplois_sylviculture"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -6759,6 +6760,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    emplois_sylviculture: {
+      payload: Prisma.$emplois_sylviculturePayload<ExtArgs>
+      fields: Prisma.emplois_sylvicultureFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.emplois_sylvicultureFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.emplois_sylvicultureFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        findFirst: {
+          args: Prisma.emplois_sylvicultureFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.emplois_sylvicultureFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        findMany: {
+          args: Prisma.emplois_sylvicultureFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>[]
+        }
+        create: {
+          args: Prisma.emplois_sylvicultureCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        createMany: {
+          args: Prisma.emplois_sylvicultureCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.emplois_sylvicultureCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>[]
+        }
+        delete: {
+          args: Prisma.emplois_sylvicultureDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        update: {
+          args: Prisma.emplois_sylvicultureUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        deleteMany: {
+          args: Prisma.emplois_sylvicultureDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.emplois_sylvicultureUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.emplois_sylvicultureUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>[]
+        }
+        upsert: {
+          args: Prisma.emplois_sylvicultureUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$emplois_sylviculturePayload>
+        }
+        aggregate: {
+          args: Prisma.Emplois_sylvicultureAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateEmplois_sylviculture>
+        }
+        groupBy: {
+          args: Prisma.emplois_sylvicultureGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Emplois_sylvicultureGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.emplois_sylvicultureCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Emplois_sylvicultureCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -8425,6 +8500,27 @@ export const Stations_skiScalarFieldEnum = {
 export type Stations_skiScalarFieldEnum = (typeof Stations_skiScalarFieldEnum)[keyof typeof Stations_skiScalarFieldEnum]
 
 
+export const Emplois_sylvicultureScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  postes_sylviculture: 'postes_sylviculture',
+  postes_travail_bois: 'postes_travail_bois',
+  postes_total: 'postes_total'
+} as const
+
+export type Emplois_sylvicultureScalarFieldEnum = (typeof Emplois_sylvicultureScalarFieldEnum)[keyof typeof Emplois_sylvicultureScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -8798,6 +8894,7 @@ export type GlobalOmitConfig = {
   tacctoscope_ressources?: Prisma.tacctoscope_ressourcesOmit
   forets_communales?: Prisma.forets_communalesOmit
   stations_ski?: Prisma.stations_skiOmit
+  emplois_sylviculture?: Prisma.emplois_sylvicultureOmit
 }
 
 /* Types for Logging */

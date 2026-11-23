@@ -135,7 +135,8 @@ export const ModelName = {
   user_besoin: 'user_besoin',
   tacctoscope_ressources: 'tacctoscope_ressources',
   forets_communales: 'forets_communales',
-  stations_ski: 'stations_ski'
+  stations_ski: 'stations_ski',
+  emplois_sylviculture: 'emplois_sylviculture'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1779,6 +1780,27 @@ export const Stations_skiScalarFieldEnum = {
 } as const
 
 export type Stations_skiScalarFieldEnum = (typeof Stations_skiScalarFieldEnum)[keyof typeof Stations_skiScalarFieldEnum]
+
+
+export const Emplois_sylvicultureScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  postes_sylviculture: 'postes_sylviculture',
+  postes_travail_bois: 'postes_travail_bois',
+  postes_total: 'postes_total'
+} as const
+
+export type Emplois_sylvicultureScalarFieldEnum = (typeof Emplois_sylvicultureScalarFieldEnum)[keyof typeof Emplois_sylvicultureScalarFieldEnum]
 
 
 export const SortOrder = {
