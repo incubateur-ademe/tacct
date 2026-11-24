@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `prelevements_eau_new` model and its related types.
+ * This file exports the `prelevements_eau` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,20 +13,20 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model prelevements_eau_new
+ * Model prelevements_eau
  * 
  */
-export type prelevements_eau_newModel = runtime.Types.Result.DefaultSelection<Prisma.$prelevements_eau_newPayload>
+export type prelevements_eauModel = runtime.Types.Result.DefaultSelection<Prisma.$prelevements_eauPayload>
 
-export type AggregatePrelevements_eau_new = {
-  _count: Prelevements_eau_newCountAggregateOutputType | null
-  _avg: Prelevements_eau_newAvgAggregateOutputType | null
-  _sum: Prelevements_eau_newSumAggregateOutputType | null
-  _min: Prelevements_eau_newMinAggregateOutputType | null
-  _max: Prelevements_eau_newMaxAggregateOutputType | null
+export type AggregatePrelevements_eau = {
+  _count: Prelevements_eauCountAggregateOutputType | null
+  _avg: Prelevements_eauAvgAggregateOutputType | null
+  _sum: Prelevements_eauSumAggregateOutputType | null
+  _min: Prelevements_eauMinAggregateOutputType | null
+  _max: Prelevements_eauMaxAggregateOutputType | null
 }
 
-export type Prelevements_eau_newAvgAggregateOutputType = {
+export type Prelevements_eauAvgAggregateOutputType = {
   index: number | null
   region: number | null
   annee_2008_aep: number | null
@@ -136,7 +136,7 @@ export type Prelevements_eau_newAvgAggregateOutputType = {
   annee_2023_irr: number | null
 }
 
-export type Prelevements_eau_newSumAggregateOutputType = {
+export type Prelevements_eauSumAggregateOutputType = {
   index: number | null
   region: number | null
   annee_2008_aep: number | null
@@ -246,127 +246,7 @@ export type Prelevements_eau_newSumAggregateOutputType = {
   annee_2023_irr: number | null
 }
 
-export type Prelevements_eau_newMinAggregateOutputType = {
-  index: number | null
-  code_geographique: string | null
-  libelle_geographique: string | null
-  epci: string | null
-  libelle_epci: string | null
-  departement: string | null
-  libelle_departement: string | null
-  region: number | null
-  ept: string | null
-  libelle_petr: string | null
-  code_pnr: string | null
-  libelle_pnr: string | null
-  annee_2008_aep: number | null
-  annee_2008_bar: number | null
-  annee_2008_can: number | null
-  annee_2008_ene: number | null
-  annee_2008_ind: number | null
-  annee_2008_irr: number | null
-  annee_2009_aep: number | null
-  annee_2009_bar: number | null
-  annee_2009_can: number | null
-  annee_2009_ene: number | null
-  annee_2009_ind: number | null
-  annee_2009_irr: number | null
-  annee_2010_aep: number | null
-  annee_2010_bar: number | null
-  annee_2010_can: number | null
-  annee_2010_ene: number | null
-  annee_2010_ind: number | null
-  annee_2010_irr: number | null
-  annee_2011_aep: number | null
-  annee_2011_bar: number | null
-  annee_2011_can: number | null
-  annee_2011_ene: number | null
-  annee_2011_ind: number | null
-  annee_2011_irr: number | null
-  annee_2012_aep: number | null
-  annee_2012_bar: number | null
-  annee_2012_can: number | null
-  annee_2012_ene: number | null
-  annee_2012_exo: number | null
-  annee_2012_ind: number | null
-  annee_2012_irr: number | null
-  annee_2013_aep: number | null
-  annee_2013_bar: number | null
-  annee_2013_can: number | null
-  annee_2013_ene: number | null
-  annee_2013_ind: number | null
-  annee_2013_irr: number | null
-  annee_2014_aep: number | null
-  annee_2014_bar: number | null
-  annee_2014_can: number | null
-  annee_2014_ene: number | null
-  annee_2014_ind: number | null
-  annee_2014_irr: number | null
-  annee_2015_aep: number | null
-  annee_2015_bar: number | null
-  annee_2015_can: number | null
-  annee_2015_ene: number | null
-  annee_2015_exo: number | null
-  annee_2015_ind: number | null
-  annee_2015_irr: number | null
-  annee_2016_aep: number | null
-  annee_2016_bar: number | null
-  annee_2016_can: number | null
-  annee_2016_ene: number | null
-  annee_2016_exo: number | null
-  annee_2016_ind: number | null
-  annee_2016_irr: number | null
-  annee_2017_aep: number | null
-  annee_2017_bar: number | null
-  annee_2017_can: number | null
-  annee_2017_ene: number | null
-  annee_2017_exo: number | null
-  annee_2017_ind: number | null
-  annee_2017_irr: number | null
-  annee_2018_aep: number | null
-  annee_2018_bar: number | null
-  annee_2018_can: number | null
-  annee_2018_ene: number | null
-  annee_2018_exo: number | null
-  annee_2018_ind: number | null
-  annee_2018_irr: number | null
-  annee_2019_aep: number | null
-  annee_2019_bar: number | null
-  annee_2019_can: number | null
-  annee_2019_ene: number | null
-  annee_2019_exo: number | null
-  annee_2019_ind: number | null
-  annee_2019_irr: number | null
-  annee_2020_aep: number | null
-  annee_2020_bar: number | null
-  annee_2020_can: number | null
-  annee_2020_ene: number | null
-  annee_2020_exo: number | null
-  annee_2020_ind: number | null
-  annee_2020_irr: number | null
-  annee_2021_aep: number | null
-  annee_2021_bar: number | null
-  annee_2021_can: number | null
-  annee_2021_ene: number | null
-  annee_2021_exo: number | null
-  annee_2021_ind: number | null
-  annee_2021_irr: number | null
-  annee_2022_aep: number | null
-  annee_2022_bar: number | null
-  annee_2022_can: number | null
-  annee_2022_ene: number | null
-  annee_2022_ind: number | null
-  annee_2022_irr: number | null
-  annee_2023_aep: number | null
-  annee_2023_bar: number | null
-  annee_2023_can: number | null
-  annee_2023_ene: number | null
-  annee_2023_exo: number | null
-  annee_2023_ind: number | null
-  annee_2023_irr: number | null
-}
-
-export type Prelevements_eau_newMaxAggregateOutputType = {
+export type Prelevements_eauMinAggregateOutputType = {
   index: number | null
   code_geographique: string | null
   libelle_geographique: string | null
@@ -486,7 +366,127 @@ export type Prelevements_eau_newMaxAggregateOutputType = {
   annee_2023_irr: number | null
 }
 
-export type Prelevements_eau_newCountAggregateOutputType = {
+export type Prelevements_eauMaxAggregateOutputType = {
+  index: number | null
+  code_geographique: string | null
+  libelle_geographique: string | null
+  epci: string | null
+  libelle_epci: string | null
+  departement: string | null
+  libelle_departement: string | null
+  region: number | null
+  ept: string | null
+  libelle_petr: string | null
+  code_pnr: string | null
+  libelle_pnr: string | null
+  annee_2008_aep: number | null
+  annee_2008_bar: number | null
+  annee_2008_can: number | null
+  annee_2008_ene: number | null
+  annee_2008_ind: number | null
+  annee_2008_irr: number | null
+  annee_2009_aep: number | null
+  annee_2009_bar: number | null
+  annee_2009_can: number | null
+  annee_2009_ene: number | null
+  annee_2009_ind: number | null
+  annee_2009_irr: number | null
+  annee_2010_aep: number | null
+  annee_2010_bar: number | null
+  annee_2010_can: number | null
+  annee_2010_ene: number | null
+  annee_2010_ind: number | null
+  annee_2010_irr: number | null
+  annee_2011_aep: number | null
+  annee_2011_bar: number | null
+  annee_2011_can: number | null
+  annee_2011_ene: number | null
+  annee_2011_ind: number | null
+  annee_2011_irr: number | null
+  annee_2012_aep: number | null
+  annee_2012_bar: number | null
+  annee_2012_can: number | null
+  annee_2012_ene: number | null
+  annee_2012_exo: number | null
+  annee_2012_ind: number | null
+  annee_2012_irr: number | null
+  annee_2013_aep: number | null
+  annee_2013_bar: number | null
+  annee_2013_can: number | null
+  annee_2013_ene: number | null
+  annee_2013_ind: number | null
+  annee_2013_irr: number | null
+  annee_2014_aep: number | null
+  annee_2014_bar: number | null
+  annee_2014_can: number | null
+  annee_2014_ene: number | null
+  annee_2014_ind: number | null
+  annee_2014_irr: number | null
+  annee_2015_aep: number | null
+  annee_2015_bar: number | null
+  annee_2015_can: number | null
+  annee_2015_ene: number | null
+  annee_2015_exo: number | null
+  annee_2015_ind: number | null
+  annee_2015_irr: number | null
+  annee_2016_aep: number | null
+  annee_2016_bar: number | null
+  annee_2016_can: number | null
+  annee_2016_ene: number | null
+  annee_2016_exo: number | null
+  annee_2016_ind: number | null
+  annee_2016_irr: number | null
+  annee_2017_aep: number | null
+  annee_2017_bar: number | null
+  annee_2017_can: number | null
+  annee_2017_ene: number | null
+  annee_2017_exo: number | null
+  annee_2017_ind: number | null
+  annee_2017_irr: number | null
+  annee_2018_aep: number | null
+  annee_2018_bar: number | null
+  annee_2018_can: number | null
+  annee_2018_ene: number | null
+  annee_2018_exo: number | null
+  annee_2018_ind: number | null
+  annee_2018_irr: number | null
+  annee_2019_aep: number | null
+  annee_2019_bar: number | null
+  annee_2019_can: number | null
+  annee_2019_ene: number | null
+  annee_2019_exo: number | null
+  annee_2019_ind: number | null
+  annee_2019_irr: number | null
+  annee_2020_aep: number | null
+  annee_2020_bar: number | null
+  annee_2020_can: number | null
+  annee_2020_ene: number | null
+  annee_2020_exo: number | null
+  annee_2020_ind: number | null
+  annee_2020_irr: number | null
+  annee_2021_aep: number | null
+  annee_2021_bar: number | null
+  annee_2021_can: number | null
+  annee_2021_ene: number | null
+  annee_2021_exo: number | null
+  annee_2021_ind: number | null
+  annee_2021_irr: number | null
+  annee_2022_aep: number | null
+  annee_2022_bar: number | null
+  annee_2022_can: number | null
+  annee_2022_ene: number | null
+  annee_2022_ind: number | null
+  annee_2022_irr: number | null
+  annee_2023_aep: number | null
+  annee_2023_bar: number | null
+  annee_2023_can: number | null
+  annee_2023_ene: number | null
+  annee_2023_exo: number | null
+  annee_2023_ind: number | null
+  annee_2023_irr: number | null
+}
+
+export type Prelevements_eauCountAggregateOutputType = {
   index: number
   code_geographique: number
   libelle_geographique: number
@@ -608,7 +608,7 @@ export type Prelevements_eau_newCountAggregateOutputType = {
 }
 
 
-export type Prelevements_eau_newAvgAggregateInputType = {
+export type Prelevements_eauAvgAggregateInputType = {
   index?: true
   region?: true
   annee_2008_aep?: true
@@ -718,7 +718,7 @@ export type Prelevements_eau_newAvgAggregateInputType = {
   annee_2023_irr?: true
 }
 
-export type Prelevements_eau_newSumAggregateInputType = {
+export type Prelevements_eauSumAggregateInputType = {
   index?: true
   region?: true
   annee_2008_aep?: true
@@ -828,127 +828,7 @@ export type Prelevements_eau_newSumAggregateInputType = {
   annee_2023_irr?: true
 }
 
-export type Prelevements_eau_newMinAggregateInputType = {
-  index?: true
-  code_geographique?: true
-  libelle_geographique?: true
-  epci?: true
-  libelle_epci?: true
-  departement?: true
-  libelle_departement?: true
-  region?: true
-  ept?: true
-  libelle_petr?: true
-  code_pnr?: true
-  libelle_pnr?: true
-  annee_2008_aep?: true
-  annee_2008_bar?: true
-  annee_2008_can?: true
-  annee_2008_ene?: true
-  annee_2008_ind?: true
-  annee_2008_irr?: true
-  annee_2009_aep?: true
-  annee_2009_bar?: true
-  annee_2009_can?: true
-  annee_2009_ene?: true
-  annee_2009_ind?: true
-  annee_2009_irr?: true
-  annee_2010_aep?: true
-  annee_2010_bar?: true
-  annee_2010_can?: true
-  annee_2010_ene?: true
-  annee_2010_ind?: true
-  annee_2010_irr?: true
-  annee_2011_aep?: true
-  annee_2011_bar?: true
-  annee_2011_can?: true
-  annee_2011_ene?: true
-  annee_2011_ind?: true
-  annee_2011_irr?: true
-  annee_2012_aep?: true
-  annee_2012_bar?: true
-  annee_2012_can?: true
-  annee_2012_ene?: true
-  annee_2012_exo?: true
-  annee_2012_ind?: true
-  annee_2012_irr?: true
-  annee_2013_aep?: true
-  annee_2013_bar?: true
-  annee_2013_can?: true
-  annee_2013_ene?: true
-  annee_2013_ind?: true
-  annee_2013_irr?: true
-  annee_2014_aep?: true
-  annee_2014_bar?: true
-  annee_2014_can?: true
-  annee_2014_ene?: true
-  annee_2014_ind?: true
-  annee_2014_irr?: true
-  annee_2015_aep?: true
-  annee_2015_bar?: true
-  annee_2015_can?: true
-  annee_2015_ene?: true
-  annee_2015_exo?: true
-  annee_2015_ind?: true
-  annee_2015_irr?: true
-  annee_2016_aep?: true
-  annee_2016_bar?: true
-  annee_2016_can?: true
-  annee_2016_ene?: true
-  annee_2016_exo?: true
-  annee_2016_ind?: true
-  annee_2016_irr?: true
-  annee_2017_aep?: true
-  annee_2017_bar?: true
-  annee_2017_can?: true
-  annee_2017_ene?: true
-  annee_2017_exo?: true
-  annee_2017_ind?: true
-  annee_2017_irr?: true
-  annee_2018_aep?: true
-  annee_2018_bar?: true
-  annee_2018_can?: true
-  annee_2018_ene?: true
-  annee_2018_exo?: true
-  annee_2018_ind?: true
-  annee_2018_irr?: true
-  annee_2019_aep?: true
-  annee_2019_bar?: true
-  annee_2019_can?: true
-  annee_2019_ene?: true
-  annee_2019_exo?: true
-  annee_2019_ind?: true
-  annee_2019_irr?: true
-  annee_2020_aep?: true
-  annee_2020_bar?: true
-  annee_2020_can?: true
-  annee_2020_ene?: true
-  annee_2020_exo?: true
-  annee_2020_ind?: true
-  annee_2020_irr?: true
-  annee_2021_aep?: true
-  annee_2021_bar?: true
-  annee_2021_can?: true
-  annee_2021_ene?: true
-  annee_2021_exo?: true
-  annee_2021_ind?: true
-  annee_2021_irr?: true
-  annee_2022_aep?: true
-  annee_2022_bar?: true
-  annee_2022_can?: true
-  annee_2022_ene?: true
-  annee_2022_ind?: true
-  annee_2022_irr?: true
-  annee_2023_aep?: true
-  annee_2023_bar?: true
-  annee_2023_can?: true
-  annee_2023_ene?: true
-  annee_2023_exo?: true
-  annee_2023_ind?: true
-  annee_2023_irr?: true
-}
-
-export type Prelevements_eau_newMaxAggregateInputType = {
+export type Prelevements_eauMinAggregateInputType = {
   index?: true
   code_geographique?: true
   libelle_geographique?: true
@@ -1068,7 +948,127 @@ export type Prelevements_eau_newMaxAggregateInputType = {
   annee_2023_irr?: true
 }
 
-export type Prelevements_eau_newCountAggregateInputType = {
+export type Prelevements_eauMaxAggregateInputType = {
+  index?: true
+  code_geographique?: true
+  libelle_geographique?: true
+  epci?: true
+  libelle_epci?: true
+  departement?: true
+  libelle_departement?: true
+  region?: true
+  ept?: true
+  libelle_petr?: true
+  code_pnr?: true
+  libelle_pnr?: true
+  annee_2008_aep?: true
+  annee_2008_bar?: true
+  annee_2008_can?: true
+  annee_2008_ene?: true
+  annee_2008_ind?: true
+  annee_2008_irr?: true
+  annee_2009_aep?: true
+  annee_2009_bar?: true
+  annee_2009_can?: true
+  annee_2009_ene?: true
+  annee_2009_ind?: true
+  annee_2009_irr?: true
+  annee_2010_aep?: true
+  annee_2010_bar?: true
+  annee_2010_can?: true
+  annee_2010_ene?: true
+  annee_2010_ind?: true
+  annee_2010_irr?: true
+  annee_2011_aep?: true
+  annee_2011_bar?: true
+  annee_2011_can?: true
+  annee_2011_ene?: true
+  annee_2011_ind?: true
+  annee_2011_irr?: true
+  annee_2012_aep?: true
+  annee_2012_bar?: true
+  annee_2012_can?: true
+  annee_2012_ene?: true
+  annee_2012_exo?: true
+  annee_2012_ind?: true
+  annee_2012_irr?: true
+  annee_2013_aep?: true
+  annee_2013_bar?: true
+  annee_2013_can?: true
+  annee_2013_ene?: true
+  annee_2013_ind?: true
+  annee_2013_irr?: true
+  annee_2014_aep?: true
+  annee_2014_bar?: true
+  annee_2014_can?: true
+  annee_2014_ene?: true
+  annee_2014_ind?: true
+  annee_2014_irr?: true
+  annee_2015_aep?: true
+  annee_2015_bar?: true
+  annee_2015_can?: true
+  annee_2015_ene?: true
+  annee_2015_exo?: true
+  annee_2015_ind?: true
+  annee_2015_irr?: true
+  annee_2016_aep?: true
+  annee_2016_bar?: true
+  annee_2016_can?: true
+  annee_2016_ene?: true
+  annee_2016_exo?: true
+  annee_2016_ind?: true
+  annee_2016_irr?: true
+  annee_2017_aep?: true
+  annee_2017_bar?: true
+  annee_2017_can?: true
+  annee_2017_ene?: true
+  annee_2017_exo?: true
+  annee_2017_ind?: true
+  annee_2017_irr?: true
+  annee_2018_aep?: true
+  annee_2018_bar?: true
+  annee_2018_can?: true
+  annee_2018_ene?: true
+  annee_2018_exo?: true
+  annee_2018_ind?: true
+  annee_2018_irr?: true
+  annee_2019_aep?: true
+  annee_2019_bar?: true
+  annee_2019_can?: true
+  annee_2019_ene?: true
+  annee_2019_exo?: true
+  annee_2019_ind?: true
+  annee_2019_irr?: true
+  annee_2020_aep?: true
+  annee_2020_bar?: true
+  annee_2020_can?: true
+  annee_2020_ene?: true
+  annee_2020_exo?: true
+  annee_2020_ind?: true
+  annee_2020_irr?: true
+  annee_2021_aep?: true
+  annee_2021_bar?: true
+  annee_2021_can?: true
+  annee_2021_ene?: true
+  annee_2021_exo?: true
+  annee_2021_ind?: true
+  annee_2021_irr?: true
+  annee_2022_aep?: true
+  annee_2022_bar?: true
+  annee_2022_can?: true
+  annee_2022_ene?: true
+  annee_2022_ind?: true
+  annee_2022_irr?: true
+  annee_2023_aep?: true
+  annee_2023_bar?: true
+  annee_2023_can?: true
+  annee_2023_ene?: true
+  annee_2023_exo?: true
+  annee_2023_ind?: true
+  annee_2023_irr?: true
+}
+
+export type Prelevements_eauCountAggregateInputType = {
   index?: true
   code_geographique?: true
   libelle_geographique?: true
@@ -1189,93 +1189,93 @@ export type Prelevements_eau_newCountAggregateInputType = {
   _all?: true
 }
 
-export type Prelevements_eau_newAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Prelevements_eauAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which prelevements_eau_new to aggregate.
+   * Filter which prelevements_eau to aggregate.
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of prelevements_eau_news to fetch.
+   * Determine the order of prelevements_eaus to fetch.
    */
-  orderBy?: Prisma.prelevements_eau_newOrderByWithRelationInput | Prisma.prelevements_eau_newOrderByWithRelationInput[]
+  orderBy?: Prisma.prelevements_eauOrderByWithRelationInput | Prisma.prelevements_eauOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.prelevements_eau_newWhereUniqueInput
+  cursor?: Prisma.prelevements_eauWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` prelevements_eau_news from the position of the cursor.
+   * Take `±n` prelevements_eaus from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` prelevements_eau_news.
+   * Skip the first `n` prelevements_eaus.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned prelevements_eau_news
+   * Count returned prelevements_eaus
   **/
-  _count?: true | Prelevements_eau_newCountAggregateInputType
+  _count?: true | Prelevements_eauCountAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to average
   **/
-  _avg?: Prelevements_eau_newAvgAggregateInputType
+  _avg?: Prelevements_eauAvgAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to sum
   **/
-  _sum?: Prelevements_eau_newSumAggregateInputType
+  _sum?: Prelevements_eauSumAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the minimum value
   **/
-  _min?: Prelevements_eau_newMinAggregateInputType
+  _min?: Prelevements_eauMinAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the maximum value
   **/
-  _max?: Prelevements_eau_newMaxAggregateInputType
+  _max?: Prelevements_eauMaxAggregateInputType
 }
 
-export type GetPrelevements_eau_newAggregateType<T extends Prelevements_eau_newAggregateArgs> = {
-      [P in keyof T & keyof AggregatePrelevements_eau_new]: P extends '_count' | 'count'
+export type GetPrelevements_eauAggregateType<T extends Prelevements_eauAggregateArgs> = {
+      [P in keyof T & keyof AggregatePrelevements_eau]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
-      : Prisma.GetScalarType<T[P], AggregatePrelevements_eau_new[P]>
-    : Prisma.GetScalarType<T[P], AggregatePrelevements_eau_new[P]>
+      : Prisma.GetScalarType<T[P], AggregatePrelevements_eau[P]>
+    : Prisma.GetScalarType<T[P], AggregatePrelevements_eau[P]>
 }
 
 
 
 
-export type prelevements_eau_newGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.prelevements_eau_newWhereInput
-  orderBy?: Prisma.prelevements_eau_newOrderByWithAggregationInput | Prisma.prelevements_eau_newOrderByWithAggregationInput[]
-  by: Prisma.Prelevements_eau_newScalarFieldEnum[] | Prisma.Prelevements_eau_newScalarFieldEnum
-  having?: Prisma.prelevements_eau_newScalarWhereWithAggregatesInput
+export type prelevements_eauGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.prelevements_eauWhereInput
+  orderBy?: Prisma.prelevements_eauOrderByWithAggregationInput | Prisma.prelevements_eauOrderByWithAggregationInput[]
+  by: Prisma.Prelevements_eauScalarFieldEnum[] | Prisma.Prelevements_eauScalarFieldEnum
+  having?: Prisma.prelevements_eauScalarWhereWithAggregatesInput
   take?: number
   skip?: number
-  _count?: Prelevements_eau_newCountAggregateInputType | true
-  _avg?: Prelevements_eau_newAvgAggregateInputType
-  _sum?: Prelevements_eau_newSumAggregateInputType
-  _min?: Prelevements_eau_newMinAggregateInputType
-  _max?: Prelevements_eau_newMaxAggregateInputType
+  _count?: Prelevements_eauCountAggregateInputType | true
+  _avg?: Prelevements_eauAvgAggregateInputType
+  _sum?: Prelevements_eauSumAggregateInputType
+  _min?: Prelevements_eauMinAggregateInputType
+  _max?: Prelevements_eauMaxAggregateInputType
 }
 
-export type Prelevements_eau_newGroupByOutputType = {
+export type Prelevements_eauGroupByOutputType = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -1393,152 +1393,152 @@ export type Prelevements_eau_newGroupByOutputType = {
   annee_2023_exo: number
   annee_2023_ind: number
   annee_2023_irr: number
-  _count: Prelevements_eau_newCountAggregateOutputType | null
-  _avg: Prelevements_eau_newAvgAggregateOutputType | null
-  _sum: Prelevements_eau_newSumAggregateOutputType | null
-  _min: Prelevements_eau_newMinAggregateOutputType | null
-  _max: Prelevements_eau_newMaxAggregateOutputType | null
+  _count: Prelevements_eauCountAggregateOutputType | null
+  _avg: Prelevements_eauAvgAggregateOutputType | null
+  _sum: Prelevements_eauSumAggregateOutputType | null
+  _min: Prelevements_eauMinAggregateOutputType | null
+  _max: Prelevements_eauMaxAggregateOutputType | null
 }
 
-export type GetPrelevements_eau_newGroupByPayload<T extends prelevements_eau_newGroupByArgs> = Prisma.PrismaPromise<
+export type GetPrelevements_eauGroupByPayload<T extends prelevements_eauGroupByArgs> = Prisma.PrismaPromise<
   Array<
-    Prisma.PickEnumerable<Prelevements_eau_newGroupByOutputType, T['by']> &
+    Prisma.PickEnumerable<Prelevements_eauGroupByOutputType, T['by']> &
       {
-        [P in ((keyof T) & (keyof Prelevements_eau_newGroupByOutputType))]: P extends '_count'
+        [P in ((keyof T) & (keyof Prelevements_eauGroupByOutputType))]: P extends '_count'
           ? T[P] extends boolean
             ? number
-            : Prisma.GetScalarType<T[P], Prelevements_eau_newGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], Prelevements_eau_newGroupByOutputType[P]>
+            : Prisma.GetScalarType<T[P], Prelevements_eauGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], Prelevements_eauGroupByOutputType[P]>
       }
     >
   >
 
 
 
-export type prelevements_eau_newWhereInput = {
-  AND?: Prisma.prelevements_eau_newWhereInput | Prisma.prelevements_eau_newWhereInput[]
-  OR?: Prisma.prelevements_eau_newWhereInput[]
-  NOT?: Prisma.prelevements_eau_newWhereInput | Prisma.prelevements_eau_newWhereInput[]
-  index?: Prisma.IntFilter<"prelevements_eau_new"> | number
-  code_geographique?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_geographique?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  epci?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_epci?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  departement?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_departement?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  region?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  ept?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  code_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
+export type prelevements_eauWhereInput = {
+  AND?: Prisma.prelevements_eauWhereInput | Prisma.prelevements_eauWhereInput[]
+  OR?: Prisma.prelevements_eauWhereInput[]
+  NOT?: Prisma.prelevements_eauWhereInput | Prisma.prelevements_eauWhereInput[]
+  index?: Prisma.IntFilter<"prelevements_eau"> | number
+  code_geographique?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_geographique?: Prisma.StringFilter<"prelevements_eau"> | string
+  epci?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_epci?: Prisma.StringFilter<"prelevements_eau"> | string
+  departement?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_departement?: Prisma.StringFilter<"prelevements_eau"> | string
+  region?: Prisma.FloatFilter<"prelevements_eau"> | number
+  ept?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
 }
 
-export type prelevements_eau_newOrderByWithRelationInput = {
+export type prelevements_eauOrderByWithRelationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -1658,130 +1658,130 @@ export type prelevements_eau_newOrderByWithRelationInput = {
   annee_2023_irr?: Prisma.SortOrder
 }
 
-export type prelevements_eau_newWhereUniqueInput = Prisma.AtLeast<{
+export type prelevements_eauWhereUniqueInput = Prisma.AtLeast<{
   index?: number
-  AND?: Prisma.prelevements_eau_newWhereInput | Prisma.prelevements_eau_newWhereInput[]
-  OR?: Prisma.prelevements_eau_newWhereInput[]
-  NOT?: Prisma.prelevements_eau_newWhereInput | Prisma.prelevements_eau_newWhereInput[]
-  code_geographique?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_geographique?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  epci?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_epci?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  departement?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  libelle_departement?: Prisma.StringFilter<"prelevements_eau_new"> | string
-  region?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  ept?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  code_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2017_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2018_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2019_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2020_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2021_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2022_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_aep?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_bar?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_can?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_ene?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_exo?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_ind?: Prisma.FloatFilter<"prelevements_eau_new"> | number
-  annee_2023_irr?: Prisma.FloatFilter<"prelevements_eau_new"> | number
+  AND?: Prisma.prelevements_eauWhereInput | Prisma.prelevements_eauWhereInput[]
+  OR?: Prisma.prelevements_eauWhereInput[]
+  NOT?: Prisma.prelevements_eauWhereInput | Prisma.prelevements_eauWhereInput[]
+  code_geographique?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_geographique?: Prisma.StringFilter<"prelevements_eau"> | string
+  epci?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_epci?: Prisma.StringFilter<"prelevements_eau"> | string
+  departement?: Prisma.StringFilter<"prelevements_eau"> | string
+  libelle_departement?: Prisma.StringFilter<"prelevements_eau"> | string
+  region?: Prisma.FloatFilter<"prelevements_eau"> | number
+  ept?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  libelle_petr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  code_pnr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  libelle_pnr?: Prisma.StringNullableFilter<"prelevements_eau"> | string | null
+  annee_2008_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2008_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2009_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2010_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2011_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2012_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2013_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2014_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2015_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2016_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2017_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2018_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2019_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2020_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2021_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2022_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_aep?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_bar?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_can?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_ene?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_exo?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_ind?: Prisma.FloatFilter<"prelevements_eau"> | number
+  annee_2023_irr?: Prisma.FloatFilter<"prelevements_eau"> | number
 }, "index">
 
-export type prelevements_eau_newOrderByWithAggregationInput = {
+export type prelevements_eauOrderByWithAggregationInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -1899,137 +1899,137 @@ export type prelevements_eau_newOrderByWithAggregationInput = {
   annee_2023_exo?: Prisma.SortOrder
   annee_2023_ind?: Prisma.SortOrder
   annee_2023_irr?: Prisma.SortOrder
-  _count?: Prisma.prelevements_eau_newCountOrderByAggregateInput
-  _avg?: Prisma.prelevements_eau_newAvgOrderByAggregateInput
-  _max?: Prisma.prelevements_eau_newMaxOrderByAggregateInput
-  _min?: Prisma.prelevements_eau_newMinOrderByAggregateInput
-  _sum?: Prisma.prelevements_eau_newSumOrderByAggregateInput
+  _count?: Prisma.prelevements_eauCountOrderByAggregateInput
+  _avg?: Prisma.prelevements_eauAvgOrderByAggregateInput
+  _max?: Prisma.prelevements_eauMaxOrderByAggregateInput
+  _min?: Prisma.prelevements_eauMinOrderByAggregateInput
+  _sum?: Prisma.prelevements_eauSumOrderByAggregateInput
 }
 
-export type prelevements_eau_newScalarWhereWithAggregatesInput = {
-  AND?: Prisma.prelevements_eau_newScalarWhereWithAggregatesInput | Prisma.prelevements_eau_newScalarWhereWithAggregatesInput[]
-  OR?: Prisma.prelevements_eau_newScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.prelevements_eau_newScalarWhereWithAggregatesInput | Prisma.prelevements_eau_newScalarWhereWithAggregatesInput[]
-  index?: Prisma.IntWithAggregatesFilter<"prelevements_eau_new"> | number
-  code_geographique?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  libelle_geographique?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  epci?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  libelle_epci?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  departement?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  libelle_departement?: Prisma.StringWithAggregatesFilter<"prelevements_eau_new"> | string
-  region?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  ept?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
-  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
-  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
-  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau_new"> | string | null
-  annee_2008_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2008_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2009_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2010_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2011_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2012_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2013_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2014_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2015_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2016_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2017_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2018_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2019_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2020_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2021_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2022_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
-  annee_2023_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau_new"> | number
+export type prelevements_eauScalarWhereWithAggregatesInput = {
+  AND?: Prisma.prelevements_eauScalarWhereWithAggregatesInput | Prisma.prelevements_eauScalarWhereWithAggregatesInput[]
+  OR?: Prisma.prelevements_eauScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.prelevements_eauScalarWhereWithAggregatesInput | Prisma.prelevements_eauScalarWhereWithAggregatesInput[]
+  index?: Prisma.IntWithAggregatesFilter<"prelevements_eau"> | number
+  code_geographique?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  libelle_geographique?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  epci?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  libelle_epci?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  departement?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  libelle_departement?: Prisma.StringWithAggregatesFilter<"prelevements_eau"> | string
+  region?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  ept?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+  libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+  code_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+  libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"prelevements_eau"> | string | null
+  annee_2008_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2008_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2008_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2008_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2008_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2008_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2009_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2010_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2011_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2012_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2013_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2014_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2015_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2016_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2017_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2018_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2019_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2020_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2021_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2022_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_aep?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_bar?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_can?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_ene?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_exo?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_ind?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
+  annee_2023_irr?: Prisma.FloatWithAggregatesFilter<"prelevements_eau"> | number
 }
 
-export type prelevements_eau_newCreateInput = {
+export type prelevements_eauCreateInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -2149,7 +2149,7 @@ export type prelevements_eau_newCreateInput = {
   annee_2023_irr: number
 }
 
-export type prelevements_eau_newUncheckedCreateInput = {
+export type prelevements_eauUncheckedCreateInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -2269,7 +2269,7 @@ export type prelevements_eau_newUncheckedCreateInput = {
   annee_2023_irr: number
 }
 
-export type prelevements_eau_newUpdateInput = {
+export type prelevements_eauUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2389,7 +2389,7 @@ export type prelevements_eau_newUpdateInput = {
   annee_2023_irr?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type prelevements_eau_newUncheckedUpdateInput = {
+export type prelevements_eauUncheckedUpdateInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2509,7 +2509,7 @@ export type prelevements_eau_newUncheckedUpdateInput = {
   annee_2023_irr?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type prelevements_eau_newCreateManyInput = {
+export type prelevements_eauCreateManyInput = {
   index: number
   code_geographique: string
   libelle_geographique: string
@@ -2629,7 +2629,7 @@ export type prelevements_eau_newCreateManyInput = {
   annee_2023_irr: number
 }
 
-export type prelevements_eau_newUpdateManyMutationInput = {
+export type prelevements_eauUpdateManyMutationInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2749,7 +2749,7 @@ export type prelevements_eau_newUpdateManyMutationInput = {
   annee_2023_irr?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type prelevements_eau_newUncheckedUpdateManyInput = {
+export type prelevements_eauUncheckedUpdateManyInput = {
   index?: Prisma.IntFieldUpdateOperationsInput | number
   code_geographique?: Prisma.StringFieldUpdateOperationsInput | string
   libelle_geographique?: Prisma.StringFieldUpdateOperationsInput | string
@@ -2869,7 +2869,7 @@ export type prelevements_eau_newUncheckedUpdateManyInput = {
   annee_2023_irr?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type prelevements_eau_newCountOrderByAggregateInput = {
+export type prelevements_eauCountOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -2989,7 +2989,7 @@ export type prelevements_eau_newCountOrderByAggregateInput = {
   annee_2023_irr?: Prisma.SortOrder
 }
 
-export type prelevements_eau_newAvgOrderByAggregateInput = {
+export type prelevements_eauAvgOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
   annee_2008_aep?: Prisma.SortOrder
@@ -3099,127 +3099,7 @@ export type prelevements_eau_newAvgOrderByAggregateInput = {
   annee_2023_irr?: Prisma.SortOrder
 }
 
-export type prelevements_eau_newMaxOrderByAggregateInput = {
-  index?: Prisma.SortOrder
-  code_geographique?: Prisma.SortOrder
-  libelle_geographique?: Prisma.SortOrder
-  epci?: Prisma.SortOrder
-  libelle_epci?: Prisma.SortOrder
-  departement?: Prisma.SortOrder
-  libelle_departement?: Prisma.SortOrder
-  region?: Prisma.SortOrder
-  ept?: Prisma.SortOrder
-  libelle_petr?: Prisma.SortOrder
-  code_pnr?: Prisma.SortOrder
-  libelle_pnr?: Prisma.SortOrder
-  annee_2008_aep?: Prisma.SortOrder
-  annee_2008_bar?: Prisma.SortOrder
-  annee_2008_can?: Prisma.SortOrder
-  annee_2008_ene?: Prisma.SortOrder
-  annee_2008_ind?: Prisma.SortOrder
-  annee_2008_irr?: Prisma.SortOrder
-  annee_2009_aep?: Prisma.SortOrder
-  annee_2009_bar?: Prisma.SortOrder
-  annee_2009_can?: Prisma.SortOrder
-  annee_2009_ene?: Prisma.SortOrder
-  annee_2009_ind?: Prisma.SortOrder
-  annee_2009_irr?: Prisma.SortOrder
-  annee_2010_aep?: Prisma.SortOrder
-  annee_2010_bar?: Prisma.SortOrder
-  annee_2010_can?: Prisma.SortOrder
-  annee_2010_ene?: Prisma.SortOrder
-  annee_2010_ind?: Prisma.SortOrder
-  annee_2010_irr?: Prisma.SortOrder
-  annee_2011_aep?: Prisma.SortOrder
-  annee_2011_bar?: Prisma.SortOrder
-  annee_2011_can?: Prisma.SortOrder
-  annee_2011_ene?: Prisma.SortOrder
-  annee_2011_ind?: Prisma.SortOrder
-  annee_2011_irr?: Prisma.SortOrder
-  annee_2012_aep?: Prisma.SortOrder
-  annee_2012_bar?: Prisma.SortOrder
-  annee_2012_can?: Prisma.SortOrder
-  annee_2012_ene?: Prisma.SortOrder
-  annee_2012_exo?: Prisma.SortOrder
-  annee_2012_ind?: Prisma.SortOrder
-  annee_2012_irr?: Prisma.SortOrder
-  annee_2013_aep?: Prisma.SortOrder
-  annee_2013_bar?: Prisma.SortOrder
-  annee_2013_can?: Prisma.SortOrder
-  annee_2013_ene?: Prisma.SortOrder
-  annee_2013_ind?: Prisma.SortOrder
-  annee_2013_irr?: Prisma.SortOrder
-  annee_2014_aep?: Prisma.SortOrder
-  annee_2014_bar?: Prisma.SortOrder
-  annee_2014_can?: Prisma.SortOrder
-  annee_2014_ene?: Prisma.SortOrder
-  annee_2014_ind?: Prisma.SortOrder
-  annee_2014_irr?: Prisma.SortOrder
-  annee_2015_aep?: Prisma.SortOrder
-  annee_2015_bar?: Prisma.SortOrder
-  annee_2015_can?: Prisma.SortOrder
-  annee_2015_ene?: Prisma.SortOrder
-  annee_2015_exo?: Prisma.SortOrder
-  annee_2015_ind?: Prisma.SortOrder
-  annee_2015_irr?: Prisma.SortOrder
-  annee_2016_aep?: Prisma.SortOrder
-  annee_2016_bar?: Prisma.SortOrder
-  annee_2016_can?: Prisma.SortOrder
-  annee_2016_ene?: Prisma.SortOrder
-  annee_2016_exo?: Prisma.SortOrder
-  annee_2016_ind?: Prisma.SortOrder
-  annee_2016_irr?: Prisma.SortOrder
-  annee_2017_aep?: Prisma.SortOrder
-  annee_2017_bar?: Prisma.SortOrder
-  annee_2017_can?: Prisma.SortOrder
-  annee_2017_ene?: Prisma.SortOrder
-  annee_2017_exo?: Prisma.SortOrder
-  annee_2017_ind?: Prisma.SortOrder
-  annee_2017_irr?: Prisma.SortOrder
-  annee_2018_aep?: Prisma.SortOrder
-  annee_2018_bar?: Prisma.SortOrder
-  annee_2018_can?: Prisma.SortOrder
-  annee_2018_ene?: Prisma.SortOrder
-  annee_2018_exo?: Prisma.SortOrder
-  annee_2018_ind?: Prisma.SortOrder
-  annee_2018_irr?: Prisma.SortOrder
-  annee_2019_aep?: Prisma.SortOrder
-  annee_2019_bar?: Prisma.SortOrder
-  annee_2019_can?: Prisma.SortOrder
-  annee_2019_ene?: Prisma.SortOrder
-  annee_2019_exo?: Prisma.SortOrder
-  annee_2019_ind?: Prisma.SortOrder
-  annee_2019_irr?: Prisma.SortOrder
-  annee_2020_aep?: Prisma.SortOrder
-  annee_2020_bar?: Prisma.SortOrder
-  annee_2020_can?: Prisma.SortOrder
-  annee_2020_ene?: Prisma.SortOrder
-  annee_2020_exo?: Prisma.SortOrder
-  annee_2020_ind?: Prisma.SortOrder
-  annee_2020_irr?: Prisma.SortOrder
-  annee_2021_aep?: Prisma.SortOrder
-  annee_2021_bar?: Prisma.SortOrder
-  annee_2021_can?: Prisma.SortOrder
-  annee_2021_ene?: Prisma.SortOrder
-  annee_2021_exo?: Prisma.SortOrder
-  annee_2021_ind?: Prisma.SortOrder
-  annee_2021_irr?: Prisma.SortOrder
-  annee_2022_aep?: Prisma.SortOrder
-  annee_2022_bar?: Prisma.SortOrder
-  annee_2022_can?: Prisma.SortOrder
-  annee_2022_ene?: Prisma.SortOrder
-  annee_2022_ind?: Prisma.SortOrder
-  annee_2022_irr?: Prisma.SortOrder
-  annee_2023_aep?: Prisma.SortOrder
-  annee_2023_bar?: Prisma.SortOrder
-  annee_2023_can?: Prisma.SortOrder
-  annee_2023_ene?: Prisma.SortOrder
-  annee_2023_exo?: Prisma.SortOrder
-  annee_2023_ind?: Prisma.SortOrder
-  annee_2023_irr?: Prisma.SortOrder
-}
-
-export type prelevements_eau_newMinOrderByAggregateInput = {
+export type prelevements_eauMaxOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder
   libelle_geographique?: Prisma.SortOrder
@@ -3339,7 +3219,127 @@ export type prelevements_eau_newMinOrderByAggregateInput = {
   annee_2023_irr?: Prisma.SortOrder
 }
 
-export type prelevements_eau_newSumOrderByAggregateInput = {
+export type prelevements_eauMinOrderByAggregateInput = {
+  index?: Prisma.SortOrder
+  code_geographique?: Prisma.SortOrder
+  libelle_geographique?: Prisma.SortOrder
+  epci?: Prisma.SortOrder
+  libelle_epci?: Prisma.SortOrder
+  departement?: Prisma.SortOrder
+  libelle_departement?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  ept?: Prisma.SortOrder
+  libelle_petr?: Prisma.SortOrder
+  code_pnr?: Prisma.SortOrder
+  libelle_pnr?: Prisma.SortOrder
+  annee_2008_aep?: Prisma.SortOrder
+  annee_2008_bar?: Prisma.SortOrder
+  annee_2008_can?: Prisma.SortOrder
+  annee_2008_ene?: Prisma.SortOrder
+  annee_2008_ind?: Prisma.SortOrder
+  annee_2008_irr?: Prisma.SortOrder
+  annee_2009_aep?: Prisma.SortOrder
+  annee_2009_bar?: Prisma.SortOrder
+  annee_2009_can?: Prisma.SortOrder
+  annee_2009_ene?: Prisma.SortOrder
+  annee_2009_ind?: Prisma.SortOrder
+  annee_2009_irr?: Prisma.SortOrder
+  annee_2010_aep?: Prisma.SortOrder
+  annee_2010_bar?: Prisma.SortOrder
+  annee_2010_can?: Prisma.SortOrder
+  annee_2010_ene?: Prisma.SortOrder
+  annee_2010_ind?: Prisma.SortOrder
+  annee_2010_irr?: Prisma.SortOrder
+  annee_2011_aep?: Prisma.SortOrder
+  annee_2011_bar?: Prisma.SortOrder
+  annee_2011_can?: Prisma.SortOrder
+  annee_2011_ene?: Prisma.SortOrder
+  annee_2011_ind?: Prisma.SortOrder
+  annee_2011_irr?: Prisma.SortOrder
+  annee_2012_aep?: Prisma.SortOrder
+  annee_2012_bar?: Prisma.SortOrder
+  annee_2012_can?: Prisma.SortOrder
+  annee_2012_ene?: Prisma.SortOrder
+  annee_2012_exo?: Prisma.SortOrder
+  annee_2012_ind?: Prisma.SortOrder
+  annee_2012_irr?: Prisma.SortOrder
+  annee_2013_aep?: Prisma.SortOrder
+  annee_2013_bar?: Prisma.SortOrder
+  annee_2013_can?: Prisma.SortOrder
+  annee_2013_ene?: Prisma.SortOrder
+  annee_2013_ind?: Prisma.SortOrder
+  annee_2013_irr?: Prisma.SortOrder
+  annee_2014_aep?: Prisma.SortOrder
+  annee_2014_bar?: Prisma.SortOrder
+  annee_2014_can?: Prisma.SortOrder
+  annee_2014_ene?: Prisma.SortOrder
+  annee_2014_ind?: Prisma.SortOrder
+  annee_2014_irr?: Prisma.SortOrder
+  annee_2015_aep?: Prisma.SortOrder
+  annee_2015_bar?: Prisma.SortOrder
+  annee_2015_can?: Prisma.SortOrder
+  annee_2015_ene?: Prisma.SortOrder
+  annee_2015_exo?: Prisma.SortOrder
+  annee_2015_ind?: Prisma.SortOrder
+  annee_2015_irr?: Prisma.SortOrder
+  annee_2016_aep?: Prisma.SortOrder
+  annee_2016_bar?: Prisma.SortOrder
+  annee_2016_can?: Prisma.SortOrder
+  annee_2016_ene?: Prisma.SortOrder
+  annee_2016_exo?: Prisma.SortOrder
+  annee_2016_ind?: Prisma.SortOrder
+  annee_2016_irr?: Prisma.SortOrder
+  annee_2017_aep?: Prisma.SortOrder
+  annee_2017_bar?: Prisma.SortOrder
+  annee_2017_can?: Prisma.SortOrder
+  annee_2017_ene?: Prisma.SortOrder
+  annee_2017_exo?: Prisma.SortOrder
+  annee_2017_ind?: Prisma.SortOrder
+  annee_2017_irr?: Prisma.SortOrder
+  annee_2018_aep?: Prisma.SortOrder
+  annee_2018_bar?: Prisma.SortOrder
+  annee_2018_can?: Prisma.SortOrder
+  annee_2018_ene?: Prisma.SortOrder
+  annee_2018_exo?: Prisma.SortOrder
+  annee_2018_ind?: Prisma.SortOrder
+  annee_2018_irr?: Prisma.SortOrder
+  annee_2019_aep?: Prisma.SortOrder
+  annee_2019_bar?: Prisma.SortOrder
+  annee_2019_can?: Prisma.SortOrder
+  annee_2019_ene?: Prisma.SortOrder
+  annee_2019_exo?: Prisma.SortOrder
+  annee_2019_ind?: Prisma.SortOrder
+  annee_2019_irr?: Prisma.SortOrder
+  annee_2020_aep?: Prisma.SortOrder
+  annee_2020_bar?: Prisma.SortOrder
+  annee_2020_can?: Prisma.SortOrder
+  annee_2020_ene?: Prisma.SortOrder
+  annee_2020_exo?: Prisma.SortOrder
+  annee_2020_ind?: Prisma.SortOrder
+  annee_2020_irr?: Prisma.SortOrder
+  annee_2021_aep?: Prisma.SortOrder
+  annee_2021_bar?: Prisma.SortOrder
+  annee_2021_can?: Prisma.SortOrder
+  annee_2021_ene?: Prisma.SortOrder
+  annee_2021_exo?: Prisma.SortOrder
+  annee_2021_ind?: Prisma.SortOrder
+  annee_2021_irr?: Prisma.SortOrder
+  annee_2022_aep?: Prisma.SortOrder
+  annee_2022_bar?: Prisma.SortOrder
+  annee_2022_can?: Prisma.SortOrder
+  annee_2022_ene?: Prisma.SortOrder
+  annee_2022_ind?: Prisma.SortOrder
+  annee_2022_irr?: Prisma.SortOrder
+  annee_2023_aep?: Prisma.SortOrder
+  annee_2023_bar?: Prisma.SortOrder
+  annee_2023_can?: Prisma.SortOrder
+  annee_2023_ene?: Prisma.SortOrder
+  annee_2023_exo?: Prisma.SortOrder
+  annee_2023_ind?: Prisma.SortOrder
+  annee_2023_irr?: Prisma.SortOrder
+}
+
+export type prelevements_eauSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
   region?: Prisma.SortOrder
   annee_2008_aep?: Prisma.SortOrder
@@ -3451,7 +3451,7 @@ export type prelevements_eau_newSumOrderByAggregateInput = {
 
 
 
-export type prelevements_eau_newSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type prelevements_eauSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -3569,9 +3569,9 @@ export type prelevements_eau_newSelect<ExtArgs extends runtime.Types.Extensions.
   annee_2023_exo?: boolean
   annee_2023_ind?: boolean
   annee_2023_irr?: boolean
-}, ExtArgs["result"]["prelevements_eau_new"]>
+}, ExtArgs["result"]["prelevements_eau"]>
 
-export type prelevements_eau_newSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type prelevements_eauSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -3689,9 +3689,9 @@ export type prelevements_eau_newSelectCreateManyAndReturn<ExtArgs extends runtim
   annee_2023_exo?: boolean
   annee_2023_ind?: boolean
   annee_2023_irr?: boolean
-}, ExtArgs["result"]["prelevements_eau_new"]>
+}, ExtArgs["result"]["prelevements_eau"]>
 
-export type prelevements_eau_newSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type prelevements_eauSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -3809,9 +3809,9 @@ export type prelevements_eau_newSelectUpdateManyAndReturn<ExtArgs extends runtim
   annee_2023_exo?: boolean
   annee_2023_ind?: boolean
   annee_2023_irr?: boolean
-}, ExtArgs["result"]["prelevements_eau_new"]>
+}, ExtArgs["result"]["prelevements_eau"]>
 
-export type prelevements_eau_newSelectScalar = {
+export type prelevements_eauSelectScalar = {
   index?: boolean
   code_geographique?: boolean
   libelle_geographique?: boolean
@@ -3931,10 +3931,10 @@ export type prelevements_eau_newSelectScalar = {
   annee_2023_irr?: boolean
 }
 
-export type prelevements_eau_newOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee_2008_aep" | "annee_2008_bar" | "annee_2008_can" | "annee_2008_ene" | "annee_2008_ind" | "annee_2008_irr" | "annee_2009_aep" | "annee_2009_bar" | "annee_2009_can" | "annee_2009_ene" | "annee_2009_ind" | "annee_2009_irr" | "annee_2010_aep" | "annee_2010_bar" | "annee_2010_can" | "annee_2010_ene" | "annee_2010_ind" | "annee_2010_irr" | "annee_2011_aep" | "annee_2011_bar" | "annee_2011_can" | "annee_2011_ene" | "annee_2011_ind" | "annee_2011_irr" | "annee_2012_aep" | "annee_2012_bar" | "annee_2012_can" | "annee_2012_ene" | "annee_2012_exo" | "annee_2012_ind" | "annee_2012_irr" | "annee_2013_aep" | "annee_2013_bar" | "annee_2013_can" | "annee_2013_ene" | "annee_2013_ind" | "annee_2013_irr" | "annee_2014_aep" | "annee_2014_bar" | "annee_2014_can" | "annee_2014_ene" | "annee_2014_ind" | "annee_2014_irr" | "annee_2015_aep" | "annee_2015_bar" | "annee_2015_can" | "annee_2015_ene" | "annee_2015_exo" | "annee_2015_ind" | "annee_2015_irr" | "annee_2016_aep" | "annee_2016_bar" | "annee_2016_can" | "annee_2016_ene" | "annee_2016_exo" | "annee_2016_ind" | "annee_2016_irr" | "annee_2017_aep" | "annee_2017_bar" | "annee_2017_can" | "annee_2017_ene" | "annee_2017_exo" | "annee_2017_ind" | "annee_2017_irr" | "annee_2018_aep" | "annee_2018_bar" | "annee_2018_can" | "annee_2018_ene" | "annee_2018_exo" | "annee_2018_ind" | "annee_2018_irr" | "annee_2019_aep" | "annee_2019_bar" | "annee_2019_can" | "annee_2019_ene" | "annee_2019_exo" | "annee_2019_ind" | "annee_2019_irr" | "annee_2020_aep" | "annee_2020_bar" | "annee_2020_can" | "annee_2020_ene" | "annee_2020_exo" | "annee_2020_ind" | "annee_2020_irr" | "annee_2021_aep" | "annee_2021_bar" | "annee_2021_can" | "annee_2021_ene" | "annee_2021_exo" | "annee_2021_ind" | "annee_2021_irr" | "annee_2022_aep" | "annee_2022_bar" | "annee_2022_can" | "annee_2022_ene" | "annee_2022_ind" | "annee_2022_irr" | "annee_2023_aep" | "annee_2023_bar" | "annee_2023_can" | "annee_2023_ene" | "annee_2023_exo" | "annee_2023_ind" | "annee_2023_irr", ExtArgs["result"]["prelevements_eau_new"]>
+export type prelevements_eauOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "annee_2008_aep" | "annee_2008_bar" | "annee_2008_can" | "annee_2008_ene" | "annee_2008_ind" | "annee_2008_irr" | "annee_2009_aep" | "annee_2009_bar" | "annee_2009_can" | "annee_2009_ene" | "annee_2009_ind" | "annee_2009_irr" | "annee_2010_aep" | "annee_2010_bar" | "annee_2010_can" | "annee_2010_ene" | "annee_2010_ind" | "annee_2010_irr" | "annee_2011_aep" | "annee_2011_bar" | "annee_2011_can" | "annee_2011_ene" | "annee_2011_ind" | "annee_2011_irr" | "annee_2012_aep" | "annee_2012_bar" | "annee_2012_can" | "annee_2012_ene" | "annee_2012_exo" | "annee_2012_ind" | "annee_2012_irr" | "annee_2013_aep" | "annee_2013_bar" | "annee_2013_can" | "annee_2013_ene" | "annee_2013_ind" | "annee_2013_irr" | "annee_2014_aep" | "annee_2014_bar" | "annee_2014_can" | "annee_2014_ene" | "annee_2014_ind" | "annee_2014_irr" | "annee_2015_aep" | "annee_2015_bar" | "annee_2015_can" | "annee_2015_ene" | "annee_2015_exo" | "annee_2015_ind" | "annee_2015_irr" | "annee_2016_aep" | "annee_2016_bar" | "annee_2016_can" | "annee_2016_ene" | "annee_2016_exo" | "annee_2016_ind" | "annee_2016_irr" | "annee_2017_aep" | "annee_2017_bar" | "annee_2017_can" | "annee_2017_ene" | "annee_2017_exo" | "annee_2017_ind" | "annee_2017_irr" | "annee_2018_aep" | "annee_2018_bar" | "annee_2018_can" | "annee_2018_ene" | "annee_2018_exo" | "annee_2018_ind" | "annee_2018_irr" | "annee_2019_aep" | "annee_2019_bar" | "annee_2019_can" | "annee_2019_ene" | "annee_2019_exo" | "annee_2019_ind" | "annee_2019_irr" | "annee_2020_aep" | "annee_2020_bar" | "annee_2020_can" | "annee_2020_ene" | "annee_2020_exo" | "annee_2020_ind" | "annee_2020_irr" | "annee_2021_aep" | "annee_2021_bar" | "annee_2021_can" | "annee_2021_ene" | "annee_2021_exo" | "annee_2021_ind" | "annee_2021_irr" | "annee_2022_aep" | "annee_2022_bar" | "annee_2022_can" | "annee_2022_ene" | "annee_2022_ind" | "annee_2022_irr" | "annee_2023_aep" | "annee_2023_bar" | "annee_2023_can" | "annee_2023_ene" | "annee_2023_exo" | "annee_2023_ind" | "annee_2023_irr", ExtArgs["result"]["prelevements_eau"]>
 
-export type $prelevements_eau_newPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "prelevements_eau_new"
+export type $prelevements_eauPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "prelevements_eau"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     index: number
@@ -4054,136 +4054,136 @@ export type $prelevements_eau_newPayload<ExtArgs extends runtime.Types.Extension
     annee_2023_exo: number
     annee_2023_ind: number
     annee_2023_irr: number
-  }, ExtArgs["result"]["prelevements_eau_new"]>
+  }, ExtArgs["result"]["prelevements_eau"]>
   composites: {}
 }
 
-export type prelevements_eau_newGetPayload<S extends boolean | null | undefined | prelevements_eau_newDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload, S>
+export type prelevements_eauGetPayload<S extends boolean | null | undefined | prelevements_eauDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload, S>
 
-export type prelevements_eau_newCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<prelevements_eau_newFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: Prelevements_eau_newCountAggregateInputType | true
+export type prelevements_eauCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<prelevements_eauFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: Prelevements_eauCountAggregateInputType | true
   }
 
-export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['prelevements_eau_new'], meta: { name: 'prelevements_eau_new' } }
+export interface prelevements_eauDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['prelevements_eau'], meta: { name: 'prelevements_eau' } }
   /**
-   * Find zero or one Prelevements_eau_new that matches the filter.
-   * @param {prelevements_eau_newFindUniqueArgs} args - Arguments to find a Prelevements_eau_new
+   * Find zero or one Prelevements_eau that matches the filter.
+   * @param {prelevements_eauFindUniqueArgs} args - Arguments to find a Prelevements_eau
    * @example
-   * // Get one Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.findUnique({
+   * // Get one Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.findUnique({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUnique<T extends prelevements_eau_newFindUniqueArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newFindUniqueArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends prelevements_eauFindUniqueArgs>(args: Prisma.SelectSubset<T, prelevements_eauFindUniqueArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find one Prelevements_eau_new that matches the filter or throw an error with `error.code='P2025'`
+   * Find one Prelevements_eau that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {prelevements_eau_newFindUniqueOrThrowArgs} args - Arguments to find a Prelevements_eau_new
+   * @param {prelevements_eauFindUniqueOrThrowArgs} args - Arguments to find a Prelevements_eau
    * @example
-   * // Get one Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.findUniqueOrThrow({
+   * // Get one Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.findUniqueOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUniqueOrThrow<T extends prelevements_eau_newFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends prelevements_eauFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, prelevements_eauFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first Prelevements_eau_new that matches the filter.
+   * Find the first Prelevements_eau that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newFindFirstArgs} args - Arguments to find a Prelevements_eau_new
+   * @param {prelevements_eauFindFirstArgs} args - Arguments to find a Prelevements_eau
    * @example
-   * // Get one Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.findFirst({
+   * // Get one Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.findFirst({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirst<T extends prelevements_eau_newFindFirstArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newFindFirstArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends prelevements_eauFindFirstArgs>(args?: Prisma.SelectSubset<T, prelevements_eauFindFirstArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first Prelevements_eau_new that matches the filter or
+   * Find the first Prelevements_eau that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newFindFirstOrThrowArgs} args - Arguments to find a Prelevements_eau_new
+   * @param {prelevements_eauFindFirstOrThrowArgs} args - Arguments to find a Prelevements_eau
    * @example
-   * // Get one Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.findFirstOrThrow({
+   * // Get one Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.findFirstOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirstOrThrow<T extends prelevements_eau_newFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends prelevements_eauFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, prelevements_eauFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find zero or more Prelevements_eau_news that matches the filter.
+   * Find zero or more Prelevements_eaus that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {prelevements_eauFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
-   * // Get all Prelevements_eau_news
-   * const prelevements_eau_news = await prisma.prelevements_eau_new.findMany()
+   * // Get all Prelevements_eaus
+   * const prelevements_eaus = await prisma.prelevements_eau.findMany()
    * 
-   * // Get first 10 Prelevements_eau_news
-   * const prelevements_eau_news = await prisma.prelevements_eau_new.findMany({ take: 10 })
+   * // Get first 10 Prelevements_eaus
+   * const prelevements_eaus = await prisma.prelevements_eau.findMany({ take: 10 })
    * 
    * // Only select the `index`
-   * const prelevements_eau_newWithIndexOnly = await prisma.prelevements_eau_new.findMany({ select: { index: true } })
+   * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.findMany({ select: { index: true } })
    * 
    */
-  findMany<T extends prelevements_eau_newFindManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends prelevements_eauFindManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eauFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
-   * Create a Prelevements_eau_new.
-   * @param {prelevements_eau_newCreateArgs} args - Arguments to create a Prelevements_eau_new.
+   * Create a Prelevements_eau.
+   * @param {prelevements_eauCreateArgs} args - Arguments to create a Prelevements_eau.
    * @example
-   * // Create one Prelevements_eau_new
-   * const Prelevements_eau_new = await prisma.prelevements_eau_new.create({
+   * // Create one Prelevements_eau
+   * const Prelevements_eau = await prisma.prelevements_eau.create({
    *   data: {
-   *     // ... data to create a Prelevements_eau_new
+   *     // ... data to create a Prelevements_eau
    *   }
    * })
    * 
    */
-  create<T extends prelevements_eau_newCreateArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newCreateArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends prelevements_eauCreateArgs>(args: Prisma.SelectSubset<T, prelevements_eauCreateArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Create many Prelevements_eau_news.
-   * @param {prelevements_eau_newCreateManyArgs} args - Arguments to create many Prelevements_eau_news.
+   * Create many Prelevements_eaus.
+   * @param {prelevements_eauCreateManyArgs} args - Arguments to create many Prelevements_eaus.
    * @example
-   * // Create many Prelevements_eau_news
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.createMany({
+   * // Create many Prelevements_eaus
+   * const prelevements_eau = await prisma.prelevements_eau.createMany({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    *     
    */
-  createMany<T extends prelevements_eau_newCreateManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends prelevements_eauCreateManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eauCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Create many Prelevements_eau_news and returns the data saved in the database.
-   * @param {prelevements_eau_newCreateManyAndReturnArgs} args - Arguments to create many Prelevements_eau_news.
+   * Create many Prelevements_eaus and returns the data saved in the database.
+   * @param {prelevements_eauCreateManyAndReturnArgs} args - Arguments to create many Prelevements_eaus.
    * @example
-   * // Create many Prelevements_eau_news
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.createManyAndReturn({
+   * // Create many Prelevements_eaus
+   * const prelevements_eau = await prisma.prelevements_eau.createManyAndReturn({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    * 
-   * // Create many Prelevements_eau_news and only return the `index`
-   * const prelevements_eau_newWithIndexOnly = await prisma.prelevements_eau_new.createManyAndReturn({
+   * // Create many Prelevements_eaus and only return the `index`
+   * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.createManyAndReturn({
    *   select: { index: true },
    *   data: [
    *     // ... provide data here
@@ -4193,28 +4193,28 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends prelevements_eau_newCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends prelevements_eauCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, prelevements_eauCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Delete a Prelevements_eau_new.
-   * @param {prelevements_eau_newDeleteArgs} args - Arguments to delete one Prelevements_eau_new.
+   * Delete a Prelevements_eau.
+   * @param {prelevements_eauDeleteArgs} args - Arguments to delete one Prelevements_eau.
    * @example
-   * // Delete one Prelevements_eau_new
-   * const Prelevements_eau_new = await prisma.prelevements_eau_new.delete({
+   * // Delete one Prelevements_eau
+   * const Prelevements_eau = await prisma.prelevements_eau.delete({
    *   where: {
-   *     // ... filter to delete one Prelevements_eau_new
+   *     // ... filter to delete one Prelevements_eau
    *   }
    * })
    * 
    */
-  delete<T extends prelevements_eau_newDeleteArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newDeleteArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends prelevements_eauDeleteArgs>(args: Prisma.SelectSubset<T, prelevements_eauDeleteArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Update one Prelevements_eau_new.
-   * @param {prelevements_eau_newUpdateArgs} args - Arguments to update one Prelevements_eau_new.
+   * Update one Prelevements_eau.
+   * @param {prelevements_eauUpdateArgs} args - Arguments to update one Prelevements_eau.
    * @example
-   * // Update one Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.update({
+   * // Update one Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.update({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -4224,30 +4224,30 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    * })
    * 
    */
-  update<T extends prelevements_eau_newUpdateArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newUpdateArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends prelevements_eauUpdateArgs>(args: Prisma.SelectSubset<T, prelevements_eauUpdateArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Delete zero or more Prelevements_eau_news.
-   * @param {prelevements_eau_newDeleteManyArgs} args - Arguments to filter Prelevements_eau_news to delete.
+   * Delete zero or more Prelevements_eaus.
+   * @param {prelevements_eauDeleteManyArgs} args - Arguments to filter Prelevements_eaus to delete.
    * @example
-   * // Delete a few Prelevements_eau_news
-   * const { count } = await prisma.prelevements_eau_new.deleteMany({
+   * // Delete a few Prelevements_eaus
+   * const { count } = await prisma.prelevements_eau.deleteMany({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    * 
    */
-  deleteMany<T extends prelevements_eau_newDeleteManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eau_newDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends prelevements_eauDeleteManyArgs>(args?: Prisma.SelectSubset<T, prelevements_eauDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more Prelevements_eau_news.
+   * Update zero or more Prelevements_eaus.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {prelevements_eauUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
-   * // Update many Prelevements_eau_news
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.updateMany({
+   * // Update many Prelevements_eaus
+   * const prelevements_eau = await prisma.prelevements_eau.updateMany({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -4257,14 +4257,14 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    * })
    * 
    */
-  updateMany<T extends prelevements_eau_newUpdateManyArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends prelevements_eauUpdateManyArgs>(args: Prisma.SelectSubset<T, prelevements_eauUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more Prelevements_eau_news and returns the data updated in the database.
-   * @param {prelevements_eau_newUpdateManyAndReturnArgs} args - Arguments to update many Prelevements_eau_news.
+   * Update zero or more Prelevements_eaus and returns the data updated in the database.
+   * @param {prelevements_eauUpdateManyAndReturnArgs} args - Arguments to update many Prelevements_eaus.
    * @example
-   * // Update many Prelevements_eau_news
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.updateManyAndReturn({
+   * // Update many Prelevements_eaus
+   * const prelevements_eau = await prisma.prelevements_eau.updateManyAndReturn({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -4273,8 +4273,8 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    *   ]
    * })
    * 
-   * // Update zero or more Prelevements_eau_news and only return the `index`
-   * const prelevements_eau_newWithIndexOnly = await prisma.prelevements_eau_new.updateManyAndReturn({
+   * // Update zero or more Prelevements_eaus and only return the `index`
+   * const prelevements_eauWithIndexOnly = await prisma.prelevements_eau.updateManyAndReturn({
    *   select: { index: true },
    *   where: {
    *     // ... provide filter here
@@ -4287,56 +4287,56 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends prelevements_eau_newUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends prelevements_eauUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, prelevements_eauUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Create or update one Prelevements_eau_new.
-   * @param {prelevements_eau_newUpsertArgs} args - Arguments to update or create a Prelevements_eau_new.
+   * Create or update one Prelevements_eau.
+   * @param {prelevements_eauUpsertArgs} args - Arguments to update or create a Prelevements_eau.
    * @example
-   * // Update or create a Prelevements_eau_new
-   * const prelevements_eau_new = await prisma.prelevements_eau_new.upsert({
+   * // Update or create a Prelevements_eau
+   * const prelevements_eau = await prisma.prelevements_eau.upsert({
    *   create: {
-   *     // ... data to create a Prelevements_eau_new
+   *     // ... data to create a Prelevements_eau
    *   },
    *   update: {
    *     // ... in case it already exists, update
    *   },
    *   where: {
-   *     // ... the filter for the Prelevements_eau_new we want to update
+   *     // ... the filter for the Prelevements_eau we want to update
    *   }
    * })
    */
-  upsert<T extends prelevements_eau_newUpsertArgs>(args: Prisma.SelectSubset<T, prelevements_eau_newUpsertArgs<ExtArgs>>): Prisma.Prisma__prelevements_eau_newClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eau_newPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends prelevements_eauUpsertArgs>(args: Prisma.SelectSubset<T, prelevements_eauUpsertArgs<ExtArgs>>): Prisma.Prisma__prelevements_eauClient<runtime.Types.Result.GetResult<Prisma.$prelevements_eauPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
-   * Count the number of Prelevements_eau_news.
+   * Count the number of Prelevements_eaus.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newCountArgs} args - Arguments to filter Prelevements_eau_news to count.
+   * @param {prelevements_eauCountArgs} args - Arguments to filter Prelevements_eaus to count.
    * @example
-   * // Count the number of Prelevements_eau_news
-   * const count = await prisma.prelevements_eau_new.count({
+   * // Count the number of Prelevements_eaus
+   * const count = await prisma.prelevements_eau.count({
    *   where: {
-   *     // ... the filter for the Prelevements_eau_news we want to count
+   *     // ... the filter for the Prelevements_eaus we want to count
    *   }
    * })
   **/
-  count<T extends prelevements_eau_newCountArgs>(
-    args?: Prisma.Subset<T, prelevements_eau_newCountArgs>,
+  count<T extends prelevements_eauCountArgs>(
+    args?: Prisma.Subset<T, prelevements_eauCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<T['select'], Prelevements_eau_newCountAggregateOutputType>
+        : Prisma.GetScalarType<T['select'], Prelevements_eauCountAggregateOutputType>
       : number
   >
 
   /**
-   * Allows you to perform aggregations operations on a Prelevements_eau_new.
+   * Allows you to perform aggregations operations on a Prelevements_eau.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {Prelevements_eau_newAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+   * @param {Prelevements_eauAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @example
    * // Ordered by age ascending
    * // Where email contains prisma.io
@@ -4356,13 +4356,13 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    *   take: 10,
    * })
   **/
-  aggregate<T extends Prelevements_eau_newAggregateArgs>(args: Prisma.Subset<T, Prelevements_eau_newAggregateArgs>): Prisma.PrismaPromise<GetPrelevements_eau_newAggregateType<T>>
+  aggregate<T extends Prelevements_eauAggregateArgs>(args: Prisma.Subset<T, Prelevements_eauAggregateArgs>): Prisma.PrismaPromise<GetPrelevements_eauAggregateType<T>>
 
   /**
-   * Group by Prelevements_eau_new.
+   * Group by Prelevements_eau.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {prelevements_eau_newGroupByArgs} args - Group by arguments.
+   * @param {prelevements_eauGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -4377,14 +4377,14 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
    * 
   **/
   groupBy<
-    T extends prelevements_eau_newGroupByArgs,
+    T extends prelevements_eauGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: prelevements_eau_newGroupByArgs['orderBy'] }
-      : { orderBy?: prelevements_eau_newGroupByArgs['orderBy'] },
+      ? { orderBy: prelevements_eauGroupByArgs['orderBy'] }
+      : { orderBy?: prelevements_eauGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -4433,20 +4433,20 @@ export interface prelevements_eau_newDelegate<ExtArgs extends runtime.Types.Exte
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, prelevements_eau_newGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrelevements_eau_newGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, prelevements_eauGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrelevements_eauGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the prelevements_eau_new model
+ * Fields of the prelevements_eau model
  */
-readonly fields: prelevements_eau_newFieldRefs;
+readonly fields: prelevements_eauFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for prelevements_eau_new.
+ * The delegate class that acts as a "Promise-like" for prelevements_eau.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__prelevements_eau_newClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__prelevements_eauClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4474,492 +4474,492 @@ export interface Prisma__prelevements_eau_newClient<T, Null = never, ExtArgs ext
 
 
 /**
- * Fields of the prelevements_eau_new model
+ * Fields of the prelevements_eau model
  */
-export interface prelevements_eau_newFieldRefs {
-  readonly index: Prisma.FieldRef<"prelevements_eau_new", 'Int'>
-  readonly code_geographique: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly libelle_geographique: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly epci: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly libelle_epci: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly departement: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly libelle_departement: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly region: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly ept: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly libelle_petr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly code_pnr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly libelle_pnr: Prisma.FieldRef<"prelevements_eau_new", 'String'>
-  readonly annee_2008_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2008_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2009_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2010_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2011_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2012_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2013_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2014_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2015_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2016_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2017_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2018_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2019_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2020_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2021_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2022_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_aep: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_bar: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_can: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_ene: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_exo: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_ind: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
-  readonly annee_2023_irr: Prisma.FieldRef<"prelevements_eau_new", 'Float'>
+export interface prelevements_eauFieldRefs {
+  readonly index: Prisma.FieldRef<"prelevements_eau", 'Int'>
+  readonly code_geographique: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly libelle_geographique: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly epci: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly libelle_epci: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly departement: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly libelle_departement: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly region: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly ept: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly libelle_petr: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly code_pnr: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly libelle_pnr: Prisma.FieldRef<"prelevements_eau", 'String'>
+  readonly annee_2008_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2008_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2008_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2008_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2008_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2008_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2009_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2010_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2011_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2012_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2013_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2014_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2015_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2016_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2017_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2018_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2019_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2020_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2021_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2022_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_aep: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_bar: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_can: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_ene: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_exo: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_ind: Prisma.FieldRef<"prelevements_eau", 'Float'>
+  readonly annee_2023_irr: Prisma.FieldRef<"prelevements_eau", 'Float'>
 }
     
 
 // Custom InputTypes
 /**
- * prelevements_eau_new findUnique
+ * prelevements_eau findUnique
  */
-export type prelevements_eau_newFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter, which prelevements_eau_new to fetch.
+   * Filter, which prelevements_eau to fetch.
    */
-  where: Prisma.prelevements_eau_newWhereUniqueInput
+  where: Prisma.prelevements_eauWhereUniqueInput
 }
 
 /**
- * prelevements_eau_new findUniqueOrThrow
+ * prelevements_eau findUniqueOrThrow
  */
-export type prelevements_eau_newFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter, which prelevements_eau_new to fetch.
+   * Filter, which prelevements_eau to fetch.
    */
-  where: Prisma.prelevements_eau_newWhereUniqueInput
+  where: Prisma.prelevements_eauWhereUniqueInput
 }
 
 /**
- * prelevements_eau_new findFirst
+ * prelevements_eau findFirst
  */
-export type prelevements_eau_newFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter, which prelevements_eau_new to fetch.
+   * Filter, which prelevements_eau to fetch.
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of prelevements_eau_news to fetch.
+   * Determine the order of prelevements_eaus to fetch.
    */
-  orderBy?: Prisma.prelevements_eau_newOrderByWithRelationInput | Prisma.prelevements_eau_newOrderByWithRelationInput[]
+  orderBy?: Prisma.prelevements_eauOrderByWithRelationInput | Prisma.prelevements_eauOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for prelevements_eau_news.
+   * Sets the position for searching for prelevements_eaus.
    */
-  cursor?: Prisma.prelevements_eau_newWhereUniqueInput
+  cursor?: Prisma.prelevements_eauWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` prelevements_eau_news from the position of the cursor.
+   * Take `±n` prelevements_eaus from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` prelevements_eau_news.
+   * Skip the first `n` prelevements_eaus.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of prelevements_eau_news.
+   * Filter by unique combinations of prelevements_eaus.
    */
-  distinct?: Prisma.Prelevements_eau_newScalarFieldEnum | Prisma.Prelevements_eau_newScalarFieldEnum[]
+  distinct?: Prisma.Prelevements_eauScalarFieldEnum | Prisma.Prelevements_eauScalarFieldEnum[]
 }
 
 /**
- * prelevements_eau_new findFirstOrThrow
+ * prelevements_eau findFirstOrThrow
  */
-export type prelevements_eau_newFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter, which prelevements_eau_new to fetch.
+   * Filter, which prelevements_eau to fetch.
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of prelevements_eau_news to fetch.
+   * Determine the order of prelevements_eaus to fetch.
    */
-  orderBy?: Prisma.prelevements_eau_newOrderByWithRelationInput | Prisma.prelevements_eau_newOrderByWithRelationInput[]
+  orderBy?: Prisma.prelevements_eauOrderByWithRelationInput | Prisma.prelevements_eauOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for prelevements_eau_news.
+   * Sets the position for searching for prelevements_eaus.
    */
-  cursor?: Prisma.prelevements_eau_newWhereUniqueInput
+  cursor?: Prisma.prelevements_eauWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` prelevements_eau_news from the position of the cursor.
+   * Take `±n` prelevements_eaus from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` prelevements_eau_news.
+   * Skip the first `n` prelevements_eaus.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of prelevements_eau_news.
+   * Filter by unique combinations of prelevements_eaus.
    */
-  distinct?: Prisma.Prelevements_eau_newScalarFieldEnum | Prisma.Prelevements_eau_newScalarFieldEnum[]
+  distinct?: Prisma.Prelevements_eauScalarFieldEnum | Prisma.Prelevements_eauScalarFieldEnum[]
 }
 
 /**
- * prelevements_eau_new findMany
+ * prelevements_eau findMany
  */
-export type prelevements_eau_newFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter, which prelevements_eau_news to fetch.
+   * Filter, which prelevements_eaus to fetch.
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of prelevements_eau_news to fetch.
+   * Determine the order of prelevements_eaus to fetch.
    */
-  orderBy?: Prisma.prelevements_eau_newOrderByWithRelationInput | Prisma.prelevements_eau_newOrderByWithRelationInput[]
+  orderBy?: Prisma.prelevements_eauOrderByWithRelationInput | Prisma.prelevements_eauOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing prelevements_eau_news.
+   * Sets the position for listing prelevements_eaus.
    */
-  cursor?: Prisma.prelevements_eau_newWhereUniqueInput
+  cursor?: Prisma.prelevements_eauWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` prelevements_eau_news from the position of the cursor.
+   * Take `±n` prelevements_eaus from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` prelevements_eau_news.
+   * Skip the first `n` prelevements_eaus.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of prelevements_eau_news.
+   * Filter by unique combinations of prelevements_eaus.
    */
-  distinct?: Prisma.Prelevements_eau_newScalarFieldEnum | Prisma.Prelevements_eau_newScalarFieldEnum[]
+  distinct?: Prisma.Prelevements_eauScalarFieldEnum | Prisma.Prelevements_eauScalarFieldEnum[]
 }
 
 /**
- * prelevements_eau_new create
+ * prelevements_eau create
  */
-export type prelevements_eau_newCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * The data needed to create a prelevements_eau_new.
+   * The data needed to create a prelevements_eau.
    */
-  data: Prisma.XOR<Prisma.prelevements_eau_newCreateInput, Prisma.prelevements_eau_newUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.prelevements_eauCreateInput, Prisma.prelevements_eauUncheckedCreateInput>
 }
 
 /**
- * prelevements_eau_new createMany
+ * prelevements_eau createMany
  */
-export type prelevements_eau_newCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many prelevements_eau_news.
+   * The data used to create many prelevements_eaus.
    */
-  data: Prisma.prelevements_eau_newCreateManyInput | Prisma.prelevements_eau_newCreateManyInput[]
+  data: Prisma.prelevements_eauCreateManyInput | Prisma.prelevements_eauCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * prelevements_eau_new createManyAndReturn
+ * prelevements_eau createManyAndReturn
  */
-export type prelevements_eau_newCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * The data used to create many prelevements_eau_news.
+   * The data used to create many prelevements_eaus.
    */
-  data: Prisma.prelevements_eau_newCreateManyInput | Prisma.prelevements_eau_newCreateManyInput[]
+  data: Prisma.prelevements_eauCreateManyInput | Prisma.prelevements_eauCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * prelevements_eau_new update
+ * prelevements_eau update
  */
-export type prelevements_eau_newUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * The data needed to update a prelevements_eau_new.
+   * The data needed to update a prelevements_eau.
    */
-  data: Prisma.XOR<Prisma.prelevements_eau_newUpdateInput, Prisma.prelevements_eau_newUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.prelevements_eauUpdateInput, Prisma.prelevements_eauUncheckedUpdateInput>
   /**
-   * Choose, which prelevements_eau_new to update.
+   * Choose, which prelevements_eau to update.
    */
-  where: Prisma.prelevements_eau_newWhereUniqueInput
+  where: Prisma.prelevements_eauWhereUniqueInput
 }
 
 /**
- * prelevements_eau_new updateMany
+ * prelevements_eau updateMany
  */
-export type prelevements_eau_newUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update prelevements_eau_news.
+   * The data used to update prelevements_eaus.
    */
-  data: Prisma.XOR<Prisma.prelevements_eau_newUpdateManyMutationInput, Prisma.prelevements_eau_newUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.prelevements_eauUpdateManyMutationInput, Prisma.prelevements_eauUncheckedUpdateManyInput>
   /**
-   * Filter which prelevements_eau_news to update
+   * Filter which prelevements_eaus to update
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
-   * Limit how many prelevements_eau_news to update.
+   * Limit how many prelevements_eaus to update.
    */
   limit?: number
 }
 
 /**
- * prelevements_eau_new updateManyAndReturn
+ * prelevements_eau updateManyAndReturn
  */
-export type prelevements_eau_newUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * The data used to update prelevements_eau_news.
+   * The data used to update prelevements_eaus.
    */
-  data: Prisma.XOR<Prisma.prelevements_eau_newUpdateManyMutationInput, Prisma.prelevements_eau_newUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.prelevements_eauUpdateManyMutationInput, Prisma.prelevements_eauUncheckedUpdateManyInput>
   /**
-   * Filter which prelevements_eau_news to update
+   * Filter which prelevements_eaus to update
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
-   * Limit how many prelevements_eau_news to update.
+   * Limit how many prelevements_eaus to update.
    */
   limit?: number
 }
 
 /**
- * prelevements_eau_new upsert
+ * prelevements_eau upsert
  */
-export type prelevements_eau_newUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * The filter to search for the prelevements_eau_new to update in case it exists.
+   * The filter to search for the prelevements_eau to update in case it exists.
    */
-  where: Prisma.prelevements_eau_newWhereUniqueInput
+  where: Prisma.prelevements_eauWhereUniqueInput
   /**
-   * In case the prelevements_eau_new found by the `where` argument doesn't exist, create a new prelevements_eau_new with this data.
+   * In case the prelevements_eau found by the `where` argument doesn't exist, create a new prelevements_eau with this data.
    */
-  create: Prisma.XOR<Prisma.prelevements_eau_newCreateInput, Prisma.prelevements_eau_newUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.prelevements_eauCreateInput, Prisma.prelevements_eauUncheckedCreateInput>
   /**
-   * In case the prelevements_eau_new was found with the provided `where` argument, update it with this data.
+   * In case the prelevements_eau was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.prelevements_eau_newUpdateInput, Prisma.prelevements_eau_newUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.prelevements_eauUpdateInput, Prisma.prelevements_eauUncheckedUpdateInput>
 }
 
 /**
- * prelevements_eau_new delete
+ * prelevements_eau delete
  */
-export type prelevements_eau_newDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
   /**
-   * Filter which prelevements_eau_new to delete.
+   * Filter which prelevements_eau to delete.
    */
-  where: Prisma.prelevements_eau_newWhereUniqueInput
+  where: Prisma.prelevements_eauWhereUniqueInput
 }
 
 /**
- * prelevements_eau_new deleteMany
+ * prelevements_eau deleteMany
  */
-export type prelevements_eau_newDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which prelevements_eau_news to delete
+   * Filter which prelevements_eaus to delete
    */
-  where?: Prisma.prelevements_eau_newWhereInput
+  where?: Prisma.prelevements_eauWhereInput
   /**
-   * Limit how many prelevements_eau_news to delete.
+   * Limit how many prelevements_eaus to delete.
    */
   limit?: number
 }
 
 /**
- * prelevements_eau_new without action
+ * prelevements_eau without action
  */
-export type prelevements_eau_newDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type prelevements_eauDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the prelevements_eau_new
+   * Select specific fields to fetch from the prelevements_eau
    */
-  select?: Prisma.prelevements_eau_newSelect<ExtArgs> | null
+  select?: Prisma.prelevements_eauSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the prelevements_eau_new
+   * Omit specific fields from the prelevements_eau
    */
-  omit?: Prisma.prelevements_eau_newOmit<ExtArgs> | null
+  omit?: Prisma.prelevements_eauOmit<ExtArgs> | null
 }

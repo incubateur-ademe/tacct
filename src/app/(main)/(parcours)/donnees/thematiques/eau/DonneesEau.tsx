@@ -3,7 +3,7 @@ import ScrollToHash from "@/components/interactions/ScrollToHash";
 import { LoaderText } from "@/components/ui/loader";
 import { Body, H1, H2, H3 } from "@/design-system/base/Textes";
 import { EtatCoursDeau, PrelevementsEauModel } from "@/lib/postgres/models";
-import { GetPrelevementsEauNew } from "@/lib/queries/databases/ressourcesEau";
+import { GetPrelevementsEau } from "@/lib/queries/databases/ressourcesEau";
 import { GetEtatCoursDeau } from "@/lib/queries/postgis/etatCoursDeau";
 import { useSearchParams } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
@@ -45,7 +45,7 @@ export const DonneesEau = ({
     void (async () => {
       const [newEtatCoursDeau, newPrelevementsEau] = await Promise.all([
         GetEtatCoursDeau(code, libelle, type),
-        GetPrelevementsEauNew(code, libelle, type)
+        GetPrelevementsEau(code, libelle, type)
       ]);
       setData({
         etatCoursDeau: newEtatCoursDeau,

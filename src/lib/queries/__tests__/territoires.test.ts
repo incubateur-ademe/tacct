@@ -168,7 +168,7 @@ describe('feux_foret code/libelle correspondance', () => {
 describe('ressources_eau code/libelle correspondance', () => {
   it('should have correct code_pnr/libelle_pnr pairs in ressources_eau', async () => {
     const result = await pool.query(
-      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau_new WHERE code_pnr IS NOT NULL'
+      'SELECT DISTINCT code_pnr, libelle_pnr FROM databases_v2.prelevements_eau WHERE code_pnr IS NOT NULL'
     );
     for (const row of result.rows) {
       const expected = expectedMap.get(row.code_pnr);

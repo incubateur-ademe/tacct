@@ -7,7 +7,7 @@ import {
 import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
 import { prisma } from '../db';
 
-export const GetPrelevementsEauNew = async (
+export const GetPrelevementsEau = async (
   code: string,
   libelle: string,
   type: string
@@ -23,7 +23,7 @@ export const GetPrelevementsEauNew = async (
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
-      const exists = await prisma.prelevements_eau_new.findFirst({
+      const exists = await prisma.prelevements_eau.findFirst({
         where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
         select: { departement: true }
       });
@@ -33,10 +33,10 @@ export const GetPrelevementsEauNew = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases_v2.prelevements_eau_new
+          FROM databases_v2.prelevements_eau
           WHERE departement = (
             SELECT departement
-            FROM databases_v2.prelevements_eau_new
+            FROM databases_v2.prelevements_eau
             WHERE code_geographique = ${code}
           )
         `;
@@ -46,10 +46,10 @@ export const GetPrelevementsEauNew = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases_v2.prelevements_eau_new
+          FROM databases_v2.prelevements_eau
           WHERE departement IN (
             SELECT departement
-            FROM databases_v2.prelevements_eau_new
+            FROM databases_v2.prelevements_eau
             WHERE epci = ${code}
           )
         `;
@@ -60,10 +60,10 @@ export const GetPrelevementsEauNew = async (
           // await prisma.$executeRaw`SET statement_timeout = 1000;`;
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases_v2.prelevements_eau_new
+          FROM databases_v2.prelevements_eau
           WHERE departement IN (
             SELECT departement
-            FROM databases_v2.prelevements_eau_new
+            FROM databases_v2.prelevements_eau
             WHERE libelle_petr = ${libelle}
           )
         `;
@@ -73,10 +73,10 @@ export const GetPrelevementsEauNew = async (
           console.time('Query Execution Time PRELEVEMENT EAUX');
           const value = await prisma.$queryRaw`
           SELECT *
-          FROM databases_v2.prelevements_eau_new
+          FROM databases_v2.prelevements_eau
           WHERE departement IN (
             SELECT departement
-            FROM databases_v2.prelevements_eau_new
+            FROM databases_v2.prelevements_eau
             WHERE ept = ${libelle}
           )
         `;
@@ -84,7 +84,7 @@ export const GetPrelevementsEauNew = async (
           return value as PrelevementsEauModel[];
         } else if (type === 'departement') {
           console.time('Query Execution Time RESSOURCES EAUX');
-          const value = await prisma.prelevements_eau_new.findMany({
+          const value = await prisma.prelevements_eau.findMany({
             where: {
               departement: code
             }
@@ -92,7 +92,7 @@ export const GetPrelevementsEauNew = async (
           console.timeEnd('Query Execution Time RESSOURCES EAUX');
           return value as PrelevementsEauModel[];
         } else if (type === 'pnr') {
-          const value = await prisma.prelevements_eau_new.findMany({
+          const value = await prisma.prelevements_eau.findMany({
             where: {
               code_pnr: {
                 contains: code,
@@ -110,77 +110,6 @@ export const GetPrelevementsEauNew = async (
   })();
   return Promise.race([dbQuery, timeoutPromise]);
 };
-
-// export const GetQualiteEauxBaignade = async (
-//   code: string,
-//   libelle: string,
-//   type: string
-// ): Promise<QualiteSitesBaignade[]> => {
-//   const column = ColumnLibelleCheck(type);
-//   try {
-//     // Fast existence check
-//     if (!libelle || !type || (!code && type !== 'petr')) return [];
-//     const exists = await prisma.databases_v2_collectivites_searchbar.findFirst({
-//       where: { [column]: libelle }
-//     });
-//     if (!exists) return [];
-//     else {
-//       if (code === 'ZZZZZZZZZ') {
-//         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-//         const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
-//           {
-//             where: {
-//               OR: [
-//                 { COMMUNE: "ile-d'yeu (l')" },
-//                 { COMMUNE: 'ile-de-brehat' },
-//                 { COMMUNE: 'ouessant' },
-//                 { COMMUNE: 'ile-de-sein' }
-//               ]
-//             }
-//           }
-//         );
-//         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-//         return value;
-//       } else {
-//         console.time('Query Execution Time QUALITE EAUX BAIGNADE');
-//         const departement =
-//           await prisma.databases_v2_collectivites_searchbar.findMany({
-//             where: {
-//               AND: [
-//                 {
-//                   departement: { not: null }
-//                 },
-//                 {
-//                   [column]: {
-//                     contains: libelle,
-//                     mode: 'insensitive'
-//                   }
-//                 }
-//               ]
-//             },
-//             distinct: ['departement']
-//           });
-//         const value = await prisma.databases_v2_qualite_sites_baignade.findMany(
-//           {
-//             where: {
-//               DEP_NUM: {
-//                 in: departement
-//                   .map((d) => d.departement)
-//                   .filter((d): d is string => d !== null)
-//               }
-//             }
-//           }
-//         );
-//         console.timeEnd('Query Execution Time QUALITE EAUX BAIGNADE');
-//         return value;
-//       }
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     // prisma.$disconnect();
-//     return [];
-//   }
-// };
 
 export const GetQualiteEauxBaignade = async (
   code: string,
@@ -214,7 +143,7 @@ export const GetQualiteEauxBaignade = async (
           },
           distinct: ['departement']
         });
-      const value = await prisma.qualite_sites_baignade_new.findMany({
+      const value = await prisma.databases_v2_qualite_sites_baignade.findMany({
         where: {
           departement: {
             in: departement

@@ -188,16 +188,6 @@ export type secheresses = Prisma.secheressesModel
  */
 export type o3_seuils = Prisma.o3_seuilsModel
 /**
- * Model qualite_sites_baignade_new
- * 
- */
-export type qualite_sites_baignade_new = Prisma.qualite_sites_baignade_newModel
-/**
- * Model prelevements_eau_new
- * 
- */
-export type prelevements_eau_new = Prisma.prelevements_eau_newModel
-/**
  * Model arbovirose
  * 
  */
@@ -447,3 +437,8 @@ export type stations_ski = Prisma.stations_skiModel
  * 
  */
 export type emplois_sylviculture = Prisma.emplois_sylvicultureModel
+/**
+ * Model prelevements_eau
+ * 
+ */
+export type prelevements_eau = Prisma.prelevements_eauModel

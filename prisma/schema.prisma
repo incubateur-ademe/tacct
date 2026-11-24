@@ -506,24 +506,28 @@ model databases_v2_patch4c {
 }
 
 model databases_v2_qualite_sites_baignade {
-  index    Int     @id
-  DEP_NOM  String
-  DEP_NUM  String
-  TYPE     String
-  COMMUNE  String
-  POINT    String
-  LONG     Float
-  LAT      Float
-  QEB_2013 String?
-  QEB_2014 String?
-  QEB_2015 String?
-  QEB_2016 String?
-  QEB_2017 String?
-  QEB_2018 String?
-  QEB_2019 String?
-  QEB_2020 String?
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  nom_site             String
+  latitude             Float
+  longitude            Float
+  type_eau_norm        String
+  statut_donnees       String
+  qualite              String
 
   @@index([index], map: "ix_qualite_sites_baignade_index")
+  @@index([code_geographique], map: "qualite_sites_baignade_communes_index")
+  @@index([departement], map: "qualite_sites_baignade_departement_index")
   @@map("qualite_sites_baignade")
   @@schema("databases_v2")
 }
@@ -999,160 +1003,6 @@ model postgis_v2_liste_pnr {
   @@map("liste_pnr")
   @@ignore
   @@schema("postgis_v2")
-}
-
-model qualite_sites_baignade_new {
-  index                Int     @id
-  code_geographique    String
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  libelle_departement  String
-  region               Float
-  ept                  String?
-  libelle_petr         String?
-  code_pnr             String?
-  libelle_pnr          String?
-  nom_site             String
-  latitude             Float
-  longitude            Float
-  type_eau_norm        String
-  statut_donnees       String
-  qualite              String
-
-  @@index([index], map: "ix_qualite_sites_baignade_new_index")
-  @@index([code_geographique], map: "qualite_sites_baignade_new_communes_index")
-  @@index([departement], map: "qualite_sites_baignade_new_departement_index")
-  @@schema("databases_v2")
-}
-
-model prelevements_eau_new {
-  index                Int     @id
-  code_geographique    String
-  libelle_geographique String
-  epci                 String
-  libelle_epci         String
-  departement          String
-  libelle_departement  String
-  region               Float
-  ept                  String?
-  libelle_petr         String?
-  code_pnr             String?
-  libelle_pnr          String?
-  annee_2008_aep       Float
-  annee_2008_bar       Float
-  annee_2008_can       Float
-  annee_2008_ene       Float
-  annee_2008_ind       Float
-  annee_2008_irr       Float
-  annee_2009_aep       Float
-  annee_2009_bar       Float
-  annee_2009_can       Float
-  annee_2009_ene       Float
-  annee_2009_ind       Float
-  annee_2009_irr       Float
-  annee_2010_aep       Float
-  annee_2010_bar       Float
-  annee_2010_can       Float
-  annee_2010_ene       Float
-  annee_2010_ind       Float
-  annee_2010_irr       Float
-  annee_2011_aep       Float
-  annee_2011_bar       Float
-  annee_2011_can       Float
-  annee_2011_ene       Float
-  annee_2011_ind       Float
-  annee_2011_irr       Float
-  annee_2012_aep       Float
-  annee_2012_bar       Float
-  annee_2012_can       Float
-  annee_2012_ene       Float
-  annee_2012_exo       Float
-  annee_2012_ind       Float
-  annee_2012_irr       Float
-  annee_2013_aep       Float
-  annee_2013_bar       Float
-  annee_2013_can       Float
-  annee_2013_ene       Float
-  annee_2013_ind       Float
-  annee_2013_irr       Float
-  annee_2014_aep       Float
-  annee_2014_bar       Float
-  annee_2014_can       Float
-  annee_2014_ene       Float
-  annee_2014_ind       Float
-  annee_2014_irr       Float
-  annee_2015_aep       Float
-  annee_2015_bar       Float
-  annee_2015_can       Float
-  annee_2015_ene       Float
-  annee_2015_exo       Float
-  annee_2015_ind       Float
-  annee_2015_irr       Float
-  annee_2016_aep       Float
-  annee_2016_bar       Float
-  annee_2016_can       Float
-  annee_2016_ene       Float
-  annee_2016_exo       Float
-  annee_2016_ind       Float
-  annee_2016_irr       Float
-  annee_2017_aep       Float
-  annee_2017_bar       Float
-  annee_2017_can       Float
-  annee_2017_ene       Float
-  annee_2017_exo       Float
-  annee_2017_ind       Float
-  annee_2017_irr       Float
-  annee_2018_aep       Float
-  annee_2018_bar       Float
-  annee_2018_can       Float
-  annee_2018_ene       Float
-  annee_2018_exo       Float
-  annee_2018_ind       Float
-  annee_2018_irr       Float
-  annee_2019_aep       Float
-  annee_2019_bar       Float
-  annee_2019_can       Float
-  annee_2019_ene       Float
-  annee_2019_exo       Float
-  annee_2019_ind       Float
-  annee_2019_irr       Float
-  annee_2020_aep       Float
-  annee_2020_bar       Float
-  annee_2020_can       Float
-  annee_2020_ene       Float
-  annee_2020_exo       Float
-  annee_2020_ind       Float
-  annee_2020_irr       Float
-  annee_2021_aep       Float
-  annee_2021_bar       Float
-  annee_2021_can       Float
-  annee_2021_ene       Float
-  annee_2021_exo       Float
-  annee_2021_ind       Float
-  annee_2021_irr       Float
-  annee_2022_aep       Float
-  annee_2022_bar       Float
-  annee_2022_can       Float
-  annee_2022_ene       Float
-  annee_2022_ind       Float
-  annee_2022_irr       Float
-  annee_2023_aep       Float
-  annee_2023_bar       Float
-  annee_2023_can       Float
-  annee_2023_ene       Float
-  annee_2023_exo       Float
-  annee_2023_ind       Float
-  annee_2023_irr       Float
-
-  @@index([index], map: "ix_prelevements_eau_new_index")
-  @@index([code_geographique], map: "prelevements_eau_new_communes_index")
-  @@index([departement], map: "prelevements_eau_new_departement_index")
-  @@index([epci], map: "prelevements_eau_new_epci_index")
-  @@index([libelle_petr], map: "prelevements_eau_new_petr_index")
-  @@index([code_pnr], map: "prelevements_eau_new_pnr_index")
-  @@schema("databases_v2")
 }
 
 model arbovirose {
@@ -1987,5 +1837,133 @@ model temp_polem {
   epci          String?
 
   @@ignore
+  @@schema("databases_v2")
+}
+
+model prelevements_eau {
+  index                Int     @id
+  code_geographique    String
+  libelle_geographique String
+  epci                 String
+  libelle_epci         String
+  departement          String
+  libelle_departement  String
+  region               Float
+  ept                  String?
+  libelle_petr         String?
+  code_pnr             String?
+  libelle_pnr          String?
+  annee_2008_aep       Float
+  annee_2008_bar       Float
+  annee_2008_can       Float
+  annee_2008_ene       Float
+  annee_2008_ind       Float
+  annee_2008_irr       Float
+  annee_2009_aep       Float
+  annee_2009_bar       Float
+  annee_2009_can       Float
+  annee_2009_ene       Float
+  annee_2009_ind       Float
+  annee_2009_irr       Float
+  annee_2010_aep       Float
+  annee_2010_bar       Float
+  annee_2010_can       Float
+  annee_2010_ene       Float
+  annee_2010_ind       Float
+  annee_2010_irr       Float
+  annee_2011_aep       Float
+  annee_2011_bar       Float
+  annee_2011_can       Float
+  annee_2011_ene       Float
+  annee_2011_ind       Float
+  annee_2011_irr       Float
+  annee_2012_aep       Float
+  annee_2012_bar       Float
+  annee_2012_can       Float
+  annee_2012_ene       Float
+  annee_2012_exo       Float
+  annee_2012_ind       Float
+  annee_2012_irr       Float
+  annee_2013_aep       Float
+  annee_2013_bar       Float
+  annee_2013_can       Float
+  annee_2013_ene       Float
+  annee_2013_ind       Float
+  annee_2013_irr       Float
+  annee_2014_aep       Float
+  annee_2014_bar       Float
+  annee_2014_can       Float
+  annee_2014_ene       Float
+  annee_2014_ind       Float
+  annee_2014_irr       Float
+  annee_2015_aep       Float
+  annee_2015_bar       Float
+  annee_2015_can       Float
+  annee_2015_ene       Float
+  annee_2015_exo       Float
+  annee_2015_ind       Float
+  annee_2015_irr       Float
+  annee_2016_aep       Float
+  annee_2016_bar       Float
+  annee_2016_can       Float
+  annee_2016_ene       Float
+  annee_2016_exo       Float
+  annee_2016_ind       Float
+  annee_2016_irr       Float
+  annee_2017_aep       Float
+  annee_2017_bar       Float
+  annee_2017_can       Float
+  annee_2017_ene       Float
+  annee_2017_exo       Float
+  annee_2017_ind       Float
+  annee_2017_irr       Float
+  annee_2018_aep       Float
+  annee_2018_bar       Float
+  annee_2018_can       Float
+  annee_2018_ene       Float
+  annee_2018_exo       Float
+  annee_2018_ind       Float
+  annee_2018_irr       Float
+  annee_2019_aep       Float
+  annee_2019_bar       Float
+  annee_2019_can       Float
+  annee_2019_ene       Float
+  annee_2019_exo       Float
+  annee_2019_ind       Float
+  annee_2019_irr       Float
+  annee_2020_aep       Float
+  annee_2020_bar       Float
+  annee_2020_can       Float
+  annee_2020_ene       Float
+  annee_2020_exo       Float
+  annee_2020_ind       Float
+  annee_2020_irr       Float
+  annee_2021_aep       Float
+  annee_2021_bar       Float
+  annee_2021_can       Float
+  annee_2021_ene       Float
+  annee_2021_exo       Float
+  annee_2021_ind       Float
+  annee_2021_irr       Float
+  annee_2022_aep       Float
+  annee_2022_bar       Float
+  annee_2022_can       Float
+  annee_2022_ene       Float
+  annee_2022_ind       Float
+  annee_2022_irr       Float
+  annee_2023_aep       Float
+  annee_2023_bar       Float
+  annee_2023_can       Float
+  annee_2023_ene       Float
+  annee_2023_exo       Float
+  annee_2023_ind       Float
+  annee_2023_irr       Float
+
+  @@index([index], map: "ix_prelevements_eau_index")
+  @@index([code_geographique], map: "prelevements_eau_communes_index")
+  @@index([departement], map: "prelevements_eau_departement_index")
+  @@index([epci], map: "prelevements_eau_epci_index")
+  @@index([libelle_petr], map: "prelevements_eau_petr_index")
+  @@index([code_pnr], map: "prelevements_eau_pnr_index")
   @@schema("databases_v2")
 }
