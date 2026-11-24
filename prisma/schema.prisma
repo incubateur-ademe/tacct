@@ -1863,16 +1863,6 @@ model emplois_sylviculture {
   @@schema("databases_v2")
 }
 
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model temp_polem {
-  code_polem    String?
-  libelle_polem String?
-  epci          String?
-
-  @@ignore
-  @@schema("databases_v2")
-}
-
 model prelevements_eau {
   index                Int      @id
   code_geographique    String
