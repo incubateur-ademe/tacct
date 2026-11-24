@@ -32,6 +32,9 @@ import { Round } from '../reusableFunctions/round';
 const arrondi = <T extends number | null | undefined>(valeur: T): T =>
   (typeof valeur === 'number' ? Math.round(valeur * 100) / 100 : valeur) as T;
 
+const listePolem = (valeurs: string[] | null | undefined) =>
+  valeurs?.join(' ; ') ?? null;
+
 export const Patch4Export = ({
   type,
   patch4
@@ -66,6 +69,8 @@ export const IndicatorExportTransformations = {
           code_pnr: commune.code_pnr,
           libelle_pnr: commune.libelle_pnr,
           libelle_petr: commune.libelle_petr,
+          code_polem: listePolem(commune.code_polem),
+          libelle_polem: listePolem(commune.libelle_polem),
           'part_surface_irriguee (%)': (() => {
             if (
               !commune.part_irr_sau_2020 ||
@@ -90,6 +95,8 @@ export const IndicatorExportTransformations = {
           code_pnr: commune.code_pnr,
           libelle_pnr: commune.libelle_pnr,
           libelle_petr: commune.libelle_petr,
+          code_polem: listePolem(commune.code_polem),
+          libelle_polem: listePolem(commune.libelle_polem),
           projets_alimentaires_territoriaux: (Array.isArray(
             commune.projets_alimentaires_territoriaux
           )
@@ -239,6 +246,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region,
@@ -268,6 +277,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           nb_residences_principales_total: el.nb_rp_tot,
@@ -289,6 +300,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           '1968_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1968),
@@ -331,6 +344,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           departement: el.departement,
           libelle_departement: el.libelle_departement,
           agriculture: isFinite(Number(Round(el.NA5AZ_sum, 0))) // pour ne pas avoir une erreur à l'ouverture du fichier xlsx
@@ -361,6 +376,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           surface_artificialisee_ha: arrondi(el.clc_1_artificialise),
@@ -384,6 +401,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region,
@@ -430,6 +449,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region
@@ -467,6 +488,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           naf11art12: arrondi(el.naf11art12),
           art11act12: arrondi(el.art11act12),
           art11hab12: arrondi(el.art11hab12),
@@ -645,6 +668,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           nb_logement: el.nb_logement,
           nb_logement_alea_moyen_fort: el.nb_logement_alea_moyen_fort,
           nb_logement_alea_faible: el.nb_logement_alea_faible,
@@ -701,6 +726,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
           region: el.region,
@@ -736,6 +763,8 @@ export const IndicatorExportTransformations = {
           code_pnr: item.code_pnr,
           libelle_pnr: item.libelle_pnr,
           libelle_petr: item.libelle_petr,
+          code_polem: listePolem(item.code_polem),
+          libelle_polem: listePolem(item.libelle_polem),
           date_debut_catastrophe: item.dat_deb,
           date_fin_catastrophe: item.dat_fin,
           date_publication_arrete: item.dat_pub_arrete,
@@ -757,6 +786,8 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
+          code_polem: listePolem(el.code_polem),
+          libelle_polem: listePolem(el.libelle_polem),
           restrictions: el.restrictions
         };
       });

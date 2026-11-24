@@ -3,7 +3,7 @@ import { Agriculture, SurfacesAgricolesModel } from '@/lib/postgres/models';
 import { Any } from '@/lib/utils/types';
 import fs from 'fs/promises';
 import path from 'path';
-import { ColumnCodeCheck } from '../columns';
+import { ColumnCodeCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetAgricultureLocal = async (
@@ -119,9 +119,7 @@ export const GetSurfacesAgricoles = async (
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists =
         await prisma.databases_v2_collectivites_searchbar.findFirst({
-          where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
-          }
+          where: FiltreTerritoire(type, code, libelle)
         });
       if (!exists) return [];
       else {
@@ -152,15 +150,17 @@ export const GetSurfacesAgricoles = async (
                   {
                     epci: { not: null }
                   },
-                  {
-                    [column]:
-                      type === 'petr' || type === 'ept'
-                        ? libelle
-                        : {
-                            contains: code,
-                            mode: 'insensitive'
-                          }
-                  }
+                  type === 'polem'
+                    ? FiltreTerritoire(type, code, libelle)
+                    : {
+                        [column]:
+                          type === 'petr' || type === 'ept'
+                            ? libelle
+                            : {
+                                contains: code,
+                                mode: 'insensitive'
+                              }
+                      }
                 ]
               },
               distinct: ['epci']

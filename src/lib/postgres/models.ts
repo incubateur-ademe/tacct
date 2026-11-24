@@ -73,6 +73,8 @@ export type ConfortThermique = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   ept: string | null;
   under_4_sum_1968: number | null;
   under_4_sum_1975: number | null;
@@ -164,6 +166,8 @@ export type ArreteCatNat = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
 };
 
 export type Secheresses = {
@@ -301,6 +305,8 @@ export type PrelevementsEauParsed = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   region: number;
   A2008: number;
   A2009: number;
@@ -543,6 +549,8 @@ export type ConsommationNAF = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   naf11art12: number | null;
   art11hab12: number | null;
   art11act12: number | null;
@@ -724,6 +732,8 @@ export type ExportCoursDeau = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   cours_d_eau: string;
   etat_ecologique: string | null;
   longueur: number;
@@ -742,6 +752,8 @@ export type IncendiesForet = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   nature: string | null;
   annee: number;
   surface_parcourue: number;
@@ -776,6 +788,8 @@ export type RGAdb = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   nb_logement: number;
   nb_logement_alea_moyen_fort: number;
   nb_logement_alea_faible: number;
@@ -816,6 +830,8 @@ export type SecheressesPasseesModel = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   restrictions: string | null;
 };
 
@@ -894,6 +910,8 @@ export type LczCouverture = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   couverture_lcz: number | null;
 };
 
@@ -930,6 +948,8 @@ export type TableCommuneModel = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   type_touristique: string | null;
   atlas_biodiversite_nom: string | null;
   atlas_biodiversite_annee_debut: number | null;
@@ -991,6 +1011,8 @@ export type PrelevementsEauModel = {
   libelle_petr: string | null;
   code_pnr: string | null;
   libelle_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   annee_2008_aep: number;
   annee_2008_bar: number;
   annee_2008_can: number;

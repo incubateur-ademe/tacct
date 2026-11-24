@@ -11,6 +11,7 @@ import {
   EPCI,
   PETR,
   PNR,
+  POLEM,
   Region
 } from './territoiresQueries';
 
@@ -37,6 +38,9 @@ export const GetCollectivite = async (
         return value;
       } else if (typeTerritoire === 'petr') {
         const value = await PETR(collectivite);
+        return value;
+      } else if (typeTerritoire === 'polem') {
+        const value = await POLEM(collectivite);
         return value;
       } else if (typeTerritoire === 'epci') {
         const value = await EPCI(collectivite);

@@ -106,6 +106,8 @@ const PrelevementEauBarChart = ({
       ? ressourcesEau.filter((obj) => obj.epci === code)
       : type === "petr"
         ? ressourcesEau.filter((obj) => obj.libelle_petr === libelle)
+        : type === "polem"
+          ? ressourcesEau.filter((obj) => obj.code_polem?.includes(code))
         : type === "ept"
           ? ressourcesEau.filter((obj) => obj.ept === libelle)
           : ressourcesEau;

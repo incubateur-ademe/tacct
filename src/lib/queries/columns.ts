@@ -26,3 +26,8 @@ export const ColumnCodeCheck = (type: string): string => {
                 ? 'departement'
                 : 'code_geographique'
 }
+
+export const FiltreTerritoire = (type: string, code: string, libelle: string) =>
+  type === 'polem'
+    ? { code_polem: { has: code } }
+    : { [ColumnCodeCheck(type)]: type === 'petr' || type === 'ept' ? libelle : code };

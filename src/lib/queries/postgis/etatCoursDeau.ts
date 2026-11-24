@@ -2,7 +2,7 @@
 
 import { CarteCommunes, EtatCoursDeau } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { ColumnCodeCheck } from '../columns';
+import { FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetEtatCoursDeau = async (
@@ -15,13 +15,12 @@ export const GetEtatCoursDeau = async (
       resolve([]);
     }, 5000)
   );
-  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.postgis_v2_communes_drom.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else {
@@ -92,6 +91,22 @@ export const GetEtatCoursDeau = async (
               ST_AsGeoJSON(geometry) geometry
               FROM postgis_v2."etat_cours_d_eau" 
               WHERE ST_Intersects(geometry, ST_GeomFromText(${petr[0].geometry}, 4326));`;
+            return value;
+          }
+          return [];
+        } else if (type === 'polem') {
+          const polem = await prisma.$queryRaw<CarteCommunes[]>`
+            SELECT
+            ST_AsText(ST_Union(geometry)) as geometry
+            FROM postgis_v2."communes_drom" WHERE code_polem @> ARRAY[${code}]::text[];`;
+          if (polem.length !== 0) {
+            const value = await prisma.$queryRaw<EtatCoursDeau[]>`
+              SELECT
+              name,
+              etateco,
+              ST_AsGeoJSON(geometry) geometry
+              FROM postgis_v2."etat_cours_d_eau"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${polem[0].geometry}, 4326));`;
             return value;
           }
           return [];

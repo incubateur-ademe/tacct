@@ -18,7 +18,7 @@ type SearchParams = Promise<{
 }>;
 
 type GenericObject = {
-  [key: string]: string | number | bigint | null;
+  [key: string]: string | string[] | number | bigint | null;
 };
 
 type CatnatTypes =

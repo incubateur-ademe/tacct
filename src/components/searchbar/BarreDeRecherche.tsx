@@ -24,7 +24,7 @@ export const BarreDeRecherche = ({
   RechercherRedirection: () => void;
   setSearchCode: (code: string) => void;
   setSearchLibelle: (libelle: string) => void;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement';
   searchCode: string;
   searchLibelle: string;
   radioOptions: {

@@ -94,6 +94,8 @@ export const PrelevementsEnEau = (props: {
       libelle_petr: item.libelle_petr,
       code_pnr: item.code_pnr,
       libelle_pnr: item.libelle_pnr,
+      code_polem: item.code_polem,
+      libelle_polem: item.libelle_polem,
       sous_champ: param,
       libelle_sous_champ: libelle,
       A2008: item[`annee_2008_${param}`],
@@ -122,6 +124,8 @@ export const PrelevementsEnEau = (props: {
         ? prelevementsParsed.filter((obj) => obj.code_geographique === code)
         : type === 'petr'
           ? prelevementsParsed.filter((obj) => obj.libelle_petr === libelle)
+          : type === 'polem'
+            ? prelevementsParsed.filter((obj) => obj.code_polem?.includes(code))
           : type === 'ept'
             ? prelevementsParsed.filter((obj) => obj.ept === libelle)
             : type === 'pnr'

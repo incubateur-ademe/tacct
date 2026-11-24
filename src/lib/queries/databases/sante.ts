@@ -1,6 +1,6 @@
 'use server';
 import { ArboviroseModel, O3 } from '@/lib/postgres/models';
-import { ColumnLibelleCheck } from '../columns';
+import { ColumnLibelleCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetO3 = async (): Promise<O3[]> => {
@@ -38,7 +38,10 @@ export const GetArbovirose = async (
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists =
         await prisma.databases_v2_collectivites_searchbar.findFirst({
-          where: { [column]: libelle }
+          where:
+            type === 'polem'
+              ? FiltreTerritoire(type, code, libelle)
+              : { [column]: libelle }
         });
       if (!exists) return [];
       else {
@@ -50,12 +53,14 @@ export const GetArbovirose = async (
                 {
                   departement: { not: null }
                 },
-                {
-                  [column]: {
-                    contains: libelle,
-                    mode: 'insensitive'
-                  }
-                }
+                type === 'polem'
+                  ? FiltreTerritoire(type, code, libelle)
+                  : {
+                      [column]: {
+                        contains: libelle,
+                        mode: 'insensitive'
+                      }
+                    }
               ]
             },
             distinct: ['departement']

@@ -261,7 +261,7 @@ const DonneesConfortThermique = ({
             link={handleRedirectionThematique({
               code: code,
               libelle: libelle,
-              type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+              type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
               page: params === '/iframe/donnees' ? 'iframe/impacts' : 'impacts',
               thematique: 'Confort thermique',
               anchor: ''

@@ -15,6 +15,8 @@ export type VegetalisationDto = {
   libelle_petr: string | null;
   libelle_pnr: string | null;
   code_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   departement: string;
   libelle_departement: string;
 };
@@ -28,6 +30,8 @@ export type AgeBatiDto = {
   libelle_petr: string | null;
   libelle_pnr: string | null;
   code_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   departement: string;
   libelle_departement: string;
   nb_rp_tot: number;
@@ -53,6 +57,8 @@ export type travailExtDto = {
   libelle_petr: string | null;
   libelle_pnr: string | null;
   code_pnr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   departement: string;
   libelle_departement: string;
 };
@@ -66,6 +72,8 @@ export type GrandAgeDto = {
   libelle_pnr: string | null;
   ept: string | null;
   libelle_petr: string | null;
+  code_polem: string[] | null;
+  libelle_polem: string[] | null;
   departement: string;
   libelle_departement: string;
   over_75_sum_1968?: number;

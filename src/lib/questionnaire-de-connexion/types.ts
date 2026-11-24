@@ -16,6 +16,7 @@ export type TypeTerritoireRecherchable =
   | 'commune'
   | 'petr'
   | 'pnr'
+  | 'polem'
   | 'departement'
   | 'region';
 
@@ -23,7 +24,7 @@ export const TYPES_TERRITOIRE = [
   { value: 'epci', label: 'EPCI/EPT', recherche: 'epci' },
   { value: 'commune', label: 'Commune', recherche: 'commune' },
   { value: 'departement', label: 'Département', recherche: 'departement' },
-  { value: 'pole', label: 'Pôle métropolitain', recherche: null },
+  { value: 'pole', label: 'Pôle métropolitain', recherche: 'polem' },
   { value: 'region', label: 'Région', recherche: 'region', sautDeLigne: true },
   { value: 'pnr', label: 'PNR', recherche: 'pnr' },
   { value: 'parcnational', label: 'Parc national', recherche: null },

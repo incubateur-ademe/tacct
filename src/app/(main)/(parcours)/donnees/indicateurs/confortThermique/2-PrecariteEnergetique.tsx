@@ -51,6 +51,10 @@ export const PrecariteEnergetique = ({
           ? confortThermiqueFiltered.filter(
               (obj) => obj.libelle_petr === libelle
             )
+          : type === 'polem'
+            ? confortThermiqueFiltered.filter((obj) =>
+                obj.code_polem?.includes(code)
+              )
           : type === 'ept'
             ? confortThermiqueFiltered.filter((obj) => obj.ept === libelle)
             : type === 'pnr'

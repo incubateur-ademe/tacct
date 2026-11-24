@@ -42,7 +42,11 @@ const SumFiltered = (
   return Sum(
     data
       .filter((obj) =>
-        columnCode ? obj[columnCode] === code : obj[columnLibelle] === libelle
+        type === 'polem'
+          ? obj.code_polem?.includes(code)
+          : columnCode
+            ? obj[columnCode] === code
+            : obj[columnLibelle] === libelle
       )
       .filter((item) => item.sous_champ === sousChamp)
       .map((e) => e.A2023)

@@ -91,7 +91,7 @@ export const ThematiquesLieesNavigation = ({
   const retourLink = handleRedirection({
     searchCode: code || '',
     searchLibelle: libelle || '',
-    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
     page: 'thematiques'
   });
 
@@ -122,7 +122,7 @@ export const ThematiquesLieesNavigation = ({
                       size="sm"
                       link={isDisabled ? undefined : handleRedirectionThematique({
                         code, libelle,
-                        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
                         page: 'donnees',
                         thematique: lieeLabel,
                         anchor: ""
@@ -231,7 +231,7 @@ export const ThematiquesLieesNavigation = ({
                     link={isDisabled ? undefined : handleRedirectionThematique({
                       code: code,
                       libelle: libelle,
-                      type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                      type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
                       page: 'donnees',
                       thematique: lieeLabel,
                       anchor: ""

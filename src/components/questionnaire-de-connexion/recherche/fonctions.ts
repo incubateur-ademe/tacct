@@ -46,8 +46,9 @@ const ordreTypeTerritoire: Record<TypeTerritoireRecherchable, number> = {
   epci: 1,
   pnr: 2,
   petr: 3,
-  departement: 4,
-  region: 5
+  polem: 4,
+  departement: 5,
+  region: 6
 };
 
 /** Dédoublonne puis trie : correspondance exacte, puis type, puis alphabétique. */

@@ -46,7 +46,7 @@ export const AnalyseSensibilite = ({
     const url = handleRedirection({
       searchCode: code,
       searchLibelle: libelle,
-      typeTerritoire: type as 'epci' | 'commune' | 'petr' | 'pnr' | 'departement' | 'ept',
+      typeTerritoire: type as 'epci' | 'commune' | 'petr' | 'polem' | 'pnr' | 'departement' | 'ept',
       page: 'thematiques',
     });
     window.open(url, '_blank');

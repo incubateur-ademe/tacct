@@ -16,7 +16,7 @@ const handleRechercheRedirection = ({
 }: {
   searchCode: string;
   searchLibelle: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement';
   router: ReturnType<typeof useRouter>;
   page: string;
 }) => {
@@ -36,7 +36,7 @@ const RechercherSonTerritoire = () => {
   const [searchCode, setSearchCode] = useState<string>('');
   const [searchLibelle, setSearchLibelle] = useState<string>('');
   const [typeTerritoire, setTypeTerritoire] = useState<
-    'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
+    'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement'
   >('epci');
 
   const handleRechercher = () => handleRechercheRedirection({
@@ -46,7 +46,7 @@ const RechercherSonTerritoire = () => {
     router,
     page: "thematiques"
   });
-  const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement') => {
+  const handleRadioChange = (territoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement') => {
     setTypeTerritoire(territoire);
     setSearchLibelle('');
   };
@@ -68,7 +68,7 @@ const RechercherSonTerritoire = () => {
           size="lg"
           style={{ textAlign: 'center', color: '#666666' }}
         >
-          Saisir une commune, un EPCI/EPT, un PNR, un PETR ou un département
+          Saisir une commune, un EPCI/EPT, un PNR, un PETR, un POLEM ou un département
         </Body>
         <BarreDeRecherche
           setSearchCode={setSearchCode}

@@ -10,7 +10,8 @@ import {
   Departement,
   EPCI,
   PETR,
-  PNR
+  PNR,
+  POLEM
 } from './territoiresQueries';
 
 const LONGUEUR_MAX_RECHERCHE = 200;
@@ -36,6 +37,9 @@ export const GetCollectivite = async (
         return value;
       } else if (typeTerritoire === 'petr') {
         const value = await PETR(collectivite);
+        return value;
+      } else if (typeTerritoire === 'polem') {
+        const value = await POLEM(collectivite);
         return value;
       } else if (typeTerritoire === 'epci') {
         const value = await EPCI(collectivite);

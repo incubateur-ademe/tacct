@@ -1,7 +1,7 @@
 'use server';
 
 import { TableCommuneModel } from '@/lib/postgres/models';
-import { ColumnCodeCheck } from '../columns';
+import { ColumnCodeCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetTablecommune = async (
@@ -20,7 +20,7 @@ export const GetTablecommune = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.databases_v2_table_commune.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else if (type === 'commune') {
@@ -37,15 +37,18 @@ export const GetTablecommune = async (
         return value as TableCommuneModel[];
       } else {
         const value = await prisma.databases_v2_table_commune.findMany({
-          where: {
-            [column]:
-              type === 'petr' || type === 'ept'
-                ? libelle
-                : {
-                    contains: code,
-                    mode: 'insensitive'
-                  }
-          }
+          where:
+            type === 'polem'
+              ? FiltreTerritoire(type, code, libelle)
+              : {
+                  [column]:
+                    type === 'petr' || type === 'ept'
+                      ? libelle
+                      : {
+                          contains: code,
+                          mode: 'insensitive'
+                        }
+                }
         });
         return value as TableCommuneModel[];
       }

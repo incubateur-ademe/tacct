@@ -80,6 +80,7 @@ const HeaderComp = () => {
     | 'departement'
     | 'ept'
     | 'petr'
+    | 'polem'
     | 'pnr'
     | null;
   const [displayCode, setDisplayCode] = useState<string | null>(urlCode);
@@ -87,7 +88,7 @@ const HeaderComp = () => {
     urlLibelle
   );
   const [displayType, setDisplayType] = useState<
-    'epci' | 'commune' | 'departement' | 'ept' | 'petr' | 'pnr' | null
+    'epci' | 'commune' | 'departement' | 'ept' | 'petr' | 'polem' | 'pnr' | null
   >(urlType);
   const [user, setUser] = useState<UtilisateurConnecte | null>(null);
   const [showLoginToast, setShowLoginToast] = useState(false);
@@ -132,6 +133,7 @@ const HeaderComp = () => {
           | 'departement'
           | 'ept'
           | 'petr'
+          | 'polem'
           | 'pnr'
         );
       }
@@ -155,6 +157,7 @@ const HeaderComp = () => {
       | 'departement'
       | 'ept'
       | 'petr'
+      | 'polem'
       | 'pnr',
     page:
       displayType && displayLibelle ? 'patch4c' : 'recherche-territoire-patch4'

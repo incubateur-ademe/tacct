@@ -1,7 +1,7 @@
 export const allRadioOptions = (
   typeTerritoire: string,
   handleRadioChange: (
-    value: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement'
+    value: 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement'
   ) => void
 ) => [
   {
@@ -30,6 +30,13 @@ export const allRadioOptions = (
     nativeInputProps: {
       checked: typeTerritoire === 'pnr',
       onChange: () => handleRadioChange('pnr')
+    }
+  },
+  {
+    label: 'POLEM',
+    nativeInputProps: {
+      checked: typeTerritoire === 'polem',
+      onChange: () => handleRadioChange('polem')
     }
   },
   {

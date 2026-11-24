@@ -44,7 +44,7 @@ export const MenuMobileDrawer = () => {
   const redirectionRetour = handleRedirection({
     searchCode: code || '',
     searchLibelle: libelle || '',
-    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+    typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
     page: 'thematiques'
   });
 
@@ -132,7 +132,7 @@ export const MenuMobileDrawer = () => {
     if (params !== '/donnees') {
       window.location.href = handleRedirectionThematique({
         code, libelle,
-        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
         page: 'donnees', thematique, anchor: item ? toAnchorId(item) : ''
       });
     } else {
@@ -148,7 +148,7 @@ export const MenuMobileDrawer = () => {
       posthog.capture('clic_diagnostic_impact_menu', { thematique });
       window.location.href = handleRedirectionThematique({
         code, libelle,
-        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+        type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
         page: 'impacts', thematique, anchor: item ? item.id : ''
       });
     } else {

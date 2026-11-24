@@ -13,6 +13,7 @@ export const handleRedirection = ({
     | 'epci'
     | 'commune'
     | 'petr'
+    | 'polem'
     | 'pnr'
     | 'departement'
     | 'ept'
@@ -42,7 +43,7 @@ export const handleRedirectionThematique = ({
 }: {
   code: string | undefined;
   libelle: string;
-  type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  type: 'epci' | 'commune' | 'petr' | 'polem' | 'pnr' | 'departement';
   page: string;
   thematique: string;
   anchor: string;

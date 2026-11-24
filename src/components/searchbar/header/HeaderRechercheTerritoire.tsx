@@ -10,7 +10,7 @@ import { SearchInputHeader } from './SearchInputHeader';
 const HeaderRechercheTerritoire = (props:
   {
     libelle: string;
-    type: "epci" | "commune" | "departement" | "ept" | "petr" | "pnr";
+    type: "epci" | "commune" | "departement" | "ept" | "petr" | "pnr" | "polem";
     code?: string
   }) => {
   const { libelle, code, type } = props;

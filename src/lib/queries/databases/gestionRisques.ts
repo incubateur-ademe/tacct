@@ -6,7 +6,7 @@ import {
   RGAdb,
   SecheressesPasseesModel
 } from '@/lib/postgres/models';
-import { ColumnCodeCheck } from '../columns';
+import { ColumnCodeCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetArretesCatnat = async (
@@ -25,20 +25,23 @@ export const GetArretesCatnat = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.databases_v2_arretes_catnat.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else {
         const value = await prisma.databases_v2_arretes_catnat.findMany({
-          where: {
-            [column]:
-              type === 'petr' || type === 'ept'
-                ? libelle
-                : {
-                    contains: code,
-                    mode: 'insensitive'
-                  }
-          }
+          where:
+            type === 'polem'
+              ? FiltreTerritoire(type, code, libelle)
+              : {
+                  [column]:
+                    type === 'petr' || type === 'ept'
+                      ? libelle
+                      : {
+                          contains: code,
+                          mode: 'insensitive'
+                        }
+                }
         });
         return value;
       }
@@ -66,15 +69,13 @@ export const GetIncendiesForet = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.databases_v2_feux_foret.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else {
-        if (type === 'petr' || type === 'ept') {
+        if (type === 'petr' || type === 'ept' || type === 'polem') {
           const value = await prisma.databases_v2_feux_foret.findMany({
-            where: {
-              [column]: libelle
-            }
+            where: FiltreTerritoire(type, code, libelle)
           });
           return value;
         } else {
@@ -113,7 +114,10 @@ export const GetRga = async (
     try {
       // Fast existence check
       const exists = await prisma.databases_v2_rga.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where:
+          type === 'polem'
+            ? FiltreTerritoire(type, code, libelle)
+            : { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (
         !libelle ||
@@ -149,15 +153,18 @@ export const GetRga = async (
         return value as RGAdb[];
       } else {
         const value = await prisma.databases_v2_rga.findMany({
-          where: {
-            [column]:
-              type === 'petr' || type === 'ept'
-                ? libelle
-                : {
-                    contains: code,
-                    mode: 'insensitive'
-                  }
-          }
+          where:
+            type === 'polem'
+              ? FiltreTerritoire(type, code, libelle)
+              : {
+                  [column]:
+                    type === 'petr' || type === 'ept'
+                      ? libelle
+                      : {
+                          contains: code,
+                          mode: 'insensitive'
+                        }
+                }
         });
         return value;
       }
@@ -185,15 +192,13 @@ export const GetSecheressesPassees = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.secheresses.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else {
-        if (type === 'petr' || type === 'ept') {
+        if (type === 'petr' || type === 'ept' || type === 'polem') {
           const value = await prisma.secheresses.findMany({
-            where: {
-              [column]: libelle
-            }
+            where: FiltreTerritoire(type, code, libelle)
           });
           return value;
         } else {

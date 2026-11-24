@@ -2,7 +2,7 @@
 
 import { CarteCommunes, ErosionCotiere } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { ColumnCodeCheck } from '../columns';
+import { ColumnCodeCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 // export const GetCommunes = async (
@@ -151,15 +151,11 @@ export const GetCommunesCoordinates = async (
       resolve(null);
     }, 6000)
   );
-  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return null;
       const exists = await prisma.postgis_v2_communes_drom.findFirst({
-        where:
-          type === 'polem'
-            ? { code_polem: { has: code } }
-            : { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return null;
 
@@ -486,6 +482,37 @@ export const GetErosionCotiere = async (
             return [value, envelope[0].envelope];
           } else return [];
         } else return [];
+      } else if (type === 'polem') {
+        const polem = await prisma.$queryRaw<CarteCommunes[]>`
+          SELECT
+          ST_AsText(ST_Union(geometry)) as geometry
+          FROM postgis_v2."communes_drom" WHERE code_polem @> ARRAY[${code}]::text[];`;
+        if (polem.length !== 0) {
+          const intersect = await prisma.$queryRaw<CarteCommunes[]>`
+            SELECT
+            ST_AsGeoJSON(geometry) geometry
+            FROM postgis_v2."erosion_cotiere"
+            WHERE ST_Intersects(geometry, ST_GeomFromText(${polem[0].geometry}, 4326)) LIMIT 1`;
+          if (intersect.length) {
+            const value = await prisma.$queryRaw<ErosionCotiere[]>`
+              WITH territoire AS (
+                SELECT ST_GeomFromText(${polem[0].geometry}, 4326) AS geom
+              )
+              SELECT
+              e.taux,
+              ST_AsGeoJSON(e.geometry) geometry
+              FROM postgis_v2."erosion_cotiere" e, territoire t
+              WHERE ST_DWithin(e.geometry, ST_Centroid(t.geom), ST_MaxDistance(ST_Centroid(t.geom), t.geom));
+            `;
+            const envelope = await prisma.$queryRaw<{ envelope: string }[]>`
+              SELECT ST_AsGeoJSON(ST_Envelope(ST_Collect(geometry))) as envelope
+              FROM postgis_v2."erosion_cotiere"
+              WHERE ST_Intersects(geometry, ST_GeomFromText(${polem[0].geometry}, 4326));
+            `;
+            if (!envelope || !envelope[0].envelope) return [];
+            return [value, envelope[0].envelope];
+          } else return [];
+        } else return [];
       } else if (type === 'departement') {
         const departement = await prisma.$queryRaw<CarteCommunes[]>`
           SELECT
@@ -533,12 +560,11 @@ export const GetCommunesContours = async (
       resolve(null);
     }, 6000)
   );
-  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return null;
       const exists = await prisma.postgis_v2_communes_drom.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return null;
 
@@ -583,6 +609,14 @@ export const GetCommunesContours = async (
           ) as geometry
           FROM postgis_v2."communes_drom"
           WHERE libelle_petr IS NOT NULL AND libelle_petr = ${libelle}
+        `;
+      } else if (type === 'polem') {
+        result = await prisma.$queryRaw<Array<{ geometry: string }>>`
+          SELECT ST_AsGeoJSON(
+            ST_SimplifyPreserveTopology(ST_Union(geometry), 0.001)
+          ) as geometry
+          FROM postgis_v2."communes_drom"
+          WHERE code_polem @> ARRAY[${code}]::text[]
         `;
       } else {
         result = await prisma.$queryRaw<Array<{ geometry: string }>>`

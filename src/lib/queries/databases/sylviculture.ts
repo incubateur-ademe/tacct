@@ -3,7 +3,7 @@ import {
   EmploisSylvicultureModel,
   ForetsCommunalesModel
 } from '@/lib/postgres/models';
-import { ColumnCodeCheck } from '../columns';
+import { FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetForetsCommunales = async (
@@ -41,10 +41,7 @@ export const GetForetsCommunales = async (
       }
       return await prisma.forets_communales.findMany({
         select,
-        where: {
-          [ColumnCodeCheck(type)]:
-            type === 'petr' || type === 'ept' ? libelle : code
-        }
+        where: FiltreTerritoire(type, code, libelle)
       });
     } catch (error) {
       console.error(error);
@@ -93,10 +90,7 @@ export const GetEmploisSylviculture = async (
       }
       return await prisma.emplois_sylviculture.findMany({
         select,
-        where: {
-          [ColumnCodeCheck(type)]:
-            type === 'petr' || type === 'ept' ? libelle : code
-        }
+        where: FiltreTerritoire(type, code, libelle)
       });
     } catch (error) {
       console.error(error);

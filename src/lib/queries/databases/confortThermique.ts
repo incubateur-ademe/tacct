@@ -2,7 +2,7 @@
 
 import { ConfortThermique } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { ColumnCodeCheck } from '../columns';
+import { ColumnCodeCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetConfortThermique = async (
@@ -22,7 +22,7 @@ export const GetConfortThermique = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.databases_v2_confort_thermique.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where: FiltreTerritoire(type, code, libelle)
       });
       if (!exists) return [];
       else {
@@ -50,6 +50,13 @@ export const GetConfortThermique = async (
             SELECT *
             FROM databases_v2.confort_thermique
             WHERE libelle_petr = ${libelle}
+          `;
+          return value as ConfortThermique[];
+        } else if (type === 'polem') {
+          const value = await prisma.$queryRaw`
+            SELECT *
+            FROM databases_v2.confort_thermique
+            WHERE code_polem @> ARRAY[${code}]::text[]
           `;
           return value as ConfortThermique[];
         } else if (type === 'pnr') {
@@ -104,7 +111,7 @@ export const GetLczCouverture = async (
   try {
     if (!libelle || !type || (!code && type !== 'petr')) return false;
     const exists = await prisma.databases_v2_lcz_couverture.findFirst({
-      where: { [column]: type === 'petr' || type === 'ept' ? libelle : {
+      where: type === 'polem' ? FiltreTerritoire(type, code, libelle) : { [column]: type === 'petr' || type === 'ept' ? libelle : {
         contains: code,
         mode: 'insensitive'
       } }
@@ -132,7 +139,7 @@ export const GetConfortThermiqueBiodiversite = async (
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.databases_v2_confort_thermique.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
+        where: FiltreTerritoire(type, code, libelle),
         select: { code_geographique: true }
       });
       if (!exists) return [];
@@ -140,7 +147,7 @@ export const GetConfortThermiqueBiodiversite = async (
         if (type === 'ept' && eptRegex.test(libelle)) {
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
@@ -150,7 +157,7 @@ export const GetConfortThermiqueBiodiversite = async (
         } else if (type === 'commune') {
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
@@ -165,17 +172,27 @@ export const GetConfortThermiqueBiodiversite = async (
         } else if (type === 'petr') {
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
             WHERE libelle_petr = ${libelle}
           `;
           return value as Partial<ConfortThermique>[];
+        } else if (type === 'polem') {
+          const value = await prisma.$queryRaw`
+            SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
+                   clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
+                   clc_4_humide, clc_5_eau, superf_choro
+            FROM databases_v2.confort_thermique
+            WHERE code_polem @> ARRAY[${code}]::text[]
+          `;
+          return value as Partial<ConfortThermique>[];
         } else if (type === 'pnr') {
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
@@ -185,7 +202,7 @@ export const GetConfortThermiqueBiodiversite = async (
         } else if (type === 'departement') {
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique
@@ -201,7 +218,7 @@ export const GetConfortThermiqueBiodiversite = async (
             });
           const value = await prisma.$queryRaw`
             SELECT code_geographique, libelle_geographique, epci, libelle_epci, ept, 
-                   libelle_petr, libelle_pnr, code_pnr, departement, libelle_departement,
+                   libelle_petr, libelle_pnr, code_pnr, code_polem, libelle_polem, departement, libelle_departement,
                    clc_1_artificialise, clc_2_agricole, "clc_3_foret_semiNaturel", 
                    clc_4_humide, clc_5_eau, superf_choro
             FROM databases_v2.confort_thermique

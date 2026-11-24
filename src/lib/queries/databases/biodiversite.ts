@@ -6,7 +6,7 @@ import {
   ConsommationNAF
 } from '@/lib/postgres/models';
 import { eptRegex } from '@/lib/utils/regex';
-import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
+import { ColumnCodeCheck, ColumnLibelleCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetAgricultureBio = async (
@@ -26,7 +26,10 @@ export const GetAgricultureBio = async (
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists =
         await prisma.databases_v2_collectivites_searchbar.findFirst({
-          where: { [column]: libelle }
+          where:
+            type === 'polem'
+              ? FiltreTerritoire(type, code, libelle)
+              : { [column]: libelle }
         });
       if (!exists) return [];
       else {
@@ -57,9 +60,11 @@ export const GetAgricultureBio = async (
                   {
                     epci: { not: null }
                   },
-                  {
-                    [column]: libelle
-                  }
+                  type === 'polem'
+                    ? FiltreTerritoire(type, code, libelle)
+                    : {
+                        [column]: libelle
+                      }
                 ]
               },
               distinct: ['epci']
@@ -92,7 +97,6 @@ export const GetConsommationNAF = async (
       resolve([]);
     }, 3000)
   );
-  const column = ColumnCodeCheck(type);
   const dbQuery = (async () => {
     try {
       console.time('Query Execution Time NAF');
@@ -100,9 +104,7 @@ export const GetConsommationNAF = async (
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists =
         await prisma.databases_v2_consommation_espaces_naf.findFirst({
-          where: {
-            [column]: type === 'petr' || type === 'ept' ? libelle : code
-          }
+          where: FiltreTerritoire(type, code, libelle)
         });
       if (!exists) return [];
       else {
@@ -127,6 +129,12 @@ export const GetConsommationNAF = async (
           )
         `;
           return value as ConsommationNAF[];
+        } else if (type === 'polem') {
+          const value =
+            await prisma.databases_v2_consommation_espaces_naf.findMany({
+              where: FiltreTerritoire(type, code, libelle)
+            });
+          return value;
         } else {
           const value =
             await prisma.databases_v2_consommation_espaces_naf.findMany({

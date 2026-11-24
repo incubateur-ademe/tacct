@@ -32,7 +32,9 @@ export const ProjetsAlimentairesTerritoriaux = (props: {
             ? tableCommune.filter(tc => tc.ept === libelle)
             : type === "petr"
               ? tableCommune.filter(tc => tc.libelle_petr === libelle)
-              : [];
+              : type === "polem"
+                ? tableCommune.filter(tc => tc.code_polem?.includes(code))
+                : [];
   const patsParCommune = territoireFiltered.map(tc =>
     Array.isArray(tc.projets_alimentaires_territoriaux)
       ? tc.projets_alimentaires_territoriaux

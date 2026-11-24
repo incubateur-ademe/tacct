@@ -75,7 +75,7 @@ export const SurfacesEnBio = (props: {
             {agricultureBio.length ?
               <>
                 {
-                  (type === "departement" || type === "pnr" || type === "epci" || type === "petr" || type === "ept") ? (
+                  (type === "departement" || type === "pnr" || type === "epci" || type === "petr" || type === "polem" || type === "ept") ? (
                     <>
                       <Body weight="bold" style={{ color: "var(--gris-dark)" }}>
                         Sur votre territoire, {numberWithSpacesRegex(nombreExploitations)} exploitations sont en

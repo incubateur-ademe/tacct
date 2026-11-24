@@ -2,7 +2,7 @@
 
 import { Patch4 } from '@/lib/postgres/models';
 import { dromRegex } from '../utils/regex';
-import { ColumnCodeCheck } from './columns';
+import { FiltreTerritoire } from './columns';
 import { prisma } from './db';
 
 export const GetPatch4 = async (
@@ -10,7 +10,6 @@ export const GetPatch4 = async (
   type: string,
   libelle?: string
 ): Promise<Patch4[]> => {
-  const column = ColumnCodeCheck(type);
   const timeoutPromise = new Promise<[]>((resolve) =>
     setTimeout(() => {
       resolve([]);
@@ -61,10 +60,7 @@ export const GetPatch4 = async (
               select: {
                 code_geographique: true
               },
-              where:
-                type === 'polem'
-                  ? { code_polem: { has: code } }
-                  : { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+              where: FiltreTerritoire(type, code, libelle)
             })) as { code_geographique: string }[];
           const codesGeographiques = listeCommunes
             .map((commune) => commune.code_geographique)

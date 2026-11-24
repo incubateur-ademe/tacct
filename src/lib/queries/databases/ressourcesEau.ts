@@ -4,7 +4,7 @@ import {
   PrelevementsEauModel,
   QualiteSitesBaignadeModel
 } from '@/lib/postgres/models';
-import { ColumnCodeCheck, ColumnLibelleCheck } from '../columns';
+import { ColumnLibelleCheck, FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 export const GetPrelevementsEau = async (
@@ -12,7 +12,6 @@ export const GetPrelevementsEau = async (
   libelle: string,
   type: string
 ): Promise<PrelevementsEauModel[]> => {
-  const column = ColumnCodeCheck(type);
   //race Promise pour éviter un crash de la requête lorsqu'elle est trop longue
   const timeoutPromise = new Promise<PrelevementsEauModel[]>((resolve) =>
     setTimeout(() => {
@@ -24,7 +23,7 @@ export const GetPrelevementsEau = async (
       // Fast existence check
       if (!libelle || !type || (!code && type !== 'petr')) return [];
       const exists = await prisma.prelevements_eau.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code },
+        where: FiltreTerritoire(type, code, libelle),
         select: { departement: true }
       });
       if (!exists) return [];
@@ -82,6 +81,19 @@ export const GetPrelevementsEau = async (
         `;
           console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
           return value as PrelevementsEauModel[];
+        } else if (type === 'polem') {
+          console.time('Query Execution Time PRELEVEMENT EAUX');
+          const value = await prisma.$queryRaw`
+          SELECT *
+          FROM databases_v2.prelevements_eau
+          WHERE departement IN (
+            SELECT departement
+            FROM databases_v2.prelevements_eau
+            WHERE code_polem @> ARRAY[${code}]::text[]
+          )
+        `;
+          console.timeEnd('Query Execution Time PRELEVEMENT EAUX');
+          return value as PrelevementsEauModel[];
         } else if (type === 'departement') {
           console.time('Query Execution Time RESSOURCES EAUX');
           const value = await prisma.prelevements_eau.findMany({
@@ -121,7 +133,10 @@ export const GetQualiteEauxBaignade = async (
     // Fast existence check
     if (!libelle || !type || (!code && type !== 'petr')) return [];
     const exists = await prisma.databases_v2_collectivites_searchbar.findFirst({
-      where: { [column]: libelle }
+      where:
+        type === 'polem'
+          ? FiltreTerritoire(type, code, libelle)
+          : { [column]: libelle }
     });
     if (!exists) return [];
     else {
@@ -133,12 +148,14 @@ export const GetQualiteEauxBaignade = async (
               {
                 departement: { not: null }
               },
-              {
-                [column]: {
-                  contains: libelle,
-                  mode: 'insensitive'
-                }
-              }
+              type === 'polem'
+                ? FiltreTerritoire(type, code, libelle)
+                : {
+                    [column]: {
+                      contains: libelle,
+                      mode: 'insensitive'
+                    }
+                  }
             ]
           },
           distinct: ['departement']

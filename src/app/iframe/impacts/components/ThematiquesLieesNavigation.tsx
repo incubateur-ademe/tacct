@@ -112,7 +112,7 @@ export const ThematiquesLieesNavigation = ({
               link={handleRedirection({
                 searchCode: code || '',
                 searchLibelle: libelle || '',
-                typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                typeTerritoire: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
                 page: 'thematiques'
               })}
               style={{
@@ -184,7 +184,7 @@ export const ThematiquesLieesNavigation = ({
                 onClick={() => window.location.href = handleRedirectionThematique({
                   code: code,
                   libelle: libelle,
-                  type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'departement',
+                  type: type as 'epci' | 'commune' | 'pnr' | 'petr' | 'polem' | 'departement',
                   page: 'donnees',
                   thematique: lieeLabel,
                   anchor: ""

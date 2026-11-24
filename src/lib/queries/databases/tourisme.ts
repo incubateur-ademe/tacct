@@ -2,7 +2,7 @@
 import type { Prisma } from '@/generated/client/client';
 import { StationSki, StationsSkiModel } from '@/lib/postgres/models';
 import { parsePostgresArray } from '@/lib/utils/reusableFunctions/parsePostgresArray';
-import { ColumnCodeCheck } from '../columns';
+import { FiltreTerritoire } from '../columns';
 import { prisma } from '../db';
 
 type StationsSkiLigne = {
@@ -52,10 +52,7 @@ export const GetStationsSki = async (
       } else if (type === 'pnr') {
         where = { code_pnr: { contains: code } };
       } else {
-        where = {
-          [ColumnCodeCheck(type)]:
-            type === 'petr' || type === 'ept' ? libelle : code
-        };
+        where = FiltreTerritoire(type, code, libelle);
       }
       const communes = await prisma.postgis_v2_communes_drom.findMany({
         select: {

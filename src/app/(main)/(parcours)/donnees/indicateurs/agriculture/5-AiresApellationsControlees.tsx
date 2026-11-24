@@ -34,7 +34,9 @@ export const AiresAppellationsControlees = (props: {
             ? tableCommune.filter(el => el.ept === libelle)
             : type === "petr"
               ? tableCommune.filter(el => el.libelle_petr === libelle)
-              : tableCommune;
+              : type === "polem"
+                ? tableCommune.filter(el => el.code_polem?.includes(code))
+                : tableCommune;
 
   const airesAppellationsControleesMap = new Map<string, string>();
   tableCommuneFiltered
