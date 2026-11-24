@@ -1110,15 +1110,15 @@ export const HauteurCanopeeText = () => (
 export const FeuxForetForetText = () => (
   <>
     <Body size="sm">
-      La forêt rend de nombreux services au territoire, mais elle peut aussi
-      brûler, et le feu y trouve d’autant plus de quoi prendre et se propager
-      qu’elle s’étend et accumule du bois, vivant ou mort. Les dégâts varient
-      d’une forêt à l’autre : certaines essences, comme le chêne-liège,
-      résistent mieux que d’autres aux incendies, mais là où les arbres n’ont
+      La forêt rend de nombreux services au territoire, mais elle l’expose
+      aussi au risque d’incendie. Ce risque augmente à mesure qu’elle s’étend
+      et que le bois, vivant ou mort, s’y accumule. Quand un feu se déclare,
+      les dégâts varient d’une forêt à l’autre : certaines essences, comme le
+      chêne-liège, y résistent mieux que d’autres. Mais là où les arbres n’ont
       pas survécu, il faut parfois plusieurs décennies pour que la forêt se
-      reconstitue. Le danger vient surtout de feux trop rapprochés : s’ils
-      reviennent aux mêmes endroits avant qu’elle ait pu se régénérer, elle
-      peut{' '}
+      reconstitue. Le principal danger vient surtout des feux trop
+      rapprochés : une forêt qui brûle à nouveau avant d’avoir pu se
+      régénérer peut{' '}
       <ScrollToSourceTag sourceNumero={4}>
         laisser durablement place à une garrigue ou à un maquis
       </ScrollToSourceTag>
@@ -1126,16 +1126,16 @@ export const FeuxForetForetText = () => (
       rendait.
     </Body>
     <Body size="sm" style={{ marginTop: '1rem' }}>
-      Ce risque reste concentré en région méditerranéenne, qui totalise{' '}
+      Ce risque reste concentré en région méditerranéenne, où se trouvent{' '}
       <ScrollToSourceTag sourceNumero={5}>
         75&nbsp;% des surfaces incendiées entre 2000 et 2024
       </ScrollToSourceTag>
-      , mais il s’étend vers l’Ouest et le Nord, à des massifs jusqu’ici peu
-      confrontés au feu. L’anticiper fait donc partie de l’adaptation de la
-      forêt, avant comme après un incendie. En amont, la gestion forestière
-      peut limiter l’intensité des feux en réduisant la végétation
+      , mais il s’étend vers l’ouest et le nord, à des massifs jusqu’ici peu
+      confrontés au feu. Le prendre en compte fait donc partie de l’adaptation
+      de la forêt, avant comme après un incendie. En amont, la gestion
+      forestière peut limiter l’intensité des feux en réduisant la végétation
       combustible, même si elle a peu d’effet face aux incendies les plus
-      extrêmes ; une fois le feu passé, il s’agit de{' '}
+      extrêmes. Une fois le feu passé, il s’agit de{' '}
       <ScrollToSourceTag sourceNumero={1}>
         reconstituer une forêt plus diversifiée et plus résiliente
       </ScrollToSourceTag>
