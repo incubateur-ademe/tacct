@@ -10,6 +10,7 @@ export const libellesTypeTerritoire: Record<TerritoireType, string> = {
   commune: 'Commune',
   petr: 'PETR',
   pnr: 'PNR',
+  polem: 'POLEM',
   departement: 'Département'
 };
 
@@ -38,7 +39,8 @@ const ordreTypeTerritoire: Record<TerritoireType, number> = {
   epci: 1,
   pnr: 2,
   petr: 3,
-  departement: 4
+  polem: 4,
+  departement: 5
 };
 
 /** Dédoublonne puis trie : correspondance exacte, puis type, puis alphabétique. */
@@ -78,7 +80,7 @@ export const handleRechercheRedirection = ({
 }: {
   searchCode: string;
   searchLibelle: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: TerritoireType;
   router: ReturnType<typeof useRouter>;
   page: string;
 }) => {
@@ -119,7 +121,7 @@ export const handleChangementTerritoireRedirection = ({
 }: {
   searchCode: string;
   searchLibelle: string;
-  typeTerritoire: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  typeTerritoire: TerritoireType;
   router: ReturnType<typeof useRouter>;
   page: string;
   thematique?: string;

@@ -92,6 +92,8 @@ export type Postgis_v2_communes_dromCountAggregateOutputType = {
   coordinates: number
   precarite_logement: number
   surface: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -162,6 +164,8 @@ export type Postgis_v2_communes_dromCountAggregateInputType = {
   coordinates?: true
   precarite_logement?: true
   surface?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -267,6 +271,8 @@ export type Postgis_v2_communes_dromGroupByOutputType = {
   coordinates: string | null
   precarite_logement: number | null
   surface: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Postgis_v2_communes_dromCountAggregateOutputType | null
   _avg: Postgis_v2_communes_dromAvgAggregateOutputType | null
   _sum: Postgis_v2_communes_dromSumAggregateOutputType | null
@@ -308,6 +314,8 @@ export type postgis_v2_communes_dromWhereInput = {
   coordinates?: Prisma.StringNullableFilter<"postgis_v2_communes_drom"> | string | null
   precarite_logement?: Prisma.FloatNullableFilter<"postgis_v2_communes_drom"> | number | null
   surface?: Prisma.FloatNullableFilter<"postgis_v2_communes_drom"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
+  libelle_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
 }
 
 export type postgis_v2_communes_dromOrderByWithRelationInput = {
@@ -326,6 +334,8 @@ export type postgis_v2_communes_dromOrderByWithRelationInput = {
   coordinates?: Prisma.SortOrderInput | Prisma.SortOrder
   precarite_logement?: Prisma.SortOrderInput | Prisma.SortOrder
   surface?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type postgis_v2_communes_dromWhereUniqueInput = Prisma.AtLeast<{
@@ -347,6 +357,8 @@ export type postgis_v2_communes_dromWhereUniqueInput = Prisma.AtLeast<{
   coordinates?: Prisma.StringNullableFilter<"postgis_v2_communes_drom"> | string | null
   precarite_logement?: Prisma.FloatNullableFilter<"postgis_v2_communes_drom"> | number | null
   surface?: Prisma.FloatNullableFilter<"postgis_v2_communes_drom"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
+  libelle_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
 }, "pk">
 
 export type postgis_v2_communes_dromOrderByWithAggregationInput = {
@@ -365,6 +377,8 @@ export type postgis_v2_communes_dromOrderByWithAggregationInput = {
   coordinates?: Prisma.SortOrderInput | Prisma.SortOrder
   precarite_logement?: Prisma.SortOrderInput | Prisma.SortOrder
   surface?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.postgis_v2_communes_dromCountOrderByAggregateInput
   _avg?: Prisma.postgis_v2_communes_dromAvgOrderByAggregateInput
   _max?: Prisma.postgis_v2_communes_dromMaxOrderByAggregateInput
@@ -391,6 +405,8 @@ export type postgis_v2_communes_dromScalarWhereWithAggregatesInput = {
   coordinates?: Prisma.StringNullableWithAggregatesFilter<"postgis_v2_communes_drom"> | string | null
   precarite_logement?: Prisma.FloatNullableWithAggregatesFilter<"postgis_v2_communes_drom"> | number | null
   surface?: Prisma.FloatNullableWithAggregatesFilter<"postgis_v2_communes_drom"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
+  libelle_polem?: Prisma.StringNullableListFilter<"postgis_v2_communes_drom">
 }
 
 export type postgis_v2_communes_dromCreateInput = {
@@ -408,6 +424,8 @@ export type postgis_v2_communes_dromCreateInput = {
   coordinates?: string | null
   precarite_logement?: number | null
   surface?: number | null
+  code_polem?: Prisma.postgis_v2_communes_dromCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromCreatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromUncheckedCreateInput = {
@@ -426,6 +444,8 @@ export type postgis_v2_communes_dromUncheckedCreateInput = {
   coordinates?: string | null
   precarite_logement?: number | null
   surface?: number | null
+  code_polem?: Prisma.postgis_v2_communes_dromCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromCreatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromUpdateInput = {
@@ -443,6 +463,8 @@ export type postgis_v2_communes_dromUpdateInput = {
   coordinates?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.postgis_v2_communes_dromUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromUpdatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromUncheckedUpdateInput = {
@@ -461,6 +483,8 @@ export type postgis_v2_communes_dromUncheckedUpdateInput = {
   coordinates?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.postgis_v2_communes_dromUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromUpdatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromCreateManyInput = {
@@ -479,6 +503,8 @@ export type postgis_v2_communes_dromCreateManyInput = {
   coordinates?: string | null
   precarite_logement?: number | null
   surface?: number | null
+  code_polem?: Prisma.postgis_v2_communes_dromCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromCreatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromUpdateManyMutationInput = {
@@ -496,6 +522,8 @@ export type postgis_v2_communes_dromUpdateManyMutationInput = {
   coordinates?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.postgis_v2_communes_dromUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromUpdatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromUncheckedUpdateManyInput = {
@@ -514,6 +542,8 @@ export type postgis_v2_communes_dromUncheckedUpdateManyInput = {
   coordinates?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precarite_logement?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.postgis_v2_communes_dromUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.postgis_v2_communes_dromUpdatelibelle_polemInput | string[]
 }
 
 export type postgis_v2_communes_dromCountOrderByAggregateInput = {
@@ -532,6 +562,8 @@ export type postgis_v2_communes_dromCountOrderByAggregateInput = {
   coordinates?: Prisma.SortOrder
   precarite_logement?: Prisma.SortOrder
   surface?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type postgis_v2_communes_dromAvgOrderByAggregateInput = {
@@ -584,12 +616,30 @@ export type postgis_v2_communes_dromSumOrderByAggregateInput = {
   surface?: Prisma.SortOrder
 }
 
+export type postgis_v2_communes_dromCreatecode_polemInput = {
+  set: string[]
+}
+
+export type postgis_v2_communes_dromCreatelibelle_polemInput = {
+  set: string[]
+}
+
 export type NullableIntFieldUpdateOperationsInput = {
   set?: number | null
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type postgis_v2_communes_dromUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type postgis_v2_communes_dromUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 
@@ -610,6 +660,8 @@ export type postgis_v2_communes_dromSelect<ExtArgs extends runtime.Types.Extensi
   coordinates?: boolean
   precarite_logement?: boolean
   surface?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["postgis_v2_communes_drom"]>
 
 export type postgis_v2_communes_dromSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -628,6 +680,8 @@ export type postgis_v2_communes_dromSelectCreateManyAndReturn<ExtArgs extends ru
   coordinates?: boolean
   precarite_logement?: boolean
   surface?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["postgis_v2_communes_drom"]>
 
 export type postgis_v2_communes_dromSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -646,6 +700,8 @@ export type postgis_v2_communes_dromSelectUpdateManyAndReturn<ExtArgs extends ru
   coordinates?: boolean
   precarite_logement?: boolean
   surface?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["postgis_v2_communes_drom"]>
 
 export type postgis_v2_communes_dromSelectScalar = {
@@ -664,9 +720,11 @@ export type postgis_v2_communes_dromSelectScalar = {
   coordinates?: boolean
   precarite_logement?: boolean
   surface?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type postgis_v2_communes_dromOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "coordinates" | "precarite_logement" | "surface", ExtArgs["result"]["postgis_v2_communes_drom"]>
+export type postgis_v2_communes_dromOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"pk" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "coordinates" | "precarite_logement" | "surface" | "code_polem" | "libelle_polem", ExtArgs["result"]["postgis_v2_communes_drom"]>
 
 export type $postgis_v2_communes_dromPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "postgis_v2_communes_drom"
@@ -687,6 +745,8 @@ export type $postgis_v2_communes_dromPayload<ExtArgs extends runtime.Types.Exten
     coordinates: string | null
     precarite_logement: number | null
     surface: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["postgis_v2_communes_drom"]>
   composites: {}
 }
@@ -1125,6 +1185,8 @@ export interface postgis_v2_communes_dromFieldRefs {
   readonly coordinates: Prisma.FieldRef<"postgis_v2_communes_drom", 'String'>
   readonly precarite_logement: Prisma.FieldRef<"postgis_v2_communes_drom", 'Float'>
   readonly surface: Prisma.FieldRef<"postgis_v2_communes_drom", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"postgis_v2_communes_drom", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"postgis_v2_communes_drom", 'String[]'>
 }
     
 

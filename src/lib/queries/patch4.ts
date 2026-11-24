@@ -29,7 +29,8 @@ export const GetPatch4 = async (
               { code_pnr: code },
               { libelle_petr: libelle },
               { departement: code },
-              { ept: libelle }
+              { ept: libelle },
+              { code_polem: { has: code } }
             ],
             departement: {
               not: null
@@ -60,9 +61,10 @@ export const GetPatch4 = async (
               select: {
                 code_geographique: true
               },
-              where: {
-                [column]: type === 'petr' || type === 'ept' ? libelle : code
-              }
+              where:
+                type === 'polem'
+                  ? { code_polem: { has: code } }
+                  : { [column]: type === 'petr' || type === 'ept' ? libelle : code }
             })) as { code_geographique: string }[];
           const codesGeographiques = listeCommunes
             .map((commune) => commune.code_geographique)

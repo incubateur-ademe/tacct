@@ -79,6 +79,8 @@ export type Databases_v2_table_territoiresCountAggregateOutputType = {
   libelle_petr: number
   code_pnr: number
   libelle_pnr: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -136,6 +138,8 @@ export type Databases_v2_table_territoiresCountAggregateInputType = {
   libelle_petr?: true
   code_pnr?: true
   libelle_pnr?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -238,6 +242,8 @@ export type Databases_v2_table_territoiresGroupByOutputType = {
   libelle_petr: string | null
   code_pnr: string | null
   libelle_pnr: string | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_table_territoiresCountAggregateOutputType | null
   _avg: Databases_v2_table_territoiresAvgAggregateOutputType | null
   _sum: Databases_v2_table_territoiresSumAggregateOutputType | null
@@ -276,6 +282,8 @@ export type databases_v2_table_territoiresWhereInput = {
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
 }
 
 export type databases_v2_table_territoiresOrderByWithRelationInput = {
@@ -291,6 +299,8 @@ export type databases_v2_table_territoiresOrderByWithRelationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_table_territoiresWhereUniqueInput = Prisma.AtLeast<{
@@ -309,6 +319,8 @@ export type databases_v2_table_territoiresWhereUniqueInput = Prisma.AtLeast<{
   libelle_petr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_table_territoires"> | string | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
 }, "index">
 
 export type databases_v2_table_territoiresOrderByWithAggregationInput = {
@@ -324,6 +336,8 @@ export type databases_v2_table_territoiresOrderByWithAggregationInput = {
   libelle_petr?: Prisma.SortOrderInput | Prisma.SortOrder
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_table_territoiresCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_table_territoiresAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_table_territoiresMaxOrderByAggregateInput
@@ -347,6 +361,8 @@ export type databases_v2_table_territoiresScalarWhereWithAggregatesInput = {
   libelle_petr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_territoires"> | string | null
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_territoires"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_table_territoires"> | string | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_territoires">
 }
 
 export type databases_v2_table_territoiresCreateInput = {
@@ -362,6 +378,8 @@ export type databases_v2_table_territoiresCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  code_polem?: Prisma.databases_v2_table_territoiresCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresUncheckedCreateInput = {
@@ -377,6 +395,8 @@ export type databases_v2_table_territoiresUncheckedCreateInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  code_polem?: Prisma.databases_v2_table_territoiresCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresUpdateInput = {
@@ -392,6 +412,8 @@ export type databases_v2_table_territoiresUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_polem?: Prisma.databases_v2_table_territoiresUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresUncheckedUpdateInput = {
@@ -407,6 +429,8 @@ export type databases_v2_table_territoiresUncheckedUpdateInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_polem?: Prisma.databases_v2_table_territoiresUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresCreateManyInput = {
@@ -422,6 +446,8 @@ export type databases_v2_table_territoiresCreateManyInput = {
   libelle_petr?: string | null
   code_pnr?: string | null
   libelle_pnr?: string | null
+  code_polem?: Prisma.databases_v2_table_territoiresCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresUpdateManyMutationInput = {
@@ -437,6 +463,8 @@ export type databases_v2_table_territoiresUpdateManyMutationInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_polem?: Prisma.databases_v2_table_territoiresUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresUncheckedUpdateManyInput = {
@@ -452,6 +480,8 @@ export type databases_v2_table_territoiresUncheckedUpdateManyInput = {
   libelle_petr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  code_polem?: Prisma.databases_v2_table_territoiresUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_territoiresUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_territoiresCountOrderByAggregateInput = {
@@ -467,6 +497,8 @@ export type databases_v2_table_territoiresCountOrderByAggregateInput = {
   libelle_petr?: Prisma.SortOrder
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_table_territoiresAvgOrderByAggregateInput = {
@@ -509,6 +541,24 @@ export type databases_v2_table_territoiresSumOrderByAggregateInput = {
   region?: Prisma.SortOrder
 }
 
+export type databases_v2_table_territoiresCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_table_territoiresCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_table_territoiresUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_table_territoiresUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_table_territoiresSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -524,6 +574,8 @@ export type databases_v2_table_territoiresSelect<ExtArgs extends runtime.Types.E
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_territoires"]>
 
 export type databases_v2_table_territoiresSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -539,6 +591,8 @@ export type databases_v2_table_territoiresSelectCreateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_territoires"]>
 
 export type databases_v2_table_territoiresSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -554,6 +608,8 @@ export type databases_v2_table_territoiresSelectUpdateManyAndReturn<ExtArgs exte
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_territoires"]>
 
 export type databases_v2_table_territoiresSelectScalar = {
@@ -569,9 +625,11 @@ export type databases_v2_table_territoiresSelectScalar = {
   libelle_petr?: boolean
   code_pnr?: boolean
   libelle_pnr?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_table_territoiresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr", ExtArgs["result"]["databases_v2_table_territoires"]>
+export type databases_v2_table_territoiresOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_table_territoires"]>
 
 export type $databases_v2_table_territoiresPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_table_territoires"
@@ -589,6 +647,8 @@ export type $databases_v2_table_territoiresPayload<ExtArgs extends runtime.Types
     libelle_petr: string | null
     code_pnr: string | null
     libelle_pnr: string | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_table_territoires"]>
   composites: {}
 }
@@ -1024,6 +1084,8 @@ export interface databases_v2_table_territoiresFieldRefs {
   readonly libelle_petr: Prisma.FieldRef<"databases_v2_table_territoires", 'String'>
   readonly code_pnr: Prisma.FieldRef<"databases_v2_table_territoires", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_table_territoires", 'String'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_table_territoires", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_table_territoires", 'String[]'>
 }
     
 

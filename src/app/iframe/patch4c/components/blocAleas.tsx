@@ -115,7 +115,7 @@ export const BlocAleas = ({
           </Body>
           <TagsSimples
             texte={
-              (type === "epci" || type === "petr" || type === "ept" || type === "pnr")
+              (type === "epci" || type === "petr" || type === "ept" || type === "pnr" || type === "polem")
                 ? type.toUpperCase()
                 : type === "departement"
                   ? "Département"

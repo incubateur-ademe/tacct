@@ -156,7 +156,10 @@ export const GetCommunesCoordinates = async (
     try {
       if (!libelle || !type || (!code && type !== 'petr')) return null;
       const exists = await prisma.postgis_v2_communes_drom.findFirst({
-        where: { [column]: type === 'petr' || type === 'ept' ? libelle : code }
+        where:
+          type === 'polem'
+            ? { code_polem: { has: code } }
+            : { [column]: type === 'petr' || type === 'ept' ? libelle : code }
       });
       if (!exists) return null;
 
@@ -276,6 +279,25 @@ export const GetCommunesCoordinates = async (
             ST_YMax(ST_Extent(geometry)) as maxLat
           FROM postgis_v2."communes_drom"
           WHERE libelle_petr IS NOT NULL AND libelle_petr = ${libelle}
+        `;
+      } else if (type === 'polem') {
+        result = await prisma.$queryRaw<
+          Array<{
+            codes: string[];
+            minlng: number;
+            minlat: number;
+            maxlng: number;
+            maxlat: number;
+          }>
+        >`
+          SELECT
+            array_agg(code_geographique) as codes,
+            ST_XMin(ST_Extent(geometry)) as minLng,
+            ST_YMin(ST_Extent(geometry)) as minLat,
+            ST_XMax(ST_Extent(geometry)) as maxLng,
+            ST_YMax(ST_Extent(geometry)) as maxLat
+          FROM postgis_v2."communes_drom"
+          WHERE code_polem @> ARRAY[${code}]::text[]
         `;
       } else {
         result = await prisma.$queryRaw<

@@ -164,7 +164,7 @@ model databases_v2_atlas_biodiversite {
 }
 
 model databases_v2_collectivites_searchbar {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String?
   libelle_geographique String?
   epci                 String?
@@ -178,10 +178,13 @@ model databases_v2_collectivites_searchbar {
   libelle_pnr          String?
   search_code          String?
   search_libelle       String
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([search_code], map: "collectivites_searchbar_search_code_index")
   @@index([search_libelle], map: "collectivites_searchbar_search_libelle_index")
   @@index([index], map: "ix_collectivites_searchbar_index")
+  @@index([code_polem], map: "collectivites_searchbar_polem_index", type: Gin)
   @@map("collectivites_searchbar")
   @@schema("databases_v2")
 }
@@ -653,7 +656,7 @@ model databases_v2_table_commune {
 }
 
 model databases_v2_table_territoires {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -665,8 +668,11 @@ model databases_v2_table_territoires {
   libelle_petr         String?
   code_pnr             String?
   libelle_pnr          String?
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([index], map: "ix_table_territoires_index")
+  @@index([code_polem], map: "table_territoires_polem_index", type: Gin)
   @@map("table_territoires")
   @@schema("databases_v2")
 }
@@ -738,8 +744,11 @@ model postgis_v2_communes_drom {
   geometry             Unsupported("geometry")?
   precarite_logement   Float?
   surface              Float?
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([geometry], map: "communes_drom_geometry_geom_idx", type: Gist)
+  @@index([code_polem], map: "communes_drom_polem_index", type: Gin)
   @@map("communes_drom")
   @@schema("postgis_v2")
 }
@@ -1968,5 +1977,15 @@ model emplois_sylviculture {
   @@index([libelle_petr], map: "emplois_sylviculture_petr_index")
   @@index([code_pnr], map: "emplois_sylviculture_pnr_index")
   @@index([index], map: "ix_emplois_sylviculture_index")
+  @@schema("databases_v2")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model temp_polem {
+  code_polem    String?
+  libelle_polem String?
+  epci          String?
+
+  @@ignore
   @@schema("databases_v2")
 }

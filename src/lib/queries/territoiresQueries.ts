@@ -326,6 +326,7 @@ export const AllTerritoires = async (variableCollectivite: string) => {
       WHEN code_geographique IS NOT NULL THEN 'commune'
       WHEN libelle_pnr IS NOT NULL THEN 'pnr'
       WHEN libelle_petr IS NOT NULL THEN 'petr'
+      WHEN libelle_polem IS NOT NULL THEN 'polem'
       WHEN libelle_epci IS NOT NULL OR ept IS NOT NULL THEN 'epci'
       ELSE 'departement'
     END AS territoire_type
@@ -347,6 +348,7 @@ export const AllTerritoires = async (variableCollectivite: string) => {
           AND (
             libelle_pnr IS NOT NULL
             OR libelle_petr IS NOT NULL
+            OR libelle_polem IS NOT NULL
             OR libelle_epci IS NOT NULL
             OR ept IS NOT NULL
             OR departement IS NOT NULL

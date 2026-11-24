@@ -380,7 +380,7 @@ export type CollectivitesSearchbar = {
 };
 
 export type CollectivitesSearchbarWithType = CollectivitesSearchbar & {
-  territoire_type: 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+  territoire_type: 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement';
 };
 
 export type CarteCommunes = {

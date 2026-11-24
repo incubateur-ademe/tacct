@@ -96,7 +96,7 @@ export const FeuxDeForet = (props: {
             />
           </div>
           <div className="mt-4">
-            <ReadMoreFade maxHeight={500}>
+            <ReadMoreFade maxHeight={400}>
               <FeuxForetForetText />
             </ReadMoreFade>
           </div>

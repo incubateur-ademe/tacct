@@ -697,14 +697,6 @@ export type databases_v2_table_communeUncheckedUpdateManyInput = {
   surface_foret_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
 }
 
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
-}
-
 export type databases_v2_table_communeCountOrderByAggregateInput = {
   index?: Prisma.SortOrder
   code_geographique?: Prisma.SortOrder

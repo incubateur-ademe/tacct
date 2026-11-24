@@ -42,7 +42,7 @@ type SearchInputOptionsProps = {
   option: SearchInputOptions;
 };
 
-type TerritoireType = 'epci' | 'commune' | 'petr' | 'pnr' | 'departement';
+type TerritoireType = 'epci' | 'commune' | 'petr' | 'pnr' | 'polem' | 'departement';
 
 type SearchInputOptionsSansFiltre = SearchInputOptions & {
   territoireType: TerritoireType;

@@ -7018,7 +7018,9 @@ export const Databases_v2_collectivites_searchbarScalarFieldEnum = {
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
   search_code: 'search_code',
-  search_libelle: 'search_libelle'
+  search_libelle: 'search_libelle',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_collectivites_searchbarScalarFieldEnum = (typeof Databases_v2_collectivites_searchbarScalarFieldEnum)[keyof typeof Databases_v2_collectivites_searchbarScalarFieldEnum]
@@ -7418,7 +7420,9 @@ export const Databases_v2_table_territoiresScalarFieldEnum = {
   ept: 'ept',
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
-  libelle_pnr: 'libelle_pnr'
+  libelle_pnr: 'libelle_pnr',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_table_territoiresScalarFieldEnum = (typeof Databases_v2_table_territoiresScalarFieldEnum)[keyof typeof Databases_v2_table_territoiresScalarFieldEnum]
@@ -7482,7 +7486,9 @@ export const Postgis_v2_communes_dromScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr',
   coordinates: 'coordinates',
   precarite_logement: 'precarite_logement',
-  surface: 'surface'
+  surface: 'surface',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Postgis_v2_communes_dromScalarFieldEnum = (typeof Postgis_v2_communes_dromScalarFieldEnum)[keyof typeof Postgis_v2_communes_dromScalarFieldEnum]

@@ -83,6 +83,8 @@ export type Databases_v2_collectivites_searchbarCountAggregateOutputType = {
   libelle_pnr: number
   search_code: number
   search_libelle: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -144,6 +146,8 @@ export type Databases_v2_collectivites_searchbarCountAggregateInputType = {
   libelle_pnr?: true
   search_code?: true
   search_libelle?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -248,6 +252,8 @@ export type Databases_v2_collectivites_searchbarGroupByOutputType = {
   libelle_pnr: string | null
   search_code: string | null
   search_libelle: string
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_collectivites_searchbarCountAggregateOutputType | null
   _avg: Databases_v2_collectivites_searchbarAvgAggregateOutputType | null
   _sum: Databases_v2_collectivites_searchbarSumAggregateOutputType | null
@@ -288,6 +294,8 @@ export type databases_v2_collectivites_searchbarWhereInput = {
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_code?: Prisma.StringNullableFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_libelle?: Prisma.StringFilter<"databases_v2_collectivites_searchbar"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
 }
 
 export type databases_v2_collectivites_searchbarOrderByWithRelationInput = {
@@ -305,6 +313,8 @@ export type databases_v2_collectivites_searchbarOrderByWithRelationInput = {
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   search_code?: Prisma.SortOrderInput | Prisma.SortOrder
   search_libelle?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_collectivites_searchbarWhereUniqueInput = Prisma.AtLeast<{
@@ -325,6 +335,8 @@ export type databases_v2_collectivites_searchbarWhereUniqueInput = Prisma.AtLeas
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_code?: Prisma.StringNullableFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_libelle?: Prisma.StringFilter<"databases_v2_collectivites_searchbar"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
 }, "index">
 
 export type databases_v2_collectivites_searchbarOrderByWithAggregationInput = {
@@ -342,6 +354,8 @@ export type databases_v2_collectivites_searchbarOrderByWithAggregationInput = {
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   search_code?: Prisma.SortOrderInput | Prisma.SortOrder
   search_libelle?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_collectivites_searchbarCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_collectivites_searchbarAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_collectivites_searchbarMaxOrderByAggregateInput
@@ -367,6 +381,8 @@ export type databases_v2_collectivites_searchbarScalarWhereWithAggregatesInput =
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_code?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_collectivites_searchbar"> | string | null
   search_libelle?: Prisma.StringWithAggregatesFilter<"databases_v2_collectivites_searchbar"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_collectivites_searchbar">
 }
 
 export type databases_v2_collectivites_searchbarCreateInput = {
@@ -384,6 +400,8 @@ export type databases_v2_collectivites_searchbarCreateInput = {
   libelle_pnr?: string | null
   search_code?: string | null
   search_libelle: string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarUncheckedCreateInput = {
@@ -401,6 +419,8 @@ export type databases_v2_collectivites_searchbarUncheckedCreateInput = {
   libelle_pnr?: string | null
   search_code?: string | null
   search_libelle: string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarUpdateInput = {
@@ -418,6 +438,8 @@ export type databases_v2_collectivites_searchbarUpdateInput = {
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_libelle?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarUncheckedUpdateInput = {
@@ -435,6 +457,8 @@ export type databases_v2_collectivites_searchbarUncheckedUpdateInput = {
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_libelle?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarCreateManyInput = {
@@ -452,6 +476,8 @@ export type databases_v2_collectivites_searchbarCreateManyInput = {
   libelle_pnr?: string | null
   search_code?: string | null
   search_libelle: string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarUpdateManyMutationInput = {
@@ -469,6 +495,8 @@ export type databases_v2_collectivites_searchbarUpdateManyMutationInput = {
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_libelle?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_collectivites_searchbarUncheckedUpdateManyInput = {
@@ -486,6 +514,16 @@ export type databases_v2_collectivites_searchbarUncheckedUpdateManyInput = {
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   search_libelle?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_collectivites_searchbarUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_collectivites_searchbarUpdatelibelle_polemInput | string[]
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type databases_v2_collectivites_searchbarCountOrderByAggregateInput = {
@@ -503,6 +541,8 @@ export type databases_v2_collectivites_searchbarCountOrderByAggregateInput = {
   libelle_pnr?: Prisma.SortOrder
   search_code?: Prisma.SortOrder
   search_libelle?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_collectivites_searchbarAvgOrderByAggregateInput = {
@@ -547,6 +587,24 @@ export type databases_v2_collectivites_searchbarSumOrderByAggregateInput = {
   index?: Prisma.SortOrder
 }
 
+export type databases_v2_collectivites_searchbarCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_collectivites_searchbarCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_collectivites_searchbarUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_collectivites_searchbarUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_collectivites_searchbarSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -564,6 +622,8 @@ export type databases_v2_collectivites_searchbarSelect<ExtArgs extends runtime.T
   libelle_pnr?: boolean
   search_code?: boolean
   search_libelle?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
 
 export type databases_v2_collectivites_searchbarSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -581,6 +641,8 @@ export type databases_v2_collectivites_searchbarSelectCreateManyAndReturn<ExtArg
   libelle_pnr?: boolean
   search_code?: boolean
   search_libelle?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
 
 export type databases_v2_collectivites_searchbarSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -598,6 +660,8 @@ export type databases_v2_collectivites_searchbarSelectUpdateManyAndReturn<ExtArg
   libelle_pnr?: boolean
   search_code?: boolean
   search_libelle?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
 
 export type databases_v2_collectivites_searchbarSelectScalar = {
@@ -615,9 +679,11 @@ export type databases_v2_collectivites_searchbarSelectScalar = {
   libelle_pnr?: boolean
   search_code?: boolean
   search_libelle?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_collectivites_searchbarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "search_code" | "search_libelle", ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
+export type databases_v2_collectivites_searchbarOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "search_code" | "search_libelle" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
 
 export type $databases_v2_collectivites_searchbarPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_collectivites_searchbar"
@@ -637,6 +703,8 @@ export type $databases_v2_collectivites_searchbarPayload<ExtArgs extends runtime
     libelle_pnr: string | null
     search_code: string | null
     search_libelle: string
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_collectivites_searchbar"]>
   composites: {}
 }
@@ -1074,6 +1142,8 @@ export interface databases_v2_collectivites_searchbarFieldRefs {
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_collectivites_searchbar", 'String'>
   readonly search_code: Prisma.FieldRef<"databases_v2_collectivites_searchbar", 'String'>
   readonly search_libelle: Prisma.FieldRef<"databases_v2_collectivites_searchbar", 'String'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_collectivites_searchbar", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_collectivites_searchbar", 'String[]'>
 }
     
 
