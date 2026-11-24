@@ -29,6 +29,9 @@ import {
 import { parsePostgresArray } from '../reusableFunctions/parsePostgresArray';
 import { Round } from '../reusableFunctions/round';
 
+const arrondi = <T extends number | null | undefined>(valeur: T): T =>
+  (typeof valeur === 'number' ? Math.round(valeur * 100) / 100 : valeur) as T;
+
 export const Patch4Export = ({
   type,
   patch4
@@ -69,7 +72,7 @@ export const IndicatorExportTransformations = {
               commune.part_irr_sau_2020 === null
             )
               return 'secret statistique';
-            return Number(commune.part_irr_sau_2020);
+            return arrondi(Number(commune.part_irr_sau_2020));
           })()
         };
       }),
@@ -103,13 +106,13 @@ export const IndicatorExportTransformations = {
           variable: bio.VARIABLE,
           sous_champ: bio.LIBELLE_SOUS_CHAMP,
           nombre_exploitations_2022: bio.nombre_2022,
-          surface_2022_ha: bio.surface_2022,
+          surface_2022_ha: arrondi(bio.surface_2022),
           nombre_exploitations_2021: bio.nombre_2021,
-          surface_2021_ha: bio.surface_2021,
+          surface_2021_ha: arrondi(bio.surface_2021),
           nombre_exploitations_2020: bio.nombre_2020,
-          surface_2020_ha: bio.surface_2020,
+          surface_2020_ha: arrondi(bio.surface_2020),
           nombre_exploitations_2019: bio.nombre_2019,
-          surface_2019_ha: bio.surface_2019
+          surface_2019_ha: arrondi(bio.surface_2019)
         };
       }),
     surfacesAgricoles: (surfacesAgricoles: SurfacesAgricolesModel[]) =>
@@ -172,57 +175,57 @@ export const IndicatorExportTransformations = {
             el.exploitation_sau_herbe_bois_patures
           ),
           exploitation_sau_jardins: secretStat(el.exploitation_sau_jardins),
-          superficie_sau_ha: secretStat(el.superficie_sau),
+          superficie_sau_ha: secretStat(arrondi(el.superficie_sau)),
           superficie_sau_terres_arables_ha: secretStat(
-            el.superficie_sau_terres_arables
+            arrondi(el.superficie_sau_terres_arables)
           ),
           superficie_sau_terres_arables_cereales_ha: secretStat(
-            el.superficie_sau_terres_arables_cereales
+            arrondi(el.superficie_sau_terres_arables_cereales)
           ),
           superficie_sau_terres_arables_oleagineux_ha: secretStat(
-            el.superficie_sau_terres_arables_oleagineux
+            arrondi(el.superficie_sau_terres_arables_oleagineux)
           ),
           superficie_sau_terres_arables_fourrageres_ha: secretStat(
-            el.superficie_sau_terres_arables_fourrageres
+            arrondi(el.superficie_sau_terres_arables_fourrageres)
           ),
           superficie_sau_terres_arables_tubercules_ha: secretStat(
-            el.superficie_sau_terres_arables_tubercules
+            arrondi(el.superficie_sau_terres_arables_tubercules)
           ),
           superficie_sau_terres_arables_legumes_melons_fraises_ha: secretStat(
-            el.superficie_sau_terres_arables_legumes_melons_fraises
+            arrondi(el.superficie_sau_terres_arables_legumes_melons_fraises)
           ),
           superficie_sau_terres_arables_fleurs_ha: secretStat(
-            el.superficie_sau_terres_arables_fleurs
+            arrondi(el.superficie_sau_terres_arables_fleurs)
           ),
           superficie_sau_terres_arables_autres_ha: secretStat(
-            el.superficie_sau_terres_arables_autres
+            arrondi(el.superficie_sau_terres_arables_autres)
           ),
           superficie_sau_cultures_permanentes_ha: secretStat(
-            el.superficie_sau_cultures_permanentes
+            arrondi(el.superficie_sau_cultures_permanentes)
           ),
           superficie_sau_cultures_permanentes_vigne_ha: secretStat(
-            el.superficie_sau_cultures_permanentes_vigne
+            arrondi(el.superficie_sau_cultures_permanentes_vigne)
           ),
           superficie_sau_cultures_permanentes_fruits_ha: secretStat(
-            el.superficie_sau_cultures_permanentes_fruits
+            arrondi(el.superficie_sau_cultures_permanentes_fruits)
           ),
           superficie_sau_cultures_permanentes_autres_ha: secretStat(
-            el.superficie_sau_cultures_permanentes_autres
+            arrondi(el.superficie_sau_cultures_permanentes_autres)
           ),
-          superficie_sau_herbe_ha: secretStat(el.superficie_sau_herbe),
+          superficie_sau_herbe_ha: secretStat(arrondi(el.superficie_sau_herbe)),
           superficie_sau_herbe_prairies_productives_ha: secretStat(
-            el.superficie_sau_herbe_prairies_productives
+            arrondi(el.superficie_sau_herbe_prairies_productives)
           ),
           superficie_sau_herbe_prairies_peu_productives_ha: secretStat(
-            el.superficie_sau_herbe_prairies_peu_productives
+            arrondi(el.superficie_sau_herbe_prairies_peu_productives)
           ),
           superficie_sau_herbe_subventions_ha: secretStat(
-            el.superficie_sau_herbe_subventions
+            arrondi(el.superficie_sau_herbe_subventions)
           ),
           superficie_sau_herbe_bois_patures_ha: secretStat(
-            el.superficie_sau_herbe_bois_patures
+            arrondi(el.superficie_sau_herbe_bois_patures)
           ),
-          superficie_sau_jardins_ha: secretStat(el.superficie_sau_jardins)
+          superficie_sau_jardins_ha: secretStat(arrondi(el.superficie_sau_jardins))
         };
       }),
     chefsExploitationSeniors: (tableCommune: TableCommuneModel[]) =>
@@ -248,7 +251,7 @@ export const IndicatorExportTransformations = {
               isNaN(Number(el.agriculture_part_over_55))
             )
               return 'secret statistique';
-            return el.agriculture_part_over_55;
+            return arrondi(Number(el.agriculture_part_over_55));
           })()
         };
       })
@@ -288,33 +291,33 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          '1968_population_de_moins_de_4_ans': el.under_4_sum_1968,
-          '1968_population_de_4_a_75_ans': el.to_75_sum_1968,
-          '1968_population_de_plus_de_75_ans': el.over_75_sum_1968,
-          '1975_population_de_moins_de_4_ans': el.under_4_sum_1975,
-          '1975_population_de_4_a_75_ans': el.to_75_sum_1975,
-          '1975_population_de_plus_de_75_ans': el.over_75_sum_1975,
-          '1982_population_de_moins_de_4_ans': el.under_4_sum_1982,
-          '1982_population_de_4_a_75_ans': el.to_75_sum_1982,
-          '1982_population_de_plus_de_75_ans': el.over_75_sum_1982,
-          '1990_population_de_moins_de_4_ans': el.under_4_sum_1990,
-          '1990_population_de_4_a_75_ans': el.to_75_sum_1990,
-          '1990_population_de_plus_de_75_ans': el.over_75_sum_1990,
-          '1999_population_de_moins_de_4_ans': el.under_4_sum_1999,
-          '1999_population_de_4_a_75_ans': el.to_75_sum_1999,
-          '1999_population_de_plus_de_75_ans': el.over_75_sum_1999,
-          '2006_population_de_moins_de_4_ans': el.under_4_sum_2006,
-          '2006_population_de_4_a_75_ans': el.to_75_sum_2006,
-          '2006_population_de_plus_de_75_ans': el.over_75_sum_2006,
-          '2011_population_de_moins_de_4_ans': el.under_4_sum_2011,
-          '2011_population_de_4_a_75_ans': el.to_75_sum_2011,
-          '2011_population_de_plus_de_75_ans': el.over_75_sum_2011,
-          '2016_population_de_moins_de_4_ans': el.under_4_sum_2016,
-          '2016_population_de_4_a_75_ans': el.to_75_sum_2016,
-          '2016_population_de_plus_de_75_ans': el.over_75_sum_2016,
-          '2022_population_de_moins_de_4_ans': el.under_4_sum_2022,
-          '2022_population_de_4_a_75_ans': el.to_75_sum_2022,
-          '2022_population_de_plus_de_75_ans': el.over_75_sum_2022
+          '1968_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1968),
+          '1968_population_de_4_a_75_ans': arrondi(el.to_75_sum_1968),
+          '1968_population_de_plus_de_75_ans': arrondi(el.over_75_sum_1968),
+          '1975_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1975),
+          '1975_population_de_4_a_75_ans': arrondi(el.to_75_sum_1975),
+          '1975_population_de_plus_de_75_ans': arrondi(el.over_75_sum_1975),
+          '1982_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1982),
+          '1982_population_de_4_a_75_ans': arrondi(el.to_75_sum_1982),
+          '1982_population_de_plus_de_75_ans': arrondi(el.over_75_sum_1982),
+          '1990_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1990),
+          '1990_population_de_4_a_75_ans': arrondi(el.to_75_sum_1990),
+          '1990_population_de_plus_de_75_ans': arrondi(el.over_75_sum_1990),
+          '1999_population_de_moins_de_4_ans': arrondi(el.under_4_sum_1999),
+          '1999_population_de_4_a_75_ans': arrondi(el.to_75_sum_1999),
+          '1999_population_de_plus_de_75_ans': arrondi(el.over_75_sum_1999),
+          '2006_population_de_moins_de_4_ans': arrondi(el.under_4_sum_2006),
+          '2006_population_de_4_a_75_ans': arrondi(el.to_75_sum_2006),
+          '2006_population_de_plus_de_75_ans': arrondi(el.over_75_sum_2006),
+          '2011_population_de_moins_de_4_ans': arrondi(el.under_4_sum_2011),
+          '2011_population_de_4_a_75_ans': arrondi(el.to_75_sum_2011),
+          '2011_population_de_plus_de_75_ans': arrondi(el.over_75_sum_2011),
+          '2016_population_de_moins_de_4_ans': arrondi(el.under_4_sum_2016),
+          '2016_population_de_4_a_75_ans': arrondi(el.to_75_sum_2016),
+          '2016_population_de_plus_de_75_ans': arrondi(el.over_75_sum_2016),
+          '2022_population_de_moins_de_4_ans': arrondi(el.under_4_sum_2022),
+          '2022_population_de_4_a_75_ans': arrondi(el.to_75_sum_2022),
+          '2022_population_de_plus_de_75_ans': arrondi(el.over_75_sum_2022)
         };
       }),
     travailExt: (travailExt: travailExtDto[]) =>
@@ -360,11 +363,11 @@ export const IndicatorExportTransformations = {
           libelle_petr: el.libelle_petr,
           code_departement: el.departement,
           libelle_departement: el.libelle_departement,
-          surface_artificialisee_ha: el.clc_1_artificialise,
-          surface_agricole_ha: el.clc_2_agricole,
-          surface_foret_et_espaces_semi_naturels_ha: el.clc_3_foret_semiNaturel,
-          surface_zone_humide_ha: el.clc_4_humide,
-          surface_en_eau_ha: el.clc_5_eau
+          surface_artificialisee_ha: arrondi(el.clc_1_artificialise),
+          surface_agricole_ha: arrondi(el.clc_2_agricole),
+          surface_foret_et_espaces_semi_naturels_ha: arrondi(el.clc_3_foret_semiNaturel),
+          surface_zone_humide_ha: arrondi(el.clc_4_humide),
+          surface_en_eau_ha: arrondi(el.clc_5_eau)
         };
       });
     }
@@ -386,19 +389,19 @@ export const IndicatorExportTransformations = {
           region: el.region,
           sous_champ: el.sous_champ,
           libelle_sous_champ: el.libelle_sous_champ,
-          prelevement_2008_m3: el.A2008,
-          prelevement_2009_m3: el.A2009,
-          prelevement_2010_m3: el.A2010,
-          prelevement_2011_m3: el.A2011,
-          prelevement_2012_m3: el.A2012,
-          prelevement_2013_m3: el.A2013,
-          prelevement_2014_m3: el.A2014,
-          prelevement_2015_m3: el.A2015,
-          prelevement_2016_m3: el.A2016,
-          prelevement_2017_m3: el.A2017,
-          prelevement_2018_m3: el.A2018,
-          prelevement_2019_m3: el.A2019,
-          prelevement_2020_m3: el.A2020
+          prelevement_2008_m3: arrondi(el.A2008),
+          prelevement_2009_m3: arrondi(el.A2009),
+          prelevement_2010_m3: arrondi(el.A2010),
+          prelevement_2011_m3: arrondi(el.A2011),
+          prelevement_2012_m3: arrondi(el.A2012),
+          prelevement_2013_m3: arrondi(el.A2013),
+          prelevement_2014_m3: arrondi(el.A2014),
+          prelevement_2015_m3: arrondi(el.A2015),
+          prelevement_2016_m3: arrondi(el.A2016),
+          prelevement_2017_m3: arrondi(el.A2017),
+          prelevement_2018_m3: arrondi(el.A2018),
+          prelevement_2019_m3: arrondi(el.A2019),
+          prelevement_2020_m3: arrondi(el.A2020)
         };
       });
     },
@@ -418,7 +421,7 @@ export const IndicatorExportTransformations = {
                     : el.etat_ecologique === '5'
                       ? 'Mauvais'
                       : 'Indéterminé',
-          longueur_m: el.longueur,
+          longueur_m: arrondi(el.longueur),
           code_geographique: el.code_geographique,
           libelle_geographique: el.libelle_geographique,
           code_epci: el.epci,
@@ -464,112 +467,112 @@ export const IndicatorExportTransformations = {
           code_pnr: el.code_pnr,
           libelle_pnr: el.libelle_pnr,
           libelle_petr: el.libelle_petr,
-          naf11art12: el.naf11art12,
-          art11act12: el.art11act12,
-          art11hab12: el.art11hab12,
-          art11mix12: el.art11mix12,
-          art11rou12: el.art11rou12,
-          art11fer12: el.art11fer12,
-          art11inc12: el.art11inc12,
-          naf12art13: el.naf12art13,
-          art12act13: el.art12act13,
-          art12hab13: el.art12hab13,
-          art12mix13: el.art12mix13,
-          art12rou13: el.art12rou13,
-          art12fer13: el.art12fer13,
-          art12inc13: el.art12inc13,
-          naf13art14: el.naf13art14,
-          art13act14: el.art13act14,
-          art13hab14: el.art13hab14,
-          art13mix14: el.art13mix14,
-          art13rou14: el.art13rou14,
-          art13fer14: el.art13fer14,
-          art13inc14: el.art13inc14,
-          naf14art15: el.naf14art15,
-          art14act15: el.art14act15,
-          art14hab15: el.art14hab15,
-          art14mix15: el.art14mix15,
-          art14rou15: el.art14rou15,
-          art14fer15: el.art14fer15,
-          art14inc15: el.art14inc15,
-          naf15art16: el.naf15art16,
-          art15act16: el.art15act16,
-          art15hab16: el.art15hab16,
-          art15mix16: el.art15mix16,
-          art15rou16: el.art15rou16,
-          art15fer16: el.art15fer16,
-          art15inc16: el.art15inc16,
-          naf16art17: el.naf16art17,
-          art16act17: el.art16act17,
-          art16hab17: el.art16hab17,
-          art16mix17: el.art16mix17,
-          art16rou17: el.art16rou17,
-          art16fer17: el.art16fer17,
-          art16inc17: el.art16inc17,
-          naf17art18: el.naf17art18,
-          art17act18: el.art17act18,
-          art17hab18: el.art17hab18,
-          art17mix18: el.art17mix18,
-          art17rou18: el.art17rou18,
-          art17fer18: el.art17fer18,
-          art17inc18: el.art17inc18,
-          naf18art19: el.naf18art19,
-          art18act19: el.art18act19,
-          art18hab19: el.art18hab19,
-          art18mix19: el.art18mix19,
-          art18rou19: el.art18rou19,
-          art18fer19: el.art18fer19,
-          art18inc19: el.art18inc19,
-          naf19art20: el.naf19art20,
-          art19act20: el.art19act20,
-          art19hab20: el.art19hab20,
-          art19mix20: el.art19mix20,
-          art19rou20: el.art19rou20,
-          art19fer20: el.art19fer20,
-          art19inc20: el.art19inc20,
-          naf20art21: el.naf20art21,
-          art20act21: el.art20act21,
-          art20hab21: el.art20hab21,
-          art20mix21: el.art20mix21,
-          art20rou21: el.art20rou21,
-          art20fer21: el.art20fer21,
-          art20inc21: el.art20inc21,
-          naf21art22: el.naf21art22,
-          art21act22: el.art21act22,
-          art21hab22: el.art21hab22,
-          art21mix22: el.art21mix22,
-          art21rou22: el.art21rou22,
-          art21fer22: el.art21fer22,
-          art21inc22: el.art21inc22,
-          naf22art23: el.naf22art23,
-          art22act23: el.art22act23,
-          art22hab23: el.art22hab23,
-          art22mix23: el.art22mix23,
-          art22rou23: el.art22rou23,
-          art22fer23: el.art22fer23,
-          art22inc23: el.art22inc23,
-          naf23art24: el.naf23art24,
-          art23act24: el.art23act24,
-          art23hab24: el.art23hab24,
-          art23mix24: el.art23mix24,
-          art23rou24: el.art23rou24,
-          art23fer24: el.art23fer24,
-          art23inc24: el.art23inc24,
-          naf24art25: el.naf24art25,
-          art24act25: el.art24act25,
-          art24hab25: el.art24hab25,
-          art24mix25: el.art24mix25,
-          art24rou25: el.art24rou25,
-          art24fer25: el.art24fer25,
-          art24inc25: el.art24inc25,
-          naf11art25: el.naf11art25,
-          art11act25: el.art11act25,
-          art11hab25: el.art11hab25,
-          art11mix25: el.art11mix25,
-          art11inc25: el.art11inc25,
-          art11rou25: el.art11rou25,
-          art11fer25: el.art11fer25,
-          artcom1125: el.artcom1125
+          naf11art12: arrondi(el.naf11art12),
+          art11act12: arrondi(el.art11act12),
+          art11hab12: arrondi(el.art11hab12),
+          art11mix12: arrondi(el.art11mix12),
+          art11rou12: arrondi(el.art11rou12),
+          art11fer12: arrondi(el.art11fer12),
+          art11inc12: arrondi(el.art11inc12),
+          naf12art13: arrondi(el.naf12art13),
+          art12act13: arrondi(el.art12act13),
+          art12hab13: arrondi(el.art12hab13),
+          art12mix13: arrondi(el.art12mix13),
+          art12rou13: arrondi(el.art12rou13),
+          art12fer13: arrondi(el.art12fer13),
+          art12inc13: arrondi(el.art12inc13),
+          naf13art14: arrondi(el.naf13art14),
+          art13act14: arrondi(el.art13act14),
+          art13hab14: arrondi(el.art13hab14),
+          art13mix14: arrondi(el.art13mix14),
+          art13rou14: arrondi(el.art13rou14),
+          art13fer14: arrondi(el.art13fer14),
+          art13inc14: arrondi(el.art13inc14),
+          naf14art15: arrondi(el.naf14art15),
+          art14act15: arrondi(el.art14act15),
+          art14hab15: arrondi(el.art14hab15),
+          art14mix15: arrondi(el.art14mix15),
+          art14rou15: arrondi(el.art14rou15),
+          art14fer15: arrondi(el.art14fer15),
+          art14inc15: arrondi(el.art14inc15),
+          naf15art16: arrondi(el.naf15art16),
+          art15act16: arrondi(el.art15act16),
+          art15hab16: arrondi(el.art15hab16),
+          art15mix16: arrondi(el.art15mix16),
+          art15rou16: arrondi(el.art15rou16),
+          art15fer16: arrondi(el.art15fer16),
+          art15inc16: arrondi(el.art15inc16),
+          naf16art17: arrondi(el.naf16art17),
+          art16act17: arrondi(el.art16act17),
+          art16hab17: arrondi(el.art16hab17),
+          art16mix17: arrondi(el.art16mix17),
+          art16rou17: arrondi(el.art16rou17),
+          art16fer17: arrondi(el.art16fer17),
+          art16inc17: arrondi(el.art16inc17),
+          naf17art18: arrondi(el.naf17art18),
+          art17act18: arrondi(el.art17act18),
+          art17hab18: arrondi(el.art17hab18),
+          art17mix18: arrondi(el.art17mix18),
+          art17rou18: arrondi(el.art17rou18),
+          art17fer18: arrondi(el.art17fer18),
+          art17inc18: arrondi(el.art17inc18),
+          naf18art19: arrondi(el.naf18art19),
+          art18act19: arrondi(el.art18act19),
+          art18hab19: arrondi(el.art18hab19),
+          art18mix19: arrondi(el.art18mix19),
+          art18rou19: arrondi(el.art18rou19),
+          art18fer19: arrondi(el.art18fer19),
+          art18inc19: arrondi(el.art18inc19),
+          naf19art20: arrondi(el.naf19art20),
+          art19act20: arrondi(el.art19act20),
+          art19hab20: arrondi(el.art19hab20),
+          art19mix20: arrondi(el.art19mix20),
+          art19rou20: arrondi(el.art19rou20),
+          art19fer20: arrondi(el.art19fer20),
+          art19inc20: arrondi(el.art19inc20),
+          naf20art21: arrondi(el.naf20art21),
+          art20act21: arrondi(el.art20act21),
+          art20hab21: arrondi(el.art20hab21),
+          art20mix21: arrondi(el.art20mix21),
+          art20rou21: arrondi(el.art20rou21),
+          art20fer21: arrondi(el.art20fer21),
+          art20inc21: arrondi(el.art20inc21),
+          naf21art22: arrondi(el.naf21art22),
+          art21act22: arrondi(el.art21act22),
+          art21hab22: arrondi(el.art21hab22),
+          art21mix22: arrondi(el.art21mix22),
+          art21rou22: arrondi(el.art21rou22),
+          art21fer22: arrondi(el.art21fer22),
+          art21inc22: arrondi(el.art21inc22),
+          naf22art23: arrondi(el.naf22art23),
+          art22act23: arrondi(el.art22act23),
+          art22hab23: arrondi(el.art22hab23),
+          art22mix23: arrondi(el.art22mix23),
+          art22rou23: arrondi(el.art22rou23),
+          art22fer23: arrondi(el.art22fer23),
+          art22inc23: arrondi(el.art22inc23),
+          naf23art24: arrondi(el.naf23art24),
+          art23act24: arrondi(el.art23act24),
+          art23hab24: arrondi(el.art23hab24),
+          art23mix24: arrondi(el.art23mix24),
+          art23rou24: arrondi(el.art23rou24),
+          art23fer24: arrondi(el.art23fer24),
+          art23inc24: arrondi(el.art23inc24),
+          naf24art25: arrondi(el.naf24art25),
+          art24act25: arrondi(el.art24act25),
+          art24hab25: arrondi(el.art24hab25),
+          art24mix25: arrondi(el.art24mix25),
+          art24rou25: arrondi(el.art24rou25),
+          art24fer25: arrondi(el.art24fer25),
+          art24inc25: arrondi(el.art24inc25),
+          naf11art25: arrondi(el.naf11art25),
+          art11act25: arrondi(el.art11act25),
+          art11hab25: arrondi(el.art11hab25),
+          art11mix25: arrondi(el.art11mix25),
+          art11inc25: arrondi(el.art11inc25),
+          art11rou25: arrondi(el.art11rou25),
+          art11fer25: arrondi(el.art11fer25),
+          artcom1125: arrondi(el.artcom1125)
         };
       });
     },
@@ -581,46 +584,46 @@ export const IndicatorExportTransformations = {
           variable: bio.VARIABLE,
           sous_champ: bio.LIBELLE_SOUS_CHAMP,
           nombre_exploitations_2024: bio.nombre_2024,
-          surface_2024_ha: bio.surface_2024,
+          surface_2024_ha: arrondi(bio.surface_2024),
           nombre_exploitations_2023: bio.nombre_2023,
-          surface_2023_ha: bio.surface_2023,
+          surface_2023_ha: arrondi(bio.surface_2023),
           nombre_exploitations_2022: bio.nombre_2022,
-          surface_2022_ha: bio.surface_2022,
+          surface_2022_ha: arrondi(bio.surface_2022),
           nombre_exploitations_2021: bio.nombre_2021,
-          surface_2021_ha: bio.surface_2021,
+          surface_2021_ha: arrondi(bio.surface_2021),
           nombre_exploitations_2020: bio.nombre_2020,
-          surface_2020_ha: bio.surface_2020,
+          surface_2020_ha: arrondi(bio.surface_2020),
           nombre_exploitations_2019: bio.nombre_2019,
-          surface_2019_ha: bio.surface_2019,
+          surface_2019_ha: arrondi(bio.surface_2019),
           nombre_exploitations_2018: bio.nombre_2018,
-          surface_2018_ha: bio.surface_2018,
+          surface_2018_ha: arrondi(bio.surface_2018),
           nombre_exploitations_2017: bio.nombre_2017,
-          surface_2017_ha: bio.surface_2017,
+          surface_2017_ha: arrondi(bio.surface_2017),
           nombre_exploitations_2016: bio.nombre_2016,
-          surface_2016_ha: bio.surface_2016,
+          surface_2016_ha: arrondi(bio.surface_2016),
           nombre_exploitations_2015: bio.nombre_2015,
-          surface_2015_ha: bio.surface_2015,
+          surface_2015_ha: arrondi(bio.surface_2015),
           nombre_exploitations_2014: bio.nombre_2014,
-          surface_2014_ha: bio.surface_2014,
+          surface_2014_ha: arrondi(bio.surface_2014),
           nombre_exploitations_2013: bio.nombre_2013,
-          surface_2013_ha: bio.surface_2013,
+          surface_2013_ha: arrondi(bio.surface_2013),
           nombre_exploitations_2012: bio.nombre_2012,
-          surface_2012_ha: bio.surface_2012,
+          surface_2012_ha: arrondi(bio.surface_2012),
           nombre_exploitations_2011: bio.nombre_2011,
-          surface_2011_ha: bio.surface_2011,
+          surface_2011_ha: arrondi(bio.surface_2011),
           nombre_exploitations_2010: bio.nombre_2010,
-          surface_2010_ha: bio.surface_2010,
+          surface_2010_ha: arrondi(bio.surface_2010),
           nombre_exploitations_2009: bio.nombre_2009,
-          surface_2009_ha: bio.surface_2009,
+          surface_2009_ha: arrondi(bio.surface_2009),
           nombre_exploitations_2008: bio.nombre_2008,
-          surface_2008_ha: bio.surface_2008
+          surface_2008_ha: arrondi(bio.surface_2008)
         };
       }),
     aot40: (aot40: AOT40[]) => {
       return aot40.map((el) => {
         return {
           nom_site: el.nom_site,
-          'valeur brute (µg/m³)': el.valeur,
+          'valeur brute (µg/m³)': arrondi(el.valeur),
           latitude: el.latitude,
           longitude: el.longitude
         };
@@ -662,28 +665,28 @@ export const IndicatorExportTransformations = {
             el.nb_logement_alea_faible_1945_1975,
           nb_logement_alea_faible_apres_1975:
             el.nb_logement_alea_faible_apres_1975,
-          surface_commune_m2: el.surface_commune,
-          surface_alea_faible_commune_m2: el.surface_alea_faible_commune,
+          surface_commune_m2: arrondi(el.surface_commune),
+          surface_alea_faible_commune_m2: arrondi(el.surface_alea_faible_commune),
           surface_alea_moyen_fort_commune_m2:
-            el.surface_alea_moyen_fort_commune,
+            arrondi(el.surface_alea_moyen_fort_commune),
           part_logement_alea_moyen_fort_avant_1920:
-            el.part_logement_alea_moyen_fort_avant_1920,
+            arrondi(el.part_logement_alea_moyen_fort_avant_1920),
           part_logement_alea_moyen_fort_1920_1945:
-            el.part_logement_alea_moyen_fort_1920_1945,
+            arrondi(el.part_logement_alea_moyen_fort_1920_1945),
           part_logement_alea_moyen_fort_1945_1975:
-            el.part_logement_alea_moyen_fort_1945_1975,
+            arrondi(el.part_logement_alea_moyen_fort_1945_1975),
           part_logement_alea_moyen_fort_apres_1975:
-            el.part_logement_alea_moyen_fort_apres_1975,
+            arrondi(el.part_logement_alea_moyen_fort_apres_1975),
           part_logement_alea_faible_avant_1920:
-            el.part_logement_alea_faible_avant_1920,
+            arrondi(el.part_logement_alea_faible_avant_1920),
           part_logement_alea_faible_1920_1945:
-            el.part_logement_alea_faible_1920_1945,
+            arrondi(el.part_logement_alea_faible_1920_1945),
           part_logement_alea_faible_1945_1975:
-            el.part_logement_alea_faible_1945_1975,
+            arrondi(el.part_logement_alea_faible_1945_1975),
           part_logement_alea_faible_apres_1975:
-            el.part_logement_alea_faible_apres_1975,
-          part_alea_faible_commune: el.part_alea_faible_commune,
-          part_alea_moyen_fort_commune: el.part_alea_moyen_fort_commune
+            arrondi(el.part_logement_alea_faible_apres_1975),
+          part_alea_faible_commune: arrondi(el.part_alea_faible_commune),
+          part_alea_moyen_fort_commune: arrondi(el.part_alea_moyen_fort_commune)
         };
       });
     },
@@ -703,19 +706,19 @@ export const IndicatorExportTransformations = {
           region: el.region,
           nature: el.nature,
           annee: el.annee,
-          surface_parcourue_km2: el.surface_parcourue,
-          surface_foret_km2: el.surface_foret,
-          surface_maquis_garrigues_km2: el.surface_maquis_garrigues,
+          surface_parcourue_km2: arrondi(el.surface_parcourue),
+          surface_foret_km2: arrondi(el.surface_foret),
+          surface_maquis_garrigues_km2: arrondi(el.surface_maquis_garrigues),
           autres_surfaces_naturelles_hors_foret_km2:
-            el.autres_surfaces_naturelles_hors_foret,
-          surfaces_agricoles_km2: el.surfaces_agricoles,
-          surfaces_non_boisees_km2: el.surfaces_non_boisees,
+            arrondi(el.autres_surfaces_naturelles_hors_foret),
+          surfaces_agricoles_km2: arrondi(el.surfaces_agricoles),
+          surfaces_non_boisees_km2: arrondi(el.surfaces_non_boisees),
           surfaces_non_boisees_artificialisees_km2:
-            el.surfaces_non_boisees_artificialisees,
+            arrondi(el.surfaces_non_boisees_artificialisees),
           surfaces_non_boisees_naturelles_km2:
-            el.surfaces_non_boisees_naturelles,
-          surface_autres_terres_boisees_km2: el.surface_autres_terres_boisees,
-          autres_surfaces_km2: el.autres_surfaces
+            arrondi(el.surfaces_non_boisees_naturelles),
+          surface_autres_terres_boisees_km2: arrondi(el.surface_autres_terres_boisees),
+          autres_surfaces_km2: arrondi(el.autres_surfaces)
         };
       });
     },
@@ -783,9 +786,11 @@ export const IndicatorExportTransformations = {
   batiment: {
     InondationDebordement: (donnees: InondationsDebordementModel[]) => {
       const valeur = (epci: string, indicateur: string) =>
-        donnees.find(
-          (el) => el.epci === epci && el.indicateur_exposition === indicateur
-        )?.valeur_exposition ?? 'secret statistique';
+        arrondi(
+          donnees.find(
+            (el) => el.epci === epci && el.indicateur_exposition === indicateur
+          )?.valeur_exposition
+        ) ?? 'secret statistique';
       return [...new Map(donnees.map((el) => [el.epci, el.libelle_epci]))].map(
         ([epci, libelleEpci]) => {
           return {
@@ -811,17 +816,16 @@ export const IndicatorExportTransformations = {
           Commune: el.libelle_geographique,
           'Code EPCI': el.epci,
           EPCI: el.libelle_epci,
-          'Surface de forêt possédée (ha)': el.surface_foret_possedee_ha,
-          'Dont surface sur la commune (ha)': el.surface_foret_possedee_sur_territoire_ha,
+          'Surface de forêt possédée (ha)': arrondi(el.surface_foret_possedee_ha),
+          'Dont surface sur la commune (ha)': arrondi(el.surface_foret_possedee_sur_territoire_ha),
           'Dont surface sur d’autres communes (ha)':
             el.surface_foret_possedee_ha === null ||
             el.surface_foret_possedee_sur_territoire_ha === null
               ? null
-              : Math.round(
-                  (el.surface_foret_possedee_ha -
-                    el.surface_foret_possedee_sur_territoire_ha) *
-                    100
-                ) / 100
+              : arrondi(
+                  el.surface_foret_possedee_ha -
+                    el.surface_foret_possedee_sur_territoire_ha
+                )
         };
       });
     },
@@ -833,9 +837,9 @@ export const IndicatorExportTransformations = {
           'Code EPCI': el.epci,
           EPCI: el.libelle_epci,
           'Postes salariés en sylviculture et exploitation forestière':
-            el.postes_sylviculture,
-          'Postes salariés en travail du bois': el.postes_travail_bois,
-          'Postes salariés, tous secteurs': el.postes_total
+            arrondi(el.postes_sylviculture),
+          'Postes salariés en travail du bois': arrondi(el.postes_travail_bois),
+          'Postes salariés, tous secteurs': arrondi(el.postes_total)
         };
       });
     }
@@ -850,8 +854,8 @@ export const IndicatorExportTransformations = {
           EPCI: el.libelle_epci,
           Station: station.nom,
           'Taille de la station': station.taille,
-          'Moment de puissance de la station (km·skieurs/h)': station.momentPuissance,
-          'Âge du parc de remontées mécaniques (ans)': station.ageParc
+          'Moment de puissance de la station (km·skieurs/h)': arrondi(station.momentPuissance),
+          'Âge du parc de remontées mécaniques (ans)': arrondi(station.ageParc)
         }))
       );
     }
