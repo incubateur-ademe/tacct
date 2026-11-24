@@ -116,6 +116,8 @@ export type Databases_v2_table_communeCountAggregateOutputType = {
   projets_alimentaires_territoriaux: number
   surface_commune_ha: number
   surface_foret_ha: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -210,6 +212,8 @@ export type Databases_v2_table_communeCountAggregateInputType = {
   projets_alimentaires_territoriaux?: true
   surface_commune_ha?: true
   surface_foret_ha?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -325,6 +329,8 @@ export type Databases_v2_table_communeGroupByOutputType = {
   projets_alimentaires_territoriaux: string[]
   surface_commune_ha: number | null
   surface_foret_ha: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_table_communeCountAggregateOutputType | null
   _avg: Databases_v2_table_communeAvgAggregateOutputType | null
   _sum: Databases_v2_table_communeSumAggregateOutputType | null
@@ -376,6 +382,8 @@ export type databases_v2_table_communeWhereInput = {
   projets_alimentaires_territoriaux?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
   surface_commune_ha?: Prisma.FloatNullableFilter<"databases_v2_table_commune"> | number | null
   surface_foret_ha?: Prisma.FloatNullableFilter<"databases_v2_table_commune"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }
 
 export type databases_v2_table_communeOrderByWithRelationInput = {
@@ -404,6 +412,8 @@ export type databases_v2_table_communeOrderByWithRelationInput = {
   projets_alimentaires_territoriaux?: Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_foret_ha?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_table_communeWhereUniqueInput = Prisma.AtLeast<{
@@ -435,6 +445,8 @@ export type databases_v2_table_communeWhereUniqueInput = Prisma.AtLeast<{
   projets_alimentaires_territoriaux?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
   surface_commune_ha?: Prisma.FloatNullableFilter<"databases_v2_table_commune"> | number | null
   surface_foret_ha?: Prisma.FloatNullableFilter<"databases_v2_table_commune"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }, "index">
 
 export type databases_v2_table_communeOrderByWithAggregationInput = {
@@ -463,6 +475,8 @@ export type databases_v2_table_communeOrderByWithAggregationInput = {
   projets_alimentaires_territoriaux?: Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_foret_ha?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_table_communeCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_table_communeAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_table_communeMaxOrderByAggregateInput
@@ -499,6 +513,8 @@ export type databases_v2_table_communeScalarWhereWithAggregatesInput = {
   projets_alimentaires_territoriaux?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
   surface_commune_ha?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_table_commune"> | number | null
   surface_foret_ha?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_table_commune"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_table_commune">
 }
 
 export type databases_v2_table_communeCreateInput = {
@@ -527,6 +543,8 @@ export type databases_v2_table_communeCreateInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeCreateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: number | null
   surface_foret_ha?: number | null
+  code_polem?: Prisma.databases_v2_table_communeCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedCreateInput = {
@@ -555,6 +573,8 @@ export type databases_v2_table_communeUncheckedCreateInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeCreateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: number | null
   surface_foret_ha?: number | null
+  code_polem?: Prisma.databases_v2_table_communeCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeUpdateInput = {
@@ -583,6 +603,8 @@ export type databases_v2_table_communeUpdateInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeUpdateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_table_communeUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedUpdateInput = {
@@ -611,6 +633,8 @@ export type databases_v2_table_communeUncheckedUpdateInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeUpdateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_table_communeUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeCreateManyInput = {
@@ -639,6 +663,8 @@ export type databases_v2_table_communeCreateManyInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeCreateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: number | null
   surface_foret_ha?: number | null
+  code_polem?: Prisma.databases_v2_table_communeCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeUpdateManyMutationInput = {
@@ -667,6 +693,8 @@ export type databases_v2_table_communeUpdateManyMutationInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeUpdateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_table_communeUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeUncheckedUpdateManyInput = {
@@ -695,6 +723,8 @@ export type databases_v2_table_communeUncheckedUpdateManyInput = {
   projets_alimentaires_territoriaux?: Prisma.databases_v2_table_communeUpdateprojets_alimentaires_territoriauxInput | string[]
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_table_communeUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_table_communeUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_table_communeCountOrderByAggregateInput = {
@@ -723,6 +753,8 @@ export type databases_v2_table_communeCountOrderByAggregateInput = {
   projets_alimentaires_territoriaux?: Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrder
   surface_foret_ha?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_table_communeAvgOrderByAggregateInput = {
@@ -801,6 +833,14 @@ export type databases_v2_table_communeCreateprojets_alimentaires_territoriauxInp
   set: string[]
 }
 
+export type databases_v2_table_communeCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_table_communeCreatelibelle_polemInput = {
+  set: string[]
+}
+
 export type databases_v2_table_communeUpdateaires_appellations_controlees_nomInput = {
   set?: string[]
   push?: string | string[]
@@ -812,6 +852,16 @@ export type databases_v2_table_communeUpdateaires_appellations_controlees_signeI
 }
 
 export type databases_v2_table_communeUpdateprojets_alimentaires_territoriauxInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_table_communeUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_table_communeUpdatelibelle_polemInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -844,6 +894,8 @@ export type databases_v2_table_communeSelect<ExtArgs extends runtime.Types.Exten
   projets_alimentaires_territoriaux?: boolean
   surface_commune_ha?: boolean
   surface_foret_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -872,6 +924,8 @@ export type databases_v2_table_communeSelectCreateManyAndReturn<ExtArgs extends 
   projets_alimentaires_territoriaux?: boolean
   surface_commune_ha?: boolean
   surface_foret_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -900,6 +954,8 @@ export type databases_v2_table_communeSelectUpdateManyAndReturn<ExtArgs extends 
   projets_alimentaires_territoriaux?: boolean
   surface_commune_ha?: boolean
   surface_foret_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type databases_v2_table_communeSelectScalar = {
@@ -928,9 +984,11 @@ export type databases_v2_table_communeSelectScalar = {
   projets_alimentaires_territoriaux?: boolean
   surface_commune_ha?: boolean
   surface_foret_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_table_communeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement" | "type_touristique" | "otex_12_postes" | "part_irr_sau_2020" | "agriculture_part_over_55" | "couverture_lcz" | "aires_appellations_controlees_nom" | "aires_appellations_controlees_signe" | "projets_alimentaires_territoriaux" | "surface_commune_ha" | "surface_foret_ha", ExtArgs["result"]["databases_v2_table_commune"]>
+export type databases_v2_table_communeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "atlas_biodiversite_nom" | "atlas_biodiversite_annee_debut" | "atlas_biodiversite_avancement" | "type_touristique" | "otex_12_postes" | "part_irr_sau_2020" | "agriculture_part_over_55" | "couverture_lcz" | "aires_appellations_controlees_nom" | "aires_appellations_controlees_signe" | "projets_alimentaires_territoriaux" | "surface_commune_ha" | "surface_foret_ha" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_table_commune"]>
 
 export type $databases_v2_table_communePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_table_commune"
@@ -961,6 +1019,8 @@ export type $databases_v2_table_communePayload<ExtArgs extends runtime.Types.Ext
     projets_alimentaires_territoriaux: string[]
     surface_commune_ha: number | null
     surface_foret_ha: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_table_commune"]>
   composites: {}
 }
@@ -1409,6 +1469,8 @@ export interface databases_v2_table_communeFieldRefs {
   readonly projets_alimentaires_territoriaux: Prisma.FieldRef<"databases_v2_table_commune", 'String[]'>
   readonly surface_commune_ha: Prisma.FieldRef<"databases_v2_table_commune", 'Float'>
   readonly surface_foret_ha: Prisma.FieldRef<"databases_v2_table_commune", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_table_commune", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_table_commune", 'String[]'>
 }
     
 

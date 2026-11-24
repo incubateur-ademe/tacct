@@ -94,6 +94,8 @@ export type Forets_communalesCountAggregateOutputType = {
   surface_foret_possedee_ha: number
   surface_foret_possedee_sur_territoire_ha: number
   surface_commune_ha: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -166,6 +168,8 @@ export type Forets_communalesCountAggregateInputType = {
   surface_foret_possedee_ha?: true
   surface_foret_possedee_sur_territoire_ha?: true
   surface_commune_ha?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -271,6 +275,8 @@ export type Forets_communalesGroupByOutputType = {
   surface_foret_possedee_ha: number | null
   surface_foret_possedee_sur_territoire_ha: number | null
   surface_commune_ha: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Forets_communalesCountAggregateOutputType | null
   _avg: Forets_communalesAvgAggregateOutputType | null
   _sum: Forets_communalesSumAggregateOutputType | null
@@ -312,6 +318,8 @@ export type forets_communalesWhereInput = {
   surface_foret_possedee_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
   surface_commune_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"forets_communales">
+  libelle_polem?: Prisma.StringNullableListFilter<"forets_communales">
 }
 
 export type forets_communalesOrderByWithRelationInput = {
@@ -330,6 +338,8 @@ export type forets_communalesOrderByWithRelationInput = {
   surface_foret_possedee_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_foret_possedee_sur_territoire_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type forets_communalesWhereUniqueInput = Prisma.AtLeast<{
@@ -351,6 +361,8 @@ export type forets_communalesWhereUniqueInput = Prisma.AtLeast<{
   surface_foret_possedee_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
   surface_commune_ha?: Prisma.FloatNullableFilter<"forets_communales"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"forets_communales">
+  libelle_polem?: Prisma.StringNullableListFilter<"forets_communales">
 }, "index">
 
 export type forets_communalesOrderByWithAggregationInput = {
@@ -369,6 +381,8 @@ export type forets_communalesOrderByWithAggregationInput = {
   surface_foret_possedee_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_foret_possedee_sur_territoire_ha?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.forets_communalesCountOrderByAggregateInput
   _avg?: Prisma.forets_communalesAvgOrderByAggregateInput
   _max?: Prisma.forets_communalesMaxOrderByAggregateInput
@@ -395,6 +409,8 @@ export type forets_communalesScalarWhereWithAggregatesInput = {
   surface_foret_possedee_ha?: Prisma.FloatNullableWithAggregatesFilter<"forets_communales"> | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.FloatNullableWithAggregatesFilter<"forets_communales"> | number | null
   surface_commune_ha?: Prisma.FloatNullableWithAggregatesFilter<"forets_communales"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"forets_communales">
+  libelle_polem?: Prisma.StringNullableListFilter<"forets_communales">
 }
 
 export type forets_communalesCreateInput = {
@@ -413,6 +429,8 @@ export type forets_communalesCreateInput = {
   surface_foret_possedee_ha?: number | null
   surface_foret_possedee_sur_territoire_ha?: number | null
   surface_commune_ha?: number | null
+  code_polem?: Prisma.forets_communalesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesCreatelibelle_polemInput | string[]
 }
 
 export type forets_communalesUncheckedCreateInput = {
@@ -431,6 +449,8 @@ export type forets_communalesUncheckedCreateInput = {
   surface_foret_possedee_ha?: number | null
   surface_foret_possedee_sur_territoire_ha?: number | null
   surface_commune_ha?: number | null
+  code_polem?: Prisma.forets_communalesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesCreatelibelle_polemInput | string[]
 }
 
 export type forets_communalesUpdateInput = {
@@ -449,6 +469,8 @@ export type forets_communalesUpdateInput = {
   surface_foret_possedee_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.forets_communalesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesUpdatelibelle_polemInput | string[]
 }
 
 export type forets_communalesUncheckedUpdateInput = {
@@ -467,6 +489,8 @@ export type forets_communalesUncheckedUpdateInput = {
   surface_foret_possedee_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.forets_communalesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesUpdatelibelle_polemInput | string[]
 }
 
 export type forets_communalesCreateManyInput = {
@@ -485,6 +509,8 @@ export type forets_communalesCreateManyInput = {
   surface_foret_possedee_ha?: number | null
   surface_foret_possedee_sur_territoire_ha?: number | null
   surface_commune_ha?: number | null
+  code_polem?: Prisma.forets_communalesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesCreatelibelle_polemInput | string[]
 }
 
 export type forets_communalesUpdateManyMutationInput = {
@@ -503,6 +529,8 @@ export type forets_communalesUpdateManyMutationInput = {
   surface_foret_possedee_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.forets_communalesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesUpdatelibelle_polemInput | string[]
 }
 
 export type forets_communalesUncheckedUpdateManyInput = {
@@ -521,6 +549,8 @@ export type forets_communalesUncheckedUpdateManyInput = {
   surface_foret_possedee_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_foret_possedee_sur_territoire_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_commune_ha?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.forets_communalesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.forets_communalesUpdatelibelle_polemInput | string[]
 }
 
 export type forets_communalesCountOrderByAggregateInput = {
@@ -539,6 +569,8 @@ export type forets_communalesCountOrderByAggregateInput = {
   surface_foret_possedee_ha?: Prisma.SortOrder
   surface_foret_possedee_sur_territoire_ha?: Prisma.SortOrder
   surface_commune_ha?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type forets_communalesAvgOrderByAggregateInput = {
@@ -593,6 +625,24 @@ export type forets_communalesSumOrderByAggregateInput = {
   surface_commune_ha?: Prisma.SortOrder
 }
 
+export type forets_communalesCreatecode_polemInput = {
+  set: string[]
+}
+
+export type forets_communalesCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type forets_communalesUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type forets_communalesUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type forets_communalesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -611,6 +661,8 @@ export type forets_communalesSelect<ExtArgs extends runtime.Types.Extensions.Int
   surface_foret_possedee_ha?: boolean
   surface_foret_possedee_sur_territoire_ha?: boolean
   surface_commune_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["forets_communales"]>
 
 export type forets_communalesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -629,6 +681,8 @@ export type forets_communalesSelectCreateManyAndReturn<ExtArgs extends runtime.T
   surface_foret_possedee_ha?: boolean
   surface_foret_possedee_sur_territoire_ha?: boolean
   surface_commune_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["forets_communales"]>
 
 export type forets_communalesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -647,6 +701,8 @@ export type forets_communalesSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   surface_foret_possedee_ha?: boolean
   surface_foret_possedee_sur_territoire_ha?: boolean
   surface_commune_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["forets_communales"]>
 
 export type forets_communalesSelectScalar = {
@@ -665,9 +721,11 @@ export type forets_communalesSelectScalar = {
   surface_foret_possedee_ha?: boolean
   surface_foret_possedee_sur_territoire_ha?: boolean
   surface_commune_ha?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type forets_communalesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "surface_foret_possedee_ha" | "surface_foret_possedee_sur_territoire_ha" | "surface_commune_ha", ExtArgs["result"]["forets_communales"]>
+export type forets_communalesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "surface_foret_possedee_ha" | "surface_foret_possedee_sur_territoire_ha" | "surface_commune_ha" | "code_polem" | "libelle_polem", ExtArgs["result"]["forets_communales"]>
 
 export type $forets_communalesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "forets_communales"
@@ -688,6 +746,8 @@ export type $forets_communalesPayload<ExtArgs extends runtime.Types.Extensions.I
     surface_foret_possedee_ha: number | null
     surface_foret_possedee_sur_territoire_ha: number | null
     surface_commune_ha: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["forets_communales"]>
   composites: {}
 }
@@ -1126,6 +1186,8 @@ export interface forets_communalesFieldRefs {
   readonly surface_foret_possedee_ha: Prisma.FieldRef<"forets_communales", 'Float'>
   readonly surface_foret_possedee_sur_territoire_ha: Prisma.FieldRef<"forets_communales", 'Float'>
   readonly surface_commune_ha: Prisma.FieldRef<"forets_communales", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"forets_communales", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"forets_communales", 'String[]'>
 }
     
 

@@ -91,6 +91,8 @@ export type Databases_v2_arretes_catnatCountAggregateOutputType = {
   dat_deb: number
   dat_fin: number
   dat_pub_arrete: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -160,6 +162,8 @@ export type Databases_v2_arretes_catnatCountAggregateInputType = {
   dat_deb?: true
   dat_fin?: true
   dat_pub_arrete?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -266,6 +270,8 @@ export type Databases_v2_arretes_catnatGroupByOutputType = {
   dat_deb: string
   dat_fin: string
   dat_pub_arrete: string
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_arretes_catnatCountAggregateOutputType | null
   _avg: Databases_v2_arretes_catnatAvgAggregateOutputType | null
   _sum: Databases_v2_arretes_catnatSumAggregateOutputType | null
@@ -308,6 +314,8 @@ export type databases_v2_arretes_catnatWhereInput = {
   dat_deb?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
   dat_fin?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
   dat_pub_arrete?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
 }
 
 export type databases_v2_arretes_catnatOrderByWithRelationInput = {
@@ -327,6 +335,8 @@ export type databases_v2_arretes_catnatOrderByWithRelationInput = {
   dat_deb?: Prisma.SortOrder
   dat_fin?: Prisma.SortOrder
   dat_pub_arrete?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_arretes_catnatWhereUniqueInput = Prisma.AtLeast<{
@@ -349,6 +359,8 @@ export type databases_v2_arretes_catnatWhereUniqueInput = Prisma.AtLeast<{
   dat_deb?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
   dat_fin?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
   dat_pub_arrete?: Prisma.StringFilter<"databases_v2_arretes_catnat"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
 }, "index">
 
 export type databases_v2_arretes_catnatOrderByWithAggregationInput = {
@@ -368,6 +380,8 @@ export type databases_v2_arretes_catnatOrderByWithAggregationInput = {
   dat_deb?: Prisma.SortOrder
   dat_fin?: Prisma.SortOrder
   dat_pub_arrete?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_arretes_catnatCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_arretes_catnatAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_arretes_catnatMaxOrderByAggregateInput
@@ -395,6 +409,8 @@ export type databases_v2_arretes_catnatScalarWhereWithAggregatesInput = {
   dat_deb?: Prisma.StringWithAggregatesFilter<"databases_v2_arretes_catnat"> | string
   dat_fin?: Prisma.StringWithAggregatesFilter<"databases_v2_arretes_catnat"> | string
   dat_pub_arrete?: Prisma.StringWithAggregatesFilter<"databases_v2_arretes_catnat"> | string
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_arretes_catnat">
 }
 
 export type databases_v2_arretes_catnatCreateInput = {
@@ -414,6 +430,8 @@ export type databases_v2_arretes_catnatCreateInput = {
   dat_deb: string
   dat_fin: string
   dat_pub_arrete: string
+  code_polem?: Prisma.databases_v2_arretes_catnatCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatUncheckedCreateInput = {
@@ -433,6 +451,8 @@ export type databases_v2_arretes_catnatUncheckedCreateInput = {
   dat_deb: string
   dat_fin: string
   dat_pub_arrete: string
+  code_polem?: Prisma.databases_v2_arretes_catnatCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatUpdateInput = {
@@ -452,6 +472,8 @@ export type databases_v2_arretes_catnatUpdateInput = {
   dat_deb?: Prisma.StringFieldUpdateOperationsInput | string
   dat_fin?: Prisma.StringFieldUpdateOperationsInput | string
   dat_pub_arrete?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_arretes_catnatUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatUncheckedUpdateInput = {
@@ -471,6 +493,8 @@ export type databases_v2_arretes_catnatUncheckedUpdateInput = {
   dat_deb?: Prisma.StringFieldUpdateOperationsInput | string
   dat_fin?: Prisma.StringFieldUpdateOperationsInput | string
   dat_pub_arrete?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_arretes_catnatUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatCreateManyInput = {
@@ -490,6 +514,8 @@ export type databases_v2_arretes_catnatCreateManyInput = {
   dat_deb: string
   dat_fin: string
   dat_pub_arrete: string
+  code_polem?: Prisma.databases_v2_arretes_catnatCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatUpdateManyMutationInput = {
@@ -509,6 +535,8 @@ export type databases_v2_arretes_catnatUpdateManyMutationInput = {
   dat_deb?: Prisma.StringFieldUpdateOperationsInput | string
   dat_fin?: Prisma.StringFieldUpdateOperationsInput | string
   dat_pub_arrete?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_arretes_catnatUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_arretes_catnatUncheckedUpdateManyInput = {
@@ -528,6 +556,16 @@ export type databases_v2_arretes_catnatUncheckedUpdateManyInput = {
   dat_deb?: Prisma.StringFieldUpdateOperationsInput | string
   dat_fin?: Prisma.StringFieldUpdateOperationsInput | string
   dat_pub_arrete?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.databases_v2_arretes_catnatUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_arretes_catnatUpdatelibelle_polemInput | string[]
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type databases_v2_arretes_catnatCountOrderByAggregateInput = {
@@ -547,6 +585,8 @@ export type databases_v2_arretes_catnatCountOrderByAggregateInput = {
   dat_deb?: Prisma.SortOrder
   dat_fin?: Prisma.SortOrder
   dat_pub_arrete?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_arretes_catnatAvgOrderByAggregateInput = {
@@ -597,6 +637,24 @@ export type databases_v2_arretes_catnatSumOrderByAggregateInput = {
   region?: Prisma.SortOrder
 }
 
+export type databases_v2_arretes_catnatCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_arretes_catnatCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_arretes_catnatUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_arretes_catnatUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_arretes_catnatSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -616,6 +674,8 @@ export type databases_v2_arretes_catnatSelect<ExtArgs extends runtime.Types.Exte
   dat_deb?: boolean
   dat_fin?: boolean
   dat_pub_arrete?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_arretes_catnat"]>
 
 export type databases_v2_arretes_catnatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -635,6 +695,8 @@ export type databases_v2_arretes_catnatSelectCreateManyAndReturn<ExtArgs extends
   dat_deb?: boolean
   dat_fin?: boolean
   dat_pub_arrete?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_arretes_catnat"]>
 
 export type databases_v2_arretes_catnatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -654,6 +716,8 @@ export type databases_v2_arretes_catnatSelectUpdateManyAndReturn<ExtArgs extends
   dat_deb?: boolean
   dat_fin?: boolean
   dat_pub_arrete?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_arretes_catnat"]>
 
 export type databases_v2_arretes_catnatSelectScalar = {
@@ -673,9 +737,11 @@ export type databases_v2_arretes_catnatSelectScalar = {
   dat_deb?: boolean
   dat_fin?: boolean
   dat_pub_arrete?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_arretes_catnatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "lib_risque_jo" | "dat_deb" | "dat_fin" | "dat_pub_arrete", ExtArgs["result"]["databases_v2_arretes_catnat"]>
+export type databases_v2_arretes_catnatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "lib_risque_jo" | "dat_deb" | "dat_fin" | "dat_pub_arrete" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_arretes_catnat"]>
 
 export type $databases_v2_arretes_catnatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_arretes_catnat"
@@ -697,6 +763,8 @@ export type $databases_v2_arretes_catnatPayload<ExtArgs extends runtime.Types.Ex
     dat_deb: string
     dat_fin: string
     dat_pub_arrete: string
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_arretes_catnat"]>
   composites: {}
 }
@@ -1136,6 +1204,8 @@ export interface databases_v2_arretes_catnatFieldRefs {
   readonly dat_deb: Prisma.FieldRef<"databases_v2_arretes_catnat", 'String'>
   readonly dat_fin: Prisma.FieldRef<"databases_v2_arretes_catnat", 'String'>
   readonly dat_pub_arrete: Prisma.FieldRef<"databases_v2_arretes_catnat", 'String'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_arretes_catnat", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_arretes_catnat", 'String[]'>
 }
     
 

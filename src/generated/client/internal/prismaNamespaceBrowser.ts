@@ -256,7 +256,9 @@ export const Databases_v2_arretes_catnatScalarFieldEnum = {
   lib_risque_jo: 'lib_risque_jo',
   dat_deb: 'dat_deb',
   dat_fin: 'dat_fin',
-  dat_pub_arrete: 'dat_pub_arrete'
+  dat_pub_arrete: 'dat_pub_arrete',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_arretes_catnatScalarFieldEnum = (typeof Databases_v2_arretes_catnatScalarFieldEnum)[keyof typeof Databases_v2_arretes_catnatScalarFieldEnum]
@@ -367,7 +369,9 @@ export const Databases_v2_confort_thermiqueScalarFieldEnum = {
   nb_rp_46_70: 'nb_rp_46_70',
   nb_rp_71_90: 'nb_rp_71_90',
   nb_rp_91_05: 'nb_rp_91_05',
-  nb_rp_post_06: 'nb_rp_post_06'
+  nb_rp_post_06: 'nb_rp_post_06',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_confort_thermiqueScalarFieldEnum = (typeof Databases_v2_confort_thermiqueScalarFieldEnum)[keyof typeof Databases_v2_confort_thermiqueScalarFieldEnum]
@@ -491,7 +495,9 @@ export const Databases_v2_consommation_espaces_nafScalarFieldEnum = {
   art11mix25: 'art11mix25',
   art11fer25: 'art11fer25',
   art11rou25: 'art11rou25',
-  artcom1125: 'artcom1125'
+  artcom1125: 'artcom1125',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_consommation_espaces_nafScalarFieldEnum = (typeof Databases_v2_consommation_espaces_nafScalarFieldEnum)[keyof typeof Databases_v2_consommation_espaces_nafScalarFieldEnum]
@@ -512,7 +518,9 @@ export const Databases_v2_export_cours_d_eauScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr',
   cours_d_eau: 'cours_d_eau',
   etat_ecologique: 'etat_ecologique',
-  longueur: 'longueur'
+  longueur: 'longueur',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_export_cours_d_eauScalarFieldEnum = (typeof Databases_v2_export_cours_d_eauScalarFieldEnum)[keyof typeof Databases_v2_export_cours_d_eauScalarFieldEnum]
@@ -542,7 +550,9 @@ export const Databases_v2_feux_foretScalarFieldEnum = {
   surfaces_non_boisees_artificialisees: 'surfaces_non_boisees_artificialisees',
   surfaces_non_boisees_naturelles: 'surfaces_non_boisees_naturelles',
   surface_autres_terres_boisees: 'surface_autres_terres_boisees',
-  autres_surfaces: 'autres_surfaces'
+  autres_surfaces: 'autres_surfaces',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_feux_foretScalarFieldEnum = (typeof Databases_v2_feux_foretScalarFieldEnum)[keyof typeof Databases_v2_feux_foretScalarFieldEnum]
@@ -561,7 +571,9 @@ export const Databases_v2_lcz_couvertureScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  couverture_lcz: 'couverture_lcz'
+  couverture_lcz: 'couverture_lcz',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_lcz_couvertureScalarFieldEnum = (typeof Databases_v2_lcz_couvertureScalarFieldEnum)[keyof typeof Databases_v2_lcz_couvertureScalarFieldEnum]
@@ -685,7 +697,9 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   aires_appellations_controlees_signe: 'aires_appellations_controlees_signe',
   projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux',
   surface_commune_ha: 'surface_commune_ha',
-  surface_foret_ha: 'surface_foret_ha'
+  surface_foret_ha: 'surface_foret_ha',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -748,7 +762,9 @@ export const Databases_v2_rgaScalarFieldEnum = {
   part_logement_alea_faible_1945_1975: 'part_logement_alea_faible_1945_1975',
   part_logement_alea_faible_apres_1975: 'part_logement_alea_faible_apres_1975',
   part_alea_faible_commune: 'part_alea_faible_commune',
-  part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune'
+  part_alea_moyen_fort_commune: 'part_alea_moyen_fort_commune',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Databases_v2_rgaScalarFieldEnum = (typeof Databases_v2_rgaScalarFieldEnum)[keyof typeof Databases_v2_rgaScalarFieldEnum]
@@ -971,7 +987,9 @@ export const SecheressesScalarFieldEnum = {
   libelle_petr: 'libelle_petr',
   code_pnr: 'code_pnr',
   libelle_pnr: 'libelle_pnr',
-  restrictions: 'restrictions'
+  restrictions: 'restrictions',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type SecheressesScalarFieldEnum = (typeof SecheressesScalarFieldEnum)[keyof typeof SecheressesScalarFieldEnum]
@@ -1612,7 +1630,9 @@ export const Forets_communalesScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr',
   surface_foret_possedee_ha: 'surface_foret_possedee_ha',
   surface_foret_possedee_sur_territoire_ha: 'surface_foret_possedee_sur_territoire_ha',
-  surface_commune_ha: 'surface_commune_ha'
+  surface_commune_ha: 'surface_commune_ha',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Forets_communalesScalarFieldEnum = (typeof Forets_communalesScalarFieldEnum)[keyof typeof Forets_communalesScalarFieldEnum]
@@ -1657,7 +1677,9 @@ export const Emplois_sylvicultureScalarFieldEnum = {
   libelle_pnr: 'libelle_pnr',
   postes_sylviculture: 'postes_sylviculture',
   postes_travail_bois: 'postes_travail_bois',
-  postes_total: 'postes_total'
+  postes_total: 'postes_total',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Emplois_sylvicultureScalarFieldEnum = (typeof Emplois_sylvicultureScalarFieldEnum)[keyof typeof Emplois_sylvicultureScalarFieldEnum]
@@ -1780,7 +1802,9 @@ export const Prelevements_eauScalarFieldEnum = {
   annee_2023_ene: 'annee_2023_ene',
   annee_2023_exo: 'annee_2023_exo',
   annee_2023_ind: 'annee_2023_ind',
-  annee_2023_irr: 'annee_2023_irr'
+  annee_2023_irr: 'annee_2023_irr',
+  code_polem: 'code_polem',
+  libelle_polem: 'libelle_polem'
 } as const
 
 export type Prelevements_eauScalarFieldEnum = (typeof Prelevements_eauScalarFieldEnum)[keyof typeof Prelevements_eauScalarFieldEnum]

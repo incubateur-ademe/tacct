@@ -609,6 +609,8 @@ export type Databases_v2_consommation_espaces_nafCountAggregateOutputType = {
   art11fer25: number
   art11rou25: number
   artcom1125: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -1196,6 +1198,8 @@ export type Databases_v2_consommation_espaces_nafCountAggregateInputType = {
   art11fer25?: true
   art11rou25?: true
   artcom1125?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -1404,6 +1408,8 @@ export type Databases_v2_consommation_espaces_nafGroupByOutputType = {
   art11fer25: number | null
   art11rou25: number | null
   artcom1125: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_consommation_espaces_nafCountAggregateOutputType | null
   _avg: Databases_v2_consommation_espaces_nafAvgAggregateOutputType | null
   _sum: Databases_v2_consommation_espaces_nafSumAggregateOutputType | null
@@ -1548,6 +1554,8 @@ export type databases_v2_consommation_espaces_nafWhereInput = {
   art11fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   artcom1125?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
 }
 
 export type databases_v2_consommation_espaces_nafOrderByWithRelationInput = {
@@ -1669,6 +1677,8 @@ export type databases_v2_consommation_espaces_nafOrderByWithRelationInput = {
   art11fer25?: Prisma.SortOrderInput | Prisma.SortOrder
   art11rou25?: Prisma.SortOrderInput | Prisma.SortOrder
   artcom1125?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafWhereUniqueInput = Prisma.AtLeast<{
@@ -1793,6 +1803,8 @@ export type databases_v2_consommation_espaces_nafWhereUniqueInput = Prisma.AtLea
   art11fer25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11rou25?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
   artcom1125?: Prisma.FloatNullableFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
 }, "index">
 
 export type databases_v2_consommation_espaces_nafOrderByWithAggregationInput = {
@@ -1914,6 +1926,8 @@ export type databases_v2_consommation_espaces_nafOrderByWithAggregationInput = {
   art11fer25?: Prisma.SortOrderInput | Prisma.SortOrder
   art11rou25?: Prisma.SortOrderInput | Prisma.SortOrder
   artcom1125?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_consommation_espaces_nafCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_consommation_espaces_nafAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_consommation_espaces_nafMaxOrderByAggregateInput
@@ -2043,6 +2057,8 @@ export type databases_v2_consommation_espaces_nafScalarWhereWithAggregatesInput 
   art11fer25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   art11rou25?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
   artcom1125?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_consommation_espaces_naf"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_consommation_espaces_naf">
 }
 
 export type databases_v2_consommation_espaces_nafCreateInput = {
@@ -2164,6 +2180,8 @@ export type databases_v2_consommation_espaces_nafCreateInput = {
   art11fer25?: number | null
   art11rou25?: number | null
   artcom1125?: number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedCreateInput = {
@@ -2285,6 +2303,8 @@ export type databases_v2_consommation_espaces_nafUncheckedCreateInput = {
   art11fer25?: number | null
   art11rou25?: number | null
   artcom1125?: number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafUpdateInput = {
@@ -2406,6 +2426,8 @@ export type databases_v2_consommation_espaces_nafUpdateInput = {
   art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedUpdateInput = {
@@ -2527,6 +2549,8 @@ export type databases_v2_consommation_espaces_nafUncheckedUpdateInput = {
   art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafCreateManyInput = {
@@ -2648,6 +2672,8 @@ export type databases_v2_consommation_espaces_nafCreateManyInput = {
   art11fer25?: number | null
   art11rou25?: number | null
   artcom1125?: number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafUpdateManyMutationInput = {
@@ -2769,6 +2795,8 @@ export type databases_v2_consommation_espaces_nafUpdateManyMutationInput = {
   art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafUncheckedUpdateManyInput = {
@@ -2890,6 +2918,8 @@ export type databases_v2_consommation_espaces_nafUncheckedUpdateManyInput = {
   art11fer25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   art11rou25?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   artcom1125?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_consommation_espaces_nafUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_consommation_espaces_nafCountOrderByAggregateInput = {
@@ -3011,6 +3041,8 @@ export type databases_v2_consommation_espaces_nafCountOrderByAggregateInput = {
   art11fer25?: Prisma.SortOrder
   art11rou25?: Prisma.SortOrder
   artcom1125?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_consommation_espaces_nafAvgOrderByAggregateInput = {
@@ -3477,6 +3509,24 @@ export type databases_v2_consommation_espaces_nafSumOrderByAggregateInput = {
   artcom1125?: Prisma.SortOrder
 }
 
+export type databases_v2_consommation_espaces_nafCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_consommation_espaces_nafCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_consommation_espaces_nafUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_consommation_espaces_nafUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_consommation_espaces_nafSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3598,6 +3648,8 @@ export type databases_v2_consommation_espaces_nafSelect<ExtArgs extends runtime.
   art11fer25?: boolean
   art11rou25?: boolean
   artcom1125?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3719,6 +3771,8 @@ export type databases_v2_consommation_espaces_nafSelectCreateManyAndReturn<ExtAr
   art11fer25?: boolean
   art11rou25?: boolean
   artcom1125?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3840,6 +3894,8 @@ export type databases_v2_consommation_espaces_nafSelectUpdateManyAndReturn<ExtAr
   art11fer25?: boolean
   art11rou25?: boolean
   artcom1125?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type databases_v2_consommation_espaces_nafSelectScalar = {
@@ -3961,9 +4017,11 @@ export type databases_v2_consommation_espaces_nafSelectScalar = {
   art11fer25?: boolean
   art11rou25?: boolean
   artcom1125?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_consommation_espaces_nafOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "naf11art12" | "art11hab12" | "art11act12" | "art11inc12" | "art11mix12" | "art11fer12" | "art11rou12" | "naf12art13" | "art12hab13" | "art12act13" | "art12inc13" | "art12mix13" | "art12fer13" | "art12rou13" | "naf13art14" | "art13hab14" | "art13act14" | "art13inc14" | "art13mix14" | "art13fer14" | "art13rou14" | "naf14art15" | "art14hab15" | "art14act15" | "art14inc15" | "art14mix15" | "art14fer15" | "art14rou15" | "naf15art16" | "art15hab16" | "art15act16" | "art15inc16" | "art15mix16" | "art15fer16" | "art15rou16" | "naf16art17" | "art16hab17" | "art16act17" | "art16inc17" | "art16mix17" | "art16fer17" | "art16rou17" | "naf17art18" | "art17hab18" | "art17act18" | "art17inc18" | "art17mix18" | "art17fer18" | "art17rou18" | "naf18art19" | "art18hab19" | "art18act19" | "art18inc19" | "art18mix19" | "art18fer19" | "art18rou19" | "naf19art20" | "art19hab20" | "art19act20" | "art19inc20" | "art19mix20" | "art19fer20" | "art19rou20" | "naf20art21" | "art20hab21" | "art20act21" | "art20inc21" | "art20mix21" | "art20fer21" | "art20rou21" | "naf21art22" | "art21hab22" | "art21act22" | "art21inc22" | "art21mix22" | "art21fer22" | "art21rou22" | "naf22art23" | "art22hab23" | "art22act23" | "art22inc23" | "art22mix23" | "art22fer23" | "art22rou23" | "naf23art24" | "art23hab24" | "art23act24" | "art23inc24" | "art23mix24" | "art23fer24" | "art23rou24" | "naf24art25" | "art24hab25" | "art24act25" | "art24inc25" | "art24mix25" | "art24fer25" | "art24rou25" | "naf11art25" | "art11hab25" | "art11act25" | "art11inc25" | "art11mix25" | "art11fer25" | "art11rou25" | "artcom1125", ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
+export type databases_v2_consommation_espaces_nafOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "naf11art12" | "art11hab12" | "art11act12" | "art11inc12" | "art11mix12" | "art11fer12" | "art11rou12" | "naf12art13" | "art12hab13" | "art12act13" | "art12inc13" | "art12mix13" | "art12fer13" | "art12rou13" | "naf13art14" | "art13hab14" | "art13act14" | "art13inc14" | "art13mix14" | "art13fer14" | "art13rou14" | "naf14art15" | "art14hab15" | "art14act15" | "art14inc15" | "art14mix15" | "art14fer15" | "art14rou15" | "naf15art16" | "art15hab16" | "art15act16" | "art15inc16" | "art15mix16" | "art15fer16" | "art15rou16" | "naf16art17" | "art16hab17" | "art16act17" | "art16inc17" | "art16mix17" | "art16fer17" | "art16rou17" | "naf17art18" | "art17hab18" | "art17act18" | "art17inc18" | "art17mix18" | "art17fer18" | "art17rou18" | "naf18art19" | "art18hab19" | "art18act19" | "art18inc19" | "art18mix19" | "art18fer19" | "art18rou19" | "naf19art20" | "art19hab20" | "art19act20" | "art19inc20" | "art19mix20" | "art19fer20" | "art19rou20" | "naf20art21" | "art20hab21" | "art20act21" | "art20inc21" | "art20mix21" | "art20fer21" | "art20rou21" | "naf21art22" | "art21hab22" | "art21act22" | "art21inc22" | "art21mix22" | "art21fer22" | "art21rou22" | "naf22art23" | "art22hab23" | "art22act23" | "art22inc23" | "art22mix23" | "art22fer23" | "art22rou23" | "naf23art24" | "art23hab24" | "art23act24" | "art23inc24" | "art23mix24" | "art23fer24" | "art23rou24" | "naf24art25" | "art24hab25" | "art24act25" | "art24inc25" | "art24mix25" | "art24fer25" | "art24rou25" | "naf11art25" | "art11hab25" | "art11act25" | "art11inc25" | "art11mix25" | "art11fer25" | "art11rou25" | "artcom1125" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
 
 export type $databases_v2_consommation_espaces_nafPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_consommation_espaces_naf"
@@ -4087,6 +4145,8 @@ export type $databases_v2_consommation_espaces_nafPayload<ExtArgs extends runtim
     art11fer25: number | null
     art11rou25: number | null
     artcom1125: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_consommation_espaces_naf"]>
   composites: {}
 }
@@ -4628,6 +4688,8 @@ export interface databases_v2_consommation_espaces_nafFieldRefs {
   readonly art11fer25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly art11rou25: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
   readonly artcom1125: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_consommation_espaces_naf", 'String[]'>
 }
     
 

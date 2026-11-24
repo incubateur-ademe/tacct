@@ -137,6 +137,8 @@ export type Databases_v2_feux_foretCountAggregateOutputType = {
   surfaces_non_boisees_naturelles: number
   surface_autres_terres_boisees: number
   autres_surfaces: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -252,6 +254,8 @@ export type Databases_v2_feux_foretCountAggregateInputType = {
   surfaces_non_boisees_naturelles?: true
   surface_autres_terres_boisees?: true
   autres_surfaces?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -366,6 +370,8 @@ export type Databases_v2_feux_foretGroupByOutputType = {
   surfaces_non_boisees_naturelles: number | null
   surface_autres_terres_boisees: number | null
   autres_surfaces: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_feux_foretCountAggregateOutputType | null
   _avg: Databases_v2_feux_foretAvgAggregateOutputType | null
   _sum: Databases_v2_feux_foretSumAggregateOutputType | null
@@ -416,6 +422,8 @@ export type databases_v2_feux_foretWhereInput = {
   surfaces_non_boisees_naturelles?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   surface_autres_terres_boisees?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   autres_surfaces?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
 }
 
 export type databases_v2_feux_foretOrderByWithRelationInput = {
@@ -443,6 +451,8 @@ export type databases_v2_feux_foretOrderByWithRelationInput = {
   surfaces_non_boisees_naturelles?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_autres_terres_boisees?: Prisma.SortOrderInput | Prisma.SortOrder
   autres_surfaces?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_feux_foretWhereUniqueInput = Prisma.AtLeast<{
@@ -473,6 +483,8 @@ export type databases_v2_feux_foretWhereUniqueInput = Prisma.AtLeast<{
   surfaces_non_boisees_naturelles?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   surface_autres_terres_boisees?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
   autres_surfaces?: Prisma.FloatNullableFilter<"databases_v2_feux_foret"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
 }, "index">
 
 export type databases_v2_feux_foretOrderByWithAggregationInput = {
@@ -500,6 +512,8 @@ export type databases_v2_feux_foretOrderByWithAggregationInput = {
   surfaces_non_boisees_naturelles?: Prisma.SortOrderInput | Prisma.SortOrder
   surface_autres_terres_boisees?: Prisma.SortOrderInput | Prisma.SortOrder
   autres_surfaces?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_feux_foretCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_feux_foretAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_feux_foretMaxOrderByAggregateInput
@@ -535,6 +549,8 @@ export type databases_v2_feux_foretScalarWhereWithAggregatesInput = {
   surfaces_non_boisees_naturelles?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_feux_foret"> | number | null
   surface_autres_terres_boisees?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_feux_foret"> | number | null
   autres_surfaces?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_feux_foret"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_feux_foret">
 }
 
 export type databases_v2_feux_foretCreateInput = {
@@ -562,6 +578,8 @@ export type databases_v2_feux_foretCreateInput = {
   surfaces_non_boisees_naturelles?: number | null
   surface_autres_terres_boisees?: number | null
   autres_surfaces?: number | null
+  code_polem?: Prisma.databases_v2_feux_foretCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretUncheckedCreateInput = {
@@ -589,6 +607,8 @@ export type databases_v2_feux_foretUncheckedCreateInput = {
   surfaces_non_boisees_naturelles?: number | null
   surface_autres_terres_boisees?: number | null
   autres_surfaces?: number | null
+  code_polem?: Prisma.databases_v2_feux_foretCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretUpdateInput = {
@@ -616,6 +636,8 @@ export type databases_v2_feux_foretUpdateInput = {
   surfaces_non_boisees_naturelles?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_autres_terres_boisees?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   autres_surfaces?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_feux_foretUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretUncheckedUpdateInput = {
@@ -643,6 +665,8 @@ export type databases_v2_feux_foretUncheckedUpdateInput = {
   surfaces_non_boisees_naturelles?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_autres_terres_boisees?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   autres_surfaces?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_feux_foretUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretCreateManyInput = {
@@ -670,6 +694,8 @@ export type databases_v2_feux_foretCreateManyInput = {
   surfaces_non_boisees_naturelles?: number | null
   surface_autres_terres_boisees?: number | null
   autres_surfaces?: number | null
+  code_polem?: Prisma.databases_v2_feux_foretCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretUpdateManyMutationInput = {
@@ -697,6 +723,8 @@ export type databases_v2_feux_foretUpdateManyMutationInput = {
   surfaces_non_boisees_naturelles?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_autres_terres_boisees?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   autres_surfaces?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_feux_foretUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretUncheckedUpdateManyInput = {
@@ -724,6 +752,8 @@ export type databases_v2_feux_foretUncheckedUpdateManyInput = {
   surfaces_non_boisees_naturelles?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   surface_autres_terres_boisees?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   autres_surfaces?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_feux_foretUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_feux_foretUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_feux_foretCountOrderByAggregateInput = {
@@ -751,6 +781,8 @@ export type databases_v2_feux_foretCountOrderByAggregateInput = {
   surfaces_non_boisees_naturelles?: Prisma.SortOrder
   surface_autres_terres_boisees?: Prisma.SortOrder
   autres_surfaces?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_feux_foretAvgOrderByAggregateInput = {
@@ -839,6 +871,24 @@ export type databases_v2_feux_foretSumOrderByAggregateInput = {
   autres_surfaces?: Prisma.SortOrder
 }
 
+export type databases_v2_feux_foretCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_feux_foretCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_feux_foretUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_feux_foretUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_feux_foretSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -866,6 +916,8 @@ export type databases_v2_feux_foretSelect<ExtArgs extends runtime.Types.Extensio
   surfaces_non_boisees_naturelles?: boolean
   surface_autres_terres_boisees?: boolean
   autres_surfaces?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_feux_foret"]>
 
 export type databases_v2_feux_foretSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -893,6 +945,8 @@ export type databases_v2_feux_foretSelectCreateManyAndReturn<ExtArgs extends run
   surfaces_non_boisees_naturelles?: boolean
   surface_autres_terres_boisees?: boolean
   autres_surfaces?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_feux_foret"]>
 
 export type databases_v2_feux_foretSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -920,6 +974,8 @@ export type databases_v2_feux_foretSelectUpdateManyAndReturn<ExtArgs extends run
   surfaces_non_boisees_naturelles?: boolean
   surface_autres_terres_boisees?: boolean
   autres_surfaces?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_feux_foret"]>
 
 export type databases_v2_feux_foretSelectScalar = {
@@ -947,9 +1003,11 @@ export type databases_v2_feux_foretSelectScalar = {
   surfaces_non_boisees_naturelles?: boolean
   surface_autres_terres_boisees?: boolean
   autres_surfaces?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_feux_foretOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nature" | "annee" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces", ExtArgs["result"]["databases_v2_feux_foret"]>
+export type databases_v2_feux_foretOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nature" | "annee" | "surface_parcourue" | "surface_foret" | "surface_maquis_garrigues" | "autres_surfaces_naturelles_hors_foret" | "surfaces_agricoles" | "surfaces_non_boisees" | "surfaces_non_boisees_artificialisees" | "surfaces_non_boisees_naturelles" | "surface_autres_terres_boisees" | "autres_surfaces" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_feux_foret"]>
 
 export type $databases_v2_feux_foretPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_feux_foret"
@@ -979,6 +1037,8 @@ export type $databases_v2_feux_foretPayload<ExtArgs extends runtime.Types.Extens
     surfaces_non_boisees_naturelles: number | null
     surface_autres_terres_boisees: number | null
     autres_surfaces: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_feux_foret"]>
   composites: {}
 }
@@ -1426,6 +1486,8 @@ export interface databases_v2_feux_foretFieldRefs {
   readonly surfaces_non_boisees_naturelles: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly surface_autres_terres_boisees: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
   readonly autres_surfaces: Prisma.FieldRef<"databases_v2_feux_foret", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_feux_foret", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_feux_foret", 'String[]'>
 }
     
 

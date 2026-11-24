@@ -204,6 +204,8 @@ export type Databases_v2_rgaCountAggregateOutputType = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -386,6 +388,8 @@ export type Databases_v2_rgaCountAggregateInputType = {
   part_logement_alea_faible_apres_1975?: true
   part_alea_faible_commune?: true
   part_alea_moyen_fort_commune?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -513,6 +517,8 @@ export type Databases_v2_rgaGroupByOutputType = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_rgaCountAggregateOutputType | null
   _avg: Databases_v2_rgaAvgAggregateOutputType | null
   _sum: Databases_v2_rgaSumAggregateOutputType | null
@@ -576,6 +582,8 @@ export type databases_v2_rgaWhereInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
   part_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
   part_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
 }
 
 export type databases_v2_rgaOrderByWithRelationInput = {
@@ -616,6 +624,8 @@ export type databases_v2_rgaOrderByWithRelationInput = {
   part_logement_alea_faible_apres_1975?: Prisma.SortOrder
   part_alea_faible_commune?: Prisma.SortOrder
   part_alea_moyen_fort_commune?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_rgaWhereUniqueInput = Prisma.AtLeast<{
@@ -659,6 +669,8 @@ export type databases_v2_rgaWhereUniqueInput = Prisma.AtLeast<{
   part_logement_alea_faible_apres_1975?: Prisma.IntFilter<"databases_v2_rga"> | number
   part_alea_faible_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
   part_alea_moyen_fort_commune?: Prisma.IntFilter<"databases_v2_rga"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
 }, "index">
 
 export type databases_v2_rgaOrderByWithAggregationInput = {
@@ -699,6 +711,8 @@ export type databases_v2_rgaOrderByWithAggregationInput = {
   part_logement_alea_faible_apres_1975?: Prisma.SortOrder
   part_alea_faible_commune?: Prisma.SortOrder
   part_alea_moyen_fort_commune?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_rgaCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_rgaAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_rgaMaxOrderByAggregateInput
@@ -747,6 +761,8 @@ export type databases_v2_rgaScalarWhereWithAggregatesInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
   part_alea_faible_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
   part_alea_moyen_fort_commune?: Prisma.IntWithAggregatesFilter<"databases_v2_rga"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_rga">
 }
 
 export type databases_v2_rgaCreateInput = {
@@ -787,6 +803,8 @@ export type databases_v2_rgaCreateInput = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
+  code_polem?: Prisma.databases_v2_rgaCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaUncheckedCreateInput = {
@@ -827,6 +845,8 @@ export type databases_v2_rgaUncheckedCreateInput = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
+  code_polem?: Prisma.databases_v2_rgaCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaUpdateInput = {
@@ -867,6 +887,8 @@ export type databases_v2_rgaUpdateInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_rgaUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaUncheckedUpdateInput = {
@@ -907,6 +929,8 @@ export type databases_v2_rgaUncheckedUpdateInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_rgaUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaCreateManyInput = {
@@ -947,6 +971,8 @@ export type databases_v2_rgaCreateManyInput = {
   part_logement_alea_faible_apres_1975: number
   part_alea_faible_commune: number
   part_alea_moyen_fort_commune: number
+  code_polem?: Prisma.databases_v2_rgaCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaUpdateManyMutationInput = {
@@ -987,6 +1013,8 @@ export type databases_v2_rgaUpdateManyMutationInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_rgaUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaUncheckedUpdateManyInput = {
@@ -1027,6 +1055,8 @@ export type databases_v2_rgaUncheckedUpdateManyInput = {
   part_logement_alea_faible_apres_1975?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_faible_commune?: Prisma.IntFieldUpdateOperationsInput | number
   part_alea_moyen_fort_commune?: Prisma.IntFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_rgaUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_rgaUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_rgaCountOrderByAggregateInput = {
@@ -1067,6 +1097,8 @@ export type databases_v2_rgaCountOrderByAggregateInput = {
   part_logement_alea_faible_apres_1975?: Prisma.SortOrder
   part_alea_faible_commune?: Prisma.SortOrder
   part_alea_moyen_fort_commune?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_rgaAvgOrderByAggregateInput = {
@@ -1209,6 +1241,24 @@ export type databases_v2_rgaSumOrderByAggregateInput = {
   part_alea_moyen_fort_commune?: Prisma.SortOrder
 }
 
+export type databases_v2_rgaCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_rgaCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_rgaUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_rgaUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_rgaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1249,6 +1299,8 @@ export type databases_v2_rgaSelect<ExtArgs extends runtime.Types.Extensions.Inte
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_rga"]>
 
 export type databases_v2_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1289,6 +1341,8 @@ export type databases_v2_rgaSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_rga"]>
 
 export type databases_v2_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1329,6 +1383,8 @@ export type databases_v2_rgaSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_rga"]>
 
 export type databases_v2_rgaSelectScalar = {
@@ -1369,9 +1425,11 @@ export type databases_v2_rgaSelectScalar = {
   part_logement_alea_faible_apres_1975?: boolean
   part_alea_faible_commune?: boolean
   part_alea_moyen_fort_commune?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune", ExtArgs["result"]["databases_v2_rga"]>
+export type databases_v2_rgaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "nb_logement" | "nb_logement_alea_moyen_fort" | "nb_logement_alea_faible" | "nb_logement_sans_alea" | "nb_logement_alea_moyen_fort_avant_1920" | "nb_logement_alea_moyen_fort_1920_1945" | "nb_logement_alea_moyen_fort_1945_1975" | "nb_logement_alea_moyen_fort_apres_1975" | "nb_logement_alea_faible_avant_1920" | "nb_logement_alea_faible_1920_1945" | "nb_logement_alea_faible_1945_1975" | "nb_logement_alea_faible_apres_1975" | "surface_commune" | "surface_alea_faible_commune" | "surface_alea_moyen_fort_commune" | "part_logement_alea_moyen_fort_avant_1920" | "part_logement_alea_moyen_fort_1920_1945" | "part_logement_alea_moyen_fort_1945_1975" | "part_logement_alea_moyen_fort_apres_1975" | "part_logement_alea_faible_avant_1920" | "part_logement_alea_faible_1920_1945" | "part_logement_alea_faible_1945_1975" | "part_logement_alea_faible_apres_1975" | "part_alea_faible_commune" | "part_alea_moyen_fort_commune" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_rga"]>
 
 export type $databases_v2_rgaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_rga"
@@ -1414,6 +1472,8 @@ export type $databases_v2_rgaPayload<ExtArgs extends runtime.Types.Extensions.In
     part_logement_alea_faible_apres_1975: number
     part_alea_faible_commune: number
     part_alea_moyen_fort_commune: number
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_rga"]>
   composites: {}
 }
@@ -1874,6 +1934,8 @@ export interface databases_v2_rgaFieldRefs {
   readonly part_logement_alea_faible_apres_1975: Prisma.FieldRef<"databases_v2_rga", 'Int'>
   readonly part_alea_faible_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
   readonly part_alea_moyen_fort_commune: Prisma.FieldRef<"databases_v2_rga", 'Int'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_rga", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_rga", 'String[]'>
 }
     
 

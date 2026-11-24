@@ -319,6 +319,8 @@ export type Databases_v2_confort_thermiqueCountAggregateOutputType = {
   nb_rp_71_90: number
   nb_rp_91_05: number
   nb_rp_post_06: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -616,6 +618,8 @@ export type Databases_v2_confort_thermiqueCountAggregateInputType = {
   nb_rp_71_90?: true
   nb_rp_91_05?: true
   nb_rp_post_06?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -766,6 +770,8 @@ export type Databases_v2_confort_thermiqueGroupByOutputType = {
   nb_rp_71_90: number | null
   nb_rp_91_05: number | null
   nb_rp_post_06: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_confort_thermiqueCountAggregateOutputType | null
   _avg: Databases_v2_confort_thermiqueAvgAggregateOutputType | null
   _sum: Databases_v2_confort_thermiqueSumAggregateOutputType | null
@@ -852,6 +858,8 @@ export type databases_v2_confort_thermiqueWhereInput = {
   nb_rp_71_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_post_06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
 }
 
 export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
@@ -915,6 +923,8 @@ export type databases_v2_confort_thermiqueOrderByWithRelationInput = {
   nb_rp_71_90?: Prisma.SortOrderInput | Prisma.SortOrder
   nb_rp_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
   nb_rp_post_06?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
@@ -981,6 +991,8 @@ export type databases_v2_confort_thermiqueWhereUniqueInput = Prisma.AtLeast<{
   nb_rp_71_90?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_91_05?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_post_06?: Prisma.FloatNullableFilter<"databases_v2_confort_thermique"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
 }, "index">
 
 export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
@@ -1044,6 +1056,8 @@ export type databases_v2_confort_thermiqueOrderByWithAggregationInput = {
   nb_rp_71_90?: Prisma.SortOrderInput | Prisma.SortOrder
   nb_rp_91_05?: Prisma.SortOrderInput | Prisma.SortOrder
   nb_rp_post_06?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_confort_thermiqueCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_confort_thermiqueAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_confort_thermiqueMaxOrderByAggregateInput
@@ -1115,6 +1129,8 @@ export type databases_v2_confort_thermiqueScalarWhereWithAggregatesInput = {
   nb_rp_71_90?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_91_05?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
   nb_rp_post_06?: Prisma.FloatNullableWithAggregatesFilter<"databases_v2_confort_thermique"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_confort_thermique">
 }
 
 export type databases_v2_confort_thermiqueCreateInput = {
@@ -1178,6 +1194,8 @@ export type databases_v2_confort_thermiqueCreateInput = {
   nb_rp_71_90?: number | null
   nb_rp_91_05?: number | null
   nb_rp_post_06?: number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueUncheckedCreateInput = {
@@ -1241,6 +1259,8 @@ export type databases_v2_confort_thermiqueUncheckedCreateInput = {
   nb_rp_71_90?: number | null
   nb_rp_91_05?: number | null
   nb_rp_post_06?: number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueUpdateInput = {
@@ -1304,6 +1324,8 @@ export type databases_v2_confort_thermiqueUpdateInput = {
   nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
@@ -1367,6 +1389,8 @@ export type databases_v2_confort_thermiqueUncheckedUpdateInput = {
   nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueCreateManyInput = {
@@ -1430,6 +1454,8 @@ export type databases_v2_confort_thermiqueCreateManyInput = {
   nb_rp_71_90?: number | null
   nb_rp_91_05?: number | null
   nb_rp_post_06?: number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
@@ -1493,6 +1519,8 @@ export type databases_v2_confort_thermiqueUpdateManyMutationInput = {
   nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
@@ -1556,6 +1584,8 @@ export type databases_v2_confort_thermiqueUncheckedUpdateManyInput = {
   nb_rp_71_90?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_91_05?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   nb_rp_post_06?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.databases_v2_confort_thermiqueUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_confort_thermiqueUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
@@ -1619,6 +1649,8 @@ export type databases_v2_confort_thermiqueCountOrderByAggregateInput = {
   nb_rp_71_90?: Prisma.SortOrder
   nb_rp_91_05?: Prisma.SortOrder
   nb_rp_post_06?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_confort_thermiqueAvgOrderByAggregateInput = {
@@ -1853,6 +1885,24 @@ export type databases_v2_confort_thermiqueSumOrderByAggregateInput = {
   nb_rp_post_06?: Prisma.SortOrder
 }
 
+export type databases_v2_confort_thermiqueCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_confort_thermiqueCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_confort_thermiqueUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_confort_thermiqueUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1916,6 +1966,8 @@ export type databases_v2_confort_thermiqueSelect<ExtArgs extends runtime.Types.E
   nb_rp_71_90?: boolean
   nb_rp_91_05?: boolean
   nb_rp_post_06?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1979,6 +2031,8 @@ export type databases_v2_confort_thermiqueSelectCreateManyAndReturn<ExtArgs exte
   nb_rp_71_90?: boolean
   nb_rp_91_05?: boolean
   nb_rp_post_06?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2042,6 +2096,8 @@ export type databases_v2_confort_thermiqueSelectUpdateManyAndReturn<ExtArgs exte
   nb_rp_71_90?: boolean
   nb_rp_91_05?: boolean
   nb_rp_post_06?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type databases_v2_confort_thermiqueSelectScalar = {
@@ -2105,9 +2161,11 @@ export type databases_v2_confort_thermiqueSelectScalar = {
   nb_rp_71_90?: boolean
   nb_rp_91_05?: boolean
   nb_rp_post_06?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro" | "under_4_sum_2006" | "to_75_sum_2006" | "over_75_sum_2006" | "under_4_sum_2011" | "to_75_sum_2011" | "over_75_sum_2011" | "under_4_sum_2016" | "to_75_sum_2016" | "over_75_sum_2016" | "under_4_sum_2022" | "to_75_sum_2022" | "over_75_sum_2022" | "nb_rp_tot" | "nb_rp_pre_19" | "nb_rp_19_45" | "nb_rp_46_70" | "nb_rp_71_90" | "nb_rp_91_05" | "nb_rp_post_06", ExtArgs["result"]["databases_v2_confort_thermique"]>
+export type databases_v2_confort_thermiqueOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "under_4_sum_1968" | "to_75_sum_1968" | "over_75_sum_1968" | "under_4_sum_1975" | "to_75_sum_1975" | "over_75_sum_1975" | "under_4_sum_1982" | "to_75_sum_1982" | "over_75_sum_1982" | "under_4_sum_1990" | "to_75_sum_1990" | "over_75_sum_1990" | "under_4_sum_1999" | "to_75_sum_1999" | "over_75_sum_1999" | "tee_log" | "tee_mob" | "precarite_logement" | "NA5AZ_sum" | "NA5BE_sum" | "NA5FZ_sum" | "NA5GU_sum" | "NA5OQ_sum" | "clc_1_artificialise" | "clc_2_agricole" | "clc_3_foret_semiNaturel" | "clc_4_humide" | "clc_5_eau" | "superf_choro" | "under_4_sum_2006" | "to_75_sum_2006" | "over_75_sum_2006" | "under_4_sum_2011" | "to_75_sum_2011" | "over_75_sum_2011" | "under_4_sum_2016" | "to_75_sum_2016" | "over_75_sum_2016" | "under_4_sum_2022" | "to_75_sum_2022" | "over_75_sum_2022" | "nb_rp_tot" | "nb_rp_pre_19" | "nb_rp_19_45" | "nb_rp_46_70" | "nb_rp_71_90" | "nb_rp_91_05" | "nb_rp_post_06" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_confort_thermique"]>
 
 export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_confort_thermique"
@@ -2173,6 +2231,8 @@ export type $databases_v2_confort_thermiquePayload<ExtArgs extends runtime.Types
     nb_rp_71_90: number | null
     nb_rp_91_05: number | null
     nb_rp_post_06: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_confort_thermique"]>
   composites: {}
 }
@@ -2656,6 +2716,8 @@ export interface databases_v2_confort_thermiqueFieldRefs {
   readonly nb_rp_71_90: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly nb_rp_91_05: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
   readonly nb_rp_post_06: Prisma.FieldRef<"databases_v2_confort_thermique", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_confort_thermique", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_confort_thermique", 'String[]'>
 }
     
 

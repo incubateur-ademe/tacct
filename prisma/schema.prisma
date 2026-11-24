@@ -106,7 +106,7 @@ model databases_v2_aot_40 {
 }
 
 model databases_v2_arretes_catnat {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -122,6 +122,8 @@ model databases_v2_arretes_catnat {
   dat_deb              String
   dat_fin              String
   dat_pub_arrete       String
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([code_geographique], map: "arretes_catnat_communes_index")
   @@index([departement], map: "arretes_catnat_departement_index")
@@ -129,6 +131,7 @@ model databases_v2_arretes_catnat {
   @@index([libelle_petr], map: "arretes_catnat_petr_index")
   @@index([code_pnr], map: "arretes_catnat_pnr_index")
   @@index([index], map: "ix_arretes_catnat_index")
+  @@index([code_polem], map: "arretes_catnat_polem_index", type: Gin)
   @@map("arretes_catnat")
   @@schema("databases_v2")
 }
@@ -190,7 +193,7 @@ model databases_v2_collectivites_searchbar {
 }
 
 model databases_v2_confort_thermique {
-  index                   Int     @id
+  index                   Int      @id
   code_geographique       String
   libelle_geographique    String
   epci                    String
@@ -203,19 +206,19 @@ model databases_v2_confort_thermique {
   code_pnr                String?
   libelle_pnr             String?
   under_4_sum_1968        Float?
-  to_75_sum_1968          Float?  @map("4_to_75_sum_1968")
+  to_75_sum_1968          Float?   @map("4_to_75_sum_1968")
   over_75_sum_1968        Float?
   under_4_sum_1975        Float?
-  to_75_sum_1975          Float?  @map("4_to_75_sum_1975")
+  to_75_sum_1975          Float?   @map("4_to_75_sum_1975")
   over_75_sum_1975        Float?
   under_4_sum_1982        Float?
-  to_75_sum_1982          Float?  @map("4_to_75_sum_1982")
+  to_75_sum_1982          Float?   @map("4_to_75_sum_1982")
   over_75_sum_1982        Float?
   under_4_sum_1990        Float?
-  to_75_sum_1990          Float?  @map("4_to_75_sum_1990")
+  to_75_sum_1990          Float?   @map("4_to_75_sum_1990")
   over_75_sum_1990        Float?
   under_4_sum_1999        Float?
-  to_75_sum_1999          Float?  @map("4_to_75_sum_1999")
+  to_75_sum_1999          Float?   @map("4_to_75_sum_1999")
   over_75_sum_1999        Float?
   tee_log                 Float?
   tee_mob                 Float?
@@ -232,16 +235,16 @@ model databases_v2_confort_thermique {
   clc_5_eau               Float?
   superf_choro            Float?
   under_4_sum_2006        Float?
-  to_75_sum_2006          Float?  @map("4_to_75_sum_2006")
+  to_75_sum_2006          Float?   @map("4_to_75_sum_2006")
   over_75_sum_2006        Float?
   under_4_sum_2011        Float?
-  to_75_sum_2011          Float?  @map("4_to_75_sum_2011")
+  to_75_sum_2011          Float?   @map("4_to_75_sum_2011")
   over_75_sum_2011        Float?
   under_4_sum_2016        Float?
-  to_75_sum_2016          Float?  @map("4_to_75_sum_2016")
+  to_75_sum_2016          Float?   @map("4_to_75_sum_2016")
   over_75_sum_2016        Float?
   under_4_sum_2022        Float?
-  to_75_sum_2022          Float?  @map("4_to_75_sum_2022")
+  to_75_sum_2022          Float?   @map("4_to_75_sum_2022")
   over_75_sum_2022        Float?
   nb_rp_tot               Float?
   nb_rp_pre_19            Float?
@@ -250,6 +253,8 @@ model databases_v2_confort_thermique {
   nb_rp_71_90             Float?
   nb_rp_91_05             Float?
   nb_rp_post_06           Float?
+  code_polem              String[]
+  libelle_polem           String[]
 
   @@index([code_geographique], map: "confort_thermique_communes_index")
   @@index([departement], map: "confort_thermique_departement_index")
@@ -258,12 +263,13 @@ model databases_v2_confort_thermique {
   @@index([libelle_petr], map: "confort_thermique_petr_index")
   @@index([code_pnr], map: "confort_thermique_pnr_index")
   @@index([index], map: "ix_confort_thermique_index")
+  @@index([code_polem], map: "confort_thermique_polem_index", type: Gin)
   @@map("confort_thermique")
   @@schema("databases_v2")
 }
 
 model databases_v2_consommation_espaces_naf {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -381,6 +387,8 @@ model databases_v2_consommation_espaces_naf {
   art11fer25           Float?
   art11rou25           Float?
   artcom1125           Float?
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([epci], map: "consommation_espaces_naf_epci_index")
   @@index([index], map: "ix_consommation_espaces_naf_index")
@@ -389,12 +397,13 @@ model databases_v2_consommation_espaces_naf {
   @@index([ept], map: "consommation_espaces_naf_ept_index")
   @@index([libelle_petr], map: "consommation_espaces_naf_petr_index")
   @@index([code_pnr], map: "consommation_espaces_naf_pnr_index")
+  @@index([code_polem], map: "consommation_espaces_naf_polem_index", type: Gin)
   @@map("consommation_espaces_naf")
   @@schema("databases_v2")
 }
 
 model databases_v2_export_cours_d_eau {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -409,15 +418,18 @@ model databases_v2_export_cours_d_eau {
   cours_d_eau          String
   etat_ecologique      String?
   longueur             Float
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([code_geographique], map: "export_cours_d_eau_communes_index")
   @@index([index], map: "ix_export_cours_d_eau_index")
+  @@index([code_polem], map: "export_cours_d_eau_polem_index", type: Gin)
   @@map("export_cours_d_eau")
   @@schema("databases_v2")
 }
 
 model databases_v2_feux_foret {
-  index                                 Int     @id
+  index                                 Int      @id
   code_geographique                     String
   libelle_geographique                  String
   epci                                  String
@@ -441,6 +453,8 @@ model databases_v2_feux_foret {
   surfaces_non_boisees_naturelles       Float?
   surface_autres_terres_boisees         Float?
   autres_surfaces                       Float?
+  code_polem                            String[]
+  libelle_polem                         String[]
 
   @@index([code_geographique], map: "feux_foret_communes_index")
   @@index([departement], map: "feux_foret_departement_index")
@@ -450,12 +464,13 @@ model databases_v2_feux_foret {
   @@index([code_pnr], map: "feux_foret_pnr_index")
   @@index([index], map: "ix_feux_foret_index")
   @@index([epci], map: "agriculture_bio_epci_index")
+  @@index([code_polem], map: "feux_foret_polem_index", type: Gin)
   @@map("feux_foret")
   @@schema("databases_v2")
 }
 
 model databases_v2_lcz_couverture {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String?
   epci                 String?
@@ -468,6 +483,8 @@ model databases_v2_lcz_couverture {
   code_pnr             String?
   libelle_pnr          String?
   couverture_lcz       Float
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([index], map: "ix_lcz_couverture_index")
   @@index([code_geographique], map: "lcz_couverture_communes_index")
@@ -476,6 +493,7 @@ model databases_v2_lcz_couverture {
   @@index([ept], map: "lcz_couverture_ept_index")
   @@index([libelle_petr], map: "lcz_couverture_petr_index")
   @@index([code_pnr], map: "lcz_couverture_pnr_index")
+  @@index([code_polem], map: "lcz_couverture_polem_index", type: Gin)
   @@map("lcz_couverture")
   @@schema("databases_v2")
 }
@@ -647,6 +665,8 @@ model databases_v2_table_commune {
   projets_alimentaires_territoriaux   String[]
   surface_commune_ha                  Float?
   surface_foret_ha                    Float?
+  code_polem                          String[]
+  libelle_polem                       String[]
 
   @@index([index], map: "ix_table_commune_index")
   @@index([code_geographique], map: "table_commune_communes_index")
@@ -655,6 +675,7 @@ model databases_v2_table_commune {
   @@index([ept], map: "table_commune_ept_index")
   @@index([libelle_petr], map: "table_commune_petr_index")
   @@index([code_pnr], map: "table_commune_pnr_index")
+  @@index([code_polem], map: "table_commune_polem_index", type: Gin)
   @@map("table_commune")
   @@schema("databases_v2")
 }
@@ -682,7 +703,7 @@ model databases_v2_table_territoires {
 }
 
 model databases_v2_rga {
-  index                                    Int     @id
+  index                                    Int      @id
   code_geographique                        String
   libelle_geographique                     String
   epci                                     String
@@ -719,6 +740,8 @@ model databases_v2_rga {
   part_logement_alea_faible_apres_1975     Int
   part_alea_faible_commune                 Int
   part_alea_moyen_fort_commune             Int
+  code_polem                               String[]
+  libelle_polem                            String[]
 
   @@index([index], map: "ix_rga_index")
   @@index([code_geographique], map: "rga_communes_index")
@@ -727,6 +750,7 @@ model databases_v2_rga {
   @@index([ept], map: "rga_ept_index")
   @@index([libelle_petr], map: "rga_petr_index")
   @@index([code_pnr], map: "rga_pnr_index")
+  @@index([code_polem], map: "rga_polem_index", type: Gin)
   @@map("rga")
   @@schema("databases_v2")
 }
@@ -955,7 +979,7 @@ model thematique {
 }
 
 model secheresses {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String?
   epci                 String?
@@ -968,8 +992,11 @@ model secheresses {
   code_pnr             String?
   libelle_pnr          String?
   restrictions         String
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([index], map: "ix_secheresses_index")
+  @@index([code_polem], map: "secheresses_polem_index", type: Gin)
   @@schema("databases_v2")
 }
 
@@ -1753,7 +1780,7 @@ model tacctoscope_ressources {
 }
 
 model forets_communales {
-  index                                    Int     @id
+  index                                    Int      @id
   code_geographique                        String
   libelle_geographique                     String
   epci                                     String
@@ -1768,8 +1795,11 @@ model forets_communales {
   surface_foret_possedee_ha                Float?
   surface_foret_possedee_sur_territoire_ha Float?
   surface_commune_ha                       Float?
+  code_polem                               String[]
+  libelle_polem                            String[]
 
   @@index([index], map: "ix_forets_communales_index")
+  @@index([code_polem], map: "forets_communales_polem_index", type: Gin)
   @@schema("databases_v2")
 }
 
@@ -1804,7 +1834,7 @@ model stations_ski {
 }
 
 model emplois_sylviculture {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -1819,6 +1849,8 @@ model emplois_sylviculture {
   postes_sylviculture  Float?
   postes_travail_bois  Float?
   postes_total         Float?
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([code_geographique], map: "emplois_sylviculture_communes_index")
   @@index([departement], map: "emplois_sylviculture_departement_index")
@@ -1827,6 +1859,7 @@ model emplois_sylviculture {
   @@index([libelle_petr], map: "emplois_sylviculture_petr_index")
   @@index([code_pnr], map: "emplois_sylviculture_pnr_index")
   @@index([index], map: "ix_emplois_sylviculture_index")
+  @@index([code_polem], map: "emplois_sylviculture_polem_index", type: Gin)
   @@schema("databases_v2")
 }
 
@@ -1841,7 +1874,7 @@ model temp_polem {
 }
 
 model prelevements_eau {
-  index                Int     @id
+  index                Int      @id
   code_geographique    String
   libelle_geographique String
   epci                 String
@@ -1958,6 +1991,8 @@ model prelevements_eau {
   annee_2023_exo       Float
   annee_2023_ind       Float
   annee_2023_irr       Float
+  code_polem           String[]
+  libelle_polem        String[]
 
   @@index([index], map: "ix_prelevements_eau_index")
   @@index([code_geographique], map: "prelevements_eau_communes_index")
@@ -1965,5 +2000,6 @@ model prelevements_eau {
   @@index([epci], map: "prelevements_eau_epci_index")
   @@index([libelle_petr], map: "prelevements_eau_petr_index")
   @@index([code_pnr], map: "prelevements_eau_pnr_index")
+  @@index([code_polem], map: "prelevements_eau_polem_index", type: Gin)
   @@schema("databases_v2")
 }

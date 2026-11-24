@@ -94,6 +94,8 @@ export type Emplois_sylvicultureCountAggregateOutputType = {
   postes_sylviculture: number
   postes_travail_bois: number
   postes_total: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -166,6 +168,8 @@ export type Emplois_sylvicultureCountAggregateInputType = {
   postes_sylviculture?: true
   postes_travail_bois?: true
   postes_total?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -271,6 +275,8 @@ export type Emplois_sylvicultureGroupByOutputType = {
   postes_sylviculture: number | null
   postes_travail_bois: number | null
   postes_total: number | null
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Emplois_sylvicultureCountAggregateOutputType | null
   _avg: Emplois_sylvicultureAvgAggregateOutputType | null
   _sum: Emplois_sylvicultureSumAggregateOutputType | null
@@ -312,6 +318,8 @@ export type emplois_sylvicultureWhereInput = {
   postes_sylviculture?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
   postes_travail_bois?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
   postes_total?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
+  libelle_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
 }
 
 export type emplois_sylvicultureOrderByWithRelationInput = {
@@ -330,6 +338,8 @@ export type emplois_sylvicultureOrderByWithRelationInput = {
   postes_sylviculture?: Prisma.SortOrderInput | Prisma.SortOrder
   postes_travail_bois?: Prisma.SortOrderInput | Prisma.SortOrder
   postes_total?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type emplois_sylvicultureWhereUniqueInput = Prisma.AtLeast<{
@@ -351,6 +361,8 @@ export type emplois_sylvicultureWhereUniqueInput = Prisma.AtLeast<{
   postes_sylviculture?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
   postes_travail_bois?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
   postes_total?: Prisma.FloatNullableFilter<"emplois_sylviculture"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
+  libelle_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
 }, "index">
 
 export type emplois_sylvicultureOrderByWithAggregationInput = {
@@ -369,6 +381,8 @@ export type emplois_sylvicultureOrderByWithAggregationInput = {
   postes_sylviculture?: Prisma.SortOrderInput | Prisma.SortOrder
   postes_travail_bois?: Prisma.SortOrderInput | Prisma.SortOrder
   postes_total?: Prisma.SortOrderInput | Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.emplois_sylvicultureCountOrderByAggregateInput
   _avg?: Prisma.emplois_sylvicultureAvgOrderByAggregateInput
   _max?: Prisma.emplois_sylvicultureMaxOrderByAggregateInput
@@ -395,6 +409,8 @@ export type emplois_sylvicultureScalarWhereWithAggregatesInput = {
   postes_sylviculture?: Prisma.FloatNullableWithAggregatesFilter<"emplois_sylviculture"> | number | null
   postes_travail_bois?: Prisma.FloatNullableWithAggregatesFilter<"emplois_sylviculture"> | number | null
   postes_total?: Prisma.FloatNullableWithAggregatesFilter<"emplois_sylviculture"> | number | null
+  code_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
+  libelle_polem?: Prisma.StringNullableListFilter<"emplois_sylviculture">
 }
 
 export type emplois_sylvicultureCreateInput = {
@@ -413,6 +429,8 @@ export type emplois_sylvicultureCreateInput = {
   postes_sylviculture?: number | null
   postes_travail_bois?: number | null
   postes_total?: number | null
+  code_polem?: Prisma.emplois_sylvicultureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureCreatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureUncheckedCreateInput = {
@@ -431,6 +449,8 @@ export type emplois_sylvicultureUncheckedCreateInput = {
   postes_sylviculture?: number | null
   postes_travail_bois?: number | null
   postes_total?: number | null
+  code_polem?: Prisma.emplois_sylvicultureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureCreatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureUpdateInput = {
@@ -449,6 +469,8 @@ export type emplois_sylvicultureUpdateInput = {
   postes_sylviculture?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_travail_bois?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_total?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.emplois_sylvicultureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureUpdatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureUncheckedUpdateInput = {
@@ -467,6 +489,8 @@ export type emplois_sylvicultureUncheckedUpdateInput = {
   postes_sylviculture?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_travail_bois?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_total?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.emplois_sylvicultureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureUpdatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureCreateManyInput = {
@@ -485,6 +509,8 @@ export type emplois_sylvicultureCreateManyInput = {
   postes_sylviculture?: number | null
   postes_travail_bois?: number | null
   postes_total?: number | null
+  code_polem?: Prisma.emplois_sylvicultureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureCreatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureUpdateManyMutationInput = {
@@ -503,6 +529,8 @@ export type emplois_sylvicultureUpdateManyMutationInput = {
   postes_sylviculture?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_travail_bois?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_total?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.emplois_sylvicultureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureUpdatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureUncheckedUpdateManyInput = {
@@ -521,6 +549,8 @@ export type emplois_sylvicultureUncheckedUpdateManyInput = {
   postes_sylviculture?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_travail_bois?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   postes_total?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  code_polem?: Prisma.emplois_sylvicultureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.emplois_sylvicultureUpdatelibelle_polemInput | string[]
 }
 
 export type emplois_sylvicultureCountOrderByAggregateInput = {
@@ -539,6 +569,8 @@ export type emplois_sylvicultureCountOrderByAggregateInput = {
   postes_sylviculture?: Prisma.SortOrder
   postes_travail_bois?: Prisma.SortOrder
   postes_total?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type emplois_sylvicultureAvgOrderByAggregateInput = {
@@ -593,6 +625,24 @@ export type emplois_sylvicultureSumOrderByAggregateInput = {
   postes_total?: Prisma.SortOrder
 }
 
+export type emplois_sylvicultureCreatecode_polemInput = {
+  set: string[]
+}
+
+export type emplois_sylvicultureCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type emplois_sylvicultureUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type emplois_sylvicultureUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type emplois_sylvicultureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -611,6 +661,8 @@ export type emplois_sylvicultureSelect<ExtArgs extends runtime.Types.Extensions.
   postes_sylviculture?: boolean
   postes_travail_bois?: boolean
   postes_total?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["emplois_sylviculture"]>
 
 export type emplois_sylvicultureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -629,6 +681,8 @@ export type emplois_sylvicultureSelectCreateManyAndReturn<ExtArgs extends runtim
   postes_sylviculture?: boolean
   postes_travail_bois?: boolean
   postes_total?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["emplois_sylviculture"]>
 
 export type emplois_sylvicultureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -647,6 +701,8 @@ export type emplois_sylvicultureSelectUpdateManyAndReturn<ExtArgs extends runtim
   postes_sylviculture?: boolean
   postes_travail_bois?: boolean
   postes_total?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["emplois_sylviculture"]>
 
 export type emplois_sylvicultureSelectScalar = {
@@ -665,9 +721,11 @@ export type emplois_sylvicultureSelectScalar = {
   postes_sylviculture?: boolean
   postes_travail_bois?: boolean
   postes_total?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type emplois_sylvicultureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "postes_sylviculture" | "postes_travail_bois" | "postes_total", ExtArgs["result"]["emplois_sylviculture"]>
+export type emplois_sylvicultureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "postes_sylviculture" | "postes_travail_bois" | "postes_total" | "code_polem" | "libelle_polem", ExtArgs["result"]["emplois_sylviculture"]>
 
 export type $emplois_sylviculturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "emplois_sylviculture"
@@ -688,6 +746,8 @@ export type $emplois_sylviculturePayload<ExtArgs extends runtime.Types.Extension
     postes_sylviculture: number | null
     postes_travail_bois: number | null
     postes_total: number | null
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["emplois_sylviculture"]>
   composites: {}
 }
@@ -1126,6 +1186,8 @@ export interface emplois_sylvicultureFieldRefs {
   readonly postes_sylviculture: Prisma.FieldRef<"emplois_sylviculture", 'Float'>
   readonly postes_travail_bois: Prisma.FieldRef<"emplois_sylviculture", 'Float'>
   readonly postes_total: Prisma.FieldRef<"emplois_sylviculture", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"emplois_sylviculture", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"emplois_sylviculture", 'String[]'>
 }
     
 

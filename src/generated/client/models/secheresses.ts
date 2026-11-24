@@ -82,6 +82,8 @@ export type SecheressesCountAggregateOutputType = {
   code_pnr: number
   libelle_pnr: number
   restrictions: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -142,6 +144,8 @@ export type SecheressesCountAggregateInputType = {
   code_pnr?: true
   libelle_pnr?: true
   restrictions?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -245,6 +249,8 @@ export type SecheressesGroupByOutputType = {
   code_pnr: string | null
   libelle_pnr: string | null
   restrictions: string
+  code_polem: string[]
+  libelle_polem: string[]
   _count: SecheressesCountAggregateOutputType | null
   _avg: SecheressesAvgAggregateOutputType | null
   _sum: SecheressesSumAggregateOutputType | null
@@ -284,6 +290,8 @@ export type secheressesWhereInput = {
   code_pnr?: Prisma.StringNullableFilter<"secheresses"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"secheresses"> | string | null
   restrictions?: Prisma.StringFilter<"secheresses"> | string
+  code_polem?: Prisma.StringNullableListFilter<"secheresses">
+  libelle_polem?: Prisma.StringNullableListFilter<"secheresses">
 }
 
 export type secheressesOrderByWithRelationInput = {
@@ -300,6 +308,8 @@ export type secheressesOrderByWithRelationInput = {
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   restrictions?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type secheressesWhereUniqueInput = Prisma.AtLeast<{
@@ -319,6 +329,8 @@ export type secheressesWhereUniqueInput = Prisma.AtLeast<{
   code_pnr?: Prisma.StringNullableFilter<"secheresses"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"secheresses"> | string | null
   restrictions?: Prisma.StringFilter<"secheresses"> | string
+  code_polem?: Prisma.StringNullableListFilter<"secheresses">
+  libelle_polem?: Prisma.StringNullableListFilter<"secheresses">
 }, "index">
 
 export type secheressesOrderByWithAggregationInput = {
@@ -335,6 +347,8 @@ export type secheressesOrderByWithAggregationInput = {
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   restrictions?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.secheressesCountOrderByAggregateInput
   _avg?: Prisma.secheressesAvgOrderByAggregateInput
   _max?: Prisma.secheressesMaxOrderByAggregateInput
@@ -359,6 +373,8 @@ export type secheressesScalarWhereWithAggregatesInput = {
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"secheresses"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"secheresses"> | string | null
   restrictions?: Prisma.StringWithAggregatesFilter<"secheresses"> | string
+  code_polem?: Prisma.StringNullableListFilter<"secheresses">
+  libelle_polem?: Prisma.StringNullableListFilter<"secheresses">
 }
 
 export type secheressesCreateInput = {
@@ -375,6 +391,8 @@ export type secheressesCreateInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   restrictions: string
+  code_polem?: Prisma.secheressesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesCreatelibelle_polemInput | string[]
 }
 
 export type secheressesUncheckedCreateInput = {
@@ -391,6 +409,8 @@ export type secheressesUncheckedCreateInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   restrictions: string
+  code_polem?: Prisma.secheressesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesCreatelibelle_polemInput | string[]
 }
 
 export type secheressesUpdateInput = {
@@ -407,6 +427,8 @@ export type secheressesUpdateInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   restrictions?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.secheressesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesUpdatelibelle_polemInput | string[]
 }
 
 export type secheressesUncheckedUpdateInput = {
@@ -423,6 +445,8 @@ export type secheressesUncheckedUpdateInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   restrictions?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.secheressesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesUpdatelibelle_polemInput | string[]
 }
 
 export type secheressesCreateManyInput = {
@@ -439,6 +463,8 @@ export type secheressesCreateManyInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   restrictions: string
+  code_polem?: Prisma.secheressesCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesCreatelibelle_polemInput | string[]
 }
 
 export type secheressesUpdateManyMutationInput = {
@@ -455,6 +481,8 @@ export type secheressesUpdateManyMutationInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   restrictions?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.secheressesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesUpdatelibelle_polemInput | string[]
 }
 
 export type secheressesUncheckedUpdateManyInput = {
@@ -471,6 +499,8 @@ export type secheressesUncheckedUpdateManyInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   restrictions?: Prisma.StringFieldUpdateOperationsInput | string
+  code_polem?: Prisma.secheressesUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.secheressesUpdatelibelle_polemInput | string[]
 }
 
 export type secheressesCountOrderByAggregateInput = {
@@ -487,6 +517,8 @@ export type secheressesCountOrderByAggregateInput = {
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
   restrictions?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type secheressesAvgOrderByAggregateInput = {
@@ -531,6 +563,24 @@ export type secheressesSumOrderByAggregateInput = {
   region?: Prisma.SortOrder
 }
 
+export type secheressesCreatecode_polemInput = {
+  set: string[]
+}
+
+export type secheressesCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type secheressesUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type secheressesUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type secheressesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -547,6 +597,8 @@ export type secheressesSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   code_pnr?: boolean
   libelle_pnr?: boolean
   restrictions?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["secheresses"]>
 
 export type secheressesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -563,6 +615,8 @@ export type secheressesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   code_pnr?: boolean
   libelle_pnr?: boolean
   restrictions?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["secheresses"]>
 
 export type secheressesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -579,6 +633,8 @@ export type secheressesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   code_pnr?: boolean
   libelle_pnr?: boolean
   restrictions?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["secheresses"]>
 
 export type secheressesSelectScalar = {
@@ -595,9 +651,11 @@ export type secheressesSelectScalar = {
   code_pnr?: boolean
   libelle_pnr?: boolean
   restrictions?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type secheressesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions", ExtArgs["result"]["secheresses"]>
+export type secheressesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "restrictions" | "code_polem" | "libelle_polem", ExtArgs["result"]["secheresses"]>
 
 export type $secheressesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "secheresses"
@@ -616,6 +674,8 @@ export type $secheressesPayload<ExtArgs extends runtime.Types.Extensions.Interna
     code_pnr: string | null
     libelle_pnr: string | null
     restrictions: string
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["secheresses"]>
   composites: {}
 }
@@ -1052,6 +1112,8 @@ export interface secheressesFieldRefs {
   readonly code_pnr: Prisma.FieldRef<"secheresses", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"secheresses", 'String'>
   readonly restrictions: Prisma.FieldRef<"secheresses", 'String'>
+  readonly code_polem: Prisma.FieldRef<"secheresses", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"secheresses", 'String[]'>
 }
     
 

@@ -84,6 +84,8 @@ export type Databases_v2_lcz_couvertureCountAggregateOutputType = {
   code_pnr: number
   libelle_pnr: number
   couverture_lcz: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -146,6 +148,8 @@ export type Databases_v2_lcz_couvertureCountAggregateInputType = {
   code_pnr?: true
   libelle_pnr?: true
   couverture_lcz?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -249,6 +253,8 @@ export type Databases_v2_lcz_couvertureGroupByOutputType = {
   code_pnr: string | null
   libelle_pnr: string | null
   couverture_lcz: number
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_lcz_couvertureCountAggregateOutputType | null
   _avg: Databases_v2_lcz_couvertureAvgAggregateOutputType | null
   _sum: Databases_v2_lcz_couvertureSumAggregateOutputType | null
@@ -288,6 +294,8 @@ export type databases_v2_lcz_couvertureWhereInput = {
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_lcz_couverture"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_lcz_couverture"> | string | null
   couverture_lcz?: Prisma.FloatFilter<"databases_v2_lcz_couverture"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
 }
 
 export type databases_v2_lcz_couvertureOrderByWithRelationInput = {
@@ -304,6 +312,8 @@ export type databases_v2_lcz_couvertureOrderByWithRelationInput = {
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_lcz_couvertureWhereUniqueInput = Prisma.AtLeast<{
@@ -323,6 +333,8 @@ export type databases_v2_lcz_couvertureWhereUniqueInput = Prisma.AtLeast<{
   code_pnr?: Prisma.StringNullableFilter<"databases_v2_lcz_couverture"> | string | null
   libelle_pnr?: Prisma.StringNullableFilter<"databases_v2_lcz_couverture"> | string | null
   couverture_lcz?: Prisma.FloatFilter<"databases_v2_lcz_couverture"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
 }, "index">
 
 export type databases_v2_lcz_couvertureOrderByWithAggregationInput = {
@@ -339,6 +351,8 @@ export type databases_v2_lcz_couvertureOrderByWithAggregationInput = {
   code_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrderInput | Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_lcz_couvertureCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_lcz_couvertureAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_lcz_couvertureMaxOrderByAggregateInput
@@ -363,6 +377,8 @@ export type databases_v2_lcz_couvertureScalarWhereWithAggregatesInput = {
   code_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_lcz_couverture"> | string | null
   libelle_pnr?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_lcz_couverture"> | string | null
   couverture_lcz?: Prisma.FloatWithAggregatesFilter<"databases_v2_lcz_couverture"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_lcz_couverture">
 }
 
 export type databases_v2_lcz_couvertureCreateInput = {
@@ -379,6 +395,8 @@ export type databases_v2_lcz_couvertureCreateInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   couverture_lcz: number
+  code_polem?: Prisma.databases_v2_lcz_couvertureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureUncheckedCreateInput = {
@@ -395,6 +413,8 @@ export type databases_v2_lcz_couvertureUncheckedCreateInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   couverture_lcz: number
+  code_polem?: Prisma.databases_v2_lcz_couvertureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureUpdateInput = {
@@ -411,6 +431,8 @@ export type databases_v2_lcz_couvertureUpdateInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_lcz_couvertureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureUncheckedUpdateInput = {
@@ -427,6 +449,8 @@ export type databases_v2_lcz_couvertureUncheckedUpdateInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_lcz_couvertureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureCreateManyInput = {
@@ -443,6 +467,8 @@ export type databases_v2_lcz_couvertureCreateManyInput = {
   code_pnr?: string | null
   libelle_pnr?: string | null
   couverture_lcz: number
+  code_polem?: Prisma.databases_v2_lcz_couvertureCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureUpdateManyMutationInput = {
@@ -459,6 +485,8 @@ export type databases_v2_lcz_couvertureUpdateManyMutationInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_lcz_couvertureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureUncheckedUpdateManyInput = {
@@ -475,6 +503,8 @@ export type databases_v2_lcz_couvertureUncheckedUpdateManyInput = {
   code_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   libelle_pnr?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   couverture_lcz?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_lcz_couvertureUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_lcz_couvertureUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_lcz_couvertureCountOrderByAggregateInput = {
@@ -491,6 +521,8 @@ export type databases_v2_lcz_couvertureCountOrderByAggregateInput = {
   code_pnr?: Prisma.SortOrder
   libelle_pnr?: Prisma.SortOrder
   couverture_lcz?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_lcz_couvertureAvgOrderByAggregateInput = {
@@ -537,6 +569,24 @@ export type databases_v2_lcz_couvertureSumOrderByAggregateInput = {
   couverture_lcz?: Prisma.SortOrder
 }
 
+export type databases_v2_lcz_couvertureCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_lcz_couvertureCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_lcz_couvertureUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_lcz_couvertureUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_lcz_couvertureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -553,6 +603,8 @@ export type databases_v2_lcz_couvertureSelect<ExtArgs extends runtime.Types.Exte
   code_pnr?: boolean
   libelle_pnr?: boolean
   couverture_lcz?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_lcz_couverture"]>
 
 export type databases_v2_lcz_couvertureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -569,6 +621,8 @@ export type databases_v2_lcz_couvertureSelectCreateManyAndReturn<ExtArgs extends
   code_pnr?: boolean
   libelle_pnr?: boolean
   couverture_lcz?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_lcz_couverture"]>
 
 export type databases_v2_lcz_couvertureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -585,6 +639,8 @@ export type databases_v2_lcz_couvertureSelectUpdateManyAndReturn<ExtArgs extends
   code_pnr?: boolean
   libelle_pnr?: boolean
   couverture_lcz?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_lcz_couverture"]>
 
 export type databases_v2_lcz_couvertureSelectScalar = {
@@ -601,9 +657,11 @@ export type databases_v2_lcz_couvertureSelectScalar = {
   code_pnr?: boolean
   libelle_pnr?: boolean
   couverture_lcz?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_lcz_couvertureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "couverture_lcz", ExtArgs["result"]["databases_v2_lcz_couverture"]>
+export type databases_v2_lcz_couvertureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "couverture_lcz" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_lcz_couverture"]>
 
 export type $databases_v2_lcz_couverturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_lcz_couverture"
@@ -622,6 +680,8 @@ export type $databases_v2_lcz_couverturePayload<ExtArgs extends runtime.Types.Ex
     code_pnr: string | null
     libelle_pnr: string | null
     couverture_lcz: number
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_lcz_couverture"]>
   composites: {}
 }
@@ -1058,6 +1118,8 @@ export interface databases_v2_lcz_couvertureFieldRefs {
   readonly code_pnr: Prisma.FieldRef<"databases_v2_lcz_couverture", 'String'>
   readonly libelle_pnr: Prisma.FieldRef<"databases_v2_lcz_couverture", 'String'>
   readonly couverture_lcz: Prisma.FieldRef<"databases_v2_lcz_couverture", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_lcz_couverture", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_lcz_couverture", 'String[]'>
 }
     
 

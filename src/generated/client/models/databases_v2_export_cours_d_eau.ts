@@ -90,6 +90,8 @@ export type Databases_v2_export_cours_d_eauCountAggregateOutputType = {
   cours_d_eau: number
   etat_ecologique: number
   longueur: number
+  code_polem: number
+  libelle_polem: number
   _all: number
 }
 
@@ -158,6 +160,8 @@ export type Databases_v2_export_cours_d_eauCountAggregateInputType = {
   cours_d_eau?: true
   etat_ecologique?: true
   longueur?: true
+  code_polem?: true
+  libelle_polem?: true
   _all?: true
 }
 
@@ -263,6 +267,8 @@ export type Databases_v2_export_cours_d_eauGroupByOutputType = {
   cours_d_eau: string
   etat_ecologique: string | null
   longueur: number
+  code_polem: string[]
+  libelle_polem: string[]
   _count: Databases_v2_export_cours_d_eauCountAggregateOutputType | null
   _avg: Databases_v2_export_cours_d_eauAvgAggregateOutputType | null
   _sum: Databases_v2_export_cours_d_eauSumAggregateOutputType | null
@@ -304,6 +310,8 @@ export type databases_v2_export_cours_d_eauWhereInput = {
   cours_d_eau?: Prisma.StringFilter<"databases_v2_export_cours_d_eau"> | string
   etat_ecologique?: Prisma.StringNullableFilter<"databases_v2_export_cours_d_eau"> | string | null
   longueur?: Prisma.FloatFilter<"databases_v2_export_cours_d_eau"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
 }
 
 export type databases_v2_export_cours_d_eauOrderByWithRelationInput = {
@@ -322,6 +330,8 @@ export type databases_v2_export_cours_d_eauOrderByWithRelationInput = {
   cours_d_eau?: Prisma.SortOrder
   etat_ecologique?: Prisma.SortOrderInput | Prisma.SortOrder
   longueur?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_export_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
@@ -343,6 +353,8 @@ export type databases_v2_export_cours_d_eauWhereUniqueInput = Prisma.AtLeast<{
   cours_d_eau?: Prisma.StringFilter<"databases_v2_export_cours_d_eau"> | string
   etat_ecologique?: Prisma.StringNullableFilter<"databases_v2_export_cours_d_eau"> | string | null
   longueur?: Prisma.FloatFilter<"databases_v2_export_cours_d_eau"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
 }, "index">
 
 export type databases_v2_export_cours_d_eauOrderByWithAggregationInput = {
@@ -361,6 +373,8 @@ export type databases_v2_export_cours_d_eauOrderByWithAggregationInput = {
   cours_d_eau?: Prisma.SortOrder
   etat_ecologique?: Prisma.SortOrderInput | Prisma.SortOrder
   longueur?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
   _count?: Prisma.databases_v2_export_cours_d_eauCountOrderByAggregateInput
   _avg?: Prisma.databases_v2_export_cours_d_eauAvgOrderByAggregateInput
   _max?: Prisma.databases_v2_export_cours_d_eauMaxOrderByAggregateInput
@@ -387,6 +401,8 @@ export type databases_v2_export_cours_d_eauScalarWhereWithAggregatesInput = {
   cours_d_eau?: Prisma.StringWithAggregatesFilter<"databases_v2_export_cours_d_eau"> | string
   etat_ecologique?: Prisma.StringNullableWithAggregatesFilter<"databases_v2_export_cours_d_eau"> | string | null
   longueur?: Prisma.FloatWithAggregatesFilter<"databases_v2_export_cours_d_eau"> | number
+  code_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
+  libelle_polem?: Prisma.StringNullableListFilter<"databases_v2_export_cours_d_eau">
 }
 
 export type databases_v2_export_cours_d_eauCreateInput = {
@@ -405,6 +421,8 @@ export type databases_v2_export_cours_d_eauCreateInput = {
   cours_d_eau: string
   etat_ecologique?: string | null
   longueur: number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauUncheckedCreateInput = {
@@ -423,6 +441,8 @@ export type databases_v2_export_cours_d_eauUncheckedCreateInput = {
   cours_d_eau: string
   etat_ecologique?: string | null
   longueur: number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauUpdateInput = {
@@ -441,6 +461,8 @@ export type databases_v2_export_cours_d_eauUpdateInput = {
   cours_d_eau?: Prisma.StringFieldUpdateOperationsInput | string
   etat_ecologique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   longueur?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauUncheckedUpdateInput = {
@@ -459,6 +481,8 @@ export type databases_v2_export_cours_d_eauUncheckedUpdateInput = {
   cours_d_eau?: Prisma.StringFieldUpdateOperationsInput | string
   etat_ecologique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   longueur?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauCreateManyInput = {
@@ -477,6 +501,8 @@ export type databases_v2_export_cours_d_eauCreateManyInput = {
   cours_d_eau: string
   etat_ecologique?: string | null
   longueur: number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauCreatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauCreatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauUpdateManyMutationInput = {
@@ -495,6 +521,8 @@ export type databases_v2_export_cours_d_eauUpdateManyMutationInput = {
   cours_d_eau?: Prisma.StringFieldUpdateOperationsInput | string
   etat_ecologique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   longueur?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauUncheckedUpdateManyInput = {
@@ -513,6 +541,8 @@ export type databases_v2_export_cours_d_eauUncheckedUpdateManyInput = {
   cours_d_eau?: Prisma.StringFieldUpdateOperationsInput | string
   etat_ecologique?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   longueur?: Prisma.FloatFieldUpdateOperationsInput | number
+  code_polem?: Prisma.databases_v2_export_cours_d_eauUpdatecode_polemInput | string[]
+  libelle_polem?: Prisma.databases_v2_export_cours_d_eauUpdatelibelle_polemInput | string[]
 }
 
 export type databases_v2_export_cours_d_eauCountOrderByAggregateInput = {
@@ -531,6 +561,8 @@ export type databases_v2_export_cours_d_eauCountOrderByAggregateInput = {
   cours_d_eau?: Prisma.SortOrder
   etat_ecologique?: Prisma.SortOrder
   longueur?: Prisma.SortOrder
+  code_polem?: Prisma.SortOrder
+  libelle_polem?: Prisma.SortOrder
 }
 
 export type databases_v2_export_cours_d_eauAvgOrderByAggregateInput = {
@@ -581,6 +613,24 @@ export type databases_v2_export_cours_d_eauSumOrderByAggregateInput = {
   longueur?: Prisma.SortOrder
 }
 
+export type databases_v2_export_cours_d_eauCreatecode_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_export_cours_d_eauCreatelibelle_polemInput = {
+  set: string[]
+}
+
+export type databases_v2_export_cours_d_eauUpdatecode_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type databases_v2_export_cours_d_eauUpdatelibelle_polemInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
 
 
 export type databases_v2_export_cours_d_eauSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -599,6 +649,8 @@ export type databases_v2_export_cours_d_eauSelect<ExtArgs extends runtime.Types.
   cours_d_eau?: boolean
   etat_ecologique?: boolean
   longueur?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
 
 export type databases_v2_export_cours_d_eauSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -617,6 +669,8 @@ export type databases_v2_export_cours_d_eauSelectCreateManyAndReturn<ExtArgs ext
   cours_d_eau?: boolean
   etat_ecologique?: boolean
   longueur?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
 
 export type databases_v2_export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -635,6 +689,8 @@ export type databases_v2_export_cours_d_eauSelectUpdateManyAndReturn<ExtArgs ext
   cours_d_eau?: boolean
   etat_ecologique?: boolean
   longueur?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }, ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
 
 export type databases_v2_export_cours_d_eauSelectScalar = {
@@ -653,9 +709,11 @@ export type databases_v2_export_cours_d_eauSelectScalar = {
   cours_d_eau?: boolean
   etat_ecologique?: boolean
   longueur?: boolean
+  code_polem?: boolean
+  libelle_polem?: boolean
 }
 
-export type databases_v2_export_cours_d_eauOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "cours_d_eau" | "etat_ecologique" | "longueur", ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
+export type databases_v2_export_cours_d_eauOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"index" | "code_geographique" | "libelle_geographique" | "epci" | "libelle_epci" | "departement" | "libelle_departement" | "region" | "ept" | "libelle_petr" | "code_pnr" | "libelle_pnr" | "cours_d_eau" | "etat_ecologique" | "longueur" | "code_polem" | "libelle_polem", ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
 
 export type $databases_v2_export_cours_d_eauPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "databases_v2_export_cours_d_eau"
@@ -676,6 +734,8 @@ export type $databases_v2_export_cours_d_eauPayload<ExtArgs extends runtime.Type
     cours_d_eau: string
     etat_ecologique: string | null
     longueur: number
+    code_polem: string[]
+    libelle_polem: string[]
   }, ExtArgs["result"]["databases_v2_export_cours_d_eau"]>
   composites: {}
 }
@@ -1114,6 +1174,8 @@ export interface databases_v2_export_cours_d_eauFieldRefs {
   readonly cours_d_eau: Prisma.FieldRef<"databases_v2_export_cours_d_eau", 'String'>
   readonly etat_ecologique: Prisma.FieldRef<"databases_v2_export_cours_d_eau", 'String'>
   readonly longueur: Prisma.FieldRef<"databases_v2_export_cours_d_eau", 'Float'>
+  readonly code_polem: Prisma.FieldRef<"databases_v2_export_cours_d_eau", 'String[]'>
+  readonly libelle_polem: Prisma.FieldRef<"databases_v2_export_cours_d_eau", 'String[]'>
 }
     
 
