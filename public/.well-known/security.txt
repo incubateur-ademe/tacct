@@ -1,0 +1,4 @@
+Contact: mailto:antoine.conegero.ext@ademe.fr
+Expires: 2027-11-24T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://tacct.ademe.fr/.well-known/security.txt

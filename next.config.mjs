@@ -175,6 +175,12 @@ const config = {
                 headers: [
                     { key: 'X-Robots-Tag', value: 'noindex, nofollow' }
                 ]
+            },
+            {
+                source: '/.well-known/security.txt',
+                headers: [
+                    { key: 'X-Robots-Tag', value: 'noindex, nofollow' }
+                ]
             }
         ];
     },
