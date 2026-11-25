@@ -99,7 +99,7 @@ export const QuestionProfil = ({
         <div style={{ marginTop: '0.875rem' }}>
           <ChampTexte
             label="Précisez votre profil"
-            placeholder="Ex. : particulier, association, agence d’urbanisme, université, etc."
+            placeholder="Ex. : ADEME, particulier, association, agence d’urbanisme, université, etc."
             value={profilAutre}
             onChange={onChangementProfilAutre}
             erreur={erreurProfilAutre}

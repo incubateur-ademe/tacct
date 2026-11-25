@@ -3,9 +3,9 @@ export const PROFILS = [
   { value: 'elu', label: 'Élu·e d’une collectivité' },
   { value: 'responsable', label: 'Responsable en collectivité' },
   { value: 'be', label: 'Bureau d’études' },
-  { value: 'entreprise', label: 'Entreprise' },
-  { value: 'admin', label: 'Administration centrale' },
+  { value: 'admin', label: 'Administration centrale de l’État' },
   { value: 'etat', label: 'DDT/DDTM/DREAL' },
+  { value: 'entreprise', label: 'Entreprise' },
   { value: 'autre', label: 'Autre' }
 ] as const;
 
