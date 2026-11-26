@@ -137,7 +137,7 @@ export const ConsommationEspacesNAFCharts = (props: {
             <div className={styles.dataWrapper}>{contenu}</div>
           )
         ) : (
-          <div className='p-6 flex flex-col justify-center h-full'>
+          <div className='p-6 flex flex-col justify-center items-center h-full'>
             <DataNotFoundForGraph image={DataNotFound} />
           </div>
         )

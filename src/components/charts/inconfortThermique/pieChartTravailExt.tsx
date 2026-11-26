@@ -29,7 +29,7 @@ export const PieChartTravailExt = ({ graphData, travailExterieurTerritoire }: Pr
           tooltip={({ datum }) => simplePieChartCountTooltip({ datum, arrondi: 0 })}
         />
         : (
-          <div className='p-1 flex flex-row justify-center'>
+          <div className='p-10 flex flex-row justify-center'>
             <DataNotFoundForGraph image={travailExterieurTerritoire.length === 0 ? DataNotFound : ZeroData} />
           </div>
         )

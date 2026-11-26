@@ -65,6 +65,11 @@ export const GrandAge75 = ({
           ? grandAgeMapped.filter((e) => e.epci === code)
           : grandAgeMapped;
 
+  const donneesReferencees =
+    sumProperty(grandAgeTerritoire, 'to_75_sum_2022') +
+      sumProperty(grandAgeTerritoire, 'under_4_sum_2022') +
+      sumProperty(grandAgeTerritoire, 'over_75_sum_2022') >
+    0;
   const yData = GrandAge75LineChartYData(grandAgeTerritoire);
   const xData = [
     '1968',
@@ -135,7 +140,7 @@ export const GrandAge75 = ({
               arrondi={2}
               ariaLabel="Pourcentage des personnes âgées de plus de 75 ans"
             />
-            {!Object.values(yData).slice(0, -2).includes('NaN') && (
+            {donneesReferencees && (
               <>
                 <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                   En 2022,{' '}
@@ -181,7 +186,7 @@ export const GrandAge75 = ({
                 borderRadius: '1rem 0 0 0'
               }}
             >
-              {!Object.values(yData).slice(0, -2).includes('NaN') ? (
+              {donneesReferencees ? (
                 <OngletsGraphiqueCarte
                   ongletGraphique="Évolution"
                   carte={carte}
@@ -242,7 +247,7 @@ export const GrandAge75 = ({
               />
             }
             source="INSEE, 2024 (consultée en février 2026)"
-            condition={!Object.values(yData).slice(0, -2).includes('NaN')}
+            condition={donneesReferencees}
           />
         </div>
       </div>

@@ -108,7 +108,7 @@ export const EmploisEnExterieur = ({
               arrondi={1}
               ariaLabel="Pourcentage de l'emploi en extérieur"
             />
-            {sums ? (
+            {sumAllCount > 0 ? (
               <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
                 Les métiers physiques en extérieur, comme ceux du BTP et de
                 l’agriculture, sont les plus exposés à la chaleur. Sur votre
@@ -118,7 +118,10 @@ export const EmploisEnExterieur = ({
                 personnes.
               </Body>
             ) : (
-              ''
+              <Body weight="bold" style={{ color: 'var(--gris-dark)' }}>
+                Il n’y a pas de données référencées sur le territoire que vous
+                avez sélectionné
+              </Body>
             )}
             <CustomTooltipNouveauParcours title={travailExterieurTooltipText} />
             <TravailExterieurText />

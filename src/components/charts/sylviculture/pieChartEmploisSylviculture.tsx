@@ -63,7 +63,7 @@ export const PieChartEmploisSylviculture = ({
       </div>
     </div>
   ) : (
-    <div className="p-1 flex flex-row justify-center">
+    <div className="p-1 flex flex-row justify-center items-center flex-1">
       <DataNotFoundForGraph image={donneesReferencees ? ZeroData : DataNotFound} />
     </div>
   );
