@@ -847,7 +847,14 @@ export const All_pageview_rawScalarFieldEnum = {
   session_id: 'session_id',
   current_url: 'current_url',
   person_id: 'person_id',
-  ingested_at: 'ingested_at'
+  ingested_at: 'ingested_at',
+  prev_pageview_pathname: 'prev_pageview_pathname',
+  prev_pathname: 'prev_pathname',
+  prev_url: 'prev_url',
+  referring_domain: 'referring_domain',
+  posthog_user: 'posthog_user',
+  est_connecte: 'est_connecte',
+  user_id: 'user_id'
 } as const
 
 export type All_pageview_rawScalarFieldEnum = (typeof All_pageview_rawScalarFieldEnum)[keyof typeof All_pageview_rawScalarFieldEnum]

@@ -42,6 +42,13 @@ export type All_pageview_rawMinAggregateOutputType = {
   current_url: string | null
   person_id: string | null
   ingested_at: Date | null
+  prev_pageview_pathname: string | null
+  prev_pathname: string | null
+  prev_url: string | null
+  referring_domain: string | null
+  posthog_user: string | null
+  est_connecte: string | null
+  user_id: string | null
 }
 
 export type All_pageview_rawMaxAggregateOutputType = {
@@ -52,6 +59,13 @@ export type All_pageview_rawMaxAggregateOutputType = {
   current_url: string | null
   person_id: string | null
   ingested_at: Date | null
+  prev_pageview_pathname: string | null
+  prev_pathname: string | null
+  prev_url: string | null
+  referring_domain: string | null
+  posthog_user: string | null
+  est_connecte: string | null
+  user_id: string | null
 }
 
 export type All_pageview_rawCountAggregateOutputType = {
@@ -63,6 +77,13 @@ export type All_pageview_rawCountAggregateOutputType = {
   current_url: number
   person_id: number
   ingested_at: number
+  prev_pageview_pathname: number
+  prev_pathname: number
+  prev_url: number
+  referring_domain: number
+  posthog_user: number
+  est_connecte: number
+  user_id: number
   _all: number
 }
 
@@ -83,6 +104,13 @@ export type All_pageview_rawMinAggregateInputType = {
   current_url?: true
   person_id?: true
   ingested_at?: true
+  prev_pageview_pathname?: true
+  prev_pathname?: true
+  prev_url?: true
+  referring_domain?: true
+  posthog_user?: true
+  est_connecte?: true
+  user_id?: true
 }
 
 export type All_pageview_rawMaxAggregateInputType = {
@@ -93,6 +121,13 @@ export type All_pageview_rawMaxAggregateInputType = {
   current_url?: true
   person_id?: true
   ingested_at?: true
+  prev_pageview_pathname?: true
+  prev_pathname?: true
+  prev_url?: true
+  referring_domain?: true
+  posthog_user?: true
+  est_connecte?: true
+  user_id?: true
 }
 
 export type All_pageview_rawCountAggregateInputType = {
@@ -104,6 +139,13 @@ export type All_pageview_rawCountAggregateInputType = {
   current_url?: true
   person_id?: true
   ingested_at?: true
+  prev_pageview_pathname?: true
+  prev_pathname?: true
+  prev_url?: true
+  referring_domain?: true
+  posthog_user?: true
+  est_connecte?: true
+  user_id?: true
   _all?: true
 }
 
@@ -202,6 +244,13 @@ export type All_pageview_rawGroupByOutputType = {
   current_url: string | null
   person_id: string | null
   ingested_at: Date
+  prev_pageview_pathname: string | null
+  prev_pathname: string | null
+  prev_url: string | null
+  referring_domain: string | null
+  posthog_user: string | null
+  est_connecte: string | null
+  user_id: string | null
   _count: All_pageview_rawCountAggregateOutputType | null
   _avg: All_pageview_rawAvgAggregateOutputType | null
   _sum: All_pageview_rawSumAggregateOutputType | null
@@ -236,6 +285,13 @@ export type all_pageview_rawWhereInput = {
   current_url?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
   person_id?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
   ingested_at?: Prisma.DateTimeFilter<"all_pageview_raw"> | Date | string
+  prev_pageview_pathname?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  prev_pathname?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  prev_url?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  referring_domain?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  posthog_user?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  est_connecte?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  user_id?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
 }
 
 export type all_pageview_rawOrderByWithRelationInput = {
@@ -247,6 +303,13 @@ export type all_pageview_rawOrderByWithRelationInput = {
   current_url?: Prisma.SortOrderInput | Prisma.SortOrder
   person_id?: Prisma.SortOrderInput | Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  prev_pageview_pathname?: Prisma.SortOrderInput | Prisma.SortOrder
+  prev_pathname?: Prisma.SortOrderInput | Prisma.SortOrder
+  prev_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  referring_domain?: Prisma.SortOrderInput | Prisma.SortOrder
+  posthog_user?: Prisma.SortOrderInput | Prisma.SortOrder
+  est_connecte?: Prisma.SortOrderInput | Prisma.SortOrder
+  user_id?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type all_pageview_rawWhereUniqueInput = Prisma.AtLeast<{
@@ -262,6 +325,13 @@ export type all_pageview_rawWhereUniqueInput = Prisma.AtLeast<{
   current_url?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
   person_id?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
   ingested_at?: Prisma.DateTimeFilter<"all_pageview_raw"> | Date | string
+  prev_pageview_pathname?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  prev_pathname?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  prev_url?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  referring_domain?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  posthog_user?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  est_connecte?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
+  user_id?: Prisma.StringNullableFilter<"all_pageview_raw"> | string | null
 }, "id" | "event_timestamp_distinct_id_session_id_current_url_person_id">
 
 export type all_pageview_rawOrderByWithAggregationInput = {
@@ -273,6 +343,13 @@ export type all_pageview_rawOrderByWithAggregationInput = {
   current_url?: Prisma.SortOrderInput | Prisma.SortOrder
   person_id?: Prisma.SortOrderInput | Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  prev_pageview_pathname?: Prisma.SortOrderInput | Prisma.SortOrder
+  prev_pathname?: Prisma.SortOrderInput | Prisma.SortOrder
+  prev_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  referring_domain?: Prisma.SortOrderInput | Prisma.SortOrder
+  posthog_user?: Prisma.SortOrderInput | Prisma.SortOrder
+  est_connecte?: Prisma.SortOrderInput | Prisma.SortOrder
+  user_id?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.all_pageview_rawCountOrderByAggregateInput
   _avg?: Prisma.all_pageview_rawAvgOrderByAggregateInput
   _max?: Prisma.all_pageview_rawMaxOrderByAggregateInput
@@ -292,6 +369,13 @@ export type all_pageview_rawScalarWhereWithAggregatesInput = {
   current_url?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
   person_id?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
   ingested_at?: Prisma.DateTimeWithAggregatesFilter<"all_pageview_raw"> | Date | string
+  prev_pageview_pathname?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  prev_pathname?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  prev_url?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  referring_domain?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  posthog_user?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  est_connecte?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
+  user_id?: Prisma.StringNullableWithAggregatesFilter<"all_pageview_raw"> | string | null
 }
 
 export type all_pageview_rawCreateInput = {
@@ -303,6 +387,13 @@ export type all_pageview_rawCreateInput = {
   current_url?: string | null
   person_id?: string | null
   ingested_at?: Date | string
+  prev_pageview_pathname?: string | null
+  prev_pathname?: string | null
+  prev_url?: string | null
+  referring_domain?: string | null
+  posthog_user?: string | null
+  est_connecte?: string | null
+  user_id?: string | null
 }
 
 export type all_pageview_rawUncheckedCreateInput = {
@@ -314,6 +405,13 @@ export type all_pageview_rawUncheckedCreateInput = {
   current_url?: string | null
   person_id?: string | null
   ingested_at?: Date | string
+  prev_pageview_pathname?: string | null
+  prev_pathname?: string | null
+  prev_url?: string | null
+  referring_domain?: string | null
+  posthog_user?: string | null
+  est_connecte?: string | null
+  user_id?: string | null
 }
 
 export type all_pageview_rawUpdateInput = {
@@ -325,6 +423,13 @@ export type all_pageview_rawUpdateInput = {
   current_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   person_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prev_pageview_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referring_domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  posthog_user?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  est_connecte?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type all_pageview_rawUncheckedUpdateInput = {
@@ -336,6 +441,13 @@ export type all_pageview_rawUncheckedUpdateInput = {
   current_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   person_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prev_pageview_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referring_domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  posthog_user?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  est_connecte?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type all_pageview_rawCreateManyInput = {
@@ -347,6 +459,13 @@ export type all_pageview_rawCreateManyInput = {
   current_url?: string | null
   person_id?: string | null
   ingested_at?: Date | string
+  prev_pageview_pathname?: string | null
+  prev_pathname?: string | null
+  prev_url?: string | null
+  referring_domain?: string | null
+  posthog_user?: string | null
+  est_connecte?: string | null
+  user_id?: string | null
 }
 
 export type all_pageview_rawUpdateManyMutationInput = {
@@ -358,6 +477,13 @@ export type all_pageview_rawUpdateManyMutationInput = {
   current_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   person_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prev_pageview_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referring_domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  posthog_user?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  est_connecte?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type all_pageview_rawUncheckedUpdateManyInput = {
@@ -369,6 +495,13 @@ export type all_pageview_rawUncheckedUpdateManyInput = {
   current_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   person_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ingested_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prev_pageview_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_pathname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  prev_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  referring_domain?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  posthog_user?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  est_connecte?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  user_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type all_pageview_rawEvent_timestampDistinct_idSession_idCurrent_urlPerson_idCompoundUniqueInput = {
@@ -388,6 +521,13 @@ export type all_pageview_rawCountOrderByAggregateInput = {
   current_url?: Prisma.SortOrder
   person_id?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  prev_pageview_pathname?: Prisma.SortOrder
+  prev_pathname?: Prisma.SortOrder
+  prev_url?: Prisma.SortOrder
+  referring_domain?: Prisma.SortOrder
+  posthog_user?: Prisma.SortOrder
+  est_connecte?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
 }
 
 export type all_pageview_rawAvgOrderByAggregateInput = {
@@ -402,6 +542,13 @@ export type all_pageview_rawMaxOrderByAggregateInput = {
   current_url?: Prisma.SortOrder
   person_id?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  prev_pageview_pathname?: Prisma.SortOrder
+  prev_pathname?: Prisma.SortOrder
+  prev_url?: Prisma.SortOrder
+  referring_domain?: Prisma.SortOrder
+  posthog_user?: Prisma.SortOrder
+  est_connecte?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
 }
 
 export type all_pageview_rawMinOrderByAggregateInput = {
@@ -412,6 +559,13 @@ export type all_pageview_rawMinOrderByAggregateInput = {
   current_url?: Prisma.SortOrder
   person_id?: Prisma.SortOrder
   ingested_at?: Prisma.SortOrder
+  prev_pageview_pathname?: Prisma.SortOrder
+  prev_pathname?: Prisma.SortOrder
+  prev_url?: Prisma.SortOrder
+  referring_domain?: Prisma.SortOrder
+  posthog_user?: Prisma.SortOrder
+  est_connecte?: Prisma.SortOrder
+  user_id?: Prisma.SortOrder
 }
 
 export type all_pageview_rawSumOrderByAggregateInput = {
@@ -429,6 +583,13 @@ export type all_pageview_rawSelect<ExtArgs extends runtime.Types.Extensions.Inte
   current_url?: boolean
   person_id?: boolean
   ingested_at?: boolean
+  prev_pageview_pathname?: boolean
+  prev_pathname?: boolean
+  prev_url?: boolean
+  referring_domain?: boolean
+  posthog_user?: boolean
+  est_connecte?: boolean
+  user_id?: boolean
 }, ExtArgs["result"]["all_pageview_raw"]>
 
 export type all_pageview_rawSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -440,6 +601,13 @@ export type all_pageview_rawSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   current_url?: boolean
   person_id?: boolean
   ingested_at?: boolean
+  prev_pageview_pathname?: boolean
+  prev_pathname?: boolean
+  prev_url?: boolean
+  referring_domain?: boolean
+  posthog_user?: boolean
+  est_connecte?: boolean
+  user_id?: boolean
 }, ExtArgs["result"]["all_pageview_raw"]>
 
 export type all_pageview_rawSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -451,6 +619,13 @@ export type all_pageview_rawSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   current_url?: boolean
   person_id?: boolean
   ingested_at?: boolean
+  prev_pageview_pathname?: boolean
+  prev_pathname?: boolean
+  prev_url?: boolean
+  referring_domain?: boolean
+  posthog_user?: boolean
+  est_connecte?: boolean
+  user_id?: boolean
 }, ExtArgs["result"]["all_pageview_raw"]>
 
 export type all_pageview_rawSelectScalar = {
@@ -462,9 +637,16 @@ export type all_pageview_rawSelectScalar = {
   current_url?: boolean
   person_id?: boolean
   ingested_at?: boolean
+  prev_pageview_pathname?: boolean
+  prev_pathname?: boolean
+  prev_url?: boolean
+  referring_domain?: boolean
+  posthog_user?: boolean
+  est_connecte?: boolean
+  user_id?: boolean
 }
 
-export type all_pageview_rawOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "event_timestamp" | "properties" | "distinct_id" | "session_id" | "current_url" | "person_id" | "ingested_at", ExtArgs["result"]["all_pageview_raw"]>
+export type all_pageview_rawOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "event_timestamp" | "properties" | "distinct_id" | "session_id" | "current_url" | "person_id" | "ingested_at" | "prev_pageview_pathname" | "prev_pathname" | "prev_url" | "referring_domain" | "posthog_user" | "est_connecte" | "user_id", ExtArgs["result"]["all_pageview_raw"]>
 
 export type $all_pageview_rawPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "all_pageview_raw"
@@ -478,6 +660,13 @@ export type $all_pageview_rawPayload<ExtArgs extends runtime.Types.Extensions.In
     current_url: string | null
     person_id: string | null
     ingested_at: Date
+    prev_pageview_pathname: string | null
+    prev_pathname: string | null
+    prev_url: string | null
+    referring_domain: string | null
+    posthog_user: string | null
+    est_connecte: string | null
+    user_id: string | null
   }, ExtArgs["result"]["all_pageview_raw"]>
   composites: {}
 }
@@ -909,6 +1098,13 @@ export interface all_pageview_rawFieldRefs {
   readonly current_url: Prisma.FieldRef<"all_pageview_raw", 'String'>
   readonly person_id: Prisma.FieldRef<"all_pageview_raw", 'String'>
   readonly ingested_at: Prisma.FieldRef<"all_pageview_raw", 'DateTime'>
+  readonly prev_pageview_pathname: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly prev_pathname: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly prev_url: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly referring_domain: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly posthog_user: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly est_connecte: Prisma.FieldRef<"all_pageview_raw", 'String'>
+  readonly user_id: Prisma.FieldRef<"all_pageview_raw", 'String'>
 }
     
 

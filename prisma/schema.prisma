@@ -832,14 +832,21 @@ model all_autocapture_raw {
 }
 
 model all_pageview_raw {
-  id              BigInt   @id @default(autoincrement())
-  event_timestamp DateTime @db.Timestamptz(6)
-  properties      Json?
-  distinct_id     String?
-  session_id      String?
-  current_url     String?
-  person_id       String?
-  ingested_at     DateTime @default(now()) @db.Timestamptz(6)
+  id                     BigInt   @id @default(autoincrement())
+  event_timestamp        DateTime @db.Timestamptz(6)
+  properties             Json?
+  distinct_id            String?
+  session_id             String?
+  current_url            String?
+  person_id              String?
+  ingested_at            DateTime @default(now()) @db.Timestamptz(6)
+  prev_pageview_pathname String?  @default(dbgenerated("(properties ->> '$prev_pageview_pathname'::text)"))
+  prev_pathname          String?  @default(dbgenerated("(properties ->> '$prev_pathname'::text)"))
+  prev_url               String?  @default(dbgenerated("(properties ->> '$prev_url'::text)"))
+  referring_domain       String?  @default(dbgenerated("(properties ->> '$referring_domain'::text)"))
+  posthog_user           String?  @default(dbgenerated("COALESCE((properties ->> 'user'::text), (properties ->> 'User'::text))"))
+  est_connecte           String?  @default(dbgenerated("(properties ->> 'est_connecte'::text)"))
+  user_id                String?  @default(dbgenerated("(properties ->> 'user_id'::text)"))
 
   @@unique([event_timestamp, distinct_id, session_id, current_url, person_id], map: "uq_all_pageview_raw_natural")
   @@schema("analytics")

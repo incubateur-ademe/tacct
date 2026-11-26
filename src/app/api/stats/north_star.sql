@@ -5,7 +5,9 @@ WITH base AS (
     person_id,
     event_timestamp,
     current_url,
-    properties,
+    prev_pageview_pathname,
+    prev_pathname,
+    prev_url,
     lower(split_part(regexp_replace(current_url, '^https?://[^/]+', ''), '?', 1)) AS raw_path,
     split_part(regexp_replace(current_url, '^https?://[^/]+', ''), '?', 2) AS qs
   FROM analytics.all_pageview_raw
@@ -17,7 +19,8 @@ WITH base AS (
 params AS (
   -- 4) Pivot des clés utiles
   SELECT
-    b.session_id, b.person_id, b.event_timestamp, b.current_url, b.properties,
+    b.session_id, b.person_id, b.event_timestamp, b.current_url,
+    b.prev_pageview_pathname, b.prev_pathname, b.prev_url,
     regexp_replace(b.raw_path, '/+$', '') AS path_norm,
     p.p_type, p.p_code, p.p_libelle, p.p_thematique, p.p_codgeo, p.p_codepci
   FROM base b
@@ -51,9 +54,9 @@ normalized AS (
     regexp_replace(
       lower(
         COALESCE(
-          properties->>'$prev_pageview_pathname',
-          properties->>'$prev_pathname',
-          NULLIF(split_part(regexp_replace(COALESCE(properties->>'$prev_url',''), '^https?://[^/]+', ''), '?', 1), '')
+          prev_pageview_pathname,
+          prev_pathname,
+          NULLIF(split_part(regexp_replace(COALESCE(prev_url,''), '^https?://[^/]+', ''), '?', 1), '')
         )
       ),
       '/+$', ''
