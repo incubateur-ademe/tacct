@@ -123,7 +123,21 @@ export const ModelName = {
   token: 'token',
   user: 'user',
   user_study: 'user_study',
-  user_besoin: 'user_besoin'
+  user_besoin: 'user_besoin',
+  all_autocapture_raw: 'all_autocapture_raw',
+  all_pageview_raw: 'all_pageview_raw',
+  baserow_evenements: 'baserow_evenements',
+  baserow_territoires: 'baserow_territoires',
+  boutons_export_raw: 'boutons_export_raw',
+  boutons_homepage: 'boutons_homepage',
+  couverture_population: 'couverture_population',
+  north_star_metric: 'north_star_metric',
+  ressources_consultees: 'ressources_consultees',
+  tacctoscope_ressources: 'tacctoscope_ressources',
+  thematique: 'thematique',
+  emplois_sylviculture: 'emplois_sylviculture',
+  forets_communales: 'forets_communales',
+  stations_ski: 'stations_ski'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -661,7 +675,9 @@ export const Databases_v2_table_communeScalarFieldEnum = {
   couverture_lcz: 'couverture_lcz',
   aires_appellations_controlees_nom: 'aires_appellations_controlees_nom',
   aires_appellations_controlees_signe: 'aires_appellations_controlees_signe',
-  projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux'
+  projets_alimentaires_territoriaux: 'projets_alimentaires_territoriaux',
+  surface_commune_ha: 'surface_commune_ha',
+  surface_foret_ha: 'surface_foret_ha'
 } as const
 
 export type Databases_v2_table_communeScalarFieldEnum = (typeof Databases_v2_table_communeScalarFieldEnum)[keyof typeof Databases_v2_table_communeScalarFieldEnum]
@@ -1563,12 +1579,250 @@ export const User_besoinScalarFieldEnum = {
 export type User_besoinScalarFieldEnum = (typeof User_besoinScalarFieldEnum)[keyof typeof User_besoinScalarFieldEnum]
 
 
+export const All_autocapture_rawScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  current_url: 'current_url',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+} as const
+
+export type All_autocapture_rawScalarFieldEnum = (typeof All_autocapture_rawScalarFieldEnum)[keyof typeof All_autocapture_rawScalarFieldEnum]
+
+
+export const All_pageview_rawScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  current_url: 'current_url',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+} as const
+
+export type All_pageview_rawScalarFieldEnum = (typeof All_pageview_rawScalarFieldEnum)[keyof typeof All_pageview_rawScalarFieldEnum]
+
+
+export const Baserow_evenementsScalarFieldEnum = {
+  id: 'id',
+  ordre: 'ordre',
+  nom: 'nom',
+  date: 'date',
+  type: 'type',
+  qui_anime_evenement: 'qui_anime_evenement',
+  compte_rendu: 'compte_rendu',
+  nom_participants: 'nom_participants',
+  nom_territoires: 'nom_territoires',
+  propos_nom_evenement: 'propos_nom_evenement',
+  campagne_test_utilisateur: 'campagne_test_utilisateur',
+  champs_rapporte: 'champs_rapporte',
+  fichier: 'fichier',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Baserow_evenementsScalarFieldEnum = (typeof Baserow_evenementsScalarFieldEnum)[keyof typeof Baserow_evenementsScalarFieldEnum]
+
+
+export const Baserow_territoiresScalarFieldEnum = {
+  id: 'id',
+  ordre: 'ordre',
+  nom_territoire: 'nom_territoire',
+  notes_ouvertes: 'notes_ouvertes',
+  typologie_territoire: 'typologie_territoire',
+  thematique_prioritaire: 'thematique_prioritaire',
+  be: 'be',
+  soumis_a_pcaet: 'soumis_a_pcaet',
+  demarches_et_programmes: 'demarches_et_programmes',
+  documents_de_planification: 'documents_de_planification',
+  avancee_sur_le_ddv: 'avancee_sur_le_ddv',
+  avancee_sur_la_strategie: 'avancee_sur_la_strategie',
+  suivi_evaluation: 'suivi_evaluation',
+  date_validation: 'date_validation',
+  date_revision_estimee: 'date_revision_estimee',
+  propos: 'propos',
+  attente_session_accueil: 'attente_session_accueil',
+  role_be: 'role_be',
+  cdm: 'cdm',
+  siren: 'siren',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Baserow_territoiresScalarFieldEnum = (typeof Baserow_territoiresScalarFieldEnum)[keyof typeof Baserow_territoiresScalarFieldEnum]
+
+
+export const Boutons_export_rawScalarFieldEnum = {
+  id: 'id',
+  event: 'event',
+  event_timestamp: 'event_timestamp',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  thematique: 'thematique',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Boutons_export_rawScalarFieldEnum = (typeof Boutons_export_rawScalarFieldEnum)[keyof typeof Boutons_export_rawScalarFieldEnum]
+
+
+export const Boutons_homepageScalarFieldEnum = {
+  id: 'id',
+  event: 'event',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Boutons_homepageScalarFieldEnum = (typeof Boutons_homepageScalarFieldEnum)[keyof typeof Boutons_homepageScalarFieldEnum]
+
+
+export const Couverture_populationScalarFieldEnum = {
+  id: 'id',
+  date: 'date',
+  population: 'population'
+} as const
+
+export type Couverture_populationScalarFieldEnum = (typeof Couverture_populationScalarFieldEnum)[keyof typeof Couverture_populationScalarFieldEnum]
+
+
+export const North_star_metricScalarFieldEnum = {
+  value: 'value',
+  date: 'date',
+  pk: 'pk'
+} as const
+
+export type North_star_metricScalarFieldEnum = (typeof North_star_metricScalarFieldEnum)[keyof typeof North_star_metricScalarFieldEnum]
+
+
+export const Ressources_consulteesScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ressource: 'ressource',
+  ingested_at: 'ingested_at'
+} as const
+
+export type Ressources_consulteesScalarFieldEnum = (typeof Ressources_consulteesScalarFieldEnum)[keyof typeof Ressources_consulteesScalarFieldEnum]
+
+
+export const Tacctoscope_ressourcesScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  ressource_url: 'ressource_url',
+  ressource_titre: 'ressource_titre',
+  ressource_tag: 'ressource_tag',
+  ingested_at: 'ingested_at',
+  event: 'event'
+} as const
+
+export type Tacctoscope_ressourcesScalarFieldEnum = (typeof Tacctoscope_ressourcesScalarFieldEnum)[keyof typeof Tacctoscope_ressourcesScalarFieldEnum]
+
+
+export const ThematiqueScalarFieldEnum = {
+  id: 'id',
+  event_timestamp: 'event_timestamp',
+  properties: 'properties',
+  distinct_id: 'distinct_id',
+  session_id: 'session_id',
+  person_id: 'person_id',
+  thematique: 'thematique',
+  ingested_at: 'ingested_at'
+} as const
+
+export type ThematiqueScalarFieldEnum = (typeof ThematiqueScalarFieldEnum)[keyof typeof ThematiqueScalarFieldEnum]
+
+
+export const Emplois_sylvicultureScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  postes_sylviculture: 'postes_sylviculture',
+  postes_travail_bois: 'postes_travail_bois',
+  postes_total: 'postes_total'
+} as const
+
+export type Emplois_sylvicultureScalarFieldEnum = (typeof Emplois_sylvicultureScalarFieldEnum)[keyof typeof Emplois_sylvicultureScalarFieldEnum]
+
+
+export const Forets_communalesScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  surface_foret_possedee_ha: 'surface_foret_possedee_ha',
+  surface_foret_possedee_sur_territoire_ha: 'surface_foret_possedee_sur_territoire_ha',
+  surface_commune_ha: 'surface_commune_ha'
+} as const
+
+export type Forets_communalesScalarFieldEnum = (typeof Forets_communalesScalarFieldEnum)[keyof typeof Forets_communalesScalarFieldEnum]
+
+
+export const Stations_skiScalarFieldEnum = {
+  index: 'index',
+  code_geographique: 'code_geographique',
+  libelle_geographique: 'libelle_geographique',
+  epci: 'epci',
+  libelle_epci: 'libelle_epci',
+  departement: 'departement',
+  libelle_departement: 'libelle_departement',
+  region: 'region',
+  ept: 'ept',
+  libelle_petr: 'libelle_petr',
+  code_pnr: 'code_pnr',
+  libelle_pnr: 'libelle_pnr',
+  stations_id: 'stations_id',
+  stations_nom: 'stations_nom',
+  stations_moment_puissance: 'stations_moment_puissance',
+  stations_taille: 'stations_taille',
+  stations_age_parc: 'stations_age_parc',
+  stations_part_puissance_30_ans: 'stations_part_puissance_30_ans'
+} as const
+
+export type Stations_skiScalarFieldEnum = (typeof Stations_skiScalarFieldEnum)[keyof typeof Stations_skiScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -1585,4 +1839,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

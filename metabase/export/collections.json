@@ -1,0 +1,58 @@
+[
+  {
+    "id": "root",
+    "name": "Nos analyses",
+    "location": null,
+    "personnelle": false,
+    "archived": false
+  },
+  {
+    "id": 4,
+    "name": "Collection personnelle",
+    "location": "/",
+    "personnelle": true,
+    "archived": false
+  },
+  {
+    "id": 5,
+    "name": "Collection personnelle",
+    "location": "/",
+    "personnelle": true,
+    "archived": false
+  },
+  {
+    "id": 8,
+    "name": "Collection personnelle",
+    "location": "/",
+    "personnelle": true,
+    "archived": false
+  },
+  {
+    "id": 9,
+    "name": "Collection personnelle",
+    "location": "/",
+    "personnelle": true,
+    "archived": false
+  },
+  {
+    "id": 6,
+    "name": "Collection personnelle",
+    "location": "/",
+    "personnelle": true,
+    "archived": false
+  },
+  {
+    "id": 10,
+    "name": "Espace connecté",
+    "location": "/",
+    "personnelle": false,
+    "archived": false
+  },
+  {
+    "id": 7,
+    "name": "TACCT métriques",
+    "location": "/",
+    "personnelle": false,
+    "archived": false
+  }
+]

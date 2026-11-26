@@ -1,0 +1,2049 @@
+[
+  {
+    "id": 3,
+    "name": "Dashboard ",
+    "description": null,
+    "collection_id": null,
+    "archived": false,
+    "enable_embedding": false,
+    "embedding_params": null,
+    "parameters": [
+      {
+        "name": "Granularité",
+        "slug": "granularit%C3%A9",
+        "id": "adb36f17",
+        "type": "temporal-unit",
+        "sectionId": "temporal-unit",
+        "temporal_units": [
+          "day",
+          "week",
+          "month",
+          "year",
+          "day-of-week",
+          "day-of-month",
+          "day-of-year",
+          "week-of-year",
+          "month-of-year"
+        ],
+        "default": "month",
+        "required": true
+      },
+      {
+        "name": "Filtre NSM",
+        "slug": "filtre_nsm",
+        "id": "cfff5edb",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre ressources",
+        "slug": "filtre_ressources",
+        "id": "1abc096a",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      }
+    ],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 41,
+        "card_id": 46,
+        "dashboard_tab_id": null,
+        "row": 6,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 42,
+        "card_id": 47,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 45,
+        "card_id": 51,
+        "dashboard_tab_id": null,
+        "row": 51,
+        "col": 12,
+        "size_x": 6,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 46,
+        "card_id": 50,
+        "dashboard_tab_id": null,
+        "row": 12,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 47,
+        "card_id": 52,
+        "dashboard_tab_id": null,
+        "row": 21,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 48,
+        "card_id": 53,
+        "dashboard_tab_id": null,
+        "row": 48,
+        "col": 18,
+        "size_x": 6,
+        "size_y": 3,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 50,
+        "card_id": 54,
+        "dashboard_tab_id": null,
+        "row": 21,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 51,
+        "card_id": 55,
+        "dashboard_tab_id": null,
+        "row": 30,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 10,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 52,
+        "card_id": 56,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 0,
+        "size_x": 6,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "cfff5edb",
+            "card_id": 56,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 53,
+        "card_id": 57,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 6,
+        "size_x": 6,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 54,
+        "card_id": 58,
+        "dashboard_tab_id": null,
+        "row": 40,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 55,
+        "card_id": 59,
+        "dashboard_tab_id": null,
+        "row": 55,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 56,
+        "card_id": 60,
+        "dashboard_tab_id": null,
+        "row": 64,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 12,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "1abc096a",
+            "card_id": 60,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 57,
+        "card_id": 61,
+        "dashboard_tab_id": null,
+        "row": 76,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 71,
+        "card_id": 63,
+        "dashboard_tab_id": null,
+        "row": 85,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 72,
+        "card_id": 64,
+        "dashboard_tab_id": null,
+        "row": 93,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 7,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 73,
+        "card_id": 66,
+        "dashboard_tab_id": null,
+        "row": 48,
+        "col": 12,
+        "size_x": 6,
+        "size_y": 3,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 82,
+        "card_id": 67,
+        "dashboard_tab_id": null,
+        "row": 48,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 7,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 111,
+        "card_id": 69,
+        "dashboard_tab_id": null,
+        "row": 100,
+        "col": 0,
+        "size_x": 8,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "adb36f17",
+            "card_id": 69,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "grain"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 130,
+        "card_id": 73,
+        "dashboard_tab_id": null,
+        "row": 100,
+        "col": 8,
+        "size_x": 6,
+        "size_y": 3,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 131,
+        "card_id": 74,
+        "dashboard_tab_id": null,
+        "row": 103,
+        "col": 8,
+        "size_x": 16,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 135,
+        "card_id": 75,
+        "dashboard_tab_id": null,
+        "row": 109,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 139,
+        "card_id": 78,
+        "dashboard_tab_id": null,
+        "row": 107,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Facili-TACCT",
+    "description": null,
+    "collection_id": 6,
+    "archived": false,
+    "enable_embedding": false,
+    "embedding_params": null,
+    "parameters": [],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 36,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 8,
+        "col": 9,
+        "size_x": 12,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Facili-TACCT intègre désormais 6 types de territoires différents : \nles Communes, les EPCI (Établissement public de coopération intercommunale), les PETR (Pôle d’équilibre territorial et rural), les PNR (Parc naturel régional), les EPT (Établissement public territorial) et les Départements.",
+          "dashcard.background": true
+        }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Page comptes utilisateur",
+    "description": null,
+    "collection_id": 10,
+    "archived": false,
+    "enable_embedding": true,
+    "embedding_params": {
+      "filtre_usages": "enabled",
+      "filtre_comptes": "enabled",
+      "filtre_d%C3%A9tails_comptes": "enabled",
+      "filtre_podium_les_plus_coch%C3%A9s": "enabled",
+      "filtre_podium_prio": "enabled"
+    },
+    "parameters": [
+      {
+        "name": "Filtre usages",
+        "slug": "filtre_usages",
+        "id": "13f64608",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre comptes",
+        "slug": "filtre_comptes",
+        "id": "476547a6",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre détails comptes",
+        "slug": "filtre_d%C3%A9tails_comptes",
+        "id": "55cb92bd",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre podium les plus cochés",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "slug": "filtre_podium_les_plus_coch%C3%A9s",
+        "id": "799e13ba"
+      },
+      {
+        "name": "Filtre podium prio",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "slug": "filtre_podium_prio",
+        "id": "9cf9b760"
+      }
+    ],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 144,
+        "card_id": 80,
+        "dashboard_tab_id": null,
+        "row": 20,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 11,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "13f64608",
+            "card_id": 80,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 145,
+        "card_id": 81,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 15,
+        "size_x": 9,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "55cb92bd",
+            "card_id": 81,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 164,
+        "card_id": 103,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 0,
+        "size_x": 15,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 166,
+        "card_id": 93,
+        "dashboard_tab_id": null,
+        "row": 14,
+        "col": 0,
+        "size_x": 16,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "9cf9b760",
+            "card_id": 93,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 167,
+        "card_id": 90,
+        "dashboard_tab_id": null,
+        "row": 8,
+        "col": 0,
+        "size_x": 16,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "799e13ba",
+            "card_id": 90,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Page stats privée",
+    "description": "Page seulement présente sur l'environnement sécurisé du site",
+    "collection_id": 7,
+    "archived": false,
+    "enable_embedding": true,
+    "embedding_params": {
+      "granularit%C3%A9": "enabled",
+      "p%C3%A9riode_nsm": "enabled",
+      "filtre_v%2Ft": "enabled",
+      "filtre_territoire": "enabled"
+    },
+    "parameters": [
+      {
+        "name": "Granularité",
+        "slug": "granularit%C3%A9",
+        "id": "45569890",
+        "type": "temporal-unit",
+        "sectionId": "temporal-unit",
+        "temporal_units": [
+          "day",
+          "week",
+          "month",
+          "year",
+          "day-of-week",
+          "day-of-month",
+          "day-of-year",
+          "week-of-year",
+          "month-of-year"
+        ],
+        "default": "month"
+      },
+      {
+        "name": "Période NSM",
+        "slug": "p%C3%A9riode_nsm",
+        "id": "69affdc6",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre V/T",
+        "slug": "filtre_v%2Ft",
+        "id": "5c432a3b",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre territoire",
+        "slug": "filtre_territoire",
+        "id": "5670ba34",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre territoires/type",
+        "slug": "filtre_territoires%2Ftype",
+        "id": "edb83865",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre domaines",
+        "slug": "filtre_domaines",
+        "id": "e3670e52",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre étape 2",
+        "slug": "filtre_%C3%A9tape_2",
+        "id": "f83e35fd",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre ressources",
+        "slug": "filtre_ressources",
+        "id": "1b507d11",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre T/V moyenne",
+        "slug": "filtre_t%2Fv_moyenne",
+        "id": "cf9262b5",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      }
+    ],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 98,
+        "card_id": 54,
+        "dashboard_tab_id": null,
+        "row": 19,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "5670ba34",
+            "card_id": 54,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {
+          "table.cell_column": "total_searches",
+          "table.pivot_column": "libelle_geographique",
+          "card.title": "Nombre de recherches par territoire",
+          "column_settings": {
+            "[\"name\",\"code_geographique\"]": {
+              "column_title": "Code"
+            },
+            "[\"name\",\"nombre_total\"]": {
+              "column_title": "Nb recherche"
+            },
+            "[\"name\",\"libelle_geographique\"]": {
+              "column_title": "Territoire"
+            }
+          }
+        }
+      },
+      {
+        "id": 104,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 67,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Domaine référents"
+        }
+      },
+      {
+        "id": 105,
+        "card_id": 61,
+        "dashboard_tab_id": null,
+        "row": 68,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "e3670e52",
+            "card_id": 61,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 93,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "North Star"
+        }
+      },
+      {
+        "id": 94,
+        "card_id": 56,
+        "dashboard_tab_id": null,
+        "row": 2,
+        "col": 0,
+        "size_x": 6,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "69affdc6",
+            "card_id": 56,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 95,
+        "card_id": 58,
+        "dashboard_tab_id": null,
+        "row": 2,
+        "col": 18,
+        "size_x": 6,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 96,
+        "card_id": 55,
+        "dashboard_tab_id": null,
+        "row": 10,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 97,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 18,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Territoires"
+        }
+      },
+      {
+        "id": 101,
+        "card_id": 59,
+        "dashboard_tab_id": null,
+        "row": 45,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 10,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 100,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 44,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Export des données"
+        }
+      },
+      {
+        "id": 102,
+        "card_id": 60,
+        "dashboard_tab_id": null,
+        "row": 56,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 11,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "1b507d11",
+            "card_id": 60,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 103,
+        "card_id": 63,
+        "dashboard_tab_id": null,
+        "row": 45,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 10,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      },
+      {
+        "id": 109,
+        "card_id": 53,
+        "dashboard_tab_id": null,
+        "row": 27,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "cf9262b5",
+            "card_id": 53,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {
+          "card.title": "territoires recherchés en moyenne par visiteur"
+        }
+      },
+      {
+        "id": 110,
+        "card_id": 69,
+        "dashboard_tab_id": null,
+        "row": 2,
+        "col": 6,
+        "size_x": 12,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "45569890",
+            "card_id": 69,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "grain"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 112,
+        "card_id": 70,
+        "dashboard_tab_id": null,
+        "row": 56,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 11,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "f83e35fd",
+            "card_id": 70,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 114,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 1,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Nombre de territoires recherchés au moins 3 fois et dont au moins 3 thématiques ont été consultées"
+        }
+      },
+      {
+        "id": 116,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 55,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Contenus"
+        }
+      },
+      {
+        "id": 117,
+        "card_id": 52,
+        "dashboard_tab_id": null,
+        "row": 27,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "edb83865",
+            "card_id": 52,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 125,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 35,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Visiteurs"
+        }
+      },
+      {
+        "id": 129,
+        "card_id": 72,
+        "dashboard_tab_id": null,
+        "row": 19,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 8,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "5c432a3b",
+            "card_id": 72,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {
+          "table.cell_column": "visiteurs_uniques",
+          "column_settings": {
+            "[\"name\",\"code_geographique\"]": {
+              "column_title": "Code"
+            },
+            "[\"name\",\"visiteurs_uniques\"]": {
+              "column_title": "Nb de visiteurs uniques"
+            },
+            "[\"name\",\"libelle_geographique\"]": {
+              "column_title": "Territoire"
+            }
+          }
+        }
+      },
+      {
+        "id": 134,
+        "card_id": 57,
+        "dashboard_tab_id": null,
+        "row": 36,
+        "col": 0,
+        "size_x": 6,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "card.title": "visiteurs uniques au total"
+        }
+      },
+      {
+        "id": 132,
+        "card_id": 74,
+        "dashboard_tab_id": null,
+        "row": 40,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "table.pivot_column": "total_visitors",
+          "table.cell_column": "returning_visitors",
+          "table.columns": [
+            {
+              "name": "total_visitors",
+              "enabled": true
+            },
+            {
+              "name": "returning_visitors",
+              "enabled": true
+            },
+            {
+              "name": "return_rate_percent",
+              "enabled": true
+            }
+          ],
+          "card.title": "Part des visiteurs uniques revenus sur les 6 derniers mois",
+          "column_settings": {
+            "[\"name\",\"total_visitors\"]": {
+              "column_title": "Visiteurs au total"
+            },
+            "[\"name\",\"returning_visitors\"]": {
+              "column_title": "Visiteurs revenus"
+            },
+            "[\"name\",\"return_rate_percent\"]": {
+              "column_title": "Part de visiteurs revenus"
+            }
+          }
+        }
+      },
+      {
+        "id": 133,
+        "card_id": 73,
+        "dashboard_tab_id": null,
+        "row": 36,
+        "col": 6,
+        "size_x": 6,
+        "size_y": 4,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "card.title": "visiteurs revenus au moins 1 fois sur les 6 derniers mois"
+        }
+      },
+      {
+        "id": 140,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 35,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Communauté Adaptation"
+        }
+      },
+      {
+        "id": 142,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 36,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 2,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "link",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "link": {
+            "url": "https://baserow.io/dashboard/280847"
+          }
+        }
+      },
+      {
+        "id": 141,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 38,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Le dashboard des métriques communauté se trouve sur Baserow. \n\nVous y trouverez : \n\n- le nombre de membres dans la communauté\n- le nombre de sessions d'accueil\n- le nombre de CdM Success\n- le taux de satisfaction aux CdM Success\n- le nombre de participations cumulées aux CdM Success"
+        }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Page stats publique",
+    "description": "Toute modification de cette page impacte directement la page Statistiques en prod",
+    "collection_id": 7,
+    "archived": false,
+    "enable_embedding": true,
+    "embedding_params": {
+      "filtre_th%C3%A9matique": "enabled",
+      "p%C3%A9riode_nsm": "enabled"
+    },
+    "parameters": [
+      {
+        "name": "Filtre thématique",
+        "slug": "filtre_th%C3%A9matique",
+        "id": "27971ccc",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": null
+      },
+      {
+        "name": "Période NSM",
+        "slug": "p%C3%A9riode_nsm",
+        "id": "4d9b3838",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": null
+      }
+    ],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 86,
+        "card_id": 51,
+        "dashboard_tab_id": null,
+        "row": 1,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 5,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "card.description": "",
+          "card.title": "Nombre de territoires recherchés sur le site",
+          "column_settings": {
+            "[\"name\",\"total_unique_territories\"]": {
+              "number_separators": ", ",
+              "number_style": "decimal"
+            }
+          }
+        }
+      },
+      {
+        "id": 88,
+        "card_id": 62,
+        "dashboard_tab_id": null,
+        "row": 7,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "visualization": {
+            "display": "area",
+            "columnValuesMapping": {
+              "COLUMN_1": [
+                {
+                  "sourceId": "card:62",
+                  "originalName": "mois",
+                  "name": "COLUMN_1"
+                }
+              ],
+              "COLUMN_2": [
+                {
+                  "sourceId": "card:62",
+                  "originalName": "count",
+                  "name": "COLUMN_2"
+                }
+              ]
+            },
+            "settings": {
+              "graph.show_goal": false,
+              "graph.y_axis.title_text": "Nombre de visiteurs",
+              "graph.show_values": true,
+              "graph.x_axis.labels_enabled": false,
+              "graph.series_order_dimension": null,
+              "graph.x_axis.title_text": "Mois",
+              "graph.y_axis.labels_enabled": false,
+              "card.title": "Nombre de visiteurs par mois",
+              "graph.y_axis.scale": "linear",
+              "graph.label_value_frequency": "all",
+              "graph.metrics": [
+                "COLUMN_2"
+              ],
+              "graph.label_value_formatting": "full",
+              "graph.series_order": null,
+              "series_settings": {
+                "COLUMN_2": {
+                  "color": "#98D9D9",
+                  "line.size": "L",
+                  "line.marker_enabled": true,
+                  "title": "Nombre de visiteurs"
+                }
+              },
+              "graph.x_axis.scale": "ordinal",
+              "graph.dimensions": [
+                "COLUMN_1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 90,
+        "card_id": 46,
+        "dashboard_tab_id": null,
+        "row": 17,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 14,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "27971ccc",
+            "card_id": 46,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {
+          "visualization": {
+            "display": "bar",
+            "columnValuesMapping": {
+              "COLUMN_1": [
+                {
+                  "sourceId": "card:46",
+                  "originalName": "thematique",
+                  "name": "COLUMN_1"
+                }
+              ],
+              "COLUMN_2": [
+                {
+                  "sourceId": "card:46",
+                  "originalName": "count",
+                  "name": "COLUMN_2"
+                }
+              ]
+            },
+            "settings": {
+              "graph.y_axis.title_text": "Nombre de clics",
+              "graph.show_values": true,
+              "graph.x_axis.labels_enabled": false,
+              "graph.y_axis.labels_enabled": false,
+              "card.title": "Nombre de consultations par thématique",
+              "graph.metrics": [
+                "COLUMN_2"
+              ],
+              "series_settings": {
+                "COLUMN_2": {
+                  "color": "#FBE499",
+                  "title": "Nombre de clics"
+                }
+              },
+              "graph.x_axis.scale": "ordinal",
+              "graph.dimensions": [
+                "COLUMN_1"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 89,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 16,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Les contenus"
+        }
+      },
+      {
+        "id": 106,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 1,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 5,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "\nTACCT propose 6 échelles de territoires différentes : \n- Communes\n- EPCI (Établissement public de coopération intercommunale)\n- PETR (Pôle d’équilibre territorial et rural)\n- PNR (Parc naturel régional)\n- EPT (Établissement public territorial)\n- Départements."
+        }
+      },
+      {
+        "id": 108,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 17,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 14,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Liste des indicateurs disponibles sur Facili-TACCT : \n\n\n- Âge du bâtiment\n- Appellations contrôlées\n- Arrêtés Catastrophes Naturelles\n- Atlas de la biodiversité\n- Débroussaillement\n- Emplois en extérieur\n- Érosion côtière\n- État écologique des cours d'eau\n- Feux de forêt\n- Grand âge de la population\n- Moustique tigre et arboviroses\n- Ozone et végétation\n- Part des chefs d'exploitation de plus de 55 ans\n- Patch 4°C\n- Pollution à l'ozone\n- Précarité énergétique\n- Prélèvements en eau\n- Qualité des sites de baignade\n- Retrait-gonflement des argiles\n- Sécheresses passées\n- Sols imperméabilisés\n- Spécialisation territoriale de la production agricole \n- Superficies irriguées \n- Surfaces en bio\n- Surfaces toujours en herbe\n- Types de culture\n- Types de sols\n- Zones climatiques locales (LCZ)\n",
+          "text.align_vertical": "top",
+          "text.align_horizontal": "left",
+          "dashcard.background": true
+        }
+      },
+      {
+        "id": 113,
+        "card_id": 56,
+        "dashboard_tab_id": null,
+        "row": 33,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "4d9b3838",
+            "card_id": 56,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {
+          "card.description": "",
+          "card.title": "Nombre de territoires concernés"
+        }
+      },
+      {
+        "id": 118,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 31,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Notre mesure d'impact phare (North Star ⭐️)"
+        }
+      },
+      {
+        "id": 122,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 6,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Les utilisateurs"
+        }
+      },
+      {
+        "id": 121,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "dashcard.background": false,
+          "virtual_card": {
+            "name": null,
+            "display": "heading",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "Les territoires"
+        }
+      },
+      {
+        "id": 124,
+        "card_id": null,
+        "dashboard_tab_id": null,
+        "row": 32,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 1,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "virtual_card": {
+            "name": null,
+            "display": "text",
+            "visualization_settings": {},
+            "archived": false
+          },
+          "text": "On mesure le nombre de territoires recherchés au moins 3 fois et dont au moins 3 thématiques ont été consultées."
+        }
+      },
+      {
+        "id": 127,
+        "card_id": 67,
+        "dashboard_tab_id": null,
+        "row": 7,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "visualization": {
+            "display": "pie",
+            "columnValuesMapping": {
+              "COLUMN_1": [
+                {
+                  "sourceId": "card:67",
+                  "originalName": "label",
+                  "name": "COLUMN_1"
+                }
+              ],
+              "COLUMN_2": [
+                {
+                  "sourceId": "card:67",
+                  "originalName": "value",
+                  "name": "COLUMN_2"
+                }
+              ]
+            },
+            "settings": {
+              "pie.percent_visibility": "inside",
+              "pie.dimension": [
+                "COLUMN_1"
+              ],
+              "pie.show_labels": false,
+              "card.title": "Population couverte par les territoires dans notre communauté",
+              "pie.rows": [
+                {
+                  "key": "Non couvert",
+                  "name": "Part non couverte",
+                  "originalName": "Non couvert",
+                  "color": "#F3F3F4",
+                  "defaultColor": false,
+                  "enabled": true,
+                  "hidden": false,
+                  "isOther": false
+                },
+                {
+                  "key": "Couvert",
+                  "name": "Part couverte",
+                  "originalName": "Couvert",
+                  "color": "#69C8C8",
+                  "defaultColor": false,
+                  "enabled": true,
+                  "hidden": false,
+                  "isOther": false
+                },
+                {
+                  "key": "31301828",
+                  "name": "147578445",
+                  "originalName": "31,301,828",
+                  "color": "#509EE3",
+                  "defaultColor": true,
+                  "enabled": true,
+                  "hidden": true,
+                  "isOther": false
+                }
+              ],
+              "pie.metric": "COLUMN_2",
+              "pie.show_legend": true,
+              "card.description": "Part de la population couverte par les territoires présents dans notre Communauté Adaptation",
+              "pie.show_total": true,
+              "column_settings": {},
+              "version": 2
+            }
+          }
+        }
+      },
+      {
+        "id": 136,
+        "card_id": 75,
+        "dashboard_tab_id": null,
+        "row": 33,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {
+          "visualization": {
+            "display": "area",
+            "columnValuesMapping": {
+              "COLUMN_1": [
+                {
+                  "sourceId": "card:75",
+                  "originalName": "date",
+                  "name": "COLUMN_1"
+                }
+              ],
+              "COLUMN_2": [
+                {
+                  "sourceId": "card:75",
+                  "originalName": "north_star_cumule",
+                  "name": "COLUMN_2"
+                }
+              ]
+            },
+            "settings": {
+              "graph.show_values": true,
+              "graph.x_axis.labels_enabled": false,
+              "table.cell_column": "period",
+              "graph.y_axis.labels_enabled": false,
+              "card.title": "Évolution de la North Star par mois",
+              "graph.metrics": [
+                "COLUMN_2"
+              ],
+              "table.column_formatting": [
+                {
+                  "columns": [
+                    "north_star"
+                  ],
+                  "type": "single",
+                  "operator": "=",
+                  "value": "",
+                  "color": "#509EE3",
+                  "highlight_row": false
+                }
+              ],
+              "table.row_index": false,
+              "table.pivot_column": "north_star",
+              "series_settings": {
+                "COLUMN_2": {
+                  "title": "Nombre de territoires concernés"
+                }
+              },
+              "graph.x_axis.scale": "ordinal",
+              "graph.dimensions": [
+                "COLUMN_1"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Page TACCToscope",
+    "description": null,
+    "collection_id": 10,
+    "archived": false,
+    "enable_embedding": true,
+    "embedding_params": {
+      "filtre_non_compl%C3%A9tion": "enabled",
+      "filtre_besoins": "enabled",
+      "filtre_fdr": "enabled",
+      "filtre_usages": "enabled",
+      "filtre_d%C3%A9tails_comptes": "enabled",
+      "filtre_clics_": "enabled",
+      "filtre_compl%C3%A9tion": "enabled",
+      "filtre_q%2Fr": "enabled"
+    },
+    "parameters": [
+      {
+        "name": "Filtre usages",
+        "slug": "filtre_usages",
+        "id": "13f64608",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre détails comptes",
+        "slug": "filtre_d%C3%A9tails_comptes",
+        "id": "55cb92bd",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre non complétion",
+        "slug": "filtre_non_compl%C3%A9tion",
+        "id": "872b3984",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre complétion",
+        "slug": "filtre_compl%C3%A9tion",
+        "id": "63dc468a",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre Q/R",
+        "slug": "filtre_q%2Fr",
+        "id": "d3c50661",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months"
+      },
+      {
+        "name": "Filtre besoins",
+        "slug": "filtre_besoins",
+        "id": "9ea13b24",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre clics ",
+        "slug": "filtre_clics_",
+        "id": "24fbf3b",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      },
+      {
+        "name": "Filtre FdR",
+        "slug": "filtre_fdr",
+        "id": "2e6c5919",
+        "type": "date/all-options",
+        "sectionId": "date",
+        "default": "past6months~"
+      }
+    ],
+    "tabs": [],
+    "dashcards": [
+      {
+        "id": 155,
+        "card_id": 99,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 7,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "55cb92bd",
+            "card_id": 99,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 156,
+        "card_id": 97,
+        "dashboard_tab_id": null,
+        "row": 7,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 6,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "63dc468a",
+            "card_id": 97,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 157,
+        "card_id": 98,
+        "dashboard_tab_id": null,
+        "row": 13,
+        "col": 0,
+        "size_x": 12,
+        "size_y": 7,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "872b3984",
+            "card_id": 98,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 158,
+        "card_id": 101,
+        "dashboard_tab_id": null,
+        "row": 0,
+        "col": 12,
+        "size_x": 12,
+        "size_y": 20,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "d3c50661",
+            "card_id": 101,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 161,
+        "card_id": 95,
+        "dashboard_tab_id": null,
+        "row": 29,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 7,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "24fbf3b",
+            "card_id": 95,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 162,
+        "card_id": 94,
+        "dashboard_tab_id": null,
+        "row": 20,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 9,
+        "series": [],
+        "parameter_mappings": [
+          {
+            "parameter_id": "2e6c5919",
+            "card_id": 94,
+            "target": [
+              "dimension",
+              [
+                "template-tag",
+                "periode"
+              ],
+              {
+                "stage-number": 0
+              }
+            ]
+          }
+        ],
+        "visualization_settings": {}
+      },
+      {
+        "id": 165,
+        "card_id": 80,
+        "dashboard_tab_id": null,
+        "row": 36,
+        "col": 0,
+        "size_x": 24,
+        "size_y": 10,
+        "series": [],
+        "parameter_mappings": [],
+        "visualization_settings": {}
+      }
+    ]
+  }
+]

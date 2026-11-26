@@ -14,8 +14,13 @@
     "start": "node .next/standalone/server.js",
     "eslint": "eslint --fix ./src",
     "test": "jest",
-    "build:etl": "esbuild etl/index.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
+    "etl:test-posthog": "node etl/runPosthog.mjs",
+    "etl:test-baserow": "node etl/runBaserow.mjs",
+    "etl:test-population": "node etl/runPopulation.mjs",
     "etl:daily": "node dist/etl.js",
+    "etl:daily-population": "node dist/etlPopulation.js",
+    "build:etl": "esbuild etl/index.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
+    "build:etl-population": "esbuild etl/runPopulation.mjs --bundle --platform=node --format=cjs --outfile=dist/etlPopulation.js",
     "etl:test-baserow-cdm": "node etl/prod/runBaserowCdm.mjs"
   },
   "dependencies": {

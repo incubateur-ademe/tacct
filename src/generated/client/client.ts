@@ -406,3 +406,73 @@ export type user_study = Prisma.user_studyModel
  * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
  */
 export type user_besoin = Prisma.user_besoinModel
+/**
+ * Model all_autocapture_raw
+ * 
+ */
+export type all_autocapture_raw = Prisma.all_autocapture_rawModel
+/**
+ * Model all_pageview_raw
+ * 
+ */
+export type all_pageview_raw = Prisma.all_pageview_rawModel
+/**
+ * Model baserow_evenements
+ * 
+ */
+export type baserow_evenements = Prisma.baserow_evenementsModel
+/**
+ * Model baserow_territoires
+ * 
+ */
+export type baserow_territoires = Prisma.baserow_territoiresModel
+/**
+ * Model boutons_export_raw
+ * 
+ */
+export type boutons_export_raw = Prisma.boutons_export_rawModel
+/**
+ * Model boutons_homepage
+ * 
+ */
+export type boutons_homepage = Prisma.boutons_homepageModel
+/**
+ * Model couverture_population
+ * 
+ */
+export type couverture_population = Prisma.couverture_populationModel
+/**
+ * Model north_star_metric
+ * 
+ */
+export type north_star_metric = Prisma.north_star_metricModel
+/**
+ * Model ressources_consultees
+ * 
+ */
+export type ressources_consultees = Prisma.ressources_consulteesModel
+/**
+ * Model tacctoscope_ressources
+ * 
+ */
+export type tacctoscope_ressources = Prisma.tacctoscope_ressourcesModel
+/**
+ * Model thematique
+ * 
+ */
+export type thematique = Prisma.thematiqueModel
+/**
+ * Model emplois_sylviculture
+ * 
+ */
+export type emplois_sylviculture = Prisma.emplois_sylvicultureModel
+/**
+ * Model forets_communales
+ * 
+ */
+export type forets_communales = Prisma.forets_communalesModel
+/**
+ * Model stations_ski
+ * 
+ */
+export type stations_ski = Prisma.stations_skiModel
