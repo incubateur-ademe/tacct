@@ -12,16 +12,16 @@ import { EspacesNafTooltip } from './subcomponents/tooltips';
 
 const getColor = (d: number) => {
   return d > 200000
-    ? '#680000'
+    ? '#353400'
     : d > 100000
-      ? '#B5000E'
+      ? '#5A5A17'
       : d > 50000
-        ? '#E8323B'
+        ? '#939037'
         : d > 20000
-          ? '#FF9699'
+          ? '#CAC97B'
           : d > 10000
-            ? '#FFECEE'
-            : '#D8EFFA';
+            ? '#A0E6EA'
+            : '#DBFDFE';
 };
 
 export const MapEspacesNaf = (props: {
@@ -85,7 +85,7 @@ export const MapEspacesNaf = (props: {
           color
         );
       });
-      const colorExpression: ExpressionSpecification = ['case', ...colorPairs, '#D8EFFA'] as ExpressionSpecification;
+      const colorExpression: ExpressionSpecification = ['case', ...colorPairs, '#DBFDFE'] as ExpressionSpecification;
 
       map.addLayer({
         id: 'naf-fill',

@@ -323,27 +323,27 @@ export const ressourcesEauBarChartLegend = [
 export const espacesNAFDatavizLegend = [
   {
     value: '0-1',
-    color: '#D8EFFA'
+    color: '#DBFDFE'
   },
   {
     value: '1-2',
-    color: '#FFECEE'
+    color: '#A0E6EA'
   },
   {
     value: '2-5',
-    color: '#FF9699'
+    color: '#CAC97B'
   },
   {
     value: '5-10',
-    color: '#E8323B'
+    color: '#939037'
   },
   {
     value: '10-20',
-    color: '#B5000E'
+    color: '#5A5A17'
   },
   {
     value: '> 20',
-    color: '#680000'
+    color: '#353400'
   }
 ];
 
