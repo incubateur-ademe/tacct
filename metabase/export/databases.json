@@ -1,0 +1,17 @@
+[
+  {
+    "id": 4,
+    "name": "Sample Database",
+    "engine": "sqlite"
+  },
+  {
+    "id": 2,
+    "name": "Scalingo preprod",
+    "engine": "postgres"
+  },
+  {
+    "id": 3,
+    "name": "Scalingo Prod",
+    "engine": "postgres"
+  }
+]
