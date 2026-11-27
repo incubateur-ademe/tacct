@@ -1,5 +1,7 @@
 'use client';
 
+import { cleCarte, parametresParDefaut } from '@/lib/queries/metabase/cle';
+import type { ResultatCarte } from '@/lib/queries/metabase/types';
 import type { CSSProperties } from 'react';
 import { BlocCarte } from './BlocCarte';
 import styles from './metabase.module.scss';
@@ -13,18 +15,20 @@ type StyleCellule = CSSProperties & {
   '--hauteur': number;
 };
 
-const ContenuBloc = ({ bloc }: { bloc: Bloc }) => {
+type Resultats = Record<string, ResultatCarte>;
+
+const ContenuBloc = ({ bloc, initiaux }: { bloc: Bloc; initiaux: Resultats }) => {
   switch (bloc.type) {
     case 'titre':
       return <h2 className={styles.titreSection}>{bloc.texte}</h2>;
     case 'texte':
       return <TexteMarkdown texte={bloc.texte} className={styles.blocTexte} />;
     case 'carte':
-      return <BlocCarte config={bloc} />;
+      return <BlocCarte config={bloc} initial={initiaux[cleCarte(bloc.carte, parametresParDefaut(bloc))]} />;
   }
 };
 
-export const Grille = ({ blocs }: { blocs: Bloc[] }) => {
+export const Grille = ({ blocs, initiaux }: { blocs: Bloc[]; initiaux: Resultats }) => {
   const tries = [...blocs].sort(
     (a, b) => a.position.ligne - b.position.ligne || a.position.colonne - b.position.colonne
   );
@@ -43,7 +47,7 @@ export const Grille = ({ blocs }: { blocs: Bloc[] }) => {
             className={`${styles.cellule} ${bloc.type === 'carte' ? styles.celluleCarte : ''}`}
             style={style}
           >
-            <ContenuBloc bloc={bloc} />
+            <ContenuBloc bloc={bloc} initiaux={initiaux} />
           </div>
         );
       })}

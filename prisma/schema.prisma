@@ -2000,3 +2000,12 @@ model prelevements_eau {
   @@index([code_polem], map: "prelevements_eau_polem_index", type: Gin)
   @@schema("databases_v2")
 }
+
+model metabase_resultats {
+  cle        String   @id
+  resultat   Json
+  marqueur   String
+  calcule_le DateTime @default(now()) @db.Timestamptz(6)
+
+  @@schema("analytics")
+}

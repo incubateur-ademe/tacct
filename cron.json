@@ -1,6 +1,7 @@
 {
   "jobs": [
     { "command": "0 2 * * * pnpm run etl:daily" },
-    { "command": "0 3 * * * pnpm run etl:daily-population" }
+    { "command": "0 3 * * * pnpm run etl:daily-population" },
+    { "command": "30 3 * * * pnpm run metabase:precalcul" }
   ]
 }

@@ -135,7 +135,8 @@ export const ModelName = {
   forets_communales: 'forets_communales',
   stations_ski: 'stations_ski',
   emplois_sylviculture: 'emplois_sylviculture',
-  prelevements_eau: 'prelevements_eau'
+  prelevements_eau: 'prelevements_eau',
+  metabase_resultats: 'metabase_resultats'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1817,6 +1818,16 @@ export const Prelevements_eauScalarFieldEnum = {
 export type Prelevements_eauScalarFieldEnum = (typeof Prelevements_eauScalarFieldEnum)[keyof typeof Prelevements_eauScalarFieldEnum]
 
 
+export const Metabase_resultatsScalarFieldEnum = {
+  cle: 'cle',
+  resultat: 'resultat',
+  marqueur: 'marqueur',
+  calcule_le: 'calcule_le'
+} as const
+
+export type Metabase_resultatsScalarFieldEnum = (typeof Metabase_resultatsScalarFieldEnum)[keyof typeof Metabase_resultatsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1831,6 +1842,13 @@ export const NullableJsonNullValueInput = {
 } as const
 
 export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const QueryMode = {

@@ -1,5 +1,6 @@
 'use client';
 
+import { cleCarte, parametresParDefaut } from '@/lib/queries/metabase/cle';
 import { GRANULARITES, type Granularite } from '@/lib/queries/metabase/periode';
 import type { ResultatCarte } from '@/lib/queries/metabase/types';
 import { useEffect, useId, useState } from 'react';
@@ -71,18 +72,18 @@ const Description = ({ texte, id }: { texte: string; id: string }) => {
   );
 };
 
-export const BlocCarte = ({ config }: { config: ConfigCarte }) => {
+export const BlocCarte = ({ config, initial }: { config: ConfigCarte; initial?: ResultatCarte }) => {
+  const defauts = parametresParDefaut(config);
   const [periode, setPeriode] = useState(config.periode);
-  const [granularite, setGranularite] = useState<Granularite>(config.granularite ?? 'month');
+  const [granularite, setGranularite] = useState<Granularite>(defauts.granularite);
   const [reponse, setReponse] = useState<Reponse | null>(null);
   const id = useId();
 
-  const parametres = new URLSearchParams({ granularite });
-  if (periode) parametres.set('periode', periode);
-  if (config.periodeEtape2) parametres.set('periodeEtape2', config.periodeEtape2);
-  const cle = `${config.carte}?${parametres.toString()}`;
+  const cle = cleCarte(config.carte, { periode, periodeEtape2: config.periodeEtape2, granularite });
+  const fourni = initial && cle === cleCarte(config.carte, defauts) ? initial : null;
 
   useEffect(() => {
+    if (fourni) return;
     const controleur = new AbortController();
     fetch(`/api/metabase/cartes/${cle}`, { signal: controleur.signal })
       .then(async (r) => {
@@ -93,9 +94,10 @@ export const BlocCarte = ({ config }: { config: ConfigCarte }) => {
         if (!controleur.signal.aborted) setReponse({ cle, erreur: 'echec' });
       });
     return () => controleur.abort();
-  }, [cle]);
+  }, [cle, fourni]);
 
-  const aJour = reponse?.cle === cle ? reponse : null;
+  const recue = reponse?.cle === cle ? reponse : null;
+  const aJour: Reponse | null = fourni ? { cle, resultat: fourni } : recue;
   const resultat = aJour && 'resultat' in aJour ? aJour.resultat : null;
   const estTableau = config.visualisation.type === 'tableau';
 

@@ -1,18 +1,37 @@
 'use client';
 
 import { Onglets } from '@/design-system/base/Onglets';
-import { useState } from 'react';
+import type { ResultatCarte } from '@/lib/queries/metabase/types';
+import { useRef, useState } from 'react';
 import { Grille } from './Grille';
 import styles from './metabase.module.scss';
 import { TABLEAUX_DE_BORD } from './configuration';
 
-export const TableauxDeBord = () => {
-  const [actif, setActif] = useState(TABLEAUX_DE_BORD[0].nom);
-  const [visites, setVisites] = useState<string[]>([TABLEAUX_DE_BORD[0].nom]);
+type Resultats = Record<string, ResultatCarte>;
+
+const chargerResultats = async (id: number): Promise<Resultats> => {
+  try {
+    const reponse = await fetch(`/api/metabase/tableaux/${id}`);
+    return reponse.ok ? ((await reponse.json()) as Resultats) : {};
+  } catch {
+    return {};
+  }
+};
+
+export const TableauxDeBord = ({ initiaux }: { initiaux: Resultats }) => {
+  const premier = TABLEAUX_DE_BORD[0];
+  const [actif, setActif] = useState(premier.nom);
+  const [resultats, setResultats] = useState<Record<number, Resultats>>({ [premier.id]: initiaux });
+  const demandes = useRef(new Set([premier.id]));
 
   const changer = (nom: string) => {
     setActif(nom);
-    setVisites((precedents) => (precedents.includes(nom) ? precedents : [...precedents, nom]));
+    const tableau = TABLEAUX_DE_BORD.find((candidat) => candidat.nom === nom);
+    if (!tableau || demandes.current.has(tableau.id)) return;
+    demandes.current.add(tableau.id);
+    void chargerResultats(tableau.id).then((recus) =>
+      setResultats((precedents) => ({ ...precedents, [tableau.id]: recus }))
+    );
   };
 
   return (
@@ -24,11 +43,22 @@ export const TableauxDeBord = () => {
       ariaLabel="Tableaux de bord Metabase"
     >
       <div className={styles.panneaux}>
-        {TABLEAUX_DE_BORD.filter((tableau) => visites.includes(tableau.nom)).map((tableau) => (
-          <div key={tableau.id} hidden={tableau.nom !== actif}>
-            <Grille blocs={tableau.blocs} />
-          </div>
-        ))}
+        {TABLEAUX_DE_BORD.map((tableau) => {
+          const recus = resultats[tableau.id];
+          if (!recus && tableau.nom !== actif) return null;
+          return (
+            <div key={tableau.id} hidden={tableau.nom !== actif}>
+              {recus ? (
+                <Grille blocs={tableau.blocs} initiaux={recus} />
+              ) : (
+                <div className={styles.chargement} role="status" style={{ padding: '3rem 0' }}>
+                  <span>Chargement…</span>
+                  <span className={styles.spinner} aria-hidden="true" />
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </Onglets>
   );

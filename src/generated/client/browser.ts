@@ -442,3 +442,8 @@ export type emplois_sylviculture = Prisma.emplois_sylvicultureModel
  * 
  */
 export type prelevements_eau = Prisma.prelevements_eauModel
+/**
+ * Model metabase_resultats
+ * 
+ */
+export type metabase_resultats = Prisma.metabase_resultatsModel

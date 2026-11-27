@@ -2,7 +2,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import 'dotenv/config';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
-import { Pool } from 'pg';
+import { Pool, type PoolConfig } from 'pg';
 import {
   blindIndex,
   decryptField,
@@ -94,16 +94,17 @@ if (existsSync(caPath)) {
   sslConfig = true;
 }
 
-const pool = new Pool({
-  connectionString: cleanConnectionString,
-  ssl: sslConfig,
-  max: 5,
-  idleTimeoutMillis: 20000,
-  connectionTimeoutMillis: 30000,
-  statement_timeout: 30000
-});
+export const creerPool = (options: PoolConfig) =>
+  new Pool({
+    connectionString: cleanConnectionString,
+    ssl: sslConfig,
+    idleTimeoutMillis: 20000,
+    connectionTimeoutMillis: 30000,
+    statement_timeout: 30000,
+    ...options
+  });
 
-const adapter = new PrismaPg(pool);
+const adapter = new PrismaPg(creerPool({ max: 5 }));
 
 export const prisma = new PrismaClient({ adapter }).$extends({
   query: {

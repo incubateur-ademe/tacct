@@ -17,6 +17,7 @@
     "etl:test-population": "node etl/runPopulation.mjs",
     "etl:daily": "node dist/etl.js",
     "etl:daily-population": "node dist/etlPopulation.js",
+    "metabase:precalcul": "node etl/precalculMetabase.mjs",
     "build:etl": "esbuild etl/index.mjs --bundle --platform=node --format=cjs --outfile=dist/etl.js",
     "build:etl-population": "esbuild etl/runPopulation.mjs --bundle --platform=node --format=cjs --outfile=dist/etlPopulation.js",
     "eslint": "eslint --fix ./src",

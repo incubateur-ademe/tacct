@@ -1,5 +1,6 @@
-import { carteExiste, executerCarte } from '@/lib/queries/metabase/executer';
+import { carteExiste } from '@/lib/queries/metabase/executer';
 import { lireGranularite, lirePeriode } from '@/lib/queries/metabase/periode';
+import { obtenirCarte } from '@/lib/queries/metabase/resultats';
 import { NextResponse, type NextRequest } from 'next/server';
 
 export const dynamic = 'force-dynamic';
@@ -22,7 +23,7 @@ export const GET = async (
   }
 
   try {
-    return NextResponse.json(await executerCarte(id, { periode, periodeEtape2, granularite }));
+    return NextResponse.json(await obtenirCarte(id, { periode, periodeEtape2, granularite }));
   } catch (erreur) {
     console.error(`[metabase] carte ${id} :`, erreur);
     if (erreur instanceof Error && erreur.message.includes('57014')) {

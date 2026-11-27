@@ -9,6 +9,8 @@ export type ParametresRequete = {
 
 export type Requetes = Record<number, (parametres: ParametresRequete) => Prisma.Sql>;
 
+export type LigneBrute = Record<string, unknown>;
+
 export type Valeur = string | number | boolean | null;
 
 export type Ligne = Record<string, Valeur>;
